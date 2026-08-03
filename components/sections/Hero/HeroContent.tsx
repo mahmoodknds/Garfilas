@@ -1,107 +1,44 @@
-import GlowButton from "../ui/GlowButton";
-import {brand} from "@/config/brand";
+import Logo from "@/components/layout/Logo";
+import GlowButton from "@/components/ui/GlowButton";
+import { brand } from "@/config/brand";
 
+export default function HeroSection() {
+  return (
+    <section
+      aria-labelledby="hero-title"
+      className="hero min-h-screen px-6 pb-32 pt-10 text-center"
+    >
+      <div className="hero-shell mx-auto flex min-h-[calc(100vh-5rem)] max-w-4xl flex-col items-center justify-center">
+        <div className="hero-logo animate-fade-up">
+          <Logo />
+        </div>
 
-export default function HeroSection(){
+        <div
+          aria-hidden="true"
+          className="hero-glow animate-glow"
+        />
 
-return (
+        <p className="hero-kicker animate-fade-up-delay-1">
+          Premium Italian Lasagna
+        </p>
 
-<section
-className="
-min-h-screen
-flex
-flex-col
-items-center
-justify-center
+        <h1
+          id="hero-title"
+          className="hero-title animate-fade-up-delay-1 mt-4 max-w-3xl text-balance font-black tracking-tight"
+        >
+          لذتِ یک لازانیای متفاوت
+        </h1>
 
-px-6
+        <p className="hero-subtitle animate-fade-up-delay-2 mt-5 max-w-xl text-pretty">
+          {brand.slogan}
+        </p>
 
-text-center
-"
->
-
-
-<div
-className="
-w-64
-h-64
-
-rounded-full
-
-bg-orange-500/10
-
-border
-
-border-orange-500/30
-
-flex
-
-items-center
-
-justify-center
-
-animate-pulse
-"
->
-
-
-<span
-className="
-text-7xl
-"
->
-🍝
-</span>
-
-
-</div>
-
-
-<h1
-className="
-mt-10
-text-5xl
-font-black
-tracking-wide
-"
->
-
-{brand.name}
-
-</h1>
-
-
-<p
-className="
-mt-4
-text-gray-300
-text-lg
-"
->
-
-{brand.slogan}
-
-</p>
-
-
-<div
-className="
-mt-10
-"
->
-
-<GlowButton>
-
-{brand.navigation.menu}
-
-</GlowButton>
-
-
-</div>
-
-
-</section>
-
-)
-
+        <div className="animate-fade-up-delay-3 mt-9">
+          <a href="#menu" aria-label={brand.navigation.menu}>
+            <GlowButton>{brand.navigation.menu}</GlowButton>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 }
