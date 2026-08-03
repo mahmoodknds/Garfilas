@@ -1,41 +1,15 @@
-interface Props {
-  children: React.ReactNode;
-}
+import type { ReactNode } from "react";
 
+type Props = {
+  children: ReactNode;
+};
 
-export default function GlowButton({
-  children
-}:Props){
-
-return (
-
-<button
-className="
-relative
-px-10
-py-4
-rounded-full
-bg-orange-500
-text-black
-font-bold
-text-lg
-
-shadow-[0_0_40px_rgba(255,138,0,.45)]
-
-transition
-duration-300
-
-hover:scale-105
-
-active:scale-95
-
-"
->
-
-{children}
-
-</button>
-
-)
-
+export default function GlowButton({ children }: Props) {
+  return (
+    <span
+      className="inline-flex min-h-14 items-center justify-center rounded-full bg-[var(--primary)] px-10 py-4 text-lg font-bold text-black shadow-[0_0_40px_rgba(255,138,0,.35)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_48px_rgba(255,138,0,.5)] active:translate-y-0"
+    >
+      {children}
+    </span>
+  );
 }
