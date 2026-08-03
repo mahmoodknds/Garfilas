@@ -1,317 +1,40 @@
+@import "tailwindcss";
 @import "../styles/tokens.css";
 @import "../styles/animations.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-
-:root {
-  --orange: #FF8A00;
-  --gold: #D4AF37;
-  --dark: #080808;
-}
-
-
-* {
-  box-sizing: border-box;
-}
-
-
+:root { --font-vazir: "Vazirmatn", "Segoe UI", Tahoma, sans-serif; }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--background); }
 body {
-  margin:0;
-  background:
-    radial-gradient(
-      circle at top,
-      rgba(255,138,0,.15),
-      transparent 40%
-    ),
-    var(--dark);
-
-  color:white;
-
-  font-family:
-    "Inter",
-    sans-serif;
-
-  overflow-x:hidden;
-}
-/* ===========================
-   RESET
-=========================== */
-
-*,
-*::before,
-*::after {
+  min-height: 100vh;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  overflow-x: hidden;
+  background: radial-gradient(circle at 50% 0%, rgba(255,122,0,.16), transparent 38%), radial-gradient(circle at 50% 100%, rgba(255,122,0,.06), transparent 34%), var(--background);
+  color: var(--text);
+  font-family: var(--font-vazir);
 }
-
-/* ===========================
-   ROOT
-=========================== */
-
-:root {
-  --bg: #080808;
-  --surface: #111111;
-
-  --primary: #ff8c1a;
-  --primary-light: #ffb347;
-  --primary-dark: #cc6d00;
-
-  --text: #ffffff;
-  --text-secondary: #c9c9c9;
-
-  --border: rgba(255,255,255,.08);
-
-  --radius: 18px;
-
-  --shadow:
-    0 15px 45px rgba(255,140,26,.18);
-
-  --transition: .3s ease;
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--primary); color: #000; }
+:focus-visible { outline: 2px solid var(--primary-soft); outline-offset: 4px; }
+.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero-shell { position: relative; z-index: 1; }
+.hero-logo { position: relative; z-index: 2; }
+.logo { display: inline-flex; flex-direction: column; align-items: center; gap: .25rem; }
+.logo-main {
+  font-size: clamp(2.5rem, 12vw, 5rem); font-weight: 900; line-height: .95; letter-spacing: -.06em;
+  background: linear-gradient(135deg, #fff 10%, var(--primary-soft) 55%, var(--primary) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 24px rgba(255,122,0,.18));
 }
-
-/* ===========================
-   HTML
-=========================== */
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-
-  background:
-  radial-gradient(circle at top,
-  rgba(255,140,26,.18),
-  transparent 40%),
-
-  radial-gradient(circle at bottom,
-  rgba(255,120,0,.08),
-  transparent 40%),
-
-  var(--bg);
-
-  color:var(--text);
-
-  font-family:var(--font-vazir);
-
-  min-height:100vh;
-
-  overflow-x:hidden;
-}
-
-/* ===========================
-   Typography
-=========================== */
-
-h1,h2,h3,h4{
-
-font-weight:700;
-
-}
-
-p{
-
-line-height:1.8;
-
-color:var(--text-secondary);
-
-}
-
-/* ===========================
-   Links
-=========================== */
-
-a{
-
-color:inherit;
-
-text-decoration:none;
-
-}
-
-/* ===========================
-   Images
-=========================== */
-
-img{
-
-display:block;
-
-max-width:100%;
-
-}
-
-/* ===========================
-   Selection
-=========================== */
-
-::selection{
-
-background:var(--primary);
-
-color:#000;
-
-}
-
-/* ===========================
-   Scrollbar
-=========================== */
-
-::-webkit-scrollbar{
-
-width:8px;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-background:var(--primary);
-
-border-radius:99px;
-
-}
-
-::-webkit-scrollbar-track{
-
-background:#111;
-
-}
-
-/* ===========================
-   Layout
-=========================== */
-
-.container{
-
-width:min(1200px,92%);
-
-margin:auto;
-
-}
-
-/* ===========================
-   Hero
-=========================== */
-
-.hero{
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-min-height:100vh;
-
-padding:32px;
-
-text-align:center;
-
-gap:24px;
-
-}
-
-/* ===========================
-   Button
-=========================== */
-
-.primary-btn{
-
-background:linear-gradient(
-135deg,
-var(--primary),
-var(--primary-light)
-);
-
-color:#111;
-
-border:none;
-
-padding:18px 34px;
-
-border-radius:999px;
-
-font-size:18px;
-
-font-weight:700;
-
-cursor:pointer;
-
-transition:var(--transition);
-
-box-shadow:var(--shadow);
-
-}
-
-.primary-btn:hover{
-
-transform:translateY(-3px);
-
-}
-
-/* ===========================
-   Bottom Nav
-=========================== */
-
-.bottom-nav{
-
-position:fixed;
-
-bottom:22px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-width:min(420px,90%);
-
-height:70px;
-
-background:rgba(255,255,255,.06);
-
-backdrop-filter:blur(18px);
-
-border:1px solid var(--border);
-
-border-radius:999px;
-
-display:flex;
-
-justify-content:space-around;
-
-align-items:center;
-
-}
-
-/* ===========================
-   Responsive
-=========================== */
-
-@media (max-width:768px){
-
-.hero{
-
-padding:24px;
-
-}
-
-.primary-btn{
-
-width:100%;
-
-max-width:320px;
-
-}
-
-.bottom-nav{
-
-bottom:14px;
-
-}
-
-}
+.logo-sub { color: var(--text-secondary); font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+.hero-glow { position: absolute; z-index: -1; top: 28%; left: 50%; width: min(78vw,34rem); aspect-ratio: 1; transform: translate(-50%,-50%); border-radius: 999px; background: rgba(255,122,0,.12); filter: blur(60px); pointer-events: none; }
+.hero-kicker { margin-top: 3rem; color: var(--primary-soft); font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.hero-title { font-size: clamp(2.25rem,10vw,4.75rem); line-height: 1.15; }
+.hero-subtitle { color: var(--text-secondary); font-size: clamp(1rem,3.8vw,1.2rem); line-height: 1.9; }
+.bottom-nav { position: fixed; z-index: 50; right: 50%; bottom: max(.9rem,env(safe-area-inset-bottom)); display: flex; width: min(24rem,calc(100vw - 2rem)); min-height: 4.25rem; transform: translateX(50%); align-items: center; justify-content: space-around; padding: .45rem; border: 1px solid var(--glass-border); border-radius: 999px; background: rgba(20,17,15,.78); box-shadow: var(--shadow-soft); backdrop-filter: blur(18px); }
+.bottom-nav-link { display: inline-flex; min-width: 3.5rem; min-height: 3.25rem; align-items: center; justify-content: center; border-radius: 999px; color: var(--text-secondary); transition: color var(--transition-fast),background var(--transition-fast),transform var(--transition-fast); }
+.bottom-nav-link:hover, .bottom-nav-link:focus-visible { background: var(--surface-light); color: var(--primary-soft); }
+.bottom-nav-link:active { transform: scale(.94); }
+@media (min-width: 768px) { .hero-kicker { margin-top: 4rem; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
