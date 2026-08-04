@@ -8,15 +8,27 @@ export default function HeroSection() {
       aria-labelledby="hero-title"
       className="hero min-h-screen px-6 pb-32 pt-10 text-center"
     >
+      <div className="hero-landmarks" aria-hidden="true">
+        <img src="/assets/hero/italy-landmarks.svg" alt="" />
+      </div>
+
+      <div className="hero-ring" aria-hidden="true" />
+
       <div className="hero-shell mx-auto flex min-h-[calc(100vh-5rem)] max-w-4xl flex-col items-center justify-center">
+        <div className="hero-mascot animate-fade-up" aria-hidden="true">
+          <img
+            src="/assets/hero/garfilas-cat.svg"
+            alt=""
+            width={700}
+            height={700}
+          />
+        </div>
+
         <div className="hero-logo animate-fade-up">
           <Logo />
         </div>
 
-        <div
-          aria-hidden="true"
-          className="hero-glow animate-glow"
-        />
+        <div aria-hidden="true" className="hero-glow animate-glow" />
 
         <p className="hero-kicker animate-fade-up-delay-1">
           Premium Italian Lasagna
