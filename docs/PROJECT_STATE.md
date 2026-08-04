@@ -25,6 +25,9 @@ Implemented on `main`:
 - Homepage composition
 - Hero import/path mismatch fix
 - Invalid `brand.ts` TypeScript syntax fix
+- Featured Products section foundation
+- Responsive product-card grid
+- Lightweight CSS product visuals with no external image dependency
 
 ## Current Landing Page
 
@@ -34,6 +37,8 @@ Implemented:
 - Logo
 - Premium dark/orange visual language
 - Single primary CTA
+- Featured Products section
+- Product-card visual system
 - Bottom navigation shell
 - Responsive foundation
 - Reduced-motion support
@@ -41,13 +46,12 @@ Implemented:
 
 Not yet implemented:
 
-- Featured Products
 - Story
 - Why Garfilas
 - CTA section beyond Hero
 - Footer
-- Real menu destination
-- Product data and imagery
+- Real menu destination / interactive menu
+- Final product imagery and production product data
 - Full SEO metadata / JSON-LD / OpenGraph
 - Performance audit
 - Automated tests
@@ -64,14 +68,15 @@ Not yet implemented:
 - Server Components first
 - Avoid unnecessary dependencies
 - Revenue Before Complexity
+- Avoid external image dependencies until approved production assets are available
 
 ## Current Blocker
 
-No code blocker is known from static inspection. Local `npm run build` is required to verify the integrated repository because the build environment is the user's Windows machine.
+No known static code blocker. Local production build verification is required after pulling the latest GitHub commits.
 
 ## Next Step
 
-Run the local production build and report the exact output. After a clean build, continue the remaining Landing Page MVP sections.
+Run `git pull origin main`, then `npm run build`. After a clean build, continue with Story, Why Garfilas, CTA and Footer sections.
 
 ## Source of Truth
 
