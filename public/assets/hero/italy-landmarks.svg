@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Italian landmark line art</title>
+  <g stroke="#ff7a00" stroke-width="3" opacity=".68" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M40 260V155l38-20 38 20v105M52 155V115l26-17 26 17v40M63 260v-58h30v58M47 175h62M47 195h62"/>
+    <path d="M152 260v-85h132v85M160 175v-24h116v24M176 151v-34h20v34M220 151v-46h20v46M264 151v-34h20v34M165 260v-54h25v54M207 260v-54h25v54M249 260v-54h25v54"/>
+    <path d="M820 260v-76q0-54 70-82 70 28 70 82v76M845 184q45-34 90 0M855 260v-47h25v47M900 260v-47h25v47M875 102V73h30v29M884 73V54h12v19"/>
+    <path d="M1010 260v-84l30-17 30 17v84M1020 176v-28h40v28M1026 260v-49h28v49M1088 260v-62l28-17 28 17v62M1098 198v-23h36v23M1100 260v-35h24v35"/>
+    <path d="M0 270h1200" opacity=".35"/>
+  </g>
+</svg>
