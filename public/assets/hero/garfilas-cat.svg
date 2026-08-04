@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" role="img" aria-labelledby="title desc">
+  <title id="title">Garfilas temporary orange cat mascot</title>
+  <desc id="desc">Stylized orange cat mascot with a black scarf, spoon and lasagna.</desc>
+  <defs>
+    <radialGradient id="fur" cx="42%" cy="30%" r="72%"><stop offset="0" stop-color="#ffbd43"/><stop offset=".55" stop-color="#e87813"/><stop offset="1" stop-color="#9b3e08"/></radialGradient>
+    <linearGradient id="cheek" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd36b"/><stop offset="1" stop-color="#e88922"/></linearGradient>
+    <linearGradient id="cheese" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe889"/><stop offset="1" stop-color="#d87913"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <g opacity=".28" filter="url(#glow)" fill="none" stroke="#ff8a16" stroke-width="5"><circle cx="350" cy="350" r="305"/></g>
+  <g stroke="#3b1909" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#fur)" d="M191 265c-18-67 5-143 65-175l39 82c37-18 75-18 112 0l39-82c60 32 83 108 65 175 30 42 39 94 25 145-20 73-83 122-158 122H324c-75 0-138-49-158-122-14-51-5-103 25-145Z"/>
+    <path fill="#bd5a0b" d="M267 99l28 72-35 19-31-84Z"/><path fill="#bd5a0b" d="M433 99l-28 72 35 19 31-84Z"/>
+    <ellipse fill="#f8ead0" cx="282" cy="270" rx="67" ry="53"/><ellipse fill="#f8ead0" cx="418" cy="270" rx="67" ry="53"/>
+    <ellipse fill="#4b260d" cx="290" cy="273" rx="15" ry="22"/><ellipse fill="#4b260d" cx="410" cy="273" rx="15" ry="22"/>
+    <circle fill="#fff" stroke="none" cx="294" cy="265" r="5"/><circle fill="#fff" stroke="none" cx="414" cy="265" r="5"/>
+    <path fill="#ef8a78" d="M330 311q20-17 40 0l-20 24Z"/>
+    <path fill="url(#cheek)" d="M205 327q75-30 145 11-35 67-104 49-42-12-41-60Z"/><path fill="url(#cheek)" d="M495 327q-75-30-145 11 35 67 104 49 42-12 41-60Z"/>
+    <path fill="none" d="M350 335v34q0 25-31 29M350 369q0 25 31 29"/>
+    <path fill="none" d="M207 322l-64-12M205 345l-70 10M493 322l64-12M495 345l70 10" stroke="#ffd27a" stroke-width="6"/>
+    <path fill="#16120f" d="M255 405q95 43 190 0l36 62q-131 67-262 0Z"/>
+    <circle fill="#ffae2d" cx="350" cy="449" r="27"/><path fill="none" d="M339 458v-20h12q16 0 16 10t-16 10h-12" stroke="#4a2008" stroke-width="5"/>
+    <path fill="url(#fur)" d="M193 404q-62 19-83 91-8 28 18 39 31 13 50-17l68-82Z"/>
+    <path fill="url(#fur)" d="M507 404q62 19 83 91 8 28-18 39-31 13-50-17l-68-82Z"/>
+    <path fill="none" d="M550 475q-15 20-28 25M132 475q15 20 28 25" stroke="#ffca62" stroke-width="8"/>
+    <ellipse fill="#21130c" cx="350" cy="572" rx="205" ry="48"/>
+    <path fill="#b8540d" d="M196 544q154-45 308 0v45q-154 52-308 0Z"/>
+    <path fill="#c86b18" d="M211 523q139-47 278 0l-12 33q-127 38-254 0Z"/>
+    <path fill="url(#cheese)" d="M214 506q136-51 272 0l-12 36q-126 39-248 0Z"/>
+    <path fill="none" d="M245 518q30 14 60 0M340 514q30 15 60 0M430 519q24 11 42 1" stroke="#fff0a0" stroke-width="7"/>
+  </g>
+  <path d="M177 452q-58-92-100-102" fill="none" stroke="#e6d7bf" stroke-width="10" stroke-linecap="round"/>
+  <path d="M70 350q28-19 57 0-28 17-57 0Z" fill="#d9c4a5" stroke="#3b1909" stroke-width="7"/>
+</svg>
