@@ -1,15 +1,22 @@
 export default function Logo() {
   return (
     <div className="logo" aria-label="Garfilas Lasagna">
-      <span className="logo-main">GARFILAS</span>
-
-      <span className="logo-sub logo-sub-reference">
-        <i aria-hidden="true" />
-        LASAGNA
-        <i aria-hidden="true" />
-      </span>
-
+      <img
+        className="logo-svg"
+        src="/assets/brand/garfilas-reference-logo.svg"
+        alt="Garfilas Lasagna"
+        width={1000}
+        height={260}
+      />
       <span className="logo-tagline">Layers of Love, Taste of Italy</span>
+      <img
+        className="logo-flag"
+        src="/assets/brand/italy-flag.svg"
+        alt=""
+        aria-hidden="true"
+        width={180}
+        height={48}
+      />
     </div>
   );
 }
