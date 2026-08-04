@@ -28,6 +28,9 @@ Implemented on `main`:
 - Featured Products section foundation
 - Responsive product-card grid
 - Lightweight CSS product visuals with no external image dependency
+- Story section foundation
+- Brand Story presentation and responsive layout
+- Architecture documentation synchronized with Next.js 16.2.10
 
 ## Current Landing Page
 
@@ -39,6 +42,7 @@ Implemented:
 - Single primary CTA
 - Featured Products section
 - Product-card visual system
+- Story section
 - Bottom navigation shell
 - Responsive foundation
 - Reduced-motion support
@@ -46,7 +50,6 @@ Implemented:
 
 Not yet implemented:
 
-- Story
 - Why Garfilas
 - CTA section beyond Hero
 - Footer
@@ -76,7 +79,7 @@ No known static code blocker. Local production build verification is required af
 
 ## Next Step
 
-Run `git pull origin main`, then `npm run build`. After a clean build, continue with Story, Why Garfilas, CTA and Footer sections.
+Run `git pull origin main`, then `npm run build`. After a clean build, continue with Why Garfilas, CTA and Footer sections.
 
 ## Source of Truth
 
