@@ -27,17 +27,26 @@ Implemented on `main`:
 - Invalid `brand.ts` TypeScript syntax fix
 - Featured Products section foundation
 - Responsive product-card grid
-- Lightweight CSS product visuals with no external image dependency
+- Lightweight CSS product visuals
 - Story section foundation
 - Brand Story presentation and responsive layout
 - Architecture documentation synchronized with Next.js 16.2.10
+- Temporary SVG mascot asset
+- Temporary SVG reference logo
+- Temporary SVG Italian flag
+- Temporary SVG Italian landmark background line-art
+- Hero composition updated to visually follow the approved reference image
 
 ## Current Landing Page
 
 Implemented:
 
 - Hero
-- Logo
+- Temporary reference mascot
+- Temporary reference logo
+- Italian flag accent
+- Italian landmark background line-art
+- Neon orange ring and glow
 - Premium dark/orange visual language
 - Single primary CTA
 - Featured Products section
@@ -48,41 +57,52 @@ Implemented:
 - Reduced-motion support
 - Accessibility focus states
 
-Not yet implemented:
+Temporary assets are intentionally replaceable. The final Garfilas logo and final mascot/product artwork will replace these SVG placeholders later without changing the page architecture.
 
-- Why Garfilas
-- CTA section beyond Hero
-- Footer
-- Real menu destination / interactive menu
-- Final product imagery and production product data
-- Full SEO metadata / JSON-LD / OpenGraph
-- Performance audit
-- Automated tests
+## Scope Rule
+
+The current objective is to finish the **first page only** as quickly and cleanly as possible.
+
+Do not expand into a full website, dashboard, database, ordering system or multiple route architecture unless explicitly required later.
+
+Priority order:
+
+1. Match the approved first-page visual reference.
+2. Complete the first-page sections required by that composition.
+3. Responsive refinement.
+4. Final brand assets replacement.
+5. SEO and performance polish.
+6. Production verification.
 
 ## Important Design Decisions
 
 - Mobile First
 - Dark Luxury
 - Orange primary / gold accent
-- Hero without mascot
+- Reference image is the current visual source of truth for the first page
+- Temporary SVG assets are acceptable during visual development
+- Final brand assets remain replaceable
 - Minimal copy
 - Single strong CTA
 - Lightweight CSS motion
 - Server Components first
 - Avoid unnecessary dependencies
 - Revenue Before Complexity
-- Avoid external image dependencies until approved production assets are available
 
 ## Current Blocker
 
-No known static code blocker. Local production build verification is required after pulling the latest GitHub commits.
+No known static code blocker. Local development verification is required after pulling the latest GitHub commits.
 
 ## Next Step
 
-Run `git pull origin main`, then `npm run build`. After a clean build, continue with Why Garfilas, CTA and Footer sections.
+Run `git pull origin main`, then `npm run dev` and inspect the first page visually against the reference image. After visual verification, continue only with the next missing element of the first-page composition.
+
+## Documentation Rule
+
+Before the chat approaches its context limit, update the project documentation so the current state, decisions, changes and next step can be continued accurately in a new chat.
 
 ## Source of Truth
 
-`docs/GARFILAS_BIBLE.md` remains the product and architecture authority. This file records the implementation state only.
+`docs/GARFILAS_BIBLE.md` remains the product and brand authority. This file records the implementation state only.
 
 Last Updated: 2026-08-04
