@@ -31,22 +31,17 @@ Implemented on `main`:
 - Story section foundation
 - Brand Story presentation and responsive layout
 - Architecture documentation synchronized with Next.js 16.2.10
-- Temporary SVG mascot asset
-- Temporary SVG reference logo
-- Temporary SVG Italian flag
-- Temporary SVG Italian landmark background line-art
-- Hero composition updated to visually follow the approved reference image
+- Temporary SVG mascot/logo/flag/landmark prototypes were created earlier but are no longer the visual source of truth
+- Reference artwork prototype added at `public/assets/hero/garfilas-reference-hero-preview.jpg`
+- Hero now uses the reference artwork as its primary visual
 
 ## Current Landing Page
 
 Implemented:
 
 - Hero
-- Temporary reference mascot
-- Temporary reference logo
-- Italian flag accent
-- Italian landmark background line-art
-- Neon orange ring and glow
+- Reference artwork Hero prototype
+- Neon orange visual treatment
 - Premium dark/orange visual language
 - Single primary CTA
 - Featured Products section
@@ -57,7 +52,7 @@ Implemented:
 - Reduced-motion support
 - Accessibility focus states
 
-Temporary assets are intentionally replaceable. The final Garfilas logo and final mascot/product artwork will replace these placeholders later without changing the page architecture.
+The reference Hero image is a temporary compressed web prototype. The visual source is the user-provided reference artwork. Final Garfilas logo, mascot and production artwork remain replaceable later.
 
 ## Scope Rule
 
@@ -80,6 +75,7 @@ Priority order:
 - Dark Luxury
 - Orange primary / gold accent
 - The user-provided reference image is the current visual source of truth for the first page
+- Preserve the supplied reference artwork rather than inventing a new mascot/logo interpretation
 - Temporary visual assets may be used during development
 - Final brand assets remain replaceable
 - Minimal copy
@@ -91,9 +87,9 @@ Priority order:
 
 ## Current Visual Prototype
 
-The latest requested prototype is based on the **exact user-provided reference artwork**, not a newly generated mascot illustration. The intended treatment is to preserve the reference cat/logo/lasagna/flag/landmark visual identity while removing or suppressing the dark background so the artwork can sit cleanly over the Garfilas page background.
+The current Hero uses `public/assets/hero/garfilas-reference-hero-preview.jpg`, a compressed web prototype derived from the user-provided reference artwork with the dark background suppressed. It is intentionally temporary and exists only to get the page visually close to the reference quickly.
 
-Important correction: the previous custom-drawn SVG approximation should not be treated as the visual source of truth. The reference artwork supplied by the user is the source for this prototype.
+The previous custom-drawn SVG approximation is not the visual source of truth.
 
 ## Current Blocker
 
