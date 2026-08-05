@@ -32,8 +32,10 @@ Implemented on `main`:
 - Brand Story presentation and responsive layout
 - Architecture documentation synchronized with Next.js 16.2.10
 - Temporary SVG mascot/logo/flag/landmark prototypes were created earlier but are no longer the visual source of truth
-- Reference artwork prototype added at `public/assets/hero/garfilas-reference-hero-preview.jpg`
+- Reference artwork prototype added from the user-provided image
 - Hero now uses the reference artwork as its primary visual
+- Reference artwork is wrapped by a lightweight SVG asset and visually blended into the dark page background
+- Hero layout was simplified so the reference artwork itself supplies the mascot, lasagna, ring, logo, flag and Italian landmark treatment
 
 ## Current Landing Page
 
@@ -52,7 +54,7 @@ Implemented:
 - Reduced-motion support
 - Accessibility focus states
 
-The reference Hero image is a temporary compressed web prototype. The visual source is the user-provided reference artwork. Final Garfilas logo, mascot and production artwork remain replaceable later.
+The reference Hero artwork is temporary. The visual source is the exact user-provided reference artwork. Final Garfilas logo, mascot and production artwork remain replaceable later.
 
 ## Scope Rule
 
@@ -87,7 +89,7 @@ Priority order:
 
 ## Current Visual Prototype
 
-The current Hero uses `public/assets/hero/garfilas-reference-hero-preview.jpg`, a compressed web prototype derived from the user-provided reference artwork with the dark background suppressed. It is intentionally temporary and exists only to get the page visually close to the reference quickly.
+The current Hero uses `public/assets/hero/garfilas-reference-hero.svg`, which references the user-provided artwork and is rendered with `mix-blend-mode: screen` so the dark image background visually disappears into the dark site background. This keeps the exact reference artwork without inventing a replacement mascot or logo.
 
 The previous custom-drawn SVG approximation is not the visual source of truth.
 
