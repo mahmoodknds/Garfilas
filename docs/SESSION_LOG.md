@@ -33,7 +33,11 @@ Temporary visual assets are acceptable for rapid first-page development.
 
 However, the latest direction is **not to redraw the mascot or logo as a new interpretation**. The supplied reference artwork should be preserved as closely as practical, with the dark background removed/suppressed so the artwork can sit on the website background.
 
-The final Garfilas logo and final mascot/product artwork will replace the temporary reference artwork later.
+A compressed web prototype derived from the supplied reference artwork is now stored at:
+
+`public/assets/hero/garfilas-reference-hero-preview.jpg`
+
+The Hero uses this asset temporarily. The final Garfilas logo and final mascot/product artwork will replace the reference prototype later.
 
 ### Correction to Previous Implementation
 
@@ -43,14 +47,15 @@ The supplied reference artwork is the source of truth for the current visual pro
 
 ### Current Verification State
 
-- GitHub/local sync: previously verified
-- Next.js dev server: previously verified
-- Production build: previously verified before the latest reference-artwork prototype
+- Reference artwork prototype committed to GitHub
+- Hero updated to use the reference artwork prototype
+- Documentation synchronized
 - Reference-based Hero visual verification: pending
+- Production build after this latest visual change: pending
 
 ### Next Action
 
-Run the local development server and compare the Hero directly against the supplied reference image. Do not add additional first-page sections until the Hero treatment is visually accepted.
+Run `git pull origin main`, then `npm run dev` and compare the Hero directly against the supplied reference image. Do not add additional first-page sections until the Hero treatment is visually accepted.
 
 ### Documentation Continuity Rule
 
