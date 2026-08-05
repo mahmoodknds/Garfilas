@@ -2,21 +2,21 @@
 
 ## Garfilas Development Log
 
-### Current Session: Reference-Based Hero Prototype
+### Current Session: Hero Composition Refinement Handoff
 
 **Date:** 2026-08-05
 
-### Important Scope Decision
+### Scope Decision
 
-The current objective is strictly to finish the **first page only**.
+The project scope is intentionally limited to making the **first page perfect**.
 
-Do not expand the project into a large website, dashboard, database, ordering system or multiple-route architecture during this phase.
+Do not expand into a large website, dashboard, database, ordering system or multiple-route architecture during this phase.
 
 ### Visual Source of Truth
 
-The user-provided reference image is now the visual source of truth for the first-page Hero.
+The user-provided reference image is the visual source of truth for the first-page Hero.
 
-The intended visual direction is:
+The intended direction is:
 
 - dark background
 - orange neon ring and glow
@@ -27,35 +27,50 @@ The intended visual direction is:
 - Italian architectural line-art
 - premium Italian / dark-luxury atmosphere
 
-### Asset Strategy
+### What Happened This Session
 
-Temporary visual assets are acceptable for rapid first-page development.
+1. A lightweight SVG wrapper was attempted around the reference artwork so its dark background could blend into the site.
+2. The SVG wrapper failed to display correctly in the local Hero.
+3. The Hero was temporarily changed to render the reference JPG directly.
+4. The reference artwork now appears correctly, confirming the asset/path is valid.
+5. The direct JPG presentation looks visually poor and is **not accepted as the final Hero composition**.
 
-However, the latest direction is **not to redraw the mascot or logo as a new interpretation**. The supplied reference artwork should be preserved as closely as practical, with the dark background removed/suppressed so the artwork can sit on the website background.
+### Current Technical State
 
-A compressed web prototype derived from the supplied reference artwork is now stored at:
+Reference asset:
 
 `public/assets/hero/garfilas-reference-hero-preview.jpg`
 
-The Hero uses this asset temporarily. The final Garfilas logo and final mascot/product artwork will replace the reference prototype later.
+Current issue:
 
-### Correction to Previous Implementation
+The image is visible but is presented too directly as a standalone image. The next implementation must integrate the artwork into the Hero composition rather than treating the JPG as a large image/card.
 
-A previous prototype used custom-drawn SVG approximations for the cat, logo, flag and landmarks. Those approximations are not the visual source of truth.
+### Critical Design Rule
 
-The supplied reference artwork is the source of truth for the current visual prototype.
+Do not redraw or invent another mascot/logo interpretation.
+
+Use the supplied reference artwork as the visual source of truth. The dark image background should be suppressed or integrated into the website's dark background, while preserving the recognizable reference composition.
+
+The final Garfilas logo and mascot can replace the temporary reference assets later.
 
 ### Current Verification State
 
-- Reference artwork prototype committed to GitHub
-- Hero updated to use the reference artwork prototype
-- Documentation synchronized
-- Reference-based Hero visual verification: pending
-- Production build after this latest visual change: pending
+- GitHub sync: completed
+- Reference asset: loads successfully
+- Hero asset path: verified by successful display
+- Hero visual composition: **not accepted yet**
+- Build verification after the latest visual implementation: pending
 
-### Next Action
+### Exact Next Action For New Chat
 
-Run `git pull origin main`, then `npm run dev` and compare the Hero directly against the supplied reference image. Do not add additional first-page sections until the Hero treatment is visually accepted.
+1. `git pull origin main`
+2. Inspect the current Hero implementation and reference artwork.
+3. Rework **only the Hero composition**.
+4. Make the reference artwork feel native to the dark page background.
+5. Preserve the reference cat, logo treatment, flag, lasagna, ring and Italian line-art.
+6. Keep the CTA and bottom navigation clean and visually subordinate.
+7. Do not add new sections or expand scope.
+8. Run `npm run build` after the visual fix.
 
 ### Documentation Continuity Rule
 
@@ -68,10 +83,6 @@ Before the chat approaches its context/message limit, update the project documen
 - exact next step
 
 This rule exists to prevent loss of project context between chats.
-
-### Previous Major Milestones
-
-The project foundation, Hero foundation, Featured Products, Story, Bottom Navigation, responsive base and production-build verification were completed before this visual refinement phase.
 
 ---
 
