@@ -1,28 +1,27 @@
 import GlowButton from "@/components/ui/GlowButton";
 import { brand } from "@/config/brand";
+import HeroLogo from "./HeroLogo";
 
-export default function HeroSection() {
+export default function HeroContent() {
   return (
-    <section
-      aria-labelledby="hero-title"
-      className="hero min-h-screen px-4 pb-32 pt-6 text-center sm:px-6 sm:pt-8"
-    >
-      <div className="hero-shell mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-5xl flex-col items-center justify-center">
-        <div className="hero-reference-art animate-fade-up" aria-hidden="true">
-          <img
-            src="/assets/hero/garfilas-reference-hero-preview.jpg"
-            alt=""
-            width={1024}
-            height={1024}
-          />
-        </div>
+    <div className="hero-content text-center">
+      <HeroLogo />
 
-        <div className="hero-cta animate-fade-up-delay-3">
-          <a href="#menu" aria-label={brand.navigation.menu}>
-            <GlowButton id="hero-title">{brand.navigation.menu}</GlowButton>
-          </a>
-        </div>
+      <div className="hero-kicker">Italian Lasagna Experience</div>
+
+      <h1 id="hero-title" className="hero-title">
+        {brand.name}
+      </h1>
+
+      <p className="hero-subtitle">
+        Premium handmade lasagna with an Italian soul.
+      </p>
+
+      <div className="hero-cta animate-fade-up-delay-3">
+        <a href="#menu" aria-label={brand.navigation.menu}>
+          <GlowButton>{brand.navigation.menu}</GlowButton>
+        </a>
       </div>
-    </section>
+    </div>
   );
 }
