@@ -1,6 +1,5 @@
 import HeroCTA from "./HeroCTA";
 import HeroContent from "./HeroContent";
-import HeroLogo from "./HeroLogo";
 
 export default function Hero() {
   return (
@@ -18,11 +17,7 @@ export default function Hero() {
           />
         </div>
 
-        <div className="hero-content" id="hero-title">
-          <HeroLogo />
-          <HeroContent />
-        </div>
-
+        <HeroContent />
         <HeroCTA />
       </div>
     </section>
