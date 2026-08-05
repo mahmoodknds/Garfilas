@@ -57,7 +57,7 @@ Implemented:
 - Reduced-motion support
 - Accessibility focus states
 
-Temporary assets are intentionally replaceable. The final Garfilas logo and final mascot/product artwork will replace these SVG placeholders later without changing the page architecture.
+Temporary assets are intentionally replaceable. The final Garfilas logo and final mascot/product artwork will replace these placeholders later without changing the page architecture.
 
 ## Scope Rule
 
@@ -68,7 +68,7 @@ Do not expand into a full website, dashboard, database, ordering system or multi
 Priority order:
 
 1. Match the approved first-page visual reference.
-2. Complete the first-page sections required by that composition.
+2. Complete only the first-page elements required by that composition.
 3. Responsive refinement.
 4. Final brand assets replacement.
 5. SEO and performance polish.
@@ -79,8 +79,8 @@ Priority order:
 - Mobile First
 - Dark Luxury
 - Orange primary / gold accent
-- Reference image is the current visual source of truth for the first page
-- Temporary SVG assets are acceptable during visual development
+- The user-provided reference image is the current visual source of truth for the first page
+- Temporary visual assets may be used during development
 - Final brand assets remain replaceable
 - Minimal copy
 - Single strong CTA
@@ -89,13 +89,19 @@ Priority order:
 - Avoid unnecessary dependencies
 - Revenue Before Complexity
 
+## Current Visual Prototype
+
+The latest requested prototype is based on the **exact user-provided reference artwork**, not a newly generated mascot illustration. The intended treatment is to preserve the reference cat/logo/lasagna/flag/landmark visual identity while removing or suppressing the dark background so the artwork can sit cleanly over the Garfilas page background.
+
+Important correction: the previous custom-drawn SVG approximation should not be treated as the visual source of truth. The reference artwork supplied by the user is the source for this prototype.
+
 ## Current Blocker
 
-No known static code blocker. Local development verification is required after pulling the latest GitHub commits.
+No known static code blocker. Visual verification of the reference-based Hero is pending.
 
 ## Next Step
 
-Run `git pull origin main`, then `npm run dev` and inspect the first page visually against the reference image. After visual verification, continue only with the next missing element of the first-page composition.
+Run `git pull origin main`, then `npm run dev` and inspect the first page visually against the user-provided reference image. Do not add new sections until the Hero/reference treatment is visually verified.
 
 ## Documentation Rule
 
@@ -103,6 +109,6 @@ Before the chat approaches its context limit, update the project documentation s
 
 ## Source of Truth
 
-`docs/GARFILAS_BIBLE.md` remains the product and brand authority. This file records the implementation state only.
+`docs/GARFILAS_BIBLE.md` remains the product and brand authority. The user-provided reference image is the current visual source of truth for the first page. This file records the implementation state only.
 
-Last Updated: 2026-08-04
+Last Updated: 2026-08-05
