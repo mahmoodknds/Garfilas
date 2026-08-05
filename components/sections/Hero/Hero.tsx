@@ -1,4 +1,6 @@
-import Button from "@/components/ui/Button";
+import HeroCTA from "./HeroCTA";
+import HeroContent from "./HeroContent";
+import HeroLogo from "./HeroLogo";
 
 export default function Hero() {
   return (
@@ -11,20 +13,17 @@ export default function Hero() {
           <img
             src="/assets/hero/garfilas-reference-hero-preview.jpg"
             alt=""
+            width={1024}
+            height={1024}
           />
         </div>
 
         <div className="hero-content" id="hero-title">
-          <div className="hero-kicker">Italian Lasagna Experience</div>
-          <h1 className="hero-title">Garfilas</h1>
-          <p className="hero-subtitle">
-            Premium handmade lasagna with an Italian soul.
-          </p>
+          <HeroLogo />
+          <HeroContent />
         </div>
-      </div>
 
-      <div className="hero-cta">
-        <Button>مشاهده منو</Button>
+        <HeroCTA />
       </div>
     </section>
   );
