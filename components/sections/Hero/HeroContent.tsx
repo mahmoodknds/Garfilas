@@ -10,7 +10,7 @@ export default function HeroSection() {
       <div className="hero-shell mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-5xl flex-col items-center justify-center">
         <div className="hero-reference-art animate-fade-up" aria-hidden="true">
           <img
-            src="/assets/hero/garfilas-reference-hero.svg"
+            src="/assets/hero/garfilas-reference-hero-preview.jpg"
             alt=""
             width={1024}
             height={1024}
