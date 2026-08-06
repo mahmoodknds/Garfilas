@@ -6,9 +6,9 @@ export default function HeroLogo() {
       <div className="logo">
         <div className="logo-main">{brand.name}</div>
         <div className="logo-sub-reference">
-          <i />
-          Italian Lasagna
-          <i />
+          <span className="logo-divider" />
+          <span>Italian Lasagna</span>
+          <span className="logo-divider" />
         </div>
       </div>
     </div>
