@@ -9,10 +9,6 @@ export default function HeroContent() {
 
       <div className="hero-kicker">Italian Lasagna Experience</div>
 
-      <h1 id="hero-title" className="hero-title">
-        {brand.name}
-      </h1>
-
       <p className="hero-subtitle">
         Premium handmade lasagna with an Italian soul.
       </p>
