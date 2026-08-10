@@ -1,12 +1,12 @@
 import BottomNavigation from "@/components/sections/BottomNavigation/BottomNavigation";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
-import HeroSection from "@/components/sections/Hero/HeroContent";
+import Hero from "@/components/sections/Hero/Hero";
 import Story from "@/components/sections/Story";
 
 export default function Home() {
   return (
     <main id="hero">
-      <HeroSection />
+      <Hero />
       <FeaturedProducts />
       <Story />
       <BottomNavigation />
