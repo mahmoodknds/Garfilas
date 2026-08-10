@@ -2,7 +2,7 @@
 
 ## Garfilas Development Log
 
-### Current Session: Reference-Matched Hero Composition
+### Current Session: Native Neon Hero Implementation
 
 **Date:** 2026-08-10
 
@@ -14,65 +14,66 @@ Do not expand into a large website, dashboard, database, ordering system or mult
 
 ### Visual Source of Truth
 
-The user-provided reference image remains the visual source of truth for the first-page Hero.
+The supplied reference image remains the composition reference only. It is **not** the Hero UI itself.
 
-The intended direction is:
+The final implementation must reproduce the visual language natively with HTML/CSS/React:
 
 - dark background
-- orange neon ring and glow
-- reference cat/mascot
-- lasagna and plate
-- GARFILAS / LASAGNA logo treatment
+- real orange/gold neon rings and glow
+- native GARFILAS wordmark treatment
+- Italian Lasagna subtitle treatment
 - Italian flag accent
-- Italian architectural line-art
+- native architectural line-art
+- native CTA and controls
+- subtle entrance, pulse, orbit and glow animations
 - premium Italian / dark-luxury atmosphere
+
+The Garfield artwork is currently a temporary image placeholder only and will later be replaced by the final Garfilas mascot/logo asset.
 
 ### Changes Made This Session
 
-1. Inspected the current GitHub `main` implementation and project documentation.
-2. Found that `app/page.tsx` was rendering `HeroContent` directly, bypassing the composed `Hero` component.
-3. Corrected the homepage to render `components/sections/Hero/Hero.tsx`.
-4. Simplified the Hero component so the supplied reference artwork is the primary visual source instead of layering a second invented logo/content treatment over it.
-5. Added a semantic screen-reader heading without adding visible copy that conflicts with the reference artwork.
-6. Reworked Hero CSS so the reference JPG is composed as a full-screen visual, uses `screen` blending to suppress its dark rectangular background, and receives a restrained orange atmospheric glow behind it.
-7. Kept the single CTA and existing bottom navigation visually subordinate to the artwork.
-8. Preserved the reference asset unchanged.
+1. Replaced the previous full-reference-image Hero composition.
+2. Rebuilt `components/sections/Hero/Hero.tsx` as a native composition.
+3. Added a native GARFILAS neon wordmark and Italian Lasagna subtitle.
+4. Added an Italian flag accent.
+5. Added CSS-generated neon atmosphere, grid, orbit rings, architectural line-art and mascot halo.
+6. Added native entrance, breathing glow, halo pulse, orbit drift and logo flicker animations.
+7. Kept the existing reference JPG only inside the mascot placeholder area so it can be swapped later.
+8. Kept the CTA and Bottom Navigation as real UI elements rather than part of an image.
+9. Added responsive mobile/desktop sizing and reduced-motion handling.
 
 ### Current Technical State
-
-Reference asset:
-
-`public/assets/hero/garfilas-reference-hero-preview.jpg`
 
 Hero implementation:
 
 - `app/page.tsx` renders `Hero`
-- `components/sections/Hero/Hero.tsx` owns the first-screen composition
-- `app/globals.css` owns the responsive Hero visual treatment
+- `components/sections/Hero/Hero.tsx` owns the first-screen structure
+- `app/globals.css` owns the native neon visual system and animations
+- `/assets/hero/garfilas-reference-hero-preview.jpg` is used only as the temporary mascot placeholder
 
 ### Verification State
 
 - GitHub sync: completed
-- Reference asset path: previously verified as loading successfully
-- Hero composition: reworked to integrate the reference artwork into the page
-- Build verification after this change: **pending** because this GitHub integration cannot execute the local npm build command
+- Native Hero implementation: completed
+- Reference image as full Hero: removed
+- Build verification: **pending**, must be run locally
 
 ### Critical Design Rules
 
-Do not redraw or invent another mascot/logo interpretation.
+Do not bring the full reference JPG back as a Hero background or composition layer.
 
-Use the supplied reference artwork as the visual source of truth. Preserve the recognizable cat, logo treatment, flag, lasagna, ring and Italian line-art.
+All neon effects, rings, glow, wordmark treatment, architectural lines, CTA styling and animations should remain native UI/CSS.
 
-The final Garfilas logo and mascot can replace the temporary reference asset later.
+The mascot placeholder is temporary and may be replaced later without redesigning the Hero structure.
 
 ### Exact Next Action
 
 1. Pull the latest `main` locally.
 2. Run `npm run build`.
-3. Inspect the Hero at mobile and desktop breakpoints.
-4. Make only visual/composition adjustments required to match the supplied reference more precisely.
-5. Do not add new sections or expand scope.
-6. After visual acceptance, continue with SEO/performance polish.
+3. Run `npm run dev`.
+4. Inspect the first page on mobile and desktop.
+5. Report any build errors or provide screenshots for visual calibration.
+6. Do not expand scope beyond the first-page Hero until the visual target is accepted.
 
 ---
 
