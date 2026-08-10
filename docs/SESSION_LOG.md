@@ -2,19 +2,19 @@
 
 ## Garfilas Development Log
 
-### Current Session: Hero Composition Refinement Handoff
+### Current Session: Reference-Matched Hero Composition
 
-**Date:** 2026-08-05
+**Date:** 2026-08-10
 
 ### Scope Decision
 
-The project scope is intentionally limited to making the **first page perfect**.
+The project scope remains intentionally limited to making the **first page perfect**.
 
 Do not expand into a large website, dashboard, database, ordering system or multiple-route architecture during this phase.
 
 ### Visual Source of Truth
 
-The user-provided reference image is the visual source of truth for the first-page Hero.
+The user-provided reference image remains the visual source of truth for the first-page Hero.
 
 The intended direction is:
 
@@ -27,13 +27,16 @@ The intended direction is:
 - Italian architectural line-art
 - premium Italian / dark-luxury atmosphere
 
-### What Happened This Session
+### Changes Made This Session
 
-1. A lightweight SVG wrapper was attempted around the reference artwork so its dark background could blend into the site.
-2. The SVG wrapper failed to display correctly in the local Hero.
-3. The Hero was temporarily changed to render the reference JPG directly.
-4. The reference artwork now appears correctly, confirming the asset/path is valid.
-5. The direct JPG presentation looks visually poor and is **not accepted as the final Hero composition**.
+1. Inspected the current GitHub `main` implementation and project documentation.
+2. Found that `app/page.tsx` was rendering `HeroContent` directly, bypassing the composed `Hero` component.
+3. Corrected the homepage to render `components/sections/Hero/Hero.tsx`.
+4. Simplified the Hero component so the supplied reference artwork is the primary visual source instead of layering a second invented logo/content treatment over it.
+5. Added a semantic screen-reader heading without adding visible copy that conflicts with the reference artwork.
+6. Reworked Hero CSS so the reference JPG is composed as a full-screen visual, uses `screen` blending to suppress its dark rectangular background, and receives a restrained orange atmospheric glow behind it.
+7. Kept the single CTA and existing bottom navigation visually subordinate to the artwork.
+8. Preserved the reference asset unchanged.
 
 ### Current Technical State
 
@@ -41,49 +44,36 @@ Reference asset:
 
 `public/assets/hero/garfilas-reference-hero-preview.jpg`
 
-Current issue:
+Hero implementation:
 
-The image is visible but is presented too directly as a standalone image. The next implementation must integrate the artwork into the Hero composition rather than treating the JPG as a large image/card.
+- `app/page.tsx` renders `Hero`
+- `components/sections/Hero/Hero.tsx` owns the first-screen composition
+- `app/globals.css` owns the responsive Hero visual treatment
 
-### Critical Design Rule
+### Verification State
+
+- GitHub sync: completed
+- Reference asset path: previously verified as loading successfully
+- Hero composition: reworked to integrate the reference artwork into the page
+- Build verification after this change: **pending** because this GitHub integration cannot execute the local npm build command
+
+### Critical Design Rules
 
 Do not redraw or invent another mascot/logo interpretation.
 
-Use the supplied reference artwork as the visual source of truth. The dark image background should be suppressed or integrated into the website's dark background, while preserving the recognizable reference composition.
+Use the supplied reference artwork as the visual source of truth. Preserve the recognizable cat, logo treatment, flag, lasagna, ring and Italian line-art.
 
-The final Garfilas logo and mascot can replace the temporary reference assets later.
+The final Garfilas logo and mascot can replace the temporary reference asset later.
 
-### Current Verification State
+### Exact Next Action
 
-- GitHub sync: completed
-- Reference asset: loads successfully
-- Hero asset path: verified by successful display
-- Hero visual composition: **not accepted yet**
-- Build verification after the latest visual implementation: pending
-
-### Exact Next Action For New Chat
-
-1. `git pull origin main`
-2. Inspect the current Hero implementation and reference artwork.
-3. Rework **only the Hero composition**.
-4. Make the reference artwork feel native to the dark page background.
-5. Preserve the reference cat, logo treatment, flag, lasagna, ring and Italian line-art.
-6. Keep the CTA and bottom navigation clean and visually subordinate.
-7. Do not add new sections or expand scope.
-8. Run `npm run build` after the visual fix.
-
-### Documentation Continuity Rule
-
-Before the chat approaches its context/message limit, update the project documentation with:
-
-- current implementation state
-- important decisions
-- recent changes
-- known issues
-- exact next step
-
-This rule exists to prevent loss of project context between chats.
+1. Pull the latest `main` locally.
+2. Run `npm run build`.
+3. Inspect the Hero at mobile and desktop breakpoints.
+4. Make only visual/composition adjustments required to match the supplied reference more precisely.
+5. Do not add new sections or expand scope.
+6. After visual acceptance, continue with SEO/performance polish.
 
 ---
 
-Last Updated: 2026-08-05
+Last Updated: 2026-08-10
