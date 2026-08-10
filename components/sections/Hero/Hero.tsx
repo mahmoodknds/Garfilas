@@ -1,11 +1,9 @@
 import HeroCTA from "./HeroCTA";
-import HeroContent from "./HeroContent";
 
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <div className="hero-ring" aria-hidden="true" />
-      <div className="hero-glow" aria-hidden="true" />
+      <div className="hero-atmosphere" aria-hidden="true" />
 
       <div className="hero-shell">
         <div className="hero-reference-art" aria-hidden="true">
@@ -14,10 +12,14 @@ export default function Hero() {
             alt=""
             width={1024}
             height={1024}
+            fetchPriority="high"
           />
         </div>
 
-        <HeroContent />
+        <h1 id="hero-title" className="sr-only">
+          Garfilas premium Italian lasagna
+        </h1>
+
         <HeroCTA />
       </div>
     </section>
