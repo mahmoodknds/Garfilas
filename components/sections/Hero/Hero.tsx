@@ -15,13 +15,19 @@ export default function Hero() {
           <HeroLogo />
 
           <p className="hero-kicker">PREMIUM HANDMADE LASAGNA</p>
-          <div className="hero-tagline" aria-label="Layers of Love, Taste of Italy">
+          <div
+            className="hero-tagline"
+            aria-label="Layers of Love, Taste of Italy"
+            style={{ display: "flex", justifyContent: "center", width: "100%" }}
+          >
             <img
+              className="hero-tagline-image"
               src="/assets/brand/garfilas-slogan-exact.svg"
               alt="Layers of Love, Taste of Italy"
               width={597}
               height={100}
               fetchPriority="high"
+              style={{ width: "min(86vw, 32rem)", height: "auto", display: "block" }}
             />
           </div>
         </div>
