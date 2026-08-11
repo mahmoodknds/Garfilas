@@ -13,8 +13,6 @@ export default function Hero() {
       <div className="hero-shell">
         <div className="hero-copy">
           <HeroLogo />
-
-          <p className="hero-kicker">PREMIUM HANDMADE LASAGNA</p>
           <div
             className="hero-tagline"
             aria-label="Layers of Love, Taste of Italy"
@@ -52,6 +50,11 @@ export default function Hero() {
         </div>
 
         <HeroCTA />
+        <div className="hero-scroll-cue" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
       </div>
 
       <h1 id="hero-title" className="sr-only">
