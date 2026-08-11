@@ -25,7 +25,7 @@ export default function Hero() {
               width={597}
               height={100}
               fetchPriority="high"
-              style={{ width: "min(86vw, 32rem)", height: "auto", display: "block" }}
+              style={{ width: "min(82vw, 30rem)", height: "auto", display: "block" }}
             />
           </div>
         </div>
