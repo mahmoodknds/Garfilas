@@ -1,926 +1,219 @@
-\# TODO.md
+# TODO.md
 
-\## Garfilas Development Backlog
+## Garfilas Development Backlog
 
-\### Version 2.0.0
+Only unfinished work belongs here. Completed work is recorded in `SESSION_LOG.md` and `CHANGELOG.md`.
 
+---
 
+# Current Project Status
 
-\---
+- Version: v0.1.0
+- Sprint: 0.4
+- Milestone: Landing Page MVP
+- Current priority: **First-page Hero visual completion**
+- Last Updated: 2026-08-11
 
+---
 
+# HIGH PRIORITY
 
-\# Purpose
+## Hero Section
 
+Status: 🟡 **Visual calibration in progress**
 
+### Completed
 
-This document contains all planned work for Garfilas.
+- [x] Native Hero composition
+- [x] Final Garfield WebP integrated
+- [x] Exact Garfilas wordmark asset integrated
+- [x] Exact slogan asset integrated
+- [x] Dark luxury background
+- [x] CSS neon rings and glow
+- [x] Native CTA
+- [x] CTA sparkle accents
+- [x] Scroll cue
+- [x] Native Bottom Navigation
+- [x] Responsive foundation
+- [x] Reduced-motion support
 
+### Remaining
 
+- [ ] Make overall Hero/artwork composition slightly smaller
+- [ ] Match Bottom Navigation outer pill geometry to reference
+- [ ] Match three navigation button sizes and spacing to reference
+- [ ] Match center navigation button elevation/overlap to reference
+- [ ] Match navigation borders, glow and active indicator to reference
+- [ ] Finalize CTA width/height/radius/glow against reference
+- [ ] Finalize vertical spacing between artwork, logo, slogan, CTA and navigation
+- [ ] Final mobile visual acceptance
+- [ ] Desktop responsive calibration
 
-Only unfinished tasks belong here.
+---
 
+## Landing Page Supporting Sections
 
+Status: ⚪ **Deferred**
 
-Completed work must be moved to SESSION\_LOG.md.
+Do not expand these sections until the first-page Hero is accepted.
 
+- [ ] Featured Products final polish
+- [ ] Story final polish
+- [ ] Why Garfilas
+- [ ] Secondary CTA
+- [ ] Footer
 
+---
 
-\---
+# DESIGN SYSTEM
 
+Status: 🟡 In Progress
 
+- [ ] Finalize colors
+- [ ] Finalize typography
+- [ ] Finalize radius
+- [ ] Finalize shadows/glow
+- [ ] Finalize blur
+- [ ] Finalize motion
+- [ ] Finalize icons
+- [ ] Finalize spacing
+- [ ] Finalize responsive grid
 
-\# Project Status
+---
 
+# SEO
 
+Status: 🟡 In Progress
 
-Version
+- [ ] Metadata review
+- [ ] OpenGraph
+- [ ] Twitter Cards
+- [ ] JSON-LD
+- [ ] Sitemap
+- [ ] Robots
+- [ ] Canonical URLs
 
+---
 
+# PERFORMANCE
 
-v0.1.0
+Status: 🟡 In Progress
 
+- [ ] Verify WebP optimization and dimensions
+- [ ] Verify image loading priority
+- [ ] Lazy-load non-critical assets
+- [ ] Review font loading
+- [ ] Bundle analysis
+- [ ] Lighthouse verification
 
+---
 
-Current Sprint
+# TESTING
 
+Status: ⚪ Planned
 
+- [ ] Unit tests
+- [ ] Component tests
+- [ ] Integration tests
+- [ ] E2E tests
+- [ ] Mobile viewport verification
+- [ ] Desktop viewport verification
 
-Sprint 0.4
+---
 
+# DEPLOYMENT
 
+Status: 🟡 In Progress
 
-Current Milestone
+- [ ] Local production build
+- [ ] Vercel production verification
+- [ ] Environment variables review
+- [ ] Domain setup
+- [ ] SSL
+- [ ] Monitoring
 
+---
 
+# FUTURE PRODUCT SYSTEMS
 
-Landing Page MVP
+Status: ⚪ Planned
 
+These are explicitly out of the current Hero-calibration scope.
 
+## Menu
 
-Overall Progress
+- [ ] Categories
+- [ ] Product List
+- [ ] Product Details
+- [ ] Search
+- [ ] Filters
+- [ ] Sorting
 
+## Shopping Cart
 
+- [ ] Cart Store
+- [ ] Cart Drawer
+- [ ] Quantity Controls
+- [ ] Coupon
+- [ ] Notes
 
-≈ 20%
+## Checkout
 
+- [ ] Address
+- [ ] Delivery Time
+- [ ] Payment
+- [ ] Order Summary
+- [ ] Success Page
 
+## Authentication / User Panel
 
-\---
+- [ ] Login
+- [ ] Register
+- [ ] OTP
+- [ ] Profile
+- [ ] Orders
+- [ ] Favorites
+- [ ] Addresses
+- [ ] Notifications
 
+## Admin Panel
 
+- [ ] Dashboard
+- [ ] Products
+- [ ] Orders
+- [ ] Customers
+- [ ] Analytics
+- [ ] Discounts
+- [ ] Reports
 
-\# HIGH PRIORITY
+---
 
+# DOCUMENTATION
 
+Status: 🟢 **Synchronized for next chat**
 
-\## Landing Page
+- [x] Project State
+- [x] Session Log
+- [x] AI Context
+- [x] Changelog
+- [x] Architecture
+- [x] Coding Rules
+- [x] Decisions
+- [x] Garfilas Bible
 
+---
 
+# Exact Next Work
 
-Status
+1. Pull latest `main`.
+2. Build locally.
+3. Compare mobile Hero with the 2026-08-11 reference screenshot.
+4. Reduce Hero/artwork slightly.
+5. Precisely reproduce Bottom Navigation geometry and button proportions.
+6. Refine CTA and vertical spacing.
+7. Validate desktop.
+8. Stop before adding new website scope.
 
+---
 
-
-🟡 In Progress
-
-
-
-Tasks
-
-
-
-\- \[ ] Create globals.css
-
-\- \[ ] Create Root Layout
-
-\- \[ ] Create Design Tokens
-
-\- \[ ] Create Color System
-
-\- \[ ] Create Typography System
-
-\- \[ ] Create Container Component
-
-\- \[ ] Create Section Component
-
-\- \[ ] Create Responsive Grid
-
-\- \[ ] Create Theme Variables
-
-
-
-\---
-
-
-
-\## Hero Section
-
-
-
-Status
-
-
-
-🔴 Pending
-
-
-
-Tasks
-
-
-
-\- \[ ] Premium Hero
-
-\- \[ ] Animated Logo
-
-\- \[ ] CTA Button
-
-\- \[ ] Background Glow
-
-\- \[ ] Headline
-
-\- \[ ] Subtitle
-
-\- \[ ] Scroll Indicator
-
-\- \[ ] Entrance Animation
-
-
-
-\---
-
-
-
-\## Featured Products
-
-
-
-Status
-
-
-
-🔴 Pending
-
-
-
-Tasks
-
-
-
-\- \[ ] Product Cards
-
-\- \[ ] Product Images
-
-\- \[ ] Price Component
-
-\- \[ ] Badges
-
-\- \[ ] Hover Effects
-
-\- \[ ] Mobile Slider
-
-
-
-\---
-
-
-
-\## Story Section
-
-
-
-Status
-
-
-
-🔴 Pending
-
-
-
-Tasks
-
-
-
-\- \[ ] Brand Story
-
-\- \[ ] Italian Inspiration
-
-\- \[ ] Luxury Feeling
-
-\- \[ ] Visual Timeline
-
-
-
-\---
-
-
-
-\## Why Garfilas
-
-
-
-Status
-
-
-
-🔴 Pending
-
-
-
-Tasks
-
-
-
-\- \[ ] Fresh Ingredients
-
-\- \[ ] Handmade
-
-\- \[ ] Fast Delivery
-
-\- \[ ] Premium Packaging
-
-
-
-\---
-
-
-
-\## CTA Section
-
-
-
-Status
-
-
-
-🔴 Pending
-
-
-
-Tasks
-
-
-
-\- \[ ] Main CTA
-
-\- \[ ] Secondary CTA
-
-\- \[ ] Contact Button
-
-
-
-\---
-
-
-
-\## Footer
-
-
-
-Status
-
-
-
-🔴 Pending
-
-
-
-Tasks
-
-
-
-\- \[ ] Contact Info
-
-\- \[ ] Social Links
-
-\- \[ ] Copyright
-
-\- \[ ] Navigation
-
-
-
-\---
-
-
-
-\## Bottom Navigation
-
-
-
-Status
-
-
-
-🔴 Pending
-
-
-
-Tasks
-
-
-
-\- \[ ] Home
-
-\- \[ ] Menu
-
-\- \[ ] Cart
-
-\- \[ ] Profile
-
-\- \[ ] Contact
-
-
-
-\---
-
-
-
-\# DESIGN SYSTEM
-
-
-
-Status
-
-
-
-🟡 In Progress
-
-
-
-Tasks
-
-
-
-\- \[ ] Colors
-
-\- \[ ] Typography
-
-\- \[ ] Radius
-
-\- \[ ] Shadows
-
-\- \[ ] Blur
-
-\- \[ ] Motion
-
-\- \[ ] Icons
-
-\- \[ ] Spacing
-
-\- \[ ] Grid
-
-
-
-\---
-
-
-
-\# SHARED COMPONENTS
-
-
-
-Status
-
-
-
-🔴 Pending
-
-
-
-Tasks
-
-
-
-\- \[ ] Button
-
-\- \[ ] Card
-
-\- \[ ] Badge
-
-\- \[ ] Chip
-
-\- \[ ] Avatar
-
-\- \[ ] Input
-
-\- \[ ] Textarea
-
-\- \[ ] Dialog
-
-\- \[ ] Drawer
-
-\- \[ ] Sheet
-
-\- \[ ] Toast
-
-\- \[ ] Loader
-
-\- \[ ] Spinner
-
-\- \[ ] Divider
-
-
-
-\---
-
-
-
-\# MENU SYSTEM
-
-
-
-Status
-
-
-
-⚪ Planned
-
-
-
-Tasks
-
-
-
-\- \[ ] Categories
-
-\- \[ ] Product List
-
-\- \[ ] Product Details
-
-\- \[ ] Search
-
-\- \[ ] Filters
-
-\- \[ ] Sorting
-
-
-
-\---
-
-
-
-\# SHOPPING CART
-
-
-
-Status
-
-
-
-⚪ Planned
-
-
-
-Tasks
-
-
-
-\- \[ ] Cart Store
-
-\- \[ ] Cart Drawer
-
-\- \[ ] Quantity Controls
-
-\- \[ ] Coupon
-
-\- \[ ] Notes
-
-
-
-\---
-
-
-
-\# CHECKOUT
-
-
-
-Status
-
-
-
-⚪ Planned
-
-
-
-Tasks
-
-
-
-\- \[ ] Address
-
-\- \[ ] Delivery Time
-
-\- \[ ] Payment
-
-\- \[ ] Order Summary
-
-\- \[ ] Success Page
-
-
-
-\---
-
-
-
-\# AUTHENTICATION
-
-
-
-Status
-
-
-
-⚪ Planned
-
-
-
-Tasks
-
-
-
-\- \[ ] Login
-
-\- \[ ] Register
-
-\- \[ ] OTP
-
-\- \[ ] Profile
-
-
-
-\---
-
-
-
-\# USER PANEL
-
-
-
-Status
-
-
-
-⚪ Planned
-
-
-
-Tasks
-
-
-
-\- \[ ] Orders
-
-\- \[ ] Favorites
-
-\- \[ ] Addresses
-
-\- \[ ] Notifications
-
-
-
-\---
-
-
-
-\# ADMIN PANEL
-
-
-
-Status
-
-
-
-⚪ Planned
-
-
-
-Tasks
-
-
-
-\- \[ ] Dashboard
-
-\- \[ ] Products
-
-\- \[ ] Orders
-
-\- \[ ] Customers
-
-\- \[ ] Analytics
-
-\- \[ ] Discounts
-
-\- \[ ] Reports
-
-
-
-\---
-
-
-
-\# SEO
-
-
-
-Status
-
-
-
-🟡 In Progress
-
-
-
-Tasks
-
-
-
-\- \[ ] Metadata
-
-\- \[ ] OpenGraph
-
-\- \[ ] Twitter Cards
-
-\- \[ ] JSON-LD
-
-\- \[ ] Sitemap
-
-\- \[ ] Robots
-
-\- \[ ] Canonical URLs
-
-
-
-\---
-
-
-
-\# PERFORMANCE
-
-
-
-Status
-
-
-
-🟡 In Progress
-
-
-
-Tasks
-
-
-
-\- \[ ] Image Optimization
-
-\- \[ ] Lazy Loading
-
-\- \[ ] Code Splitting
-
-\- \[ ] Font Optimization
-
-\- \[ ] Bundle Analysis
-
-
-
-\---
-
-
-
-\# PWA
-
-
-
-Status
-
-
-
-🔴 Pending
-
-
-
-Tasks
-
-
-
-\- \[ ] Manifest
-
-\- \[ ] Icons
-
-\- \[ ] Offline Mode
-
-\- \[ ] Install Prompt
-
-\- \[ ] Splash Screen
-
-
-
-\---
-
-
-
-\# TESTING
-
-
-
-Status
-
-
-
-⚪ Planned
-
-
-
-Tasks
-
-
-
-\- \[ ] Unit Tests
-
-\- \[ ] Component Tests
-
-\- \[ ] Integration Tests
-
-\- \[ ] E2E Tests
-
-
-
-\---
-
-
-
-\# DEPLOYMENT
-
-
-
-Status
-
-
-
-🟡 In Progress
-
-
-
-Tasks
-
-
-
-\- \[ ] Production Build
-
-\- \[ ] Environment Variables
-
-\- \[ ] Domain Setup
-
-\- \[ ] SSL
-
-\- \[ ] Monitoring
-
-
-
-\---
-
-
-
-\# DOCUMENTATION
-
-
-
-Status
-
-
-
-🟡 In Progress
-
-
-
-Tasks
-
-
-
-\- \[ ] Update Bible
-
-\- \[ ] Update AI Context
-
-\- \[ ] Update Session Log
-
-\- \[ ] Update Decisions
-
-\- \[ ] Create Coding Rules
-
-\- \[ ] Create Architecture
-
-\- \[ ] Create Changelog
-
-\- \[ ] Create README
-
-\- \[ ] Create Project State
-
-
-
-\---
-
-
-
-\# VERSION ROADMAP
-
-
-
-\## v0.2.0
-
-
-
-\- \[ ] Landing Page MVP
-
-\- \[ ] Responsive UI
-
-\- \[ ] Design System
-
-\- \[ ] Shared Components
-
-
-
-\---
-
-
-
-\## v0.3.0
-
-
-
-\- \[ ] Interactive Menu
-
-\- \[ ] Product Pages
-
-
-
-\---
-
-
-
-\## v0.4.0
-
-
-
-\- \[ ] Shopping Cart
-
-\- \[ ] Checkout
-
-
-
-\---
-
-
-
-\## v0.5.0
-
-
-
-\- \[ ] Authentication
-
-\- \[ ] User Panel
-
-
-
-\---
-
-
-
-\## v0.6.0
-
-
-
-\- \[ ] Admin Dashboard
-
-
-
-\---
-
-
-
-\## v1.0.0
-
-
-
-\- \[ ] Production Release
-
-
-
-\---
-
-
-
-Last Updated
-
-
-
-2026-07-21
-
-
-
-Documentation Version
-
-
-
-2.0.0
-
+Last Updated: 2026-08-11
