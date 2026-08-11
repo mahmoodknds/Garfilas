@@ -32,13 +32,13 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-mascot" aria-label="Garfilas mascot placeholder">
+        <div className="hero-mascot" aria-label="Garfilas hero artwork">
           <div className="hero-mascot-halo" aria-hidden="true" />
           <div className="hero-mascot-frame">
             <img
-              src="/assets/hero/garfilas-reference-hero-preview.jpg"
-              alt="Garfilas mascot placeholder"
-              width={1024}
+              src="/assets/hero/garfilas-hero-final.webp"
+              alt="Garfilas mascot enjoying handmade lasagna"
+              width={1536}
               height={1024}
               fetchPriority="high"
             />
