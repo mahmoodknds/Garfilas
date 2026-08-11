@@ -1,1 +1,0 @@
-Hero reference cleanup: removed decorative background line layers and calibrated Bottom Navigation to the supplied reference geometry. Run production build and visual deployment verification before merge.
