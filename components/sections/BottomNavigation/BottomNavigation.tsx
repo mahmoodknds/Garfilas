@@ -8,16 +8,22 @@ const items = [
 
 export default function BottomNavigation() {
   return (
-    <nav
-      className="bottom-nav"
-      aria-label="ناوبری اصلی"
-      style={{
-        width: "min(22rem, calc(100vw - 1.25rem))",
-        height: "4.2rem",
-        padding: ".35rem 1.55rem",
-        borderRadius: "1rem",
-      }}
-    >
+    <nav className="bottom-nav" aria-label="ناوبری اصلی">
+      <svg
+        className="bottom-nav-frame"
+        viewBox="0 0 100 44"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M8 7.5H40.5C42.8 7.5 44.5 5.8 44.5 3.8C44.5 1.7 46.8 0 50 0C53.2 0 55.5 1.7 55.5 3.8C55.5 5.8 57.2 7.5 59.5 7.5H92C96.4 7.5 99.5 10.5 99.5 14.5V36.5C99.5 40.5 96.4 43.5 92 43.5H8C3.6 43.5 0.5 40.5 0.5 36.5V14.5C0.5 10.5 3.6 7.5 8 7.5Z"
+          fill="rgba(7,5,4,.90)"
+          stroke="rgba(255,111,8,.48)"
+          strokeWidth="0.7"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+
       {items.map(({ href, label, icon: Icon }, index) => (
         <a
           key={href}
