@@ -9,15 +9,33 @@ const items = [
 export default function BottomNavigation() {
   return (
     <nav className="bottom-nav" aria-label="ناوبری اصلی">
-      {items.map(({ href, label, icon: Icon }) => (
+      {items.map(({ href, label, icon: Icon }, index) => (
         <a
           key={href}
           href={href}
           className="bottom-nav-link"
           aria-label={label}
           title={label}
+          style={
+            index === 1
+              ? {
+                  width: "4.35rem",
+                  height: "4.35rem",
+                  marginTop: "-1.05rem",
+                  borderWidth: "1.5px",
+                }
+              : {
+                  width: "3.15rem",
+                  height: "3.15rem",
+                  borderWidth: "1px",
+                }
+          }
         >
-          <Icon aria-hidden="true" size={22} strokeWidth={1.8} />
+          <Icon
+            aria-hidden="true"
+            size={index === 1 ? 32 : 24}
+            strokeWidth={1.7}
+          />
           <span className="sr-only">{label}</span>
         </a>
       ))}
