@@ -1,4 +1,5 @@
 import HeroCTA from "./HeroCTA";
+import HeroLogo from "./HeroLogo";
 
 export default function Hero() {
   return (
@@ -11,20 +12,7 @@ export default function Hero() {
 
       <div className="hero-shell">
         <div className="hero-copy">
-          <div className="hero-brand-mark" aria-label="Garfilas">
-            <span className="hero-brand-name">GARFILAS</span>
-            <span className="hero-brand-rule">
-              <i />
-              <span>ITALIAN LASAGNA</span>
-              <i />
-            </span>
-          </div>
-
-          <div className="hero-flag" aria-label="Italian cuisine">
-            <span />
-            <span />
-            <span />
-          </div>
+          <HeroLogo />
 
           <p className="hero-kicker">PREMIUM HANDMADE LASAGNA</p>
           <p className="hero-tagline">Layers of Love, Taste of Italy</p>
