@@ -5,125 +5,123 @@
 - Version: v0.1.0
 - Sprint: 0.4
 - Milestone: Landing Page MVP
-- Repository: GitHub / main
+- Repository: GitHub / `main`
 - Status: Active Development
+- Last Updated: 2026-08-11
 
-## Package A Progress
+## Current Objective
+
+Make the **first-page Hero match the supplied mobile reference as closely as possible** before expanding the website.
+
+The current visual target is the user-provided mobile screenshot from 2026-08-11. It is the composition source of truth, not a background image to render as the UI.
+
+## Current Hero Implementation
 
 Implemented on `main`:
 
-- Next.js App Router foundation
-- TypeScript strict configuration
-- Tailwind CSS v4 global import
-- Design tokens
-- Global responsive styling
-- Brand configuration
-- Logo component styling
-- Premium Hero foundation
-- Hero glow and lightweight motion utilities
-- Mobile-first bottom navigation shell
-- Homepage composition
-- Hero import/path mismatch fix
-- Invalid `brand.ts` TypeScript syntax fix
-- Featured Products section foundation
-- Responsive product-card grid
-- Lightweight CSS product visuals
-- Story section foundation
-- Brand Story presentation and responsive layout
-- Architecture documentation synchronized with Next.js 16.2.10
-- Reference artwork prototype added from the user-provided image
-- Hero temporarily switched to direct rendering of the reference JPG after the SVG wrapper failed to display correctly
-
-## Current Landing Page
-
-Implemented:
-
-- Hero foundation
-- Reference artwork Hero prototype
-- Neon orange visual treatment
-- Premium dark/orange visual language
-- Single primary CTA
-- Featured Products section
-- Product-card visual system
-- Story section
-- Bottom navigation shell
-- Responsive foundation
+- Native React/CSS Hero composition
+- Final Garfilas WebP artwork rendered from:
+  `public/assets/hero/garfilas-hero-final.webp`
+- Exact brand wordmark asset rendered separately
+- Exact slogan asset rendered separately
+- Dark luxury background
+- Orange/gold neon rings and glow generated with CSS
+- Native CTA
+- Neon scroll cue
+- Native Bottom Navigation
+- Mobile-first responsive sizing
 - Reduced-motion support
 - Accessibility focus states
 
-## Current Visual Problem
+## Current Hero Composition
 
-The reference JPG now loads correctly, but the current direct-image presentation is visually poor and does not match the intended polished Hero composition.
+The current intended order is:
 
-This is a **visual/composition issue, not a missing-asset issue**.
+1. Garfield + lasagna WebP artwork at the top
+2. Neon circular framing and glow
+3. GARFILAS / LASAGNA brand lockup
+4. Italian flag accent
+5. `Layers of Love, Taste of Italy` slogan asset
+6. Neon outlined `مشاهده منو` CTA with sparkle accents
+7. Neon scroll indicator
+8. Pill-shaped Bottom Navigation with three circular controls and a larger highlighted center control
 
-The next implementation must NOT simply display the JPG as a large standalone image/card. The reference artwork needs to be integrated into the Hero composition so it feels native to the dark page background.
+The WebP is an actual asset. The surrounding neon, controls, layout, glow and animations remain native UI/CSS.
 
-## Scope Rule
+## Latest Visual Calibration Request
 
-The current objective is to make the **first page perfect**.
+The user approved the current direction and requested:
 
-Do not expand into a full website, dashboard, database, ordering system or multiple-route architecture unless explicitly required later.
+- Make the Hero/artwork composition slightly smaller overall.
+- Make the Bottom Navigation form match the reference screenshot exactly.
+- Make the three navigation buttons and their proportions match the reference.
+- Preserve the center navigation button as the larger highlighted control.
+- Continue pixel-level spacing, sizing and alignment refinement until the output matches the reference.
 
-Priority order:
+## Important Design Rules
 
-1. Perfect the first-page Hero against the supplied reference.
-2. Integrate the reference artwork into the page rather than presenting it as a standalone image.
-3. Preserve the reference cat, logo treatment, flag, lasagna, ring and Italian line-art rather than inventing replacements.
-4. Responsive refinement across mobile and desktop.
-5. Final Garfilas logo/mascot asset replacement when supplied.
-6. SEO and performance polish.
-7. Production verification.
+- Do not use the full reference screenshot as the Hero background.
+- Do not replace the supplied Garfield WebP with a generated mascot.
+- Do not recreate the supplied logo or slogan with ordinary text when the exact assets are available.
+- Neon rings, glows, architectural line-art, CTA and navigation must remain native UI/CSS.
+- Keep the first page as the only active design scope until the Hero is accepted.
+- Mobile is the primary calibration target; desktop follows from the same system.
+- Keep the visual language premium, dark, warm, Italian-inspired and minimal.
 
-## Important Design Decisions
+## Current Asset Strategy
 
-- Mobile First
-- Dark Luxury
-- Orange primary / gold accent
-- The user-provided reference image is the current visual source of truth for the first page
-- Do not invent a new mascot/logo interpretation while the reference is being refined
-- Temporary visual assets are acceptable during development
-- Final brand assets remain replaceable
-- Minimal copy
-- Single strong CTA
-- Lightweight CSS motion
-- Server Components first
-- Avoid unnecessary dependencies
-- Keep the project intentionally small and focused on the first page
+Primary Hero artwork:
 
-## Asset Strategy
+`public/assets/hero/garfilas-hero-final.webp`
 
-Temporary reference asset:
+Brand wordmark:
 
-`public/assets/hero/garfilas-reference-hero-preview.jpg`
+`public/assets/brand/garfilas-reference-logo.svg`
 
-A previous SVG wrapper was attempted but did not display correctly. The current direct JPG approach successfully makes the artwork visible, but the resulting composition is not acceptable yet.
+Slogan:
 
-Do not treat the previous custom-drawn SVG mascot/logo/flag/landmark approximation as the source of truth.
+`public/assets/brand/garfilas-slogan-exact.svg`
 
-## Current Blocker
+The Hero should use these supplied assets directly and keep them independently replaceable.
 
-Hero visual composition is not yet accepted.
+## Current Technical Files
 
-The image loads, but it currently looks visually poor because it is being presented too directly as an image instead of being composed into the Hero.
+- `components/sections/Hero/Hero.tsx` owns the Hero structure.
+- `components/sections/Hero/HeroLogo.tsx` owns the logo asset presentation.
+- `components/sections/Hero/HeroCTA.tsx` owns the CTA wrapper.
+- `components/ui/GlowButton.tsx` provides the CTA primitive.
+- `components/sections/BottomNavigation/BottomNavigation.tsx` owns bottom navigation markup.
+- `app/globals.css` owns the current Hero composition, neon effects, responsive rules and Bottom Navigation styling.
 
-## Next Step
+## Verification State
 
-In the next chat:
+- GitHub implementation: updated
+- Final WebP path: integrated into Hero
+- Native neon composition: integrated
+- Latest visual direction: approved for further refinement
+- Local `npm run build`: not yet verified in this documentation update
+- Production visual verification: pending
 
-1. Pull the latest GitHub `main`.
-2. Inspect the current Hero implementation and the supplied reference image.
-3. Redesign only the Hero composition until it visually matches the intended reference.
-4. Keep the reference artwork intact, suppress its unwanted dark background and integrate it naturally into the page.
-5. Do not add new sections or expand project scope.
-6. Run `npm run build` after the visual fix.
+## Exact Next Step
+
+1. Pull latest `main` locally.
+2. Run `npm run build`.
+3. Run `npm run dev`.
+4. Compare the mobile viewport against the 2026-08-11 reference screenshot.
+5. Reduce the overall Hero/artwork scale slightly.
+6. Rework Bottom Navigation and its three circular controls to match the reference geometry, spacing, border, glow and center-button elevation.
+7. Refine CTA dimensions and spacing if needed after navigation is corrected.
+8. Re-check desktop without changing the mobile-first design language.
+9. Do not expand scope until the first-page Hero is accepted.
 
 ## Documentation Rule
 
-Before the chat approaches its context/message limit, update the project documentation so the current state, decisions, changes, known issues and exact next step can be continued accurately in a new chat.
+Before context/message limits are reached, update `PROJECT_STATE.md`, `SESSION_LOG.md`, `TODO.md`, `CHANGELOG.md` and `AI_CONTEXT.md` so the next chat can continue from the exact current state.
 
 ## Source of Truth
 
-`docs/GARFILAS_BIBLE.md` remains the product and brand authority. The user-provided reference image is the visual source of truth for the first page. This file records implementation state only.
+- Product/brand authority: `docs/GARFILAS_BIBLE.md`
+- Implementation state: this file
+- Development history: `docs/SESSION_LOG.md`
+- Current visual source of truth: the user's 2026-08-11 mobile reference screenshot
 
-Last Updated: 2026-08-05
