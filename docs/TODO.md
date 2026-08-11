@@ -12,7 +12,8 @@ Only unfinished work belongs here. Completed work is recorded in `SESSION_LOG.md
 - Sprint: 0.4
 - Milestone: Landing Page MVP
 - Current priority: **First-page Hero visual completion**
-- Last Updated: 2026-08-11
+- Latest implementation commit: `5127e18`
+- Last Updated: 2026-08-12
 
 ---
 
@@ -36,13 +37,16 @@ Status: 🟡 **Visual calibration in progress**
 - [x] Native Bottom Navigation
 - [x] Responsive foundation
 - [x] Reduced-motion support
+- [x] Dedicated SVG-based Bottom Navigation frame
+- [x] Frame moved to a non-layout background layer
 
 ### Remaining
 
+- [ ] Compare the latest frame geometry against the original reference screenshot
+- [ ] Correct the frame's custom central notch/curve if still visually different
 - [ ] Make overall Hero/artwork composition slightly smaller
-- [ ] Match Bottom Navigation outer pill geometry to reference
-- [ ] Match three navigation button sizes and spacing to reference
-- [ ] Match center navigation button elevation/overlap to reference
+- [ ] Match three navigation button sizes and spacing to reference if required after frame correction
+- [ ] Match center navigation button elevation/overlap to reference if required
 - [ ] Match navigation borders, glow and active indicator to reference
 - [ ] Finalize CTA width/height/radius/glow against reference
 - [ ] Finalize vertical spacing between artwork, logo, slogan, CTA and navigation
@@ -118,6 +122,7 @@ Status: ⚪ Planned
 - [ ] E2E tests
 - [ ] Mobile viewport verification
 - [ ] Desktop viewport verification
+- [ ] Production build after latest visual calibration
 
 ---
 
@@ -125,7 +130,8 @@ Status: ⚪ Planned
 
 Status: 🟡 In Progress
 
-- [ ] Local production build
+- [ ] Local production build after latest commit
+- [ ] Vercel Preview verification for `5127e18`
 - [ ] Vercel production verification
 - [ ] Environment variables review
 - [ ] Domain setup
@@ -190,7 +196,7 @@ These are explicitly out of the current Hero-calibration scope.
 
 # DOCUMENTATION
 
-Status: 🟢 **Synchronized for next chat**
+Status: 🟢 **Synchronized**
 
 - [x] Project State
 - [x] Session Log
@@ -205,15 +211,15 @@ Status: 🟢 **Synchronized for next chat**
 
 # Exact Next Work
 
-1. Pull latest `main`.
-2. Build locally.
-3. Compare mobile Hero with the 2026-08-11 reference screenshot.
-4. Reduce Hero/artwork slightly.
-5. Precisely reproduce Bottom Navigation geometry and button proportions.
-6. Refine CTA and vertical spacing.
+1. Review Vercel Preview for commit `5127e18`.
+2. Compare only the Bottom Navigation frame against the original mobile reference.
+3. Correct frame geometry if needed.
+4. Avoid changing the three controls unless comparison requires it.
+5. Run `npm run build` after visual acceptance.
+6. Refine Hero/artwork scale and remaining CTA/spacing details.
 7. Validate desktop.
 8. Stop before adding new website scope.
 
 ---
 
-Last Updated: 2026-08-11
+Last Updated: 2026-08-12
