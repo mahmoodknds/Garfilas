@@ -4,7 +4,7 @@
 
 ### Current Session: Hero Reference Calibration
 
-**Date:** 2026-08-11
+**Date:** 2026-08-12
 
 ## Scope
 
@@ -20,7 +20,7 @@ The screenshot itself must not be used as the Hero UI/background. Its visual str
 
 ## Asset Decisions
 
-The final Hero artwork is now the supplied WebP:
+The final Hero artwork is the supplied WebP:
 
 `public/assets/hero/garfilas-hero-final.webp`
 
@@ -31,29 +31,28 @@ The Hero also uses separate supplied brand assets:
 
 The previous JPG placeholder is no longer the intended Hero artwork.
 
-## Changes Completed
+## Changes Completed This Session
 
-1. Replaced the old Hero mascot image path with the final WebP artwork.
-2. Kept the Garfield artwork as an independent image layer.
-3. Kept the wordmark as a separate supplied asset.
-4. Kept the slogan as a separate supplied asset.
-5. Moved the Hero composition toward the supplied reference ordering.
-6. Reduced the visual weight of secondary neon rings.
-7. Added/retained CSS-generated glow and neon atmosphere.
-8. Converted the CTA toward the reference's neon outlined form.
-9. Added sparkle accents around the CTA.
-10. Added a native scroll cue below the CTA.
-11. Reworked Bottom Navigation toward a pill-shaped reference layout with three circular controls and a larger highlighted center control.
-12. Preserved responsive and reduced-motion behavior.
+1. Created `feat/sprint-0.4-hero-calibration` from the latest `main`.
+2. Reduced the Hero/artwork footprint slightly across mobile and desktop.
+3. Reduced the orbit and glow footprint to preserve the same visual hierarchy at the smaller scale.
+4. Removed inline navigation sizing from `BottomNavigation.tsx`.
+5. Rebuilt Bottom Navigation sizing and spacing around explicit CSS classes.
+6. Tightened the outer pill geometry.
+7. Reduced the side control circles.
+8. Preserved a larger elevated center control.
+9. Preserved the center active indicator and neon glow.
+10. Kept the CTA and remaining first-screen structure unchanged pending visual comparison.
+11. Synchronized project-state documentation with the new calibration branch.
 
 ## Current Approved Direction
 
 The current composition is visually close enough to continue calibration rather than redesigning the Hero from scratch.
 
-The user specifically approved the direction and requested two final visual adjustments:
+The immediate target remains:
 
 - Make the Hero/artwork composition slightly smaller overall.
-- Make the Bottom Navigation and its buttons match the supplied reference screenshot exactly in form, proportions, spacing, border and glow.
+- Make the Bottom Navigation and its buttons match the supplied reference exactly in form, proportions, spacing, border and glow.
 
 ## Current Technical State
 
@@ -67,37 +66,26 @@ Hero structure:
 - `components/sections/BottomNavigation/BottomNavigation.tsx` owns navigation markup.
 - `app/globals.css` owns the current neon composition, responsive rules and navigation styling.
 
-## Current Visual Order
-
-1. Garfield + lasagna WebP artwork
-2. Neon rings/glow
-3. GARFILAS / LASAGNA wordmark
-4. Italian flag accent
-5. Slogan asset
-6. Neon `مشاهده منو` CTA with sparkle accents
-7. Scroll cue
-8. Pill Bottom Navigation with three circular controls and highlighted center control
-
 ## Verification State
 
 - GitHub Hero asset integration: completed
 - Native neon composition: completed
 - Reference-oriented CTA: implemented
-- Reference-oriented Bottom Navigation: implemented, final calibration pending
-- Local `npm run build`: not verified in this documentation update
-- Final visual acceptance: pending
+- Reference-oriented Bottom Navigation: recalibrated
+- Local `npm run build`: not executed by GitHub connector
+- Final mobile visual acceptance: pending
+- Desktop responsive calibration: pending
 
 ## Exact Next Action
 
-1. Pull the latest `main`.
+1. Pull `feat/sprint-0.4-hero-calibration` locally.
 2. Run `npm run build`.
 3. Run `npm run dev`.
 4. Compare the mobile output to the 2026-08-11 reference screenshot.
-5. Reduce the Hero/artwork scale slightly.
-6. Match Bottom Navigation geometry and button proportions to the reference.
-7. Refine CTA and spacing after navigation is correct.
-8. Check desktop responsiveness.
-9. Do not expand project scope until the Hero is accepted.
+5. Validate Bottom Navigation geometry and button proportions.
+6. Refine CTA and vertical spacing only if required by the comparison.
+7. Check desktop responsiveness.
+8. Do not expand project scope until the Hero is accepted.
 
 ## Critical Design Rules
 
@@ -109,4 +97,4 @@ Hero structure:
 
 ---
 
-Last Updated: 2026-08-11
+Last Updated: 2026-08-12
