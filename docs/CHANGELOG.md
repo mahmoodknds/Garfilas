@@ -15,8 +15,11 @@
 - Hero composition moved from the earlier placeholder/reference-image presentation to a native composition using the final WebP artwork
 - Hero layout reordered to match the supplied 2026-08-11 mobile reference
 - Neon rings and glow refined around the artwork
+- Hero/artwork footprint reduced slightly for tighter composition
 - CTA moved toward the reference's outlined neon form
 - Bottom Navigation moved toward the reference's pill + three circular controls
+- Bottom Navigation now uses explicit CSS geometry instead of per-item inline sizing
+- Side navigation controls reduced and center control retained as the larger elevated control
 - Project documentation synchronized with the latest visual state and next calibration tasks
 
 ### Fixed
@@ -26,8 +29,7 @@
 
 ### Pending
 
-- Slightly reduce overall Hero/artwork scale
-- Precisely match Bottom Navigation geometry and button proportions to the reference
+- Compare calibrated Hero against the 2026-08-11 mobile reference
 - Final CTA spacing calibration
 - Mobile visual acceptance
 - Desktop responsive calibration
@@ -51,4 +53,4 @@ Landing Page MVP completion after Hero acceptance:
 - Performance optimization
 - Local production-build verification
 
-Last Updated: 2026-08-11
+Last Updated: 2026-08-12
