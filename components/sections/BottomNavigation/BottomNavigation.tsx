@@ -13,29 +13,11 @@ export default function BottomNavigation() {
         <a
           key={href}
           href={href}
-          className="bottom-nav-link"
+          className={`bottom-nav-link${index === 1 ? " bottom-nav-link-active" : ""}`}
           aria-label={label}
           title={label}
-          style={
-            index === 1
-              ? {
-                  width: "4.35rem",
-                  height: "4.35rem",
-                  marginTop: "-1.05rem",
-                  borderWidth: "1.5px",
-                }
-              : {
-                  width: "3.15rem",
-                  height: "3.15rem",
-                  borderWidth: "1px",
-                }
-          }
         >
-          <Icon
-            aria-hidden="true"
-            size={index === 1 ? 32 : 24}
-            strokeWidth={1.7}
-          />
+          <Icon aria-hidden="true" />
           <span className="sr-only">{label}</span>
         </a>
       ))}
