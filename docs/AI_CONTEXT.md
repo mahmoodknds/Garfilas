@@ -2,8 +2,8 @@
 
 ## Garfilas AI Working Memory
 
-**Version:** 2.1.0  
-**Last Updated:** 2026-08-11
+**Version:** 2.2.0  
+**Last Updated:** 2026-08-12
 
 ---
 
@@ -89,21 +89,26 @@ The current design is close to the target and is in **visual calibration**, not 
 
 ---
 
-# Latest User Direction
+# Latest Calibration Changes
 
-The user approved the current direction and explicitly requested:
+Branch: `feat/sprint-0.4-hero-calibration`
 
-- make the Hero/artwork composition slightly smaller
-- make Bottom Navigation exactly match the reference form
-- make the three navigation buttons match reference proportions and spacing
-- preserve the larger highlighted center button
-- continue refining until the mobile output closely matches the reference
+Implemented:
 
-This is the immediate priority.
+- Hero/artwork scale reduced slightly.
+- Orbit and glow footprint tightened with the smaller Hero.
+- Bottom Navigation rebuilt around explicit CSS geometry.
+- Navigation pill tightened.
+- Side controls reduced.
+- Center control remains larger, elevated and highlighted.
+- Center active indicator and glow preserved.
+- Inline per-item navigation sizing removed.
+
+Do not redesign the Hero. Compare this calibration against the reference first.
 
 ---
 
-# Current Technical Structure
+# Technical Structure
 
 Hero:
 
@@ -224,8 +229,8 @@ Never infer an old state from stale documentation when current code and the late
 - Slogan asset integration: completed
 - Native neon composition: completed
 - CTA reference styling: implemented
-- Bottom Navigation reference styling: implemented, final calibration pending
-- Local build verification: pending
+- Bottom Navigation calibration: implemented on branch
+- Local build verification: pending because GitHub connector does not execute the repository locally
 - Final visual acceptance: pending
 
 ---
@@ -234,27 +239,12 @@ Never infer an old state from stale documentation when current code and the late
 
 Do only this next:
 
-1. Pull latest `main`.
+1. Pull `feat/sprint-0.4-hero-calibration`.
 2. Run `npm run build`.
 3. Run `npm run dev`.
 4. Use the mobile reference screenshot as the visual target.
-5. Scale the Hero/artwork slightly down.
-6. Rebuild Bottom Navigation geometry to match the reference exactly.
-7. Match the three button circles, center elevation, spacing, glow and active indicator.
-8. Re-check CTA spacing.
-9. Validate desktop responsiveness.
-10. Do not expand into other website features until the Hero is accepted.
-
----
-
-# Documentation Continuity
-
-When the next chat begins, read these files before doing anything:
-
-- `docs/GARFILAS_BIBLE.md`
-- `docs/PROJECT_STATE.md`
-- `docs/SESSION_LOG.md`
-- `docs/TODO.md`
-- `docs/AI_CONTEXT.md`
-
-The latest user reference screenshot and the current Hero implementation are the visual/technical context to continue from.
+5. Validate the reduced Hero/artwork scale.
+6. Validate Bottom Navigation geometry, button proportions, spacing, glow and center elevation.
+7. Re-check CTA spacing.
+8. Validate desktop responsiveness.
+9. Do not expand into other website features until the Hero is accepted.
