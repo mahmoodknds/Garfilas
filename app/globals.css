@@ -26,7 +26,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-copy { position:absolute; z-index:8; top:52.5%; left:50%; width:min(94vw,40rem); transform:translateX(-50%); text-align:center; animation:hero-rise .9s cubic-bezier(.2,.75,.2,1) both; }
 .hero-brand-lockup { display:flex; flex-direction:column; align-items:center; justify-content:flex-start; width:100%; margin:0; color:#ff9b34; }
 .hero-logo { display:flex; align-items:center; justify-content:center; width:100%; margin:0; }
-.hero-logo-image { display:block; width:min(72vw,27rem); height:auto; max-height:7rem; object-fit:contain; opacity:1; filter:drop-shadow(0 0 2px rgba(255,194,104,.96)) drop-shadow(0 0 7px rgba(255,137,31,.72)) drop-shadow(0 0 18px rgba(255,91,0,.36)); animation:none; }
+.hero-logo-image { display:block; width:min(72vw,27rem); height:auto; max-height:7rem; object-fit:contain; opacity:1; filter:brightness(0) saturate(100%) invert(52%) sepia(94%) saturate(2150%) hue-rotate(359deg) brightness(103%) contrast(103%) drop-shadow(0 0 2px rgba(255,194,104,.98)) drop-shadow(0 0 7px rgba(255,137,31,.76)) drop-shadow(0 0 18px rgba(255,91,0,.40)); animation:none; }
 .hero-lasagna-row { display:flex; align-items:center; justify-content:center; width:100%; gap:clamp(.45rem,2.2vw,.85rem); margin-top:.28rem; }
 .hero-lasagna-line { flex:0 1 clamp(2.2rem,13vw,6.25rem); height:1px; background:currentColor; opacity:.72; box-shadow:0 0 5px rgba(255,105,0,.42); }
 .hero-lasagna { color:#ffad50; font-family:Georgia,"Times New Roman",serif; font-size:clamp(1rem,2.8vw,1.55rem); font-weight:700; letter-spacing:.20em; line-height:1; white-space:nowrap; text-shadow:0 0 9px rgba(255,101,0,.32); }
