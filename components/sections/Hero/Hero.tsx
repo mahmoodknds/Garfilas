@@ -2,88 +2,95 @@ import HeroCTA from "./HeroCTA";
 import HeroLogo from "./HeroLogo";
 
 const referenceHeroStyles = `
-  /* Brand lockup calibration against the approved mobile reference. */
+  /* Brand lockup calibrated as one compact unit against the approved reference. */
   .hero .hero-copy {
-    top:51.25%;
+    top:49.7%;
+    width:min(92vw,34rem);
   }
   .hero .hero-logo-image {
-    width:min(76vw,28rem);
+    width:min(70vw,24rem);
+    max-height:none;
   }
   .hero .hero-product-lockup {
-    margin-top:.18rem;
-    gap:clamp(.55rem,2.4vw,.95rem);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:.34rem;
+    gap:clamp(.55rem,2.1vw,.9rem);
   }
   .hero .hero-product-name {
-    color:#f3d8ba;
+    color:#f1d4b5;
     font-family:Georgia,"Times New Roman",serif;
-    font-size:clamp(.68rem,2.7vw,.94rem);
-    font-weight:700;
-    letter-spacing:.34em;
+    font-size:clamp(.62rem,2.35vw,.86rem);
+    font-weight:600;
+    letter-spacing:.31em;
     line-height:1;
-    text-indent:.34em;
-    text-shadow:0 0 5px rgba(255,137,30,.45),0 0 12px rgba(255,91,0,.18);
+    text-indent:.31em;
+    text-shadow:0 0 5px rgba(255,137,30,.48),0 0 11px rgba(255,91,0,.18);
   }
   .hero .hero-product-line {
-    width:clamp(2.35rem,14vw,5rem);
+    flex:0 0 auto;
+    width:clamp(2.1rem,11vw,4.1rem);
     height:1px;
-    background:linear-gradient(90deg,transparent,rgba(255,143,36,.90));
-    box-shadow:0 0 6px rgba(255,91,0,.50);
+    background:linear-gradient(90deg,transparent,rgba(255,143,36,.9));
+    box-shadow:0 0 6px rgba(255,91,0,.48);
   }
   .hero .hero-product-line:last-child {
-    background:linear-gradient(90deg,rgba(255,143,36,.90),transparent);
+    background:linear-gradient(90deg,rgba(255,143,36,.9),transparent);
   }
   .hero .hero-flag {
     display:flex;
     align-items:center;
     justify-content:center;
     width:100%;
-    height:8px;
-    margin-top:.42rem;
+    height:auto;
+    margin-top:.48rem;
   }
   .hero .hero-flag img {
     display:block;
-    width:2.7rem;
+    width:2.15rem;
     height:auto;
-    filter:drop-shadow(0 0 4px rgba(255,122,15,.34));
+    filter:drop-shadow(0 0 4px rgba(255,122,15,.38));
   }
   .hero .hero-tagline {
     display:block;
     width:100%;
-    margin:.42rem 0 0;
+    margin:.34rem 0 0;
     color:rgba(255,226,196,.94);
     font-family:"Snell Roundhand","Segoe Script","Brush Script MT","URW Chancery L",cursive;
-    font-size:clamp(1rem,4vw,1.28rem);
+    font-size:clamp(.86rem,3.55vw,1.08rem);
     font-style:italic;
-    font-weight:600;
-    line-height:1.05;
-    letter-spacing:.012em;
+    font-weight:500;
+    line-height:1;
+    letter-spacing:.01em;
     white-space:nowrap;
     text-align:center;
-    text-shadow:0 0 5px rgba(255,150,48,.62),0 0 14px rgba(255,82,0,.26);
+    text-shadow:0 0 5px rgba(255,150,48,.58),0 0 13px rgba(255,82,0,.24);
   }
   @media (max-width:699px) {
-    .hero .hero-copy { top:51.45%; }
-    .hero .hero-logo-image { width:min(80vw,25.5rem); max-width:25.5rem; }
-    .hero .hero-product-lockup { margin-top:.16rem; gap:.58rem; }
+    .hero .hero-copy { top:49.85%; width:94vw; }
+    .hero .hero-logo-image { width:min(70vw,22rem); }
+    .hero .hero-product-lockup { margin-top:.30rem; gap:.52rem; }
     .hero .hero-product-name {
-      font-size:clamp(.64rem,2.55vw,.82rem);
-      letter-spacing:.28em;
-      text-indent:.28em;
+      font-size:clamp(.58rem,2.3vw,.76rem);
+      letter-spacing:.27em;
+      text-indent:.27em;
     }
-    .hero .hero-product-line { width:clamp(2rem,13vw,3.8rem); }
-    .hero .hero-flag { margin-top:.38rem; }
-    .hero .hero-flag img { width:2.45rem; }
+    .hero .hero-product-line { width:clamp(1.9rem,10.5vw,3.25rem); }
+    .hero .hero-flag { margin-top:.42rem; }
+    .hero .hero-flag img { width:2rem; }
     .hero .hero-tagline {
-      margin-top:.40rem;
-      font-size:clamp(.92rem,4.15vw,1.12rem);
+      margin-top:.32rem;
+      font-size:clamp(.82rem,3.7vw,1rem);
     }
   }
   @media (min-width:700px) {
-    .hero .hero-copy { top:53%; }
-    .hero .hero-logo-image { width:min(46vw,30rem); }
-    .hero .hero-product-name { font-size:1rem; }
-    .hero .hero-flag img { width:2.9rem; }
-    .hero .hero-tagline { font-size:1.32rem; }
+    .hero .hero-copy { top:52.5%; width:min(88vw,36rem); }
+    .hero .hero-logo-image { width:min(40vw,27rem); }
+    .hero .hero-product-name { font-size:.92rem; }
+    .hero .hero-product-line { width:4.5rem; }
+    .hero .hero-flag img { width:2.25rem; }
+    .hero .hero-tagline { font-size:1.16rem; }
   }
 `;
 
