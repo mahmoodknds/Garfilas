@@ -12,67 +12,24 @@ export default function Hero() {
 
       <div className="hero-shell">
         <div className="hero-copy">
-          <HeroLogo />
+          <div className="hero-brand-lockup" aria-label="Garfilas, LASAGNA, Layers of Love, Taste of Italy">
+            <HeroLogo />
 
-          <div
-            className="hero-brand-lockup"
-            aria-label="LASAGNA, Layers of Love, Taste of Italy"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              width: "100%",
-              marginTop: "0.15rem",
-            }}
-          >
-            <div
-              className="hero-lasagna-row"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.75rem",
-                width: "100%",
-              }}
-            >
-              <span aria-hidden="true" style={{ width: "clamp(2.5rem, 14vw, 7rem)", height: "1px", background: "currentColor", opacity: 0.7 }} />
-              <span
-                className="hero-lasagna"
-                style={{
-                  fontFamily: "Georgia, 'Times New Roman', serif",
-                  fontSize: "clamp(1.05rem, 3vw, 1.8rem)",
-                  fontWeight: 700,
-                  letterSpacing: "0.22em",
-                  lineHeight: 1,
-                  whiteSpace: "nowrap",
-                }}
-              >
-                LASAGNA
-              </span>
-              <span aria-hidden="true" style={{ width: "clamp(2.5rem, 14vw, 7rem)", height: "1px", background: "currentColor", opacity: 0.7 }} />
+            <div className="hero-lasagna-row" aria-label="LASAGNA">
+              <span className="hero-lasagna-line" aria-hidden="true" />
+              <span className="hero-lasagna">LASAGNA</span>
+              <span className="hero-lasagna-line" aria-hidden="true" />
             </div>
 
             <img
+              className="hero-flag"
               src="/assets/brand/italian-flag.svg"
               alt="Italian flag"
-              width={34}
-              height={22}
-              style={{ width: "clamp(1.65rem, 5vw, 2.15rem)", height: "auto", marginTop: "0.55rem" }}
+              width={36}
+              height={24}
             />
 
-            <span
-              className="hero-tagline"
-              style={{
-                marginTop: "0.35rem",
-                fontFamily: "'Segoe Script', 'Brush Script MT', cursive",
-                fontSize: "clamp(0.85rem, 2.4vw, 1.2rem)",
-                fontWeight: 500,
-                lineHeight: 1.15,
-                whiteSpace: "nowrap",
-              }}
-            >
-              Layers of Love, Taste of Italy
-            </span>
+            <span className="hero-tagline">Layers of Love, Taste of Italy</span>
           </div>
         </div>
 
