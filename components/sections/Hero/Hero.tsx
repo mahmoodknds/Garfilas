@@ -13,6 +13,11 @@ export default function Hero() {
       <div className="hero-shell">
         <div className="hero-copy">
           <HeroLogo />
+          <div className="hero-product-lockup" aria-label="Lasagna">
+            <span className="hero-product-line" aria-hidden="true" />
+            <span className="hero-product-name">LASAGNA</span>
+            <span className="hero-product-line" aria-hidden="true" />
+          </div>
           <div
             className="hero-tagline"
             aria-label="Layers of Love, Taste of Italy"
