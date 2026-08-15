@@ -21,19 +21,43 @@
     0 20px 60px rgba(0,0,0,.35);
 
   /* Radius */
-
   --radius-sm:12px;
   --radius-md:18px;
   --radius-lg:28px;
   --radius-xl:40px;
 
   /* Layout */
-
   --container:1200px;
 
   /* Animation */
-
   --transition-fast:.18s;
   --transition:.3s;
   --transition-slow:.6s;
+}
+
+/* Reference-only calibration: keeps the supplied logo artwork intact while correcting its rendered color/light. */
+.hero-logo-image {
+  opacity: 1 !important;
+  animation: none !important;
+  width: min(74vw, 26rem) !important;
+  max-height: 6.6rem !important;
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(66%)
+    sepia(88%)
+    saturate(2050%)
+    hue-rotate(348deg)
+    brightness(104%)
+    contrast(102%)
+    drop-shadow(0 0 1px rgba(255,236,190,.98))
+    drop-shadow(0 0 4px rgba(255,173,65,.72))
+    drop-shadow(0 0 10px rgba(255,104,8,.36)) !important;
+}
+
+@media (max-width:699px) {
+  .hero-logo-image {
+    width: min(72vw, 24rem) !important;
+    max-height: 6.2rem !important;
+  }
 }
