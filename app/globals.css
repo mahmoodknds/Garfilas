@@ -27,6 +27,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-brand-lockup { display:flex; flex-direction:column; align-items:center; justify-content:flex-start; width:100%; margin:0; color:#ff9b34; }
 .hero-logo { display:flex; align-items:center; justify-content:center; width:100%; margin:0; }
 .hero-logo-image { display:block; width:min(72vw,27rem); height:auto; max-height:7rem; object-fit:contain; opacity:1; filter:brightness(0) saturate(100%) invert(57%) sepia(93%) saturate(1850%) hue-rotate(359deg) brightness(103%) contrast(101%) drop-shadow(0 0 1px rgba(255,229,173,.98)) drop-shadow(0 0 5px rgba(255,167,54,.78)) drop-shadow(0 0 13px rgba(255,91,0,.34)); animation:none; }
+.hero-logo-image { color:#ff9b34; }
 .hero-lasagna-row { display:flex; align-items:center; justify-content:center; width:100%; gap:clamp(.45rem,2.2vw,.85rem); margin-top:.28rem; }
 .hero-lasagna-line { flex:0 1 clamp(2.2rem,13vw,6.25rem); height:1px; background:currentColor; opacity:.72; box-shadow:0 0 5px rgba(255,105,0,.42); }
 .hero-lasagna { color:#ffad50; font-family:Georgia,"Times New Roman",serif; font-size:clamp(1rem,2.8vw,1.55rem); font-weight:700; letter-spacing:.20em; line-height:1; white-space:nowrap; text-shadow:0 0 9px rgba(255,101,0,.32); }
