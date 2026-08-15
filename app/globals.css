@@ -24,8 +24,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-orbit-two { width:min(74vw,38rem); aspect-ratio:1; transform:translate(-50%,-50%); border-color:rgba(255,139,28,.14); box-shadow:0 0 8px rgba(255,91,0,.06); animation:none; }
 
 .hero-copy { position:absolute; z-index:8; top:51.7%; left:50%; width:min(94vw,40rem); transform:translateX(-50%); text-align:center; animation:hero-rise .9s cubic-bezier(.2,.75,.2,1) both; }
-.hero-logo { display:flex; align-items:center; justify-content:center; width:100%; }
-.hero-logo-image { display:block; width:min(76vw,28rem); height:auto; max-height:none; object-fit:contain; filter:brightness(0) saturate(100%) invert(59%) sepia(78%) saturate(1460%) hue-rotate(349deg) brightness(104%) contrast(103%) drop-shadow(0 0 1px rgba(255,218,157,.95)) drop-shadow(0 0 5px rgba(255,156,48,.70)) drop-shadow(0 0 12px rgba(255,91,0,.30)); animation:none; }
+.hero-logo { position:relative; display:flex; align-items:center; justify-content:center; width:100%; }
+.hero-logo-image { display:block; width:min(76vw,28rem); height:auto; max-height:none; object-fit:contain; opacity:0; pointer-events:none; }
+.hero-logo-color { position:absolute; inset:0; display:block; width:100%; height:100%; background:linear-gradient(180deg,#ffd39a 0%,#ffad45 38%,#ff7b08 72%,#e95000 100%); -webkit-mask-image:url('/assets/brand/garfilas-reference-logo.svg'); mask-image:url('/assets/brand/garfilas-reference-logo.svg'); -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; -webkit-mask-size:contain; mask-size:contain; filter:drop-shadow(0 0 1px rgba(255,238,205,.98)) drop-shadow(0 0 4px rgba(255,164,62,.78)) drop-shadow(0 0 10px rgba(255,91,0,.32)); }
 .hero-kicker { display:none; }
 
 .hero-product-lockup { display:flex; align-items:center; justify-content:center; gap:clamp(.55rem,2.4vw,1rem); width:100%; margin-top:-.05rem; }
@@ -91,7 +92,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 @media (prefers-reduced-motion:reduce) {
-  .hero-logo-image,.hero-mascot,.hero-mascot-halo,.hero-glow-main,.hero-glow-small,.hero-orbit-one,.hero-cta,.hero-copy,.hero-scroll-cue { animation:none; }
+  .hero-logo-color,.hero-mascot,.hero-mascot-halo,.hero-glow-main,.hero-glow-small,.hero-orbit-one,.hero-cta,.hero-copy,.hero-scroll-cue { animation:none; }
 }
 
 .bottom-nav { position:fixed; z-index:50; right:50%; bottom:max(.8rem,env(safe-area-inset-bottom)); display:flex; width:min(23.5rem,calc(100vw - 1.25rem)); min-height:4.65rem; transform:translateX(50%); align-items:center; justify-content:center; gap:clamp(1rem,7vw,1.8rem); padding:.45rem .7rem; border:1px solid rgba(255,111,8,.42); border-radius:2rem; background:rgba(7,5,4,.90); box-shadow:0 0 18px rgba(255,74,0,.12),inset 0 0 18px rgba(255,74,0,.035); backdrop-filter:blur(18px); }
