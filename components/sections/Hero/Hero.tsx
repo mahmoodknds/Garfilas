@@ -4,9 +4,6 @@ import HeroLogo from "./HeroLogo";
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <div className="hero-grid" aria-hidden="true" />
-      <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
-      <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
       <div className="hero-glow hero-glow-main" aria-hidden="true" />
       <div className="hero-glow hero-glow-small" aria-hidden="true" />
 
@@ -43,18 +40,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-architecture" aria-hidden="true">
-          <span className="arch arch-left" />
-          <span className="arch arch-right" />
-          <span className="arch arch-base" />
-        </div>
-
         <HeroCTA />
-        <div className="hero-scroll-cue" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
       </div>
 
       <h1 id="hero-title" className="sr-only">
