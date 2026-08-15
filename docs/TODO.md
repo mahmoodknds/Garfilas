@@ -12,7 +12,7 @@ Only unfinished work belongs here. Completed work is recorded in `SESSION_LOG.md
 - Sprint: 0.4
 - Milestone: Landing Page MVP
 - Current priority: **First-page Hero visual completion**
-- Last Updated: 2026-08-11
+- Last Updated: 2026-08-12
 
 ---
 
@@ -36,14 +36,13 @@ Status: 🟡 **Visual calibration in progress**
 - [x] Native Bottom Navigation
 - [x] Responsive foundation
 - [x] Reduced-motion support
+- [x] Slight Hero/artwork scale reduction
+- [x] Bottom Navigation geometry recalibration
+- [x] Explicit active center control styling
 
 ### Remaining
 
-- [ ] Make overall Hero/artwork composition slightly smaller
-- [ ] Match Bottom Navigation outer pill geometry to reference
-- [ ] Match three navigation button sizes and spacing to reference
-- [ ] Match center navigation button elevation/overlap to reference
-- [ ] Match navigation borders, glow and active indicator to reference
+- [ ] Compare calibrated Hero against the 2026-08-11 mobile reference
 - [ ] Finalize CTA width/height/radius/glow against reference
 - [ ] Finalize vertical spacing between artwork, logo, slogan, CTA and navigation
 - [ ] Final mobile visual acceptance
@@ -205,15 +204,14 @@ Status: 🟢 **Synchronized for next chat**
 
 # Exact Next Work
 
-1. Pull latest `main`.
-2. Build locally.
-3. Compare mobile Hero with the 2026-08-11 reference screenshot.
-4. Reduce Hero/artwork slightly.
-5. Precisely reproduce Bottom Navigation geometry and button proportions.
-6. Refine CTA and vertical spacing.
-7. Validate desktop.
-8. Stop before adding new website scope.
+1. Pull `feat/sprint-0.4-hero-calibration` locally.
+2. Run the production build.
+3. Compare mobile Hero with the 2026-08-11 reference.
+4. Validate the new Bottom Navigation geometry.
+5. Refine CTA and vertical spacing only if necessary.
+6. Validate desktop responsiveness.
+7. Stop before adding new website scope.
 
 ---
 
-Last Updated: 2026-08-11
+Last Updated: 2026-08-12

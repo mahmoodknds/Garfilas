@@ -7,7 +7,7 @@
 - Milestone: Landing Page MVP
 - Repository: GitHub / `main`
 - Status: Active Development
-- Last Updated: 2026-08-11
+- Last Updated: 2026-08-12
 
 ## Current Objective
 
@@ -17,7 +17,7 @@ The current visual target is the user-provided mobile screenshot from 2026-08-11
 
 ## Current Hero Implementation
 
-Implemented on `main`:
+Implemented in the calibration branch:
 
 - Native React/CSS Hero composition
 - Final Garfilas WebP artwork rendered from:
@@ -48,15 +48,15 @@ The current intended order is:
 
 The WebP is an actual asset. The surrounding neon, controls, layout, glow and animations remain native UI/CSS.
 
-## Latest Visual Calibration Request
+## Latest Visual Calibration
 
-The user approved the current direction and requested:
+Implemented on `feat/sprint-0.4-hero-calibration`:
 
-- Make the Hero/artwork composition slightly smaller overall.
-- Make the Bottom Navigation form match the reference screenshot exactly.
-- Make the three navigation buttons and their proportions match the reference.
-- Preserve the center navigation button as the larger highlighted control.
-- Continue pixel-level spacing, sizing and alignment refinement until the output matches the reference.
+- Reduced Hero/artwork scale slightly across mobile and desktop.
+- Reduced the surrounding orbit and glow footprint to keep the composition tighter.
+- Rebuilt Bottom Navigation geometry with a smaller pill, tighter spacing and explicit active-center styling.
+- Removed per-item inline sizing so navigation geometry is controlled consistently by CSS.
+- Preserved the larger elevated center control and active indicator.
 
 ## Important Design Rules
 
@@ -90,29 +90,30 @@ The Hero should use these supplied assets directly and keep them independently r
 - `components/sections/Hero/HeroLogo.tsx` owns the logo asset presentation.
 - `components/sections/Hero/HeroCTA.tsx` owns the CTA wrapper.
 - `components/ui/GlowButton.tsx` provides the CTA primitive.
-- `components/sections/BottomNavigation/BottomNavigation.tsx` owns bottom navigation markup.
+- `components/sections/BottomNavigation/BottomNavigation.tsx` owns navigation markup.
 - `app/globals.css` owns the current Hero composition, neon effects, responsive rules and Bottom Navigation styling.
 
 ## Verification State
 
-- GitHub implementation: updated
+- GitHub implementation: updated on calibration branch
 - Final WebP path: integrated into Hero
 - Native neon composition: integrated
-- Latest visual direction: approved for further refinement
-- Local `npm run build`: not yet verified in this documentation update
+- Latest visual calibration: implemented
+- Local `npm run build`: not executed by GitHub connector
 - Production visual verification: pending
+- Final mobile visual acceptance: pending
+- Desktop responsive calibration: pending
 
 ## Exact Next Step
 
-1. Pull latest `main` locally.
+1. Pull `feat/sprint-0.4-hero-calibration` locally.
 2. Run `npm run build`.
 3. Run `npm run dev`.
-4. Compare the mobile viewport against the 2026-08-11 reference screenshot.
-5. Reduce the overall Hero/artwork scale slightly.
-6. Rework Bottom Navigation and its three circular controls to match the reference geometry, spacing, border, glow and center-button elevation.
-7. Refine CTA dimensions and spacing if needed after navigation is corrected.
-8. Re-check desktop without changing the mobile-first design language.
-9. Do not expand scope until the first-page Hero is accepted.
+4. Compare the mobile output to the 2026-08-11 reference screenshot.
+5. Validate Bottom Navigation geometry at common mobile widths.
+6. Refine CTA and vertical spacing only if the visual comparison requires it.
+7. Check desktop responsiveness.
+8. Do not expand scope until the first-page Hero is accepted.
 
 ## Documentation Rule
 
@@ -124,4 +125,3 @@ Before context/message limits are reached, update `PROJECT_STATE.md`, `SESSION_L
 - Implementation state: this file
 - Development history: `docs/SESSION_LOG.md`
 - Current visual source of truth: the user's 2026-08-11 mobile reference screenshot
-
