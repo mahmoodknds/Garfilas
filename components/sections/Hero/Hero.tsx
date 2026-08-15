@@ -1,9 +1,10 @@
 import HeroCTA from "./HeroCTA";
 import HeroLogo from "./HeroLogo";
+import styles from "./Hero.reference.module.css";
 
 export default function Hero() {
   return (
-    <section className="hero" aria-labelledby="hero-title">
+    <section className={`hero ${styles.heroReference}`} aria-labelledby="hero-title">
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
       <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
