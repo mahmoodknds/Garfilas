@@ -2,111 +2,97 @@
 
 ## Garfilas Development Log
 
-### Current Session: Hero Reference Calibration
+### Current Session: Hero Logo / Reference Calibration
 
-**Date:** 2026-08-11
+**Date:** 2026-08-16
 
 ## Scope
 
-The project remains intentionally limited to making the **first page perfect**.
-
-Do not expand into a large website, dashboard, database, ordering system or multiple-route architecture during this phase.
+The project remains intentionally limited to making the first page visually accurate before expanding into the wider website.
 
 ## Visual Source of Truth
 
-The user supplied a mobile reference screenshot on 2026-08-11. It is the visual composition source of truth.
+The user's supplied mobile reference screenshots remain the visual composition source of truth.
 
-The screenshot itself must not be used as the Hero UI/background. Its visual structure must be reproduced with native React/CSS and supplied brand assets.
+The reference screenshot must not be used as the Hero background. Its visual structure must be reproduced with native React/CSS and supplied brand assets.
 
 ## Asset Decisions
 
-The final Hero artwork is now the supplied WebP:
+Primary Hero artwork:
 
 `public/assets/hero/garfilas-hero-final.webp`
 
-The Hero also uses separate supplied brand assets:
+Brand wordmark:
 
-- `public/assets/brand/garfilas-reference-logo.svg`
-- `public/assets/brand/garfilas-slogan-exact.svg`
+`public/assets/brand/garfilas-reference-logo.svg`
 
-The previous JPG placeholder is no longer the intended Hero artwork.
+Slogan:
 
-## Changes Completed
+`public/assets/brand/garfilas-slogan-exact.svg`
 
-1. Replaced the old Hero mascot image path with the final WebP artwork.
-2. Kept the Garfield artwork as an independent image layer.
-3. Kept the wordmark as a separate supplied asset.
-4. Kept the slogan as a separate supplied asset.
-5. Moved the Hero composition toward the supplied reference ordering.
-6. Reduced the visual weight of secondary neon rings.
-7. Added/retained CSS-generated glow and neon atmosphere.
-8. Converted the CTA toward the reference's neon outlined form.
-9. Added sparkle accents around the CTA.
-10. Added a native scroll cue below the CTA.
-11. Reworked Bottom Navigation toward a pill-shaped reference layout with three circular controls and a larger highlighted center control.
-12. Preserved responsive and reduced-motion behavior.
+The supplied SVG is the source of truth for GARFILAS wordmark geometry. HTML text must not replace it.
+
+## Changes / Findings in This Calibration
+
+1. The Hero logo was tested with several glow treatments.
+2. A text-based GARFILAS recreation was identified as incorrect and removed from the intended implementation approach.
+3. The supplied SVG is now treated as the actual visible logo source.
+4. Neon/fire treatment is intended to affect the SVG form itself rather than an unrelated HTML text layer.
+5. The current SVG-based result is visible and substantially closer to the desired direction.
+6. The latest visual review found the logo light intensity too high compared with the reference.
+7. The next refinement is therefore controlled reduction of bloom, edge glow and overall brightness while retaining the warm gold/orange neon character.
 
 ## Current Approved Direction
 
-The current composition is visually close enough to continue calibration rather than redesigning the Hero from scratch.
+The current direction is approved as the basis for final calibration:
 
-The user specifically approved the direction and requested two final visual adjustments:
+- Keep the supplied SVG geometry.
+- Keep the warm gold/orange neon treatment.
+- Reduce excessive light.
+- Keep the letterforms crisp and readable.
+- Keep fire/bloom outside the primary letter edges rather than washing out the interior.
+- Preserve the premium, dark and restrained visual language.
 
-- Make the Hero/artwork composition slightly smaller overall.
-- Make the Bottom Navigation and its buttons match the supplied reference screenshot exactly in form, proportions, spacing, border and glow.
-
-## Current Technical State
-
-Hero structure:
-
-- `app/page.tsx` renders `Hero`.
-- `components/sections/Hero/Hero.tsx` owns the first-screen structure.
-- `components/sections/Hero/HeroLogo.tsx` owns the wordmark asset.
-- `components/sections/Hero/HeroCTA.tsx` owns the CTA wrapper.
-- `components/ui/GlowButton.tsx` provides the CTA primitive.
-- `components/sections/BottomNavigation/BottomNavigation.tsx` owns navigation markup.
-- `app/globals.css` owns the current neon composition, responsive rules and navigation styling.
-
-## Current Visual Order
+## Current Hero Order
 
 1. Garfield + lasagna WebP artwork
-2. Neon rings/glow
-3. GARFILAS / LASAGNA wordmark
-4. Italian flag accent
+2. Neon rings / glow
+3. GARFILAS / LASAGNA brand lockup
+4. Italian flag
 5. Slogan asset
-6. Neon `مشاهده منو` CTA with sparkle accents
+6. Neon CTA
 7. Scroll cue
-8. Pill Bottom Navigation with three circular controls and highlighted center control
+8. Pill Bottom Navigation
+
+## Technical State
+
+- `components/sections/Hero/Hero.tsx` owns Hero structure.
+- `components/sections/Hero/HeroLogo.tsx` owns the logo asset presentation.
+- `components/sections/Hero/HeroCTA.tsx` owns CTA wrapper.
+- `components/ui/GlowButton.tsx` provides CTA primitive.
+- `components/sections/BottomNavigation/BottomNavigation.tsx` owns navigation markup.
+- `app/globals.css` owns Hero visual composition and responsive styling.
 
 ## Verification State
 
-- GitHub Hero asset integration: completed
-- Native neon composition: completed
-- Reference-oriented CTA: implemented
-- Reference-oriented Bottom Navigation: implemented, final calibration pending
-- Local `npm run build`: not verified in this documentation update
+- Supplied Hero WebP: integrated
+- Supplied SVG wordmark: integrated
+- Supplied slogan asset: integrated
+- Native neon atmosphere: integrated
+- Logo calibration: in progress
 - Final visual acceptance: pending
+- Local production build: not verified in this documentation update
 
-## Exact Next Action
+## Exact Next Actions
 
-1. Pull the latest `main`.
-2. Run `npm run build`.
-3. Run `npm run dev`.
-4. Compare the mobile output to the 2026-08-11 reference screenshot.
-5. Reduce the Hero/artwork scale slightly.
-6. Match Bottom Navigation geometry and button proportions to the reference.
-7. Refine CTA and spacing after navigation is correct.
-8. Check desktop responsiveness.
-9. Do not expand project scope until the Hero is accepted.
-
-## Critical Design Rules
-
-- Never bring the full reference screenshot back as the Hero background.
-- Keep supplied WebP/logo/slogan assets separate.
-- Neon effects, rings, glow, architectural line-art, CTA and navigation remain native UI/CSS.
-- Do not generate replacement branding while the supplied assets are available.
-- Mobile-first calibration is the priority.
+1. Reduce SVG logo brightness and bloom to match the reference.
+2. Compare logo color, edge glow, scale and position against the reference.
+3. Once the logo is accepted, calibrate LASAGNA separately.
+4. Calibrate the Italian flag and slogan separately.
+5. Then finish CTA and Bottom Navigation calibration.
+6. Verify mobile first, then desktop.
+7. Do not expand project scope until the Hero is accepted.
 
 ---
 
-Last Updated: 2026-08-11
+Last Updated: 2026-08-16
