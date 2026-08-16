@@ -12,7 +12,7 @@ Only unfinished work belongs here. Completed work is recorded in `SESSION_LOG.md
 - Sprint: 0.4
 - Milestone: Landing Page MVP
 - Current priority: **First-page Hero visual completion**
-- Last Updated: 2026-08-11
+- Last Updated: 2026-08-16
 
 ---
 
@@ -26,12 +26,11 @@ Status: 🟡 **Visual calibration in progress**
 
 - [x] Native Hero composition
 - [x] Final Garfield WebP integrated
-- [x] Exact Garfilas wordmark asset integrated
-- [x] Exact slogan asset integrated
+- [x] Supplied Garfilas wordmark SVG integrated
+- [x] Supplied slogan SVG integrated
 - [x] Dark luxury background
 - [x] CSS neon rings and glow
 - [x] Native CTA
-- [x] CTA sparkle accents
 - [x] Scroll cue
 - [x] Native Bottom Navigation
 - [x] Responsive foundation
@@ -39,13 +38,30 @@ Status: 🟡 **Visual calibration in progress**
 
 ### Remaining
 
-- [ ] Make overall Hero/artwork composition slightly smaller
-- [ ] Match Bottom Navigation outer pill geometry to reference
-- [ ] Match three navigation button sizes and spacing to reference
-- [ ] Match center navigation button elevation/overlap to reference
-- [ ] Match navigation borders, glow and active indicator to reference
-- [ ] Finalize CTA width/height/radius/glow against reference
+#### Logo
+
+- [ ] Reduce logo neon/bloom intensity to match reference
+- [ ] Match logo gold/orange color balance to reference
+- [ ] Match logo edge glow and fire/bloom spread to reference
+- [ ] Match logo scale and position to reference
+- [ ] Confirm SVG remains the only visible GARFILAS geometry source
+
+#### Lockup
+
+- [ ] Match LASAGNA size, font treatment and spacing to reference
+- [ ] Match side lines beside LASAGNA
+- [ ] Match Italian flag size and position
+- [ ] Match slogan size, font treatment, glow and spacing
+
+#### Hero Layout
+
+- [ ] Make overall Hero/artwork composition slightly smaller where required
 - [ ] Finalize vertical spacing between artwork, logo, slogan, CTA and navigation
+- [ ] Finalize CTA width/height/radius/glow against reference
+- [ ] Match Bottom Navigation outer pill geometry
+- [ ] Match three navigation button sizes and spacing
+- [ ] Match center navigation button elevation/overlap
+- [ ] Match navigation borders, glow and active indicator
 - [ ] Final mobile visual acceptance
 - [ ] Desktop responsive calibration
 
@@ -190,7 +206,7 @@ These are explicitly out of the current Hero-calibration scope.
 
 # DOCUMENTATION
 
-Status: 🟢 **Synchronized for next chat**
+Status: 🟢 **Synchronized**
 
 - [x] Project State
 - [x] Session Log
@@ -205,15 +221,12 @@ Status: 🟢 **Synchronized for next chat**
 
 # Exact Next Work
 
-1. Pull latest `main`.
-2. Build locally.
-3. Compare mobile Hero with the 2026-08-11 reference screenshot.
-4. Reduce Hero/artwork slightly.
+1. Reduce SVG logo brightness/bloom.
+2. Match logo color, edge glow, scale and position to the reference.
+3. Match LASAGNA, side lines, flag and slogan independently.
+4. Refine CTA and vertical spacing.
 5. Precisely reproduce Bottom Navigation geometry and button proportions.
-6. Refine CTA and vertical spacing.
+6. Validate mobile.
 7. Validate desktop.
-8. Stop before adding new website scope.
-
----
-
-Last Updated: 2026-08-11
+8. Run production build verification.
+9. Stop before adding new website scope.
