@@ -1,9 +1,10 @@
 import HeroCTA from "./HeroCTA";
 import HeroLogo from "./HeroLogo";
+import styles from "./Hero.reference.module.css";
 
 export default function Hero() {
   return (
-    <section className="hero" aria-labelledby="hero-title">
+    <section className={`hero ${styles.heroReference}`} aria-labelledby="hero-title">
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
       <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
@@ -12,21 +13,24 @@ export default function Hero() {
 
       <div className="hero-shell">
         <div className="hero-copy">
-          <HeroLogo />
-          <div
-            className="hero-tagline"
-            aria-label="Layers of Love, Taste of Italy"
-            style={{ display: "flex", justifyContent: "center", width: "100%" }}
-          >
+          <div className="hero-brand-lockup" aria-label="Garfilas, LASAGNA, Layers of Love, Taste of Italy">
+            <HeroLogo />
+
+            <div className="hero-lasagna-row" aria-label="LASAGNA">
+              <span className="hero-lasagna-line" aria-hidden="true" />
+              <span className="hero-lasagna">LASAGNA</span>
+              <span className="hero-lasagna-line" aria-hidden="true" />
+            </div>
+
             <img
-              className="hero-tagline-image"
-              src="/assets/brand/garfilas-slogan-exact.svg"
-              alt="Layers of Love, Taste of Italy"
-              width={597}
-              height={100}
-              fetchPriority="high"
-              style={{ width: "min(82vw, 30rem)", height: "auto", display: "block" }}
+              className="hero-flag"
+              src="/assets/brand/italian-flag.svg"
+              alt="Italian flag"
+              width={36}
+              height={24}
             />
+
+            <span className="hero-tagline">Layers of Love, Taste of Italy</span>
           </div>
         </div>
 
