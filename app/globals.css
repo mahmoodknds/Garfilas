@@ -25,8 +25,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero-copy { position:absolute; z-index:8; top:52.5%; left:50%; width:min(94vw,40rem); transform:translateX(-50%); text-align:center; animation:hero-rise .9s cubic-bezier(.2,.75,.2,1) both; }
 .hero-logo { position:relative; display:flex; align-items:center; justify-content:center; width:100%; }
-.hero-logo::before { content:""; position:absolute; z-index:-1; width:78%; height:38%; left:50%; top:52%; transform:translate(-50%,-50%); border-radius:999px; background:rgba(255,78,0,.26); filter:blur(17px); opacity:.72; pointer-events:none; }
-.hero-logo-image { display:block; width:min(68vw,21rem); height:auto; max-height:6.5rem; object-fit:contain; filter:brightness(1.08) saturate(1.30) contrast(1.08) drop-shadow(0 0 0.7px rgba(255,237,174,.98)) drop-shadow(0 0 1.7px rgba(255,177,59,.96)) drop-shadow(0 0 3.5px rgba(255,105,8,.88)) drop-shadow(0 0 7px rgba(255,76,0,.55)) drop-shadow(0 0 14px rgba(255,58,0,.20)); animation:logo-flicker 7s ease-in-out infinite; }
+.hero-logo::before { content:""; position:absolute; z-index:-1; width:62%; height:26%; left:50%; top:51%; transform:translate(-50%,-50%); border-radius:999px; background:rgba(255,73,0,.18); filter:blur(19px); opacity:.58; pointer-events:none; }
+.hero-logo-image { position:absolute; inset:50% auto auto 50%; width:min(68vw,21rem); height:auto; max-height:6.5rem; object-fit:contain; transform:translate(-50%,-50%); pointer-events:none; }
+.hero-logo-glow-outer { z-index:1; opacity:.48; filter:brightness(1.28) saturate(1.45) blur(3.4px) drop-shadow(0 0 7px rgba(255,77,0,.70)) drop-shadow(0 0 15px rgba(255,59,0,.30)); }
+.hero-logo-glow-neon { z-index:2; opacity:.78; filter:brightness(1.38) saturate(1.65) blur(.85px) drop-shadow(0 0 .9px rgba(255,239,177,1)) drop-shadow(0 0 2px rgba(255,186,63,.98)) drop-shadow(0 0 4px rgba(255,101,7,.96)) drop-shadow(0 0 7px rgba(255,67,0,.60)); }
+.hero-logo-core { position:relative; z-index:3; transform:none; filter:brightness(1.13) saturate(1.25) contrast(1.12) drop-shadow(0 0 .55px rgba(255,246,198,1)) drop-shadow(0 0 1.3px rgba(255,194,71,.92)); animation:logo-flicker 7s ease-in-out infinite; }
 .hero-kicker { display:none; }
 .hero-tagline { margin:.45rem 0 0; width:100%; color:rgba(255,235,209,.90); font-family:Georgia,"Times New Roman",serif; font-style:italic; font-size:clamp(.95rem,3.5vw,1.2rem); letter-spacing:.03em; text-shadow:0 0 12px rgba(255,109,0,.34); }
 .hero-tagline-image { filter:drop-shadow(0 0 5px rgba(255,119,0,.58)) drop-shadow(0 0 15px rgba(255,73,0,.22)); }
