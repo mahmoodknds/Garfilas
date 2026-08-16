@@ -6,8 +6,8 @@ export default function HeroLogo() {
         className="hero-logo-image-sr"
         src="/assets/brand/garfilas-reference-logo.svg"
         alt="Garfilas Italian Lasagna"
-        width={790}
-        height={235}
+        width={283.5}
+        height={56.7}
         fetchPriority="high"
       />
     </div>
