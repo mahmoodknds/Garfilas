@@ -1,1724 +1,317 @@
-\# 🍝 GARFILAS BIBLE
+# 🍝 GARFILAS BIBLE
 
-\## Official Source of Truth
+## Official Source of Truth
 
-\### Version: 2.0.0
+### Version: 2.1.0
 
+---
 
+# Project
 
-\---
-
-
-
-\# Project
-
-
-
-\*\*Name\*\*
-
-
-
+**Name**
 Garfilas (گارفیلاز)
 
-
-
-\*\*Type\*\*
-
-
-
+**Type**
 Premium Online Italian Lasagna Brand
 
-
-
-\*\*Status\*\*
-
-
-
+**Status**
 Active Development
 
-
-
-\*\*Current Version\*\*
-
-
-
+**Current Version**
 v0.1.0
 
-
-
-\*\*Current Sprint\*\*
-
-
-
+**Current Sprint**
 Sprint 0.4
 
-
-
-\*\*Current Milestone\*\*
-
-
-
+**Current Milestone**
 Landing Page MVP
 
+---
 
-
-\---
-
-
-
-\# Vision
-
-
+# Vision
 
 Garfilas is not intended to become another online food ordering website.
 
-
-
 The goal is to create the most memorable digital lasagna experience in Iran.
-
-
-
-Customers should remember Garfilas not only because of the food quality, but because every interaction with the brand feels enjoyable, premium and emotionally engaging.
-
-
 
 The website should feel closer to a native mobile application than a traditional restaurant website.
 
+---
 
+# Mission
 
-\---
+Build a premium digital restaurant that combines beautiful design, fast performance, simple ordering, strong branding and excellent user experience while remaining lightweight for slower internet connections.
 
+---
 
+# Brand Identity
 
-\# Mission
+## Core Values
 
+- Premium
+- Friendly
+- Modern
+- Italian Inspired
+- Minimal
+- Memorable
 
+## Brand Personality
 
-Build a premium digital restaurant that combines
+Garfilas should feel warm, premium, confident, friendly, simple and elegant.
 
+It must never feel cheap, generic, noisy, overdesigned or complicated.
 
-
-\- Beautiful Design
-
-\- Fast Performance
-
-\- Simple Ordering
-
-\- Strong Branding
-
-\- Excellent User Experience
-
-
-
-while remaining lightweight enough for users with slower internet connections.
-
-
-
-\---
-
-
-
-\# Brand Identity
-
-
-
-\## Core Values
-
-
-
-\- Premium
-
-\- Friendly
-
-\- Modern
-
-\- Italian Inspired
-
-\- Minimal
-
-\- Memorable
-
-
-
-\---
-
-
-
-\## Brand Personality
-
-
-
-Garfilas should feel
-
-
-
-Warm
-
-
-
-Premium
-
-
-
-Confident
-
-
-
-Friendly
-
-
-
-Simple
-
-
-
-Elegant
-
-
-
-Never
-
-
-
-Cheap
-
-
-
-Generic
-
-
-
-Noisy
-
-
-
-Overdesigned
-
-
-
-Complicated
-
-
-
-\---
-
-
-
-\# Brand Story
-
-
-
-Garfilas is inspired by the universal love of lasagna.
-
-
-
-The emotional inspiration comes from Garfield's relationship with lasagna, but Garfilas must always remain an independent and original brand.
-
-
-
-The mascot should remind users of that nostalgic feeling without copying copyrighted material.
-
-
-
-\---
-
-
-
-\# Brand Promise
-
-
+## Brand Promise
 
 Fresh.
-
-
-
 Premium.
-
-
-
 Memorable.
-
-
-
 Every Order.
 
+---
 
-
-\---
-
-
-
-\# Target Audience
-
-
-
-Primary
-
-
-
-18-40
-
-
-
-Urban
-
-
-
-Online shoppers
-
-
-
-Food lovers
-
-
-
-Students
-
-
-
-Employees
-
-
-
-Families
-
-
-
-\---
-
-
-
-Secondary
-
-
-
-Italian food enthusiasts
-
-
-
-Premium food buyers
-
-
-
-Delivery-first customers
-
-
-
-\---
-
-
-
-\# Design Philosophy
-
-
+# Design Philosophy
 
 Luxury through simplicity.
 
-
-
 Every element should have a purpose.
 
-
-
 Less components.
-
-
-
 More impact.
 
-
-
-\---
-
-
-
-\# UI Philosophy
-
-
+## UI Philosophy
 
 Minimal
-
-
-
 Dark
-
-
-
 Premium
-
-
-
 Modern
-
-
-
 Soft
-
-
-
 App Like
 
-
-
-\---
-
-
-
-\# UX Philosophy
-
-
+## UX Philosophy
 
 Fast
-
-
-
 Clear
-
-
-
 Comfortable
-
-
-
 One Hand Mobile Usage
-
-
-
 Minimum Clicks
-
-
-
 Maximum Conversion
 
-
-
-\---
-
-
-
-\# Design Principles
-
-
+## Design Principles
 
 Mobile First
-
-
-
 Performance First
-
-
-
 SEO First
-
-
-
 Accessibility
-
-
-
 Reusable Components
-
-
-
 Progressive Enhancement
-
-
-
 No Over Engineering
-
-
-
 Revenue Before Complexity
 
+---
 
+# Visual Identity
 
-\---
+**Theme:** Dark Luxury
 
+**Primary:** Orange
 
+**Secondary:** Gold
 
-\# Visual Identity
+**Supporting:** Dark Gray
 
+**Background:** `#090909`
 
+**Surface:** `#131313`
 
-Theme
+**Card:** `#1A1A1A`
 
+**Border:** `#252525`
 
+**Primary:** `#FF7A00`
 
-Dark Luxury
+**Primary Hover:** `#FF8D1F`
 
+**Accent:** `#FFB347`
 
+**Text:** `#FFFFFF`
 
-Primary Color
+**Secondary Text:** `#BDBDBD`
 
+**Muted:** `#777777`
 
+---
 
-Orange
+# Typography
 
+Persian: Vazirmatn
+English: Poppins
+Fallback: System UI
 
+---
 
-Secondary
+# Technical Stack
 
+- Next.js App Router
+- TypeScript strict mode
+- Tailwind CSS v4
+- CSS/lightweight motion
+- Lucide icons where appropriate
+- npm
+- Vercel
+- GitHub
 
+Prefer Server Components and avoid unnecessary client-side JavaScript or dependencies.
 
-Gold
+---
 
-
-
-Supporting
-
-
-
-Dark Gray
-
-
-
-Background
-
-
-
-\#090909
-
-
-
-Surface
-
-
-
-\#131313
-
-
-
-Card
-
-
-
-\#1A1A1A
-
-
-
-Border
-
-
-
-\#252525
-
-
-
-Primary
-
-
-
-\#FF7A00
-
-
-
-Primary Hover
-
-
-
-\#FF8D1F
-
-
-
-Accent
-
-
-
-\#FFB347
-
-
-
-Success
-
-
-
-\#16A34A
-
-
-
-Error
-
-
-
-\#DC2626
-
-
-
-Text
-
-
-
-\#FFFFFF
-
-
-
-Secondary Text
-
-
-
-\#BDBDBD
-
-
-
-Muted
-
-
-
-\#777777
-
-
-
-\---
-
-
-
-\# Typography
-
-
-
-Persian
-
-
-
-Vazirmatn
-
-
-
-English
-
-
-
-Poppins
-
-
-
-Fallback
-
-
-
-System UI
-
-
-
-\---
-
-
-
-\# Border Radius
-
-
-
-Small
-
-
-
-10px
-
-
-
-Medium
-
-
-
-16px
-
-
-
-Large
-
-
-
-24px
-
-
-
-Pill
-
-
-
-999px
-
-
-
-\---
-
-
-
-\# Shadow System
-
-
-
-Soft Shadow
-
-
-
-Glow Shadow
-
-
-
-Orange Glow
-
-
-
-Glass Blur
-
-
-
-\---
-
-
-
-\# Motion System
-
-
-
-Animation Style
-
-
-
-Soft
-
-
-
-Natural
-
-
-
-GPU Friendly
-
-
-
-Animation Duration
-
-
-
-Fast
-
-
-
-200ms
-
-
-
-Normal
-
-
-
-300ms
-
-
-
-Slow
-
-
-
-400ms
-
-
-
-Maximum
-
-
-
-500ms
-
-
-
-Avoid long animations.
-
-
-
-\---
-
-
-
-\# Iconography
-
-
-
-Lucide Icons
-
-
-
-Outlined
-
-
-
-Rounded
-
-
-
-Minimal
-
-
-
-\---
-
-
-
-\# Component Philosophy
-
-
-
-Every component must be
-
-
-
-Reusable
-
-
-
-Composable
-
-
-
-Accessible
-
-
-
-Typed
-
-
-
-Responsive
-
-
-
-Independent
-
-
-
-\---
-
-
-
-\# Technical Stack
-
-
-
-Framework
-
-
-
-Next.js App Router
-
-
-
-Language
-
-
-
-TypeScript Strict
-
-
-
-Styling
-
-
-
-TailwindCSS
-
-
-
-Animation
-
-
-
-Framer Motion
-
-
-
-Icons
-
-
-
-Lucide
-
-
-
-State
-
-
-
-Zustand
-
-
-
-Database
-
-
-
-PostgreSQL
-
-
-
-ORM
-
-
-
-Prisma
-
-
-
-Deployment
-
-
-
-Vercel
-
-
-
-Repository
-
-
-
-GitHub
-
-
-
-Package Manager
-
-
-
-npm
-
-
-
-\---
-
-
-
-\# Architecture
-
-
-
-Feature Based
-
-
-
-src/
-
-
-
-app/
-
-
-
-core/
-
-
-
-shared/
-
-
-
-features/
-
-
-
-widgets/
-
-
-
-entities/
-
-
-
-styles/
-
-
-
-types/
-
-
-
-hooks/
-
-
-
-lib/
-
-
-
-\---
-
-
-
-\# Shared UI
-
-
-
-Button
-
-
-
-Input
-
-
-
-Card
-
-
-
-Container
-
-
-
-Section
-
-
-
-Typography
-
-
-
-Badge
-
-
-
-Glass
-
-
-
-Modal
-
-
-
-Dialog
-
-
-
-Sheet
-
-
-
-Drawer
-
-
-
-Toast
-
-
-
-Loader
-
-
-
-Spinner
-
-
-
-Divider
-
-
-
-Avatar
-
-
-
-\---
-
-
-
-\# Landing Structure
-
-
+# Landing Structure
 
 Hero
-
-
-
 Featured Products
-
-
-
 Story
-
-
-
 Why Garfilas
-
-
-
 Testimonials
-
-
-
 CTA
-
-
-
 Footer
-
-
-
 Bottom Navigation
 
+---
 
+# Hero Rules
 
-\---
+The first-page Hero is the only active design scope until it is accepted.
 
+The current visual source of truth is the supplied mobile reference screenshot from August 2026. It is a composition reference, not a background image.
 
+The Hero must remain a native React/CSS composition using independently replaceable supplied assets.
 
-\# Hero Rules
+Current intended order:
 
+1. Garfield + lasagna WebP artwork
+2. Circular orange/gold neon framing and glow
+3. GARFILAS / LASAGNA brand lockup
+4. Italian flag accent
+5. `Layers of Love, Taste of Italy` slogan
+6. Neon outlined `مشاهده منو` CTA
+7. Scroll cue
+8. Pill-shaped Bottom Navigation
 
+## Brand Lockup Rules
 
-Logo centered
+- Wordmark source: `public/assets/brand/garfilas-reference-logo.svg`
+- Slogan source: `public/assets/brand/garfilas-slogan-exact.svg`
+- Do not recreate the supplied wordmark as ordinary HTML text.
+- Do not replace the supplied wordmark with generated branding while the supplied asset exists.
+- The logo's visual treatment is a warm gold/orange neon effect, but the glow must remain controlled and must not wash out the letterforms.
+- The logo must remain crisp, premium and readable at the reference scale.
+- Fire/bloom effects are secondary to the actual SVG geometry.
 
+## Mascot Strategy
 
+The mascot remains part of the supplied Hero artwork and must not be replaced by a generated approximation while the approved WebP asset is available.
 
-No mascot
+---
 
-
-
-Strong CTA
-
-
-
-Dark background
-
-
-
-Orange glow
-
-
-
-Minimal copy
-
-
-
-Large spacing
-
-
-
-Immediate brand recognition
-
-
-
-\---
-
-
-
-\# Mascot Strategy
-
-
-
-The mascot will not appear on the first screen.
-
-
-
-Reason
-
-
-
-Curiosity.
-
-
-
-The character will gradually become part of the brand experience through menu pages, packaging and marketing.
-
-
-
-\---
-
-
-
-\# Navigation
-
-
+# Navigation
 
 Bottom Floating Navigation
 
-
-
 Profile
-
-
-
 Cart
-
-
-
 Contact
 
-
-
 Large tap targets
-
-
-
 Thumb friendly
 
+The center control remains visually larger/highlighted according to the mobile reference.
 
+---
 
-\---
+# Performance Goals
 
+Performance: 95+
+SEO: 100
+Accessibility: 95+
+Best Practices: 100
+First Paint: <2s
+LCP: <2.5s
+CLS: Near Zero
 
+---
 
-\# Performance Goals
-
-
-
-Performance
-
-
-
-95+
-
-
-
-SEO
-
-
-
-100
-
-
-
-Accessibility
-
-
-
-95+
-
-
-
-Best Practices
-
-
-
-100
-
-
-
-First Paint
-
-
-
-<2s
-
-
-
-Largest Contentful Paint
-
-
-
-<2.5s
-
-
-
-CLS
-
-
-
-Near Zero
-
-
-
-\---
-
-
-
-\# SEO Principles
-
-
-
-Semantic HTML
-
-
-
-Structured Data
-
-
-
-Metadata
-
-
-
-OpenGraph
-
-
-
-Twitter Cards
-
-
-
-JSON-LD
-
-
-
-Local SEO
-
-
-
-Fast Loading
-
-
-
-Optimized Images
-
-
-
-\---
-
-
-
-\# Accessibility
-
-
+# Accessibility
 
 Keyboard Friendly
-
-
-
 Readable Contrast
-
-
-
 ARIA Labels
-
-
-
 Focus States
-
-
-
 Reduced Motion Support
 
+---
 
-
-\---
-
-
-
-\# Development Principles
-
-
-
-Business First
-
-
-
-Launch Fast
-
-
-
-Improve Continuously
-
-
-
-Documentation Before Features
-
-
-
-No Premature Optimization
-
-
-
-No Over Engineering
-
-
-
-Production Ready Code Only
-
-
-
-\---
-
-
-
-\# Documentation Rules
-
-
+# Documentation Rules
 
 Every important decision must be documented.
-
-
-
 Every sprint must be logged.
-
-
-
 Every release must have a changelog.
-
-
-
 Documentation is the primary source of truth.
-
-
-
 Code follows documentation.
 
+---
 
-
-\---
-
-
-
-\# Git Workflow
-
-
+# Git Workflow
 
 Feature
-
-
-
 ↓
-
-
-
 Commit
-
-
-
 ↓
-
-
-
 Push
-
-
-
 ↓
-
-
-
 Deploy
-
-
-
 ↓
-
-
-
 Release
-
-
-
 ↓
-
-
-
 Tag
 
+---
 
+# Current Status
 
-\---
+- Repository: Connected
+- GitHub: Connected
+- Vercel: Connected
+- Landing Hero: In Development / Visual Calibration
+- Menu: Planned
+- Checkout: Planned
+- Admin: Future
 
+---
 
+# AI Collaboration Rules
 
-\# Release Roadmap
+Any AI contributing to Garfilas must:
 
+1. Read documentation first.
+2. Respect previous decisions.
+3. Inspect current code before changing it.
+4. Prefer supplied brand assets over recreations.
+5. Make the smallest change that advances the approved visual target.
+6. Avoid unnecessary architecture changes.
+7. Update documentation after significant visual or architectural changes.
+8. Protect brand identity and performance constraints.
 
+---
 
-v0.1.0
-
-
-
-Starter Kit
-
-
-
-v0.2.0
-
-
-
-Landing MVP
-
-
-
-v0.3.0
-
-
-
-Interactive Menu
-
-
-
-v0.4.0
-
-
-
-Product Pages
-
-
-
-v0.5.0
-
-
-
-Shopping Cart
-
-
-
-v0.6.0
-
-
-
-Checkout
-
-
-
-v0.7.0
-
-
-
-Authentication
-
-
-
-v0.8.0
-
-
-
-Admin Dashboard
-
-
-
-v0.9.0
-
-
-
-Restaurant Management
-
-
-
-v1.0.0
-
-
-
-Production Release
-
-
-
-\---
-
-
-
-\# Current Status
-
-
-
-Repository
-
-
-
-Connected
-
-
-
-GitHub
-
-
-
-Connected
-
-
-
-Vercel
-
-
-
-Connected
-
-
-
-Deployment
-
-
-
-Working
-
-
-
-Documentation
-
-
-
-Updated
-
-
-
-Architecture
-
-
-
-Approved
-
-
-
-Design System
-
-
-
-Approved
-
-
-
-Landing
-
-
-
-In Development
-
-
-
-Menu
-
-
-
-Planned
-
-
-
-Checkout
-
-
-
-Planned
-
-
-
-Admin
-
-
-
-Future
-
-
-
-\---
-
-
-
-\# Current Sprint
-
-
-
-Sprint 0.4
-
-
-
-Goal
-
-
-
-Build the first production-ready Landing Page.
-
-
-
-Deliverables
-
-
-
-\- Theme
-
-\- Design Tokens
-
-\- Globals
-
-\- Layout
-
-\- Hero
-
-\- CTA
-
-\- Featured Products
-
-\- Bottom Navigation
-
-\- Responsive Layout
-
-\- SEO Foundation
-
-\- Performance Optimization
-
-
-
-\---
-
-
-
-\# AI Collaboration Rules
-
-
-
-Any AI contributing to Garfilas must
-
-
-
-Read documentation first.
-
-
-
-Respect previous decisions.
-
-
-
-Avoid changing approved architecture.
-
-
-
-Prefer consistency over creativity.
-
-
-
-Never introduce unnecessary complexity.
-
-
-
-Always optimize for maintainability.
-
-
-
-Always protect brand identity.
-
-
-
-\---
-
-
-
-\# Project Motto
-
-
+# Project Motto
 
 Revenue Before Complexity.
-
-
-
 Launch First.
-
-
-
 Improve Continuously.
-
-
-
 Build Experiences.
-
-
-
 Not Pages.
 
+---
 
-
-\---
-
-
-
-Last Updated
-
-
-
-2026-07-21
-
-
-
-Documentation Version
-
-
-
-2.0.0
-
+Last Updated: 2026-08-16
+Documentation Version: 2.1.0
