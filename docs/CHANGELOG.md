@@ -4,31 +4,31 @@
 
 ### Added
 
-- Final Garfilas Hero WebP asset integration
-- Separate supplied wordmark and slogan assets in the Hero
-- Reference-oriented neon CTA composition
-- Native scroll cue
-- Reference-oriented Bottom Navigation with highlighted center control
+- Current SVG-based Garfilas wordmark calibration as the active visual direction
+- Explicit documentation of controlled neon/fire treatment for the supplied SVG logo
 
 ### Changed
 
-- Hero composition moved from the earlier placeholder/reference-image presentation to a native composition using the final WebP artwork
-- Hero layout reordered to match the supplied 2026-08-11 mobile reference
-- Neon rings and glow refined around the artwork
-- CTA moved toward the reference's outlined neon form
-- Bottom Navigation moved toward the reference's pill + three circular controls
-- Project documentation synchronized with the latest visual state and next calibration tasks
+- Hero now treats `public/assets/brand/garfilas-reference-logo.svg` as the only approved source for visible GARFILAS wordmark geometry
+- Removed the text-recreation approach from the documented implementation direction
+- Logo treatment refined toward a warm gold/orange neon appearance
+- Current calibration target changed from adding more light to reducing excessive bloom and preserving crisp letterforms
+- Documentation synchronized with the latest Hero/logo review
 
 ### Fixed
 
-- Hero now references `public/assets/hero/garfilas-hero-final.webp` instead of the old JPG placeholder
-- Stale documentation describing the old standalone JPG Hero was removed from current-state documents
+- Documented the previous failure mode where a text layer could receive visual effects instead of the supplied SVG
+- Documented the requirement that neon/fire effects must support the SVG geometry rather than obscure it
 
 ### Pending
 
-- Slightly reduce overall Hero/artwork scale
-- Precisely match Bottom Navigation geometry and button proportions to the reference
+- Reduce logo brightness and bloom to reference level
+- Match logo edge glow, color balance, scale and position
+- Match LASAGNA and its side lines
+- Match Italian flag size and position
+- Match slogan treatment and spacing
 - Final CTA spacing calibration
+- Precisely match Bottom Navigation geometry and button proportions
 - Mobile visual acceptance
 - Desktop responsive calibration
 - Local production-build verification
@@ -51,4 +51,4 @@ Landing Page MVP completion after Hero acceptance:
 - Performance optimization
 - Local production-build verification
 
-Last Updated: 2026-08-11
+Last Updated: 2026-08-16
