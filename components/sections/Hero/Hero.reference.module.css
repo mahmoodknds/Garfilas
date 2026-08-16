@@ -43,7 +43,7 @@
   text-rendering: geometricPrecision;
 }
 
-.heroReference :global(.hero-logo-image) {
+.heroReference :global(.hero-logo-mark) {
   filter:
     drop-shadow(0 0 3px rgba(255, 184, 83, 0.88))
     drop-shadow(0 0 11px rgba(255, 105, 13, 0.48))
