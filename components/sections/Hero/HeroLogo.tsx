@@ -7,6 +7,15 @@ export default function HeroLogo() {
           src="/assets/brand/garfilas-reference-logo.svg"
           alt=""
           draggable={false}
+          style={{
+            display: "block",
+            width: "min(76vw, 29rem)",
+            height: "auto",
+            maxWidth: "100%",
+            maxHeight: "100%",
+            objectFit: "contain",
+            filter: "none",
+          }}
         />
       </div>
 
