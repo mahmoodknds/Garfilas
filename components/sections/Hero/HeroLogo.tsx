@@ -19,7 +19,7 @@ export default function HeroLogo() {
         />
       </div>
 
-      <div className="hero-product-name" aria-hidden="true">
+      <div className="hero-product-name animate-neon-fault" aria-hidden="true">
         LASAGNA
       </div>
 
