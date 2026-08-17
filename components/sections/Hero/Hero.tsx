@@ -13,21 +13,6 @@ export default function Hero() {
       <div className="hero-shell">
         <div className="hero-copy">
           <HeroLogo />
-          <div
-            className="hero-tagline"
-            aria-label="Layers of Love, Taste of Italy"
-            style={{ display: "flex", justifyContent: "center", width: "100%" }}
-          >
-            <img
-              className="hero-tagline-image"
-              src="/assets/brand/garfilas-slogan-exact.svg"
-              alt="Layers of Love, Taste of Italy"
-              width={597}
-              height={100}
-              fetchPriority="high"
-              style={{ width: "min(82vw, 30rem)", height: "auto", display: "block" }}
-            />
-          </div>
         </div>
 
         <div className="hero-mascot" aria-label="Garfilas hero artwork">
