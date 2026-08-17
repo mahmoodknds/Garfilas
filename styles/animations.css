@@ -5,15 +5,15 @@
 
 @keyframes neon-fault {
   0%, 78%, 100% { opacity: 1; filter: brightness(1); }
-  79% { opacity: .82; filter: brightness(.9); }
-  80% { opacity: .58; filter: brightness(.68); }
-  81% { opacity: .34; filter: brightness(.48); }
-  82% { opacity: .18; filter: brightness(.28); }
-  83% { opacity: .42; filter: brightness(.55); }
-  84% { opacity: .72; filter: brightness(.78); }
-  85% { opacity: .94; filter: brightness(.98); }
-  86% { opacity: .64; filter: brightness(.72); }
-  87% { opacity: .86; filter: brightness(.9); }
+  79% { opacity: .88; filter: brightness(.94); }
+  80% { opacity: .72; filter: brightness(.8); }
+  81% { opacity: .5; filter: brightness(.62); }
+  82% { opacity: .3; filter: brightness(.42); }
+  83% { opacity: .5; filter: brightness(.62); }
+  84% { opacity: .72; filter: brightness(.8); }
+  85% { opacity: .9; filter: brightness(.95); }
+  86% { opacity: .66; filter: brightness(.76); }
+  87% { opacity: .84; filter: brightness(.9); }
   88%, 100% { opacity: 1; filter: brightness(1); }
 }
 
@@ -23,7 +23,7 @@
 }
 
 .animate-float { animation: float var(--transition-slow) ease-in-out infinite; }
-.animate-neon-fault { animation: neon-fault 7.2s ease-in-out infinite; }
+.animate-neon-fault { animation: neon-fault 7.8s ease-in-out infinite; }
 .animate-fade-up { animation: fadeUp 500ms ease-out both; }
 .animate-fade-up-delay-1 { animation: fadeUp 500ms 100ms ease-out both; }
 .animate-fade-up-delay-2 { animation: fadeUp 500ms 180ms ease-out both; }
