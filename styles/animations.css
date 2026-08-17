@@ -3,17 +3,24 @@
   50% { transform: translateY(-10px); }
 }
 
+/* Horror-scene fluorescent fault: long quiet period, then an unstable tube-start flicker. */
 @keyframes neon-fault {
-  0%, 78%, 100% { opacity: 1; filter: brightness(1); }
-  79% { opacity: .88; filter: brightness(.94); }
-  80% { opacity: .72; filter: brightness(.8); }
-  81% { opacity: .5; filter: brightness(.62); }
-  82% { opacity: .3; filter: brightness(.42); }
-  83% { opacity: .5; filter: brightness(.62); }
-  84% { opacity: .72; filter: brightness(.8); }
+  0%, 72%, 100% { opacity: 1; filter: brightness(1); }
+  73% { opacity: .96; filter: brightness(.98); }
+  74% { opacity: .78; filter: brightness(.82); }
+  75% { opacity: .46; filter: brightness(.55); }
+  76% { opacity: .72; filter: brightness(.78); }
+  77% { opacity: .22; filter: brightness(.3); }
+  78% { opacity: .58; filter: brightness(.64); }
+  79% { opacity: .08; filter: brightness(.12); }
+  80% { opacity: .35; filter: brightness(.42); }
+  81% { opacity: .74; filter: brightness(.8); }
+  82% { opacity: .28; filter: brightness(.35); }
+  83% { opacity: .82; filter: brightness(.88); }
+  84% { opacity: .48; filter: brightness(.58); }
   85% { opacity: .9; filter: brightness(.95); }
-  86% { opacity: .66; filter: brightness(.76); }
-  87% { opacity: .84; filter: brightness(.9); }
+  86% { opacity: .62; filter: brightness(.72); }
+  87% { opacity: .94; filter: brightness(.98); }
   88%, 100% { opacity: 1; filter: brightness(1); }
 }
 
@@ -23,7 +30,7 @@
 }
 
 .animate-float { animation: float var(--transition-slow) ease-in-out infinite; }
-.animate-neon-fault { animation: neon-fault 7.8s ease-in-out infinite; }
+.animate-neon-fault { animation: neon-fault 8.6s linear infinite; }
 .animate-fade-up { animation: fadeUp 500ms ease-out both; }
 .animate-fade-up-delay-1 { animation: fadeUp 500ms 100ms ease-out both; }
 .animate-fade-up-delay-2 { animation: fadeUp 500ms 180ms ease-out both; }
