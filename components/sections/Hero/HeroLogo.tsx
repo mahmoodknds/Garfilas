@@ -1,30 +1,10 @@
 export default function HeroLogo() {
   return (
-    <div className="hero-logo" aria-label="Garfilas">
-      <img
-        className="hero-logo-image hero-logo-glow hero-logo-glow-outer"
-        src="/assets/brand/garfilas-reference-logo.svg"
-        alt=""
-        aria-hidden="true"
-        width={790}
-        height={235}
-        fetchPriority="high"
-      />
-      <img
-        className="hero-logo-image hero-logo-glow hero-logo-glow-neon"
-        src="/assets/brand/garfilas-reference-logo.svg"
-        alt=""
-        aria-hidden="true"
-        width={790}
-        height={235}
-      />
-      <img
-        className="hero-logo-image hero-logo-core"
-        src="/assets/brand/garfilas-reference-logo.svg"
-        alt="Garfilas Italian Lasagna"
-        width={790}
-        height={235}
-      />
+    <div className="hero-logo" role="img" aria-label="Garfilas Italian Lasagna">
+      <span className="hero-logo-mask hero-logo-glow hero-logo-glow-outer" aria-hidden="true" />
+      <span className="hero-logo-mask hero-logo-glow hero-logo-glow-neon" aria-hidden="true" />
+      <span className="hero-logo-mask hero-logo-core" aria-hidden="true" />
+      <span className="sr-only">Garfilas Italian Lasagna</span>
     </div>
   );
 }
