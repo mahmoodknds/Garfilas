@@ -3,25 +3,25 @@
   50% { transform: translateY(-10px); }
 }
 
-/* Horror-scene fluorescent fault: slower overall, with a long stable hold and a brief unstable start. */
+/* Horror-scene fluorescent fault: first failure arrives around 2s, then repeats slowly. */
 @keyframes neon-fault {
-  0%, 67%, 100% { opacity: 1; filter: brightness(1); }
-  68% { opacity: .97; filter: brightness(.99); }
-  69% { opacity: .84; filter: brightness(.88); }
-  70% { opacity: .62; filter: brightness(.7); }
-  71% { opacity: .8; filter: brightness(.84); }
-  72% { opacity: .34; filter: brightness(.44); }
-  73% { opacity: .68; filter: brightness(.74); }
-  74% { opacity: .12; filter: brightness(.18); }
-  75% { opacity: .46; filter: brightness(.55); }
-  76% { opacity: .76; filter: brightness(.82); }
-  77% { opacity: .24; filter: brightness(.32); }
-  78% { opacity: .72; filter: brightness(.78); }
-  79% { opacity: .42; filter: brightness(.52); }
-  80% { opacity: .88; filter: brightness(.93); }
-  81% { opacity: .58; filter: brightness(.68); }
-  82% { opacity: .94; filter: brightness(.98); }
-  83%, 100% { opacity: 1; filter: brightness(1); }
+  0%, 21%, 100% { opacity: 1; filter: brightness(1); }
+  22% { opacity: .97; filter: brightness(.99); }
+  23% { opacity: .84; filter: brightness(.88); }
+  24% { opacity: .62; filter: brightness(.7); }
+  25% { opacity: .8; filter: brightness(.84); }
+  26% { opacity: .34; filter: brightness(.44); }
+  27% { opacity: .68; filter: brightness(.74); }
+  28% { opacity: .12; filter: brightness(.18); }
+  29% { opacity: .46; filter: brightness(.55); }
+  30% { opacity: .76; filter: brightness(.82); }
+  31% { opacity: .24; filter: brightness(.32); }
+  32% { opacity: .72; filter: brightness(.78); }
+  33% { opacity: .42; filter: brightness(.52); }
+  34% { opacity: .88; filter: brightness(.93); }
+  35% { opacity: .58; filter: brightness(.68); }
+  36% { opacity: .94; filter: brightness(.98); }
+  37%, 100% { opacity: 1; filter: brightness(1); }
 }
 
 @keyframes fadeUp {
