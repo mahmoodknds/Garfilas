@@ -1,9 +1,9 @@
 export default function HeroLogo() {
   return (
     <div className="hero-logo-lockup" aria-label="Garfilas Italian Lasagna">
-      <div className="hero-logo" aria-hidden="true">
+      <div className="hero-logo hero-logo-entrance" aria-hidden="true">
         <img
-          className="hero-logo-artwork"
+          className="hero-logo-artwork hero-logo-breathe"
           src="/assets/brand/garfilas-reference-logo.svg"
           alt=""
           draggable={false}
