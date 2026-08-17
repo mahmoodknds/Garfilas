@@ -21,12 +21,18 @@ const referenceNeon = {
 
 export default function HeroLogo() {
   return (
-    <div className="hero-logo" aria-label="Garfilas">
-      <span
-        className="hero-logo-neon"
-        aria-hidden="true"
-        style={referenceNeon}
-      />
+    <div className="hero-logo-lockup" aria-label="Garfilas Italian Lasagna">
+      <div className="hero-logo" aria-hidden="true">
+        <span
+          className="hero-logo-neon"
+          style={referenceNeon}
+        />
+      </div>
+
+      <div className="hero-product-name" aria-hidden="true">
+        LASAGNA
+      </div>
+
       <span className="sr-only">Garfilas Italian Lasagna</span>
     </div>
   );
