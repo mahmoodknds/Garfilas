@@ -19,7 +19,24 @@ export default function HeroLogo() {
         />
       </div>
 
-      <div className="hero-product-name animate-neon-fault" aria-hidden="true">
+      <div
+        className="hero-product-name"
+        aria-hidden="true"
+        style={{
+          marginTop: "clamp(0.18rem, 0.8vw, 0.42rem)",
+          color: "#ff7a00",
+          fontFamily: 'Didot, "Bodoni 72", "Bodoni MT", "Times New Roman", serif',
+          fontSize: "clamp(0.72rem, 2.45vw, 1.02rem)",
+          fontWeight: 400,
+          lineHeight: 1,
+          letterSpacing: "0.34em",
+          textIndent: "0.34em",
+          textTransform: "uppercase",
+          whiteSpace: "nowrap",
+          textAlign: "center",
+          textShadow: "0 0 3px rgba(255,122,0,.9), 0 0 8px rgba(255,122,0,.55), 0 0 18px rgba(255,122,0,.28)",
+        }}
+      >
         LASAGNA
       </div>
 
