@@ -24,7 +24,14 @@ export default function HeroLogo() {
           pointerEvents: "none",
           background: "#ff6500",
           ...logoMask,
-          filter: "drop-shadow(0 0 1px #ffb13b) drop-shadow(0 0 3px #ff7a08) drop-shadow(0 0 7px rgba(255,101,0,.95)) drop-shadow(0 0 15px rgba(255,74,0,.68)) drop-shadow(0 0 28px rgba(255,64,0,.34))",
+          filter: [
+            "drop-shadow(0 0 0.45px rgba(255,248,214,1))",
+            "drop-shadow(0 0 1.15px rgba(255,218,133,1))",
+            "drop-shadow(0 0 2.8px rgba(255,145,34,.98))",
+            "drop-shadow(0 0 5.5px rgba(255,101,0,.92))",
+            "drop-shadow(0 0 10px rgba(255,101,0,.68))",
+            "drop-shadow(0 0 18px rgba(255,82,0,.38))",
+          ].join(" "),
         }}
       />
       <span className="sr-only">Garfilas Italian Lasagna</span>
