@@ -2,7 +2,7 @@
 
 ## Garfilas Development Backlog
 
-Only unfinished work belongs here. Completed work is recorded in `SESSION_LOG.md` and `CHANGELOG.md`.
+Only unfinished work belongs here. Completed work is recorded in the session/changelog documentation.
 
 ---
 
@@ -12,9 +12,7 @@ Only unfinished work belongs here. Completed work is recorded in `SESSION_LOG.md
 - Sprint: 0.4
 - Milestone: Landing Page MVP
 - Current priority: **First-page Hero visual completion**
-- Last Updated: 2026-08-16
-
----
+- Last Updated: 2026-08-18
 
 # HIGH PRIORITY
 
@@ -27,7 +25,11 @@ Status: 🟡 **Visual calibration in progress**
 - [x] Native Hero composition
 - [x] Final Garfield WebP integrated
 - [x] Supplied Garfilas wordmark SVG integrated
-- [x] Supplied slogan SVG integrated
+- [x] Old slogan SVG dependency removed
+- [x] Slogan rendered as HTML text
+- [x] LASAGNA HTML lockup
+- [x] LASAGNA side lines
+- [x] Italian flag inline SVG accent
 - [x] Dark luxury background
 - [x] CSS neon rings and glow
 - [x] Native CTA
@@ -35,28 +37,29 @@ Status: 🟡 **Visual calibration in progress**
 - [x] Native Bottom Navigation
 - [x] Responsive foundation
 - [x] Reduced-motion support
+- [x] Neon electrical-fault animation direction
 
 ### Remaining
 
 #### Logo
 
-- [ ] Reduce logo neon/bloom intensity to match reference
-- [ ] Match logo gold/orange color balance to reference
-- [ ] Match logo edge glow and fire/bloom spread to reference
-- [ ] Match logo scale and position to reference
+- [ ] Verify first neon fault starts around 2 seconds after page entry
+- [ ] Match logo neon/bloom intensity to reference
+- [ ] Match logo gold/orange color balance
+- [ ] Match logo edge glow and fire/bloom spread
+- [ ] Match logo scale and position
 - [ ] Confirm SVG remains the only visible GARFILAS geometry source
 
 #### Lockup
 
-- [ ] Match LASAGNA size, font treatment and spacing to reference
-- [ ] Match side lines beside LASAGNA
-- [ ] Match Italian flag size and position
-- [ ] Match slogan size, font treatment, glow and spacing
+- [ ] Match LASAGNA font, size and letter spacing to reference
+- [ ] Match LASAGNA side-line length, thickness and spacing
+- [ ] Match Italian flag width/height, taper and end fade
+- [ ] Match slogan font, size, color, glow and spacing
 
 #### Hero Layout
 
-- [ ] Make overall Hero/artwork composition slightly smaller where required
-- [ ] Finalize vertical spacing between artwork, logo, slogan, CTA and navigation
+- [ ] Finalize vertical spacing between artwork, logo, lockup, slogan, CTA and navigation
 - [ ] Finalize CTA width/height/radius/glow against reference
 - [ ] Match Bottom Navigation outer pill geometry
 - [ ] Match three navigation button sizes and spacing
@@ -64,8 +67,6 @@ Status: 🟡 **Visual calibration in progress**
 - [ ] Match navigation borders, glow and active indicator
 - [ ] Final mobile visual acceptance
 - [ ] Desktop responsive calibration
-
----
 
 ## Landing Page Supporting Sections
 
@@ -78,8 +79,6 @@ Do not expand these sections until the first-page Hero is accepted.
 - [ ] Why Garfilas
 - [ ] Secondary CTA
 - [ ] Footer
-
----
 
 # DESIGN SYSTEM
 
@@ -95,8 +94,6 @@ Status: 🟡 In Progress
 - [ ] Finalize spacing
 - [ ] Finalize responsive grid
 
----
-
 # SEO
 
 Status: 🟡 In Progress
@@ -109,8 +106,6 @@ Status: 🟡 In Progress
 - [ ] Robots
 - [ ] Canonical URLs
 
----
-
 # PERFORMANCE
 
 Status: 🟡 In Progress
@@ -121,8 +116,6 @@ Status: 🟡 In Progress
 - [ ] Review font loading
 - [ ] Bundle analysis
 - [ ] Lighthouse verification
-
----
 
 # TESTING
 
@@ -135,8 +128,6 @@ Status: ⚪ Planned
 - [ ] Mobile viewport verification
 - [ ] Desktop viewport verification
 
----
-
 # DEPLOYMENT
 
 Status: 🟡 In Progress
@@ -148,16 +139,13 @@ Status: 🟡 In Progress
 - [ ] SSL
 - [ ] Monitoring
 
----
-
 # FUTURE PRODUCT SYSTEMS
 
 Status: ⚪ Planned
 
-These are explicitly out of the current Hero-calibration scope.
+These remain out of the current Hero-calibration scope.
 
 ## Menu
-
 - [ ] Categories
 - [ ] Product List
 - [ ] Product Details
@@ -166,7 +154,6 @@ These are explicitly out of the current Hero-calibration scope.
 - [ ] Sorting
 
 ## Shopping Cart
-
 - [ ] Cart Store
 - [ ] Cart Drawer
 - [ ] Quantity Controls
@@ -174,7 +161,6 @@ These are explicitly out of the current Hero-calibration scope.
 - [ ] Notes
 
 ## Checkout
-
 - [ ] Address
 - [ ] Delivery Time
 - [ ] Payment
@@ -182,7 +168,6 @@ These are explicitly out of the current Hero-calibration scope.
 - [ ] Success Page
 
 ## Authentication / User Panel
-
 - [ ] Login
 - [ ] Register
 - [ ] OTP
@@ -193,7 +178,6 @@ These are explicitly out of the current Hero-calibration scope.
 - [ ] Notifications
 
 ## Admin Panel
-
 - [ ] Dashboard
 - [ ] Products
 - [ ] Orders
@@ -202,31 +186,30 @@ These are explicitly out of the current Hero-calibration scope.
 - [ ] Discounts
 - [ ] Reports
 
----
-
 # DOCUMENTATION
 
-Status: 🟢 **Synchronized**
+Status: 🟢 **Synchronized except SESSION_LOG write pending GitHub SHA conflict**
 
 - [x] Project State
-- [x] Session Log
 - [x] AI Context
+- [x] TODO
 - [x] Changelog
 - [x] Architecture
 - [x] Coding Rules
 - [x] Decisions
 - [x] Garfilas Bible
-
----
+- [ ] Session Log refresh
 
 # Exact Next Work
 
-1. Reduce SVG logo brightness/bloom.
-2. Match logo color, edge glow, scale and position to the reference.
-3. Match LASAGNA, side lines, flag and slogan independently.
-4. Refine CTA and vertical spacing.
-5. Precisely reproduce Bottom Navigation geometry and button proportions.
-6. Validate mobile.
-7. Validate desktop.
-8. Run production build verification.
-9. Stop before adding new website scope.
+1. Verify the current deployed Hero against the latest reference.
+2. Verify/retime the first neon fault to ~2 seconds if necessary.
+3. Calibrate LASAGNA typography and side lines.
+4. Calibrate Italian flag proportions, taper, fade and glow.
+5. Calibrate slogan typography, size, color and spacing.
+6. Refine CTA and vertical spacing.
+7. Precisely reproduce Bottom Navigation geometry and proportions.
+8. Validate mobile.
+9. Validate desktop.
+10. Run production build verification.
+11. Stop before adding new website scope.
