@@ -4,31 +4,35 @@
 
 ### Added
 
-- Current SVG-based Garfilas wordmark calibration as the active visual direction
-- Explicit documentation of controlled neon/fire treatment for the supplied SVG logo
+- Independent HTML LASAGNA lockup with two side lines
+- Native inline SVG Italian flag accent with tapered/faded ends
+- HTML slogan treatment using `Layers of Love, Taste of Italy`
+- Intermittent electrical fluorescent-style neon fault animation for GARFILAS
 
 ### Changed
 
-- Hero now treats `public/assets/brand/garfilas-reference-logo.svg` as the only approved source for visible GARFILAS wordmark geometry
-- Removed the text-recreation approach from the documented implementation direction
-- Logo treatment refined toward a warm gold/orange neon appearance
-- Current calibration target changed from adding more light to reducing excessive bloom and preserving crisp letterforms
-- Documentation synchronized with the latest Hero/logo review
+- Hero calibration is now driven directly by the latest user-supplied reference screenshot
+- GARFILAS remains sourced exclusively from `public/assets/brand/garfilas-reference-logo.svg`
+- Slogan changed from SVG artwork to a single HTML text element after the old asset caused a duplicate/broken-image render
+- LASAGNA is calibrated independently from GARFILAS rather than being treated as part of the supplied SVG
+- Italian flag changed from the earlier CSS treatment to an inline SVG with a thin tapered/faded reference treatment
+- Neon animation changed from breathing/blinking to a slower fluorescent-tube fault pattern with gradual dimming and irregular recovery flickers
 
 ### Fixed
 
-- Documented the previous failure mode where a text layer could receive visual effects instead of the supplied SVG
-- Documented the requirement that neon/fire effects must support the SVG geometry rather than obscure it
+- Removed the legacy slogan SVG dependency that produced a broken image and duplicate slogan
+- Removed the incorrect text recreation approach for the GARFILAS wordmark
+- Corrected the Italian flag's oversized/capsule-like appearance
 
 ### Pending
 
-- Reduce logo brightness and bloom to reference level
-- Match logo edge glow, color balance, scale and position
-- Match LASAGNA and its side lines
-- Match Italian flag size and position
-- Match slogan treatment and spacing
-- Final CTA spacing calibration
-- Precisely match Bottom Navigation geometry and button proportions
+- Verify first neon fault occurs around 2 seconds after page entry
+- Final GARFILAS neon color/bloom calibration
+- Final LASAGNA font, size, letter spacing and side-line calibration
+- Final Italian flag width, height, taper, fade and glow calibration
+- Final slogan font, size, color, glow and spacing calibration
+- CTA spacing calibration
+- Bottom Navigation geometry and button-proportion calibration
 - Mobile visual acceptance
 - Desktop responsive calibration
 - Local production-build verification
@@ -51,4 +55,4 @@ Landing Page MVP completion after Hero acceptance:
 - Performance optimization
 - Local production-build verification
 
-Last Updated: 2026-08-16
+Last Updated: 2026-08-18
