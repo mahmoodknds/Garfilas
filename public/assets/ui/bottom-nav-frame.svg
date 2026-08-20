@@ -1,0 +1,15 @@
+<svg width="1024" height="220" viewBox="0 0 1024 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="surface" x1="512" y1="0" x2="512" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B0806" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#050403" stop-opacity="0.96"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-30%" width="140%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.98 0 1 0 0 0.34 0 0 1 0 0.02 0 0 0 0.75 0"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <path d="M2 48 C2 26 18 10 42 10 H394 C424 10 445 6 461 -3 C477 -12 491 -18 512 -18 C533 -18 547 -12 563 -3 C579 6 600 10 630 10 H982 C1006 10 1022 26 1022 48 V184 C1022 204 1008 218 988 218 H36 C16 218 2 204 2 184 Z" fill="url(#surface)" stroke="#FF6F08" stroke-opacity="0.72" stroke-width="2" filter="url(#glow)"/>
+  <path d="M4 49 C4 28 20 12 43 12 H395 C426 12 447 8 463 -1 C479 -10 492 -16 512 -16 C532 -16 545 -10 561 -1 C577 8 598 12 629 12 H981 C1004 12 1020 28 1020 49" stroke="#FFB04A" stroke-opacity="0.18" stroke-width="1" fill="none"/>
+</svg>
