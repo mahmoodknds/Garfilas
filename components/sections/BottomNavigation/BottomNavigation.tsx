@@ -11,94 +11,74 @@ export default function BottomNavigation() {
     <nav className="bottom-nav" aria-label="ناوبری اصلی">
       <style>{`
         .bottom-nav {
-          width: min(100vw - 0.1rem, 64rem) !important;
-          min-height: clamp(5.8rem, 20.4vw, 13rem) !important;
-          bottom: max(0rem, env(safe-area-inset-bottom)) !important;
-          padding: clamp(.8rem, 2.5vw, 1.35rem) clamp(1rem, 4vw, 2.4rem) clamp(.65rem, 2vw, 1.15rem) !important;
-          border: 1px solid rgba(255, 111, 8, .62) !important;
-          border-radius: clamp(1.4rem, 4.8vw, 3.25rem) clamp(1.4rem, 4.8vw, 3.25rem) clamp(1.65rem, 5vw, 3.5rem) clamp(1.65rem, 5vw, 3.5rem) !important;
-          background:
-            linear-gradient(180deg, rgba(10, 7, 5, .58), rgba(5, 4, 3, .94)),
-            rgba(7, 5, 4, .9) !important;
-          box-shadow:
-            0 -1px 0 rgba(255, 168, 71, .16),
-            0 0 14px rgba(255, 74, 0, .10),
-            inset 0 1px 0 rgba(255, 139, 28, .08),
-            inset 0 0 24px rgba(255, 74, 0, .025) !important;
-          backdrop-filter: blur(18px);
+          position: fixed !important;
+          left: 50% !important;
+          bottom: max(0px, env(safe-area-inset-bottom)) !important;
+          transform: translateX(-50%) !important;
+          width: min(100vw, 64rem) !important;
+          height: min(21.485vw, 13.75rem) !important;
+          min-height: 6.25rem !important;
+          padding: 1.55rem clamp(1.25rem, 8vw, 5rem) .8rem !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          background: transparent !important;
+          border: 0 !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          backdrop-filter: none !important;
           overflow: visible !important;
           isolation: isolate;
+          z-index: 50 !important;
         }
 
-        /* The reference has a raised, organic shoulder around the center control,
-           rather than a conventional capsule/pill top edge. */
-        .bottom-nav::before {
-          content: "";
+        .bottom-nav-frame {
           position: absolute;
-          z-index: -1;
-          left: 50%;
-          top: -1px;
-          width: clamp(6.6rem, 25vw, 15.5rem);
-          height: clamp(1.35rem, 4.5vw, 3rem);
-          transform: translateX(-50%);
-          border: 1px solid rgba(255, 111, 8, .62);
-          border-bottom: 0;
-          border-radius: 999px 999px 0 0;
-          background: linear-gradient(180deg, rgba(10, 7, 5, .9), rgba(7, 5, 4, .98));
-          box-shadow:
-            0 -1px 0 rgba(255, 168, 71, .12),
-            0 0 12px rgba(255, 74, 0, .08),
-            inset 0 1px 0 rgba(255, 139, 28, .06);
-          pointer-events: none;
-        }
-
-        /* Mask the original straight top border underneath the raised center. */
-        .bottom-nav::after {
-          content: "";
-          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
           z-index: 0;
-          left: 50%;
-          top: 0;
-          width: clamp(5.9rem, 22vw, 13.8rem);
-          height: clamp(1.2rem, 4vw, 2.7rem);
-          transform: translateX(-50%);
-          border-radius: 999px 999px 0 0;
-          background: rgba(8, 6, 4, .96);
           pointer-events: none;
+          object-fit: fill;
         }
 
         .bottom-nav-link {
+          position: relative;
           z-index: 2;
           flex: 0 0 auto;
+          display: grid !important;
+          place-items: center !important;
+          margin: 0 !important;
         }
 
-        .bottom-nav-link:nth-child(2) {
+        .bottom-nav-link:nth-of-type(2) {
           z-index: 4;
-          position: relative;
-          margin-top: clamp(-1.5rem, -4vw, -0.8rem) !important;
+          margin-top: -.25rem !important;
         }
 
         @media (max-width: 699px) {
           .bottom-nav {
-            width: calc(100vw - .15rem) !important;
-            border-radius: 1.45rem 1.45rem 1.8rem 1.8rem !important;
+            width: 100vw !important;
+            height: 21.485vw !important;
+            min-height: 5.25rem !important;
+            padding: 1.25rem 8vw .65rem !important;
           }
+        }
 
-          .bottom-nav::before {
-            width: 25vw;
-            min-width: 6.2rem;
-            max-width: 8.5rem;
-            height: 1.45rem;
-          }
-
-          .bottom-nav::after {
-            width: 22vw;
-            min-width: 5.5rem;
-            max-width: 7.7rem;
-            height: 1.3rem;
+        @media (min-width: 700px) {
+          .bottom-nav-link:nth-of-type(2) {
+            margin-top: -.35rem !important;
           }
         }
       `}</style>
+
+      <img
+        className="bottom-nav-frame"
+        src="/assets/ui/bottom-nav-frame.svg"
+        alt=""
+        aria-hidden="true"
+      />
 
       {items.map(({ href, label, icon: Icon }, index) => (
         <a
@@ -112,7 +92,6 @@ export default function BottomNavigation() {
               ? {
                   width: "4.35rem",
                   height: "4.35rem",
-                  marginTop: "-1.05rem",
                   borderWidth: "1.5px",
                 }
               : {
