@@ -9,6 +9,6 @@
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
-  <path d="M2 50 C2 27 19 10 43 10 H390 C422 10 444 5 461 7 C476 3 492 0 512 0 C532 0 548 3 563 7 C580 5 602 10 634 10 H981 C1005 10 1022 27 1022 50 V183 C1022 205 1007 218 985 218 H39 C17 218 2 205 2 183 Z" fill="url(#surface)" stroke="#FF6F08" stroke-opacity="0.72" stroke-width="2" filter="url(#edgeGlow)"/>
-  <path d="M5 50 C5 29 20 13 44 13 H391 C423 13 445 8 463 10 C478 6 493 3 512 3 C531 3 546 6 561 10 C579 8 601 13 633 13 H980 C1004 13 1019 29 1019 50" stroke="#FFB04A" stroke-opacity="0.16" stroke-width="1" fill="none"/>
+  <path d="M2 50 C2 27 19 10 43 10 H390 C420 10 436 10 450 8 C470 2 480 0 512 0 C544 0 554 2 574 8 C588 10 604 10 634 10 H981 C1005 10 1022 27 1022 50 V183 C1022 205 1007 218 985 218 H39 C17 218 2 205 2 183 Z" fill="url(#surface)" stroke="#FF6F08" stroke-opacity="0.72" stroke-width="2" filter="url(#edgeGlow)"/>
+  <path d="M5 50 C5 29 20 13 44 13 H391 C421 13 437 13 451 11 C470 5 481 3 512 3 C543 3 554 5 573 11 C587 13 603 13 633 13 H980 C1004 13 1019 29 1019 50" stroke="#FFB04A" stroke-opacity="0.16" stroke-width="1" fill="none"/>
 </svg>
