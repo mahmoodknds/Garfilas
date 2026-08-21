@@ -1,1 +1,133 @@
-<svg width="1024" height="220" viewBox="0 0 1024 220" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="s" x1="90" y1="62" x2="934" y2="214" gradientUnits="userSpaceOnUse"><stop stop-color="#FFE08A"/><stop offset=".18" stop-color="#FFB51B"/><stop offset=".5" stop-color="#FF8A00"/><stop offset=".82" stop-color="#FF6200"/><stop offset="1" stop-color="#FF4D00"/></linearGradient><filter id="g" x="-15%" y="-45%" width="130%" height="190%"><feGaussianBlur stdDeviation="7" result="b"/><feColorMatrix in="b" type="matrix" values="1 0 0 0 1 0 1 0 0 .25 0 0 1 0 0 0 0 0 .6 0" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="ig" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter></defs><path d="M0 136C0 114 18 96 42 96H402C420 96 431 92 445 79C462 63 480 54 512 54C544 54 562 63 579 79C593 92 604 96 622 96H982C1006 96 1024 114 1024 136V188C1024 206 1010 220 992 220H32C14 220 0 206 0 188V136Z" fill="#050403" fill-opacity=".55" stroke="#FF7A00" stroke-width="8" stroke-linejoin="round" filter="url(#g)"/><path d="M0 136C0 114 18 96 42 96H402C420 96 431 92 445 79C462 63 480 54 512 54C544 54 562 63 579 79C593 92 604 96 622 96H982C1006 96 1024 114 1024 136V188C1024 206 1010 220 992 220H32C14 220 0 206 0 188V136Z" fill="#050403" fill-opacity=".55" stroke="url(#s)" stroke-width="3" stroke-linejoin="round"/><path d="M2 137C2 116 19 99 43 99H403C422 99 434 95 447 82C464 66 482 57 512 57C542 57 560 66 577 82C590 95 602 99 621 99H981C1005 99 1022 116 1022 137V187C1022 203 1009 217 991 217H33C15 217 2 203 2 187V137Z" fill="none" stroke="#FFD08A" stroke-opacity=".2" stroke-width="2" stroke-linejoin="round" filter="url(#ig)"/><path d="M18 145C18 124 30 110 50 110H400C423 110 439 104 452 91C468 75 486 68 512 68C538 68 556 75 572 91C585 104 601 110 624 110H974C994 110 1006 124 1006 145V181C1006 195 997 202 982 202H42C27 202 18 195 18 181V145Z" fill="#FFB04A" fill-opacity=".05"/><path d="M33 212H991" stroke="#FF7A00" stroke-opacity=".3" stroke-width="8" stroke-linecap="round"/><path d="M32 218H992" stroke="#FF7A00" stroke-opacity=".72" stroke-width="2" stroke-linecap="round"/></svg>
+<svg width="1024" height="220" viewBox="0 0 1024 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="strokeGradient" x1="64" y1="92" x2="960" y2="216" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE08A"/>
+      <stop offset="0.34" stop-color="#FF8A00"/>
+      <stop offset="0.72" stop-color="#FF6A00"/>
+      <stop offset="1" stop-color="#FF4D00"/>
+    </linearGradient>
+    <linearGradient id="innerHighlight" x1="512" y1="54" x2="512" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD08A" stop-opacity="0.20"/>
+      <stop offset="0.55" stop-color="#FF9A24" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#FF7A00" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="512" y1="94" x2="512" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17100B" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="bottomGlow" x1="80" y1="218" x2="944" y2="218" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF7A00" stop-opacity="0"/>
+      <stop offset="0.16" stop-color="#FF7A00" stop-opacity="0.35"/>
+      <stop offset="0.5" stop-color="#FFB43D" stop-opacity="0.9"/>
+      <stop offset="0.84" stop-color="#FF7A00" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#FF7A00" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="outerGlow" x="-20%" y="-90%" width="140%" height="280%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5.5"/>
+    </filter>
+    <filter id="lineGlow" x="-20%" y="-100%" width="140%" height="300%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-100%" width="140%" height="300%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+
+  <!-- Reference geometry: 1024px wide, 124px body, 220px center shoulder span. -->
+  <path
+    d="M42 96H402
+       C421 96 434 92 447 80
+       C465 63 482 54 512 54
+       C542 54 559 63 577 80
+       C590 92 603 96 622 96
+       H982
+       C1005 96 1024 114 1024 137
+       V180
+       C1024 203 1009 220 986 220
+       H38
+       C15 220 0 203 0 180
+       V137
+       C0 114 19 96 42 96Z"
+    stroke="#FF7A00"
+    stroke-opacity="0.60"
+    stroke-width="8"
+    stroke-linejoin="round"
+    filter="url(#outerGlow)"
+  />
+
+  <!-- Dark glass body -->
+  <path
+    d="M42 96H402
+       C421 96 434 92 447 80
+       C465 63 482 54 512 54
+       C542 54 559 63 577 80
+       C590 92 603 96 622 96
+       H982
+       C1005 96 1024 114 1024 137
+       V180
+       C1024 203 1009 220 986 220
+       H38
+       C15 220 0 203 0 180
+       V137
+       C0 114 19 96 42 96Z"
+    fill="url(#glass)"
+    stroke="url(#strokeGradient)"
+    stroke-width="3"
+    stroke-linejoin="round"
+  />
+
+  <!-- Inner glass highlight, 2px -->
+  <path
+    d="M43 99H403
+       C423 99 437 95 450 83
+       C467 67 484 57 512 57
+       C540 57 557 67 574 83
+       C587 95 601 99 621 99
+       H981
+       C1003 99 1021 116 1021 138
+       V179
+       C1021 200 1007 217 985 217
+       H39
+       C17 217 3 200 3 179
+       V138
+       C3 116 21 99 43 99Z"
+    fill="url(#innerHighlight)"
+    stroke="#FFD08A"
+    stroke-opacity="0.20"
+    stroke-width="2"
+    stroke-linejoin="round"
+  />
+
+  <!-- Fine top glass reflection -->
+  <path
+    d="M52 106H399
+       C422 106 439 101 454 87
+       C470 72 487 63 512 63
+       C537 63 554 72 570 87
+       C585 101 602 106 625 106H972"
+    stroke="#FFF0C0"
+    stroke-opacity="0.10"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <!-- Reference lower 8px glow -->
+  <path
+    d="M36 216H988"
+    stroke="#FF7A00"
+    stroke-opacity="0.60"
+    stroke-width="8"
+    stroke-linecap="round"
+    filter="url(#lineGlow)"
+  />
+  <path
+    d="M38 218H986"
+    stroke="url(#bottomGlow)"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <!-- Center reflected light under the cart -->
+  <circle cx="512" cy="216" r="3" fill="#FFD36A"/>
+  <circle cx="512" cy="216" r="7" fill="#FF7A00" fill-opacity="0.55" filter="url(#soft)"/>
+</svg>
