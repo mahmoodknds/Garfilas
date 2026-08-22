@@ -2,9 +2,9 @@
 
 ## Garfilas Development Log
 
-### Current Session: Hero Logo / Reference Calibration
+### Latest Session: Hero Scroll Cue / Bottom Navigation Calibration
 
-**Date:** 2026-08-16
+**Date:** 2026-08-23
 
 ## Scope
 
@@ -16,53 +16,31 @@ The user's supplied mobile reference screenshots remain the visual composition s
 
 The reference screenshot must not be used as the Hero background. Its visual structure must be reproduced with native React/CSS and supplied brand assets.
 
-## Asset Decisions
+## Recent Hero Changes
 
-Primary Hero artwork:
+### Scroll Cue
 
-`public/assets/hero/garfilas-hero-final.webp`
+- The three Hero scroll arrows were changed from downward-pointing to upward-pointing.
+- The final placement adjustment was made through the actual `.hero-scroll-cue` positioning rather than relying on arrow rotation alone.
+- The latest calibration moved the cue lower on both mobile and desktop.
+- Current placement remains subject to visual verification against the latest reference.
 
-Brand wordmark:
+### Bottom Navigation
 
-`public/assets/brand/garfilas-reference-logo.svg`
-
-Slogan:
-
-`public/assets/brand/garfilas-slogan-exact.svg`
-
-The supplied SVG is the source of truth for GARFILAS wordmark geometry. HTML text must not replace it.
-
-## Changes / Findings in This Calibration
-
-1. The Hero logo was tested with several glow treatments.
-2. A text-based GARFILAS recreation was identified as incorrect and removed from the intended implementation approach.
-3. The supplied SVG is now treated as the actual visible logo source.
-4. Neon/fire treatment is intended to affect the SVG form itself rather than an unrelated HTML text layer.
-5. The current SVG-based result is visible and substantially closer to the desired direction.
-6. The latest visual review found the logo light intensity too high compared with the reference.
-7. The next refinement is therefore controlled reduction of bloom, edge glow and overall brightness while retaining the warm gold/orange neon character.
+- The pill-shaped navigation frame remains a native SVG visual asset at `public/assets/ui/bottom-nav-frame.svg`.
+- The center navigation button was calibrated through several iterations and is now explicitly locked at `50.671875%` vertical position.
+- The center button size remains unchanged from the latest approved state.
+- Decorative dots beneath the center button were identified in both CSS and the SVG frame and removed.
+- Side buttons are independently positioned and must remain untouched when the center button is calibrated.
+- Navigation remains under visual calibration and is not yet final-approved.
 
 ## Current Approved Direction
 
-The current direction is approved as the basis for final calibration:
-
-- Keep the supplied SVG geometry.
-- Keep the warm gold/orange neon treatment.
-- Reduce excessive light.
-- Keep the letterforms crisp and readable.
-- Keep fire/bloom outside the primary letter edges rather than washing out the interior.
-- Preserve the premium, dark and restrained visual language.
-
-## Current Hero Order
-
-1. Garfield + lasagna WebP artwork
-2. Neon rings / glow
-3. GARFILAS / LASAGNA brand lockup
-4. Italian flag
-5. Slogan asset
-6. Neon CTA
-7. Scroll cue
-8. Pill Bottom Navigation
+- Preserve the supplied Hero artwork and GARFILAS SVG geometry.
+- Keep the warm gold/orange neon treatment controlled and readable.
+- Keep Hero as a native React/CSS/SVG composition.
+- Keep the center navigation button position locked unless the user explicitly requests another change.
+- Avoid changing unrelated Hero elements during localized calibration.
 
 ## Technical State
 
@@ -72,27 +50,31 @@ The current direction is approved as the basis for final calibration:
 - `components/ui/GlowButton.tsx` provides CTA primitive.
 - `components/sections/BottomNavigation/BottomNavigation.tsx` owns navigation markup.
 - `app/globals.css` owns Hero visual composition and responsive styling.
+- `public/assets/ui/bottom-nav-frame.svg` owns the navigation frame artwork.
 
 ## Verification State
 
 - Supplied Hero WebP: integrated
 - Supplied SVG wordmark: integrated
-- Supplied slogan asset: integrated
+- HTML slogan: integrated
 - Native neon atmosphere: integrated
-- Logo calibration: in progress
+- Upward scroll cue: implemented
+- Bottom Navigation: implemented; final visual calibration pending
+- Center button position: locked
+- Center decorative dots: removed
+- Production build: not verified in this documentation update
 - Final visual acceptance: pending
-- Local production build: not verified in this documentation update
 
 ## Exact Next Actions
 
-1. Reduce SVG logo brightness and bloom to match the reference.
-2. Compare logo color, edge glow, scale and position against the reference.
-3. Once the logo is accepted, calibrate LASAGNA separately.
-4. Calibrate the Italian flag and slogan separately.
-5. Then finish CTA and Bottom Navigation calibration.
-6. Verify mobile first, then desktop.
-7. Do not expand project scope until the Hero is accepted.
+1. Verify the deployed Hero against the latest reference.
+2. Verify first GARFILAS neon fault timing around 2 seconds.
+3. Continue logo, LASAGNA, Italian flag and slogan calibration only where the reference requires it.
+4. Finish CTA and Bottom Navigation geometry without moving the locked center button unless explicitly requested.
+5. Verify mobile first, then desktop.
+6. Run production build verification.
+7. Do not expand project scope until Hero acceptance.
 
 ---
 
-Last Updated: 2026-08-16
+Last Updated: 2026-08-23
