@@ -16,7 +16,7 @@ export default function BottomNavigation() {
           right: 0 !important;
           bottom: 0 !important;
           width: 100vw !important;
-          height: 27vw !important;
+          height: 20vw !important;
           padding: 0 !important;
           margin: 0 !important;
           transform: none !important;
@@ -60,17 +60,17 @@ export default function BottomNavigation() {
         }
 
         .bottom-nav-link-0 {
-          left: 21.8% !important;
-          top: 58% !important;
-          width: clamp(2.85rem, 10.7vw, 3.5rem) !important;
-          height: clamp(2.85rem, 10.7vw, 3.5rem) !important;
+          left: 22% !important;
+          top: 60% !important;
+          width: clamp(2.45rem, 9.2vw, 3.15rem) !important;
+          height: clamp(2.45rem, 9.2vw, 3.15rem) !important;
         }
 
         .bottom-nav-link-1 {
           left: 50% !important;
-          top: 51% !important;
-          width: clamp(4.1rem, 15.7vw, 5rem) !important;
-          height: clamp(4.1rem, 15.7vw, 5rem) !important;
+          top: 48% !important;
+          width: clamp(3.7rem, 14vw, 4.7rem) !important;
+          height: clamp(3.7rem, 14vw, 4.7rem) !important;
           border-width: 1.5px;
           z-index: 4;
           background: rgba(7,5,4,.9);
@@ -80,19 +80,19 @@ export default function BottomNavigation() {
         .bottom-nav-link-1::after {
           content: "";
           position: absolute;
-          bottom: -0.72rem;
-          width: .42rem;
-          height: .42rem;
+          bottom: -0.62rem;
+          width: .38rem;
+          height: .38rem;
           border-radius: 50%;
           background: #ff7b0b;
           box-shadow: 0 0 8px rgba(255,91,0,.9);
         }
 
         .bottom-nav-link-2 {
-          left: 78.2% !important;
-          top: 58% !important;
-          width: clamp(2.85rem, 10.7vw, 3.5rem) !important;
-          height: clamp(2.85rem, 10.7vw, 3.5rem) !important;
+          left: 78% !important;
+          top: 60% !important;
+          width: clamp(2.45rem, 9.2vw, 3.15rem) !important;
+          height: clamp(2.45rem, 9.2vw, 3.15rem) !important;
         }
 
         .bottom-nav-link svg {
@@ -100,8 +100,8 @@ export default function BottomNavigation() {
         }
 
         .bottom-nav-link-1 svg {
-          width: 2.15rem;
-          height: 2.15rem;
+          width: 2rem;
+          height: 2rem;
         }
 
         .bottom-nav-link:hover,
@@ -112,22 +112,11 @@ export default function BottomNavigation() {
         }
       `}</style>
 
-      <img
-        className="bottom-nav-frame"
-        src="/assets/ui/bottom-nav-frame.svg"
-        alt=""
-        aria-hidden="true"
-      />
+      <img className="bottom-nav-frame" src="/assets/ui/bottom-nav-frame.svg" alt="" aria-hidden="true" />
 
       {items.map(({ href, label, icon: Icon }, index) => (
-        <a
-          key={href}
-          href={href}
-          className={`bottom-nav-link bottom-nav-link-${index}`}
-          aria-label={label}
-          title={label}
-        >
-          <Icon aria-hidden="true" size={index === 1 ? 32 : 24} strokeWidth={1.7} />
+        <a key={href} href={href} className={`bottom-nav-link bottom-nav-link-${index}`} aria-label={label} title={label}>
+          <Icon aria-hidden="true" size={index === 1 ? 30 : 22} strokeWidth={1.7} />
           <span className="sr-only">{label}</span>
         </a>
       ))}
