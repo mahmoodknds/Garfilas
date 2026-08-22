@@ -35,7 +35,7 @@ export default function Hero() {
         </div>
 
         <HeroCTA />
-        <div className="hero-scroll-cue" aria-hidden="true">
+        <div className="hero-scroll-cue" aria-hidden="true" style={{ marginTop: "10px" }}>
           <style>{`.hero-scroll-cue span{transform:rotate(225deg)}`}</style>
           <span />
           <span />
