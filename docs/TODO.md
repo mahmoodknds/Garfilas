@@ -12,7 +12,7 @@ Only unfinished work belongs here. Completed work is recorded in the session/cha
 - Sprint: 0.4
 - Milestone: Landing Page MVP
 - Current priority: **First-page Hero visual completion**
-- Last Updated: 2026-08-18
+- Last Updated: 2026-08-23
 
 # HIGH PRIORITY
 
@@ -33,8 +33,12 @@ Status: 🟡 **Visual calibration in progress**
 - [x] Dark luxury background
 - [x] CSS neon rings and glow
 - [x] Native CTA
-- [x] Scroll cue
+- [x] Scroll cue implemented
+- [x] Scroll arrows changed to point upward
+- [x] Scroll cue position recalibrated lower
 - [x] Native Bottom Navigation
+- [x] Bottom Navigation center decorative dots removed
+- [x] Bottom Navigation center button calibration locked at `50.671875%`
 - [x] Responsive foundation
 - [x] Reduced-motion support
 - [x] Neon electrical-fault animation direction
@@ -64,7 +68,8 @@ Status: 🟡 **Visual calibration in progress**
 - [ ] Match Bottom Navigation outer pill geometry
 - [ ] Match three navigation button sizes and spacing
 - [ ] Match center navigation button elevation/overlap
-- [ ] Match navigation borders, glow and active indicator
+- [ ] Match navigation borders and glow
+- [ ] Verify upward scroll cue position against latest reference
 - [ ] Final mobile visual acceptance
 - [ ] Desktop responsive calibration
 
@@ -188,7 +193,7 @@ These remain out of the current Hero-calibration scope.
 
 # DOCUMENTATION
 
-Status: 🟢 **Synchronized except SESSION_LOG write pending GitHub SHA conflict**
+Status: 🟢 **Synchronized**
 
 - [x] Project State
 - [x] AI Context
@@ -198,7 +203,7 @@ Status: 🟢 **Synchronized except SESSION_LOG write pending GitHub SHA conflict
 - [x] Coding Rules
 - [x] Decisions
 - [x] Garfilas Bible
-- [ ] Session Log refresh
+- [x] Session Log
 
 # Exact Next Work
 
@@ -208,8 +213,9 @@ Status: 🟢 **Synchronized except SESSION_LOG write pending GitHub SHA conflict
 4. Calibrate Italian flag proportions, taper, fade and glow.
 5. Calibrate slogan typography, size, color and spacing.
 6. Refine CTA and vertical spacing.
-7. Precisely reproduce Bottom Navigation geometry and proportions.
-8. Validate mobile.
-9. Validate desktop.
-10. Run production build verification.
-11. Stop before adding new website scope.
+7. Precisely reproduce Bottom Navigation geometry and proportions without moving the locked center button unless explicitly requested.
+8. Verify upward scroll cue placement.
+9. Validate mobile.
+10. Validate desktop.
+11. Run production build verification.
+12. Stop before adding new website scope.
