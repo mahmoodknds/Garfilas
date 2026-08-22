@@ -18,10 +18,8 @@ export default function BottomNavigation() {
           width: min(100vw, 64rem) !important;
           height: min(21.485vw, 13.75rem) !important;
           min-height: 6.25rem !important;
-          padding: 1.55rem clamp(1.25rem, 8vw, 5rem) .8rem !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: space-between !important;
+          padding: 0 !important;
+          display: block !important;
           background: transparent !important;
           border: 0 !important;
           border-radius: 0 !important;
@@ -44,17 +42,32 @@ export default function BottomNavigation() {
         }
 
         .bottom-nav-link {
-          position: relative;
+          position: absolute !important;
+          top: 50% !important;
+          left: auto !important;
           z-index: 2;
-          flex: 0 0 auto;
           display: grid !important;
           place-items: center !important;
+          flex: none !important;
           margin: 0 !important;
+          transform: translate(-50%, -50%) !important;
         }
 
+        /* Reference centers: 22%, 50%, 78% of the 1024px artwork. */
         .bottom-nav-link:nth-of-type(2) {
+          left: 50% !important;
+          top: 50% !important;
           z-index: 4;
-          margin-top: -.25rem !important;
+          margin: 0 !important;
+          transform: translate(-50%, -50%) !important;
+        }
+
+        .bottom-nav-link:nth-of-type(3) {
+          left: 78.2% !important;
+        }
+
+        .bottom-nav-link:nth-of-type(4) {
+          left: 78.2% !important;
         }
 
         @media (max-width: 699px) {
@@ -62,13 +75,6 @@ export default function BottomNavigation() {
             width: 100vw !important;
             height: 21.485vw !important;
             min-height: 5.25rem !important;
-            padding: 1.25rem 8vw .65rem !important;
-          }
-        }
-
-        @media (min-width: 700px) {
-          .bottom-nav-link:nth-of-type(2) {
-            margin-top: -.35rem !important;
           }
         }
       `}</style>
@@ -88,17 +94,26 @@ export default function BottomNavigation() {
           aria-label={label}
           title={label}
           style={
-            index === 1
+            index === 0
               ? {
-                  width: "4.35rem",
-                  height: "4.35rem",
-                  borderWidth: "1.5px",
-                }
-              : {
+                  left: "21.8%",
                   width: "3.15rem",
                   height: "3.15rem",
                   borderWidth: "1px",
                 }
+              : index === 1
+                ? {
+                    left: "50%",
+                    width: "4.35rem",
+                    height: "4.35rem",
+                    borderWidth: "1.5px",
+                  }
+                : {
+                    left: "78.2%",
+                    width: "3.15rem",
+                    height: "3.15rem",
+                    borderWidth: "1px",
+                  }
           }
         >
           <Icon
