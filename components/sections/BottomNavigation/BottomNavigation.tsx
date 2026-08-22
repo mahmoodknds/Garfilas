@@ -61,16 +61,16 @@ export default function BottomNavigation() {
 
         .bottom-nav-link-0 {
           left: 22% !important;
-          top: 60% !important;
-          width: clamp(2.45rem, 9.2vw, 3.15rem) !important;
-          height: clamp(2.45rem, 9.2vw, 3.15rem) !important;
+          top: 72% !important;
+          width: clamp(2.35rem, 8.8vw, 3.1rem) !important;
+          height: clamp(2.35rem, 8.8vw, 3.1rem) !important;
         }
 
         .bottom-nav-link-1 {
           left: 50% !important;
-          top: 48% !important;
-          width: clamp(3.7rem, 14vw, 4.7rem) !important;
-          height: clamp(3.7rem, 14vw, 4.7rem) !important;
+          top: 62% !important;
+          width: clamp(3.65rem, 13.6vw, 4.65rem) !important;
+          height: clamp(3.65rem, 13.6vw, 4.65rem) !important;
           border-width: 1.5px;
           z-index: 4;
           background: rgba(7,5,4,.9);
@@ -80,9 +80,9 @@ export default function BottomNavigation() {
         .bottom-nav-link-1::after {
           content: "";
           position: absolute;
-          bottom: -0.62rem;
-          width: .38rem;
-          height: .38rem;
+          bottom: -0.56rem;
+          width: .36rem;
+          height: .36rem;
           border-radius: 50%;
           background: #ff7b0b;
           box-shadow: 0 0 8px rgba(255,91,0,.9);
@@ -90,9 +90,9 @@ export default function BottomNavigation() {
 
         .bottom-nav-link-2 {
           left: 78% !important;
-          top: 60% !important;
-          width: clamp(2.45rem, 9.2vw, 3.15rem) !important;
-          height: clamp(2.45rem, 9.2vw, 3.15rem) !important;
+          top: 72% !important;
+          width: clamp(2.35rem, 8.8vw, 3.1rem) !important;
+          height: clamp(2.35rem, 8.8vw, 3.1rem) !important;
         }
 
         .bottom-nav-link svg {
@@ -100,8 +100,8 @@ export default function BottomNavigation() {
         }
 
         .bottom-nav-link-1 svg {
-          width: 2rem;
-          height: 2rem;
+          width: 1.95rem;
+          height: 1.95rem;
         }
 
         .bottom-nav-link:hover,
