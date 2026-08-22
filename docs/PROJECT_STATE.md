@@ -7,7 +7,7 @@
 - Milestone: Landing Page MVP
 - Repository: GitHub / `main`
 - Status: Active Development
-- Last Updated: 2026-08-18
+- Last Updated: 2026-08-23
 
 ## Current Objective
 
@@ -21,6 +21,7 @@ Primary assets:
 
 - `public/assets/hero/garfilas-hero-final.webp`
 - `public/assets/brand/garfilas-reference-logo.svg`
+- `public/assets/ui/bottom-nav-frame.svg`
 
 Current composition:
 
@@ -31,8 +32,23 @@ Current composition:
 5. Italian flag inline SVG accent
 6. HTML slogan
 7. Neon CTA
-8. Scroll cue
+8. Upward-pointing scroll cue
 9. Pill Bottom Navigation
+
+## Navigation Calibration State
+
+- Bottom Navigation frame is a native SVG visual asset.
+- Center button vertical position is currently locked at `50.671875%`.
+- Center button size remains unchanged from the approved calibration.
+- Decorative center dots beneath the center button have been removed from the active implementation.
+- Side buttons remain independently positioned and should not move when adjusting the center button.
+- Navigation remains under final visual calibration against the reference.
+
+## Hero Scroll Cue State
+
+- Scroll cue arrows now point upward.
+- The cue position was recalibrated lower using the actual `.hero-scroll-cue` positioning rather than changing the arrow transform alone.
+- Current mobile and desktop placement is a visual-calibration state and should be checked against the latest reference before further adjustment.
 
 ## Important Asset Change
 
@@ -46,46 +62,6 @@ User target: first visible fault around **2 seconds** after page entry. This tim
 
 LASAGNA and slogan must remain independent from the GARFILAS fault animation.
 
-## LASAGNA
-
-- Separate HTML text
-- Uppercase serif treatment
-- Two thin horizontal side lines
-- Independent sizing/spacing
-- Reference-driven calibration still in progress
-
-## Italian Flag
-
-- Native inline SVG
-- Very thin horizontal accent
-- Green/white/red thirds
-- Sharply tapered ends
-- Subtle end fades
-- Restrained glow
-- Latest correction reduced the oversized/capsule-like appearance
-
-## Slogan
-
-`Layers of Love, Taste of Italy`
-
-- HTML text, not SVG
-- Script/handwritten italic direction
-- Warm orange/gold
-- Smaller than LASAGNA
-- Low glow
-- Tight letter spacing
-- Reference calibration still pending
-
-## Technical Files
-
-- `components/sections/Hero/Hero.tsx` owns Hero structure.
-- `components/sections/Hero/HeroLogo.tsx` owns logo/lockup presentation.
-- `components/sections/Hero/HeroCTA.tsx` owns CTA wrapper.
-- `components/ui/GlowButton.tsx` provides CTA primitive.
-- `components/sections/BottomNavigation/BottomNavigation.tsx` owns navigation.
-- `app/globals.css` owns Hero composition and responsive styling.
-- `styles/animations.css` owns motion.
-
 ## Verification State
 
 - Hero WebP integration: completed
@@ -98,21 +74,20 @@ LASAGNA and slogan must remain independent from the GARFILAS fault animation.
 - Neon fault animation: implemented; timing verification pending
 - CTA: implemented
 - Bottom Navigation: implemented; final calibration pending
+- Scroll cue direction: completed; upward arrows
 - Local `npm run build`: not verified in this documentation update
 - Production visual verification: pending
 - Final Hero acceptance: pending
 
 ## Exact Next Step
 
-1. Pull latest `main`.
-2. Run `npm run build`.
-3. Run `npm run dev`.
-4. Compare mobile output against the latest reference.
-5. Verify/retime first neon fault to ~2 seconds if needed.
-6. Continue pixel-level LASAGNA, side-line, flag and slogan calibration.
-7. Finish CTA and Bottom Navigation geometry.
-8. Validate desktop without changing the mobile-first design language.
-9. Do not expand scope until Hero acceptance.
+1. Verify latest deployed Hero against the latest reference.
+2. Verify/retime first neon fault to ~2 seconds if needed.
+3. Continue pixel-level LASAGNA, side-line, flag and slogan calibration.
+4. Finish CTA and Bottom Navigation geometry without moving the locked center button unnecessarily.
+5. Validate mobile, then desktop.
+6. Run production build verification.
+7. Do not expand scope until Hero acceptance.
 
 ## Source of Truth
 
