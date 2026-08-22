@@ -11,18 +11,24 @@
 
 ### Changed
 
-- Hero calibration is now driven directly by the latest user-supplied reference screenshot
+- Hero calibration continues to be driven directly by the latest user-supplied reference screenshot
 - GARFILAS remains sourced exclusively from `public/assets/brand/garfilas-reference-logo.svg`
 - Slogan changed from SVG artwork to a single HTML text element after the old asset caused a duplicate/broken-image render
 - LASAGNA is calibrated independently from GARFILAS rather than being treated as part of the supplied SVG
-- Italian flag changed from the earlier CSS treatment to an inline SVG with a thin tapered/faded reference treatment
-- Neon animation changed from breathing/blinking to a slower fluorescent-tube fault pattern with gradual dimming and irregular recovery flickers
+- Italian flag uses an inline SVG with a thin tapered/faded reference treatment
+- Neon animation remains a slower fluorescent-tube fault pattern with gradual dimming and irregular recovery flickers
+- Hero scroll arrows now point upward
+- Hero scroll cue position was recalibrated lower using the actual `.hero-scroll-cue` placement
+- Bottom Navigation center button position is locked at `50.671875%`
+- Decorative center dots beneath the Bottom Navigation center button were removed
+- Bottom Navigation frame remains a dedicated SVG asset
 
 ### Fixed
 
 - Removed the legacy slogan SVG dependency that produced a broken image and duplicate slogan
 - Removed the incorrect text recreation approach for the GARFILAS wordmark
 - Corrected the Italian flag's oversized/capsule-like appearance
+- Removed remaining decorative center dots from the navigation implementation/frame
 
 ### Pending
 
@@ -33,6 +39,7 @@
 - Final slogan font, size, color, glow and spacing calibration
 - CTA spacing calibration
 - Bottom Navigation geometry and button-proportion calibration
+- Verify upward scroll cue placement against the latest reference
 - Mobile visual acceptance
 - Desktop responsive calibration
 - Local production-build verification
@@ -55,4 +62,4 @@ Landing Page MVP completion after Hero acceptance:
 - Performance optimization
 - Local production-build verification
 
-Last Updated: 2026-08-18
+Last Updated: 2026-08-23
