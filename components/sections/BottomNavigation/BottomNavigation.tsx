@@ -53,22 +53,23 @@ export default function BottomNavigation() {
           transform: translate(-50%, -50%) !important;
           flex: none !important;
           color: #ff8a18;
-          border: 1px solid rgba(255,115,13,.9);
+          border: 2px solid rgba(255,106,0,.9);
           border-radius: 50%;
           background: rgba(7,5,4,.72);
           box-shadow: 0 0 7px rgba(255,91,0,.72), 0 0 18px rgba(255,91,0,.22), inset 0 0 8px rgba(255,91,0,.12);
         }
 
+        /* Horizontal positions locked to the reference: 22 / 50 / 78 */
         .bottom-nav-link-0 {
           left: 22% !important;
-          top: 72% !important;
-          width: clamp(2.35rem, 8.8vw, 3.1rem) !important;
-          height: clamp(2.35rem, 8.8vw, 3.1rem) !important;
+          top: 36% !important;
+          width: clamp(2.8rem, 11.5vw, 3.6rem) !important;
+          height: clamp(2.8rem, 11.5vw, 3.6rem) !important;
         }
 
         .bottom-nav-link-1 {
           left: 50% !important;
-          top: 62% !important;
+          top: 31% !important;
           width: clamp(3.65rem, 13.6vw, 4.65rem) !important;
           height: clamp(3.65rem, 13.6vw, 4.65rem) !important;
           border-width: 1.5px;
@@ -90,13 +91,19 @@ export default function BottomNavigation() {
 
         .bottom-nav-link-2 {
           left: 78% !important;
-          top: 72% !important;
-          width: clamp(2.35rem, 8.8vw, 3.1rem) !important;
-          height: clamp(2.35rem, 8.8vw, 3.1rem) !important;
+          top: 36% !important;
+          width: clamp(2.8rem, 11.5vw, 3.6rem) !important;
+          height: clamp(2.8rem, 11.5vw, 3.6rem) !important;
         }
 
         .bottom-nav-link svg {
           filter: drop-shadow(0 0 4px rgba(255,91,0,.55));
+        }
+
+        .bottom-nav-link-0 svg,
+        .bottom-nav-link-2 svg {
+          width: 1.8rem;
+          height: 1.8rem;
         }
 
         .bottom-nav-link-1 svg {
