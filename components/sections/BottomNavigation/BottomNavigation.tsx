@@ -1,7 +1,7 @@
-import { CircleUserRound, MessageCircle, ShoppingBag } from "lucide-react";
+import { UserRound, MessageCircle, ShoppingBag } from "lucide-react";
 
 const items = [
-  { href: "#profile", label: "پروفایل", icon: CircleUserRound },
+  { href: "#profile", label: "پروفایل", icon: UserRound },
   { href: "#cart", label: "سبد خرید", icon: ShoppingBag },
   { href: "#contact", label: "تماس", icon: MessageCircle },
 ] as const;
@@ -59,17 +59,18 @@ export default function BottomNavigation() {
           box-shadow: 0 0 7px rgba(255,91,0,.72), 0 0 18px rgba(255,91,0,.22), inset 0 0 8px rgba(255,91,0,.12);
         }
 
-        /* Horizontal positions locked to the reference: 22 / 50 / 78 */
+        /* Horizontal positions remain locked to the reference: 22 / 50 / 78. */
+        /* All three controls are moved 25% lower from the previous calibration. */
         .bottom-nav-link-0 {
           left: 22% !important;
-          top: 36% !important;
+          top: 45% !important;
           width: clamp(2.8rem, 11.5vw, 3.6rem) !important;
           height: clamp(2.8rem, 11.5vw, 3.6rem) !important;
         }
 
         .bottom-nav-link-1 {
           left: 50% !important;
-          top: 31% !important;
+          top: 38.75% !important;
           width: clamp(3.65rem, 13.6vw, 4.65rem) !important;
           height: clamp(3.65rem, 13.6vw, 4.65rem) !important;
           border-width: 1.5px;
@@ -91,7 +92,7 @@ export default function BottomNavigation() {
 
         .bottom-nav-link-2 {
           left: 78% !important;
-          top: 36% !important;
+          top: 45% !important;
           width: clamp(2.8rem, 11.5vw, 3.6rem) !important;
           height: clamp(2.8rem, 11.5vw, 3.6rem) !important;
         }
@@ -100,6 +101,8 @@ export default function BottomNavigation() {
           filter: drop-shadow(0 0 4px rgba(255,91,0,.55));
         }
 
+        /* Reference icons: standalone user silhouette and speech bubble.
+           The outer circle belongs to the button, not to the icon itself. */
         .bottom-nav-link-0 svg,
         .bottom-nav-link-2 svg {
           width: 1.8rem;
