@@ -8,12 +8,6 @@
       <stop offset="0.91" stop-color="#FF4D00" stop-opacity="0.08"/>
       <stop offset="1" stop-color="#FF4D00" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="innerHighlight" cx="512" cy="44" r="560" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FF9A1A" stop-opacity="0.10"/>
-      <stop offset="0.48" stop-color="#FF7A00" stop-opacity="0.035"/>
-      <stop offset="0.82" stop-color="#FF5A00" stop-opacity="0.008"/>
-      <stop offset="1" stop-color="#FF4D00" stop-opacity="0"/>
-    </radialGradient>
     <linearGradient id="glass" x1="512" y1="58" x2="512" y2="220" gradientUnits="userSpaceOnUse">
       <stop stop-color="#17100B" stop-opacity="0.22"/><stop offset="1" stop-color="#000000" stop-opacity="0.58"/>
     </linearGradient>
@@ -27,18 +21,17 @@
     <linearGradient id="bottomGlow" x1="80" y1="218" x2="944" y2="218" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FF5A00" stop-opacity="0"/><stop offset="0.22" stop-color="#FF6A00" stop-opacity="0.12"/><stop offset="0.5" stop-color="#FF9A1A" stop-opacity="0.72"/><stop offset="0.78" stop-color="#FF6A00" stop-opacity="0.12"/><stop offset="1" stop-color="#FF5A00" stop-opacity="0"/>
     </linearGradient>
-    <filter id="outerGlow" x="-20%" y="-90%" width="140%" height="280%"><feGaussianBlur stdDeviation="5.5"/></filter>
-    <filter id="lineGlow" x="-20%" y="-100%" width="140%" height="300%"><feGaussianBlur stdDeviation="3.5"/></filter>
-    <filter id="soft" x="-20%" y="-100%" width="140%" height="300%"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="outerGlow" x="-20%" y="-90%" width="140%" height="280%"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="lineGlow" x="-20%" y="-100%" width="140%" height="300%"><feGaussianBlur stdDeviation="2.8"/></filter>
+    <filter id="soft" x="-20%" y="-100%" width="140%" height="300%"><feGaussianBlur stdDeviation="8"/></filter>
   </defs>
 
-  <!-- Crown widened ~30%; horizontal button geometry remains unchanged -->
-  <path d="M80 64H366 C404 64 428 56 449 34 C467 15 488 7 512 7 C536 7 557 15 575 34 C596 56 620 64 658 64 H944 C966 64 984 82 984 104 V180 C984 202 966 220 944 220 H80 C58 220 40 202 40 180 V104 C40 82 58 64 80 64Z" stroke="#FF5A00" stroke-opacity="0.38" stroke-width="8" stroke-linejoin="round" filter="url(#outerGlow)"/>
-  <path d="M80 64H366 C404 64 428 56 449 34 C467 15 488 7 512 7 C536 7 557 15 575 34 C596 56 620 64 658 64 H944 C966 64 984 82 984 104 V180 C984 202 966 220 944 220 H80 C58 220 40 202 40 180 V104 C40 82 58 64 80 64Z" fill="url(#glass)" stroke="url(#strokeGradient)" stroke-width="3" stroke-linejoin="round"/>
-  <path d="M81 67H367 C405 67 430 59 451 37 C469 18 490 10 512 10 C534 10 555 18 573 37 C594 59 619 67 657 67 H943 C964 67 981 84 981 105 V179 C981 200 964 217 943 217 H81 C60 217 43 200 43 179 V105 C43 84 60 67 81 67Z" fill="url(#innerHighlight)" stroke="#FF9A1A" stroke-opacity="0.08" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M92 66H365 C404 66 431 58 453 36 C471 18 490 13 512 13 C534 13 553 18 571 36 C593 58 620 66 659 66H932" stroke="url(#focusGlow)" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
-  <path d="M78 216H946" stroke="#FF5A00" stroke-opacity="0.32" stroke-width="8" stroke-linecap="round" filter="url(#lineGlow)"/>
-  <path d="M80 218H944" stroke="url(#bottomGlow)" stroke-width="2" stroke-linecap="round"/>
-  <circle cx="512" cy="216" r="3" fill="#FF9A1A"/>
-  <circle cx="512" cy="216" r="7" fill="#FF6900" fill-opacity="0.5" filter="url(#soft)"/>
+  <!-- Single fine crown line, with the widened crown retained -->
+  <path d="M80 64H366 C404 64 428 56 449 34 C467 15 488 7 512 7 C536 7 557 15 575 34 C596 56 620 64 658 64 H944 C966 64 984 82 984 104 V180 C984 202 966 220 944 220 H80 C58 220 40 202 40 180 V104 C40 82 58 64 80 64Z" stroke="#FF5A00" stroke-opacity="0.30" stroke-width="5" stroke-linejoin="round" filter="url(#outerGlow)"/>
+  <path d="M80 64H366 C404 64 428 56 449 34 C467 15 488 7 512 7 C536 7 557 15 575 34 C596 56 620 64 658 64 H944 C966 64 984 82 984 104 V180 C984 202 966 220 944 220 H80 C58 220 40 202 40 180 V104 C40 82 58 64 80 64Z" fill="url(#glass)" stroke="url(#strokeGradient)" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M92 66H932" stroke="url(#focusGlow)" stroke-width="2" stroke-linecap="round" opacity="0.72"/>
+  <path d="M78 216H946" stroke="#FF5A00" stroke-opacity="0.26" stroke-width="5" stroke-linecap="round" filter="url(#lineGlow)"/>
+  <path d="M80 218H944" stroke="url(#bottomGlow)" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="512" cy="216" r="2.5" fill="#FF9A1A"/>
+  <circle cx="512" cy="216" r="6" fill="#FF6900" fill-opacity="0.45" filter="url(#soft)"/>
 </svg>
