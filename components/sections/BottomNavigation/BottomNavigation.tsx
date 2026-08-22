@@ -16,7 +16,7 @@ export default function BottomNavigation() {
           right: 0 !important;
           bottom: 0 !important;
           width: 100vw !important;
-          height: clamp(5.9rem, 27vw, 15rem) !important;
+          height: 27vw !important;
           padding: 0 !important;
           margin: 0 !important;
           transform: none !important;
@@ -40,6 +40,7 @@ export default function BottomNavigation() {
           display: block;
           z-index: 0;
           pointer-events: none;
+          object-fit: fill;
         }
 
         .bottom-nav-link {
