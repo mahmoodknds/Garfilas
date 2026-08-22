@@ -2,8 +2,8 @@
 
 ## Garfilas AI Working Memory
 
-**Version:** 2.3.0  
-**Last Updated:** 2026-08-18
+**Version:** 2.4.0  
+**Last Updated:** 2026-08-23
 
 ---
 
@@ -34,13 +34,14 @@ Current order:
 5. Italian flag accent
 6. `Layers of Love, Taste of Italy`
 7. Neon `مشاهده منو` CTA
-8. Scroll cue
+8. Upward-pointing scroll cue
 9. Pill Bottom Navigation
 
 # Current Hero Assets
 
 - `public/assets/hero/garfilas-hero-final.webp`
 - `public/assets/brand/garfilas-reference-logo.svg`
+- `public/assets/ui/bottom-nav-frame.svg`
 
 GARFILAS geometry must come from the supplied SVG. Do not recreate GARFILAS as HTML text.
 
@@ -75,8 +76,6 @@ Native inline SVG accent. Target the reference closely:
 - restrained glow
 - subordinate to LASAGNA
 
-The latest correction reduced the previous oversized/capsule-like appearance.
-
 ## Slogan
 
 Text: `Layers of Love, Taste of Italy`
@@ -91,7 +90,7 @@ Text: `Layers of Love, Taste of Italy`
 
 # Logo Animation
 
-GARFILAS uses an electrical neon-fault animation inspired by a malfunctioning fluorescent tube in a horror-film scene:
+GARFILAS uses an electrical neon-fault animation inspired by a malfunctioning fluorescent tube:
 
 - long stable illumination
 - gradual dimming
@@ -100,11 +99,26 @@ GARFILAS uses an electrical neon-fault animation inspired by a malfunctioning fl
 - short recovery flickers
 - stable return
 
-It must not look like a normal blink or breathing animation.
-
-The user requested the first visible fault around **2 seconds** after page entry because visitors may leave quickly. The current CSS timing must be verified against this target before the next visual review. Do not assume it is already correct.
+The user requested the first visible fault around **2 seconds** after page entry. The current CSS timing still requires verification before declaring it final.
 
 Keep `prefers-reduced-motion` support.
+
+# Bottom Navigation Calibration Locks
+
+- Center button vertical position is locked at `50.671875%`.
+- Do not change the center button position unless the user explicitly requests it.
+- Center button size remains unchanged from the latest approved state.
+- Remove/avoid decorative dots beneath the center button.
+- Side buttons are independently positioned and should not be moved when calibrating the center control.
+- Frame source: `public/assets/ui/bottom-nav-frame.svg`.
+- Final geometry is still pending reference acceptance.
+
+# Hero Scroll Cue
+
+- Arrows point upward.
+- Position was adjusted through the actual `.hero-scroll-cue` placement.
+- Do not infer placement from arrow rotation alone.
+- Verify against the latest mobile reference before further movement.
 
 # Technical Files
 
@@ -116,10 +130,6 @@ Keep `prefers-reduced-motion` support.
 - `app/globals.css`
 - `styles/tokens.css`
 - `styles/animations.css`
-
-# Design / UX
-
-Dark luxury, warm Italian atmosphere, orange primary, gold accent, black/dark background, controlled glow, minimal copy, mobile first, one-handed use, fast interaction and premium visual hierarchy.
 
 # AI Workflow
 
@@ -143,7 +153,10 @@ Dark luxury, warm Italian atmosphere, orange primary, gold accent, black/dark ba
 - Italian flag inline SVG: implemented
 - Neon fault animation: implemented; first-fault timing still needs verification against ~2s target
 - CTA: implemented
+- Scroll cue direction: completed; arrows point upward
 - Bottom Navigation: implemented; final calibration pending
+- Center navigation button position: locked at `50.671875%`
+- Center decorative dots: removed
 - Production build: not verified in this documentation update
 - Final visual acceptance: pending
 
@@ -155,7 +168,7 @@ Dark luxury, warm Italian atmosphere, orange primary, gold accent, black/dark ba
 4. Calibrate LASAGNA typography, side lines and spacing.
 5. Calibrate Italian flag proportions, taper and fade.
 6. Calibrate slogan font, size, color, glow and spacing.
-7. Finish CTA and Bottom Navigation.
+7. Finish CTA and Bottom Navigation without moving the locked center button unless explicitly requested.
 8. Run production build verification.
 9. Validate mobile, then desktop.
 10. Do not expand website scope until Hero acceptance.
