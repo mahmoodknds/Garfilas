@@ -9,6 +9,115 @@ const items = [
 export default function BottomNavigation() {
   return (
     <nav className="bottom-nav" aria-label="ناوبری اصلی">
+      <style>{`
+        .bottom-nav {
+          position: fixed !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          width: 100vw !important;
+          height: min(21.485vw, 13.75rem) !important;
+          min-height: 5.5rem !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          transform: none !important;
+          display: block !important;
+          background: transparent !important;
+          border: 0 !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          backdrop-filter: none !important;
+          overflow: visible !important;
+          isolation: isolate;
+          z-index: 50 !important;
+        }
+
+        .bottom-nav-frame {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
+          z-index: 0;
+          pointer-events: none;
+        }
+
+        .bottom-nav-link {
+          position: absolute !important;
+          top: 55% !important;
+          z-index: 2;
+          display: grid !important;
+          place-items: center !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          transform: translate(-50%, -50%) !important;
+          flex: none !important;
+          color: #ff8a18;
+          border: 1px solid rgba(255,115,13,.9);
+          border-radius: 50%;
+          background: rgba(7,5,4,.72);
+          box-shadow: 0 0 7px rgba(255,91,0,.72), 0 0 18px rgba(255,91,0,.22), inset 0 0 8px rgba(255,91,0,.12);
+        }
+
+        .bottom-nav-link-0 {
+          left: 21.8% !important;
+          width: clamp(3rem, 12vw, 3.5rem) !important;
+          height: clamp(3rem, 12vw, 3.5rem) !important;
+        }
+
+        .bottom-nav-link-1 {
+          left: 50% !important;
+          top: 39% !important;
+          width: clamp(4.4rem, 16vw, 4.75rem) !important;
+          height: clamp(4.4rem, 16vw, 4.75rem) !important;
+          border-width: 1.5px;
+          z-index: 4;
+          background: rgba(7,5,4,.9);
+          box-shadow: 0 0 8px rgba(255,91,0,.9), 0 0 26px rgba(255,91,0,.28), inset 0 0 12px rgba(255,91,0,.14);
+        }
+
+        .bottom-nav-link-1::after {
+          content: "";
+          position: absolute;
+          bottom: -0.72rem;
+          width: .42rem;
+          height: .42rem;
+          border-radius: 50%;
+          background: #ff7b0b;
+          box-shadow: 0 0 8px rgba(255,91,0,.9);
+        }
+
+        .bottom-nav-link-2 {
+          left: 78.2% !important;
+          width: clamp(3rem, 12vw, 3.5rem) !important;
+          height: clamp(3rem, 12vw, 3.5rem) !important;
+        }
+
+        .bottom-nav-link svg {
+          filter: drop-shadow(0 0 4px rgba(255,91,0,.55));
+        }
+
+        .bottom-nav-link-1 svg {
+          width: 2.15rem;
+          height: 2.15rem;
+        }
+
+        .bottom-nav-link:hover,
+        .bottom-nav-link:focus-visible {
+          transform: translate(-50%, -52%) !important;
+          color: #ffb04a;
+          box-shadow: 0 0 10px rgba(255,91,0,.9), 0 0 24px rgba(255,91,0,.3), inset 0 0 10px rgba(255,91,0,.16);
+        }
+
+        @media (max-width: 699px) {
+          .bottom-nav {
+            height: 21.485vw !important;
+            min-height: 5.5rem !important;
+          }
+        }
+      `}</style>
+
       <img
         className="bottom-nav-frame"
         src="/assets/ui/bottom-nav-frame.svg"
