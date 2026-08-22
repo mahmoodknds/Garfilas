@@ -16,8 +16,7 @@ export default function BottomNavigation() {
           right: 0 !important;
           bottom: 0 !important;
           width: 100vw !important;
-          /* Experimental reference calibration: taller frame. */
-          height: clamp(6.5rem, 27vw, 17rem) !important;
+          height: clamp(5.9rem, 37vw, 15rem) !important;
           padding: 0 !important;
           margin: 0 !important;
           transform: none !important;
