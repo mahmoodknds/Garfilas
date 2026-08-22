@@ -2,7 +2,7 @@
 
 ## Official Source of Truth
 
-### Version: 2.1.0
+### Version: 2.2.0
 
 ---
 
@@ -194,13 +194,12 @@ Current intended order:
 4. Italian flag accent
 5. `Layers of Love, Taste of Italy` slogan
 6. Neon outlined `مشاهده منو` CTA
-7. Scroll cue
+7. Scroll cue with upward-pointing arrows
 8. Pill-shaped Bottom Navigation
 
 ## Brand Lockup Rules
 
 - Wordmark source: `public/assets/brand/garfilas-reference-logo.svg`
-- Slogan source: `public/assets/brand/garfilas-slogan-exact.svg`
 - Do not recreate the supplied wordmark as ordinary HTML text.
 - Do not replace the supplied wordmark with generated branding while the supplied asset exists.
 - The logo's visual treatment is a warm gold/orange neon effect, but the glow must remain controlled and must not wash out the letterforms.
@@ -225,6 +224,14 @@ Large tap targets
 Thumb friendly
 
 The center control remains visually larger/highlighted according to the mobile reference.
+
+### Current calibration lock
+
+- Bottom navigation frame uses `public/assets/ui/bottom-nav-frame.svg`.
+- Center button vertical position is currently locked at `50.671875%` of the navigation frame and should not be changed casually.
+- The center button has no decorative dot/indicator beneath it.
+- Side buttons are positioned independently and must not be moved when calibrating the center control.
+- Navigation geometry is still considered visual-calibration work, not final acceptance.
 
 ---
 
@@ -285,6 +292,8 @@ Tag
 - Menu: Planned
 - Checkout: Planned
 - Admin: Future
+- Latest Hero arrow calibration: upward arrows positioned lower on mobile and desktop
+- Latest Bottom Navigation calibration: center button position locked; center dots removed
 
 ---
 
@@ -313,5 +322,5 @@ Not Pages.
 
 ---
 
-Last Updated: 2026-08-16
-Documentation Version: 2.1.0
+Last Updated: 2026-08-23
+Documentation Version: 2.2.0
