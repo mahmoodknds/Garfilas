@@ -1,17 +1,17 @@
 <svg width="1024" height="220" viewBox="0 0 1024 220" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="strokeGradient" x1="64" y1="92" x2="960" y2="216" gradientUnits="userSpaceOnUse">
+    <linearGradient id="strokeGradient" x1="72" y1="62" x2="952" y2="218" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FFE08A"/>
       <stop offset="0.34" stop-color="#FF8A00"/>
       <stop offset="0.72" stop-color="#FF6A00"/>
       <stop offset="1" stop-color="#FF4D00"/>
     </linearGradient>
-    <linearGradient id="innerHighlight" x1="512" y1="54" x2="512" y2="220" gradientUnits="userSpaceOnUse">
+    <linearGradient id="innerHighlight" x1="512" y1="22" x2="512" y2="220" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FFD08A" stop-opacity="0.20"/>
       <stop offset="0.55" stop-color="#FF9A24" stop-opacity="0.06"/>
       <stop offset="1" stop-color="#FF7A00" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="glass" x1="512" y1="94" x2="512" y2="220" gradientUnits="userSpaceOnUse">
+    <linearGradient id="glass" x1="512" y1="64" x2="512" y2="220" gradientUnits="userSpaceOnUse">
       <stop stop-color="#17100B" stop-opacity="0.24"/>
       <stop offset="1" stop-color="#000000" stop-opacity="0.55"/>
     </linearGradient>
@@ -33,21 +33,21 @@
     </filter>
   </defs>
 
-  <!-- Reference geometry: 1024px wide, 124px body, 220px center shoulder span. -->
+  <!-- Calibrated mobile geometry: wider side breathing room and taller glass body. -->
   <path
-    d="M42 96H402
-       C421 96 434 92 447 80
-       C465 63 482 54 512 54
-       C542 54 559 63 577 80
-       C590 92 603 96 622 96
-       H982
-       C1005 96 1024 114 1024 137
+    d="M80 64H402
+       C425 64 440 59 454 45
+       C470 29 486 22 512 22
+       C538 22 554 29 570 45
+       C584 59 599 64 622 64
+       H944
+       C966 64 984 82 984 104
        V180
-       C1024 203 1009 220 986 220
-       H38
-       C15 220 0 203 0 180
-       V137
-       C0 114 19 96 42 96Z"
+       C984 202 966 220 944 220
+       H80
+       C58 220 40 202 40 180
+       V104
+       C40 82 58 64 80 64Z"
     stroke="#FF7A00"
     stroke-opacity="0.60"
     stroke-width="8"
@@ -55,42 +55,40 @@
     filter="url(#outerGlow)"
   />
 
-  <!-- Dark glass body -->
   <path
-    d="M42 96H402
-       C421 96 434 92 447 80
-       C465 63 482 54 512 54
-       C542 54 559 63 577 80
-       C590 92 603 96 622 96
-       H982
-       C1005 96 1024 114 1024 137
+    d="M80 64H402
+       C425 64 440 59 454 45
+       C470 29 486 22 512 22
+       C538 22 554 29 570 45
+       C584 59 599 64 622 64
+       H944
+       C966 64 984 82 984 104
        V180
-       C1024 203 1009 220 986 220
-       H38
-       C15 220 0 203 0 180
-       V137
-       C0 114 19 96 42 96Z"
+       C984 202 966 220 944 220
+       H80
+       C58 220 40 202 40 180
+       V104
+       C40 82 58 64 80 64Z"
     fill="url(#glass)"
     stroke="url(#strokeGradient)"
     stroke-width="3"
     stroke-linejoin="round"
   />
 
-  <!-- Inner glass highlight, 2px -->
   <path
-    d="M43 99H403
-       C423 99 437 95 450 83
-       C467 67 484 57 512 57
-       C540 57 557 67 574 83
-       C587 95 601 99 621 99
-       H981
-       C1003 99 1021 116 1021 138
+    d="M81 67H403
+       C426 67 442 62 456 48
+       C472 33 488 25 512 25
+       C536 25 552 33 568 48
+       C582 62 598 67 621 67
+       H943
+       C964 67 981 84 981 105
        V179
-       C1021 200 1007 217 985 217
-       H39
-       C17 217 3 200 3 179
-       V138
-       C3 116 21 99 43 99Z"
+       C981 200 964 217 943 217
+       H81
+       C60 217 43 200 43 179
+       V105
+       C43 84 60 67 81 67Z"
     fill="url(#innerHighlight)"
     stroke="#FFD08A"
     stroke-opacity="0.20"
@@ -98,22 +96,20 @@
     stroke-linejoin="round"
   />
 
-  <!-- Fine top glass reflection -->
   <path
-    d="M52 106H399
-       C422 106 439 101 454 87
-       C470 72 487 63 512 63
-       C537 63 554 72 570 87
-       C585 101 602 106 625 106H972"
+    d="M91 74H399
+       C425 74 443 68 459 52
+       C474 38 490 31 512 31
+       C534 31 550 38 565 52
+       C581 68 599 74 625 74H933"
     stroke="#FFF0C0"
     stroke-opacity="0.10"
     stroke-width="2"
     stroke-linecap="round"
   />
 
-  <!-- Reference lower 8px glow -->
   <path
-    d="M36 216H988"
+    d="M78 216H946"
     stroke="#FF7A00"
     stroke-opacity="0.60"
     stroke-width="8"
@@ -121,13 +117,12 @@
     filter="url(#lineGlow)"
   />
   <path
-    d="M38 218H986"
+    d="M80 218H944"
     stroke="url(#bottomGlow)"
     stroke-width="2"
     stroke-linecap="round"
   />
 
-  <!-- Center reflected light under the cart -->
   <circle cx="512" cy="216" r="3" fill="#FFD36A"/>
   <circle cx="512" cy="216" r="7" fill="#FF7A00" fill-opacity="0.55" filter="url(#soft)"/>
 </svg>
