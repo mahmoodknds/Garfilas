@@ -13,12 +13,12 @@
     <filter id="softGlow" x="-30%" y="-120%" width="160%" height="340%"><feGaussianBlur stdDeviation="6"/></filter>
   </defs>
 
-  <!-- Crown opened 30% more. One visible crown stroke only. -->
-  <path d="M80 64H315 C365 64 401 54 432 22 C453 1 480 -10 512 -10 C544 -10 571 1 592 22 C623 54 659 64 709 64 H944 C966 64 984 82 984 104 V180 C984 202 966 220 944 220 H80 C58 220 40 202 40 180 V104 C40 82 58 64 80 64Z" stroke="#FF5A00" stroke-opacity="0.18" stroke-width="4" stroke-linejoin="round" filter="url(#frameShadow)"/>
-  <path d="M80 64H315 C365 64 401 54 432 22 C453 1 480 -10 512 -10 C544 -10 571 1 592 22 C623 54 659 64 709 64 H944 C966 64 984 82 984 104 V180 C984 202 966 220 944 220 H80 C58 220 40 202 40 180 V104 C40 82 58 64 80 64Z" fill="url(#glass)" stroke="url(#edgeFade)" stroke-width="1.35" stroke-linejoin="round"/>
+  <!-- Single visible crown. Peak kept inside the SVG viewport so it cannot be clipped. -->
+  <path d="M80 64H315 C365 64 401 54 432 29 C453 12 480 8 512 8 C544 8 571 12 592 29 C623 54 659 64 709 64 H944 C966 64 984 82 984 104 V180 C984 202 966 220 944 220 H80 C58 220 40 202 40 180 V104 C40 82 58 64 80 64Z" stroke="#FF5A00" stroke-opacity="0.18" stroke-width="4" stroke-linejoin="round" filter="url(#frameShadow)"/>
+  <path d="M80 64H315 C365 64 401 54 432 29 C453 12 480 8 512 8 C544 8 571 12 592 29 C623 54 659 64 709 64 H944 C966 64 984 82 984 104 V180 C984 202 966 220 944 220 H80 C58 220 40 202 40 180 V104 C40 82 58 64 80 64Z" fill="url(#glass)" stroke="url(#edgeFade)" stroke-width="1.35" stroke-linejoin="round"/>
 
-  <!-- Only a very subtle bevel on the body. No light wash from the crown to the center. -->
-  <path d="M82 66H316 C366 66 402 56 434 24 C455 3 481 -7 512 -7 C543 -7 569 3 590 24 C622 56 658 66 708 66H942 V104 C942 122 928 136 910 136 H114 C96 136 82 122 82 104Z" fill="url(#glass)" opacity="0.24"/>
+  <!-- Subtle glass body bevel, without a second visible crown line or vertical light wash. -->
+  <path d="M82 66H316 C366 66 402 56 434 31 C455 14 481 10 512 10 C543 10 569 14 590 31 C622 56 658 66 708 66H942 V104 C942 122 928 136 910 136 H114 C96 136 82 122 82 104Z" fill="url(#glass)" opacity="0.24"/>
 
   <path d="M86 216H938" stroke="#FF5A00" stroke-opacity="0.13" stroke-width="3" stroke-linecap="round" filter="url(#frameShadow)"/>
   <path d="M86 218H938" stroke="url(#bottomGlow)" stroke-width="1" stroke-linecap="round"/>
