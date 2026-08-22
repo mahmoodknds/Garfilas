@@ -16,8 +16,7 @@ export default function BottomNavigation() {
           right: 0 !important;
           bottom: 0 !important;
           width: 100vw !important;
-          height: min(21.485vw, 13.75rem) !important;
-          min-height: 5.5rem !important;
+          height: clamp(5.9rem, 23.5vw, 15rem) !important;
           padding: 0 !important;
           margin: 0 !important;
           transform: none !important;
@@ -45,7 +44,6 @@ export default function BottomNavigation() {
 
         .bottom-nav-link {
           position: absolute !important;
-          top: 55% !important;
           z-index: 2;
           display: grid !important;
           place-items: center !important;
@@ -62,15 +60,16 @@ export default function BottomNavigation() {
 
         .bottom-nav-link-0 {
           left: 21.8% !important;
-          width: clamp(3rem, 12vw, 3.5rem) !important;
-          height: clamp(3rem, 12vw, 3.5rem) !important;
+          top: 58% !important;
+          width: clamp(2.85rem, 10.7vw, 3.5rem) !important;
+          height: clamp(2.85rem, 10.7vw, 3.5rem) !important;
         }
 
         .bottom-nav-link-1 {
           left: 50% !important;
-          top: 39% !important;
-          width: clamp(4.4rem, 16vw, 4.75rem) !important;
-          height: clamp(4.4rem, 16vw, 4.75rem) !important;
+          top: 51% !important;
+          width: clamp(4.1rem, 15.7vw, 5rem) !important;
+          height: clamp(4.1rem, 15.7vw, 5rem) !important;
           border-width: 1.5px;
           z-index: 4;
           background: rgba(7,5,4,.9);
@@ -90,8 +89,9 @@ export default function BottomNavigation() {
 
         .bottom-nav-link-2 {
           left: 78.2% !important;
-          width: clamp(3rem, 12vw, 3.5rem) !important;
-          height: clamp(3rem, 12vw, 3.5rem) !important;
+          top: 58% !important;
+          width: clamp(2.85rem, 10.7vw, 3.5rem) !important;
+          height: clamp(2.85rem, 10.7vw, 3.5rem) !important;
         }
 
         .bottom-nav-link svg {
@@ -108,13 +108,6 @@ export default function BottomNavigation() {
           transform: translate(-50%, -52%) !important;
           color: #ffb04a;
           box-shadow: 0 0 10px rgba(255,91,0,.9), 0 0 24px rgba(255,91,0,.3), inset 0 0 10px rgba(255,91,0,.16);
-        }
-
-        @media (max-width: 699px) {
-          .bottom-nav {
-            height: 21.485vw !important;
-            min-height: 5.5rem !important;
-          }
         }
       `}</style>
 
