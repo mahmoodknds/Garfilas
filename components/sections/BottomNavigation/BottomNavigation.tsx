@@ -59,18 +59,17 @@ export default function BottomNavigation() {
           box-shadow: 0 0 7px rgba(255,91,0,.72), 0 0 18px rgba(255,91,0,.22), inset 0 0 8px rgba(255,91,0,.12);
         }
 
-        /* Horizontal positions remain locked to the reference: 22 / 50 / 78. */
-        /* 30% lower than the previous calibration. */
+        /* Vertical positions are moved 50% lower from the current calibration. */
         .bottom-nav-link-0 {
-          left: 22% !important;
-          top: 58.5% !important;
+          left: 16.4% !important;
+          top: 79.25% !important;
           width: clamp(2.8rem, 11.5vw, 3.6rem) !important;
           height: clamp(2.8rem, 11.5vw, 3.6rem) !important;
         }
 
         .bottom-nav-link-1 {
           left: 50% !important;
-          top: 50.375% !important;
+          top: 75.1875% !important;
           width: clamp(3.65rem, 13.6vw, 4.65rem) !important;
           height: clamp(3.65rem, 13.6vw, 4.65rem) !important;
           border-width: 1.5px;
@@ -91,8 +90,8 @@ export default function BottomNavigation() {
         }
 
         .bottom-nav-link-2 {
-          left: 78% !important;
-          top: 58.5% !important;
+          left: 83.6% !important;
+          top: 79.25% !important;
           width: clamp(2.8rem, 11.5vw, 3.6rem) !important;
           height: clamp(2.8rem, 11.5vw, 3.6rem) !important;
         }
