@@ -2,7 +2,7 @@
 
 ## Garfilas AI Working Memory
 
-**Version:** 2.4.0  
+**Version:** 2.4.1  
 **Last Updated:** 2026-08-23
 
 ---
@@ -88,6 +88,29 @@ Text: `Layers of Love, Taste of Italy`
 - Tight letter spacing.
 - Continue calibrating size, color, baseline and spacing against the exact reference.
 
+# Menu CTA Rules
+
+Text source remains `brand.navigation.menu` with value `مشاهده منو`.
+
+The CTA is implemented as a semantic link wrapping the `GlowButton` visual primitive.
+
+Current calibrated visual treatment:
+
+- pill geometry
+- thin orange/gold neon outline
+- restrained dark translucent interior
+- subtle inner border
+- thin top highlight
+- warm orange/gold label glow
+- symmetric four-point star accents
+- explicit mobile and desktop dimensions
+- hover/focus lift and stronger bloom
+- active press state
+- keyboard-visible focus ring
+- reduced-motion support
+
+Do not move the overall Hero CTA position while calibrating the button's internal geometry unless the reference explicitly requires a layout change. Prefer adjusting width, height, border, radius, typography, star position and glow before changing Hero placement.
+
 # Logo Animation
 
 GARFILAS uses an electrical neon-fault animation inspired by a malfunctioning fluorescent tube:
@@ -152,11 +175,12 @@ Keep `prefers-reduced-motion` support.
 - LASAGNA side lines: implemented
 - Italian flag inline SVG: implemented
 - Neon fault animation: implemented; first-fault timing still needs verification against ~2s target
-- CTA: implemented
+- CTA structure: implemented
+- CTA visual calibration pass: completed; direct visual acceptance still pending
 - Scroll cue direction: completed; arrows point upward
 - Bottom Navigation: implemented; final calibration pending
 - Center navigation button position: locked at `50.671875%`
-- Center decorative dots: removed
+- Center decorative dots: intended removed; final navigation verification pending
 - Production build: not verified in this documentation update
 - Final visual acceptance: pending
 
@@ -168,10 +192,11 @@ Keep `prefers-reduced-motion` support.
 4. Calibrate LASAGNA typography, side lines and spacing.
 5. Calibrate Italian flag proportions, taper and fade.
 6. Calibrate slogan font, size, color, glow and spacing.
-7. Finish CTA and Bottom Navigation without moving the locked center button unless explicitly requested.
-8. Run production build verification.
-9. Validate mobile, then desktop.
-10. Do not expand website scope until Hero acceptance.
+7. Compare the new `مشاهده منو` CTA against the reference at mobile and desktop sizes and make measured geometry corrections only.
+8. Finish CTA and Bottom Navigation without moving the locked center button unless explicitly requested.
+9. Run production build verification.
+10. Validate mobile, then desktop.
+11. Do not expand website scope until Hero acceptance.
 
 # Next Chat Continuity
 
