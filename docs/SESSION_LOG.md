@@ -2,7 +2,7 @@
 
 ## Garfilas Development Log
 
-### Latest Session: Hero CTA / Menu Button Calibration
+### Latest Session: Hero CTA / Menu Button Redesign
 
 **Date:** 2026-08-23
 
@@ -21,13 +21,13 @@ The reference screenshot must not be used as the Hero background. Its visual str
 ### Menu CTA / "مشاهده منو"
 
 - The CTA keeps the existing semantic link target and exact brand label `مشاهده منو`.
-- `GlowButton` was refactored so the visual structure is controlled entirely by dedicated CTA classes rather than mixed Tailwind utilities.
-- The button is now a controlled neon-outline pill with a restrained dark interior, thin inner border, top highlight, orange/gold text glow and symmetric four-point star accents.
-- Mobile and desktop dimensions are explicitly calibrated separately.
-- Hover, focus-visible and active states now preserve the same geometry while changing only lift, glow and color intensity.
-- Focus styling remains keyboard-accessible without changing the Hero layout.
-- Reduced-motion mode disables the CTA entrance animation and transition effects.
-- The CTA's existing Hero position was intentionally preserved during this calibration so neighboring Hero elements were not disturbed.
+- The previous CTA treatment was rejected as visually weak and was replaced with a cleaner premium neon-pill direction based directly on the supplied reference.
+- `GlowButton` now uses a layered visual composition: dark glass interior, precise orange outline, restrained inner rim, top light highlight, controlled outer bloom, warm cream/gold text glow and symmetric four-point sparkle accents.
+- The CTA preserves a strong visual hierarchy without competing with the GARFILAS wordmark, slogan or mascot.
+- The text is kept crisp and warm rather than overexposed by the neon effect.
+- Hover/active states are deliberately subtle: geometry stays stable while glow and scale change minimally.
+- The CTA remains responsive with a fluid mobile width and a capped desktop width.
+- The CTA Hero position was intentionally preserved so the redesign does not disturb the surrounding Hero composition.
 
 ### Scroll Cue
 
@@ -51,7 +51,7 @@ The reference screenshot must not be used as the Hero background. Its visual str
 - Keep the warm gold/orange neon treatment controlled and readable.
 - Keep Hero as a native React/CSS/SVG composition.
 - Keep the center navigation button position locked unless the user explicitly requests another change.
-- Keep CTA changes localized to the CTA component and its visual styles.
+- Keep CTA changes localized to `components/ui/GlowButton.tsx` unless measured reference calibration requires wrapper/layout changes.
 - Avoid changing unrelated Hero elements during localized calibration.
 
 ## Technical State
@@ -71,10 +71,10 @@ The reference screenshot must not be used as the Hero background. Its visual str
 - HTML slogan: integrated
 - Native neon atmosphere: integrated
 - Upward scroll cue: implemented
-- Menu CTA structure: recalibrated to reference-driven neon pill treatment
+- Menu CTA: redesigned with premium reference-driven neon pill treatment
 - Bottom Navigation: implemented; final visual calibration pending
 - Center button position: locked
-- Center decorative dots: documented as removed; broader navigation verification still pending
+- Center decorative dots: removed
 - Production build: not verified in this documentation update
 - Final visual acceptance: pending
 
@@ -83,7 +83,7 @@ The reference screenshot must not be used as the Hero background. Its visual str
 1. Verify the deployed Hero against the latest reference.
 2. Verify first GARFILAS neon fault timing around 2 seconds.
 3. Continue logo, LASAGNA, Italian flag and slogan calibration only where the reference requires it.
-4. Compare the new Menu CTA directly against the reference and make only measured geometry changes.
+4. Compare the redesigned Menu CTA directly against the reference and make only measured geometry changes.
 5. Finish Bottom Navigation geometry without moving the locked center button unless explicitly requested.
 6. Verify mobile first, then desktop.
 7. Run production build verification.
