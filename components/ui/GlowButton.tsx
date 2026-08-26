@@ -16,7 +16,7 @@ export default function GlowButton({ children, id }: Props) {
     >
       <span aria-hidden="true" className="pointer-events-none absolute inset-[2px] rounded-full border border-[rgba(255,232,190,.22)]" />
       <span aria-hidden="true" className="pointer-events-none absolute inset-x-[12%] top-[1px] h-px bg-linear-to-r from-transparent via-[rgba(255,247,224,.95)] to-transparent opacity-90 blur-[.2px]" />
-      <span aria-hidden="true" className="pointer-events-none absolute inset-y-[-30%] left-[-42%] z-[1] w-[30%] rotate-[18deg] bg-linear-to-r from-transparent via-[rgba(255,247,220,.9)] to-transparent opacity-0 blur-[1px] group-hover:animate-[cta-light-sweep_1.05s_cubic-bezier(.2,.7,.2,1)_1] group-hover:opacity-100" />
+      <span aria-hidden="true" className="pointer-events-none absolute inset-y-[-30%] left-[-42%] z-[1] w-[30%] rotate-[18deg] bg-linear-to-r from-transparent via-[rgba(255,247,220,.9)] to-transparent opacity-0 animate-[cta-light-sweep_6.8s_cubic-bezier(.2,.7,.2,1)_infinite] group-hover:animate-[cta-light-sweep_1.05s_cubic-bezier(.2,.7,.2,1)_1] group-hover:opacity-100" />
       <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,196,101,.12),transparent_48%),radial-gradient(circle_at_18%_100%,rgba(255,93,0,.12),transparent_34%)]" />
 
       <span aria-hidden="true" className="absolute left-[7%] grid h-6 w-6 place-items-center">
@@ -28,23 +28,11 @@ export default function GlowButton({ children, id }: Props) {
 
       {isBilingualMenu ? (
         <span className="relative z-10 flex flex-row-reverse items-baseline gap-[.42rem] whitespace-nowrap transition-transform duration-300 group-hover:scale-[1.018]">
-          <span
-            dir="rtl"
-            className="font-[Vazirmatn,Segoe_UI,Tahoma,sans-serif] text-[clamp(1.15rem,4.35vw,1.38rem)] font-medium leading-none tracking-[-.045em] text-[#fff0ce] drop-shadow-[0_0_3px_rgba(255,230,178,.72),0_0_8px_rgba(255,157,37,.42)]"
-          >
-            منو
-          </span>
-          <span
-            dir="ltr"
-            className="font-[Georgia,Times_New_Roman,serif] text-[clamp(1.22rem,4.55vw,1.5rem)] font-bold italic leading-none tracking-[.025em] text-transparent bg-clip-text bg-[linear-gradient(180deg,#fff7df_0%,#ffdc96_45%,#ffae3d_100%)] [-webkit-text-stroke:.12px_rgba(255,241,204,.4)] drop-shadow-[0_0_4px_rgba(255,191,77,.72)]"
-          >
-            Menu
-          </span>
+          <span dir="rtl" className="font-[Vazirmatn,Segoe_UI,Tahoma,sans-serif] text-[clamp(1.15rem,4.35vw,1.38rem)] font-medium leading-none tracking-[-.045em] text-[#fff0ce] drop-shadow-[0_0_3px_rgba(255,230,178,.72),0_0_8px_rgba(255,157,37,.42)]">منو</span>
+          <span dir="ltr" className="font-[Georgia,Times_New_Roman,serif] text-[clamp(1.22rem,4.55vw,1.5rem)] font-bold italic leading-none tracking-[.025em] text-transparent bg-clip-text bg-[linear-gradient(180deg,#fff7df_0%,#ffdc96_45%,#ffae3d_100%)] [-webkit-text-stroke:.12px_rgba(255,241,204,.4)] drop-shadow-[0_0_4px_rgba(255,191,77,.72)]">Menu</span>
         </span>
       ) : (
-        <span className="relative z-10 whitespace-nowrap font-[Georgia,Times_New_Roman,serif] text-[clamp(1.18rem,4.3vw,1.45rem)] font-bold italic leading-none tracking-[.06em] text-[#ffe1a4] drop-shadow-[0_0_5px_rgba(255,178,61,.62)]">
-          {children}
-        </span>
+        <span className="relative z-10 whitespace-nowrap font-[Georgia,Times_New_Roman,serif] text-[clamp(1.18rem,4.3vw,1.45rem)] font-bold italic leading-none tracking-[.06em] text-[#ffe1a4] drop-shadow-[0_0_5px_rgba(255,178,61,.62)]">{children}</span>
       )}
 
       <span aria-hidden="true" className="absolute right-[7%] grid h-6 w-6 place-items-center">
