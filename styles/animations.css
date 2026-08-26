@@ -3,7 +3,6 @@
   50% { transform: translateY(-10px); }
 }
 
-/* Horror-scene fluorescent fault: first failure arrives around 2s, then repeats slowly. */
 @keyframes neon-fault {
   0%, 21%, 100% { opacity: 1; filter: brightness(1); }
   22% { opacity: .97; filter: brightness(.99); }
@@ -29,7 +28,6 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Garfilas CTA: restrained luxury motion. */
 @keyframes cta-neon-breathe {
   0%, 100% { box-shadow: 0 0 2px rgba(255,235,201,.92), 0 0 8px rgba(255,133,22,.50), 0 0 18px rgba(255,77,0,.22), 0 0 32px rgba(255,63,0,.09), inset 0 1px 0 rgba(255,231,184,.18), inset 0 0 12px rgba(255,123,15,.08); }
   50% { box-shadow: 0 0 4px rgba(255,248,226,1), 0 0 12px rgba(255,151,35,.72), 0 0 26px rgba(255,77,0,.34), 0 0 44px rgba(255,63,0,.14), inset 0 1px 0 rgba(255,239,208,.30), inset 0 0 16px rgba(255,129,18,.12); }
