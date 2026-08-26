@@ -2,9 +2,9 @@
 
 ## Garfilas Development Log
 
-### Latest Session: Hero CTA / Menu Button Redesign
+### Latest Session: Hero CTA / Menu Button Refinement
 
-**Date:** 2026-08-23
+**Date:** 2026-08-26
 
 ## Scope
 
@@ -18,41 +18,37 @@ The reference screenshot must not be used as the Hero background. Its visual str
 
 ## Recent Hero Changes
 
-### Menu CTA / "مشاهده منو"
+### Menu CTA / `Menu`
 
-- The CTA keeps the existing semantic link target and exact brand label `مشاهده منو`.
-- The previous CTA treatment was rejected as visually weak and was replaced with a cleaner premium neon-pill direction based directly on the supplied reference.
-- `GlowButton` now uses a layered visual composition: dark glass interior, precise orange outline, restrained inner rim, top light highlight, controlled outer bloom, warm cream/gold text glow and symmetric four-point sparkle accents.
-- The CTA preserves a strong visual hierarchy without competing with the GARFILAS wordmark, slogan or mascot.
-- The text is kept crisp and warm rather than overexposed by the neon effect.
-- Hover/active states are deliberately subtle: geometry stays stable while glow and scale change minimally.
-- The CTA remains responsive with a fluid mobile width and a capped desktop width.
-- The CTA Hero position was intentionally preserved so the redesign does not disturb the surrounding Hero composition.
+- The CTA label is now `Menu`.
+- The button was intentionally made slimmer, quieter and more refined rather than increasing glow intensity.
+- Heavy interior gradients and excessive glow spread were reduced.
+- The CTA now uses a thin orange/gold outline, restrained dark translucent interior, subtle inner keyline and a very light top highlight.
+- Typography uses a compact Latin treatment with medium weight and controlled letter spacing.
+- Four-point star accents remain small and subordinate to the label.
+- Hover changes are limited to a slight lift, warmer border and modest glow increase.
+- Responsive sizing remains in place and the existing Hero CTA position was preserved.
 
 ### Scroll Cue
 
-- The three Hero scroll arrows were changed from downward-pointing to upward-pointing.
-- The final placement adjustment was made through the actual `.hero-scroll-cue` positioning rather than relying on arrow rotation alone.
-- The latest calibration moved the cue lower on both mobile and desktop.
+- The three Hero scroll arrows point upward.
+- The latest placement adjustment was made through the actual `.hero-scroll-cue` positioning.
 - Current placement remains subject to visual verification against the latest reference.
 
 ### Bottom Navigation
 
 - The pill-shaped navigation frame remains a native SVG visual asset at `public/assets/ui/bottom-nav-frame.svg`.
-- The center navigation button was calibrated through several iterations and is now explicitly locked at `50.671875%` vertical position.
-- The center button size remains unchanged from the latest approved state.
-- Decorative dots beneath the center button were identified in both CSS and the SVG frame and removed.
-- Side buttons are independently positioned and must remain untouched when the center button is calibrated.
-- Navigation remains under visual calibration and is not yet final-approved.
+- The center navigation button remains locked at `50.671875%` vertical position.
+- Side buttons remain independently positioned.
 
 ## Current Approved Direction
 
 - Preserve the supplied Hero artwork and GARFILAS SVG geometry.
 - Keep the warm gold/orange neon treatment controlled and readable.
 - Keep Hero as a native React/CSS/SVG composition.
-- Keep the center navigation button position locked unless the user explicitly requests another change.
-- Keep CTA changes localized to `components/ui/GlowButton.tsx` unless measured reference calibration requires wrapper/layout changes.
-- Avoid changing unrelated Hero elements during localized calibration.
+- Keep the center navigation button position locked unless explicitly requested.
+- Keep CTA changes localized to the CTA component and its visual styles.
+- Favor restraint and premium legibility over stronger glow or extra decoration.
 
 ## Technical State
 
@@ -71,10 +67,10 @@ The reference screenshot must not be used as the Hero background. Its visual str
 - HTML slogan: integrated
 - Native neon atmosphere: integrated
 - Upward scroll cue: implemented
-- Menu CTA: redesigned with premium reference-driven neon pill treatment
+- Menu CTA label: changed to `Menu`
+- Menu CTA styling: refined to a slimmer premium treatment
 - Bottom Navigation: implemented; final visual calibration pending
 - Center button position: locked
-- Center decorative dots: removed
 - Production build: not verified in this documentation update
 - Final visual acceptance: pending
 
@@ -83,7 +79,7 @@ The reference screenshot must not be used as the Hero background. Its visual str
 1. Verify the deployed Hero against the latest reference.
 2. Verify first GARFILAS neon fault timing around 2 seconds.
 3. Continue logo, LASAGNA, Italian flag and slogan calibration only where the reference requires it.
-4. Compare the redesigned Menu CTA directly against the reference and make only measured geometry changes.
+4. Compare the refined `Menu` CTA directly against the reference and make only measured geometry changes.
 5. Finish Bottom Navigation geometry without moving the locked center button unless explicitly requested.
 6. Verify mobile first, then desktop.
 7. Run production build verification.
@@ -91,4 +87,4 @@ The reference screenshot must not be used as the Hero background. Its visual str
 
 ---
 
-Last Updated: 2026-08-23
+Last Updated: 2026-08-26
