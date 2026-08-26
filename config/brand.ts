@@ -7,6 +7,6 @@ export const brand = {
     background: "#080808",
   },
   navigation: {
-    menu: "مشاهده منو",
+    menu: "Menu",
   },
 } as const;
