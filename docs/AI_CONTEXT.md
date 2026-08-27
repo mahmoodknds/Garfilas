@@ -2,8 +2,8 @@
 
 ## Garfilas AI Working Memory
 
-**Version:** 2.4.1  
-**Last Updated:** 2026-08-23
+**Version:** 2.5.0  
+**Last Updated:** 2026-08-28
 
 ---
 
@@ -25,7 +25,32 @@ Permanent working memory for AI collaborators. Read this before changing code or
 
 The user's supplied mobile reference screenshot is the Hero visual source of truth. It is a composition reference, not a background image. Never approximate important visual details from memory when the reference is available.
 
-Current order:
+# Menu CTA Current State
+
+The CTA is the bilingual `منو Menu` button implemented through `components/ui/GlowButton.tsx`.
+
+Current approved direction:
+
+- Slim pill geometry, premium and restrained.
+- Persian `منو` is on the right; English `Menu` is on the left.
+- Persian uses Vazirmatn; English uses a refined italic Georgia treatment.
+- Two small four-point star accents sit symmetrically near the left/right edges.
+- Star animation is a multi-layer twinkle/glow, not a simple scale animation. Stars must not jump from outside the button into position and must not resize during the animation.
+- CTA has a thin orange/gold neon outline and dark translucent interior.
+- Main CTA motion is a narrow Light Sweep running every 3 seconds.
+- Sweep is intentionally slim and angled, with a bright white-gold core and restrained orange-gold fringe.
+- Sweep exits quickly and must not visibly linger on the button at the end of its pass.
+- Sweep has soft horizontal edge transitions and a real vertical mask so its top and bottom fade smoothly.
+- Hard vertical edges/lines are not acceptable.
+- The sweep should read primarily as white-gold brilliance, not as a thick orange bar.
+- Orange should support the gold/white core rather than overpower it.
+- The CTA's overall neon breathe animation remains at 2 seconds.
+- Do not alter star animation, typography, button geometry or Hero placement when only tuning Light Sweep.
+- Keep changes localized to `GlowButton.tsx` whenever possible.
+
+Latest CTA implementation commit: `5d41eaf` on `main`.
+
+# Current Hero Order
 
 1. Garfield + lasagna artwork
 2. Circular orange/gold neon framing
@@ -33,7 +58,7 @@ Current order:
 4. LASAGNA + two side lines
 5. Italian flag accent
 6. `Layers of Love, Taste of Italy`
-7. Neon `مشاهده منو` CTA
+7. `منو Menu` neon CTA
 8. Upward-pointing scroll cue
 9. Pill Bottom Navigation
 
@@ -87,29 +112,6 @@ Text: `Layers of Love, Taste of Italy`
 - Very restrained glow.
 - Tight letter spacing.
 - Continue calibrating size, color, baseline and spacing against the exact reference.
-
-# Menu CTA Rules
-
-Text source remains `brand.navigation.menu` with value `مشاهده منو`.
-
-The CTA is implemented as a semantic link wrapping the `GlowButton` visual primitive.
-
-Current calibrated visual treatment:
-
-- pill geometry
-- thin orange/gold neon outline
-- restrained dark translucent interior
-- subtle inner border
-- thin top highlight
-- warm orange/gold label glow
-- symmetric four-point star accents
-- explicit mobile and desktop dimensions
-- hover/focus lift and stronger bloom
-- active press state
-- keyboard-visible focus ring
-- reduced-motion support
-
-Do not move the overall Hero CTA position while calibrating the button's internal geometry unless the reference explicitly requires a layout change. Prefer adjusting width, height, border, radius, typography, star position and glow before changing Hero placement.
 
 # Logo Animation
 
@@ -176,8 +178,10 @@ Keep `prefers-reduced-motion` support.
 - Italian flag inline SVG: implemented
 - Neon fault animation: implemented; first-fault timing still needs verification against ~2s target
 - CTA structure: implemented
-- CTA visual calibration pass: completed; direct visual acceptance still pending
-- Scroll cue direction: completed; arrows point upward
+- CTA bilingual label: `منو Menu`
+- CTA star animation: approved direction, visual acceptance pending
+- CTA Light Sweep: approved direction, current implementation uses 3s cycle, quick exit, white-gold core, restrained orange-gold fringe and vertical fade
+- CTA neon breathe: 2s
 - Bottom Navigation: implemented; final calibration pending
 - Center navigation button position: locked at `50.671875%`
 - Center decorative dots: intended removed; final navigation verification pending
@@ -192,7 +196,7 @@ Keep `prefers-reduced-motion` support.
 4. Calibrate LASAGNA typography, side lines and spacing.
 5. Calibrate Italian flag proportions, taper and fade.
 6. Calibrate slogan font, size, color, glow and spacing.
-7. Compare the new `مشاهده منو` CTA against the reference at mobile and desktop sizes and make measured geometry corrections only.
+7. Compare the `منو Menu` CTA against the reference at mobile and desktop sizes and make measured geometry corrections only.
 8. Finish CTA and Bottom Navigation without moving the locked center button unless explicitly requested.
 9. Run production build verification.
 10. Validate mobile, then desktop.
@@ -208,4 +212,4 @@ Read these first:
 - `docs/TODO.md`
 - `docs/AI_CONTEXT.md`
 
-The latest user-supplied reference and current Hero implementation are the visual/technical context.
+The latest user-approved CTA direction and current Hero implementation are the visual/technical context.
