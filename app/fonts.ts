@@ -5,4 +5,5 @@ export const bodoniModa = Bodoni_Moda({
   weight: "400",
   display: "swap",
   variable: "--font-bodoni-moda",
+  preload: true,
 });
