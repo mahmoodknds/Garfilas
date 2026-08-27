@@ -12,7 +12,7 @@ Only unfinished work belongs here. Completed work is recorded in the session/cha
 - Sprint: 0.4
 - Milestone: Landing Page MVP
 - Current priority: **First-page Hero visual completion**
-- Last Updated: 2026-08-23
+- Last Updated: 2026-08-28
 
 # HIGH PRIORITY
 
@@ -33,6 +33,13 @@ Status: 🟡 **Visual calibration in progress**
 - [x] Dark luxury background
 - [x] CSS neon rings and glow
 - [x] Native CTA
+- [x] CTA bilingual label `منو Menu`
+- [x] CTA Persian label positioned on the right
+- [x] CTA star accents refined to multi-layer twinkle/glow animation
+- [x] CTA Light Sweep refined to narrow 3s white-gold sweep with restrained orange-gold fringe
+- [x] CTA vertical top/bottom fade added
+- [x] CTA sweep exit shortened to avoid lingering
+- [x] CTA neon breathe timing set to 2s
 - [x] Scroll cue implemented
 - [x] Scroll arrows changed to point upward
 - [x] Scroll cue position recalibrated lower
@@ -212,7 +219,7 @@ Status: 🟢 **Synchronized**
 3. Calibrate LASAGNA typography and side lines.
 4. Calibrate Italian flag proportions, taper, fade and glow.
 5. Calibrate slogan typography, size, color and spacing.
-6. Refine CTA and vertical spacing.
+6. Refine CTA geometry only if reference comparison shows a mismatch; preserve the approved Light Sweep direction and star behavior.
 7. Precisely reproduce Bottom Navigation geometry and proportions without moving the locked center button unless explicitly requested.
 8. Verify upward scroll cue placement.
 9. Validate mobile.
