@@ -7,7 +7,7 @@
 - Milestone: Landing Page MVP
 - Repository: GitHub / `main`
 - Status: Active Development
-- Last Updated: 2026-08-23
+- Last Updated: 2026-08-28
 
 ## Current Objective
 
@@ -31,9 +31,28 @@ Current composition:
 4. LASAGNA HTML lockup with side lines
 5. Italian flag inline SVG accent
 6. HTML slogan
-7. Neon CTA
+7. Neon `منو Menu` CTA
 8. Upward-pointing scroll cue
 9. Pill Bottom Navigation
+
+## Menu CTA State
+
+`components/ui/GlowButton.tsx` is the current CTA visual primitive.
+
+- Label: `منو Menu`
+- Persian is on the right; English is on the left.
+- Button remains slim and premium.
+- Stars are small, symmetric four-point accents with multi-layer glow/twinkle animation.
+- Star animation must not use simple scale pulsing or positional jumps.
+- Light Sweep runs on a 3-second cycle.
+- Sweep is narrow and angled.
+- Sweep uses a bright white-gold core with restrained orange-gold fringe.
+- Sweep exits quickly rather than lingering on the button.
+- Sweep has soft horizontal transitions and a vertical mask for smooth top/bottom fade.
+- Hard vertical lines at the sweep edges are not acceptable.
+- The current refinement intentionally increased brilliance by making the core whiter/gold and reducing orange saturation.
+- CTA neon breathe remains 2 seconds.
+- Latest CTA refinement commit: `5d41eaf`.
 
 ## Navigation Calibration State
 
@@ -72,7 +91,8 @@ LASAGNA and slogan must remain independent from the GARFILAS fault animation.
 - LASAGNA side lines: implemented
 - Italian flag: implemented
 - Neon fault animation: implemented; timing verification pending
-- CTA: implemented
+- CTA: implemented and refined
+- CTA Light Sweep: current approved direction, final visual acceptance pending
 - Bottom Navigation: implemented; final calibration pending
 - Scroll cue direction: completed; upward arrows
 - Local `npm run build`: not verified in this documentation update
@@ -84,10 +104,12 @@ LASAGNA and slogan must remain independent from the GARFILAS fault animation.
 1. Verify latest deployed Hero against the latest reference.
 2. Verify/retime first neon fault to ~2 seconds if needed.
 3. Continue pixel-level LASAGNA, side-line, flag and slogan calibration.
-4. Finish CTA and Bottom Navigation geometry without moving the locked center button unnecessarily.
-5. Validate mobile, then desktop.
-6. Run production build verification.
-7. Do not expand scope until Hero acceptance.
+4. Compare `منو Menu` CTA directly against the reference and make only measured geometry/light corrections.
+5. Finish Bottom Navigation geometry without moving the locked center button unnecessarily.
+6. Verify upward scroll cue placement.
+7. Validate mobile, then desktop.
+8. Run production build verification.
+9. Do not expand scope until Hero acceptance.
 
 ## Source of Truth
 
