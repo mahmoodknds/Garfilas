@@ -1,9 +1,10 @@
-import { Bodoni_Moda } from "next/font/google";
+import { Cormorant_Garamond } from "next/font/google";
 
-export const bodoniModa = Bodoni_Moda({
+export const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: "400",
+  weight: "300",
+  style: "normal",
   display: "swap",
-  variable: "--font-bodoni-moda",
+  variable: "--font-cormorant-garamond",
   preload: true,
 });
