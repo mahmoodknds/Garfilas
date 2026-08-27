@@ -2,7 +2,7 @@
 
 ## Garfilas AI Working Memory
 
-**Version:** 2.5.0  
+**Version:** 2.5.1  
 **Last Updated:** 2026-08-28
 
 ---
@@ -84,10 +84,12 @@ The old `public/assets/brand/garfilas-slogan-exact.svg` dependency was removed b
 ## LASAGNA
 
 - Separate HTML text.
-- Uppercase serif treatment.
-- Two thin horizontal side lines.
-- Independent calibration from GARFILAS.
-- Do not apply the GARFILAS flicker animation to LASAGNA.
+- Uppercase high-contrast serif treatment using the available Bodoni/Didot stack.
+- Thin horizontal side lines on the same visual axis as the word.
+- The word is centered under GARFILAS and kept clearly subordinate to the main wordmark.
+- Reference calibration applied on 2026-08-28: wider letter spacing, slightly expanded lockup width, restrained horizontal scaling, brighter gold-white edge core and controlled orange bloom.
+- The side lines use a subtle gold/white center highlight and tapered horizontal fade so they read as neon light rather than solid bars.
+- Do not apply the GARFILAS electrical-fault animation to LASAGNA.
 
 ## Italian Flag
 
@@ -173,8 +175,8 @@ Keep `prefers-reduced-motion` support.
 - GARFILAS supplied SVG: completed
 - Old slogan SVG dependency: removed
 - HTML slogan: implemented
-- LASAGNA lockup: implemented
-- LASAGNA side lines: implemented
+- LASAGNA lockup: reference-calibrated; visual acceptance pending
+- LASAGNA side lines: reference-calibrated; visual acceptance pending
 - Italian flag inline SVG: implemented
 - Neon fault animation: implemented; first-fault timing still needs verification against ~2s target
 - CTA structure: implemented
@@ -193,7 +195,7 @@ Keep `prefers-reduced-motion` support.
 1. Verify deployed Hero against latest reference.
 2. Verify/retime first neon fault to ~2s if necessary.
 3. Calibrate GARFILAS color/bloom only if reference comparison requires it.
-4. Calibrate LASAGNA typography, side lines and spacing.
+4. Continue LASAGNA visual verification against the supplied reference.
 5. Calibrate Italian flag proportions, taper and fade.
 6. Calibrate slogan font, size, color, glow and spacing.
 7. Compare the `منو Menu` CTA against the reference at mobile and desktop sizes and make measured geometry corrections only.
