@@ -35,6 +35,18 @@ Current composition:
 8. Upward-pointing scroll cue
 9. Pill Bottom Navigation
 
+## LASAGNA Typography State
+
+`components/sections/Hero/HeroLogo.tsx` owns the LASAGNA lockup.
+
+- Typography is now explicitly ordered toward a Bodoni/Didot high-contrast display face: `Bodoni Moda`, `Bodoni 72`, `Didot`, `Bodoni MT`, then serif fallback.
+- Weight remains regular/light rather than bold.
+- Letter spacing was increased substantially to reproduce the widely tracked reference wordmark.
+- Desktop tracking: `0.44em`.
+- Mobile tracking: `0.34em`.
+- Side-line spacing was increased slightly to preserve the reference's airy horizontal composition.
+- The existing warm gold/orange neon treatment remains unchanged.
+
 ## Menu CTA State
 
 `components/ui/GlowButton.tsx` is the current CTA visual primitive.
@@ -87,7 +99,7 @@ LASAGNA and slogan must remain independent from the GARFILAS fault animation.
 - Supplied SVG wordmark: completed
 - Old slogan SVG dependency: removed
 - HTML slogan: completed
-- LASAGNA lockup: implemented
+- LASAGNA lockup: implemented and typography/tracking refined against reference
 - LASAGNA side lines: implemented
 - Italian flag: implemented
 - Neon fault animation: implemented; timing verification pending
