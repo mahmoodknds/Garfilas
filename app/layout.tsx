@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { bodoniModa } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Garfilas | Premium Lasagna",
@@ -22,7 +23,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body className={bodoniModa.variable}>{children}</body>
     </html>
   );
 }
