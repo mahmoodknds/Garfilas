@@ -6,36 +6,47 @@ export default function GlowButton({ children, id }: Props) {
   const isBilingualMenu = children === "منو Menu";
 
   return (
-    <span id={id} className="garfilas-glow-button group relative isolate" role="presentation">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700&display=swap');
-        .garfilas-glow-button{width:min(62vw,16.5rem)!important;height:3.05rem!important;padding-inline:2.55rem!important;animation:cta-neon-breathe 2s ease-in-out infinite!important;}
-        .garfilas-menu-fa{font-family:'Vazirmatn',sans-serif!important;font-size:clamp(1.34rem,5.15vw,1.62rem)!important;font-weight:700!important;line-height:1.1!important;letter-spacing:-.025em!important;color:#fff0d0!important;text-shadow:0 0 2px rgba(255,240,210,.95),0 0 8px rgba(255,143,25,.55)!important;display:inline-block;transform:translateY(-1px)}
-        .garfilas-menu-en{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(1.28rem,4.9vw,1.52rem)!important;font-weight:700!important;font-style:italic!important;line-height:1!important;letter-spacing:.025em!important}
-        .garfilas-glow-button__star{position:absolute!important;top:50%!important;width:1.8rem!important;height:1.8rem!important;display:grid!important;place-items:center!important;margin-top:-.9rem!important;font-size:.9rem!important;color:#fff4cf!important;text-shadow:0 0 3px #fff8df,0 0 7px rgba(255,210,120,.98),0 0 15px rgba(255,125,15,.9)!important;animation:garfilas-star-shimmer 3.9s ease-in-out infinite!important;}
-        .garfilas-glow-button__star--left{left:1.05rem!important;}
-        .garfilas-glow-button__star--right{right:1.05rem!important;animation-delay:1.55s!important;}
-        .garfilas-cta-sweep{position:absolute;inset-y:-30%;left:-42%;z-index:1;width:30%;transform:rotate(18deg);background:linear-gradient(90deg,transparent,rgba(255,247,220,.9),transparent);opacity:0;pointer-events:none;animation:cta-light-sweep 5.8s cubic-bezier(.2,.7,.2,1) infinite!important;}
-        @keyframes garfilas-star-shimmer{0%,100%{opacity:.28;transform:scale(.72) rotate(0deg);filter:brightness(.8) blur(.15px);text-shadow:0 0 2px rgba(255,248,223,.55),0 0 5px rgba(255,170,45,.5),0 0 9px rgba(255,105,0,.35)}12%{opacity:.52;transform:scale(.86) rotate(4deg);filter:brightness(1) blur(.1px)}22%{opacity:1;transform:scale(1.08) rotate(12deg);filter:brightness(1.75) blur(0);text-shadow:0 0 4px #fff,0 0 10px rgba(255,231,170,1),0 0 22px rgba(255,139,22,1),0 0 32px rgba(255,73,0,.65)}32%{opacity:.68;transform:scale(.9) rotate(2deg);filter:brightness(1.2) blur(.08px)}45%{opacity:.36;transform:scale(.76) rotate(-6deg);filter:brightness(.9) blur(.12px)}58%{opacity:.92;transform:scale(1.02) rotate(8deg);filter:brightness(1.55) blur(0);text-shadow:0 0 3px #fff,0 0 9px rgba(255,226,160,1),0 0 19px rgba(255,130,18,.95)}70%{opacity:.48;transform:scale(.82) rotate(-3deg);filter:brightness(1) blur(.08px)}84%{opacity:.78;transform:scale(.94) rotate(3deg);filter:brightness(1.3) blur(.02px)}}
-      `}</style>
+    <span id={id} className="group relative isolate inline-flex h-[2.62rem] w-[min(43vw,13.6rem)] min-w-[9.65rem] items-center justify-center overflow-hidden rounded-full border border-[rgba(255,145,35,.9)] bg-[linear-gradient(180deg,rgba(38,18,8,.74),rgba(7,5,4,.9)_55%,rgba(22,10,4,.82))] px-4 text-center shadow-[0_0_2px_rgba(255,235,201,.95),0_0_8px_rgba(255,133,22,.55),0_0_18px_rgba(255,77,0,.24),0_0_32px_rgba(255,63,0,.10),inset_0_1px_0_rgba(255,231,184,.2),inset_0_0_12px_rgba(255,123,15,.09)] animate-[cta-neon-breathe_2s_ease-in-out_infinite] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-px hover:border-[rgba(255,204,116,.98)] hover:shadow-[0_0_3px_rgba(255,245,222,1),0_0_12px_rgba(255,151,35,.78),0_0_25px_rgba(255,77,0,.34),0_0_42px_rgba(255,62,0,.15),inset_0_1px_0_rgba(255,239,208,.35),inset_0_0_16px_rgba(255,129,18,.13)] active:scale-[.985] focus-within:border-[rgba(255,226,171,1)]" role="presentation">
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700&display=swap');
+      .garfilas-menu-fa{font-family:'Vazirmatn',sans-serif!important;font-size:clamp(1.34rem,5.15vw,1.62rem)!important;font-weight:700!important;line-height:1.1!important;letter-spacing:-.025em!important;color:#fff0d0!important;text-shadow:0 0 2px rgba(255,240,210,.95),0 0 8px rgba(255,143,25,.55)!important;display:inline-block;transform:translateY(-1px)}
+      .garfilas-menu-en{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(1.28rem,4.9vw,1.52rem)!important;font-weight:700!important;font-style:italic!important;line-height:1!important;letter-spacing:.025em!important}
+      .garfilas-star-core,.garfilas-star-ray,.garfilas-star-twinkle{animation-play-state:running!important;}
+      .garfilas-star-twinkle{animation:cta-star-twinkle 2.8s ease-in-out infinite!important;}
+      .garfilas-star-core{animation:cta-star-core 2.8s ease-in-out infinite!important;}
+      .garfilas-star-ray{animation:cta-star-ray 2.8s ease-in-out infinite!important;}
+      .garfilas-star-ray-delay{animation-delay:.35s!important;}
+      .garfilas-star-right .garfilas-star-core{animation-duration:3.2s!important;animation-delay:.6s!important;}
+      .garfilas-star-right .garfilas-star-ray{animation-duration:3.2s!important;animation-delay:.6s!important;}
+      .garfilas-star-right .garfilas-star-ray-delay{animation-delay:.95s!important;}
+      .garfilas-star-right .garfilas-star-twinkle{animation-duration:3.2s!important;animation-delay:.6s!important;}`}</style>
 
       <span aria-hidden="true" className="pointer-events-none absolute inset-[2px] rounded-full border border-[rgba(255,232,190,.22)]" />
       <span aria-hidden="true" className="pointer-events-none absolute inset-x-[12%] top-[1px] h-px bg-linear-to-r from-transparent via-[rgba(255,247,224,.95)] to-transparent opacity-90 blur-[.2px]" />
-      <span aria-hidden="true" className="garfilas-cta-sweep" />
+      <span aria-hidden="true" className="pointer-events-none absolute inset-y-[-30%] left-[-42%] z-[1] w-[30%] rotate-[18deg] bg-linear-to-r from-transparent via-[rgba(255,247,220,.9)] to-transparent opacity-0 animate-[cta-light-sweep_6.8s_cubic-bezier(.2,.7,.2,1)_infinite] group-hover:animate-[cta-light-sweep_1.05s_cubic-bezier(.2,.7,.2,1)_1] group-hover:opacity-100" />
       <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,196,101,.12),transparent_48%),radial-gradient(circle_at_18%_100%,rgba(255,93,0,.12),transparent_34%)]" />
 
-      <span aria-hidden="true" className="garfilas-glow-button__star garfilas-glow-button__star--left">✦</span>
+      <span aria-hidden="true" className="absolute left-[7%] grid h-6 w-6 place-items-center">
+        <span className="garfilas-star-core absolute h-[3px] w-[3px] rounded-full bg-[#fff8df] shadow-[0_0_5px_rgba(255,245,205,1),0_0_12px_rgba(255,161,35,.98)]" />
+        <span className="garfilas-star-ray absolute h-[1px] w-5 rounded-full bg-linear-to-r from-transparent via-[rgba(255,225,157,.92)] to-transparent rotate-45 shadow-[0_0_5px_rgba(255,145,20,.8)]" />
+        <span className="garfilas-star-ray garfilas-star-ray-delay absolute h-[1px] w-5 rounded-full bg-linear-to-r from-transparent via-[rgba(255,225,157,.92)] to-transparent -rotate-45 shadow-[0_0_5px_rgba(255,145,20,.8)]" />
+        <span className="garfilas-star-twinkle relative text-[.72rem] leading-none text-[#ffe3a4] drop-shadow-[0_0_4px_rgba(255,210,120,1)] transition-transform duration-300 group-hover:scale-125">✦</span>
+      </span>
 
       {isBilingualMenu ? (
-        <span className="relative z-10 flex flex-row-reverse items-center gap-[.34rem] whitespace-nowrap transition-transform duration-300 group-hover:scale-[1.018]">
-          <span dir="rtl" lang="fa" className="garfilas-menu-fa">منو</span>
-          <span dir="ltr" className="garfilas-menu-en">Menu</span>
+        <span className="relative z-10 flex flex-row-reverse items-baseline gap-[.42rem] whitespace-nowrap transition-transform duration-300 group-hover:scale-[1.018]">
+          <span dir="rtl" className="garfilas-menu-fa">منو</span>
+          <span dir="ltr" className="garfilas-menu-en text-transparent bg-clip-text bg-[linear-gradient(180deg,#fff7df_0%,#ffdc96_45%,#ffae3d_100%)] [-webkit-text-stroke:.12px_rgba(255,241,204,.4)] drop-shadow-[0_0_4px_rgba(255,191,77,.72)]">Menu</span>
         </span>
       ) : (
-        <span className="garfilas-glow-button__label relative z-10 whitespace-nowrap">{children}</span>
+        <span className="relative z-10 whitespace-nowrap font-[Georgia,Times_New_Roman,serif] text-[clamp(1.18rem,4.3vw,1.45rem)] font-bold italic leading-none tracking-[.06em] text-[#ffe1a4] drop-shadow-[0_0_5px_rgba(255,178,61,.62)]">{children}</span>
       )}
 
-      <span aria-hidden="true" className="garfilas-glow-button__star garfilas-glow-button__star--right">✦</span>
+      <span aria-hidden="true" className="garfilas-star-right absolute right-[7%] grid h-6 w-6 place-items-center">
+        <span className="garfilas-star-core absolute h-[3px] w-[3px] rounded-full bg-[#fff8df] shadow-[0_0_5px_rgba(255,245,205,1),0_0_12px_rgba(255,161,35,.98)]" />
+        <span className="garfilas-star-ray absolute h-[1px] w-5 rounded-full bg-linear-to-r from-transparent via-[rgba(255,225,157,.92)] to-transparent rotate-45 shadow-[0_0_5px_rgba(255,145,20,.8)]" />
+        <span className="garfilas-star-ray garfilas-star-ray-delay absolute h-[1px] w-5 rounded-full bg-linear-to-r from-transparent via-[rgba(255,225,157,.92)] to-transparent -rotate-45 shadow-[0_0_5px_rgba(255,145,20,.8)]" />
+        <span className="garfilas-star-twinkle relative text-[.72rem] leading-none text-[#ffe3a4] drop-shadow-[0_0_4px_rgba(255,210,120,1)] transition-transform duration-300 group-hover:scale-125">✦</span>
+      </span>
     </span>
   );
 }
