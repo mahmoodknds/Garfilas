@@ -2,9 +2,9 @@
 
 ## Garfilas Development Log
 
-### Latest Session: Hero CTA / Menu Button Refinement
+### Latest Session: Hero Layout Stabilization and GARFILAS Animation Retiming
 
-**Date:** 2026-08-26
+**Date:** 2026-08-28
 
 ## Scope
 
@@ -16,75 +16,107 @@ The user's supplied mobile reference screenshot remains the visual composition s
 
 The reference screenshot must not be used as the Hero background. Its visual structure must be reproduced with native React/CSS and supplied brand assets.
 
-## Recent Hero Changes
+## Latest Hero Layout Changes
 
-### Menu CTA / `Menu`
+### Temporary Garfield Hero
 
-- The CTA label is now `Menu`.
-- The button was intentionally made slimmer, quieter and more refined rather than increasing glow intensity.
-- Heavy interior gradients and excessive glow spread were reduced.
-- The CTA now uses a thin orange/gold outline, restrained dark translucent interior, subtle inner keyline and a very light top highlight.
-- Typography uses a compact Latin treatment with medium weight and controlled letter spacing.
-- Four-point star accents remain small and subordinate to the label.
-- Hover changes are limited to a slight lift, warmer border and modest glow increase.
-- Responsive sizing remains in place and the existing Hero CTA position was preserved.
+- The current Garfield/lasagna artwork is explicitly temporary.
+- Current work focuses only on its scale, vertical placement and the neon ring around it.
+- The final Hero artwork replacement is deferred until the overall composition is stable.
 
-### Scroll Cue
+### Neon Ring and Background Cleanup
 
-- The three Hero scroll arrows point upward.
-- The latest placement adjustment was made through the actual `.hero-scroll-cue` positioning.
-- Current placement remains subject to visual verification against the latest reference.
+- The Hero was simplified to a single controlled orange/gold neon ring.
+- Extra rings and halos that created a crowded multi-circle appearance were removed from the active calibration direction.
+- Extra background construction/grid lines were removed.
+- Background architecture and building motifs were removed temporarily and will be rebuilt only after foreground positions are accepted.
 
-### Bottom Navigation
+### Vertical Composition
 
-- The pill-shaped navigation frame remains a native SVG visual asset at `public/assets/ui/bottom-nav-frame.svg`.
-- The center navigation button remains locked at `50.671875%` vertical position.
-- Side buttons remain independently positioned.
+The active foreground order remains:
+
+1. Temporary Garfield Hero + single neon ring
+2. GARFILAS
+3. LASAGNA + side lines
+4. Italian flag
+5. Slogan
+6. `منو Menu` CTA
+7. Upward scroll cue
+8. Bottom Navigation
+
+The layout is now treated as one coordinated vertical composition above the Bottom Navigation rather than unrelated independent decorations.
+
+### Menu CTA
+
+- The gap between the slogan and CTA was increased because the previous spacing was too tight.
+- Persian `منو` color/light treatment was aligned with the English `Menu` treatment.
+- Existing button geometry and approved Light Sweep direction were preserved.
+
+### GARFILAS Animation
+
+- The neon electrical-fault animation cycle was slowed to **15 seconds**.
+- File: `styles/animations.css`
+- Commit: `790c209e5c8f94e49ed214eb7e92b40267fdefe7`
+
+## Bottom Navigation
+
+- Bottom Navigation remains a protected lower anchor.
+- The center button vertical position remains locked at `50.671875%`.
+- Bottom Navigation is not being used to compensate for Hero layout problems.
 
 ## Current Approved Direction
 
-- Preserve the supplied Hero artwork and GARFILAS SVG geometry.
+- Preserve the supplied GARFILAS SVG geometry.
+- Keep the temporary Hero artwork temporary; calibrate its size and ring before replacement.
+- Keep one primary Hero ring during the current composition phase.
+- Keep background and architecture simple until foreground layout is accepted.
 - Keep the warm gold/orange neon treatment controlled and readable.
 - Keep Hero as a native React/CSS/SVG composition.
 - Keep the center navigation button position locked unless explicitly requested.
-- Keep CTA changes localized to the CTA component and its visual styles.
-- Favor restraint and premium legibility over stronger glow or extra decoration.
+- Favor direct reference comparison over blind percentage adjustments.
 
 ## Technical State
 
 - `components/sections/Hero/Hero.tsx` owns Hero structure.
-- `components/sections/Hero/HeroLogo.tsx` owns the logo asset presentation.
+- `components/sections/Hero/HeroLogo.tsx` owns the logo asset presentation and lockup.
 - `components/sections/Hero/HeroCTA.tsx` owns CTA wrapper.
 - `components/ui/GlowButton.tsx` provides CTA primitive.
 - `components/sections/BottomNavigation/BottomNavigation.tsx` owns navigation markup.
 - `app/globals.css` owns Hero visual composition and responsive styling.
+- `styles/animations.css` owns the GARFILAS neon-fault timing.
 - `public/assets/ui/bottom-nav-frame.svg` owns the navigation frame artwork.
 
 ## Verification State
 
-- Supplied Hero WebP: integrated
+- Temporary Hero WebP: integrated
+- Single Hero ring: current calibration direction
+- Extra rings/halos: removed for current calibration
+- Extra background lines: removed for current calibration
+- Background architecture: deferred
 - Supplied SVG wordmark: integrated
-- HTML slogan: integrated
-- Native neon atmosphere: integrated
-- Upward scroll cue: implemented
-- Menu CTA label: changed to `Menu`
-- Menu CTA styling: refined to a slimmer premium treatment
+- HTML slogan: integrated; visual calibration pending
+- LASAGNA lockup: implemented; visual acceptance pending
+- Italian flag: implemented; visual acceptance pending
+- Menu CTA Persian/English light treatment: aligned
+- CTA/slogan spacing: increased
+- GARFILAS animation: slowed to 15s
 - Bottom Navigation: implemented; final visual calibration pending
-- Center button position: locked
 - Production build: not verified in this documentation update
 - Final visual acceptance: pending
 
 ## Exact Next Actions
 
 1. Verify the deployed Hero against the latest reference.
-2. Verify first GARFILAS neon fault timing around 2 seconds.
-3. Continue logo, LASAGNA, Italian flag and slogan calibration only where the reference requires it.
-4. Compare the refined `Menu` CTA directly against the reference and make only measured geometry changes.
+2. Finalize the temporary Hero size, position and single-ring proportion.
+3. Finalize the vertical spacing of logo stack, slogan, CTA and scroll cue.
+4. Continue LASAGNA, Italian flag and slogan calibration only where direct comparison requires it.
 5. Finish Bottom Navigation geometry without moving the locked center button unless explicitly requested.
-6. Verify mobile first, then desktop.
-7. Run production build verification.
-8. Do not expand project scope until Hero acceptance.
+6. Rebuild the background and architectural composition only after the foreground layout is accepted.
+7. Replace temporary Hero artwork later and recalibrate its ring.
+8. Verify mobile first, then desktop.
+9. Run production build verification.
+10. Do not expand project scope until Hero acceptance.
 
 ---
 
-Last Updated: 2026-08-26
+Last Updated: 2026-08-28
