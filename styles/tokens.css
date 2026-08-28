@@ -37,3 +37,17 @@
   --transition:.3s;
   --transition-slow:.6s;
 }
+
+/*
+ * Hero background visibility calibration.
+ * The current hero artwork is an opaque WEBP containing its own dark scene.
+ * Let the environmental oven scene pass through the dark portions of that
+ * artwork while preserving the Garfield foreground and its warm highlights.
+ */
+.hero-mascot-frame {
+  background: transparent !important;
+}
+
+.hero-mascot-frame img {
+  mix-blend-mode: screen !important;
+}
