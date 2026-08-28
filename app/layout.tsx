@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { cormorantGaramond } from "./fonts";
+import { cormorantGaramond, greatVibes } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Garfilas | Premium Lasagna",
@@ -23,7 +23,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={cormorantGaramond.variable}>{children}</body>
+      <body className={`${cormorantGaramond.variable} ${greatVibes.variable}`}>{children}</body>
     </html>
   );
 }
