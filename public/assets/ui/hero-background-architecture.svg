@@ -1,0 +1,49 @@
+<svg width="1200" height="430" viewBox="0 0 1200 430" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g stroke="#FF7A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left landmark: low, wide Roman amphitheatre line-art taken from the supplied reference composition. -->
+    <g opacity="0.52">
+      <path d="M24 352V258C24 235 40 218 63 218H172C196 218 214 236 214 258V352"/>
+      <path d="M24 276H214M24 303H214M24 328H214" opacity="0.8"/>
+      <path d="M42 258V352M62 258V352M82 258V352M104 258V352M126 258V352M148 258V352M170 258V352M192 258V352" opacity="0.65"/>
+      <path d="M36 258C36 244 46 233 60 233H176C191 233 202 244 202 258"/>
+      <path d="M43 275C43 264 51 256 62 256H176C187 256 195 264 195 275" opacity="0.75"/>
+      <path d="M24 352H214"/>
+      <path d="M9 363C55 354 167 354 228 363" opacity="0.42"/>
+    </g>
+
+    <!-- Small left-side architectural extension visible behind the main circle. -->
+    <g opacity="0.34">
+      <path d="M0 353V310L19 296L39 310V353"/>
+      <path d="M7 310V353M19 303V353M31 310V353"/>
+      <path d="M0 329H39"/>
+    </g>
+
+    <!-- Right landmark: domed Italian skyline line-art from the supplied reference composition. -->
+    <g opacity="0.52">
+      <path d="M964 353V281C964 250 987 226 1018 226C1049 226 1072 250 1072 281V353"/>
+      <path d="M981 353V282C981 260 997 242 1018 242C1039 242 1055 260 1055 282V353" opacity="0.72"/>
+      <path d="M1001 353V286C1001 277 1008 270 1018 270C1028 270 1035 277 1035 286V353" opacity="0.65"/>
+      <path d="M1007 226C1009 210 1012 195 1018 181C1024 195 1027 210 1029 226"/>
+      <path d="M1014 181V167M1010 171H1022"/>
+      <path d="M944 353V302L964 291V353M1072 353V300L1092 289V353"/>
+      <path d="M944 319H964M1072 319H1092" opacity="0.72"/>
+      <path d="M936 353H1100"/>
+      <path d="M920 363C965 354 1076 354 1116 363" opacity="0.42"/>
+    </g>
+
+    <!-- Slim side towers from the reference silhouette. -->
+    <g opacity="0.30">
+      <path d="M1110 353V294L1125 284L1140 294V353"/>
+      <path d="M1120 284V272M1125 272V259M1130 272V284"/>
+      <path d="M1148 353V302L1162 292L1176 302V353"/>
+      <path d="M1157 292V280M1162 280V268M1167 280V292"/>
+      <path d="M1110 320H1140M1148 325H1176"/>
+    </g>
+
+    <!-- Sparse cloud/atmospheric strokes visible around the circular emblem. -->
+    <g opacity="0.20">
+      <path d="M260 126C273 111 295 111 307 125C318 108 347 108 359 126C374 121 391 130 394 145H258C257 137 257 132 260 126Z"/>
+      <path d="M840 132C853 117 875 117 887 131C899 114 927 114 939 132C954 127 971 136 974 151H838C837 143 837 138 840 132Z"/>
+    </g>
+  </g>
+</svg>
