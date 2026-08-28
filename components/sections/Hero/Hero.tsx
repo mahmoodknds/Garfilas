@@ -19,11 +19,10 @@ export default function Hero() {
             radial-gradient(circle at 50% 24%,rgba(255,89,0,.105),transparent 30%),
             radial-gradient(circle at 50% 48%,rgba(91,35,10,.16),transparent 52%),
             linear-gradient(to bottom,rgba(0,0,0,.18),rgba(0,0,0,.04) 42%,rgba(0,0,0,.42) 100%),
-            linear-gradient(rgba(255,104,22,.038) 1px,transparent 1px),
-            linear-gradient(90deg,rgba(255,104,22,.025) 1px,transparent 1px),
-            linear-gradient(90deg,transparent 0 50%,rgba(255,104,22,.018) 50% 51%,transparent 51%);
-          background-size:auto,auto,auto,100% 28px,56px 28px,56px 28px;
-          background-position:center,center,center,0 0,0 0,28px 14px;
+            url('/assets/ui/hero-background-wall.svg');
+          background-size:auto,auto,auto,208px 84px;
+          background-position:center,center,center,center;
+          background-repeat:no-repeat,no-repeat,no-repeat,repeat;
           mask-image:linear-gradient(to bottom,#000 0%,#000 88%,transparent 100%);
         }
 
