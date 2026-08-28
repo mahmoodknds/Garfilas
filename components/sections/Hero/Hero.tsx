@@ -5,10 +5,10 @@ export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
       <style>{`
-        /* Temporary composition calibration: simplify the scene before rebuilding the final background. */
-        .hero-grid,.hero-orbit-two,.hero-glow-small,.hero-architecture{display:none!important}
+        /* Foreground calibration remains protected. Background is calibrated independently. */
+        .hero-grid,.hero-orbit-two,.hero-glow-small{display:none!important}
 
-        /* One visual anchor for the temporary hero: artwork + one luminous ring. */
+        /* One visual anchor for the current hero: artwork + one luminous ring. */
         .hero-mascot{width:min(62vw,32rem);top:25.5%}
         .hero-mascot-halo{display:none!important}
         .hero-orbit-one{top:25.5%;width:min(74vw,38rem);border-color:rgba(255,123,18,.9);box-shadow:0 0 6px rgba(255,91,0,.86),0 0 18px rgba(255,91,0,.38),inset 0 0 8px rgba(255,91,0,.2)}
@@ -28,6 +28,18 @@ export default function Hero() {
           .hero-scroll-cue{top:81.8%}
         }
       `}</style>
+
+      {/* Reference-based background layer. The supplied screenshot is used as a visual source, not as a background image. */}
+      <div className="hero-background-wall" aria-hidden="true" />
+      <div className="hero-background-architecture" aria-hidden="true">
+        <img
+          src="/assets/ui/hero-background-architecture.svg"
+          alt=""
+          width={1200}
+          height={430}
+          draggable="false"
+        />
+      </div>
 
       <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
       <div className="hero-glow hero-glow-main" aria-hidden="true" />
