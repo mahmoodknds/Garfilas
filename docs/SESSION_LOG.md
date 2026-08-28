@@ -16,7 +16,9 @@ The updated `Result.png` was reviewed directly against the supplied reference be
 
 The current output showed that the previous oven implementation was technically present in code but visually too weak: the screenshot still read primarily as a dark brick/architecture scene with an orange ring. The oven cavity, physical opening depth, warm interior source and lowered door were not visually legible enough.
 
-This pass therefore increases the physical readability of the background rather than simply increasing a generic orange glow.
+The latest output also exposed a separate compositing problem: the active `garfilas-hero-final.webp` is an opaque circular artwork with its own dark background and baked architectural artwork. The mascot frame itself also had an opaque dark background. That combination physically occluded the 3D oven scene placed behind Garfield, so the oven could not be seen clearly even though its CSS geometry existed.
+
+This pass therefore addresses both physical readability and the asset compositing boundary rather than simply increasing a generic orange glow.
 
 ## Background Direction
 
@@ -40,6 +42,8 @@ The intended visual metaphor is an opened professional oven: a dark surrounding 
 - Increased heat haze visibility while keeping it soft and subordinate to the foreground.
 - Preserved the distant Italian architecture only as a very faint atmospheric layer.
 - Kept the scene behind the existing Garfield, single neon ring and typography stack.
+- Made the mascot frame transparent so the environmental scene can exist behind the artwork.
+- Applied `mix-blend-mode: screen` to the current mascot WEBP so its dark baked background no longer blocks the oven scene.
 
 ## Protected Foreground
 
@@ -57,6 +61,7 @@ No intentional changes were made to the accepted foreground structure:
 ## Technical State
 
 - `components/sections/Hero/Hero.tsx` owns the 3D oven background scene markup and responsive styling.
+- `styles/tokens.css` contains the minimal compositing override required to reveal the environmental oven behind the opaque mascot artwork.
 - The scene uses CSS perspective, transforms, gradients, shadows and controlled animation rather than a background screenshot.
 - Existing unused background SVG assets remain in the repository for now and are not mounted by the active Hero.
 
@@ -70,23 +75,25 @@ No intentional changes were made to the accepted foreground structure:
 - Open door depth: implemented
 - Warm light spill: strengthened
 - Heat haze: strengthened
+- Mascot artwork compositing: corrected to reveal the environmental background
 - Foreground calibration: preserved
 - Production build: not verified in this documentation update
 - Final visual acceptance: pending next direct output comparison
 
 ## Latest Code Commit
 
-`a9d95068330559600c4319a25662b38387925baa`
+`e8d890a9ea866e149894e1e813a4f0b97905ab2d`
 
 ## Exact Next Actions
 
 1. Inspect the next deployed/mobile output directly.
-2. Compare the visible oven depth against the supplied reference and the agreed oven-opening concept.
-3. Tune only scale, depth, light spill and heat haze if needed.
-4. Do not alter foreground positions during this background pass.
-5. Verify desktop adaptation after mobile acceptance.
-6. Run production build verification.
-7. Do not expand project scope until Hero acceptance.
+2. Verify that the oven cavity is now visibly readable behind Garfield.
+3. Compare the visible oven depth against the supplied reference and the agreed oven-opening concept.
+4. Tune only scale, depth, light spill and heat haze if needed.
+5. Do not alter foreground positions during this background pass.
+6. Verify desktop adaptation after mobile acceptance.
+7. Run production build verification.
+8. Do not expand project scope until Hero acceptance.
 
 ---
 
