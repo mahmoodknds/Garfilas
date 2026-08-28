@@ -16,7 +16,7 @@ export default function Hero() {
 
         /* Calibrate the lower stack from the fixed bottom navigation upward. */
         .hero-copy{top:50.5%}
-        .hero-cta{top:73.5%}
+        .hero-cta{top:75.2%}
         .hero-scroll-cue{top:82%}
 
         @media(max-width:699px){
@@ -24,7 +24,7 @@ export default function Hero() {
           .hero-orbit-one{top:25.5%;width:min(84vw,26rem)}
           .hero-glow-main{top:25.5%;width:min(82vw,25rem)}
           .hero-copy{top:50.8%}
-          .hero-cta{top:73.2%}
+          .hero-cta{top:74.8%}
           .hero-scroll-cue{top:81.8%}
         }
       `}</style>
