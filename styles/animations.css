@@ -63,7 +63,7 @@
 }
 
 .animate-float { animation: float var(--transition-slow) ease-in-out infinite; }
-.animate-neon-fault { animation: neon-fault 9.2s linear infinite; }
+.animate-neon-fault { animation: neon-fault 15s linear infinite; }
 .animate-fade-up { animation: fadeUp 500ms ease-out both; }
 .animate-fade-up-delay-1 { animation: fadeUp 500ms 100ms ease-out both; }
 .animate-fade-up-delay-2 { animation: fadeUp 500ms 180ms ease-out both; }
