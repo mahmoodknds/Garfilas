@@ -5,39 +5,35 @@ export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
       <style>{`
-        /* Reference composition calibration: keep the bottom navigation fixed and rebalance the hero stack above it. */
-        .hero-mascot{width:min(70vw,25rem);top:26.5%}
-        .hero-orbit{top:26.5%}
-        .hero-glow-main{top:26.5%}
-        .hero-glow-small{top:45%}
-        .hero-architecture{top:26.5%;width:min(104vw,50rem);height:min(44vh,30rem)}
-        .hero-copy{top:48.3%}
-        .hero-cta{top:70%}
-        .hero-scroll-cue{top:80%}
+        /* Temporary composition calibration: simplify the scene before rebuilding the final background. */
+        .hero-grid,.hero-orbit-two,.hero-glow-small,.hero-architecture{display:none!important}
+
+        /* One visual anchor for the temporary hero: artwork + one luminous ring. */
+        .hero-mascot{width:min(62vw,32rem);top:25.5%}
+        .hero-mascot-halo{display:none!important}
+        .hero-orbit-one{top:25.5%;width:min(74vw,38rem);border-color:rgba(255,123,18,.9);box-shadow:0 0 6px rgba(255,91,0,.86),0 0 18px rgba(255,91,0,.38),inset 0 0 8px rgba(255,91,0,.2)}
+        .hero-glow-main{top:25.5%;width:min(68vw,34rem)}
+
+        /* Calibrate the lower stack from the fixed bottom navigation upward. */
+        .hero-copy{top:50.5%}
+        .hero-cta{top:73.5%}
+        .hero-scroll-cue{top:82%}
+
         @media(max-width:699px){
-          .hero-mascot{width:min(70vw,20rem);top:26.5%}
-          .hero-orbit{top:26.5%}
-          .hero-glow-main{top:26.5%;width:76vw}
-          .hero-glow-small{top:45%;width:40vw}
-          .hero-architecture{top:26.5%;width:104vw;height:43vh}
-          .hero-copy{top:48.3%}
-          .hero-cta{top:70%}
-          .hero-scroll-cue{top:80%}
+          .hero-mascot{width:min(76vw,23rem);top:25.5%}
+          .hero-orbit-one{top:25.5%;width:min(84vw,26rem)}
+          .hero-glow-main{top:25.5%;width:min(82vw,25rem)}
+          .hero-copy{top:50.8%}
+          .hero-cta{top:73.2%}
+          .hero-scroll-cue{top:81.8%}
         }
       `}</style>
-      <div className="hero-grid" aria-hidden="true" />
+
       <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
-      <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
       <div className="hero-glow hero-glow-main" aria-hidden="true" />
-      <div className="hero-glow hero-glow-small" aria-hidden="true" />
 
       <div className="hero-shell">
-        <div className="hero-copy">
-          <HeroLogo />
-        </div>
-
         <div className="hero-mascot" aria-label="Garfilas hero artwork">
-          <div className="hero-mascot-halo" aria-hidden="true" />
           <div className="hero-mascot-frame">
             <img
               src="/assets/hero/garfilas-hero-final.webp"
@@ -49,13 +45,12 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-architecture" aria-hidden="true">
-          <span className="arch arch-left" />
-          <span className="arch arch-right" />
-          <span className="arch arch-base" />
+        <div className="hero-copy">
+          <HeroLogo />
         </div>
 
         <HeroCTA />
+
         <div className="hero-scroll-cue" aria-hidden="true" style={{ marginTop: "10px" }}>
           <style>{`.hero-scroll-cue span{transform:rotate(225deg)}`}</style>
           <span />
