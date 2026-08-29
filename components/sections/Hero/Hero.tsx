@@ -51,9 +51,14 @@ export default function Hero() {
         .hero-particle-field:after{content:"";position:absolute;left:26%;right:26%;top:13%;bottom:11%;background:radial-gradient(ellipse at center,rgba(3,2,1,.24),transparent 72%);filter:blur(15px)}
         .hero-depth-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 46%,transparent 0 40%,rgba(0,0,0,.08) 62%,rgba(0,0,0,.58) 100%)}
         .hero-grid,.hero-orbit-two,.hero-glow-small,.hero-background-wall,.hero-background-architecture{display:none!important}
-        .hero-mascot-frame{background:transparent!important}.hero-mascot-halo{display:none!important}.hero-mascot{z-index:5}
-        .hero-orbit-one{z-index:6;border-color:rgba(255,123,18,.9);box-shadow:0 0 6px rgba(255,91,0,.86),0 0 18px rgba(255,91,0,.38),inset 0 0 8px rgba(255,91,0,.2)}
-        .hero-glow-main{z-index:5}.hero-copy,.hero-cta,.hero-scroll-cue{z-index:7}
+        .hero-mascot-frame{background:transparent!important}.hero-mascot-halo{display:none!important}.hero-mascot{z-index:6}
+        .hero-orbit-one{z-index:2;border-color:rgba(255,123,18,.9);box-shadow:0 0 6px rgba(255,91,0,.86),0 0 18px rgba(255,91,0,.38),inset 0 0 8px rgba(255,91,0,.2)}
+        .hero-glow-main{z-index:1}.hero-copy,.hero-cta,.hero-scroll-cue{z-index:8}
+        .hero-shell{z-index:7}
+        .hero-mascot{z-index:9}
+        @keyframes hero-rise{from{opacity:0;transform:translate(-50%,18px)}to{opacity:1;transform:translate(-50%,0)}}
+        @keyframes mascot-in{from{opacity:0;transform:translate(-50%,-46%) scale(.88)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+        @keyframes hero-glow-breathe{0%,100%{opacity:.62;transform:translate(-50%,-50%) scale(.95)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}}
         @keyframes heat-breathe{0%,100%{transform:scale(1) translate3d(-1%,0,0);opacity:.7}50%{transform:scale(1.08) translate3d(2%,-1%,0);opacity:1}}
         @keyframes particle-far{0%,100%{transform:translate3d(0,0,0);opacity:.3}50%{transform:translate3d(-1.2vw,-2vh,0);opacity:1}}
         @keyframes particle-mid{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.45}35%{transform:translate3d(1.7vw,-2.2vh,0) scale(1.22);opacity:1}70%{transform:translate3d(-1.2vw,1.7vh,0) scale(.88);opacity:.68}}
@@ -74,7 +79,7 @@ export default function Hero() {
         </div></div><div className="hero-depth-vignette"/>
       </div>
       <div className="hero-orbit hero-orbit-one" aria-hidden="true"/><div className="hero-glow hero-glow-main" aria-hidden="true"/>
-      <div className="hero-shell"><div className="hero-mascot" aria-label="Garfilas hero artwork"><div className="hero-mascot-frame"><img src="/assets/hero/garfilas-hero-final.webp" alt="Garfilas mascot enjoying handmade lasagna" width={1536} height={1024} fetchPriority="high"/></div></div><div className="hero-copy"><HeroLogo/></div><HeroCTA/><div className="hero-scroll-cue" aria-hidden="true" style={{marginTop:"10px"}}><style>{`.hero-scroll-cue span{transform:rotate(225deg)`}</style><span/><span/><span/></div></div>
+      <div className="hero-shell"><div className="hero-mascot" aria-label="Garfilas hero artwork"><div className="hero-mascot-frame"><img src="/assets/hero/garfilas-hero-final.webp" alt="Garfilas mascot enjoying handmade lasagna" width={1536} height={1024} fetchPriority="high"/></div></div><div className="hero-copy"><HeroLogo/></div><HeroCTA/><div className="hero-scroll-cue" aria-hidden="true" style={{marginTop:"10px"}}><style>{`.hero-scroll-cue span{transform:rotate(225deg)}`}</style><span/><span/><span/></div></div>
     </section>
   );
 }
