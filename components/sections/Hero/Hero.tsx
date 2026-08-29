@@ -2,6 +2,7 @@ import HeroCTA from "./HeroCTA";
 import HeroLogo from "./HeroLogo";
 
 type Particle = { x: number; y: number; size: number; opacity: number; delay: number; drift: number };
+type RingEmber = { x: number; y: number; vx: number; vy: number; size: number; opacity: number; delay: number; duration: number; spin: number };
 
 const makeParticles = (count: number, seed: number, sizeBase: number, opacityBase: number): Particle[] =>
   Array.from({ length: count }, (_, i) => ({
@@ -9,18 +10,55 @@ const makeParticles = (count: number, seed: number, sizeBase: number, opacityBas
     y: (i * (61 + seed) + 7 * seed) % 100,
     size: sizeBase + ((i * 17 + seed) % 9) * 0.28,
     opacity: opacityBase + ((i * 13 + seed) % 6) * 0.07,
-    delay: ((i * 0.43 + seed) % 14),
+    delay: (i * 0.43 + seed) % 14,
     drift: 0.4 + ((i * 19 + seed) % 10) / 10,
   }));
 
-const farParticles = makeParticles(150, 3, 0.8, 0.26);
-const midParticles = makeParticles(100, 7, 1.2, 0.42);
-const nearParticles = makeParticles(45, 11, 1.8, 0.62);
-const emberStreaks = Array.from({ length: 22 }, (_, i) => ({
+const farParticles = makeParticles(170, 3, 0.8, 0.26);
+const midParticles = makeParticles(110, 7, 1.25, 0.42);
+const nearParticles = makeParticles(55, 11, 2.2, 0.62);
+
+const ringEmbers: RingEmber[] = Array.from({ length: 180 }, (_, i) => {
+  const angle = (i * 137.508 + 9) % 360;
+  const radians = angle * Math.PI / 180;
+  const radius = 46 + ((i * 17) % 7);
+  const speed = 8 + ((i * 23) % 12) * 0.9;
+  return {
+    x: 50 + Math.cos(radians) * radius,
+    y: 50 + Math.sin(radians) * radius,
+    vx: Math.cos(radians) * speed + (-4 + ((i * 11) % 9)),
+    vy: Math.sin(radians) * speed + (-3 + ((i * 19) % 7)),
+    size: 1.2 + ((i * 29) % 16) * 0.38,
+    opacity: 0.42 + ((i * 31) % 8) * 0.07,
+    delay: (i * 0.19) % 11,
+    duration: 2.8 + ((i * 13) % 14) * 0.32,
+    spin: -16 + ((i * 7) % 33),
+  };
+});
+
+const hotRingEmbers: RingEmber[] = Array.from({ length: 42 }, (_, i) => {
+  const angle = (i * 97.31 + 31) % 360;
+  const radians = angle * Math.PI / 180;
+  const radius = 45 + ((i * 13) % 8);
+  const speed = 10 + ((i * 17) % 10) * 1.05;
+  return {
+    x: 50 + Math.cos(radians) * radius,
+    y: 50 + Math.sin(radians) * radius,
+    vx: Math.cos(radians) * speed + (-5 + ((i * 7) % 11)),
+    vy: Math.sin(radians) * speed + (-4 + ((i * 13) % 9)),
+    size: 3.5 + ((i * 11) % 11) * 0.72,
+    opacity: 0.62 + ((i * 5) % 5) * 0.075,
+    delay: (i * 0.37) % 13,
+    duration: 3.2 + ((i * 7) % 9) * 0.42,
+    spin: -22 + ((i * 11) % 45),
+  };
+});
+
+const emberStreaks = Array.from({ length: 26 }, (_, i) => ({
   x: (i * 43 + 9) % 100,
   y: (i * 67 + 13) % 100,
-  length: 7 + (i % 6) * 4,
-  rotate: -55 + (i % 7) * 8,
+  length: 8 + (i % 7) * 5,
+  rotate: -55 + (i % 9) * 8,
   delay: (i * 0.71) % 10,
 }));
 
@@ -37,6 +75,11 @@ export default function Hero() {
         .hero-particle-mid{background:rgba(255,157,43,.94);box-shadow:0 0 8px rgba(255,111,18,.38),0 0 18px rgba(255,75,5,.13);animation:particle-mid 9s ease-in-out infinite}
         .hero-particle-near{background:rgba(255,192,78,1);box-shadow:0 0 9px rgba(255,137,26,.62),0 0 26px rgba(255,76,6,.23);animation:particle-near 6s ease-in-out infinite}
         .hero-particle-hot{background:#ffe0a0;box-shadow:0 0 7px rgba(255,219,137,1),0 0 18px rgba(255,117,15,.82),0 0 36px rgba(255,54,3,.3);animation:particle-hot 3.6s ease-in-out infinite}
+        .hero-ring-ember-field{position:absolute;left:50%;top:47%;width:min(72vw,52rem);aspect-ratio:1;transform:translate(-50%,-50%);z-index:4;overflow:visible;pointer-events:none}
+        .hero-ring-ember{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);border-radius:50%;background:rgba(255,191,83,.98);box-shadow:0 0 7px rgba(255,184,75,.95),0 0 18px rgba(255,91,8,.5);opacity:0;will-change:transform,opacity;animation:ring-ember-flight var(--duration) cubic-bezier(.16,.72,.18,1) infinite;animation-delay:var(--delay);transform:translate(-50%,-50%)}
+        .hero-ring-ember:after{content:"";position:absolute;inset:-70%;border-radius:50%;background:inherit;filter:blur(4px);opacity:.25}
+        .hero-ring-ember-hot{background:#ffe2aa;box-shadow:0 0 10px rgba(255,226,166,1),0 0 25px rgba(255,115,12,.9),0 0 48px rgba(255,54,2,.42);animation-name:ring-ember-flight-hot}
+        .hero-ring-ember-hot:after{filter:blur(7px);opacity:.4}
         .hero-ember-streak{position:absolute;height:1.5px;border-radius:999px;transform-origin:left center;background:linear-gradient(90deg,transparent,rgba(255,193,76,.95),rgba(255,89,8,.22));box-shadow:0 0 8px rgba(255,108,12,.55);opacity:.82;animation:ember-flight 5.5s ease-in-out infinite}
         .hero-ember-streak:after{content:"";position:absolute;right:-1.5px;top:-1.5px;width:4px;height:4px;border-radius:50%;background:#ffe0a0;box-shadow:0 0 9px #ff9d32}
         .hero-hotspot{position:absolute;width:4px;height:4px;border-radius:50%;background:#ffe3ab;box-shadow:0 0 9px #ffd17b,0 0 24px rgba(255,105,10,.85),0 0 45px rgba(255,55,2,.3);animation:hotspot-pulse 3.2s ease-in-out infinite}
@@ -52,22 +95,32 @@ export default function Hero() {
         @keyframes particle-mid{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.45}35%{transform:translate3d(1.7vw,-2.2vh,0) scale(1.22);opacity:1}70%{transform:translate3d(-1.2vw,1.7vh,0) scale(.88);opacity:.68}}
         @keyframes particle-near{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.5}40%{transform:translate3d(-2.8vw,2.2vh,0) scale(1.3);opacity:1}75%{transform:translate3d(1.8vw,-2.8vh,0) scale(.82);opacity:.72}}
         @keyframes particle-hot{0%,100%{transform:translate3d(0,0,0) scale(.55);opacity:.22}30%{transform:translate3d(-1.2vw,-2.3vh,0) scale(1.9);opacity:1}65%{transform:translate3d(1.6vw,1.2vh,0) scale(.8);opacity:.5}}
+        @keyframes ring-ember-flight{0%{transform:translate(-50%,-50%) scale(.15);opacity:0}7%{opacity:var(--opacity)}18%{transform:translate(calc(-50% + var(--vx)*.28vw),calc(-50% + var(--vy)*.28vh)) scale(1.2);opacity:var(--opacity)}58%{transform:translate(calc(-50% + var(--vx)*1vw),calc(-50% + var(--vy)*1vh)) scale(.82);opacity:calc(var(--opacity) * .8)}82%{opacity:calc(var(--opacity) * .18)}100%{transform:translate(calc(-50% + var(--vx)*1.5vw),calc(-50% + var(--vy)*1.5vh)) scale(.2);opacity:0}}
+        @keyframes ring-ember-flight-hot{0%{transform:translate(-50%,-50%) scale(.12);opacity:0}6%{opacity:var(--opacity)}20%{transform:translate(calc(-50% + var(--vx)*.3vw),calc(-50% + var(--vy)*.3vh)) scale(1.55);opacity:1}52%{transform:translate(calc(-50% + var(--vx)*1.05vw),calc(-50% + var(--vy)*1.05vh)) scale(.9);opacity:.88}76%{opacity:.28}100%{transform:translate(calc(-50% + var(--vx)*1.65vw),calc(-50% + var(--vy)*1.65vh)) scale(.16);opacity:0}}
         @keyframes ember-flight{0%,100%{transform:translate3d(-1vw,2vh,0) rotate(var(--ember-rotate)) scaleX(.5);opacity:0}16%{opacity:.9}52%{transform:translate3d(4vw,-5vh,0) rotate(var(--ember-rotate)) scaleX(1.25);opacity:.78}84%{opacity:.05}}
         @keyframes hotspot-pulse{0%,100%{transform:scale(.4);opacity:.2}45%{transform:scale(1.8);opacity:1}60%{transform:scale(.8);opacity:.45}}
-        @media(max-width:699px){.hero-heat{filter:blur(30px)}.hero-particle-far{opacity:.72}.hero-particle-mid{opacity:.82}.hero-particle-near{opacity:.92}.hero-particle-field:after{left:15%;right:15%}.hero-ember-streak{opacity:.6}.hero-mascot{width:min(76vw,23rem)}.hero-orbit-one{width:min(84vw,26rem)}}
-        @media(prefers-reduced-motion:reduce){.hero-heat,.hero-particle,.hero-ember-streak,.hero-hotspot{animation:none}}
+        @media(max-width:699px){.hero-heat{filter:blur(30px)}.hero-ring-ember-field{width:min(104vw,35rem);top:46%}.hero-particle-far{opacity:.72}.hero-particle-mid{opacity:.82}.hero-particle-near{opacity:.92}.hero-particle-field:after{left:15%;right:15%}.hero-ember-streak{opacity:.6}.hero-mascot{width:min(76vw,23rem)}.hero-orbit-one{width:min(84vw,26rem)}}
+        @media(prefers-reduced-motion:reduce){.hero-heat,.hero-particle,.hero-ring-ember,.hero-ember-streak,.hero-hotspot{animation:none}}
       `}</style>
       <div className="hero-depth-scene" aria-hidden="true">
-        <div className="hero-ember-space"><div className="hero-heat"/><div className="hero-particle-field">
-          {farParticles.map((p,i)=><i key={`f-${i}`} className="hero-particle hero-particle-far" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}}/>)}
-          {midParticles.map((p,i)=><i key={`m-${i}`} className={`hero-particle ${i%17===0?"hero-particle-hot":"hero-particle-mid"}`} style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}}/>)}
-          {nearParticles.map((p,i)=><i key={`n-${i}`} className="hero-particle hero-particle-near" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}}/>)}
-          {emberStreaks.map((p,i)=><i key={`e-${i}`} className="hero-ember-streak" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.length}px`,animationDelay:`-${p.delay}s`,"--ember-rotate":`${p.rotate}deg`} as React.CSSProperties}/>)}
-          <i className="hero-hotspot a"/><i className="hero-hotspot b"/><i className="hero-hotspot c"/><i className="hero-hotspot d"/><i className="hero-hotspot e"/><i className="hero-hotspot f"/><i className="hero-hotspot g"/><i className="hero-hotspot h"/>
-        </div></div><div className="hero-depth-vignette"/>
+        <div className="hero-ember-space">
+          <div className="hero-heat"/>
+          <div className="hero-particle-field">
+            {farParticles.map((p,i)=><i key={`f-${i}`} className="hero-particle hero-particle-far" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}}/>)}
+            {midParticles.map((p,i)=><i key={`m-${i}`} className={`hero-particle ${i%17===0?"hero-particle-hot":"hero-particle-mid"}`} style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}}/>)}
+            {nearParticles.map((p,i)=><i key={`n-${i}`} className="hero-particle hero-particle-near" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}}/>)}
+            {emberStreaks.map((p,i)=><i key={`e-${i}`} className="hero-ember-streak" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.length}px`,animationDelay:`-${p.delay}s`,`--ember-rotate`:`${p.rotate}deg`} as React.CSSProperties}/>)}
+            <i className="hero-hotspot a"/><i className="hero-hotspot b"/><i className="hero-hotspot c"/><i className="hero-hotspot d"/><i className="hero-hotspot e"/><i className="hero-hotspot f"/><i className="hero-hotspot g"/><i className="hero-hotspot h"/>
+          </div>
+        </div>
+        <div className="hero-depth-vignette"/>
+      </div>
+      <div className="hero-ring-ember-field" aria-hidden="true">
+        {ringEmbers.map((p,i)=><i key={`ring-${i}`} className="hero-ring-ember" style={{"--x":`${p.x}%`,"--y":`${p.y}%`,"--vx":p.vx,"--vy":p.vy,"--size":`${p.size}px`,"--opacity":p.opacity,"--delay":`-${p.delay}s`,`--duration`:`${p.duration}s`} as React.CSSProperties}/>)}
+        {hotRingEmbers.map((p,i)=><i key={`ring-hot-${i}`} className="hero-ring-ember hero-ring-ember-hot" style={{"--x":`${p.x}%`,"--y":`${p.y}%`,"--vx":p.vx,"--vy":p.vy,"--size":`${p.size}px`,"--opacity":p.opacity,"--delay":`-${p.delay}s`,`--duration`:`${p.duration}s`} as React.CSSProperties}/>)}
       </div>
       <div className="hero-orbit hero-orbit-one" aria-hidden="true"/><div className="hero-glow hero-glow-main" aria-hidden="true"/>
-      <div className="hero-shell"><div className="hero-mascot" aria-label="Garfilas hero artwork"><div className="hero-mascot-frame"><img src="/assets/hero/garfilas-hero-final.webp" alt="Garfilas mascot enjoying handmade lasagna" width={1536} height={1024} fetchPriority="high"/></div></div><div className="hero-copy"><HeroLogo/></div><HeroCTA/><div className="hero-scroll-cue" aria-hidden="true" style={{marginTop:"10px"}}><style>{`.hero-scroll-cue span{transform:rotate(225deg)`}</style><span/><span/><span/></div></div>
+      <div className="hero-shell"><div className="hero-mascot" aria-label="Garfilas hero artwork"><div className="hero-mascot-frame"><img src="/assets/hero/garfilas-hero-final.webp" alt="Garfilas mascot enjoying handmade lasagna" width={1536} height={1024} fetchPriority="high"/></div></div><div className="hero-copy"><HeroLogo/></div><HeroCTA/><div className="hero-scroll-cue" aria-hidden="true" style={{marginTop:"10px"}}><style>{`.hero-scroll-cue span{transform:rotate(225deg)}`}</style><span/><span/><span/></div></div>
     </section>
   );
 }
