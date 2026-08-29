@@ -1,0 +1,62 @@
+name: Ring ember visual patch
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: contains(github.event.head_commit.message, 'chore: add one-time ring ember visual patch')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch hero ember visibility
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('components/sections/Hero/Hero.tsx')
+          s = p.read_text()
+          s = s.replace(
+              'width:min(68vw,48rem);aspect-ratio:1;transform:translate(-50%,-50%);z-index:3;',
+              'width:min(82vw,42rem);aspect-ratio:1;transform:translate(-50%,-50%);z-index:11;'
+          )
+          s = s.replace(
+              '--ring-radius:min(34vw,24rem);',
+              '--ring-radius:calc(min(82vw,42rem) / 2 - 2px);'
+          )
+          s = s.replace(
+              'width:var(--size);height:var(--size);border-radius:50%;background:rgba(255,190,82,.98);',
+              'width:var(--size);height:var(--size);border-radius:50%;background:rgba(255,196,92,.98);z-index:12;mix-blend-mode:screen;'
+          )
+          s = s.replace(
+              'size:0.9 + ((i * 17) % 18) * 0.28',
+              'size:1.4 + ((i * 17) % 22) * 0.34'
+          )
+          s = s.replace(
+              'size:3 + ((i * 7) % 9) * 0.52',
+              'size:3.8 + ((i * 7) % 11) * 0.62'
+          )
+          marker = '.hero-ember:after{content:"";'
+          if marker in s and '.hero-ring-atmosphere:after{' not in s:
+              s = s.replace(
+                  marker,
+                  '.hero-ring-atmosphere:after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 99% 50%,rgba(255,218,150,.95) 0 2px,rgba(255,103,8,.38) 3px,transparent 7px),radial-gradient(circle at 92.5% 74.5%,rgba(255,205,125,.9) 0 3px,rgba(255,93,6,.32) 4px,transparent 9px),radial-gradient(circle at 74.5% 92.5%,rgba(255,227,175,.9) 0 2px,rgba(255,99,8,.32) 3px,transparent 8px),radial-gradient(circle at 50% 99%,rgba(255,206,121,.95) 0 3px,rgba(255,90,4,.35) 4px,transparent 10px),radial-gradient(circle at 25.5% 92.5%,rgba(255,227,175,.88) 0 2px,rgba(255,99,8,.3) 3px,transparent 8px),radial-gradient(circle at 7.5% 74.5%,rgba(255,205,125,.9) 0 3px,rgba(255,93,6,.32) 4px,transparent 9px),radial-gradient(circle at 1% 50%,rgba(255,218,150,.95) 0 2px,rgba(255,103,8,.38) 3px,transparent 7px),radial-gradient(circle at 7.5% 25.5%,rgba(255,205,125,.9) 0 3px,rgba(255,93,6,.32) 4px,transparent 9px),radial-gradient(circle at 25.5% 7.5%,rgba(255,227,175,.88) 0 2px,rgba(255,99,8,.3) 3px,transparent 8px),radial-gradient(circle at 50% 1%,rgba(255,206,121,.95) 0 3px,rgba(255,90,4,.35) 4px,transparent 10px),radial-gradient(circle at 74.5% 7.5%,rgba(255,227,175,.9) 0 2px,rgba(255,99,8,.3) 3px,transparent 8px),radial-gradient(circle at 92.5% 25.5%,rgba(255,205,125,.9) 0 3px,rgba(255,93,6,.32) 4px,transparent 9px);filter:blur(.1px);opacity:.92;animation:ring-spark-pulse 2.7s ease-in-out infinite;pointer-events:none;z-index:12}\n                  '+marker
+              )
+          if '@keyframes ring-spark-pulse' not in s:
+              s = s.replace(
+                  '@keyframes heat-breathe',
+                  '@keyframes ring-spark-pulse{0%,100%{opacity:.52;transform:scale(.985)}31%{opacity:1;transform:scale(1.008)}58%{opacity:.68;transform:scale(.996)}77%{opacity:.96;transform:scale(1.012)}}\n        @keyframes heat-breathe'
+              )
+          p.write_text(s)
+      - name: Commit patch and remove workflow
+        shell: bash
+        run: |
+          rm -f .github/workflows/fix-ring-embers.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add components/sections/Hero/Hero.tsx .github/workflows/fix-ring-embers.yml
+          git commit -m 'fix(hero): make ring-origin embers unmistakably visible [skip ci]'
+          git push
