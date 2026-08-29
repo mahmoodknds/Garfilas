@@ -1,65 +1,101 @@
 import HeroCTA from "./HeroCTA";
 import HeroLogo from "./HeroLogo";
 
+const farParticles = Array.from({ length: 70 }, (_, i) => ({
+  x: (i * 47 + 13) % 100,
+  y: (i * 71 + 9) % 100,
+  size: 1 + (i % 3) * 0.35,
+  opacity: 0.22 + (i % 5) * 0.07,
+  delay: (i * 0.83) % 12,
+}));
+
+const midParticles = Array.from({ length: 46 }, (_, i) => ({
+  x: (i * 61 + 7) % 100,
+  y: (i * 37 + 17) % 100,
+  size: 1.2 + (i % 4) * 0.55,
+  opacity: 0.38 + (i % 4) * 0.09,
+  delay: (i * 0.61) % 9,
+}));
+
+const nearParticles = Array.from({ length: 24 }, (_, i) => ({
+  x: (i * 73 + 19) % 100,
+  y: (i * 43 + 11) % 100,
+  size: 2 + (i % 4) * 0.8,
+  opacity: 0.55 + (i % 4) * 0.09,
+  delay: (i * 0.47) % 7,
+}));
+
+const emberStreaks = Array.from({ length: 13 }, (_, i) => ({
+  x: (i * 79 + 8) % 100,
+  y: (i * 53 + 14) % 100,
+  length: 8 + (i % 5) * 4,
+  rotate: -55 + (i % 6) * 7,
+  delay: (i * 0.73) % 8,
+}));
+
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
       <style>{`
-        /* Garfilas hero: deep warm atmospheric space with suspended dust and embers. */
+        /* Garfilas hero: warm atmospheric space, now with a dense multi-depth ember field. */
         .hero-depth-scene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;isolation:isolate;background:#030201}
         .hero-ember-space{position:absolute;inset:0;overflow:hidden;background:
-          radial-gradient(ellipse at 50% 48%,rgba(73,31,9,.28) 0%,rgba(30,12,4,.16) 30%,rgba(4,3,2,0) 66%),
-          radial-gradient(ellipse at 18% 70%,rgba(93,38,8,.13),transparent 38%),
-          radial-gradient(ellipse at 84% 30%,rgba(104,43,8,.11),transparent 35%),
-          #030201}
+          radial-gradient(ellipse at 50% 48%,rgba(73,31,9,.30) 0%,rgba(30,12,4,.18) 30%,rgba(4,3,2,0) 68%),
+          radial-gradient(ellipse at 18% 70%,rgba(93,38,8,.15),transparent 38%),
+          radial-gradient(ellipse at 84% 30%,rgba(104,43,8,.13),transparent 35%),#030201}
         .hero-heat{position:absolute;inset:-20%;background:
-          radial-gradient(ellipse at 42% 44%,rgba(255,102,20,.10),transparent 24%),
-          radial-gradient(ellipse at 67% 62%,rgba(255,72,10,.07),transparent 22%),
-          radial-gradient(ellipse at 25% 28%,rgba(255,150,45,.045),transparent 20%);
+          radial-gradient(ellipse at 42% 44%,rgba(255,102,20,.11),transparent 24%),
+          radial-gradient(ellipse at 67% 62%,rgba(255,72,10,.08),transparent 22%),
+          radial-gradient(ellipse at 25% 28%,rgba(255,150,45,.05),transparent 20%);
           filter:blur(34px);animation:heat-breathe 9s ease-in-out infinite;transform:translateZ(0)}
 
-        /* Distant dust: tiny, numerous, slow. */
-        .hero-dust-far,.hero-dust-mid,.hero-dust-near{position:absolute;inset:-8%;border-radius:50%;will-change:transform,opacity}
-        .hero-dust-far{opacity:.68;background-image:
-          radial-gradient(circle at 7% 17%,rgba(255,173,74,.42) 0 1px,transparent 1.8px),radial-gradient(circle at 15% 61%,rgba(255,118,30,.34) 0 1px,transparent 1.7px),radial-gradient(circle at 24% 34%,rgba(255,203,116,.28) 0 .8px,transparent 1.5px),radial-gradient(circle at 32% 76%,rgba(255,129,35,.32) 0 1px,transparent 1.7px),radial-gradient(circle at 41% 20%,rgba(255,181,76,.3) 0 .9px,transparent 1.5px),radial-gradient(circle at 49% 66%,rgba(255,112,24,.3) 0 1px,transparent 1.7px),radial-gradient(circle at 58% 29%,rgba(255,211,133,.25) 0 .8px,transparent 1.4px),radial-gradient(circle at 67% 81%,rgba(255,133,37,.3) 0 1px,transparent 1.7px),radial-gradient(circle at 76% 43%,rgba(255,189,83,.3) 0 .9px,transparent 1.5px),radial-gradient(circle at 86% 68%,rgba(255,117,28,.35) 0 1px,transparent 1.7px),radial-gradient(circle at 94% 24%,rgba(255,199,102,.27) 0 .8px,transparent 1.4px),radial-gradient(circle at 54% 52%,rgba(255,159,53,.22) 0 .7px,transparent 1.4px);background-size:100% 100%;animation:dust-far 30s linear infinite}
+        .hero-particle-field{position:absolute;inset:-3%;overflow:hidden;transform:translateZ(0)}
+        .hero-particle{position:absolute;display:block;border-radius:999px;will-change:transform,opacity;mix-blend-mode:screen}
+        .hero-particle-far{background:rgba(255,183,78,.72);box-shadow:0 0 5px rgba(255,151,40,.25);animation:particle-far 18s ease-in-out infinite}
+        .hero-particle-mid{background:rgba(255,157,45,.88);box-shadow:0 0 7px rgba(255,113,20,.32),0 0 14px rgba(255,87,10,.11);animation:particle-mid 11s ease-in-out infinite}
+        .hero-particle-near{background:rgba(255,188,73,.96);box-shadow:0 0 8px rgba(255,133,26,.52),0 0 22px rgba(255,83,8,.18);animation:particle-near 7s ease-in-out infinite}
+        .hero-particle-hot{background:#ffd58a;box-shadow:0 0 5px rgba(255,210,123,.95),0 0 15px rgba(255,120,22,.7),0 0 30px rgba(255,69,7,.22);animation:particle-hot 4.2s ease-in-out infinite}
 
-        /* Middle field: larger glowing motes with depth movement. */
-        .hero-dust-mid{opacity:.82;background-image:
-          radial-gradient(circle at 10% 46%,rgba(255,128,30,.7) 0 1.5px,rgba(255,96,15,.18) 2px,transparent 4px),radial-gradient(circle at 19% 18%,rgba(255,194,83,.62) 0 1.2px,transparent 3.5px),radial-gradient(circle at 29% 69%,rgba(255,111,22,.68) 0 1.6px,rgba(255,76,8,.16) 2.2px,transparent 4px),radial-gradient(circle at 38% 37%,rgba(255,174,57,.62) 0 1.2px,transparent 3.5px),radial-gradient(circle at 47% 79%,rgba(255,104,17,.65) 0 1.5px,rgba(255,75,7,.13) 2px,transparent 4px),radial-gradient(circle at 57% 15%,rgba(255,207,112,.55) 0 1.1px,transparent 3px),radial-gradient(circle at 64% 57%,rgba(255,121,25,.72) 0 1.5px,rgba(255,85,10,.16) 2.2px,transparent 4px),radial-gradient(circle at 73% 31%,rgba(255,182,65,.58) 0 1.3px,transparent 3.4px),radial-gradient(circle at 83% 73%,rgba(255,114,21,.65) 0 1.5px,transparent 4px),radial-gradient(circle at 92% 49%,rgba(255,194,79,.62) 0 1.2px,transparent 3.5px),radial-gradient(circle at 52% 47%,rgba(255,147,38,.4) 0 1px,transparent 3px);animation:dust-mid 18s ease-in-out infinite}
+        /* Keep the center readable for Garfield while making the outer field much richer. */
+        .hero-particle-field:after{content:"";position:absolute;left:28%;right:28%;top:17%;bottom:14%;background:radial-gradient(ellipse at center,rgba(3,2,1,.32) 0%,rgba(3,2,1,.08) 48%,transparent 75%);filter:blur(18px)}
 
-        /* Foreground sparks: sparse, soft, slightly larger. */
-        .hero-dust-near{opacity:.9;background-image:
-          radial-gradient(circle at 13% 72%,rgba(255,155,43,.95) 0 2px,rgba(255,98,12,.32) 3px,transparent 8px),radial-gradient(circle at 23% 29%,rgba(255,198,83,.9) 0 1.8px,rgba(255,111,17,.22) 3px,transparent 7px),radial-gradient(circle at 34% 57%,rgba(255,126,22,.88) 0 2px,rgba(255,76,8,.25) 3px,transparent 8px),radial-gradient(circle at 44% 20%,rgba(255,183,54,.8) 0 1.6px,rgba(255,94,10,.18) 3px,transparent 7px),radial-gradient(circle at 61% 71%,rgba(255,142,27,.9) 0 2px,rgba(255,83,9,.25) 3px,transparent 8px),radial-gradient(circle at 72% 39%,rgba(255,205,94,.86) 0 1.7px,rgba(255,112,16,.2) 3px,transparent 7px),radial-gradient(circle at 87% 64%,rgba(255,132,24,.88) 0 2px,rgba(255,82,8,.22) 3px,transparent 8px),radial-gradient(circle at 79% 15%,rgba(255,174,48,.75) 0 1.6px,transparent 6px);animation:dust-near 11s ease-in-out infinite}
+        .hero-ember-streak{position:absolute;height:1px;border-radius:999px;transform-origin:left center;background:linear-gradient(90deg,transparent,rgba(255,180,68,.9),rgba(255,105,16,.18));box-shadow:0 0 7px rgba(255,104,16,.42);opacity:.7;animation:ember-flight 6s ease-in-out infinite}
+        .hero-ember-streak:after{content:"";position:absolute;right:0;top:-1px;width:3px;height:3px;border-radius:50%;background:#ffd27e;box-shadow:0 0 7px #ff9b31}
 
-        /* A few directional ember streaks, intentionally rare. */
-        .hero-sparks{position:absolute;inset:0;opacity:.82}
-        .hero-sparks:before,.hero-sparks:after{content:"";position:absolute;width:2px;height:2px;border-radius:50%;background:#ffb34e;box-shadow:24vw 12vh 0 0 rgba(255,121,23,.75),38vw 72vh 0 0 rgba(255,170,52,.65),56vw 20vh 0 0 rgba(255,119,20,.72),68vw 67vh 0 0 rgba(255,189,69,.6),81vw 35vh 0 0 rgba(255,120,19,.72),91vw 78vh 0 0 rgba(255,171,43,.62),12vw 43vh 0 0 rgba(255,193,70,.58),31vw 15vh 0 0 rgba(255,116,19,.68);animation:spark-drift 13s linear infinite}
-        .hero-sparks:after{width:1px;height:1px;opacity:.7;box-shadow:17vw 21vh 0 rgba(255,205,110,.7),28vw 83vh 0 rgba(255,130,25,.75),46vw 44vh 0 rgba(255,181,57,.7),63vw 9vh 0 rgba(255,119,20,.7),77vw 58vh 0 rgba(255,194,75,.65),95vw 31vh 0 rgba(255,137,27,.7),5vw 78vh 0 rgba(255,181,54,.6);animation:spark-drift-reverse 17s linear infinite}
+        /* Rare hot motes create small visual surprises instead of a uniform particle texture. */
+        .hero-hotspot{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffe0a3;box-shadow:0 0 8px #ffc267,0 0 22px rgba(255,105,12,.75),0 0 42px rgba(255,60,4,.22);animation:hotspot-pulse 3.7s ease-in-out infinite}
+        .hero-hotspot.a{left:14%;top:24%;animation-delay:-1.1s}.hero-hotspot.b{left:82%;top:22%;animation-delay:-2.5s}.hero-hotspot.c{left:8%;top:67%;animation-delay:-.6s}.hero-hotspot.d{left:91%;top:64%;animation-delay:-3.1s}.hero-hotspot.e{left:73%;top:11%;animation-delay:-1.8s}.hero-hotspot.f{left:27%;top:82%;animation-delay:-2.9s}
 
-        .hero-depth-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 46%,transparent 0 38%,rgba(0,0,0,.12) 61%,rgba(0,0,0,.68) 100%)}
+        .hero-depth-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 46%,transparent 0 38%,rgba(0,0,0,.10) 61%,rgba(0,0,0,.66) 100%)}
         .hero-grid,.hero-orbit-two,.hero-glow-small,.hero-background-wall,.hero-background-architecture{display:none!important}
         .hero-mascot-frame{background:transparent!important}.hero-mascot-halo{display:none!important}.hero-mascot{z-index:5}
         .hero-orbit-one{z-index:6;border-color:rgba(255,123,18,.9);box-shadow:0 0 6px rgba(255,91,0,.86),0 0 18px rgba(255,91,0,.38),inset 0 0 8px rgba(255,91,0,.2)}
         .hero-glow-main{z-index:5}.hero-copy,.hero-cta,.hero-scroll-cue{z-index:7}
 
         @keyframes heat-breathe{0%,100%{transform:scale(1) translate3d(-1%,0,0);opacity:.72}50%{transform:scale(1.06) translate3d(2%,-1%,0);opacity:1}}
-        @keyframes dust-far{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-1.5%,2%,0) scale(1.015)}100%{transform:translate3d(0,0,0) scale(1)}}
-        @keyframes dust-mid{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.72}50%{transform:translate3d(2%,-2%,0) scale(1.035);opacity:.95}}
-        @keyframes dust-near{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.72}35%{transform:translate3d(-2%,1.5%,0) scale(1.08);opacity:1}70%{transform:translate3d(1%,3%,0) scale(.97);opacity:.8}}
-        @keyframes spark-drift{0%{transform:translate3d(-2vw,4vh,0)}50%{transform:translate3d(3vw,-4vh,0)}100%{transform:translate3d(-2vw,4vh,0)}}
-        @keyframes spark-drift-reverse{0%{transform:translate3d(2vw,-3vh,0)}50%{transform:translate3d(-3vw,4vh,0)}100%{transform:translate3d(2vw,-3vh,0)}}
+        @keyframes particle-far{0%,100%{transform:translate3d(0,0,0);opacity:.45}50%{transform:translate3d(-1vw,-2vh,0);opacity:1}}
+        @keyframes particle-mid{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.55}35%{transform:translate3d(1.5vw,-2vh,0) scale(1.18);opacity:1}70%{transform:translate3d(-1vw,1.5vh,0) scale(.9);opacity:.7}}
+        @keyframes particle-near{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.58}40%{transform:translate3d(-2.5vw,2vh,0) scale(1.25);opacity:1}75%{transform:translate3d(1.5vw,-2.5vh,0) scale(.85);opacity:.7}}
+        @keyframes particle-hot{0%,100%{transform:translate3d(0,0,0) scale(.7);opacity:.3}30%{transform:translate3d(-1vw,-2vh,0) scale(1.8);opacity:1}65%{transform:translate3d(1.4vw,1vh,0) scale(.9);opacity:.5}}
+        @keyframes ember-flight{0%,100%{transform:translate3d(0,0,0) rotate(var(--ember-rotate)) scaleX(.72);opacity:0}18%{opacity:.85}52%{transform:translate3d(3vw,-4vh,0) rotate(var(--ember-rotate)) scaleX(1);opacity:.65}82%{opacity:.1}}
+        @keyframes hotspot-pulse{0%,100%{transform:scale(.5);opacity:.25}45%{transform:scale(1.7);opacity:1}60%{transform:scale(.8);opacity:.45}}
 
-        @media(max-width:699px){.hero-heat{filter:blur(28px)}.hero-dust-far{opacity:.56}.hero-dust-mid{opacity:.7}.hero-dust-near{opacity:.82}.hero-mascot{width:min(76vw,23rem)}.hero-orbit-one{width:min(84vw,26rem)}}
-        @media(prefers-reduced-motion:reduce){.hero-heat,.hero-dust-far,.hero-dust-mid,.hero-dust-near,.hero-sparks{animation:none}}
+        @media(max-width:699px){
+          .hero-heat{filter:blur(28px)}.hero-particle-far{opacity:.7}.hero-particle-mid{opacity:.8}.hero-particle-near{opacity:.9}.hero-particle-field:after{left:18%;right:18%}.hero-ember-streak{opacity:.55}.hero-mascot{width:min(76vw,23rem)}.hero-orbit-one{width:min(84vw,26rem)}
+        }
+        @media(prefers-reduced-motion:reduce){.hero-heat,.hero-particle,.hero-ember-streak,.hero-hotspot{animation:none}}
       `}</style>
 
       <div className="hero-depth-scene" aria-hidden="true">
         <div className="hero-ember-space">
           <div className="hero-heat" />
-          <div className="hero-dust-far" />
-          <div className="hero-dust-mid" />
-          <div className="hero-dust-near" />
-          <div className="hero-sparks" />
+          <div className="hero-particle-field">
+            {farParticles.map((p, i) => <i key={`far-${i}`} className="hero-particle hero-particle-far" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}} />)}
+            {midParticles.map((p, i) => <i key={`mid-${i}`} className={`hero-particle hero-particle-mid${i % 13 === 0 ? " hero-particle-hot" : ""}`} style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}} />)}
+            {nearParticles.map((p, i) => <i key={`near-${i}`} className="hero-particle hero-particle-near" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}} />)}
+            {emberStreaks.map((p, i) => <i key={`ember-${i}`} className="hero-ember-streak" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.length}px`,transform:`rotate(${p.rotate}deg)`,animationDelay:`-${p.delay}s`,`--ember-rotate`:`${p.rotate}deg`} as React.CSSProperties} />)}
+            <i className="hero-hotspot a"/><i className="hero-hotspot b"/><i className="hero-hotspot c"/><i className="hero-hotspot d"/><i className="hero-hotspot e"/><i className="hero-hotspot f"/>
+          </div>
         </div>
         <div className="hero-depth-vignette" />
       </div>
@@ -74,7 +110,7 @@ export default function Hero() {
         </div>
         <div className="hero-copy"><HeroLogo /></div>
         <HeroCTA />
-        <div className="hero-scroll-cue" aria-hidden="true" style={{marginTop:"10px"}}><style>{`.hero-scroll-cue span{transform:rotate(225deg)`}</style><span/><span/><span/></div>
+        <div className="hero-scroll-cue" aria-hidden="true" style={{marginTop:"10px"}}><style>{`.hero-scroll-cue span{transform:rotate(225deg)}`}</style><span/><span/><span/></div>
       </div>
     </section>
   );
