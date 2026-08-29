@@ -29,15 +29,8 @@ export default function Hero() {
     <section className="hero" aria-labelledby="hero-title">
       <style>{`
         .hero-depth-scene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;isolation:isolate;background:#030201}
-        .hero-ember-space{position:absolute;inset:0;overflow:hidden;background:
-          radial-gradient(ellipse at 50% 48%,rgba(92,38,7,.42) 0%,rgba(43,15,3,.25) 27%,rgba(5,3,1,0) 68%),
-          radial-gradient(ellipse at 15% 68%,rgba(132,48,5,.18),transparent 34%),
-          radial-gradient(ellipse at 86% 28%,rgba(120,43,4,.17),transparent 34%),#030201}
-        .hero-heat{position:absolute;inset:-24%;background:
-          radial-gradient(ellipse at 38% 43%,rgba(255,91,12,.16),transparent 23%),
-          radial-gradient(ellipse at 69% 60%,rgba(255,68,6,.12),transparent 22%),
-          radial-gradient(ellipse at 21% 27%,rgba(255,151,40,.08),transparent 19%);
-          filter:blur(38px);animation:heat-breathe 8s ease-in-out infinite}
+        .hero-ember-space{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,rgba(92,38,7,.42) 0%,rgba(43,15,3,.25) 27%,rgba(5,3,1,0) 68%),radial-gradient(ellipse at 15% 68%,rgba(132,48,5,.18),transparent 34%),radial-gradient(ellipse at 86% 28%,rgba(120,43,4,.17),transparent 34%),#030201}
+        .hero-heat{position:absolute;inset:-24%;background:radial-gradient(ellipse at 38% 43%,rgba(255,91,12,.16),transparent 23%),radial-gradient(ellipse at 69% 60%,rgba(255,68,6,.12),transparent 22%),radial-gradient(ellipse at 21% 27%,rgba(255,151,40,.08),transparent 19%);filter:blur(38px);animation:heat-breathe 8s ease-in-out infinite}
         .hero-particle-field{position:absolute;inset:-4%;overflow:hidden}
         .hero-particle{position:absolute;display:block;border-radius:50%;will-change:transform,opacity;mix-blend-mode:screen}
         .hero-particle-far{background:rgba(255,184,82,.82);box-shadow:0 0 4px rgba(255,147,34,.3);animation:particle-far 15s ease-in-out infinite}
@@ -69,7 +62,7 @@ export default function Hero() {
           {farParticles.map((p,i)=><i key={`f-${i}`} className="hero-particle hero-particle-far" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}}/>)}
           {midParticles.map((p,i)=><i key={`m-${i}`} className={`hero-particle ${i%17===0?"hero-particle-hot":"hero-particle-mid"}`} style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}}/>)}
           {nearParticles.map((p,i)=><i key={`n-${i}`} className="hero-particle hero-particle-near" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.size}px`,height:`${p.size}px`,opacity:p.opacity,animationDelay:`-${p.delay}s`}}/>)}
-          {emberStreaks.map((p,i)=><i key={`e-${i}`} className="hero-ember-streak" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.length}px`,animationDelay:`-${p.delay}s`,`--ember-rotate`:`${p.rotate}deg`} as React.CSSProperties}/>)}
+          {emberStreaks.map((p,i)=><i key={`e-${i}`} className="hero-ember-streak" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.length}px`,animationDelay:`-${p.delay}s`,"--ember-rotate":`${p.rotate}deg`} as React.CSSProperties}/>)}
           <i className="hero-hotspot a"/><i className="hero-hotspot b"/><i className="hero-hotspot c"/><i className="hero-hotspot d"/><i className="hero-hotspot e"/><i className="hero-hotspot f"/><i className="hero-hotspot g"/><i className="hero-hotspot h"/>
         </div></div><div className="hero-depth-vignette"/>
       </div>
