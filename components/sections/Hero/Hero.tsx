@@ -5,45 +5,45 @@ export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
       <style>{`
-        /* Sculptural depth: readable volumes, no decorative lines or glow. */
-        .hero-depth-scene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#030303;isolation:isolate;perspective:1700px;perspective-origin:50% 44%}
-        .hero-depth-room{position:absolute;inset:-3%;transform-style:preserve-3d;animation:depth-drift 18s ease-in-out infinite}
+        /* Visible architectural depth: large material volumes, not decorative lines. */
+        .hero-depth-scene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#030303;isolation:isolate;perspective:1600px;perspective-origin:50% 43%}
+        .hero-depth-room{position:absolute;inset:0;transform-style:preserve-3d;animation:depth-drift 16s ease-in-out infinite}
 
-        /* Distant recessed chamber. */
-        .hero-depth-core{position:absolute;left:50%;top:42%;width:62vw;max-width:66rem;height:94vh;transform:translate(-50%,-50%) translateZ(-460px);border-radius:44% 44% 10% 10%;background:radial-gradient(ellipse at 50% 30%,#151411 0%,#0c0b0a 42%,#050505 78%,#020202 100%);box-shadow:inset 0 0 120px rgba(0,0,0,.92)}
-        .hero-depth-core:before{content:"";position:absolute;inset:10% 12%;border-radius:42% 42% 7% 7%;background:radial-gradient(ellipse at 50% 20%,#10100e 0%,#070706 54%,#020202 100%);box-shadow:inset 0 0 95px rgba(0,0,0,.95)}
+        /* Three recessed portal shells. Their broad bands stay readable even behind the hero artwork. */
+        .hero-depth-portal{position:absolute;left:50%;top:41%;transform:translate(-50%,-50%);border-radius:48% 48% 8% 8%;box-sizing:border-box;box-shadow:inset 0 0 70px rgba(0,0,0,.72),0 26px 80px rgba(0,0,0,.5)}
+        .hero-depth-portal-far{width:min(122vw,92rem);height:94vh;transform:translate(-50%,-50%) translateZ(-420px);border:clamp(24px,3vw,52px) solid #090908;background:radial-gradient(ellipse at 50% 28%,#151310 0%,#0c0b0a 52%,#050505 100%);opacity:.98}
+        .hero-depth-portal-mid{width:min(98vw,74rem);height:82vh;transform:translate(-50%,-50%) translateZ(-180px);border:clamp(22px,2.6vw,44px) solid #14120f;background:linear-gradient(180deg,#1b1814 0%,#0b0a09 54%,#050505 100%)}
+        .hero-depth-portal-near{width:min(78vw,59rem);height:70vh;transform:translate(-50%,-50%) translateZ(40px);border:clamp(18px,2.2vw,36px) solid #201c16;background:linear-gradient(180deg,#252019 0%,#11100e 48%,#070706 100%);box-shadow:inset 0 0 62px rgba(0,0,0,.78),0 32px 72px rgba(0,0,0,.62)}
 
-        /* Two broad folded foreground planes. Their different tones create depth without outlines. */
-        .hero-depth-wing{position:absolute;top:-4%;height:112%;width:48%;backface-visibility:hidden;box-shadow:inset 0 0 120px rgba(0,0,0,.82)}
-        .hero-depth-wing-left{left:-16%;transform-origin:100% 50%;transform:rotateY(27deg) translateZ(80px);background:linear-gradient(105deg,#050505 0%,#0b0a09 54%,#161410 100%);clip-path:polygon(0 0,100% 8%,86% 92%,0 100%)}
-        .hero-depth-wing-right{right:-16%;transform-origin:0 50%;transform:rotateY(-27deg) translateZ(80px);background:linear-gradient(255deg,#050505 0%,#0b0a09 54%,#161410 100%);clip-path:polygon(0 0,100% 0,100% 100%,14% 92%)}
+        /* Faceted side walls give the portals a real room-like perspective rather than a flat graphic frame. */
+        .hero-depth-facet{position:absolute;top:-4%;height:110%;width:34%;background:linear-gradient(180deg,#171410 0%,#0c0b0a 42%,#050505 100%);box-shadow:inset 0 0 90px rgba(0,0,0,.84)}
+        .hero-depth-facet-left{left:-14%;transform-origin:right center;transform:rotateY(33deg) translateZ(170px);clip-path:polygon(0 0,100% 8%,83% 92%,0 100%)}
+        .hero-depth-facet-right{right:-14%;transform-origin:left center;transform:rotateY(-33deg) translateZ(170px);clip-path:polygon(0 8%,100% 0,100% 100%,17% 92%)}
 
-        /* Secondary planes sit behind the wings and make the room recede instead of looking like a flat frame. */
-        .hero-depth-reveal{position:absolute;top:5%;height:100%;width:38%;background:linear-gradient(90deg,#060606,#11100e);box-shadow:inset 0 0 95px rgba(0,0,0,.9)}
-        .hero-depth-reveal-left{left:-2%;transform:rotateY(16deg) translateZ(-180px);transform-origin:right center;clip-path:polygon(0 0,100% 12%,86% 100%,0 92%)}
-        .hero-depth-reveal-right{right:-2%;transform:rotateY(-16deg) translateZ(-180px);transform-origin:left center;clip-path:polygon(0 12%,100% 0,100% 92%,14% 100%)}
+        /* A darker rear void keeps the center deep and lets the orange hero remain dominant. */
+        .hero-depth-void{position:absolute;left:50%;top:43%;width:42vw;height:66vh;transform:translate(-50%,-50%) translateZ(-520px);border-radius:46% 46% 10% 10%;background:radial-gradient(ellipse at 50% 35%,#080807 0%,#030303 70%);box-shadow:inset 0 0 100px #000}
 
-        /* A quiet floor plane grounds the scene without becoming a graphic object. */
-        .hero-depth-floor{position:absolute;left:-20%;right:-20%;top:62%;height:58%;transform-origin:50% 0;transform:rotateX(70deg) translateZ(-120px);background:linear-gradient(90deg,#020202 0%,#0a0908 22%,#151310 50%,#0a0908 78%,#020202 100%);box-shadow:inset 0 60px 105px rgba(0,0,0,.92)}
+        .hero-depth-floor{position:absolute;left:-24%;right:-24%;top:64%;height:56%;transform-origin:50% 0;transform:rotateX(68deg) translateZ(-80px);background:linear-gradient(90deg,#030303 0%,#0e0d0b 22%,#1c1813 50%,#0e0d0b 78%,#030303 100%);box-shadow:inset 0 58px 95px rgba(0,0,0,.9)}
+        .hero-depth-floor:after{content:"";position:absolute;left:34%;right:34%;top:0;bottom:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);filter:blur(12px)}
 
-        /* Controlled vignette only. It keeps the center open and preserves the readable side volumes. */
-        .hero-depth-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 43%,transparent 0 38%,rgba(0,0,0,.12) 65%,rgba(0,0,0,.62) 100%)}
+        .hero-depth-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 43%,transparent 0 42%,rgba(0,0,0,.12) 68%,rgba(0,0,0,.48) 100%)}
 
         .hero-grid,.hero-orbit-two,.hero-glow-small,.hero-background-wall,.hero-background-architecture{display:none!important}
         .hero-mascot-frame{background:transparent!important}.hero-mascot-halo{display:none!important}.hero-mascot{z-index:3}
         .hero-orbit-one{z-index:4;border-color:rgba(255,123,18,.9);box-shadow:0 0 6px rgba(255,91,0,.86),0 0 18px rgba(255,91,0,.38),inset 0 0 8px rgba(255,91,0,.2)}
         .hero-glow-main{z-index:2}.hero-copy,.hero-cta,.hero-scroll-cue{z-index:5}
 
-        @keyframes depth-drift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(0,-2px,5px) scale(1.002)}}
+        @keyframes depth-drift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(0,-3px,7px) scale(1.003)}}
         @media(max-width:699px){
-          .hero-depth-core{width:92vw;height:86vh;top:40%}
-          .hero-depth-wing{width:61%;height:106%}
-          .hero-depth-wing-left{left:-30%;transform:rotateY(22deg) translateZ(55px)}
-          .hero-depth-wing-right{right:-30%;transform:rotateY(-22deg) translateZ(55px)}
-          .hero-depth-reveal{width:49%;height:92%}
-          .hero-depth-reveal-left{left:-14%;transform:rotateY(13deg) translateZ(-140px)}
-          .hero-depth-reveal-right{right:-14%;transform:rotateY(-13deg) translateZ(-140px)}
-          .hero-depth-floor{left:-46%;right:-46%;top:64%;height:55%}
+          .hero-depth-portal{top:40%}
+          .hero-depth-portal-far{width:142vw;height:86vh;border-width:26px}
+          .hero-depth-portal-mid{width:116vw;height:76vh;border-width:22px}
+          .hero-depth-portal-near{width:91vw;height:66vh;border-width:18px}
+          .hero-depth-facet{width:46%;height:106%}
+          .hero-depth-facet-left{left:-28%;transform:rotateY(27deg) translateZ(115px)}
+          .hero-depth-facet-right{right:-28%;transform:rotateY(-27deg) translateZ(115px)}
+          .hero-depth-void{width:60vw;height:58vh;top:41%}
+          .hero-depth-floor{left:-54%;right:-54%;top:66%;height:52%}
           .hero-mascot{width:min(76vw,23rem)}.hero-orbit-one{width:min(84vw,26rem)}
         }
         @media(prefers-reduced-motion:reduce){.hero-depth-room{animation:none}}
@@ -51,11 +51,12 @@ export default function Hero() {
 
       <div className="hero-depth-scene" aria-hidden="true">
         <div className="hero-depth-room">
-          <div className="hero-depth-core" />
-          <div className="hero-depth-reveal hero-depth-reveal-left" />
-          <div className="hero-depth-reveal hero-depth-reveal-right" />
-          <div className="hero-depth-wing hero-depth-wing-left" />
-          <div className="hero-depth-wing hero-depth-wing-right" />
+          <div className="hero-depth-void" />
+          <div className="hero-depth-portal hero-depth-portal-far" />
+          <div className="hero-depth-portal hero-depth-portal-mid" />
+          <div className="hero-depth-portal hero-depth-portal-near" />
+          <div className="hero-depth-facet hero-depth-facet-left" />
+          <div className="hero-depth-facet hero-depth-facet-right" />
           <div className="hero-depth-floor" />
         </div>
         <div className="hero-depth-vignette" />
