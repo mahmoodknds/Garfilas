@@ -1,0 +1,90 @@
+.hero .hero-ring-heat::before,
+.hero .hero-ring-heat::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:50%;
+  transform-origin:50% 50%;
+}
+
+.hero .hero-ring-heat::before{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,235,175,.95) 0 1.7px,rgba(255,132,24,.58) 2.5px,transparent 6px),
+    radial-gradient(circle at 78% 10%,rgba(255,206,110,.88) 0 1.5px,rgba(255,103,14,.48) 2.5px,transparent 6px),
+    radial-gradient(circle at 97% 38%,rgba(255,237,171,.98) 0 1.8px,rgba(255,116,16,.5) 2.8px,transparent 7px),
+    radial-gradient(circle at 91% 72%,rgba(255,185,58,.9) 0 1.4px,rgba(255,91,10,.48) 2.5px,transparent 6px),
+    radial-gradient(circle at 65% 97%,rgba(255,222,133,.95) 0 1.6px,rgba(255,111,15,.5) 2.6px,transparent 6px),
+    radial-gradient(circle at 35% 97%,rgba(255,192,68,.92) 0 1.5px,rgba(255,88,9,.46) 2.5px,transparent 6px),
+    radial-gradient(circle at 8% 72%,rgba(255,231,157,.96) 0 1.8px,rgba(255,119,18,.5) 2.7px,transparent 7px),
+    radial-gradient(circle at 3% 38%,rgba(255,187,57,.9) 0 1.4px,rgba(255,91,10,.44) 2.5px,transparent 6px),
+    radial-gradient(circle at 22% 10%,rgba(255,220,129,.94) 0 1.6px,rgba(255,111,14,.46) 2.6px,transparent 6px),
+    radial-gradient(circle at 87% 18%,rgba(255,150,31,.84) 0 1.3px,transparent 5px),
+    radial-gradient(circle at 99% 58%,rgba(255,218,124,.9) 0 1.4px,transparent 5px),
+    radial-gradient(circle at 77% 91%,rgba(255,144,26,.86) 0 1.3px,transparent 5px),
+    radial-gradient(circle at 23% 91%,rgba(255,211,108,.88) 0 1.4px,transparent 5px),
+    radial-gradient(circle at 1% 57%,rgba(255,150,28,.86) 0 1.3px,transparent 5px),
+    radial-gradient(circle at 13% 18%,rgba(255,204,92,.9) 0 1.4px,transparent 5px);
+  filter:blur(.15px) drop-shadow(0 0 5px rgba(255,105,12,.9));
+  animation:ring-particle-wheel 8.5s linear infinite;
+}
+
+.hero .hero-ring-heat::after{
+  width:72%;
+  height:72%;
+  inset:14%;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,249,204,1) 0 1.8px,rgba(255,116,12,.75) 2.7px,transparent 7px),
+    radial-gradient(circle at 100% 50%,rgba(255,226,143,1) 0 1.7px,rgba(255,105,10,.72) 2.8px,transparent 7px),
+    radial-gradient(circle at 50% 100%,rgba(255,243,178,.98) 0 1.8px,rgba(255,119,13,.7) 2.8px,transparent 7px),
+    radial-gradient(circle at 0% 50%,rgba(255,213,108,.98) 0 1.6px,rgba(255,93,9,.7) 2.7px,transparent 7px);
+  filter:drop-shadow(0 0 7px rgba(255,118,15,.95));
+  animation:ring-spark-pulse 2.15s ease-in-out infinite;
+}
+
+.hero .hero-sparks::before{
+  animation:spark-drift 13s linear infinite, spark-flicker 2.6s steps(7,end) infinite;
+}
+
+.hero .hero-sparks::after{
+  animation:spark-drift-reverse 17s linear infinite, spark-flicker 3.1s steps(9,end) -.8s infinite;
+}
+
+@keyframes ring-particle-wheel{
+  0%{transform:rotate(0deg) scale(.94);opacity:.42}
+  12%{opacity:.98}
+  34%{transform:rotate(123deg) scale(1.03);opacity:.68}
+  52%{opacity:1}
+  70%{transform:rotate(250deg) scale(.97);opacity:.52}
+  86%{opacity:.94}
+  100%{transform:rotate(360deg) scale(.94);opacity:.42}
+}
+
+@keyframes ring-spark-pulse{
+  0%,100%{transform:rotate(0deg) scale(.82);opacity:.15}
+  8%{opacity:1}
+  18%{transform:rotate(68deg) scale(1.16);opacity:.82}
+  28%{opacity:.18}
+  47%{transform:rotate(182deg) scale(.9);opacity:.12}
+  55%{opacity:.98}
+  67%{transform:rotate(255deg) scale(1.18);opacity:.72}
+  76%{opacity:.16}
+}
+
+@keyframes spark-flicker{
+  0%,100%{filter:brightness(.7)}
+  13%{filter:brightness(1.7)}
+  21%{filter:brightness(.8)}
+  37%{filter:brightness(1.35)}
+  49%{filter:brightness(.65)}
+  63%{filter:brightness(1.9)}
+  72%{filter:brightness(.9)}
+  87%{filter:brightness(1.55)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero .hero-ring-heat::before,
+  .hero .hero-ring-heat::after,
+  .hero .hero-sparks::before,
+  .hero .hero-sparks::after{animation:none}
+}
