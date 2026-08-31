@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "../styles/hero-ring-emission.css";
 import { cormorantGaramond, greatVibes } from "./fonts";
 
 export const metadata: Metadata = {
