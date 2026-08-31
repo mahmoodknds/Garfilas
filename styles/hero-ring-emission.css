@@ -1,3 +1,5 @@
+.hero .hero-dust-far,.hero .hero-dust-mid,.hero .hero-dust-near,.hero .hero-dust-front,.hero .hero-sparks{display:none!important;visibility:hidden!important;}
+.hero .hero-depth-scene,.hero .hero-ember-space{overflow:visible!important;}
 .hero .hero-ring-heat{z-index:4!important;overflow:visible!important;opacity:1!important;filter:none!important;animation:none!important;background:none!important;}
 .hero .hero-ring-heat::before,.hero .hero-ring-heat::after{content:none!important;display:none!important;}
 .hero-ring-particle-emitter{position:absolute;inset:-48px;z-index:3;pointer-events:none;overflow:visible!important;}
