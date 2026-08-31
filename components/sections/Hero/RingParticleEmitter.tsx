@@ -2,38 +2,182 @@
 
 import { useEffect } from "react";
 
-type Kind="ambient"|"ring";
-type Ember={el:HTMLSpanElement;x:number;y:number;vx:number;vy:number;life:number;maxLife:number;size:number;drift:number;phase:number;opacity:number;kind:Kind;exit:"edge"|"fade";releaseAt:number;released:boolean};
-const rand=(a:number,b:number)=>Math.random()*(b-a)+a;
-const sizeProfile=()=>{const r=Math.random();if(r<.42)return rand(1.4,2.4);if(r<.76)return rand(2.4,4.2);if(r<.95)return rand(4.2,6.5);return rand(6.5,9);};
+type Kind = "ambient" | "ring";
 
-export default function RingParticleEmitter(){
- useEffect(()=>{
-  const scene=document.querySelector<HTMLElement>(".hero-depth-scene"),ring=document.querySelector<HTMLElement>(".hero-ring-heat");if(!scene||!ring)return;
-  const layer=document.createElement("div");layer.className="hero-ring-particle-emitter";scene.appendChild(layer);
-  const embers:Ember[]=[];const maxParticles=720;let last=performance.now(),nextBirth=rand(45,90),raf=0,stopped=false;
-  const makeParticle=(kind:Kind,x:number,y:number,angle:number,initial=false,releaseAt=0)=>{
-   if(embers.length>=maxParticles)return;
-   const size=sizeProfile(),depth=rand(.34,1),outward=rand(1.2,4.2),tangent=rand(-5.2,5.2),speed=rand(.34,.78),gravity=rand(1.8,4.2);
-   const el=document.createElement("span");el.className="hero-ring-particle";el.style.width=`${size}px`;el.style.height=`${size}px`;el.style.opacity="0";el.style.setProperty("--particle-depth",depth.toFixed(2));el.style.setProperty("--particle-kind",kind);layer.appendChild(el);
-   embers.push({el,x,y,vx:initial?0:(Math.cos(angle)*outward+Math.cos(angle+Math.PI/2)*tangent)*speed,vy:initial?0:(Math.sin(angle)*outward+Math.sin(angle+Math.PI/2)*tangent)*speed+gravity*.08,life:0,maxLife:kind==="ambient"?rand(5200,9200):rand(4600,7800),size,drift:rand(.55,1.65),phase:rand(0,Math.PI*2),opacity:rand(.34,.9)*depth,kind,exit:Math.random()<.72?"edge":"fade",releaseAt,released:!initial});
-  };
-  const sr=scene.getBoundingClientRect();
-  for(let i=190;i--;)makeParticle("ambient",rand(18,sr.width-18),rand(18,sr.height-18),rand(0,Math.PI*2));
-  const rr=ring.getBoundingClientRect(),cx=rr.left-sr.left+rr.width/2,cy=rr.top-sr.top+rr.height/2;
-  for(let i=648;i--;){const angle=rand(0,Math.PI*2),radius=Math.min(rr.width,rr.height)*rand(.488,.502);makeParticle("ring",cx+Math.cos(angle)*radius,cy+Math.sin(angle)*radius,angle,true,rand(350,3200));}
-  const tick=(now:number)=>{
-   if(stopped)return;const dt=Math.min(34,now-last);last=now;nextBirth-=dt;
-   if(nextBirth<=0){const n=Math.random()<.38?2:1;for(let i=0;i<n;i++)makeParticleAtRing();nextBirth=rand(45,90);}
-   const seconds=now/1000,rect=scene.getBoundingClientRect(),width=rect.width,height=rect.height;
-   for(let i=embers.length-1;i>=0;i--){const p=embers[i];
-    if(p.kind==="ring"&&!p.released){p.releaseAt-=dt;const pulse=.72+Math.sin(seconds*p.drift+p.phase)*.07;p.el.style.transform=`translate3d(${p.x}px,${p.y}px,0) scale(${pulse})`;p.el.style.opacity=(p.opacity*.38).toFixed(3);if(p.releaseAt>0)continue;p.released=true;p.el.style.opacity="0";const a=Math.atan2(p.y-height/2,p.x-width/2);p.vx=(Math.cos(a)*rand(1.2,4.2)+Math.cos(a+Math.PI/2)*rand(-5.2,5.2))*rand(.34,.78);p.vy=(Math.sin(a)*rand(1.2,4.2)+Math.sin(a+Math.PI/2)*rand(-5.2,5.2))*rand(.34,.78);p.life=0;}
-    if(!p.released)continue;p.life+=dt;const t=p.life/p.maxLife,swayX=Math.sin(seconds*p.drift+p.phase)*.34,swayY=Math.cos(seconds*p.drift*.71+p.phase*1.17)*.14;p.vy+=.0012*dt;p.vx+=swayX*.0035*dt;p.vy+=swayY*.0018*dt;p.vx*=.99935;p.vy*=.99955;p.x+=p.vx*dt*.035;p.y+=p.vy*dt*.035;
-    const outside=p.x<-32||p.x>width+32||p.y<-32||p.y>height+32;if(outside||(p.exit==="fade"&&t>=.88)||t>=1){p.el.remove();embers.splice(i,1);continue;}
-    const fadeIn=Math.min(1,p.life/260),fadeOut=p.exit==="fade"?Math.min(1,(1-t)/.14):Math.min(1,(1-t)/.08),pulse=.84+Math.sin(seconds*p.drift*1.7+p.phase)*.16,alpha=p.opacity*fadeIn*fadeOut*pulse,scale=.7+(1-t)*.36;p.el.style.transform=`translate3d(${p.x}px,${p.y}px,0) scale(${scale})`;p.el.style.opacity=alpha.toFixed(3);
-   }raf=requestAnimationFrame(tick);
-  };
-  const makeParticleAtRing=()=>{const r=ring.getBoundingClientRect(),s=scene.getBoundingClientRect(),a=rand(0,Math.PI*2),rad=Math.min(r.width,r.height)*rand(.488,.502);makeParticle("ring",r.left-s.left+r.width/2+Math.cos(a)*rad,r.top-s.top+r.height/2+Math.sin(a)*rad,a,false);};
-  raf=requestAnimationFrame(tick);return()=>{stopped=true;cancelAnimationFrame(raf);layer.remove()};
- },[]);return null;
+type Ember = {
+  el: HTMLSpanElement;
+  animation: Animation;
+  maxLife: number;
+};
+
+const rand = (a: number, b: number) => Math.random() * (b - a) + a;
+
+const sizeProfile = () => {
+  const r = Math.random();
+  if (r < 0.42) return rand(1.4, 2.4);
+  if (r < 0.76) return rand(2.4, 4.2);
+  if (r < 0.95) return rand(4.2, 6.5);
+  return rand(6.5, 9);
+};
+
+export default function RingParticleEmitter() {
+  useEffect(() => {
+    const scene = document.querySelector<HTMLElement>(".hero-depth-scene");
+    const ring = document.querySelector<HTMLElement>(".hero-ring-heat");
+    if (!scene || !ring) return;
+
+    const layer = document.createElement("div");
+    layer.className = "hero-ring-particle-emitter";
+    scene.appendChild(layer);
+
+    const embers: Ember[] = [];
+    const maxParticles = 720;
+    let spawnTimer = 0;
+    let raf = 0;
+    let last = performance.now();
+    let stopped = false;
+
+    const createAnimation = (
+      el: HTMLSpanElement,
+      kind: Kind,
+      x: number,
+      y: number,
+      angle: number,
+      size: number,
+      depth: number,
+      delay: number,
+    ) => {
+      const maxLife = kind === "ambient" ? rand(5600, 9200) : rand(5000, 8200);
+      const distance = kind === "ambient" ? rand(70, 260) : rand(80, 310);
+      const outward = kind === "ambient" ? rand(0.7, 1.5) : rand(0.85, 1.55);
+      const drift = rand(14, 38);
+      const down = rand(18, 54);
+      const sway = rand(18, 48);
+      const phase = rand(0, Math.PI * 2);
+      const dx = Math.cos(angle) * distance * outward;
+      const dy = Math.sin(angle) * distance * outward + down;
+      const frames = [];
+
+      for (let i = 0; i <= 8; i++) {
+        const t = i / 8;
+        const eased = 1 - Math.pow(1 - t, 1.35);
+        const sx = Math.sin(phase + t * Math.PI * rand(1.1, 2.2)) * sway * (1 - t * 0.18);
+        const sy = Math.cos(phase * 0.73 + t * Math.PI * 1.35) * drift * (1 - t * 0.2);
+        const opacity = t < 0.08 ? t / 0.08 : t > 0.78 ? (1 - t) / 0.22 : 1;
+        const scale = 0.82 + (1 - t) * 0.34;
+        frames.push({
+          transform: `translate3d(${x + dx * eased + sx}px,${y + dy * eased + sy}px,0) scale(${scale})`,
+          opacity: (opacity * depth * rand(0.72, 0.98)).toFixed(3),
+          offset: t,
+        });
+      }
+
+      const animation = el.animate(frames, {
+        duration: maxLife,
+        delay,
+        easing: "linear",
+        fill: "both",
+      });
+      animation.onfinish = () => {
+        if (stopped) return;
+        el.remove();
+        const index = embers.findIndex((p) => p.el === el);
+        if (index !== -1) embers.splice(index, 1);
+      };
+      return { animation, maxLife };
+    };
+
+    const makeParticle = (
+      kind: Kind,
+      x: number,
+      y: number,
+      angle: number,
+      delay = 0,
+    ) => {
+      if (embers.length >= maxParticles) return;
+
+      const size = sizeProfile();
+      const depth = rand(0.34, 1);
+      const el = document.createElement("span");
+      el.className = "hero-ring-particle";
+      el.style.width = `${size}px`;
+      el.style.height = `${size}px`;
+      el.style.left = "0";
+      el.style.top = "0";
+      el.style.opacity = "0";
+      el.style.setProperty("--particle-depth", depth.toFixed(2));
+      el.style.setProperty("--particle-kind", kind);
+      layer.appendChild(el);
+
+      const { animation, maxLife } = createAnimation(el, kind, x, y, angle, size, depth, delay);
+      embers.push({ el, animation, maxLife });
+    };
+
+    const sceneRect = scene.getBoundingClientRect();
+    for (let i = 0; i < 190; i++) {
+      makeParticle(
+        "ambient",
+        rand(18, sceneRect.width - 18),
+        rand(18, sceneRect.height - 18),
+        rand(0, Math.PI * 2),
+        rand(0, 1800),
+      );
+    }
+
+    const ringRect = ring.getBoundingClientRect();
+    const cx = ringRect.left - sceneRect.left + ringRect.width / 2;
+    const cy = ringRect.top - sceneRect.top + ringRect.height / 2;
+    const radius = Math.min(ringRect.width, ringRect.height) * 0.495;
+
+    // Dense ring population is present immediately, but every ember releases on its own clock.
+    for (let i = 0; i < 648; i++) {
+      const angle = rand(0, Math.PI * 2);
+      const r = radius * rand(0.992, 1.008);
+      makeParticle(
+        "ring",
+        cx + Math.cos(angle) * r,
+        cy + Math.sin(angle) * r,
+        angle,
+        rand(180, 2600),
+      );
+    }
+
+    const tick = (now: number) => {
+      if (stopped) return;
+      const dt = Math.min(34, now - last);
+      last = now;
+      spawnTimer -= dt;
+
+      if (spawnTimer <= 0) {
+        const count = Math.random() < 0.34 ? 2 : 1;
+        for (let i = 0; i < count; i++) {
+          const r = ring.getBoundingClientRect();
+          const s = scene.getBoundingClientRect();
+          const angle = rand(0, Math.PI * 2);
+          const rad = Math.min(r.width, r.height) * rand(0.488, 0.502);
+          makeParticle(
+            "ring",
+            r.left - s.left + r.width / 2 + Math.cos(angle) * rad,
+            r.top - s.top + r.height / 2 + Math.sin(angle) * rad,
+            angle,
+            rand(0, 90),
+          );
+        }
+        spawnTimer = rand(55, 115);
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      stopped = true;
+      cancelAnimationFrame(raf);
+      for (const p of embers) p.animation.cancel();
+      layer.remove();
+    };
+  }, []);
+
+  return null;
 }
