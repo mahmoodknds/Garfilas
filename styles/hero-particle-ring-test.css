@@ -1,4 +1,4 @@
-/* Temporary particle placement test: keep the existing initial particle field around Garfield's ring. */
+/* Temporary particle placement test: constrain the existing initial field to the Garfield ring and balance left/right density. */
 .hero-depth-scene .hero-dust-far,
 .hero-depth-scene .hero-dust-mid,
 .hero-depth-scene .hero-dust-near,
@@ -10,6 +10,24 @@
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
+}
+
+/* The original gradients are not spatially uniform. A subtle mirrored echo fills the sparse side without adding a second animation system. */
+.hero-depth-scene .hero-dust-far::after,
+.hero-depth-scene .hero-dust-mid::after,
+.hero-depth-scene .hero-dust-near::after,
+.hero-depth-scene .hero-dust-front::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background-image:inherit;
+  background-repeat:inherit;
+  background-size:inherit;
+  pointer-events:none;
+  transform:scaleX(-1);
+  transform-origin:center;
+  opacity:.42;
 }
 
 @media (max-width: 640px) {
