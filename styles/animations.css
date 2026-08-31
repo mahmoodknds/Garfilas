@@ -1,99 +1,28 @@
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes neon-fault {
-  0%, 21%, 100% { opacity: 1; filter: brightness(1); }
-  22% { opacity: .97; filter: brightness(.99); }
-  23% { opacity: .84; filter: brightness(.88); }
-  24% { opacity: .62; filter: brightness(.7); }
-  25% { opacity: .8; filter: brightness(.84); }
-  26% { opacity: .34; filter: brightness(.44); }
-  27% { opacity: .68; filter: brightness(.74); }
-  28% { opacity: .12; filter: brightness(.18); }
-  29% { opacity: .46; filter: brightness(.55); }
-  30% { opacity: .76; filter: brightness(.82); }
-  31% { opacity: .24; filter: brightness(.32); }
-  32% { opacity: .72; filter: brightness(.78); }
-  33% { opacity: .42; filter: brightness(.52); }
-  34% { opacity: .88; filter: brightness(.93); }
-  35% { opacity: .58; filter: brightness(.68); }
-  36% { opacity: .94; filter: brightness(.98); }
-  37%, 100% { opacity: 1; filter: brightness(1); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes cta-neon-breathe {
-  0%, 100% { box-shadow: 0 0 2px rgba(255,235,201,.92), 0 0 8px rgba(255,133,22,.50), 0 0 18px rgba(255,77,0,.22), 0 0 32px rgba(255,63,0,.09), inset 0 1px 0 rgba(255,231,184,.18), inset 0 0 12px rgba(255,123,15,.08); }
-  50% { box-shadow: 0 0 4px rgba(255,248,226,1), 0 0 12px rgba(255,151,35,.72), 0 0 26px rgba(255,77,0,.34), 0 0 44px rgba(255,63,0,.14), inset 0 1px 0 rgba(255,239,208,.30), inset 0 0 16px rgba(255,129,18,.12); }
-}
-
-@keyframes cta-light-sweep {
-  0%, 72% { transform: translateX(-125%) rotate(18deg); opacity: 0; }
-  76% { opacity: .95; }
-  84% { opacity: .62; }
-  94%, 100% { transform: translateX(420%) rotate(18deg); opacity: 0; }
-}
-
-@keyframes cta-star-twinkle {
-  0%, 100% { opacity: .48; transform: scale(.78) rotate(0deg); filter: brightness(.82); }
-  18% { opacity: 1; transform: scale(1.08) rotate(10deg); filter: brightness(1.38); }
-  30% { opacity: .58; transform: scale(.86) rotate(-5deg); filter: brightness(.96); }
-  52% { opacity: 1; transform: scale(1.22) rotate(7deg); filter: brightness(1.58); }
-  66% { opacity: .64; transform: scale(.88) rotate(0deg); filter: brightness(1); }
-}
-
-@keyframes cta-star-core {
-  0%, 100% { opacity: .22; transform: scale(.55); }
-  20% { opacity: .95; transform: scale(1.18); }
-  48% { opacity: .30; transform: scale(.72); }
-  70% { opacity: 1; transform: scale(1.42); }
-}
-
-@keyframes cta-star-ray {
-  0%, 100% { opacity: .12; transform: scaleX(.45) rotate(45deg); filter: brightness(.8); }
-  24% { opacity: .92; transform: scaleX(1) rotate(45deg); filter: brightness(1.45); }
-  48% { opacity: .25; transform: scaleX(.58) rotate(45deg); }
-  70% { opacity: 1; transform: scaleX(1.08) rotate(45deg); filter: brightness(1.65); }
-}
-
-/* Hero oven scene: make the depth readable at a glance instead of hiding it in near-black. */
-.hero-oven-scene { background: radial-gradient(ellipse at 50% 25%, rgba(255,122,18,.22) 0%, rgba(255,72,0,.11) 24%, transparent 54%), linear-gradient(180deg, #020201 0%, #090503 48%, #020201 100%) !important; }
-.hero-oven-room { width: min(108vw, 58rem) !important; height: min(54vh, 34rem) !important; top: 27% !important; }
-.hero-oven-room::before { content:""; position:absolute; left:50%; top:2%; width:82%; height:92%; transform:translateX(-50%) translateZ(12px); border:5px solid rgba(48,20,8,.92); border-bottom-width:12px; border-radius:46% 46% 7% 7% / 34% 34% 7% 7%; background:linear-gradient(90deg,rgba(0,0,0,.76),rgba(47,18,5,.28) 12%,transparent 25%,transparent 75%,rgba(47,18,5,.28) 88%,rgba(0,0,0,.76)); box-shadow:0 0 0 1px rgba(255,112,24,.28),0 0 18px rgba(255,76,0,.16),inset 0 0 28px rgba(0,0,0,.9); pointer-events:none; z-index:0; }
-.hero-oven-room::after { content:""; position:absolute; left:50%; top:58%; width:125%; height:58%; transform:translateX(-50%) rotateX(66deg) translateZ(-18px); transform-origin:50% 0; background:linear-gradient(180deg,rgba(255,139,38,.22),rgba(255,81,0,.08) 28%,transparent 70%),repeating-linear-gradient(90deg,transparent 0 8%,rgba(255,140,42,.08) 8.1% 8.25%,transparent 8.35% 16.6%); filter:blur(.2px); box-shadow:0 -22px 50px rgba(255,75,0,.16); pointer-events:none; z-index:0; }
-.hero-oven-cavity { width:78% !important; height:88% !important; top:45% !important; background:radial-gradient(ellipse at 50% 58%,rgba(255,238,183,1) 0%,rgba(255,174,49,.98) 10%,rgba(255,87,5,.88) 23%,rgba(122,31,2,.78) 43%,rgba(24,7,2,.94) 68%,#010101 100%) !important; box-shadow:0 0 34px rgba(255,91,0,.42),0 0 120px rgba(255,74,0,.28),0 0 220px rgba(255,63,0,.12),inset 0 0 54px rgba(0,0,0,.86),inset 0 -24px 34px rgba(0,0,0,.8) !important; }
-.hero-oven-inner { width:62% !important; height:42% !important; top:56% !important; filter:blur(7px) !important; }
-.hero-oven-jamb { width:18% !important; height:86% !important; top:6% !important; border-color:rgba(147,65,22,.72) !important; box-shadow:inset 0 0 22px rgba(0,0,0,.94),0 0 22px rgba(255,75,0,.12) !important; }
-.hero-oven-jamb-left { left:4% !important; }.hero-oven-jamb-right { right:4% !important; }
-.hero-oven-top { left:8% !important; right:8% !important; top:4% !important; height:19% !important; border-top-width:3px !important; border-top-color:rgba(147,65,22,.72) !important; box-shadow:0 -12px 30px rgba(0,0,0,.82),0 0 18px rgba(255,77,0,.1) !important; }
-.hero-oven-light { width:min(94vw,48rem) !important; height:min(66vh,40rem) !important; top:24% !important; opacity:1 !important; background:radial-gradient(ellipse at 50% 22%,rgba(255,223,146,.42) 0%,rgba(255,142,20,.25) 19%,rgba(255,78,0,.12) 39%,transparent 69%) !important; filter:blur(4px) !important; }
-.hero-oven-floor { top:46% !important; width:150% !important; height:72% !important; background:linear-gradient(to bottom,rgba(255,133,22,.34),rgba(82,26,6,.22) 25%,rgba(0,0,0,.88) 78%),repeating-linear-gradient(90deg,rgba(255,148,40,.10) 0 1px,transparent 1px 58px),linear-gradient(to bottom,#4a1906,#060201 72%) !important; box-shadow:0 -22px 48px rgba(255,76,0,.22),inset 0 28px 42px rgba(0,0,0,.66) !important; }
-.hero-oven-door { width:112% !important; height:min(31vh,17rem) !important; top:53% !important; border-width:2px !important; border-color:rgba(149,66,23,.76) !important; box-shadow:0 -6px 30px rgba(255,74,0,.2),inset 0 7px 20px rgba(255,121,24,.12),0 22px 46px rgba(0,0,0,.7) !important; }
-.hero-oven-threshold { width:88% !important; height:1.5rem !important; top:51% !important; background:linear-gradient(90deg,transparent,rgba(255,124,20,.62),rgba(255,225,159,.98),rgba(255,124,20,.62),transparent) !important; box-shadow:0 0 16px rgba(255,91,0,.68),0 0 44px rgba(255,73,0,.34) !important; }
-.hero-oven-heat { width:min(78vw,40rem) !important; height:48% !important; top:29% !important; filter:blur(13px) !important; opacity:.9 !important; }
-.hero-oven-vignette { background:radial-gradient(ellipse at 50% 28%,transparent 0%,rgba(0,0,0,.02) 32%,rgba(0,0,0,.48) 76%,rgba(0,0,0,.78) 100%) !important; }
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes neon-fault{0%,21%,100%{opacity:1;filter:brightness(1)}22%{opacity:.97;filter:brightness(.99)}23%{opacity:.84;filter:brightness(.88)}24%{opacity:.62;filter:brightness(.7)}25%{opacity:.8;filter:brightness(.84)}26%{opacity:.34;filter:brightness(.44)}27%{opacity:.68;filter:brightness(.74)}28%{opacity:.12;filter:brightness(.18)}29%{opacity:.46;filter:brightness(.55)}30%{opacity:.76;filter:brightness(.82)}31%{opacity:.24;filter:brightness(.32)}32%{opacity:.72;filter:brightness(.78)}33%{opacity:.42;filter:brightness(.52)}34%{opacity:.88;filter:brightness(.93)}35%{opacity:.58;filter:brightness(.68)}36%{opacity:.94;filter:brightness(.98)}37%,100%{opacity:1;filter:brightness(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cta-neon-breathe{0%,100%{box-shadow:0 0 2px rgba(255,235,201,.92),0 0 8px rgba(255,133,22,.5),0 0 18px rgba(255,77,0,.22),0 0 32px rgba(255,63,0,.09),inset 0 1px 0 rgba(255,231,184,.18),inset 0 0 12px rgba(255,123,15,.08)}50%{box-shadow:0 0 4px rgba(255,248,226,1),0 0 12px rgba(255,151,35,.72),0 0 26px rgba(255,77,0,.34),0 0 44px rgba(255,63,0,.14),inset 0 1px 0 rgba(255,239,208,.3),inset 0 0 16px rgba(255,129,18,.12)}}
+@keyframes cta-light-sweep{0%,72%{transform:translateX(-125%) rotate(18deg);opacity:0}76%{opacity:.95}84%{opacity:.62}94%,100%{transform:translateX(420%) rotate(18deg);opacity:0}}
+@keyframes cta-star-twinkle{0%,100%{opacity:.48;transform:scale(.78) rotate(0);filter:brightness(.82)}18%{opacity:1;transform:scale(1.08) rotate(10deg);filter:brightness(1.38)}30%{opacity:.58;transform:scale(.86) rotate(-5deg);filter:brightness(.96)}52%{opacity:1;transform:scale(1.22) rotate(7deg);filter:brightness(1.58)}66%{opacity:.64;transform:scale(.88) rotate(0);filter:brightness(1)}}
+@keyframes cta-star-core{0%,100%{opacity:.22;transform:scale(.55)}20%{opacity:.95;transform:scale(1.18)}48%{opacity:.3;transform:scale(.72)}70%{opacity:1;transform:scale(1.42)}}
+@keyframes cta-star-ray{0%,100%{opacity:.12;transform:scaleX(.45) rotate(45deg);filter:brightness(.8)}24%{opacity:.92;transform:scaleX(1) rotate(45deg);filter:brightness(1.45)}48%{opacity:.25;transform:scaleX(.58) rotate(45deg)}70%{opacity:1;transform:scaleX(1.08) rotate(45deg);filter:brightness(1.65)}}
+.hero-oven-scene{background:radial-gradient(ellipse at 50% 25%,rgba(255,122,18,.22) 0%,rgba(255,72,0,.11) 24%,transparent 54%),linear-gradient(180deg,#020201 0%,#090503 48%,#020201 100%) !important}
+.hero-oven-room{width:min(108vw,58rem) !important;height:min(54vh,34rem) !important;top:27% !important}
+.hero-oven-room::before{content:"";position:absolute;left:50%;top:2%;width:82%;height:92%;transform:translateX(-50%) translateZ(12px);border:5px solid rgba(48,20,8,.92);border-bottom-width:12px;border-radius:46% 46% 7% 7% / 34% 34% 7% 7%;background:linear-gradient(90deg,rgba(0,0,0,.76),rgba(47,18,5,.28) 12%,transparent 25%,transparent 75%,rgba(47,18,5,.28) 88%,rgba(0,0,0,.76));box-shadow:0 0 0 1px rgba(255,112,24,.28),0 0 18px rgba(255,76,0,.16),inset 0 0 28px rgba(0,0,0,.9);pointer-events:none;z-index:0}
+.hero-oven-room::after{content:"";position:absolute;left:50%;top:58%;width:125%;height:58%;transform:translateX(-50%) rotateX(66deg) translateZ(-18px);transform-origin:50% 0;background:linear-gradient(180deg,rgba(255,139,38,.22),rgba(255,81,0,.08) 28%,transparent 70%),repeating-linear-gradient(90deg,transparent 0 8%,rgba(255,140,42,.08) 8.1% 8.25%,transparent 8.35% 16.6%);filter:blur(.2px);box-shadow:0 -22px 50px rgba(255,75,0,.16);pointer-events:none;z-index:0}
+.hero-oven-cavity{width:78% !important;height:88% !important;top:45% !important;background:radial-gradient(ellipse at 50% 58%,rgba(255,238,183,1) 0%,rgba(255,174,49,.98) 10%,rgba(255,87,5,.88) 23%,rgba(122,31,2,.78) 43%,rgba(24,7,2,.94) 68%,#010101 100%) !important;box-shadow:0 0 34px rgba(255,91,0,.42),0 0 120px rgba(255,74,0,.28),0 0 220px rgba(255,63,0,.12),inset 0 0 54px rgba(0,0,0,.86),inset 0 -24px 34px rgba(0,0,0,.8) !important}
+.hero-oven-inner{width:62% !important;height:42% !important;top:56% !important;filter:blur(7px) !important}
+.hero-oven-jamb{width:18% !important;height:86% !important;top:6% !important;border-color:rgba(147,65,22,.72) !important;box-shadow:inset 0 0 22px rgba(0,0,0,.94),0 0 22px rgba(255,75,0,.12) !important}.hero-oven-jamb-left{left:4% !important}.hero-oven-jamb-right{right:4% !important}
+.hero-oven-top{left:8% !important;right:8% !important;top:4% !important;height:19% !important;border-top-width:3px !important;border-top-color:rgba(147,65,22,.72) !important;box-shadow:0 -12px 30px rgba(0,0,0,.82),0 0 18px rgba(255,77,0,.1) !important}
+.hero-oven-light{width:min(94vw,48rem) !important;height:min(66vh,40rem) !important;top:24% !important;opacity:1 !important;background:radial-gradient(ellipse at 50% 22%,rgba(255,223,146,.42) 0%,rgba(255,142,20,.25) 19%,rgba(255,78,0,.12) 39%,transparent 69%) !important;filter:blur(4px) !important}
+.hero-oven-floor{top:46% !important;width:150% !important;height:72% !important;background:linear-gradient(to bottom,rgba(255,133,22,.34),rgba(82,26,6,.22) 25%,rgba(0,0,0,.88) 78%),repeating-linear-gradient(90deg,rgba(255,148,40,.1) 0 1px,transparent 1px 58px),linear-gradient(to bottom,#4a1906,#060201 72%) !important;box-shadow:0 -22px 48px rgba(255,76,0,.22),inset 0 28px 42px rgba(0,0,0,.66) !important}
+.hero-oven-door{width:112% !important;height:min(31vh,17rem) !important;top:53% !important;border-width:2px !important;border-color:rgba(149,66,23,.76) !important;box-shadow:0 -6px 30px rgba(255,74,0,.2),inset 0 7px 20px rgba(255,121,24,.12),0 22px 46px rgba(0,0,0,.7) !important}
+.hero-oven-threshold{width:88% !important;height:1.5rem !important;top:51% !important;background:linear-gradient(90deg,transparent,rgba(255,124,20,.62),rgba(255,225,159,.98),rgba(255,124,20,.62),transparent) !important;box-shadow:0 0 16px rgba(255,91,0,.68),0 0 44px rgba(255,73,0,.34) !important}
+.hero-oven-heat{width:min(78vw,40rem) !important;height:48% !important;top:29% !important;filter:blur(13px) !important;opacity:.9 !important}.hero-oven-vignette{background:radial-gradient(ellipse at 50% 28%,transparent 0%,rgba(0,0,0,.02) 32%,rgba(0,0,0,.48) 76%,rgba(0,0,0,.78) 100%) !important}
 @media (max-width:699px){.hero-oven-room{width:126vw !important;height:48vh !important;top:27% !important}.hero-oven-room::before{width:84%;height:88%;border-width:4px;border-bottom-width:10px}.hero-oven-cavity{width:76% !important;height:84% !important}.hero-oven-jamb{width:19% !important;height:82% !important}.hero-oven-jamb-left{left:3% !important}.hero-oven-jamb-right{right:3% !important}.hero-oven-door{width:126% !important;height:13rem !important}.hero-oven-floor{width:170% !important}.hero-oven-light{width:112vw !important;height:56vh !important}}
-.animate-float { animation: float var(--transition-slow) ease-in-out infinite; }
-.animate-neon-fault { animation: neon-fault 15s linear infinite; }
-.animate-fade-up { animation: fadeUp 500ms ease-out both; }
-.animate-fade-up-delay-1 { animation: fadeUp 500ms 100ms ease-out both; }
-.animate-fade-up-delay-2 { animation: fadeUp 500ms 180ms ease-out both; }
-.animate-fade-up-delay-3 { animation: fadeUp 500ms 260ms ease-out both; }
-
-@media (prefers-reduced-motion: reduce) { .animate-neon-fault,.animate-float,.garfilas-glow-button,.garfilas-glow-button::after,.garfilas-glow-button__star { animation:none !important; } }
-
-/* Garfilas hero particle corrections. The orange orbit is the only ring source. */
-.hero-ring-heat{display:none !important;}
-.hero-dust-far{animation-duration:18s !important;}
-.hero-dust-mid{animation-duration:12s !important;}
-.hero-dust-near{animation-duration:8s !important;}
-.hero-dust-front{animation-duration:6s !important;}
-.hero-sparks:before{animation-duration:9s !important;}
-.hero-sparks:after{animation-duration:11s !important;}
-.hero-heat{animation-duration:12s !important;}
+.animate-float{animation:float var(--transition-slow) ease-in-out infinite}.animate-neon-fault{animation:neon-fault 15s linear infinite}.animate-fade-up{animation:fadeUp 500ms ease-out both}.animate-fade-up-delay-1{animation:fadeUp 500ms 100ms ease-out both}.animate-fade-up-delay-2{animation:fadeUp 500ms 180ms ease-out both}.animate-fade-up-delay-3{animation:fadeUp 500ms 260ms ease-out both}
+@media (prefers-reduced-motion:reduce){.animate-neon-fault,.animate-float,.garfilas-glow-button,.garfilas-glow-button::after,.garfilas-glow-button__star{animation:none !important}}
+/* Legacy CSS particle fields are disabled. The live engine owns particle motion to prevent group motion and clipping. */
+.hero-dust-far,.hero-dust-mid,.hero-dust-near,.hero-dust-front,.hero-sparks{display:none !important}
+.hero-ring-heat{display:none !important}
+.hero-heat{animation:none !important}
