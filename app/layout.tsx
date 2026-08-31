@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/hero-ring-emission.css";
-import "../styles/hero-particle-test.css";
 import { cormorantGaramond, greatVibes } from "./fonts";
 
 export const metadata: Metadata = {
@@ -19,7 +18,7 @@ export default function RootLayout({
     <html lang="fa">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400&display=swap"
           rel="stylesheet"
