@@ -36,25 +36,26 @@ export default function RingParticleEmitter() {
     let raf = 0;
     let stopped = false;
 
-    const spawn = (warm = false) => {
+    const spawn = (warm = false, initialIndex = 0, initialCount = 0) => {
       if (embers.length >= maxParticles) return;
 
       const rr = ring.getBoundingClientRect();
       const sr = scene.getBoundingClientRect();
       const cx = rr.left - sr.left + rr.width / 2;
       const cy = rr.top - sr.top + rr.height / 2;
-      const radius = Math.min(rr.width, rr.height) * rand(0.49, 0.505);
-      const angle = rand(0, Math.PI * 2);
+      const radius = Math.min(rr.width, rr.height) * rand(0.488, 0.502);
+      const angle = initialCount > 0
+        ? (initialIndex / initialCount) * Math.PI * 2 + rand(-0.028, 0.028)
+        : rand(0, Math.PI * 2);
       const x = cx + Math.cos(angle) * radius;
       const y = cy + Math.sin(angle) * radius;
 
-      const size = rand(1.0, warm ? 4.0 : 3.2);
-      const outward = rand(3.2, 9.5);
+      const size = rand(1.0, warm ? 3.4 : 3.2);
+      const outward = rand(1.5, 5.8);
       const tangent = rand(-6.5, 6.5);
-      const gravity = rand(3.0, 7.0);
+      const gravity = rand(2.5, 6.5);
       const depth = rand(0.32, 1);
-      const speed = warm ? rand(0.7, 1.25) : rand(0.42, 1.0);
-      const exit = Math.random() < 0.72 ? "edge" : "fade";
+      const speed = warm ? rand(0.32, 0.7) : rand(0.42, 1.0);
 
       const el = document.createElement("span");
       el.className = "hero-ring-particle";
@@ -70,18 +71,19 @@ export default function RingParticleEmitter() {
         y,
         vx: (Math.cos(angle) * outward + Math.cos(angle + Math.PI / 2) * tangent) * speed,
         vy: (Math.sin(angle) * outward + Math.sin(angle + Math.PI / 2) * tangent) * speed + gravity * 0.08,
-        life: warm ? rand(0, 900) : 0,
+        life: warm ? rand(180, 1700) : 0,
         maxLife: rand(1900, 4100),
         size,
         drift: rand(0.65, 2.05),
         phase: rand(0, Math.PI * 2),
-        opacity: rand(0.34, 0.9) * depth,
-        exit,
+        opacity: rand(0.3, 0.82) * depth,
+        exit: Math.random() < 0.72 ? "edge" : "fade",
       });
     };
 
-    // Dense initial ring population: three times the previous 72-particle ring population.
-    for (let i = 0; i < 216; i++) spawn(true);
+    // Prewarm the ring without creating a simultaneous explosion.
+    const initialCount = 216;
+    for (let i = 0; i < initialCount; i++) spawn(true, i, initialCount);
 
     const tick = (now: number) => {
       if (stopped) return;
@@ -89,15 +91,17 @@ export default function RingParticleEmitter() {
       last = now;
       spawnAccumulator += dt;
 
-      while (spawnAccumulator >= 70) {
-        spawnAccumulator -= 70;
-        const amount = Math.random() < 0.48 ? 2 : 1;
+      while (spawnAccumulator >= 78) {
+        spawnAccumulator -= 78;
+        const amount = Math.random() < 0.42 ? 2 : 1;
         for (let i = 0; i < amount; i++) spawn();
       }
 
       const seconds = now / 1000;
-      const width = srWidth(scene);
-      const height = srHeight(scene);
+      const sceneRect = scene.getBoundingClientRect();
+      const width = sceneRect.width;
+      const height = sceneRect.height;
+
       for (let i = embers.length - 1; i >= 0; i--) {
         const p = embers[i];
         p.life += dt;
@@ -120,7 +124,7 @@ export default function RingParticleEmitter() {
           continue;
         }
 
-        const fadeIn = Math.min(1, p.life / 150);
+        const fadeIn = Math.min(1, p.life / 220);
         const fadeOut = p.exit === "fade" ? Math.min(1, (1 - t) / 0.16) : Math.min(1, (1 - t) / 0.1);
         const pulse = 0.82 + Math.sin(seconds * p.drift * 1.9 + p.phase) * 0.18;
         const alpha = p.opacity * fadeIn * fadeOut * pulse;
@@ -149,6 +153,3 @@ export default function RingParticleEmitter() {
 
   return null;
 }
-
-function srWidth(el: HTMLElement) { return el.getBoundingClientRect().width; }
-function srHeight(el: HTMLElement) { return el.getBoundingClientRect().height; }
