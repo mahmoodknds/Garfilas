@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/hero-ring-emission.css";
 import { cormorantGaramond, greatVibes } from "./fonts";
+import RingParticleEmitter from "../components/sections/Hero/RingParticleEmitter";
 
 export const metadata: Metadata = {
   title: "Garfilas | Premium Lasagna",
@@ -24,7 +25,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${cormorantGaramond.variable} ${greatVibes.variable}`}>{children}</body>
+      <body className={`${cormorantGaramond.variable} ${greatVibes.variable}`}>
+        {children}
+        <RingParticleEmitter />
+      </body>
     </html>
   );
 }
