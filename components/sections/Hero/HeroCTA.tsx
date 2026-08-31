@@ -5,18 +5,25 @@ export default function HeroCTA() {
   return (
     <>
       <style>{`
-        /* Test only: keep the pre-existing particle field concentrated around the real Garfield ring. */
+        /* Placement test: physically move the existing initial particle field to Garfield's ring zone. */
         .hero-ring-heat{display:none!important}
         .hero-dust-far,.hero-dust-mid,.hero-dust-near,.hero-dust-front,.hero-sparks{
-          -webkit-mask-image:radial-gradient(ellipse 31% 25% at 50% 28%,transparent 0 42%,#000 54% 88%,transparent 100%)!important;
-          mask-image:radial-gradient(ellipse 31% 25% at 50% 28%,transparent 0 42%,#000 54% 88%,transparent 100%)!important;
-          -webkit-mask-repeat:no-repeat!important;
-          mask-repeat:no-repeat!important;
+          inset:auto!important;
+          left:50%!important;
+          top:28%!important;
+          width:min(94vw,46rem)!important;
+          height:min(56vh,34rem)!important;
+          translate:-50% -50%;
+          border-radius:50%;
+          -webkit-mask-image:none!important;
+          mask-image:none!important;
+          overflow:visible!important;
         }
         @media(max-width:699px){
           .hero-dust-far,.hero-dust-mid,.hero-dust-near,.hero-dust-front,.hero-sparks{
-            -webkit-mask-image:radial-gradient(ellipse 38% 23% at 50% 27%,transparent 0 40%,#000 53% 90%,transparent 100%)!important;
-            mask-image:radial-gradient(ellipse 38% 23% at 50% 27%,transparent 0 40%,#000 53% 90%,transparent 100%)!important;
+            top:27.5%!important;
+            width:96vw!important;
+            height:52vh!important;
           }
         }
       `}</style>
