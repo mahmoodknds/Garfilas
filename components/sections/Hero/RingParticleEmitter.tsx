@@ -14,6 +14,7 @@ type Ember = {
   drift: number;
   phase: number;
   opacity: number;
+  exit: "edge" | "fade";
 };
 
 const rand = (min: number, max: number) => Math.random() * (max - min) + min;
@@ -29,7 +30,7 @@ export default function RingParticleEmitter() {
     scene.appendChild(layer);
 
     const embers: Ember[] = [];
-    const maxParticles = 170;
+    const maxParticles = 360;
     let last = performance.now();
     let spawnAccumulator = 0;
     let raf = 0;
@@ -42,17 +43,18 @@ export default function RingParticleEmitter() {
       const sr = scene.getBoundingClientRect();
       const cx = rr.left - sr.left + rr.width / 2;
       const cy = rr.top - sr.top + rr.height / 2;
-      const radius = Math.min(rr.width, rr.height) * rand(0.485, 0.515);
+      const radius = Math.min(rr.width, rr.height) * rand(0.49, 0.505);
       const angle = rand(0, Math.PI * 2);
       const x = cx + Math.cos(angle) * radius;
       const y = cy + Math.sin(angle) * radius;
 
-      const size = rand(1.2, warm ? 4.2 : 3.5);
-      const outward = rand(3, 10);
-      const tangent = rand(-5.5, 5.5);
-      const gravity = rand(3.5, 8.5);
-      const depth = rand(0.35, 1);
-      const speed = warm ? rand(0.75, 1.35) : rand(0.45, 1.05);
+      const size = rand(1.0, warm ? 4.0 : 3.2);
+      const outward = rand(3.2, 9.5);
+      const tangent = rand(-6.5, 6.5);
+      const gravity = rand(3.0, 7.0);
+      const depth = rand(0.32, 1);
+      const speed = warm ? rand(0.7, 1.25) : rand(0.42, 1.0);
+      const exit = Math.random() < 0.72 ? "edge" : "fade";
 
       const el = document.createElement("span");
       el.className = "hero-ring-particle";
@@ -69,15 +71,17 @@ export default function RingParticleEmitter() {
         vx: (Math.cos(angle) * outward + Math.cos(angle + Math.PI / 2) * tangent) * speed,
         vy: (Math.sin(angle) * outward + Math.sin(angle + Math.PI / 2) * tangent) * speed + gravity * 0.08,
         life: warm ? rand(0, 900) : 0,
-        maxLife: rand(2200, 5200),
+        maxLife: rand(1900, 4100),
         size,
-        drift: rand(0.7, 2.2),
+        drift: rand(0.65, 2.05),
         phase: rand(0, Math.PI * 2),
         opacity: rand(0.34, 0.9) * depth,
+        exit,
       });
     };
 
-    for (let i = 0; i < 72; i++) spawn(true);
+    // Dense initial ring population: three times the previous 72-particle ring population.
+    for (let i = 0; i < 216; i++) spawn(true);
 
     const tick = (now: number) => {
       if (stopped) return;
@@ -85,38 +89,42 @@ export default function RingParticleEmitter() {
       last = now;
       spawnAccumulator += dt;
 
-      while (spawnAccumulator >= 105) {
-        spawnAccumulator -= 105;
-        const amount = Math.random() < 0.34 ? 2 : 1;
+      while (spawnAccumulator >= 70) {
+        spawnAccumulator -= 70;
+        const amount = Math.random() < 0.48 ? 2 : 1;
         for (let i = 0; i < amount; i++) spawn();
       }
 
       const seconds = now / 1000;
+      const width = srWidth(scene);
+      const height = srHeight(scene);
       for (let i = embers.length - 1; i >= 0; i--) {
         const p = embers[i];
         p.life += dt;
         const t = p.life / p.maxLife;
-        if (t >= 1) {
+
+        const swayX = Math.sin(seconds * p.drift + p.phase) * 0.34;
+        const swayY = Math.cos(seconds * (p.drift * 0.71) + p.phase * 1.17) * 0.14;
+        p.vy += 0.0022 * dt;
+        p.vx += swayX * 0.0055 * dt;
+        p.vy += swayY * 0.0025 * dt;
+        p.vx *= 0.9991;
+        p.vy *= 0.99935;
+        p.x += p.vx * dt * 0.035;
+        p.y += p.vy * dt * 0.035;
+
+        const outside = p.x < -24 || p.x > width + 24 || p.y < -24 || p.y > height + 24;
+        if (outside || (p.exit === "fade" && t >= 0.82) || t >= 1) {
           p.el.remove();
           embers.splice(i, 1);
           continue;
         }
 
-        const swayX = Math.sin(seconds * p.drift + p.phase) * 0.38;
-        const swayY = Math.cos(seconds * (p.drift * 0.73) + p.phase) * 0.18;
-        p.vy += 0.0024 * dt;
-        p.vx += swayX * 0.006 * dt;
-        p.vy += swayY * 0.003 * dt;
-        p.vx *= 0.9992;
-        p.vy *= 0.9994;
-        p.x += p.vx * dt * 0.035;
-        p.y += p.vy * dt * 0.035;
-
-        const fadeIn = Math.min(1, p.life / 180);
-        const fadeOut = Math.min(1, (1 - t) / 0.22);
-        const pulse = 0.78 + Math.sin(seconds * rand(1.5, 3.5) + p.phase) * 0.22;
+        const fadeIn = Math.min(1, p.life / 150);
+        const fadeOut = p.exit === "fade" ? Math.min(1, (1 - t) / 0.16) : Math.min(1, (1 - t) / 0.1);
+        const pulse = 0.82 + Math.sin(seconds * p.drift * 1.9 + p.phase) * 0.18;
         const alpha = p.opacity * fadeIn * fadeOut * pulse;
-        const scale = 0.72 + (1 - t) * 0.32;
+        const scale = 0.7 + (1 - t) * 0.34;
         p.el.style.transform = `translate3d(${p.x}px,${p.y}px,0) scale(${scale})`;
         p.el.style.opacity = alpha.toFixed(3);
       }
@@ -141,3 +149,6 @@ export default function RingParticleEmitter() {
 
   return null;
 }
+
+function srWidth(el: HTMLElement) { return el.getBoundingClientRect().width; }
+function srHeight(el: HTMLElement) { return el.getBoundingClientRect().height; }
