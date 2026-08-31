@@ -1,0 +1,21 @@
+/* Temporary visual test: constrain the existing particle field to the Garfield ring zone. */
+.hero-depth-scene .hero-dust-far,
+.hero-depth-scene .hero-dust-mid,
+.hero-depth-scene .hero-dust-near,
+.hero-depth-scene .hero-dust-front,
+.hero-depth-scene .hero-sparks{
+  -webkit-mask-image:radial-gradient(circle at 50% 28%,#000 0 25%,rgba(0,0,0,.82) 31%,rgba(0,0,0,.34) 38%,transparent 46%) !important;
+  mask-image:radial-gradient(circle at 50% 28%,#000 0 25%,rgba(0,0,0,.82) 31%,rgba(0,0,0,.34) 38%,transparent 46%) !important;
+  -webkit-mask-repeat:no-repeat !important;
+  mask-repeat:no-repeat !important;
+}
+@media(max-width:699px){
+  .hero-depth-scene .hero-dust-far,
+  .hero-depth-scene .hero-dust-mid,
+  .hero-depth-scene .hero-dust-near,
+  .hero-depth-scene .hero-dust-front,
+  .hero-depth-scene .hero-sparks{
+    -webkit-mask-image:radial-gradient(circle at 50% 27.5%,#000 0 29%,rgba(0,0,0,.82) 35%,rgba(0,0,0,.34) 42%,transparent 51%) !important;
+    mask-image:radial-gradient(circle at 50% 27.5%,#000 0 29%,rgba(0,0,0,.82) 35%,rgba(0,0,0,.34) 42%,transparent 51%) !important;
+  }
+}
