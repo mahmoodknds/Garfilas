@@ -1,0 +1,24 @@
+/* Temporary particle placement test: keep the existing initial particle field around Garfield's ring. */
+.hero-depth-scene .hero-dust-far,
+.hero-depth-scene .hero-dust-mid,
+.hero-depth-scene .hero-dust-near,
+.hero-depth-scene .hero-dust-front,
+.hero-depth-scene .hero-sparks {
+  -webkit-mask-image: radial-gradient(ellipse 42% 34% at 50% 28%, #000 0%, #000 62%, rgba(0,0,0,.72) 76%, transparent 100%);
+  mask-image: radial-gradient(ellipse 42% 34% at 50% 28%, #000 0%, #000 62%, rgba(0,0,0,.72) 76%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+@media (max-width: 640px) {
+  .hero-depth-scene .hero-dust-far,
+  .hero-depth-scene .hero-dust-mid,
+  .hero-depth-scene .hero-dust-near,
+  .hero-depth-scene .hero-dust-front,
+  .hero-depth-scene .hero-sparks {
+    -webkit-mask-image: radial-gradient(ellipse 54% 30% at 50% 27%, #000 0%, #000 60%, rgba(0,0,0,.72) 76%, transparent 100%);
+    mask-image: radial-gradient(ellipse 54% 30% at 50% 27%, #000 0%, #000 60%, rgba(0,0,0,.72) 76%, transparent 100%);
+  }
+}
