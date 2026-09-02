@@ -16,8 +16,9 @@ export default function HeroParticleEngine(){
     const embers:Ember[]=[];
     let stopped=false;
     let raf=0;
-    let ringSpawnClock=rand(150,230);
+    let ringSpawnClock=rand(120,190);
     let ambientSpawnClock=rand(90,150);
+    const startedAt=performance.now();
 
     const make=(x:number,y:number,angle:number,isRing=false,initial=false)=>{
       if(embers.length>=360)return;
@@ -89,10 +90,12 @@ export default function HeroParticleEngine(){
 
       if(ring){
         const ringCount=embers.reduce((n,e)=>n+(e.ring?1:0),0);
-        if(ringSpawnClock<=0){
-          const burst=ringCount<72?(Math.random()<.38?2:1):1;
-          for(let i=0;i<burst;i++)ringPoint();
-          ringSpawnClock=rand(185,285);
+        const warmup=now-startedAt<5500;
+        const target=warmup?94:88;
+        if(ringSpawnClock<=0&&ringCount<target){
+          const burst=warmup?(Math.random()<.30?2:1):(ringCount<76?(Math.random()<.38?2:1):1);
+          for(let i=0;i<burst&&ringCount+i<target;i++)ringPoint();
+          ringSpawnClock=warmup?rand(150,220):rand(185,285);
         }
         if(ringCount<74){
           ringPoint();
