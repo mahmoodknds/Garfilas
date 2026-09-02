@@ -62,7 +62,6 @@ export default function HeroParticleEngine(){
 
     const sparkBurst=()=>{
       if(!ring)return;
-      const rr=ring.getBoundingClientRect();
       const count=Math.floor(rand(5,9));
       for(let i=0;i<count;i++)ringPoint();
     };
