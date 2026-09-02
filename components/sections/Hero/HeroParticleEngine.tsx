@@ -18,33 +18,37 @@ export default function HeroParticleEngine(){
     let raf=0;
     let ringSpawnClock=rand(90,145);
     let ambientSpawnClock=rand(90,150);
-    let sparkClock=rand(700,980);
+    let sparkClock=rand(900,1300);
+    let pulseClock=rand(1650,2050);
+    let sparkSide:"left"|"right"="right";
     const startedAt=performance.now();
 
     const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false)=>{
       if(embers.length>=400)return;
-      const size=spark?rand(2.2,5.2):sizeProfile(isRing);
+      const size=spark?rand(2.4,5.6):sizeProfile(isRing);
       const el=document.createElement("span");
       el.className=spark?"hero-live-ember hero-live-spark":"hero-live-ember";
-      Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,250,205,1) 0%,rgba(255,188,62,.98) 34%,rgba(255,93,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,224,145,.98) 0%,rgba(255,145,34,.76) 45%,rgba(255,75,8,0) 100%)",boxShadow:spark?`0 0 ${Math.max(8,size*3.8)}px rgba(255,164,48,.72), 0 0 ${Math.max(14,size*6)}px rgba(255,76,8,.24)`:`0 0 ${Math.max(4,size*2.6)}px rgba(255,126,22,.30)`,willChange:"transform,opacity",contain:"layout style paint"});
+      Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,252,220,1) 0%,rgba(255,191,70,.98) 34%,rgba(255,91,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,224,145,.98) 0%,rgba(255,145,34,.76) 45%,rgba(255,75,8,0) 100%)",boxShadow:spark?`0 0 ${Math.max(9,size*4.2)}px rgba(255,174,52,.78), 0 0 ${Math.max(16,size*6.6)}px rgba(255,76,8,.28)`:`0 0 ${Math.max(4,size*2.6)}px rgba(255,126,22,.30)`,willChange:"transform,opacity",contain:"layout style paint"});
 
-      const distance=spark?rand(22,72):isRing?rand(48,155):rand(35,135);
+      const distance=spark?rand(34,92):isRing?rand(48,155):rand(35,135);
       const dx=Math.cos(angle)*distance;
-      const dy=Math.sin(angle)*distance+(spark?rand(10,34):isRing?rand(8,32):rand(12,48));
-      const driftX=rand(-18,18);
-      const driftY=rand(-5,24);
-      const duration=spark?rand(900,1700):initial?rand(18000,28000):isRing?rand(14500,22500):rand(17000,26000);
-      const alpha=spark?rand(.78,1):rand(.34,.80);
-      const scaleEnd=spark?rand(.12,.30):rand(.30,.55);
+      const dy=Math.sin(angle)*distance+(spark?rand(7,22):isRing?rand(10,36):rand(14,46));
+      // Keep trajectories almost vertically biased. The old ±18px drift created a persistent fake wind.
+      const driftX=rand(-7,7);
+      const driftY=rand(-4,16);
+      const duration=spark?rand(1900,3100):initial?rand(18000,28000):isRing?rand(14500,22500):rand(17000,26000);
+      const alpha=spark?rand(.82,1):rand(.34,.80);
+      const scaleEnd=spark?rand(.18,.34):rand(.30,.55);
 
       const animation=el.animate([
         {transform:"translate3d(0,0,0) scale(.45)",opacity:0},
-        {transform:`translate3d(${dx*.10}px,${dy*.10}px,0) scale(${spark?1.15:1})`,opacity:alpha,offset:spark?.10:.12},
-        {transform:`translate3d(${dx*.42+driftX*.18}px,${dy*.42+driftY*.16}px,0) scale(${spark?.78:.80})`,opacity:spark?alpha*.78:alpha*.74,offset:spark?.42:.52},
-        {transform:`translate3d(${dx*.72+driftX*.55}px,${dy*.72+driftY*.62}px,0) scale(${Math.max(scaleEnd,spark?.24:.38)})`,opacity:spark?alpha*.34:alpha*.34,offset:spark?.72:.82},
-        {transform:`translate3d(${dx+driftX}px,${dy+driftY}px,0) scale(${scaleEnd})`,opacity:0,offset:.965},
-        {transform:`translate3d(${dx+driftX*1.12}px,${dy+driftY+rand(5,14)}px,0) scale(.08)`,opacity:0}
-      ],{duration,easing:spark?"cubic-bezier(.18,.72,.28,1)":"linear",fill:"both"});
+        {transform:`translate3d(${dx*.08}px,${dy*.08}px,0) scale(${spark?1.08:1})`,opacity:0,offset:0},
+        {transform:`translate3d(${dx*.10}px,${dy*.10}px,0) scale(${spark?1.18:1})`,opacity:alpha,offset:spark?.12:.12},
+        {transform:`translate3d(${dx*.38+driftX*.18}px,${dy*.38+driftY*.16}px,0) scale(${spark?.96:.80})`,opacity:spark?alpha*.90:alpha*.74,offset:spark?.38:.52},
+        {transform:`translate3d(${dx*.70+driftX*.45}px,${dy*.70+driftY*.60}px,0) scale(${Math.max(scaleEnd,spark?.48:.38)})`,opacity:spark?alpha*.46:alpha*.34,offset:spark?.68:.82},
+        {transform:`translate3d(${dx+driftX}px,${dy+driftY}px,0) scale(${scaleEnd})`,opacity:0,offset:.975},
+        {transform:`translate3d(${dx+driftX*1.05}px,${dy+driftY+rand(4,10)}px,0) scale(.08)`,opacity:0}
+      ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":"linear",fill:"both"});
 
       layer.appendChild(el);
       const ember:Ember={el,animation,ring:isRing,bornAt:performance.now(),duration,spark};
@@ -57,20 +61,41 @@ export default function HeroParticleEngine(){
       if(!ring)return;
       const rr=ring.getBoundingClientRect();
       let a=rand(0,Math.PI*2);
-      if(forcedSide) {
+      if(forcedSide){
         const leftSide=a>Math.PI/2&&a<Math.PI*1.5;
         if((forcedSide==="left")!==leftSide)a+=Math.PI;
       }
       const radius=Math.min(rr.width,rr.height)*rand(.50,.525);
-      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.22,.22),true,false,spark);
+      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.18,.18),true,false,spark);
     };
 
     const sparkBurst=()=>{
       if(!ring)return;
-      const left=embers.filter(e=>e.ring&&e.spark&&e.el.offsetLeft<innerWidth/2).length;
-      const right=embers.filter(e=>e.ring&&e.spark&&e.el.offsetLeft>=innerWidth/2).length;
-      const count=Math.floor(rand(8,14));
-      for(let i=0;i<count;i++)ringPoint(true,left<right?"left":right<left?"right":undefined);
+      // Sparks alternate their launch side. Each spark still gets its own random angle,
+      // distance, duration and trajectory, so the burst never behaves like a copied group.
+      const count=Math.floor(rand(8,13));
+      for(let i=0;i<count;i++){
+        const side=sparkSide;
+        ringPoint(true,side);
+        sparkSide=side==="right"?"left":"right";
+      }
+    };
+
+    const ringPulse=()=>{
+      if(!ring)return;
+      // A two-second heartbeat: many particles are born around the real neon ring,
+      // but each birth is independently randomized rather than cloned.
+      const count=Math.floor(rand(11,18));
+      for(let i=0;i<count;i++){
+        const a=rand(0,Math.PI*2);
+        ringPoint(false,(i%3===0)?(Math.random()<.5?"left":"right"):undefined);
+        // Give a subset a stronger outward impulse while preserving the natural ring source.
+        if(Math.random()<.34){
+          const rr=ring.getBoundingClientRect();
+          const radius=Math.min(rr.width,rr.height)*rand(.50,.525);
+          make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.30,.30),true,false,false);
+        }
+      }
     };
 
     const ambientPoint=(forcedSide?:"left"|"right")=>{
@@ -78,7 +103,7 @@ export default function HeroParticleEngine(){
       const x=forcedSide==="left"?rand(w*.08,w*.48):forcedSide==="right"?rand(w*.52,w*.92):rand(w*.08,w*.92);
       const y=rand(h*.08,h*.78);
       if(y>h*.60&&Math.random()<.64)return false;
-      make(x,y,rand(-Math.PI*.16,Math.PI*.16),false);
+      make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);
       return true;
     };
 
@@ -87,12 +112,13 @@ export default function HeroParticleEngine(){
       for(let i=0;i<185;i++){
         const x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);
         if(y>h*.60&&Math.random()<.64)continue;
-        make(x,y,rand(-Math.PI*.16,Math.PI*.16),false,true);
+        make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,true);
       }
     };
 
     seedAmbient();
     for(let i=0;i<84;i++)ringPoint();
+    ringPulse();
     sparkBurst();
 
     let last=performance.now();
@@ -103,22 +129,29 @@ export default function HeroParticleEngine(){
       ringSpawnClock-=dt;
       ambientSpawnClock-=dt;
       sparkClock-=dt;
+      pulseClock-=dt;
 
       if(ring){
         const ringCount=embers.reduce((n,e)=>n+(e.ring&&!e.spark?1:0),0);
         const warmup=now-startedAt<5500;
         const target=warmup?94:88;
-        if(ringSpawnClock<=0&&ringCount<target){
-          const burst=warmup?(Math.random()<.34?2:1):(ringCount<76?(Math.random()<.38?2:1):1);
-          const left=embers.filter(e=>e.ring&&!e.spark&&e.el.offsetLeft<innerWidth/2).length;
-          const right=embers.filter(e=>e.ring&&!e.spark&&e.el.offsetLeft>=innerWidth/2).length;
-          for(let i=0;i<burst&&ringCount+i<target;i++)ringPoint(false,left<right?"left":right<left?"right":undefined);
-          ringSpawnClock=warmup?rand(120,180):rand(155,235);
+
+        if(pulseClock<=0){
+          ringPulse();
+          pulseClock=rand(1850,2150);
         }
+
+        if(ringSpawnClock<=0&&ringCount<target){
+          const burst=warmup?(Math.random()<.45?2:1):(ringCount<76?(Math.random()<.55?2:1):1);
+          for(let i=0;i<burst&&ringCount+i<target;i++)ringPoint();
+          ringSpawnClock=warmup?rand(105,165):rand(145,220);
+        }
+
         if(sparkClock<=0){
           sparkBurst();
-          sparkClock=rand(900,1150);
+          sparkClock=rand(1650,2350);
         }
+
         if(ringCount<74){
           ringPoint();
           if(Math.random()<.32)ringPoint();
@@ -129,8 +162,10 @@ export default function HeroParticleEngine(){
         const left=embers.filter(e=>!e.ring&&e.el.offsetLeft<innerWidth/2).length;
         const right=embers.filter(e=>!e.ring&&e.el.offsetLeft>=innerWidth/2).length;
         let made=0;
-        while(made<2){
-          const sparse=left+3<right?"left":right+3<left?"right":undefined;
+        let attempts=0;
+        while(made<2&&attempts<8){
+          attempts++;
+          const sparse=left+6<right?"left":right+6<left?"right":undefined;
           if(!ambientPoint(sparse))continue;
           made++;
         }
