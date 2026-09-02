@@ -16,35 +16,35 @@ export default function HeroParticleEngine(){
     const embers:Ember[]=[];
     let stopped=false;
     let raf=0;
-    let ringSpawnClock=rand(110,175);
+    let ringSpawnClock=rand(90,145);
     let ambientSpawnClock=rand(90,150);
-    let microBurstClock=rand(780,1120);
+    let sparkClock=rand(700,980);
     const startedAt=performance.now();
 
-    const make=(x:number,y:number,angle:number,isRing=false,initial=false)=>{
+    const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false)=>{
       if(embers.length>=360)return;
-      const size=sizeProfile(isRing);
+      const size=spark?rand(2.2,5.2):sizeProfile(isRing);
       const el=document.createElement("span");
-      el.className="hero-live-ember";
-      Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:"radial-gradient(circle,rgba(255,224,145,.98) 0%,rgba(255,145,34,.76) 45%,rgba(255,75,8,0) 100%)",boxShadow:`0 0 ${Math.max(4,size*2.6)}px rgba(255,126,22,.30)`,willChange:"transform,opacity",contain:"layout style paint"});
+      el.className=spark?"hero-live-ember hero-live-spark":"hero-live-ember";
+      Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,250,205,1) 0%,rgba(255,188,62,.98) 34%,rgba(255,93,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,224,145,.98) 0%,rgba(255,145,34,.76) 45%,rgba(255,75,8,0) 100%)",boxShadow:spark?`0 0 ${Math.max(8,size*3.8)}px rgba(255,164,48,.72) 0 0 ${Math.max(14,size*6)}px rgba(255,76,8,.24)`: `0 0 ${Math.max(4,size*2.6)}px rgba(255,126,22,.30)`,willChange:"transform,opacity",contain:"layout style paint"});
 
-      const distance=isRing?rand(48,155):rand(35,135);
+      const distance=spark?rand(22,72):isRing?rand(48,155):rand(35,135);
       const dx=Math.cos(angle)*distance;
-      const dy=Math.sin(angle)*distance+(isRing?rand(8,32):rand(12,48));
-      const driftX=rand(-38,38);
-      const driftY=rand(-8,30);
-      const duration=initial?rand(18000,28000):isRing?rand(14500,22500):rand(17000,26000);
-      const alpha=rand(.34,.80);
-      const scaleEnd=rand(.30,.55);
+      const dy=Math.sin(angle)*distance+(spark?rand(10,34):isRing?rand(8,32):rand(12,48));
+      const driftX=rand(-26,26);
+      const driftY=rand(-5,24);
+      const duration=spark?rand(900,1700):initial?rand(18000,28000):isRing?rand(14500,22500):rand(17000,26000);
+      const alpha=spark?rand(.78,1):rand(.34,.80);
+      const scaleEnd=spark?rand(.12,.30):rand(.30,.55);
 
       const animation=el.animate([
-        {transform:"translate3d(0,0,0) scale(.72)",opacity:0},
-        {transform:`translate3d(${dx*.18}px,${dy*.18}px,0) scale(1)`,opacity:alpha,offset:.12},
-        {transform:`translate3d(${dx*.50+driftX*.25}px,${dy*.50+driftY*.22}px,0) scale(.80)`,opacity:alpha*.74,offset:.52},
-        {transform:`translate3d(${dx*.76+driftX*.72}px,${dy*.76+driftY*.70}px,0) scale(${Math.max(scaleEnd,.38)})`,opacity:alpha*.34,offset:.82},
+        {transform:"translate3d(0,0,0) scale(.45)",opacity:0},
+        {transform:`translate3d(${dx*.10}px,${dy*.10}px,0) scale(${spark?1.15:1})`,opacity:alpha,offset:spark?.10:.12},
+        {transform:`translate3d(${dx*.42+driftX*.18}px,${dy*.42+driftY*.16}px,0) scale(${spark?.78:.80})`,opacity:spark?alpha*.78:alpha*.74,offset:spark?.42:.52},
+        {transform:`translate3d(${dx*.72+driftX*.55}px,${dy*.72+driftY*.62}px,0) scale(${Math.max(scaleEnd,spark?.24:.38)})`,opacity:spark?alpha*.34:alpha*.34,offset:spark?.72:.82},
         {transform:`translate3d(${dx+driftX}px,${dy+driftY}px,0) scale(${scaleEnd})`,opacity:0,offset:.965},
-        {transform:`translate3d(${dx+driftX*1.12}px,${dy+driftY+rand(8,20)}px,0) scale(.16)`,opacity:0}
-      ],{duration,easing:"linear",fill:"both"});
+        {transform:`translate3d(${dx+driftX*1.12}px,${dy+driftY+rand(5,14)}px,0) scale(.08)`,opacity:0}
+      ],{duration,easing:spark?"cubic-bezier(.18,.72,.28,1)":"linear",fill:"both"});
 
       layer.appendChild(el);
       const ember:Ember={el,animation,ring:isRing,bornAt:performance.now(),duration};
@@ -52,18 +52,18 @@ export default function HeroParticleEngine(){
       animation.onfinish=()=>{el.remove();const i=embers.indexOf(ember);if(i>=0)embers.splice(i,1)};
     };
 
-    const ringPoint=()=>{
+    const ringPoint=(spark=false)=>{
       if(!ring)return;
       const rr=ring.getBoundingClientRect();
       const a=rand(0,Math.PI*2);
       const radius=Math.min(rr.width,rr.height)*rand(.50,.525);
-      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.28,.28),true);
+      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.28,.28),true,false,spark);
     };
 
     const sparkBurst=()=>{
       if(!ring)return;
-      const count=Math.floor(rand(5,9));
-      for(let i=0;i<count;i++)ringPoint();
+      const count=Math.floor(rand(8,14));
+      for(let i=0;i<count;i++)ringPoint(true);
     };
 
     const ambientPoint=()=>{
@@ -95,20 +95,20 @@ export default function HeroParticleEngine(){
       last=now;
       ringSpawnClock-=dt;
       ambientSpawnClock-=dt;
-      microBurstClock-=dt;
+      sparkClock-=dt;
 
       if(ring){
-        const ringCount=embers.reduce((n,e)=>n+(e.ring?1:0),0);
+        const ringCount=embers.reduce((n,e)=>n+(e.ring&&!e.el.classList.contains("hero-live-spark")?1:0),0);
         const warmup=now-startedAt<5500;
         const target=warmup?94:88;
         if(ringSpawnClock<=0&&ringCount<target){
           const burst=warmup?(Math.random()<.34?2:1):(ringCount<76?(Math.random()<.38?2:1):1);
           for(let i=0;i<burst&&ringCount+i<target;i++)ringPoint();
-          ringSpawnClock=warmup?rand(140,205):rand(175,270);
+          ringSpawnClock=warmup?rand(120,180):rand(155,235);
         }
-        if(microBurstClock<=0){
+        if(sparkClock<=0){
           sparkBurst();
-          microBurstClock=rand(850,1150);
+          sparkClock=rand(900,1150);
         }
         if(ringCount<74){
           ringPoint();
