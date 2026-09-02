@@ -3,7 +3,7 @@ import { useLayoutEffect } from "react";
 
 type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean;bornAt:number;duration:number};
 const rand=(a:number,b:number)=>Math.random()*(b-a)+a;
-function sizeProfile(ring:boolean){const r=Math.random();if(r<.035)return rand(1.4,2.1);if(r<.20)return rand(2.3,3.4);if(r<.46)return rand(3.4,4.8);if(r<.70)return rand(4.8,6.2);if(r<.94)return rand(6.2,7.8);if(r<.985)return rand(8,10.5);return ring?rand(10.5,13):rand(9,11)}
+function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.4,2.1);if(r<.17)return rand(2.3,3.4);if(r<.42)return rand(3.4,4.8);if(r<.67)return rand(4.8,6.2);if(r<.92)return rand(6.2,7.8);if(r<.985)return rand(8,10.5);return ring?rand(10.5,13):rand(9,11)}
 
 export default function HeroParticleEngine(){
   useLayoutEffect(()=>{
@@ -16,8 +16,9 @@ export default function HeroParticleEngine(){
     const embers:Ember[]=[];
     let stopped=false;
     let raf=0;
-    let ringSpawnClock=rand(120,190);
+    let ringSpawnClock=rand(110,175);
     let ambientSpawnClock=rand(90,150);
+    let microBurstClock=rand(780,1120);
     const startedAt=performance.now();
 
     const make=(x:number,y:number,angle:number,isRing=false,initial=false)=>{
@@ -59,6 +60,13 @@ export default function HeroParticleEngine(){
       make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.28,.28),true);
     };
 
+    const sparkBurst=()=>{
+      if(!ring)return;
+      const rr=ring.getBoundingClientRect();
+      const count=Math.floor(rand(5,9));
+      for(let i=0;i<count;i++)ringPoint();
+    };
+
     const ambientPoint=()=>{
       const w=innerWidth,h=innerHeight;
       const x=rand(w*.08,w*.92);
@@ -79,6 +87,7 @@ export default function HeroParticleEngine(){
 
     seedAmbient();
     for(let i=0;i<84;i++)ringPoint();
+    sparkBurst();
 
     let last=performance.now();
     const tick=(now:number)=>{
@@ -87,15 +96,20 @@ export default function HeroParticleEngine(){
       last=now;
       ringSpawnClock-=dt;
       ambientSpawnClock-=dt;
+      microBurstClock-=dt;
 
       if(ring){
         const ringCount=embers.reduce((n,e)=>n+(e.ring?1:0),0);
         const warmup=now-startedAt<5500;
         const target=warmup?94:88;
         if(ringSpawnClock<=0&&ringCount<target){
-          const burst=warmup?(Math.random()<.30?2:1):(ringCount<76?(Math.random()<.38?2:1):1);
+          const burst=warmup?(Math.random()<.34?2:1):(ringCount<76?(Math.random()<.38?2:1):1);
           for(let i=0;i<burst&&ringCount+i<target;i++)ringPoint();
-          ringSpawnClock=warmup?rand(150,220):rand(185,285);
+          ringSpawnClock=warmup?rand(140,205):rand(175,270);
+        }
+        if(microBurstClock<=0){
+          sparkBurst();
+          microBurstClock=rand(850,1150);
         }
         if(ringCount<74){
           ringPoint();
