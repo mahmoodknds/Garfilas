@@ -1,7 +1,7 @@
 "use client";
 import { useLayoutEffect } from "react";
 
-type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean;bornAt:number;duration:number};
+type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean;bornAt:number;duration:number;spark:boolean};
 const rand=(a:number,b:number)=>Math.random()*(b-a)+a;
 function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.4,2.1);if(r<.17)return rand(2.3,3.4);if(r<.42)return rand(3.4,4.8);if(r<.67)return rand(4.8,6.2);if(r<.92)return rand(6.2,7.8);if(r<.985)return rand(8,10.5);return ring?rand(10.5,13):rand(9,11)}
 
@@ -22,16 +22,16 @@ export default function HeroParticleEngine(){
     const startedAt=performance.now();
 
     const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false)=>{
-      if(embers.length>=360)return;
+      if(embers.length>=400)return;
       const size=spark?rand(2.2,5.2):sizeProfile(isRing);
       const el=document.createElement("span");
       el.className=spark?"hero-live-ember hero-live-spark":"hero-live-ember";
-      Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,250,205,1) 0%,rgba(255,188,62,.98) 34%,rgba(255,93,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,224,145,.98) 0%,rgba(255,145,34,.76) 45%,rgba(255,75,8,0) 100%)",boxShadow:spark?`0 0 ${Math.max(8,size*3.8)}px rgba(255,164,48,.72) 0 0 ${Math.max(14,size*6)}px rgba(255,76,8,.24)`: `0 0 ${Math.max(4,size*2.6)}px rgba(255,126,22,.30)`,willChange:"transform,opacity",contain:"layout style paint"});
+      Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,250,205,1) 0%,rgba(255,188,62,.98) 34%,rgba(255,93,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,224,145,.98) 0%,rgba(255,145,34,.76) 45%,rgba(255,75,8,0) 100%)",boxShadow:spark?`0 0 ${Math.max(8,size*3.8)}px rgba(255,164,48,.72), 0 0 ${Math.max(14,size*6)}px rgba(255,76,8,.24)`:`0 0 ${Math.max(4,size*2.6)}px rgba(255,126,22,.30)`,willChange:"transform,opacity",contain:"layout style paint"});
 
       const distance=spark?rand(22,72):isRing?rand(48,155):rand(35,135);
       const dx=Math.cos(angle)*distance;
       const dy=Math.sin(angle)*distance+(spark?rand(10,34):isRing?rand(8,32):rand(12,48));
-      const driftX=rand(-26,26);
+      const driftX=rand(-18,18);
       const driftY=rand(-5,24);
       const duration=spark?rand(900,1700):initial?rand(18000,28000):isRing?rand(14500,22500):rand(17000,26000);
       const alpha=spark?rand(.78,1):rand(.34,.80);
@@ -47,28 +47,35 @@ export default function HeroParticleEngine(){
       ],{duration,easing:spark?"cubic-bezier(.18,.72,.28,1)":"linear",fill:"both"});
 
       layer.appendChild(el);
-      const ember:Ember={el,animation,ring:isRing,bornAt:performance.now(),duration};
+      const ember:Ember={el,animation,ring:isRing,bornAt:performance.now(),duration,spark};
       embers.push(ember);
+      if(initial&&isRing)animation.currentTime=rand(0,4200);
       animation.onfinish=()=>{el.remove();const i=embers.indexOf(ember);if(i>=0)embers.splice(i,1)};
     };
 
-    const ringPoint=(spark=false)=>{
+    const ringPoint=(spark=false,forcedSide?:"left"|"right")=>{
       if(!ring)return;
       const rr=ring.getBoundingClientRect();
-      const a=rand(0,Math.PI*2);
+      let a=rand(0,Math.PI*2);
+      if(forcedSide) {
+        const leftSide=a>Math.PI/2&&a<Math.PI*1.5;
+        if((forcedSide==="left")!==leftSide)a+=Math.PI;
+      }
       const radius=Math.min(rr.width,rr.height)*rand(.50,.525);
-      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.28,.28),true,false,spark);
+      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.22,.22),true,false,spark);
     };
 
     const sparkBurst=()=>{
       if(!ring)return;
+      const left=embers.filter(e=>e.ring&&e.spark&&e.el.offsetLeft<innerWidth/2).length;
+      const right=embers.filter(e=>e.ring&&e.spark&&e.el.offsetLeft>=innerWidth/2).length;
       const count=Math.floor(rand(8,14));
-      for(let i=0;i<count;i++)ringPoint(true);
+      for(let i=0;i<count;i++)ringPoint(true,left<right?"left":right<left?"right":undefined);
     };
 
-    const ambientPoint=()=>{
+    const ambientPoint=(forcedSide?:"left"|"right")=>{
       const w=innerWidth,h=innerHeight;
-      const x=rand(w*.08,w*.92);
+      const x=forcedSide==="left"?rand(w*.08,w*.48):forcedSide==="right"?rand(w*.52,w*.92):rand(w*.08,w*.92);
       const y=rand(h*.08,h*.78);
       if(y>h*.60&&Math.random()<.64)return false;
       make(x,y,rand(-Math.PI*.16,Math.PI*.16),false);
@@ -98,12 +105,14 @@ export default function HeroParticleEngine(){
       sparkClock-=dt;
 
       if(ring){
-        const ringCount=embers.reduce((n,e)=>n+(e.ring&&!e.el.classList.contains("hero-live-spark")?1:0),0);
+        const ringCount=embers.reduce((n,e)=>n+(e.ring&&!e.spark?1:0),0);
         const warmup=now-startedAt<5500;
         const target=warmup?94:88;
         if(ringSpawnClock<=0&&ringCount<target){
           const burst=warmup?(Math.random()<.34?2:1):(ringCount<76?(Math.random()<.38?2:1):1);
-          for(let i=0;i<burst&&ringCount+i<target;i++)ringPoint();
+          const left=embers.filter(e=>e.ring&&!e.spark&&e.el.offsetLeft<innerWidth/2).length;
+          const right=embers.filter(e=>e.ring&&!e.spark&&e.el.offsetLeft>=innerWidth/2).length;
+          for(let i=0;i<burst&&ringCount+i<target;i++)ringPoint(false,left<right?"left":right<left?"right":undefined);
           ringSpawnClock=warmup?rand(120,180):rand(155,235);
         }
         if(sparkClock<=0){
@@ -117,8 +126,14 @@ export default function HeroParticleEngine(){
       }
 
       if(ambientSpawnClock<=0){
+        const left=embers.filter(e=>!e.ring&&e.el.offsetLeft<innerWidth/2).length;
+        const right=embers.filter(e=>!e.ring&&e.el.offsetLeft>=innerWidth/2).length;
         let made=0;
-        while(made<2&&ambientPoint())made++;
+        while(made<2){
+          const sparse=left+3<right?"left":right+3<left?"right":undefined;
+          if(!ambientPoint(sparse))continue;
+          made++;
+        }
         ambientSpawnClock=rand(140,240);
       }
 
