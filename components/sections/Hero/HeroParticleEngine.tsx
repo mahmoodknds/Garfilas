@@ -19,37 +19,45 @@ export default function HeroParticleEngine(){
     let stopped=false;
     let raf=0;
     let ambientSpawnClock=rand(90,150);
-    let sparkClock=rand(1100,1500);
-    let pulseClock=rand(1750,2150);
+    let sparkClock=rand(1200,1600);
+    let pulseClock=rand(2850,3350);
     let sparkSide:"left"|"right"="right";
-    let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean,initial?:boolean)=>void=()=>{};
+    let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean,initial?:boolean,pulse?:boolean)=>void=()=>{};
 
-    const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false,loop=false)=>{
+    if(ring){
+      // Slightly larger, deeper ring without touching its layout transform.
+      ring.style.width="min(84vw,34rem)";
+      ring.style.borderColor="rgba(255,91,8,.96)";
+      ring.style.boxShadow="0 0 8px rgba(255,72,4,.95),0 0 24px rgba(255,72,4,.46),0 0 52px rgba(255,62,0,.18),inset 0 0 10px rgba(255,82,5,.28)";
+      ring.style.transformStyle="preserve-3d";
+    }
+
+    const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false,loop=false,pulse=false)=>{
       if(embers.length>=MAX_PARTICLES)return;
       const size=spark?rand(2.4,5.6):sizeProfile(isRing);
       const el=document.createElement("span");
       el.className=spark?"hero-live-ember hero-live-spark":"hero-live-ember";
-      Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,252,220,1) 0%,rgba(255,191,70,.98) 34%,rgba(255,91,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,239,180,1) 0%,rgba(255,157,39,.88) 42%,rgba(255,72,6,0) 100%)",boxShadow:spark?`0 0 ${Math.max(8,size*4)}px rgba(255,174,52,.72),0 0 ${Math.max(14,size*5.8)}px rgba(255,76,8,.24)`:`0 0 ${Math.max(6,size*3.2)}px rgba(255,145,24,.48),0 0 ${Math.max(10,size*5.2)}px rgba(255,74,5,.20)`,contain:"layout style paint"});
+      Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,252,220,1) 0%,rgba(255,191,70,.98) 34%,rgba(255,91,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,231,174,1) 0%,rgba(255,139,24,.9) 40%,rgba(255,61,4,0) 100%)",boxShadow:spark?`0 0 ${Math.max(8,size*4)}px rgba(255,174,52,.72),0 0 ${Math.max(14,size*5.8)}px rgba(255,76,8,.24)`:`0 0 ${Math.max(6,size*3.2)}px rgba(255,116,15,.52),0 0 ${Math.max(10,size*5.2)}px rgba(255,58,3,.24)`,contain:"layout style paint"});
 
       const distance=spark?rand(40,88):isRing?rand(48,155):rand(35,135);
       const dx=Math.cos(angle)*distance;
       const dy=Math.sin(angle)*distance+(spark?rand(8,24):isRing?rand(10,36):rand(14,46));
       const driftX=rand(-3,3);
       const driftY=rand(-4,16);
-      const duration=spark?rand(9000,13000):initial?rand(12000,18000):isRing?rand(10000,16000):rand(11000,17000);
+      const duration=spark?rand(9000,13000):pulse?rand(6500,8500):initial?rand(12000,18000):isRing?rand(10000,16000):rand(11000,17000);
       const alpha=spark?rand(.84,1):rand(.46,.92);
       const scaleEnd=spark?rand(.22,.38):rand(.30,.55);
-      const initialPhase=initial&&isRing?rand(0,4200):0;
+      const initialPhase=initial&&isRing&&!pulse?rand(0,4200):0;
 
       const animation=el.animate([
         {transform:"translate3d(0,0,0) scale(.45)",opacity:0},
-        {transform:`translate3d(${dx*.08}px,${dy*.08}px,0) scale(${spark?1.04:1})`,opacity:0,offset:0},
+        {transform:`translate3d(${dx*.08}px,${dy*.08}px,0) scale(${spark?1.04:1})`,opacity:0},
         {transform:`translate3d(${dx*.10}px,${dy*.10}px,0) scale(${spark?1.12:1})`,opacity:alpha,offset:spark?.12:.12},
         {transform:`translate3d(${dx*.38+driftX*.18}px,${dy*.38+driftY*.16}px,0) scale(${spark?.92:.80})`,opacity:spark?alpha*.92:alpha*.74,offset:spark?.38:.52},
         {transform:`translate3d(${dx*.70+driftX*.45}px,${dy*.70+driftY*.60}px,0) scale(${Math.max(scaleEnd,spark?.54:.38)})`,opacity:spark?alpha*.58:alpha*.34,offset:spark?.68:.82},
         {transform:`translate3d(${dx+driftX}px,${dy+driftY}px,0) scale(${scaleEnd})`,opacity:0,offset:.975},
         {transform:`translate3d(${dx+driftX*1.05}px,${dy+driftY+rand(4,10)}px,0) scale(.08)`,opacity:0}
-      ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":"linear",fill:"both",iterations:loop?Infinity:1});
+      ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":pulse?"cubic-bezier(.22,.62,.32,1)":"linear",fill:"both",iterations:loop?Infinity:1});
 
       layer.appendChild(el);
       const ember:Ember={el,animation,ring:isRing,bornAt:performance.now(),duration,spark,initialPhase};
@@ -63,7 +71,7 @@ export default function HeroParticleEngine(){
       };
     };
 
-    ringPoint=(spark=false,forcedSide?:"left"|"right",loop=false,initial=false)=>{
+    ringPoint=(spark=false,forcedSide?:"left"|"right",loop=false,initial=false,pulse=false)=>{
       if(!ring)return;
       const rr=ring.getBoundingClientRect();
       let a=rand(0,Math.PI*2);
@@ -72,7 +80,7 @@ export default function HeroParticleEngine(){
         if((forcedSide==="left")!==leftSide)a+=Math.PI;
       }
       const radius=Math.min(rr.width,rr.height)*rand(.50,.525);
-      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.18,.18),true,initial,spark,loop);
+      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.18,.18),true,initial,spark,loop,pulse);
     };
 
     const sparkBurst=()=>{
@@ -87,16 +95,24 @@ export default function HeroParticleEngine(){
 
     const replayInitialRingState=()=>{
       if(!ring)return;
-      // Recreate the same dense opening-state behavior as a NEW layer.
-      // Existing particles are never rewound, removed, or overwritten.
-      for(let i=0;i<TARGET_RING_PARTICLES;i++){
-        ringPoint(false,undefined,false,true);
+      // Recreate the opening release as a restrained wave, not a full 96-particle dump.
+      // Older particles continue naturally underneath it.
+      const count=Math.floor(rand(24,32));
+      for(let i=0;i<count;i++){
+        const side=Math.random()<.18?(Math.random()<.5?"left":"right"):undefined;
+        window.setTimeout(()=>{if(!stopped)ringPoint(false,side,false,false,true);},i*rand(28,54));
       }
     };
 
     const releasePulse=()=>{
       if(!ring)return;
-      ring.animate([{filter:"brightness(1)"},{filter:"brightness(1.65)"},{filter:"brightness(1)"}],{duration:700,easing:"cubic-bezier(.22,.72,.22,1)"});
+      // Slow, warm breathing. Individual scale avoids overwriting the ring's layout transform.
+      ring.animate([
+        {scale:"1 1",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"},
+        {scale:"1.012 .955",filter:"brightness(1.22) drop-shadow(0 0 10px rgba(255,70,4,.34))",offset:.38},
+        {scale:"1.026 1.018",filter:"brightness(1.34) drop-shadow(0 0 18px rgba(255,70,4,.46))",offset:.62},
+        {scale:"1 1",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"}
+      ],{duration:1450,easing:"cubic-bezier(.25,.58,.25,1)"});
       replayInitialRingState();
     };
 
@@ -119,7 +135,6 @@ export default function HeroParticleEngine(){
     };
 
     seedAmbient();
-    // Permanent original ring loop keeps the baseline alive between pulses.
     for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,true,true);
     sparkBurst();
 
@@ -135,7 +150,7 @@ export default function HeroParticleEngine(){
       if(ring){
         if(pulseClock<=0){
           releasePulse();
-          pulseClock=rand(1900,2250);
+          pulseClock=rand(2850,3350);
         }
 
         if(sparkClock<=0){
