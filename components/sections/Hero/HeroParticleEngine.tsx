@@ -15,16 +15,17 @@ export default function HeroParticleEngine(){
 
     const embers:Ember[]=[];
     const TARGET_RING_PARTICLES=96;
+    const MAX_PARTICLES=520;
     let stopped=false;
     let raf=0;
     let ambientSpawnClock=rand(90,150);
     let sparkClock=rand(1100,1500);
     let pulseClock=rand(1750,2150);
     let sparkSide:"left"|"right"="right";
-    let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean)=>void=()=>{};
+    let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean,initial?:boolean)=>void=()=>{};
 
     const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false,loop=false)=>{
-      if(embers.length>=280)return;
+      if(embers.length>=MAX_PARTICLES)return;
       const size=spark?rand(2.4,5.6):sizeProfile(isRing);
       const el=document.createElement("span");
       el.className=spark?"hero-live-ember hero-live-spark":"hero-live-ember";
@@ -62,7 +63,7 @@ export default function HeroParticleEngine(){
       };
     };
 
-    ringPoint=(spark=false,forcedSide?:"left"|"right",loop=false)=>{
+    ringPoint=(spark=false,forcedSide?:"left"|"right",loop=false,initial=false)=>{
       if(!ring)return;
       const rr=ring.getBoundingClientRect();
       let a=rand(0,Math.PI*2);
@@ -71,7 +72,7 @@ export default function HeroParticleEngine(){
         if((forcedSide==="left")!==leftSide)a+=Math.PI;
       }
       const radius=Math.min(rr.width,rr.height)*rand(.50,.525);
-      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.18,.18),true,false,spark,loop);
+      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.18,.18),true,initial,spark,loop);
     };
 
     const sparkBurst=()=>{
@@ -84,18 +85,19 @@ export default function HeroParticleEngine(){
       }
     };
 
+    const replayInitialRingState=()=>{
+      if(!ring)return;
+      // Recreate the same dense opening-state behavior as a NEW layer.
+      // Existing particles are never rewound, removed, or overwritten.
+      for(let i=0;i<TARGET_RING_PARTICLES;i++){
+        ringPoint(false,undefined,false,true);
+      }
+    };
+
     const releasePulse=()=>{
       if(!ring)return;
-      const count=Math.floor(rand(11,17));
       ring.animate([{filter:"brightness(1)"},{filter:"brightness(1.65)"},{filter:"brightness(1)"}],{duration:700,easing:"cubic-bezier(.22,.72,.22,1)"});
-
-      // Never rewind existing ring particles. They must keep their current
-      // trajectories and remain visible while the pulse releases a fresh layer.
-      // The repeated "first moment" is additive instead of destructive.
-      for(let i=0;i<count;i++){
-        const side=Math.random()<.24?(Math.random()<.5?"left":"right"):undefined;
-        window.setTimeout(()=>{if(!stopped)ringPoint(false,side);},i*rand(18,44));
-      }
+      replayInitialRingState();
     };
 
     const ambientPoint=()=>{
@@ -117,9 +119,8 @@ export default function HeroParticleEngine(){
     };
 
     seedAmbient();
-    // The original first-frame ring remains the permanent visual loop.
-    // Pulses add fresh particles without rewinding or removing the old ones.
-    for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,true);
+    // Permanent original ring loop keeps the baseline alive between pulses.
+    for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,true,true);
     sparkBurst();
 
     let last=performance.now();
