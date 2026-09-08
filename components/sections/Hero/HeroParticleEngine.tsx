@@ -20,9 +20,10 @@ export default function HeroParticleEngine(){
     let raf=0;
     let ambientSpawnClock=rand(90,150);
     let sparkClock=rand(1200,1600);
-    let pulseClock=rand(5200,6500);
+    let pulseClock=rand(8500,10500);
     let sparkSide:"left"|"right"="right";
     let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean,initial?:boolean,pulse?:boolean)=>void=()=>{};
+    let breathing:Animation|null=null;
 
     if(ring){
       ring.style.width="min(84vw,34rem)";
@@ -93,28 +94,18 @@ export default function HeroParticleEngine(){
       }
     };
 
-    const replayInitialRingState=()=>{
-      if(!ring)return;
-      const count=Math.floor(rand(24,32));
-      for(let i=0;i<count;i++){
-        const side=Math.random()<.18?(Math.random()<.5?"left":"right"):undefined;
-        window.setTimeout(()=>{if(!stopped)ringPoint(false,side,false,false,true);},i*rand(28,54));
-      }
-    };
-
     const releasePulse=()=>{
       if(!ring)return;
-      // Keep the ring's centering transform explicit during the whole breath.
-      // This prevents the browser from composing the pulse with an existing
-      // transform in a way that can visually stretch or shift one side.
-      ring.animate([
-        {transform:"translate(-50%,-50%) scale(1)",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"},
-        {transform:"translate(-50%,-50%) scale(.992)",filter:"brightness(1.08) drop-shadow(0 0 7px rgba(255,70,4,.20))",offset:.30},
-        {transform:"translate(-50%,-50%) scale(.984)",filter:"brightness(1.16) drop-shadow(0 0 11px rgba(255,70,4,.28))",offset:.46},
-        {transform:"translate(-50%,-50%) scale(1.012)",filter:"brightness(1.25) drop-shadow(0 0 15px rgba(255,70,4,.34))",offset:.68},
-        {transform:"translate(-50%,-50%) scale(1)",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"}
-      ],{duration:2350,easing:"cubic-bezier(.37,.08,.24,1)"});
-      replayInitialRingState();
+      // Slow, soft radial breathing only. No particle replay and no heartbeat-like snap.
+      breathing?.cancel();
+      breathing=ring.animate([
+        {transform:"translate(-50%,-50%) scale(1)",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:0},
+        {transform:"translate(-50%,-50%) scale(.997)",filter:"brightness(1.035) drop-shadow(0 0 5px rgba(255,70,4,.12))",offset:.20},
+        {transform:"translate(-50%,-50%) scale(.991)",filter:"brightness(1.07) drop-shadow(0 0 8px rgba(255,70,4,.17))",offset:.42},
+        {transform:"translate(-50%,-50%) scale(1.006)",filter:"brightness(1.10) drop-shadow(0 0 10px rgba(255,70,4,.20))",offset:.68},
+        {transform:"translate(-50%,-50%) scale(1.003)",filter:"brightness(1.055) drop-shadow(0 0 6px rgba(255,70,4,.13))",offset:.84},
+        {transform:"translate(-50%,-50%) scale(1)",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:1}
+      ],{duration:5200,easing:"ease-in-out",fill:"both"});
     };
 
     const ambientPoint=()=>{
@@ -151,7 +142,7 @@ export default function HeroParticleEngine(){
       if(ring){
         if(pulseClock<=0){
           releasePulse();
-          pulseClock=rand(5200,6500);
+          pulseClock=rand(8500,10500);
         }
 
         if(sparkClock<=0){
@@ -179,6 +170,7 @@ export default function HeroParticleEngine(){
     return()=>{
       stopped=true;
       cancelAnimationFrame(raf);
+      breathing?.cancel();
       for(const ember of embers)ember.animation.cancel();
       layer.remove();
     };
