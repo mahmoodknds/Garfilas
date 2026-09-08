@@ -20,16 +20,16 @@ export default function HeroParticleEngine(){
     let raf=0;
     let ambientSpawnClock=rand(90,150);
     let sparkClock=rand(1200,1600);
-    let breathClock=rand(1200,2200);
+    let pulseClock=rand(5200,6500);
     let sparkSide:"left"|"right"="right";
     let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean,initial?:boolean,pulse?:boolean)=>void=()=>{};
 
     if(ring){
-      // Slightly larger, deeper ring without touching its layout transform.
       ring.style.width="min(84vw,34rem)";
       ring.style.borderColor="rgba(255,91,8,.96)";
       ring.style.boxShadow="0 0 8px rgba(255,72,4,.95),0 0 24px rgba(255,72,4,.46),0 0 52px rgba(255,62,0,.18),inset 0 0 10px rgba(255,82,5,.28)";
       ring.style.transformStyle="preserve-3d";
+      ring.style.transformOrigin="50% 50%";
     }
 
     const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false,loop=false,pulse=false)=>{
@@ -44,7 +44,7 @@ export default function HeroParticleEngine(){
       const dy=Math.sin(angle)*distance+(spark?rand(8,24):isRing?rand(10,36):rand(14,46));
       const driftX=rand(-3,3);
       const driftY=rand(-4,16);
-      const duration=spark?rand(9000,13000):pulse?rand(6500,8500):initial?rand(12000,18000):isRing?rand(10000,16000):rand(11000,17000);
+      const duration=spark?rand(9000,13000):pulse?rand(7000,9000):initial?rand(12000,18000):isRing?rand(10000,16000):rand(11000,17000);
       const alpha=spark?rand(.84,1):rand(.46,.92);
       const scaleEnd=spark?rand(.22,.38):rand(.30,.55);
       const initialPhase=initial&&isRing&&!pulse?rand(0,4200):0;
@@ -57,7 +57,7 @@ export default function HeroParticleEngine(){
         {transform:`translate3d(${dx*.70+driftX*.45}px,${dy*.70+driftY*.60}px,0) scale(${Math.max(scaleEnd,spark?.54:.38)})`,opacity:spark?alpha*.58:alpha*.34,offset:spark?.68:.82},
         {transform:`translate3d(${dx+driftX}px,${dy+driftY}px,0) scale(${scaleEnd})`,opacity:0,offset:.975},
         {transform:`translate3d(${dx+driftX*1.05}px,${dy+driftY+rand(4,10)}px,0) scale(.08)`,opacity:0}
-      ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":pulse?"cubic-bezier(.22,.62,.32,1)":"linear",fill:"both",iterations:loop?Infinity:1});
+      ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":pulse?"cubic-bezier(.16,.72,.24,1)":"linear",fill:"both",iterations:loop?Infinity:1});
 
       layer.appendChild(el);
       const ember:Ember={el,animation,ring:isRing,bornAt:performance.now(),duration,spark,initialPhase};
@@ -93,17 +93,27 @@ export default function HeroParticleEngine(){
       }
     };
 
-    const releaseBreath=()=>{
+    const replayInitialRingState=()=>{
       if(!ring)return;
-      // One long, quiet breathing cycle. No reset and no particle dump.
-      // The ring gently gathers, warms, opens, then returns to neutral.
+      const count=Math.floor(rand(24,32));
+      for(let i=0;i<count;i++){
+        const side=Math.random()<.18?(Math.random()<.5?"left":"right"):undefined;
+        window.setTimeout(()=>{if(!stopped)ringPoint(false,side,false,false,true);},i*rand(28,54));
+      }
+    };
+
+    const releasePulse=()=>{
+      if(!ring)return;
+      // A true breathing cycle: symmetric radial squeeze/expansion only.
+      // No independent X/Y scaling, so no side of the ring can stretch.
       ring.animate([
-        {scale:"1 1",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"},
-        {scale:".992 .978",filter:"brightness(.98) drop-shadow(0 0 5px rgba(255,70,4,.16))",offset:.28},
-        {scale:"1.008 1.006",filter:"brightness(1.09) drop-shadow(0 0 10px rgba(255,70,4,.25))",offset:.58},
-        {scale:"1.016 1.012",filter:"brightness(1.14) drop-shadow(0 0 13px rgba(255,70,4,.30))",offset:.72},
-        {scale:"1 1",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"}
-      ],{duration:6200,easing:"cubic-bezier(.37,.02,.28,1)"});
+        {scale:"1",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"},
+        {scale:".992",filter:"brightness(1.08) drop-shadow(0 0 7px rgba(255,70,4,.20))",offset:.30},
+        {scale:".984",filter:"brightness(1.16) drop-shadow(0 0 11px rgba(255,70,4,.28))",offset:.46},
+        {scale:"1.012",filter:"brightness(1.25) drop-shadow(0 0 15px rgba(255,70,4,.34))",offset:.68},
+        {scale:"1",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"}
+      ],{duration:2350,easing:"cubic-bezier(.37,.08,.24,1)"});
+      replayInitialRingState();
     };
 
     const ambientPoint=()=>{
@@ -135,13 +145,12 @@ export default function HeroParticleEngine(){
       last=now;
       ambientSpawnClock-=dt;
       sparkClock-=dt;
-      breathClock-=dt;
+      pulseClock-=dt;
 
       if(ring){
-        if(breathClock<=0){
-          releaseBreath();
-          // A full inhale + exhale cycle, with slight natural timing variation.
-          breathClock=rand(6000,7000);
+        if(pulseClock<=0){
+          releasePulse();
+          pulseClock=rand(5200,6500);
         }
 
         if(sparkClock<=0){
