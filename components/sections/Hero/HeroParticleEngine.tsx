@@ -56,9 +56,7 @@ export default function HeroParticleEngine(){
       syncRingToMascot();
       requestAnimationFrame(syncRingToMascot);
       window.addEventListener("resize",syncRingToMascot);
-      if(mascotArt instanceof HTMLImageElement){
-        mascotArt.addEventListener("load",syncRingToMascot);
-      }
+      if(mascotArt instanceof HTMLImageElement)mascotArt.addEventListener("load",syncRingToMascot);
     }
 
     const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false,loop=false,pulse=false)=>{
@@ -148,8 +146,11 @@ export default function HeroParticleEngine(){
           {duration:BREATH_DURATION,easing:"ease-in-out",fill:"both"}
         );
 
-        const startTime=ringBreath.startTime;
-        if(startTime!==null)mascotBreath.startTime=startTime;
+        const startTime=document.timeline.currentTime;
+        if(startTime!==null){
+          ringBreath.startTime=startTime;
+          mascotBreath.startTime=startTime;
+        }
       }
     };
 
