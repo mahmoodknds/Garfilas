@@ -18,13 +18,12 @@ export default function HeroParticleEngine(){
     let stopped=false;
     let raf=0;
     let ambientSpawnClock=rand(90,150);
-    let ringSpawnClock=rand(85,125);
     let sparkClock=rand(1100,1500);
     let pulseClock=rand(1750,2150);
     let sparkSide:"left"|"right"="right";
-    let ringPoint:(spark?:boolean,forcedSide?:"left"|"right")=>void=()=>{};
+    let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean)=>void=()=>{};
 
-    const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false)=>{
+    const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false,loop=false)=>{
       if(embers.length>=280)return;
       const size=spark?rand(2.4,5.6):sizeProfile(isRing);
       const el=document.createElement("span");
@@ -48,7 +47,7 @@ export default function HeroParticleEngine(){
         {transform:`translate3d(${dx*.70+driftX*.45}px,${dy*.70+driftY*.60}px,0) scale(${Math.max(scaleEnd,spark?.54:.38)})`,opacity:spark?alpha*.58:alpha*.34,offset:spark?.68:.82},
         {transform:`translate3d(${dx+driftX}px,${dy+driftY}px,0) scale(${scaleEnd})`,opacity:0,offset:.975},
         {transform:`translate3d(${dx+driftX*1.05}px,${dy+driftY+rand(4,10)}px,0) scale(.08)`,opacity:0}
-      ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":"linear",fill:"both"});
+      ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":"linear",fill:"both",iterations:loop?Infinity:1});
 
       layer.appendChild(el);
       const ember:Ember={el,animation,ring:isRing,bornAt:performance.now(),duration,spark};
@@ -62,7 +61,7 @@ export default function HeroParticleEngine(){
       };
     };
 
-    ringPoint=(spark=false,forcedSide?:"left"|"right")=>{
+    ringPoint=(spark=false,forcedSide?:"left"|"right",loop=false)=>{
       if(!ring)return;
       const rr=ring.getBoundingClientRect();
       let a=rand(0,Math.PI*2);
@@ -71,7 +70,7 @@ export default function HeroParticleEngine(){
         if((forcedSide==="left")!==leftSide)a+=Math.PI;
       }
       const radius=Math.min(rr.width,rr.height)*rand(.50,.525);
-      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.18,.18),true,false,spark);
+      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.18,.18),true,false,spark,loop);
     };
 
     const sparkBurst=()=>{
@@ -113,7 +112,9 @@ export default function HeroParticleEngine(){
     };
 
     seedAmbient();
-    for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint();
+    // The original first-frame ring is now the permanent visual loop.
+    // Each seeded particle repeats its exact trajectory, so density cannot decay over time.
+    for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,true);
     sparkBurst();
 
     let last=performance.now();
@@ -122,18 +123,10 @@ export default function HeroParticleEngine(){
       const dt=Math.min(64,Math.max(0,now-last));
       last=now;
       ambientSpawnClock-=dt;
-      ringSpawnClock-=dt;
       sparkClock-=dt;
       pulseClock-=dt;
 
       if(ring){
-        // Replenish continuously while particles are still travelling.
-        // This prevents the excellent initial ring density from thinning out later.
-        while(ringSpawnClock<=0){
-          ringPoint(false);
-          ringSpawnClock+=rand(85,125);
-        }
-
         if(pulseClock<=0){
           releasePulse();
           pulseClock=rand(1900,2250);
