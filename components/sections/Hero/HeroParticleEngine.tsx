@@ -1,7 +1,7 @@
 "use client";
 import { useLayoutEffect } from "react";
 
-type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean;bornAt:number;duration:number;spark:boolean};
+type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean;bornAt:number;duration:number;spark:boolean;initialPhase:number};
 const rand=(a:number,b:number)=>Math.random()*(b-a)+a;
 function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.4,2.1);if(r<.17)return rand(2.3,3.4);if(r<.42)return rand(3.4,4.8);if(r<.67)return rand(4.8,6.2);if(r<.92)return rand(6.2,7.8);if(r<.985)return rand(8,10.5);return ring?rand(10.5,13):rand(9,11)}
 
@@ -38,6 +38,7 @@ export default function HeroParticleEngine(){
       const duration=spark?rand(9000,13000):initial?rand(12000,18000):isRing?rand(10000,16000):rand(11000,17000);
       const alpha=spark?rand(.84,1):rand(.46,.92);
       const scaleEnd=spark?rand(.22,.38):rand(.30,.55);
+      const initialPhase=initial&&isRing?rand(0,4200):0;
 
       const animation=el.animate([
         {transform:"translate3d(0,0,0) scale(.45)",opacity:0},
@@ -50,9 +51,9 @@ export default function HeroParticleEngine(){
       ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":"linear",fill:"both",iterations:loop?Infinity:1});
 
       layer.appendChild(el);
-      const ember:Ember={el,animation,ring:isRing,bornAt:performance.now(),duration,spark};
+      const ember:Ember={el,animation,ring:isRing,bornAt:performance.now(),duration,spark,initialPhase};
       embers.push(ember);
-      if(initial&&isRing)animation.currentTime=rand(0,4200);
+      if(initialPhase>0)animation.currentTime=initialPhase;
       animation.onfinish=()=>{
         if(stopped)return;
         el.remove();
@@ -87,6 +88,16 @@ export default function HeroParticleEngine(){
       if(!ring)return;
       const count=Math.floor(rand(11,17));
       ring.animate([{filter:"brightness(1)"},{filter:"brightness(1.65)"},{filter:"brightness(1)"}],{duration:700,easing:"cubic-bezier(.22,.72,.22,1)"});
+
+      // Replay the exact first-frame phase of the permanent ring particles.
+      // This makes every breathing pulse return to the same dense opening state
+      // without changing the ring's transform or creating a second emitter.
+      for(const ember of embers){
+        if(ember.ring&&!ember.spark&&ember.animation.playState!=="idle"){
+          ember.animation.currentTime=ember.initialPhase;
+        }
+      }
+
       for(let i=0;i<count;i++){
         const side=Math.random()<.24?(Math.random()<.5?"left":"right"):undefined;
         window.setTimeout(()=>{if(!stopped)ringPoint(false,side);},i*rand(18,44));
