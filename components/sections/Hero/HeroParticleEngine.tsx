@@ -36,47 +36,49 @@ export default function HeroParticleEngine() {
     const rand = (min: number, max: number) => min + Math.random() * (max - min);
     const goldenAngle = Math.PI * (3 - Math.sqrt(5));
 
-    const getHeroPoint = (rect: DOMRect) => {
-      const h = hero.getBoundingClientRect();
-      return { x: rect.left - h.left, y: rect.top - h.top };
-    };
-
     const createParticle = (ringMode = false) => {
       const p = document.createElement("span");
       p.className = ringMode ? "hero-particle hero-particle-ring" : "hero-particle";
       const size = ringMode ? rand(1.2, 2.8) : rand(0.9, 2.3);
-      p.style.position = "absolute";
-      p.style.width = `${size}px`;
-      p.style.height = `${size}px`;
-      p.style.borderRadius = "50%";
-      p.style.background = "rgba(255,160,58,.98)";
+      Object.assign(p.style, {
+        position: "absolute",
+        width: `${size}px`,
+        height: `${size}px`,
+        borderRadius: "50%",
+        background: "rgba(255,160,58,.98)",
+        opacity: "0",
+        pointerEvents: "none",
+      });
       p.style.boxShadow = ringMode
         ? "0 0 6px rgba(255,125,15,1),0 0 13px rgba(255,83,0,.62),0 0 22px rgba(255,63,0,.24)"
         : "0 0 5px rgba(255,126,20,.82),0 0 10px rgba(255,77,0,.34)";
-      p.style.opacity = "0";
-      p.style.pointerEvents = "none";
       particleLayer.appendChild(p);
       return p;
     };
 
+    const getContainingRect = (element: HTMLElement) => {
+      const parent = element.offsetParent instanceof HTMLElement ? element.offsetParent : hero;
+      return { parent, rect: parent.getBoundingClientRect() };
+    };
+
     const positionRingParticle = (p: HTMLElement, index = ringParticles.length, spread = 1) => {
       const r = ring.getBoundingClientRect();
-      const h = hero.getBoundingClientRect();
-      if (!r.width || !r.height || !h.width || !h.height) return;
+      const { rect: parentRect } = getContainingRect(particleLayer);
+      if (!r.width || !r.height || !parentRect.width || !parentRect.height) return;
       const angle = index * goldenAngle + rand(-0.04, 0.04);
       const radius = rand(0.965, 1.01) * Math.min(r.width, r.height) * 0.5 * spread;
-      p.style.left = `${r.left - h.left + r.width * 0.5 + Math.cos(angle) * radius}px`;
-      p.style.top = `${r.top - h.top + r.height * 0.5 + Math.sin(angle) * radius}px`;
+      p.style.left = `${r.left - parentRect.left + r.width * 0.5 + Math.cos(angle) * radius}px`;
+      p.style.top = `${r.top - parentRect.top + r.height * 0.5 + Math.sin(angle) * radius}px`;
     };
 
     const positionAmbientParticle = (p: HTMLElement) => {
       const r = ring.getBoundingClientRect();
-      const h = hero.getBoundingClientRect();
-      if (!r.width || !r.height || !h.width || !h.height) return;
+      const { rect: parentRect } = getContainingRect(particleLayer);
+      if (!r.width || !r.height || !parentRect.width || !parentRect.height) return;
       const angle = rand(0, Math.PI * 2);
       const radius = rand(1.04, 1.30) * Math.min(r.width, r.height) * 0.5;
-      p.style.left = `${r.left - h.left + r.width * 0.5 + Math.cos(angle) * radius}px`;
-      p.style.top = `${r.top - h.top + r.height * 0.5 + Math.sin(angle) * radius}px`;
+      p.style.left = `${r.left - parentRect.left + r.width * 0.5 + Math.cos(angle) * radius}px`;
+      p.style.top = `${r.top - parentRect.top + r.height * 0.5 + Math.sin(angle) * radius}px`;
     };
 
     const spawnRing = () => {
@@ -154,19 +156,21 @@ export default function HeroParticleEngine() {
       const centerY = target.top + target.height / 2 - parentRect.top;
       const diameter = Math.max(target.width, target.height) * 1.10;
 
-      ring.style.position = "absolute";
-      ring.style.left = `${centerX}px`;
-      ring.style.top = `${centerY}px`;
-      ring.style.width = `${diameter}px`;
-      ring.style.height = `${diameter}px`;
-      ring.style.border = "2px solid rgba(255,106,0,.9)";
-      ring.style.borderRadius = "50%";
-      ring.style.background = "transparent";
-      ring.style.boxShadow = "0 0 7px rgba(255,91,0,.72),0 0 18px rgba(255,91,0,.22),inset 0 0 8px rgba(255,91,0,.12)";
-      ring.style.transform = "translate(-50%,-50%)";
-      ring.style.transformOrigin = "50% 50%";
-      ring.style.transformStyle = "flat";
-      ring.style.zIndex = "20";
+      Object.assign(ring.style, {
+        position: "absolute",
+        left: `${centerX}px`,
+        top: `${centerY}px`,
+        width: `${diameter}px`,
+        height: `${diameter}px`,
+        border: "2px solid rgba(255,106,0,.9)",
+        borderRadius: "50%",
+        background: "transparent",
+        boxShadow: "0 0 7px rgba(255,91,0,.72),0 0 18px rgba(255,91,0,.22),inset 0 0 8px rgba(255,91,0,.12)",
+        transform: "translate(-50%,-50%)",
+        transformOrigin: "50% 50%",
+        transformStyle: "flat",
+        zIndex: "20",
+      });
       mascot.style.position = mascot.style.position || "relative";
       mascot.style.zIndex = "10";
       particleLayer.style.zIndex = "4";
