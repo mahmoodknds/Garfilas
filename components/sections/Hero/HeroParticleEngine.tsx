@@ -20,8 +20,7 @@ export default function HeroParticleEngine(){
     stage.appendChild(ring);
     stage.appendChild(mascot);
 
-    // Keep live particles inside the hero stacking context so they can never
-    // paint over the mascot. The mascot/ring stage stays above this layer.
+    // Keep live particles inside the hero stacking context so they always stay behind the mascot.
     const layer=document.createElement("div");
     layer.className="hero-live-embers";
     Object.assign(layer.style,{position:"absolute",inset:"0",overflow:"visible",pointerEvents:"none",zIndex:"4",isolation:"isolate"});
@@ -126,7 +125,6 @@ export default function HeroParticleEngine(){
         if((forcedSide==="left")!==leftSide)a+=Math.PI;
       }
       const radius=Math.min(rr.width,rr.height)*rand(.50,.525);
-      ringPoint;
       make(rr.left+rr.width/2+Math.cos(a)*radius-hr.left,rr.top+rr.height/2+Math.sin(a)*radius-hr.top,a+rand(-.18,.18),true,initial,spark,loop,pulse);
     };
 
