@@ -88,10 +88,10 @@ export default function HeroParticleEngine(){
 
     const releasePulse=()=>{
       if(!ring)return;
-      // Each breath releases a compact wave. Every released ember schedules its own
-      // immediate replacement, so the ring never has to wait for fade-out.
       const count=Math.floor(rand(8,13));
-      ring.animate([{transform:"translateZ(0) scale(1)",filter:"brightness(1)"},{transform:"translateZ(0) scale(1.032)",filter:"brightness(1.32)"},{transform:"translateZ(0) scale(1)",filter:"brightness(1)"}],{duration:620,easing:"cubic-bezier(.22,.72,.22,1)"});
+      // Animate only filter. Transform belongs to the existing ring layout and must
+      // never be touched by the pulse animation, otherwise the ring visibly jumps.
+      ring.animate([{filter:"brightness(1)"},{filter:"brightness(1.32)"},{filter:"brightness(1)"}],{duration:620,easing:"cubic-bezier(.22,.72,.22,1)"});
       for(let i=0;i<count;i++){
         const side=Math.random()<.22?(Math.random()<.5?"left":"right"):undefined;
         window.setTimeout(()=>{if(!stopped)ringPoint(false,side);},i*rand(24,58));
@@ -130,7 +130,6 @@ export default function HeroParticleEngine(){
       pulseClock-=dt;
 
       if(ring){
-        // Keep the ring population at a fixed visual density at all times.
         while(activeRingParticles<TARGET_RING_PARTICLES&&embers.length<280)ringPoint(false);
 
         if(pulseClock<=0){
