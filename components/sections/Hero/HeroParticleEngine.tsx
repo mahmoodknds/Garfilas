@@ -89,15 +89,9 @@ export default function HeroParticleEngine(){
       const count=Math.floor(rand(11,17));
       ring.animate([{filter:"brightness(1)"},{filter:"brightness(1.65)"},{filter:"brightness(1)"}],{duration:700,easing:"cubic-bezier(.22,.72,.22,1)"});
 
-      // Replay the exact first-frame phase of the permanent ring particles.
-      // This makes every breathing pulse return to the same dense opening state
-      // without changing the ring's transform or creating a second emitter.
-      for(const ember of embers){
-        if(ember.ring&&!ember.spark&&ember.animation.playState!=="idle"){
-          ember.animation.currentTime=ember.initialPhase;
-        }
-      }
-
+      // Never rewind existing ring particles. They must keep their current
+      // trajectories and remain visible while the pulse releases a fresh layer.
+      // The repeated "first moment" is additive instead of destructive.
       for(let i=0;i<count;i++){
         const side=Math.random()<.24?(Math.random()<.5?"left":"right"):undefined;
         window.setTimeout(()=>{if(!stopped)ringPoint(false,side);},i*rand(18,44));
@@ -123,8 +117,8 @@ export default function HeroParticleEngine(){
     };
 
     seedAmbient();
-    // The original first-frame ring is now the permanent visual loop.
-    // Each seeded particle repeats its exact trajectory, so density cannot decay over time.
+    // The original first-frame ring remains the permanent visual loop.
+    // Pulses add fresh particles without rewinding or removing the old ones.
     for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,true);
     sparkBurst();
 
