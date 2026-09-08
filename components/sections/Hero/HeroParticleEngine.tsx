@@ -14,15 +14,11 @@ export default function HeroParticleEngine(){
     document.body.appendChild(layer);
 
     const embers:Ember[]=[];
-    let liveRingCount=0;
     let stopped=false;
     let raf=0;
     let ambientSpawnClock=rand(90,150);
     let sparkClock=rand(1100,1500);
     let pulseClock=rand(1750,2150);
-    let pulseRemaining=0;
-    let pulseBudget=0;
-    let pulseSpawnClock=0;
     let sparkSide:"left"|"right"="right";
     let ringPoint:(spark?:boolean,forcedSide?:"left"|"right")=>void=()=>{};
 
@@ -55,17 +51,18 @@ export default function HeroParticleEngine(){
       layer.appendChild(el);
       const ember:Ember={el,animation,ring:isRing,bornAt:performance.now(),duration,spark};
       embers.push(ember);
-      if(isRing)liveRingCount++;
       if(initial&&isRing)animation.currentTime=rand(0,4200);
+      // The replacement happens when a ring particle starts leaving, not when it dies.
+      // This keeps the source ring visually full while the old ember is still travelling.
+      if(isRing&&!initial){
+        const releaseAt=Math.max(520,Math.round(duration*rand(.09,.16)));
+        window.setTimeout(()=>{if(!stopped)ringPoint(false);},releaseAt);
+      }
       animation.onfinish=()=>{
         if(stopped)return;
         el.remove();
         const i=embers.indexOf(ember);
         if(i>=0)embers.splice(i,1);
-        if(isRing){
-          liveRingCount=Math.max(0,liveRingCount-1);
-          ringPoint(false);
-        }
       };
     };
 
@@ -91,24 +88,14 @@ export default function HeroParticleEngine(){
       }
     };
 
-    const startPulse=()=>{
-      pulseRemaining=rand(340,500);
-      pulseBudget=Math.floor(rand(20,30));
-      pulseSpawnClock=rand(0,45);
-    };
-
-    const pulseStep=(dt:number)=>{
-      if(!ring||pulseRemaining<=0||pulseBudget<=0)return;
-      pulseRemaining-=dt;
-      pulseSpawnClock-=dt;
-      if(pulseSpawnClock<=0){
-        const batch=Math.min(pulseBudget,Math.floor(rand(2,4)));
-        for(let i=0;i<batch;i++){
-          const side=Math.random()<.20?(Math.random()<.5?"left":"right"):undefined;
-          ringPoint(false,side);
-        }
-        pulseBudget-=batch;
-        pulseSpawnClock=rand(55,95);
+    const releasePulse=()=>{
+      if(!ring)return;
+      // Each breath releases a compact wave. Every released ember schedules its own
+      // immediate replacement, so the ring never has to wait for fade-out.
+      const count=Math.floor(rand(7,12));
+      for(let i=0;i<count;i++){
+        const side=Math.random()<.22?(Math.random()<.5?"left":"right"):undefined;
+        window.setTimeout(()=>{if(!stopped)ringPoint(false,side);},i*rand(24,58));
       }
     };
 
@@ -132,7 +119,6 @@ export default function HeroParticleEngine(){
 
     seedAmbient();
     for(let i=0;i<72;i++)ringPoint();
-    startPulse();
     sparkBurst();
 
     let last=performance.now();
@@ -146,10 +132,9 @@ export default function HeroParticleEngine(){
 
       if(ring){
         if(pulseClock<=0){
-          startPulse();
+          releasePulse();
           pulseClock=rand(1900,2250);
         }
-        pulseStep(dt);
 
         if(sparkClock<=0){
           sparkBurst();
