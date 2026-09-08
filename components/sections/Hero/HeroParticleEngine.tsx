@@ -7,9 +7,19 @@ function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.
 
 export default function HeroParticleEngine(){
   useLayoutEffect(()=>{
+    const hero=document.querySelector<HTMLElement>(".hero");
     const ring=document.querySelector<HTMLElement>(".hero-orbit-one");
     const mascot=document.querySelector<HTMLElement>(".hero-mascot");
     const mascotArt=mascot?.querySelector<HTMLElement>(".hero-mascot-frame img")??mascot?.querySelector<HTMLElement>("img")??mascot;
+    if(!hero||!ring||!mascot||!mascotArt)return;
+
+    const stage=document.createElement("div");
+    stage.className="hero-mascot-ring-stage";
+    Object.assign(stage.style,{position:"absolute",inset:"0",width:"100%",height:"100%",pointerEvents:"none",zIndex:"6",transformOrigin:"50% 50%",willChange:"transform,filter"});
+    hero.insertBefore(stage,ring);
+    stage.appendChild(ring);
+    stage.appendChild(mascot);
+
     const layer=document.createElement("div");
     layer.className="hero-live-embers";
     Object.assign(layer.style,{position:"fixed",inset:"0",overflow:"visible",pointerEvents:"none",zIndex:"2",isolation:"isolate"});
@@ -18,7 +28,7 @@ export default function HeroParticleEngine(){
     const embers:Ember[]=[];
     const TARGET_RING_PARTICLES=96;
     const MAX_PARTICLES=520;
-    const BREATH_DURATION=6200;
+    const BREATH_DURATION=7200;
     let stopped=false;
     let raf=0;
     let ambientSpawnClock=rand(90,150);
@@ -26,38 +36,42 @@ export default function HeroParticleEngine(){
     let pulseClock=rand(8500,10500);
     let sparkSide:"left"|"right"="right";
     let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean,initial?:boolean,pulse?:boolean)=>void=()=>{};
-    let ringBreath:Animation|null=null;
-    let mascotBreath:Animation|null=null;
+    let stageBreath:Animation|null=null;
 
     const syncRingToMascot=()=>{
-      if(!ring||!mascotArt)return;
+      if(stopped||!ring||!mascotArt)return;
       const target=mascotArt.getBoundingClientRect();
-      if(target.width<2||target.height<2)return;
+      const stageRect=stage.getBoundingClientRect();
+      if(target.width<2||target.height<2||stageRect.width<2||stageRect.height<2)return;
 
-      const parent=ring.offsetParent instanceof HTMLElement?ring.offsetParent:document.querySelector<HTMLElement>(".hero");
-      const parentRect=parent?.getBoundingClientRect();
-      const diameter=Math.max(target.width,target.height)*1.08;
+      const centerX=target.left+target.width/2-stageRect.left;
+      const centerY=target.top+target.height/2-stageRect.top;
+      const diameter=Math.max(target.width,target.height)*1.025;
 
+      stage.style.transformOrigin=`${centerX}px ${centerY}px`;
+      ring.style.left=`${centerX}px`;
+      ring.style.top=`${centerY}px`;
       ring.style.width=`${diameter}px`;
       ring.style.height=`${diameter}px`;
-      ring.style.borderColor="rgba(255,91,8,.96)";
-      ring.style.borderWidth="3px";
-      ring.style.boxShadow="0 0 8px rgba(255,72,4,.95),0 0 24px rgba(255,72,4,.46),0 0 52px rgba(255,62,0,.18),inset 0 0 10px rgba(255,82,5,.28)";
-      ring.style.transformStyle="preserve-3d";
+      ring.style.border="2px solid rgba(255,106,0,.9)";
+      ring.style.borderRadius="50%";
+      ring.style.background="transparent";
+      ring.style.boxShadow="0 0 7px rgba(255,91,0,.72),0 0 18px rgba(255,91,0,.22),inset 0 0 8px rgba(255,91,0,.12)";
+      ring.style.transform="translate(-50%,-50%)";
+      ring.style.transformStyle="flat";
       ring.style.transformOrigin="50% 50%";
+      ring.style.zIndex="1";
+      ring.style.pointerEvents="none";
 
-      if(parentRect){
-        ring.style.left=`${target.left+target.width/2-parentRect.left}px`;
-        ring.style.top=`${target.top+target.height/2-parentRect.top}px`;
-      }
+      mascot.style.transformOrigin="50% 50%";
+      mascot.style.zIndex="2";
+      mascot.style.pointerEvents="none";
     };
 
-    if(ring){
-      syncRingToMascot();
-      requestAnimationFrame(syncRingToMascot);
-      window.addEventListener("resize",syncRingToMascot);
-      if(mascotArt instanceof HTMLImageElement)mascotArt.addEventListener("load",syncRingToMascot);
-    }
+    syncRingToMascot();
+    requestAnimationFrame(syncRingToMascot);
+    window.addEventListener("resize",syncRingToMascot);
+    if(mascotArt instanceof HTMLImageElement)mascotArt.addEventListener("load",syncRingToMascot);
 
     const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false,loop=false,pulse=false)=>{
       if(embers.length>=MAX_PARTICLES)return;
@@ -121,37 +135,16 @@ export default function HeroParticleEngine(){
     };
 
     const releasePulse=()=>{
-      if(!ring)return;
+      if(!stage)return;
 
-      const breath=[
+      stageBreath?.cancel();
+      stageBreath=stage.animate([
         {scale:1,filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:0},
-        {scale:.994,filter:"brightness(1.025) drop-shadow(0 0 5px rgba(255,70,4,.10))",offset:.28},
-        {scale:.988,filter:"brightness(1.05) drop-shadow(0 0 8px rgba(255,70,4,.15))",offset:.50},
-        {scale:1.008,filter:"brightness(1.08) drop-shadow(0 0 10px rgba(255,70,4,.18))",offset:.72},
+        {scale:.996,filter:"brightness(1.02) drop-shadow(0 0 4px rgba(255,70,4,.08))",offset:.22},
+        {scale:.991,filter:"brightness(1.045) drop-shadow(0 0 7px rgba(255,70,4,.12))",offset:.48},
+        {scale:1.007,filter:"brightness(1.07) drop-shadow(0 0 9px rgba(255,70,4,.15))",offset:.76},
         {scale:1,filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:1}
-      ];
-
-      ringBreath?.cancel();
-      mascotBreath?.cancel();
-
-      ringBreath=ring.animate(
-        breath.map(k=>({transform:`translate(-50%,-50%) scale(${k.scale})`,filter:k.filter,offset:k.offset})),
-        {duration:BREATH_DURATION,easing:"ease-in-out",fill:"both"}
-      );
-
-      if(mascot){
-        mascot.style.transformOrigin="50% 50%";
-        mascotBreath=mascot.animate(
-          breath.map(k=>({scale:k.scale,offset:k.offset})),
-          {duration:BREATH_DURATION,easing:"ease-in-out",fill:"both"}
-        );
-
-        const startTime=document.timeline.currentTime;
-        if(startTime!==null){
-          ringBreath.startTime=startTime;
-          mascotBreath.startTime=startTime;
-        }
-      }
+      ],{duration:BREATH_DURATION,easing:"ease-in-out",fill:"both"});
     };
 
     const ambientPoint=()=>{
@@ -217,11 +210,15 @@ export default function HeroParticleEngine(){
       stopped=true;
       cancelAnimationFrame(raf);
       for(const ember of embers)ember.animation.cancel();
-      ringBreath?.cancel();
-      mascotBreath?.cancel();
+      stageBreath?.cancel();
       if(ring)window.removeEventListener("resize",syncRingToMascot);
       if(mascotArt instanceof HTMLImageElement)mascotArt.removeEventListener("load",syncRingToMascot);
       layer.remove();
+      if(stage.parentElement){
+        stage.parentElement.insertBefore(ring,stage);
+        stage.parentElement.insertBefore(mascot,ring.nextSibling);
+        stage.remove();
+      }
     };
   },[]);
 
