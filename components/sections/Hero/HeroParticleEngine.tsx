@@ -15,10 +15,10 @@ export default function HeroParticleEngine(){
 
     const embers:Ember[]=[];
     const TARGET_RING_PARTICLES=96;
-    let activeRingParticles=0;
     let stopped=false;
     let raf=0;
     let ambientSpawnClock=rand(90,150);
+    let ringSpawnClock=rand(85,125);
     let sparkClock=rand(1100,1500);
     let pulseClock=rand(1750,2150);
     let sparkSide:"left"|"right"="right";
@@ -53,14 +53,12 @@ export default function HeroParticleEngine(){
       layer.appendChild(el);
       const ember:Ember={el,animation,ring:isRing,bornAt:performance.now(),duration,spark};
       embers.push(ember);
-      if(isRing)activeRingParticles++;
       if(initial&&isRing)animation.currentTime=rand(0,4200);
       animation.onfinish=()=>{
         if(stopped)return;
         el.remove();
         const i=embers.indexOf(ember);
         if(i>=0)embers.splice(i,1);
-        if(isRing)activeRingParticles=Math.max(0,activeRingParticles-1);
       };
     };
 
@@ -89,7 +87,6 @@ export default function HeroParticleEngine(){
     const releasePulse=()=>{
       if(!ring)return;
       const count=Math.floor(rand(11,17));
-      // Only brightness is animated. The ring's transform remains untouched.
       ring.animate([{filter:"brightness(1)"},{filter:"brightness(1.65)"},{filter:"brightness(1)"}],{duration:700,easing:"cubic-bezier(.22,.72,.22,1)"});
       for(let i=0;i<count;i++){
         const side=Math.random()<.24?(Math.random()<.5?"left":"right"):undefined;
@@ -125,11 +122,17 @@ export default function HeroParticleEngine(){
       const dt=Math.min(64,Math.max(0,now-last));
       last=now;
       ambientSpawnClock-=dt;
+      ringSpawnClock-=dt;
       sparkClock-=dt;
       pulseClock-=dt;
 
       if(ring){
-        while(activeRingParticles<TARGET_RING_PARTICLES&&embers.length<280)ringPoint(false);
+        // Replenish continuously while particles are still travelling.
+        // This prevents the excellent initial ring density from thinning out later.
+        while(ringSpawnClock<=0){
+          ringPoint(false);
+          ringSpawnClock+=rand(85,125);
+        }
 
         if(pulseClock<=0){
           releasePulse();
