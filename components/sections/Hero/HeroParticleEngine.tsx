@@ -20,10 +20,12 @@ export default function HeroParticleEngine(){
     stage.appendChild(ring);
     stage.appendChild(mascot);
 
+    // Keep live particles inside the hero stacking context so they can never
+    // paint over the mascot. The mascot/ring stage stays above this layer.
     const layer=document.createElement("div");
     layer.className="hero-live-embers";
-    Object.assign(layer.style,{position:"fixed",inset:"0",overflow:"visible",pointerEvents:"none",zIndex:"2",isolation:"isolate"});
-    document.body.appendChild(layer);
+    Object.assign(layer.style,{position:"absolute",inset:"0",overflow:"visible",pointerEvents:"none",zIndex:"4",isolation:"isolate"});
+    hero.appendChild(layer);
 
     const embers:Ember[]=[];
     const TARGET_RING_PARTICLES=96;
@@ -33,7 +35,6 @@ export default function HeroParticleEngine(){
     let raf=0;
     let ambientSpawnClock=rand(90,150);
     let sparkClock=rand(1200,1600);
-    // Start the first breath before the seeded ring particles visibly thin out.
     let pulseClock=rand(4200,5000);
     let sparkSide:"left"|"right"="right";
     let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean,initial?:boolean,pulse?:boolean)=>void=()=>{};
@@ -73,6 +74,8 @@ export default function HeroParticleEngine(){
     requestAnimationFrame(syncRingToMascot);
     window.addEventListener("resize",syncRingToMascot);
     if(mascotArt instanceof HTMLImageElement)mascotArt.addEventListener("load",syncRingToMascot);
+
+    const heroRect=()=>hero.getBoundingClientRect();
 
     const make=(x:number,y:number,angle:number,isRing=false,initial=false,spark=false,loop=false,pulse=false)=>{
       if(embers.length>=MAX_PARTICLES)return;
@@ -116,13 +119,15 @@ export default function HeroParticleEngine(){
     ringPoint=(spark=false,forcedSide?:"left"|"right",loop=false,initial=false,pulse=false)=>{
       if(!ring)return;
       const rr=ring.getBoundingClientRect();
+      const hr=heroRect();
       let a=rand(0,Math.PI*2);
       if(forcedSide){
         const leftSide=a>Math.PI/2&&a<Math.PI*1.5;
         if((forcedSide==="left")!==leftSide)a+=Math.PI;
       }
       const radius=Math.min(rr.width,rr.height)*rand(.50,.525);
-      make(rr.left+rr.width/2+Math.cos(a)*radius,rr.top+rr.height/2+Math.sin(a)*radius,a+rand(-.18,.18),true,initial,spark,loop,pulse);
+      ringPoint;
+      make(rr.left+rr.width/2+Math.cos(a)*radius-hr.left,rr.top+rr.height/2+Math.sin(a)*radius-hr.top,a+rand(-.18,.18),true,initial,spark,loop,pulse);
     };
 
     const sparkBurst=()=>{
@@ -137,7 +142,6 @@ export default function HeroParticleEngine(){
 
     const releasePulse=()=>{
       if(!stage)return;
-
       stageBreath?.cancel();
       stageBreath=stage.animate([
         {scale:1,filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:0},
@@ -149,7 +153,7 @@ export default function HeroParticleEngine(){
     };
 
     const ambientPoint=()=>{
-      const w=innerWidth,h=innerHeight;
+      const w=hero.clientWidth,h=hero.clientHeight;
       const x=rand(w*.08,w*.92);
       const y=rand(h*.08,h*.78);
       if(y>h*.60&&Math.random()<.64)return false;
@@ -158,7 +162,7 @@ export default function HeroParticleEngine(){
     };
 
     const seedAmbient=()=>{
-      const w=innerWidth,h=innerHeight;
+      const w=hero.clientWidth,h=hero.clientHeight;
       for(let i=0;i<120;i++){
         const x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);
         if(y>h*.60&&Math.random()<.64)continue;
@@ -182,10 +186,8 @@ export default function HeroParticleEngine(){
       if(ring){
         if(pulseClock<=0){
           releasePulse();
-          // Keep each breath ahead of the next noticeable particle drop.
           pulseClock=rand(7600,8400);
         }
-
         if(sparkClock<=0){
           sparkBurst();
           sparkClock=rand(1900,2500);
@@ -202,7 +204,6 @@ export default function HeroParticleEngine(){
         }
         ambientSpawnClock=rand(150,260);
       }
-
       raf=requestAnimationFrame(tick);
     };
 
