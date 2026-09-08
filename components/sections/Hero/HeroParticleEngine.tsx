@@ -104,14 +104,15 @@ export default function HeroParticleEngine(){
 
     const releasePulse=()=>{
       if(!ring)return;
-      // A true breathing cycle: symmetric radial squeeze/expansion only.
-      // No independent X/Y scaling, so no side of the ring can stretch.
+      // Keep the ring's centering transform explicit during the whole breath.
+      // This prevents the browser from composing the pulse with an existing
+      // transform in a way that can visually stretch or shift one side.
       ring.animate([
-        {scale:"1",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"},
-        {scale:".992",filter:"brightness(1.08) drop-shadow(0 0 7px rgba(255,70,4,.20))",offset:.30},
-        {scale:".984",filter:"brightness(1.16) drop-shadow(0 0 11px rgba(255,70,4,.28))",offset:.46},
-        {scale:"1.012",filter:"brightness(1.25) drop-shadow(0 0 15px rgba(255,70,4,.34))",offset:.68},
-        {scale:"1",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"}
+        {transform:"translate(-50%,-50%) scale(1)",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"},
+        {transform:"translate(-50%,-50%) scale(.992)",filter:"brightness(1.08) drop-shadow(0 0 7px rgba(255,70,4,.20))",offset:.30},
+        {transform:"translate(-50%,-50%) scale(.984)",filter:"brightness(1.16) drop-shadow(0 0 11px rgba(255,70,4,.28))",offset:.46},
+        {transform:"translate(-50%,-50%) scale(1.012)",filter:"brightness(1.25) drop-shadow(0 0 15px rgba(255,70,4,.34))",offset:.68},
+        {transform:"translate(-50%,-50%) scale(1)",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"}
       ],{duration:2350,easing:"cubic-bezier(.37,.08,.24,1)"});
       replayInitialRingState();
     };
