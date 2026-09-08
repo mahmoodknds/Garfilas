@@ -97,23 +97,23 @@ export default function HeroParticleEngine(){
     const releasePulse=()=>{
       if(!ring)return;
 
-      // The ring and mascot are one visual object now: exactly the same
-      // slow, uniform scale curve and the same timing. No width/height drift,
-      // no X/Y scaling, and no particle replay during the breath.
+      // Keep the ring and mascot visually locked together without touching
+      // the mascot's existing transform. The CSS `scale` property composes
+      // with its layout transform, so the artwork cannot jump sideways/up.
       const breath=[
-        {transform:"translate(-50%,-50%) scale(1)",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:0},
-        {transform:"translate(-50%,-50%) scale(.996)",filter:"brightness(1.03) drop-shadow(0 0 5px rgba(255,70,4,.12))",offset:.24},
-        {transform:"translate(-50%,-50%) scale(.992)",filter:"brightness(1.07) drop-shadow(0 0 8px rgba(255,70,4,.17))",offset:.44},
-        {transform:"translate(-50%,-50%) scale(1.006)",filter:"brightness(1.10) drop-shadow(0 0 10px rgba(255,70,4,.20))",offset:.70},
-        {transform:"translate(-50%,-50%) scale(1)",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:1}
+        {scale:1,filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:0},
+        {scale:.996,filter:"brightness(1.03) drop-shadow(0 0 5px rgba(255,70,4,.12))",offset:.24},
+        {scale:.992,filter:"brightness(1.07) drop-shadow(0 0 8px rgba(255,70,4,.17))",offset:.44},
+        {scale:1.006,filter:"brightness(1.10) drop-shadow(0 0 10px rgba(255,70,4,.20))",offset:.70},
+        {scale:1,filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:1}
       ];
 
       ring.getAnimations().forEach(a=>a.cancel());
-      ring.animate(breath,{duration:6200,easing:"ease-in-out",fill:"both"});
+      ring.animate(breath.map(k=>({transform:`translate(-50%,-50%) scale(${k.scale})`,filter:k.filter,offset:k.offset})),{duration:6200,easing:"ease-in-out",fill:"both"});
 
       if(mascot){
         mascot.getAnimations().forEach(a=>a.cancel());
-        mascot.animate(breath.map(k=>({transform:`scale(${k.transform.match(/scale\(([^)]+)\)/)?.[1]??"1"})`,offset:k.offset})),{duration:6200,easing:"ease-in-out",fill:"both"});
+        mascot.animate(breath.map(k=>({scale:k.scale,offset:k.offset})),{duration:6200,easing:"ease-in-out",fill:"both"});
       }
     };
 
