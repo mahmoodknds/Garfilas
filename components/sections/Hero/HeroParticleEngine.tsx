@@ -10,7 +10,8 @@ export default function HeroParticleEngine() {
   useEffect(() => {
     let disposed = false;
     let raf = 0;
-    let breath: Animation | null = null;
+    let breathMascot: Animation | null = null;
+    let breathRing: Animation | null = null;
 
     const hero = document.querySelector<HTMLElement>(".hero");
     const ring = document.querySelector<HTMLElement>(".hero-orbit-one");
@@ -35,6 +36,11 @@ export default function HeroParticleEngine() {
     const rand = (min: number, max: number) => min + Math.random() * (max - min);
     const goldenAngle = Math.PI * (3 - Math.sqrt(5));
 
+    const getHeroPoint = (rect: DOMRect) => {
+      const h = hero.getBoundingClientRect();
+      return { x: rect.left - h.left, y: rect.top - h.top };
+    };
+
     const createParticle = (ringMode = false) => {
       const p = document.createElement("span");
       p.className = ringMode ? "hero-particle hero-particle-ring" : "hero-particle";
@@ -53,12 +59,12 @@ export default function HeroParticleEngine() {
       return p;
     };
 
-    const positionRingParticle = (p: HTMLElement, index = ringParticles.length) => {
+    const positionRingParticle = (p: HTMLElement, index = ringParticles.length, spread = 1) => {
       const r = ring.getBoundingClientRect();
       const h = hero.getBoundingClientRect();
       if (!r.width || !r.height || !h.width || !h.height) return;
-      const angle = index * goldenAngle + rand(-0.055, 0.055);
-      const radius = rand(0.955, 1.005) * Math.min(r.width, r.height) * 0.5;
+      const angle = index * goldenAngle + rand(-0.04, 0.04);
+      const radius = rand(0.965, 1.01) * Math.min(r.width, r.height) * 0.5 * spread;
       p.style.left = `${r.left - h.left + r.width * 0.5 + Math.cos(angle) * radius}px`;
       p.style.top = `${r.top - h.top + r.height * 0.5 + Math.sin(angle) * radius}px`;
     };
@@ -68,7 +74,7 @@ export default function HeroParticleEngine() {
       const h = hero.getBoundingClientRect();
       if (!r.width || !r.height || !h.width || !h.height) return;
       const angle = rand(0, Math.PI * 2);
-      const radius = rand(1.03, 1.28) * Math.min(r.width, r.height) * 0.5;
+      const radius = rand(1.04, 1.30) * Math.min(r.width, r.height) * 0.5;
       p.style.left = `${r.left - h.left + r.width * 0.5 + Math.cos(angle) * radius}px`;
       p.style.top = `${r.top - h.top + r.height * 0.5 + Math.sin(angle) * radius}px`;
     };
@@ -83,8 +89,8 @@ export default function HeroParticleEngine() {
         p.animate(
           [
             { opacity: 0, transform: "scale(.55) translate3d(0,0,0)" },
-            { opacity: rand(0.82, 1), transform: "scale(1) translate3d(0,0,0)" },
-            { opacity: 0, transform: `scale(.6) translate3d(${rand(-18,18)}px,${rand(-18,18)}px,0)` },
+            { opacity: rand(0.84, 1), transform: "scale(1) translate3d(0,0,0)" },
+            { opacity: 0, transform: `scale(.6) translate3d(${rand(-12,12)}px,${rand(-12,12)}px,0)` },
           ],
           { duration: rand(5200, 7600), easing: "ease-in-out", iterations: Infinity }
         );
@@ -103,13 +109,13 @@ export default function HeroParticleEngine() {
       for (let i = 0; i < count && particles.length < MAX_PARTICLES; i++) {
         const p = createParticle(false);
         particles.push(p);
-        positionRingParticle(p, i + Math.floor(Math.random() * TARGET_RING_PARTICLES));
+        positionRingParticle(p, i + Math.floor(Math.random() * TARGET_RING_PARTICLES), rand(1.0, 1.035));
         const dx = rand(-42, 42);
         const dy = rand(-42, 42);
         const animation = p.animate(
           [
             { opacity: 0, transform: "scale(.28) translate3d(0,0,0)" },
-            { opacity: 1, transform: "scale(2.05) translate3d(0,0,0)" },
+            { opacity: 1, transform: "scale(2.15) translate3d(0,0,0)" },
             { opacity: 0, transform: `scale(.08) translate3d(${dx}px,${dy}px,0)` },
           ],
           { duration: rand(850, 1350), easing: "cubic-bezier(.18,.72,.25,1)" }
@@ -120,7 +126,7 @@ export default function HeroParticleEngine() {
 
     const ambientSpawn = () => {
       if (disposed) return;
-      const count = Math.random() < 0.45 ? 2 : 1;
+      const count = Math.random() < 0.55 ? 2 : 1;
       for (let i = 0; i < count && particles.length < MAX_PARTICLES; i++) {
         const p = createParticle(false);
         particles.push(p);
@@ -128,7 +134,7 @@ export default function HeroParticleEngine() {
         const animation = p.animate(
           [
             { opacity: 0, transform: "translate3d(0,0,0) scale(.5)" },
-            { opacity: rand(.38, .78), transform: `translate3d(${rand(-12,12)}px,${rand(-14,14)}px,0) scale(1)` },
+            { opacity: rand(.42, .82), transform: `translate3d(${rand(-12,12)}px,${rand(-14,14)}px,0) scale(1)` },
             { opacity: 0, transform: `translate3d(${rand(-28,28)}px,${rand(-28,28)}px,0) scale(.45)` },
           ],
           { duration: rand(5200, 8200), easing: "ease-in-out" }
@@ -140,11 +146,12 @@ export default function HeroParticleEngine() {
     const syncRing = () => {
       if (disposed) return;
       const target = mascotArt.getBoundingClientRect();
-      const heroRect = hero.getBoundingClientRect();
-      if (!target.width || !target.height || !heroRect.width || !heroRect.height) return;
+      const ringParent = ring.offsetParent instanceof HTMLElement ? ring.offsetParent : hero;
+      const parentRect = ringParent.getBoundingClientRect();
+      if (!target.width || !target.height || !parentRect.width || !parentRect.height) return;
 
-      const centerX = target.left + target.width / 2 - heroRect.left;
-      const centerY = target.top + target.height / 2 - heroRect.top;
+      const centerX = target.left + target.width / 2 - parentRect.left;
+      const centerY = target.top + target.height / 2 - parentRect.top;
       const diameter = Math.max(target.width, target.height) * 1.10;
 
       ring.style.position = "absolute";
@@ -159,15 +166,16 @@ export default function HeroParticleEngine() {
       ring.style.transform = "translate(-50%,-50%)";
       ring.style.transformOrigin = "50% 50%";
       ring.style.transformStyle = "flat";
-      ring.style.zIndex = "6";
+      ring.style.zIndex = "20";
       mascot.style.position = mascot.style.position || "relative";
-      mascot.style.zIndex = "5";
+      mascot.style.zIndex = "10";
       particleLayer.style.zIndex = "4";
     };
 
     const releasePulse = () => {
       if (disposed) return;
-      breath?.cancel();
+      breathMascot?.cancel();
+      breathRing?.cancel();
       const keyframes: Keyframe[] = [
         { scale: 1, filter: "brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))", offset: 0 },
         { scale: .996, filter: "brightness(1.02) drop-shadow(0 0 4px rgba(255,70,4,.08))", offset: .22 },
@@ -176,8 +184,8 @@ export default function HeroParticleEngine() {
         { scale: 1, filter: "brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))", offset: 1 },
       ];
       const options: KeyframeAnimationOptions = { duration: BREATH_DURATION, easing: "ease-in-out", fill: "both" };
-      breath = mascot.animate(keyframes, options);
-      ring.animate(keyframes, options);
+      breathMascot = mascot.animate(keyframes, options);
+      breathRing = ring.animate(keyframes, options);
     };
 
     try {
@@ -225,7 +233,8 @@ export default function HeroParticleEngine() {
     return () => {
       disposed = true;
       cancelAnimationFrame(raf);
-      breath?.cancel();
+      breathMascot?.cancel();
+      breathRing?.cancel();
       mascotArt.removeEventListener("load", syncRing);
       window.removeEventListener("resize", syncRing);
       particles.forEach((p) => p.remove());
