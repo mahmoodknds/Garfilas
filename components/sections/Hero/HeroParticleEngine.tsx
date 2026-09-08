@@ -8,6 +8,7 @@ function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.
 export default function HeroParticleEngine(){
   useLayoutEffect(()=>{
     const ring=document.querySelector<HTMLElement>(".hero-orbit-one");
+    const mascot=document.querySelector<HTMLElement>(".hero-mascot");
     const layer=document.createElement("div");
     layer.className="hero-live-embers";
     Object.assign(layer.style,{position:"fixed",inset:"0",overflow:"visible",pointerEvents:"none",zIndex:"2",isolation:"isolate"});
@@ -23,7 +24,6 @@ export default function HeroParticleEngine(){
     let pulseClock=rand(8500,10500);
     let sparkSide:"left"|"right"="right";
     let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean,initial?:boolean,pulse?:boolean)=>void=()=>{};
-    let breathing:Animation|null=null;
 
     if(ring){
       ring.style.width="min(84vw,34rem)";
@@ -96,16 +96,25 @@ export default function HeroParticleEngine(){
 
     const releasePulse=()=>{
       if(!ring)return;
-      // Slow, soft radial breathing only. No particle replay and no heartbeat-like snap.
-      breathing?.cancel();
-      breathing=ring.animate([
+
+      // The ring and mascot are one visual object now: exactly the same
+      // slow, uniform scale curve and the same timing. No width/height drift,
+      // no X/Y scaling, and no particle replay during the breath.
+      const breath=[
         {transform:"translate(-50%,-50%) scale(1)",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:0},
-        {transform:"translate(-50%,-50%) scale(.997)",filter:"brightness(1.035) drop-shadow(0 0 5px rgba(255,70,4,.12))",offset:.20},
-        {transform:"translate(-50%,-50%) scale(.991)",filter:"brightness(1.07) drop-shadow(0 0 8px rgba(255,70,4,.17))",offset:.42},
-        {transform:"translate(-50%,-50%) scale(1.006)",filter:"brightness(1.10) drop-shadow(0 0 10px rgba(255,70,4,.20))",offset:.68},
-        {transform:"translate(-50%,-50%) scale(1.003)",filter:"brightness(1.055) drop-shadow(0 0 6px rgba(255,70,4,.13))",offset:.84},
+        {transform:"translate(-50%,-50%) scale(.996)",filter:"brightness(1.03) drop-shadow(0 0 5px rgba(255,70,4,.12))",offset:.24},
+        {transform:"translate(-50%,-50%) scale(.992)",filter:"brightness(1.07) drop-shadow(0 0 8px rgba(255,70,4,.17))",offset:.44},
+        {transform:"translate(-50%,-50%) scale(1.006)",filter:"brightness(1.10) drop-shadow(0 0 10px rgba(255,70,4,.20))",offset:.70},
         {transform:"translate(-50%,-50%) scale(1)",filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:1}
-      ],{duration:5200,easing:"ease-in-out",fill:"both"});
+      ];
+
+      ring.getAnimations().forEach(a=>a.cancel());
+      ring.animate(breath,{duration:6200,easing:"ease-in-out",fill:"both"});
+
+      if(mascot){
+        mascot.getAnimations().forEach(a=>a.cancel());
+        mascot.animate(breath.map(k=>({transform:`scale(${k.transform.match(/scale\(([^)]+)\)/)?.[1]??"1"})`,offset:k.offset})),{duration:6200,easing:"ease-in-out",fill:"both"});
+      }
     };
 
     const ambientPoint=()=>{
@@ -170,8 +179,9 @@ export default function HeroParticleEngine(){
     return()=>{
       stopped=true;
       cancelAnimationFrame(raf);
-      breathing?.cancel();
       for(const ember of embers)ember.animation.cancel();
+      ring?.getAnimations().forEach(a=>a.cancel());
+      mascot?.getAnimations().forEach(a=>a.cancel());
       layer.remove();
     };
   },[]);
