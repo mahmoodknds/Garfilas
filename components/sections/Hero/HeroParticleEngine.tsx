@@ -33,7 +33,8 @@ export default function HeroParticleEngine(){
     let raf=0;
     let ambientSpawnClock=rand(90,150);
     let sparkClock=rand(1200,1600);
-    let pulseClock=rand(8500,10500);
+    // Start the first breath before the seeded ring particles visibly thin out.
+    let pulseClock=rand(4200,5000);
     let sparkSide:"left"|"right"="right";
     let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean,initial?:boolean,pulse?:boolean)=>void=()=>{};
     let stageBreath:Animation|null=null;
@@ -181,7 +182,8 @@ export default function HeroParticleEngine(){
       if(ring){
         if(pulseClock<=0){
           releasePulse();
-          pulseClock=rand(8500,10500);
+          // Keep each breath ahead of the next noticeable particle drop.
+          pulseClock=rand(7600,8400);
         }
 
         if(sparkClock<=0){
