@@ -1,12 +1,12 @@
 "use client";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean;duration:number;spark:boolean};
 const rand=(a:number,b:number)=>Math.random()*(b-a)+a;
 function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.4,2.1);if(r<.17)return rand(2.3,3.4);if(r<.42)return rand(3.4,4.8);if(r<.67)return rand(4.8,6.2);if(r<.92)return rand(6.2,7.8);if(r<.985)return rand(8,10.5);return ring?rand(10.5,13):rand(9,11)}
 
 export default function HeroParticleEngine(){
- useLayoutEffect(()=>{
+ useEffect(()=>{
   const hero=document.querySelector<HTMLElement>(".hero");
   const ring=document.querySelector<HTMLElement>(".hero-orbit-one");
   const mascot=document.querySelector<HTMLElement>(".hero-mascot");
@@ -20,6 +20,9 @@ export default function HeroParticleEngine(){
   const embers:Ember[]=[];
   const TARGET_RING_PARTICLES=132;
   const MAX_PARTICLES=680;
+  const MAX_TRANSIENT_PARTICLES=MAX_PARTICLES-TARGET_RING_PARTICLES;
+  let ringCount=0;
+  let transientCount=0;
   let stopped=false;
   let raf=0;
   let ambientClock=rand(90,150);
@@ -28,7 +31,7 @@ export default function HeroParticleEngine(){
   let ringIndex=0;
 
   const make=(x:number,y:number,angle:number,isRing=false,spark=false,initialPhase=0,onFinish?:()=>void)=>{
-   if(embers.length>=MAX_PARTICLES)return;
+   if(isRing){if(ringCount>=TARGET_RING_PARTICLES)return;}else if(transientCount>=MAX_TRANSIENT_PARTICLES)return;
    const size=spark?rand(3.2,7.2):sizeProfile(isRing);
    const el=document.createElement("span");
    el.className=spark?"hero-live-ember hero-live-spark":"hero-live-ember";
@@ -52,8 +55,9 @@ export default function HeroParticleEngine(){
    layer.appendChild(el);
    const ember:Ember={el,animation,ring:isRing,duration,spark};
    embers.push(ember);
+   if(isRing)ringCount++;else transientCount++;
    if(initialPhase>0)animation.currentTime=Math.min(initialPhase,duration-1);
-   animation.onfinish=()=>{if(stopped)return;el.remove();const i=embers.indexOf(ember);if(i>=0)embers.splice(i,1);onFinish?.();};
+   animation.onfinish=()=>{if(stopped)return;el.remove();const i=embers.indexOf(ember);if(i>=0){embers.splice(i,1);if(isRing)ringCount=Math.max(0,ringCount-1);else transientCount=Math.max(0,transientCount-1);}onFinish?.();};
   };
 
   const ringPoint=(spark=false,forcedSide?:"left"|"right",initialPhase=0,onFinish?:()=>void)=>{
@@ -64,7 +68,7 @@ export default function HeroParticleEngine(){
    make(rr.left+rr.width/2+Math.cos(angle)*radius-hr.left,rr.top+rr.height/2+Math.sin(angle)*radius-hr.top,angle+rand(-.12,.12),true,spark,initialPhase,onFinish);
   };
 
-  const maintainRingOne=()=>{if(!stopped)ringPoint(false,undefined,0,maintainRingOne)};
+  const maintainRingOne=()=>{if(stopped)return;ringPoint(false,undefined,0,maintainRingOne);};
   for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,rand(0,12000),maintainRingOne);
 
   const sparkBurst=()=>{const count=Math.floor(rand(20,31));for(let i=0;i<count;i++){const side=sparkSide;ringPoint(true,side);sparkSide=side==="right"?"left":"right";}};
