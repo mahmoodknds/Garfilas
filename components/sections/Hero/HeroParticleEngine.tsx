@@ -31,6 +31,7 @@ export default function HeroParticleEngine(){
   let sparkSide:"left"|"right"="right";
   let ringIndex=0;
   let breathClock=BREATH_MS/2;
+  let releaseTimers:number[]=[];
 
   const make=(x:number,y:number,angle:number,isRing=false,spark=false,initialPhase=0,onFinish?:()=>void,release=false)=>{
    if(isRing){if(ringCount>=TARGET_RING_PARTICLES)return;}else if(transientCount>=MAX_TRANSIENT_PARTICLES)return;
@@ -85,11 +86,9 @@ export default function HeroParticleEngine(){
     make(x,y,angle+rand(-.12,.12),false,true);
    }
   };
-  const releaseRingCycle=()=>{
+  const releaseOne=(ember:Ember)=>{
    const hr=hero.getBoundingClientRect();
-   const current=embers.filter(e=>e.ring);
-   for(const ember of current){
-    if(transientCount>=MAX_TRANSIENT_PARTICLES)break;
+   if(stopped||transientCount>=MAX_TRANSIENT_PARTICLES)return;
     const rect=ember.el.getBoundingClientRect();
     const size=Math.max(rect.width,rect.height);
     const x=rect.left+rect.width/2-hr.left;
@@ -115,7 +114,17 @@ export default function HeroParticleEngine(){
     ],{duration:rand(3000,4400),easing:"cubic-bezier(.12,.62,.24,1)",fill:"both"});
     transientCount++;
     release.onfinish=()=>{clone.remove();transientCount=Math.max(0,transientCount-1);};
-   }
+  };
+  const releaseRingCycle=()=>{
+   const current=embers.filter(e=>e.ring);
+   // Release the whole ring in one breathing event, but spread creation across 420ms
+   // to avoid a single-frame GPU/compositor spike that can disturb the foreground.
+   const windowMs=420;
+   current.forEach((ember,index)=>{
+    const delay=Math.round(index*windowMs/Math.max(1,current.length-1));
+    const id=window.setTimeout(()=>releaseOne(ember),delay);
+    releaseTimers.push(id);
+   });
   };
 
   const seedAmbient=()=>{const w=hero.clientWidth,h=hero.clientHeight;for(let i=0;i<120;i++){const x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,false,rand(0,12000));}};
@@ -134,7 +143,7 @@ export default function HeroParticleEngine(){
   };
   raf=requestAnimationFrame(tick);
 
-  return()=>{stopped=true;cancelAnimationFrame(raf);for(const e of embers)e.animation.cancel();layer.remove();};
+  return()=>{stopped=true;cancelAnimationFrame(raf);releaseTimers.forEach(id=>clearTimeout(id));for(const e of embers)e.animation.cancel();layer.remove();};
  },[]);
  return null;
 }
