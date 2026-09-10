@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 
-type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean;duration:number;spark:boolean};
+type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean;duration:number;spark:boolean;released?:boolean};
 const rand=(a:number,b:number)=>Math.random()*(b-a)+a;
 function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.4,2.1);if(r<.17)return rand(2.3,3.4);if(r<.42)return rand(3.4,4.8);if(r<.67)return rand(4.8,6.2);if(r<.92)return rand(6.2,7.8);if(r<.985)return rand(8,10.5);return ring?rand(10.5,13):rand(9,11)}
 
@@ -75,18 +75,28 @@ export default function HeroParticleEngine(){
 
   const sparkBurst=()=>{const count=Math.floor(rand(20,31));for(let i=0;i<count;i++){const side=sparkSide;ringPoint(true,side);sparkSide=side==="right"?"left":"right";}};
   const releaseRingCycle=()=>{
-   const hr=hero.getBoundingClientRect();
-   const rr=ring.getBoundingClientRect();
+   const hr=hero.getBoundingClientRect(),rr=ring.getBoundingClientRect();
    const cx=rr.left+rr.width/2-hr.left,cy=rr.top+rr.height/2-hr.top;
    const current=embers.filter(e=>e.ring);
    for(const ember of current){
     const r=ember.el.getBoundingClientRect();
     const x=r.left+r.width/2-hr.left,y=r.top+r.height/2-hr.top;
     const angle=Math.atan2(y-cy,x-cx)+rand(-.10,.10);
-    ember.animation.cancel();ember.el.remove();
-    const i=embers.indexOf(ember);if(i>=0)embers.splice(i,1);
-    ringCount=Math.max(0,ringCount-1);
-    make(x,y,angle,false,false,0,undefined,true);
+    const computed=getComputedStyle(ember.el);
+    const fromOpacity=Math.max(.18,Number.parseFloat(computed.opacity)||.7);
+    const fromTransform=computed.transform==="none"?"translate3d(0,0,0) scale(1)":computed.transform;
+    try{ember.animation.commitStyles?.();}catch{}
+    ember.animation.cancel();
+    ember.ring=false;ember.released=true;ringCount=Math.max(0,ringCount-1);
+    const distance=rand(58,142),dx=Math.cos(angle)*distance,dy=Math.sin(angle)*distance+rand(10,34);
+    const release=ember.el.animate([
+     {transform:fromTransform,opacity:fromOpacity},
+     {transform:`translate3d(${dx*.18}px,${dy*.18}px,0) scale(.96)`,opacity:Math.min(.98,fromOpacity),offset:.12},
+     {transform:`translate3d(${dx*.58}px,${dy*.58}px,0) scale(.58)`,opacity:fromOpacity*.58,offset:.58},
+     {transform:`translate3d(${dx}px,${dy}px,0) scale(.16)`,opacity:0}
+    ],{duration:rand(2800,4200),easing:"cubic-bezier(.16,.62,.28,1)",fill:"both"});
+    ember.animation=release;
+    release.onfinish=()=>{if(stopped)return;ember.el.remove();const i=embers.indexOf(ember);if(i>=0)embers.splice(i,1);};
    }
    for(let i=ringCount;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,0,maintainRingOne);
   };
