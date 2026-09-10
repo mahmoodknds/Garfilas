@@ -13,13 +13,6 @@ export default function HeroParticleEngine(){
     const mascotArt=mascot?.querySelector<HTMLElement>(".hero-mascot-frame img")??mascot?.querySelector<HTMLElement>("img")??mascot;
     if(!hero||!ring||!mascot||!mascotArt)return;
 
-    const stage=document.createElement("div");
-    stage.className="hero-mascot-ring-stage";
-    Object.assign(stage.style,{position:"absolute",inset:"0",width:"100%",height:"100%",pointerEvents:"none",zIndex:"6",transformOrigin:"50% 50%",willChange:"transform,filter"});
-    hero.insertBefore(stage,ring);
-    stage.appendChild(ring);
-    stage.appendChild(mascot);
-
     // Keep live particles inside the hero stacking context so they always stay behind the mascot.
     const layer=document.createElement("div");
     layer.className="hero-live-embers";
@@ -38,18 +31,19 @@ export default function HeroParticleEngine(){
     let sparkSide:"left"|"right"="right";
     let ringPoint:(spark?:boolean,forcedSide?:"left"|"right",loop?:boolean,initial?:boolean,pulse?:boolean)=>void=()=>{};
     let stageBreath:Animation|null=null;
+    const originalRing={parent:ring.parentNode,next:ring.nextSibling,style:ring.getAttribute("style")};
+    const originalMascot={parent:mascot.parentNode,next:mascot.nextSibling,style:mascot.getAttribute("style")};
 
     const syncRingToMascot=()=>{
       if(stopped||!ring||!mascotArt)return;
       const target=mascotArt.getBoundingClientRect();
-      const stageRect=stage.getBoundingClientRect();
+      const stageRect=hero.getBoundingClientRect();
       if(target.width<2||target.height<2||stageRect.width<2||stageRect.height<2)return;
 
       const centerX=target.left+target.width/2-stageRect.left;
       const centerY=target.top+target.height/2-stageRect.top;
       const diameter=Math.max(target.width,target.height)*1.10;
 
-      stage.style.transformOrigin=`${centerX}px ${centerY}px`;
       ring.style.left=`${centerX}px`;
       ring.style.top=`${centerY}px`;
       ring.style.width=`${diameter}px`;
@@ -139,9 +133,9 @@ export default function HeroParticleEngine(){
     };
 
     const releasePulse=()=>{
-      if(!stage)return;
       stageBreath?.cancel();
-      stageBreath=stage.animate([
+      const animateTarget=hero;
+      stageBreath=animateTarget.animate([
         {scale:1,filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))",offset:0},
         {scale:.996,filter:"brightness(1.02) drop-shadow(0 0 4px rgba(255,70,4,.08))",offset:.22},
         {scale:.991,filter:"brightness(1.045) drop-shadow(0 0 7px rgba(255,70,4,.12))",offset:.48},
@@ -215,11 +209,8 @@ export default function HeroParticleEngine(){
       if(ring)window.removeEventListener("resize",syncRingToMascot);
       if(mascotArt instanceof HTMLImageElement)mascotArt.removeEventListener("load",syncRingToMascot);
       layer.remove();
-      if(stage.parentElement){
-        stage.parentElement.insertBefore(ring,stage);
-        stage.parentElement.insertBefore(mascot,ring.nextSibling);
-        stage.remove();
-      }
+      ring.setAttribute("style",originalRing.style??"");
+      mascot.setAttribute("style",originalMascot.style??"");
     };
   },[]);
 
