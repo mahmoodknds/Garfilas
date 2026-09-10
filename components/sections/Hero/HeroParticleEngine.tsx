@@ -73,35 +73,49 @@ export default function HeroParticleEngine(){
   const maintainRingOne=()=>{if(stopped)return;ringPoint(false,undefined,0,maintainRingOne);};
   for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,rand(0,12000),maintainRingOne);
 
-  const sparkBurst=()=>{const count=Math.floor(rand(20,31));for(let i=0;i<count;i++){const side=sparkSide;ringPoint(true,side);sparkSide=side==="right"?"left":"right";}};
+  const sparkBurst=()=>{
+   const count=Math.floor(rand(20,31));
+   const rr=ring.getBoundingClientRect(),hr=hero.getBoundingClientRect();
+   for(let i=0;i<count;i++){
+    const side=sparkSide;sparkSide=side==="right"?"left":"right";
+    let angle=side==="right"?rand(-Math.PI*.46,Math.PI*.46):rand(Math.PI*.54,Math.PI*1.46);
+    const radius=Math.min(rr.width,rr.height)*.515;
+    const x=rr.left+rr.width/2+Math.cos(angle)*radius-hr.left;
+    const y=rr.top+rr.height/2+Math.sin(angle)*radius-hr.top;
+    make(x,y,angle+rand(-.12,.12),false,true);
+   }
+  };
   const releaseRingCycle=()=>{
-   const hr=hero.getBoundingClientRect(),rr=ring.getBoundingClientRect();
-   const cx=rr.left+rr.width/2-hr.left,cy=rr.top+rr.height/2-hr.top;
+   const hr=hero.getBoundingClientRect();
    const current=embers.filter(e=>e.ring);
    for(const ember of current){
     if(transientCount>=MAX_TRANSIENT_PARTICLES)break;
     const rect=ember.el.getBoundingClientRect();
-    const x=rect.left+rect.width/2-hr.left,y=rect.top+rect.height/2-hr.top;
-    const angle=Math.atan2(y-cy,x-cx)+rand(-.10,.10);
-    const cs=getComputedStyle(ember.el);
+    const size=Math.max(rect.width,rect.height);
+    const x=rect.left+rect.width/2-hr.left;
+    const y=rect.top+rect.height/2-hr.top;
+    const angle=Math.atan2(
+      rect.top+rect.height/2-(ring.getBoundingClientRect().top+ring.getBoundingClientRect().height/2),
+      rect.left+rect.width/2-(ring.getBoundingClientRect().left+ring.getBoundingClientRect().width/2)
+    )+rand(-.075,.075);
     const clone=ember.el.cloneNode(true) as HTMLSpanElement;
-    Object.assign(clone.style,{left:ember.el.style.left,top:ember.el.style.top,width:ember.el.style.width,height:ember.el.style.height,transform:cs.transform==="none"?"translate3d(0,0,0) scale(1)":cs.transform,opacity:cs.opacity,animation:"none"});
+    Object.assign(clone.style,{
+      left:`${x-size/2}px`,top:`${y-size/2}px`,
+      width:`${size}px`,height:`${size}px`,
+      transform:"translate3d(0,0,0) scale(1)",opacity:getComputedStyle(ember.el).opacity,animation:"none"
+    });
     layer.appendChild(clone);
     const distance=rand(58,142),dx=Math.cos(angle)*distance,dy=Math.sin(angle)*distance+rand(10,34);
-    const alpha=Math.max(.16,Number.parseFloat(cs.opacity)||.7);
+    const alpha=Math.max(.16,Number.parseFloat(clone.style.opacity)||.7);
     const release=clone.animate([
-     {transform:clone.style.transform,opacity:alpha},
-     {transform:`translate3d(${dx*.18}px,${dy*.18}px,0) scale(.96)`,opacity:Math.min(.98,alpha),offset:.14},
-     {transform:`translate3d(${dx*.60}px,${dy*.60}px,0) scale(.56)`,opacity:alpha*.52,offset:.62},
-     {transform:`translate3d(${dx}px,${dy}px,0) scale(.14)`,opacity:0}
+      {transform:"translate3d(0,0,0) scale(1)",opacity:alpha},
+      {transform:`translate3d(${dx*.16}px,${dy*.16}px,0) scale(.98)`,opacity:Math.min(.98,alpha),offset:.12},
+      {transform:`translate3d(${dx*.58}px,${dy*.58}px,0) scale(.58)`,opacity:alpha*.54,offset:.60},
+      {transform:`translate3d(${dx}px,${dy}px,0) scale(.14)`,opacity:0}
     ],{duration:rand(3000,4400),easing:"cubic-bezier(.12,.62,.24,1)",fill:"both"});
     transientCount++;
     release.onfinish=()=>{clone.remove();transientCount=Math.max(0,transientCount-1);};
-    ember.animation.cancel();ember.el.remove();
-    const i=embers.indexOf(ember);if(i>=0)embers.splice(i,1);
-    ringCount=Math.max(0,ringCount-1);
    }
-   while(ringCount<TARGET_RING_PARTICLES)ringPoint(false,undefined,0,maintainRingOne);
   };
 
   const seedAmbient=()=>{const w=hero.clientWidth,h=hero.clientHeight;for(let i=0;i<120;i++){const x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,false,rand(0,12000));}};
