@@ -17,13 +17,6 @@ export default function HeroParticleEngine(){
   Object.assign(layer.style,{position:"absolute",inset:"0",overflow:"visible",pointerEvents:"none",zIndex:"3"});
   hero.appendChild(layer);
 
-  // Keep the original CSS geometry. The mascot and ring share the same 50%/27.5% center.
-  // Only their stacking order and independent scale property are touched here.
-  ring.style.zIndex="6";
-  ring.style.pointerEvents="none";
-  mascot.style.zIndex="5";
-  mascot.style.pointerEvents="none";
-
   const embers:Ember[]=[];
   const TARGET_RING_PARTICLES=132;
   const MAX_PARTICLES=680;
@@ -31,11 +24,8 @@ export default function HeroParticleEngine(){
   let raf=0;
   let ambientClock=rand(90,150);
   let sparkClock=rand(1200,1600);
-  let breathClock=rand(4200,5000);
   let sparkSide:"left"|"right"="right";
   let ringIndex=0;
-  let breathRing:Animation|null=null;
-  let breathMascot:Animation|null=null;
 
   const make=(x:number,y:number,angle:number,isRing=false,spark=false,initialPhase=0,onFinish?:()=>void)=>{
    if(embers.length>=MAX_PARTICLES)return;
@@ -78,38 +68,22 @@ export default function HeroParticleEngine(){
   for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,rand(0,12000),maintainRingOne);
 
   const sparkBurst=()=>{const count=Math.floor(rand(20,31));for(let i=0;i<count;i++){const side=sparkSide;ringPoint(true,side);sparkSide=side==="right"?"left":"right";}};
-  const seedAmbient=()=>{const w=hero.clientWidth,h=hero.clientHeight;for(let i=0;i<120;i++){const x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,true,rand(0,12000));}};
+  const seedAmbient=()=>{const w=hero.clientWidth,h=hero.clientHeight;for(let i=0;i<120;i++){const x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,false,rand(0,12000));}};
   seedAmbient();
   sparkBurst();
-
-  const breathe=()=>{
-   if(stopped)return;
-   breathRing?.cancel();breathMascot?.cancel();
-   const frames=[
-    {scale:1,filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"},
-    {scale:.996,filter:"brightness(1.02) drop-shadow(0 0 4px rgba(255,70,4,.08))"},
-    {scale:.991,filter:"brightness(1.045) drop-shadow(0 0 7px rgba(255,70,4,.12))"},
-    {scale:1.007,filter:"brightness(1.07) drop-shadow(0 0 9px rgba(255,70,4,.15))"},
-    {scale:1,filter:"brightness(1) drop-shadow(0 0 0 rgba(255,70,4,0))"}
-   ];
-   breathRing=ring.animate(frames,{duration:7200,easing:"ease-in-out",fill:"both"});
-   breathMascot=mascot.animate(frames,{duration:7200,easing:"ease-in-out",fill:"both"});
-  };
-  breathe();
 
   let last=performance.now();
   const tick=(now:number)=>{
    if(stopped)return;
    const dt=Math.min(64,Math.max(0,now-last));last=now;
-   ambientClock-=dt;sparkClock-=dt;breathClock-=dt;
+   ambientClock-=dt;sparkClock-=dt;
    if(sparkClock<=0){sparkBurst();sparkClock=rand(1900,2500);}
-   if(breathClock<=0){breathe();breathClock=rand(7600,8400);}
    if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<2;a++){const w=hero.clientWidth,h=hero.clientHeight,x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(150,260);}
    raf=requestAnimationFrame(tick);
   };
   raf=requestAnimationFrame(tick);
 
-  return()=>{stopped=true;cancelAnimationFrame(raf);breathRing?.cancel();breathMascot?.cancel();for(const e of embers)e.animation.cancel();layer.remove();};
+  return()=>{stopped=true;cancelAnimationFrame(raf);for(const e of embers)e.animation.cancel();layer.remove();};
  },[]);
  return null;
 }
