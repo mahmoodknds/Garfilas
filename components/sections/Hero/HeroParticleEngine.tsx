@@ -17,6 +17,18 @@ export default function HeroParticleEngine() {
 
     if (!hero || !ring || !mascot) return;
 
+    const cleanupStyle = document.createElement("style");
+    cleanupStyle.textContent = `
+      .hero-heat,
+      .hero-ring-heat,
+      .hero-dust-far,
+      .hero-dust-mid,
+      .hero-dust-near,
+      .hero-dust-front,
+      .hero-sparks { display: none !important; }
+    `;
+    document.head.appendChild(cleanupStyle);
+
     const layer = document.createElement("div");
     layer.className = "hero-live-embers";
     Object.assign(layer.style, {
@@ -208,6 +220,7 @@ export default function HeroParticleEngine() {
       mascotBreath?.cancel();
       for (const particle of particles) particle.animation.cancel();
       layer.remove();
+      cleanupStyle.remove();
     };
   }, []);
 
