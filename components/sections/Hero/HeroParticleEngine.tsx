@@ -1,228 +1,93 @@
 "use client";
-
 import { useEffect } from "react";
 
-type LiveParticle = {
-  el: HTMLSpanElement;
-  animation: Animation;
-};
+type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean;duration:number;spark:boolean};
+const rand=(a:number,b:number)=>Math.random()*(b-a)+a;
+function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.4,2.1);if(r<.17)return rand(2.3,3.4);if(r<.42)return rand(3.4,4.8);if(r<.67)return rand(4.8,6.2);if(r<.92)return rand(6.2,7.8);if(r<.985)return rand(8,10.5);return ring?rand(10.5,13):rand(9,11)}
 
-const rand = (min: number, max: number) => Math.random() * (max - min) + min;
+export default function HeroParticleEngine(){
+ useEffect(()=>{
+  const hero=document.querySelector<HTMLElement>(".hero");
+  const ring=document.querySelector<HTMLElement>(".hero-orbit-one");
+  const mascot=document.querySelector<HTMLElement>(".hero-mascot");
+  if(!hero||!ring||!mascot)return;
 
-export default function HeroParticleEngine() {
-  useEffect(() => {
-    const hero = document.querySelector<HTMLElement>(".hero");
-    const ring = document.querySelector<HTMLElement>(".hero-orbit-one");
-    const mascot = document.querySelector<HTMLElement>(".hero-mascot");
+  const layer=document.createElement("div");
+  layer.className="hero-live-embers";
+  Object.assign(layer.style,{position:"absolute",inset:"0",overflow:"visible",pointerEvents:"none",zIndex:"3"});
+  hero.appendChild(layer);
 
-    if (!hero || !ring || !mascot) return;
+  const embers:Ember[]=[];
+  const TARGET_RING_PARTICLES=132;
+  const MAX_PARTICLES=680;
+  const MAX_TRANSIENT_PARTICLES=MAX_PARTICLES-TARGET_RING_PARTICLES;
+  let ringCount=0;
+  let transientCount=0;
+  let stopped=false;
+  let raf=0;
+  let ambientClock=rand(90,150);
+  let sparkClock=rand(1200,1600);
+  let sparkSide:"left"|"right"="right";
+  let ringIndex=0;
 
-    const cleanupStyle = document.createElement("style");
-    cleanupStyle.textContent = `
-      .hero-heat,
-      .hero-ring-heat,
-      .hero-dust-far,
-      .hero-dust-mid,
-      .hero-dust-near,
-      .hero-dust-front,
-      .hero-sparks { display: none !important; }
-    `;
-    document.head.appendChild(cleanupStyle);
+  const make=(x:number,y:number,angle:number,isRing=false,spark=false,initialPhase=0,onFinish?:()=>void)=>{
+   if(isRing){if(ringCount>=TARGET_RING_PARTICLES)return;}else if(transientCount>=MAX_TRANSIENT_PARTICLES)return;
+   const size=spark?rand(3.2,7.2):sizeProfile(isRing);
+   const el=document.createElement("span");
+   el.className=spark?"hero-live-ember hero-live-spark":"hero-live-ember";
+   Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,252,220,1) 0%,rgba(255,191,70,.98) 34%,rgba(255,91,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,231,174,1) 0%,rgba(255,139,24,.9) 40%,rgba(255,61,4,0) 100%)",boxShadow:spark?`0 0 ${Math.max(12,size*5.5)}px rgba(255,210,90,.95),0 0 ${Math.max(24,size*8)}px rgba(255,95,8,.55)`:`0 0 ${Math.max(6,size*3.2)}px rgba(255,116,15,.52),0 0 ${Math.max(10,size*5.2)}px rgba(255,58,3,.24)`,contain:"layout style paint"});
+   const distance=spark?rand(40,88):isRing?rand(48,155):rand(35,135);
+   const dx=Math.cos(angle)*distance;
+   const dy=Math.sin(angle)*distance+(spark?rand(8,24):isRing?rand(10,36):rand(14,46));
+   const driftX=rand(-3,3),driftY=rand(-4,16);
+   const duration=spark?rand(9000,13000):isRing?rand(10000,16000):rand(11000,17000);
+   const alpha=spark?rand(.84,1):rand(.46,.92);
+   const scaleEnd=spark?rand(.22,.38):rand(.30,.55);
+   const animation=el.animate([
+    {transform:"translate3d(0,0,0) scale(.45)",opacity:0},
+    {transform:`translate3d(${dx*.08}px,${dy*.08}px,0) scale(${spark?1.04:1})`,opacity:0},
+    {transform:`translate3d(${dx*.10}px,${dy*.10}px,0) scale(${spark?1.12:1})`,opacity:alpha,offset:spark?.12:.12},
+    {transform:`translate3d(${dx*.38+driftX*.18}px,${dy*.38+driftY*.16}px,0) scale(${spark?.92:.80})`,opacity:spark?alpha*.92:alpha*.74,offset:spark?.38:.52},
+    {transform:`translate3d(${dx*.70+driftX*.45}px,${dy*.70+driftY*.60}px,0) scale(${Math.max(scaleEnd,spark?.54:.38)})`,opacity:spark?alpha*.58:alpha*.34,offset:spark?.68:.82},
+    {transform:`translate3d(${dx+driftX}px,${dy+driftY}px,0) scale(${scaleEnd})`,opacity:0,offset:.975},
+    {transform:`translate3d(${dx+driftX*1.05}px,${dy+driftY+rand(4,10)}px,0) scale(.08)`,opacity:0}
+   ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":"linear",fill:"both",iterations:1});
+   layer.appendChild(el);
+   const ember:Ember={el,animation,ring:isRing,duration,spark};
+   embers.push(ember);
+   if(isRing)ringCount++;else transientCount++;
+   if(initialPhase>0)animation.currentTime=Math.min(initialPhase,duration-1);
+   animation.onfinish=()=>{if(stopped)return;el.remove();const i=embers.indexOf(ember);if(i>=0){embers.splice(i,1);if(isRing)ringCount=Math.max(0,ringCount-1);else transientCount=Math.max(0,transientCount-1);}onFinish?.();};
+  };
 
-    const layer = document.createElement("div");
-    layer.className = "hero-live-embers";
-    Object.assign(layer.style, {
-      position: "absolute",
-      inset: "0",
-      overflow: "visible",
-      pointerEvents: "none",
-      zIndex: "4",
-    });
-    hero.appendChild(layer);
+  const ringPoint=(spark=false,forcedSide?:"left"|"right",initialPhase=0,onFinish?:()=>void)=>{
+   const rr=ring.getBoundingClientRect(),hr=hero.getBoundingClientRect();
+   let angle=(ringIndex++%TARGET_RING_PARTICLES)*(Math.PI*2/TARGET_RING_PARTICLES)+rand(-.018,.018);
+   if(forcedSide){const left=angle>Math.PI/2&&angle<Math.PI*1.5;if((forcedSide==="left")!==left)angle+=Math.PI;}
+   const radius=Math.min(rr.width,rr.height)*.515;
+   make(rr.left+rr.width/2+Math.cos(angle)*radius-hr.left,rr.top+rr.height/2+Math.sin(angle)*radius-hr.top,angle+rand(-.12,.12),true,spark,initialPhase,onFinish);
+  };
 
-    ring.style.zIndex = "6";
-    ring.style.pointerEvents = "none";
-    mascot.style.zIndex = "5";
-    mascot.style.pointerEvents = "none";
+  const maintainRingOne=()=>{if(stopped)return;ringPoint(false,undefined,0,maintainRingOne);};
+  for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,rand(0,12000),maintainRingOne);
 
-    const particles: LiveParticle[] = [];
-    const BREATH_MS = 5800;
-    const RELEASE_AT_MS = 2700;
-    let stopped = false;
-    let breathTimer = 0;
-    let releaseTimer = 0;
-    let ringBreath: Animation | null = null;
-    let mascotBreath: Animation | null = null;
+  const sparkBurst=()=>{const count=Math.floor(rand(20,31));for(let i=0;i<count;i++){const side=sparkSide;ringPoint(true,side);sparkSide=side==="right"?"left":"right";}};
+  const seedAmbient=()=>{const w=hero.clientWidth,h=hero.clientHeight;for(let i=0;i<120;i++){const x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,false,rand(0,12000));}};
+  seedAmbient();
+  sparkBurst();
 
-    const removeParticle = (particle: LiveParticle) => {
-      particle.animation.cancel();
-      particle.el.remove();
-      const index = particles.indexOf(particle);
-      if (index >= 0) particles.splice(index, 1);
-    };
+  let last=performance.now();
+  const tick=(now:number)=>{
+   if(stopped)return;
+   const dt=Math.min(64,Math.max(0,now-last));last=now;
+   ambientClock-=dt;sparkClock-=dt;
+   if(sparkClock<=0){sparkBurst();sparkClock=rand(1900,2500);}
+   if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<2;a++){const w=hero.clientWidth,h=hero.clientHeight,x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(150,260);}
+   raf=requestAnimationFrame(tick);
+  };
+  raf=requestAnimationFrame(tick);
 
-    const createParticle = (
-      x: number,
-      y: number,
-      angle: number,
-      spark = false,
-    ) => {
-      if (stopped) return;
-
-      const size = spark ? rand(2.1, 3.6) : rand(2.2, 5.2);
-      const distance = spark ? rand(48, 88) : rand(58, 118);
-      const tangent = rand(-10, 10);
-      const drift = rand(-3, 3);
-      const dx = Math.cos(angle) * distance + Math.cos(angle + Math.PI / 2) * tangent;
-      const dy = Math.sin(angle) * distance + Math.sin(angle + Math.PI / 2) * tangent + drift;
-      const duration = spark ? rand(1800, 2500) : rand(2300, 3200);
-      const peak = spark ? rand(0.78, 0.95) : rand(0.34, 0.66);
-
-      const el = document.createElement("span");
-      el.className = spark ? "hero-live-ember hero-live-spark" : "hero-live-ember";
-      Object.assign(el.style, {
-        position: "absolute",
-        left: `${x}px`,
-        top: `${y}px`,
-        width: `${size}px`,
-        height: `${size}px`,
-        borderRadius: "50%",
-        opacity: "0",
-        background: spark
-          ? "radial-gradient(circle,rgba(255,250,218,1) 0%,rgba(255,190,70,.92) 42%,rgba(255,86,8,0) 100%)"
-          : "radial-gradient(circle,rgba(255,231,174,.95) 0%,rgba(255,139,24,.68) 42%,rgba(255,61,4,0) 100%)",
-        boxShadow: spark
-          ? `0 0 ${Math.max(7, size * 3.8)}px rgba(255,185,55,.65)`
-          : `0 0 ${Math.max(5, size * 2.5)}px rgba(255,116,15,.34)`,
-        contain: "layout style paint",
-      });
-
-      const animation = el.animate(
-        [
-          {
-            transform: "translate3d(0,0,0) scale(.35)",
-            opacity: 0,
-          },
-          {
-            transform: "translate3d(0,0,0) scale(.8)",
-            opacity: peak * 0.35,
-            offset: 0.08,
-          },
-          {
-            transform: `translate3d(${dx * 0.24}px,${dy * 0.24}px,0) scale(1)`,
-            opacity: peak,
-            offset: 0.28,
-          },
-          {
-            transform: `translate3d(${dx * 0.58}px,${dy * 0.58}px,0) scale(${spark ? 0.72 : 0.78})`,
-            opacity: peak * 0.72,
-            offset: 0.58,
-          },
-          {
-            transform: `translate3d(${dx}px,${dy}px,0) scale(.18)`,
-            opacity: 0,
-            offset: 1,
-          },
-        ],
-        {
-          duration,
-          easing: "cubic-bezier(.22,.62,.32,1)",
-          fill: "both",
-        },
-      );
-
-      layer.appendChild(el);
-      const particle = { el, animation };
-      particles.push(particle);
-
-      animation.onfinish = () => {
-        if (stopped) return;
-        removeParticle(particle);
-      };
-    };
-
-    const ringPoint = (angle: number) => {
-      const rr = ring.getBoundingClientRect();
-      const hr = hero.getBoundingClientRect();
-      const radius = Math.min(rr.width, rr.height) * 0.51;
-
-      return {
-        x: rr.left + rr.width / 2 + Math.cos(angle) * radius - hr.left,
-        y: rr.top + rr.height / 2 + Math.sin(angle) * radius - hr.top,
-      };
-    };
-
-    const releaseFromRing = () => {
-      if (stopped) return;
-
-      const sideCount = 9;
-
-      for (let i = 0; i < sideCount; i += 1) {
-        const spread = (i / (sideCount - 1) - 0.5) * 0.72;
-        const leftAngle = Math.PI + spread;
-        const rightAngle = spread;
-
-        const left = ringPoint(leftAngle);
-        const right = ringPoint(rightAngle);
-
-        createParticle(left.x, left.y, leftAngle + rand(-0.08, 0.08));
-        createParticle(right.x, right.y, rightAngle + rand(-0.08, 0.08));
-      }
-
-      for (let i = 0; i < 4; i += 1) {
-        const angle = i % 2 === 0
-          ? rand(-0.32, 0.32)
-          : Math.PI + rand(-0.32, 0.32);
-        const point = ringPoint(angle);
-        createParticle(point.x, point.y, angle + rand(-0.05, 0.05), true);
-      }
-    };
-
-    const breathe = () => {
-      if (stopped) return;
-
-      ringBreath?.cancel();
-      mascotBreath?.cancel();
-
-      const keyframes = [
-        { scale: "1" },
-        { scale: "1.018", offset: 0.22 },
-        { scale: "1.028", offset: 0.5 },
-        { scale: "1.012", offset: 0.78 },
-        { scale: "1", offset: 1 },
-      ];
-
-      ringBreath = ring.animate(keyframes, {
-        duration: BREATH_MS,
-        easing: "ease-in-out",
-        fill: "both",
-      });
-
-      mascotBreath = mascot.animate(keyframes, {
-        duration: BREATH_MS,
-        easing: "ease-in-out",
-        fill: "both",
-      });
-
-      window.clearTimeout(releaseTimer);
-      releaseTimer = window.setTimeout(releaseFromRing, RELEASE_AT_MS);
-      window.clearTimeout(breathTimer);
-      breathTimer = window.setTimeout(breathe, BREATH_MS);
-    };
-
-    breathe();
-
-    return () => {
-      stopped = true;
-      window.clearTimeout(breathTimer);
-      window.clearTimeout(releaseTimer);
-      ringBreath?.cancel();
-      mascotBreath?.cancel();
-      for (const particle of particles) particle.animation.cancel();
-      layer.remove();
-      cleanupStyle.remove();
-    };
-  }, []);
-
-  return null;
+  return()=>{stopped=true;cancelAnimationFrame(raf);for(const e of embers)e.animation.cancel();layer.remove();};
+ },[]);
+ return null;
 }
