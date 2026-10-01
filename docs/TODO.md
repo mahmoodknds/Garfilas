@@ -243,3 +243,9 @@ Status: 🟢 **Synchronized**
 11. Validate the unified composition across mobile, tablet and desktop.
 13. Run production build verification.
 14. Stop before adding new website scope.
+
+## 2026-10-02 Hero Correction Note
+
+- [x] Correct desktop/tablet lower foreground collision by using a normal-flow composition stack.
+- [x] Preserve mobile Hero calibration values while fixing large-screen composition.
+- [ ] Verify fresh desktop/tablet production renders after the correction.
