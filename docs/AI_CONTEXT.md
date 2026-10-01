@@ -237,3 +237,9 @@ Read these first:
 - `docs/AI_CONTEXT.md`
 
 Current working priority: stabilize the foreground composition before rebuilding the background.
+
+# 2026-10-02 Desktop Composition Correction
+
+Direct review of the supplied `1916×1023px` desktop screenshot showed that independent percentage anchors for copy, CTA and scroll cue collapse when the temporary artwork grows on large screens. The implementation now uses a normal-flow `.hero-lower-stack` on tablet/desktop so the foreground reads as one semantic vertical composition: `HeroLogo → CTA → scroll cue`. The HeroLogo contains GARFILAS, LASAGNA, Italian flag and slogan.
+
+Mobile remains on the existing protected absolute-position model. Do not alter mobile CTA `76%`, scroll cue `83.5%`, or slogan margin-top `.60rem` without direct evidence and explicit approval. Do not change particles, ring behavior, Bottom Navigation, or CTA visual effects while validating this correction.
