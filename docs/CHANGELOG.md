@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+### 2026-10-02 Responsive Audit — Unified Hero Composition
+
+#### Changed
+
+- Unified the Hero's vertical composition across mobile, tablet and desktop.
+- Shared anchors are now: mascot/orbit `27.5%`, copy `52.8%`, CTA `76%`, scroll cue `83.5%`.
+- Preserved breakpoint-specific sizing for mascot, ring, logo, LASAGNA and CTA so larger screens still scale appropriately without introducing a separate desktop composition.
+- Removed the tablet/desktop vertical overrides and the short-desktop height override.
+- Mobile values remain unchanged.
+- Bottom Navigation, particles, CTA animation, logo animation and ring behavior were not redesigned.
+
+#### Reason
+
+- The MVP should ship with one stable mobile-first Hero composition instead of maintaining separate tablet/desktop vertical layouts.
+- This removes the previous width-dependent vertical drift that compressed the CTA and scroll region against the fixed Bottom Navigation.
+
+#### Commit
+
+- `01d9dc3b5c45e71522b6b531636d35d70c638829` — refactor(hero): unify responsive vertical composition
+- `73ea495539e80d406e6d544335cdbf867e9dc771` — refactor(hero): remove remaining desktop copy offset
+
+
 ### 2026-10-01 Responsive Audit Foundation
 
 #### Changed
