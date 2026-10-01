@@ -24,7 +24,7 @@ export default function Hero() {
       `}</style>
       <div className="hero-depth-scene" aria-hidden="true"><div className="hero-ember-space"><div className="hero-heat"/><div className="hero-ring-heat"/><div className="hero-dust-far"/><div className="hero-dust-mid"/><div className="hero-dust-near"/><div className="hero-dust-front"/><div className="hero-sparks"/></div><div className="hero-depth-vignette"/></div>
       <div className="hero-orbit hero-orbit-one" aria-hidden="true"/><div className="hero-glow hero-glow-main" aria-hidden="true"/>
-      <div className="hero-shell"><div className="hero-main-composition"><div className="hero-mascot" aria-label="Garfilas hero artwork"><div className="hero-mascot-frame"><img src="/assets/hero/garfilas-hero-final.webp" alt="Garfilas mascot enjoying handmade lasagna" width={1536} height={1024} fetchPriority="high"/></div></div><div className="hero-copy"><HeroLogo/></div><HeroCTA/><div className="hero-scroll-cue" aria-hidden="true" style={{marginTop:"10px"}}><span/><span/><span/></div></div></div>
+      <div className="hero-shell"><div className="hero-main-composition"><div className="hero-mascot" aria-label="Garfilas hero artwork"><div className="hero-mascot-frame"><img src="/assets/hero/garfilas-hero-final.webp" alt="Garfilas mascot enjoying handmade lasagna" width={1536} height={1024} fetchPriority="high"/></div></div><div className="hero-copy"><HeroLogo/></div><HeroCTA/><div className="hero-scroll-cue" aria-hidden="true" ><span/><span/><span/></div></div></div>
     </section>
   );
 }
