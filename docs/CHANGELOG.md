@@ -90,6 +90,26 @@ Landing Page MVP completion after Hero acceptance:
 Last Updated: 2026-10-01
 
 
+
+### 2026-10-02 Responsive Audit — Tablet/Desktop Vertical Rebalance
+
+#### Changed
+
+- Rebalanced the tablet (`700–1099px`) Hero stack: copy `54% → 52%`, CTA `77% → 74%`, scroll cue `86% → 82%`.
+- Rebalanced the wide desktop (`1100px+`) Hero stack: copy `54% → 50%`, CTA `77% → 70%`, scroll cue `86% → 80%`.
+- Kept mobile calibration unchanged, including CTA `76%` and scroll cue `83.5%`.
+- Kept mascot, ring sizes, Bottom Navigation geometry, and particle behavior unchanged.
+- The previous height-only desktop override was superseded because the supplied `1440×900` evidence is not a short-height viewport and therefore did not activate that rule.
+
+#### Evidence
+
+- The supplied `768×900`, `1024×900`, and `1440×900` screenshots showed the CTA/scroll region becoming progressively compressed against the fixed Bottom Navigation as viewport width increased.
+- This pass changes only the vertical Hero composition for tablet and desktop families.
+
+#### Commit
+
+- `9a5f26661dd2bb3c79bd9d2e875c04f426244431` — fix: rebalance tablet and desktop hero stack
+
 ### 2026-10-02 Responsive Audit — Short Desktop Pass
 
 #### Changed
