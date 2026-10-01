@@ -88,3 +88,20 @@ Landing Page MVP completion after Hero acceptance:
 - Local production-build verification
 
 Last Updated: 2026-10-01
+
+### 2026-10-01 Responsive Audit — Structural Pass
+
+#### Verified
+
+- Production deployment `721a7d6a03909a93a283f6e1492faf0ab344df8d` is READY and serving `garfilas.vercel.app` with HTTP 200.
+- Runtime error check for the recent production window returned no reported runtime errors.
+- Responsive rules were inspected at the planned viewport family: 320, 360, 375, 390, 414, 430, 768, 834, 1024, 1280, 1440 and 1600px.
+- Protected Hero calibration values remain unchanged: mobile CTA `76%`, desktop CTA `77%`, mobile scroll cue `83.5%`, desktop scroll cue `86%`, mobile slogan margin `.60rem`, and Bottom Navigation center `50.671875%`.
+- The Bottom Navigation frame now uses `100%` rather than `100vw`, removing the previously identified scrollbar-width overflow source.
+
+#### Findings
+
+- Mobile Hero mascot scaling is continuous through the `699px → 700px` breakpoint.
+- A responsive discontinuity remains in the Hero neon ring at the `699px → 700px` breakpoint: the effective ring width changes from a maximum of `416px` on mobile to a minimum of `480px` on tablet. This is a 64px jump and should be visually checked before changing it.
+- No source change was made for this ring breakpoint during the structural pass because production screenshots at controlled viewport sizes are not available through the current execution environment. This avoids changing an approved visual without direct visual evidence.
+- The next audit pass should use real rendered screenshots at the target viewport sizes, then address only confirmed visual issues one at a time.
