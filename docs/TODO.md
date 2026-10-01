@@ -12,7 +12,7 @@ Only unfinished work belongs here. Completed work is recorded in the session/cha
 - Sprint: 0.4
 - Milestone: Landing Page MVP
 - Current priority: **First-page Hero visual completion**
-- Last Updated: 2026-08-28
+- Last Updated: 2026-10-01
 
 # HIGH PRIORITY
 
@@ -35,6 +35,7 @@ Status: 🟡 **Visual calibration in progress**
 - [x] CTA Persian label positioned on the right
 - [x] CTA Persian color/light aligned with English treatment
 - [x] CTA/slogan vertical spacing increased
+- [x] Mobile slogan moved slightly upward (`margin-top:.60rem`) without changing other Hero elements
 - [x] CTA star accents refined to multi-layer twinkle/glow animation
 - [x] CTA Light Sweep refined to narrow 3s white-gold sweep with restrained orange-gold fringe
 - [x] CTA vertical top/bottom fade added
@@ -42,6 +43,7 @@ Status: 🟡 **Visual calibration in progress**
 - [x] CTA neon breathe timing set to 2s
 - [x] Scroll cue implemented
 - [x] Scroll arrows changed to point upward
+- [x] Mobile scroll cue restored to prior position (`top:83.5%`)
 - [x] Native Bottom Navigation
 - [x] Bottom Navigation center decorative dots removed
 - [x] Bottom Navigation center button calibration locked at `50.671875%`
@@ -229,11 +231,11 @@ Status: 🟢 **Synchronized**
 
 1. Verify the current deployed Hero against the latest reference.
 2. Finalize temporary Hero size, position and single neon ring.
-3. Finalize proportional vertical spacing from Hero through scroll cue above Bottom Navigation.
+3. Finalize proportional vertical spacing from Hero through scroll cue above Bottom Navigation, using the current calibrated CTA and arrow positions as protected values.
 4. Calibrate LASAGNA typography and side lines.
 5. Calibrate Italian flag proportions, taper, fade and glow.
 6. Calibrate slogan typography, size, color and spacing.
-7. Refine CTA geometry only if reference comparison shows a mismatch; preserve approved CTA behavior.
+7. Refine CTA geometry only if reference comparison shows a mismatch; preserve approved CTA behavior. Do not change the current CTA position while calibrating the slogan/arrows.
 8. Precisely reproduce Bottom Navigation geometry and proportions without moving the locked center button unless explicitly requested.
 9. Rebuild the background and architectural composition only after foreground placement is stable.
 10. Replace the temporary Hero artwork and recalibrate its ring.
