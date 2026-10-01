@@ -249,3 +249,12 @@ Status: 🟢 **Synchronized**
 - [x] Correct desktop/tablet lower foreground collision by using a normal-flow composition stack.
 - [x] Preserve mobile Hero calibration values while fixing large-screen composition.
 - [ ] Verify fresh desktop/tablet production renders after the correction.
+
+
+## 2026-10-02 Full Mobile Geometry Unification
+
+- [x] Remove the separate tablet/desktop Hero sizing path.
+- [x] Share the mobile-calibrated Hero geometry across desktop.
+- [x] Remove the unused desktop composition wrapper from Hero markup.
+- [ ] Verify a fresh desktop production render at 1916×1023 or equivalent.
+- [ ] Run production build verification.
