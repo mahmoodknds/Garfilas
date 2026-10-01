@@ -98,3 +98,51 @@ No intentional changes were made to the accepted foreground structure:
 ---
 
 Last Updated: 2026-08-28
+
+
+---
+
+### Latest Session: Hero Foreground Vertical Calibration, Slogan and Scroll Cue
+
+**Date:** 2026-10-01
+
+## Scope
+
+This pass was intentionally limited to small vertical-calibration corrections in the existing Hero. No new visual system was introduced and no particle/background work was re-applied.
+
+## Changes
+
+- Restored the mobile upward scroll cue to its prior position: `.hero-scroll-cue { top:83.5%; }`.
+- Preserved the CTA positions while restoring the arrows.
+- Moved only the mobile slogan slightly upward by changing `.hero-slogan` mobile `margin-top` from `.72rem` to `.60rem`.
+- No other Hero element was changed by the slogan adjustment.
+
+## Current Exact Positioning
+
+- Base CTA: `top:74.5%`
+- Mobile CTA: `top:76%`
+- Desktop CTA: `top:77%`
+- Base scroll cue: `top:83.9%`
+- Mobile scroll cue: `top:83.5%`
+- Desktop scroll cue: `top:86%`
+- Mobile slogan margin-top: `.60rem`
+- Existing scroll cue inline margin-top remains `10px`.
+
+## Important Particle/Baseline Protection
+
+The Hero particle/background experiments from September were not reintroduced. The project remains content-equivalent to the user-requested `4987502c308741d97aff7b5b1d3cbe7faabdad68` baseline for the restored particle engine and global CSS, with later focused Hero calibration commits layered on top.
+
+## Latest Commits
+
+- `9184b226714e7b7d83e2f3517bd6d538a2b67b8d` — restore scroll arrows position
+- `e84ff9f777d4e999499f57a362785f6225a55f04` — raise mobile slogan slightly
+
+## Exact Next Actions
+
+1. Open the latest deployed/mobile output and compare the complete foreground stack directly with the reference.
+2. Do not move CTA, arrows, logo, LASAGNA, flag or Hero artwork unless the reference shows a specific mismatch.
+3. Continue one-variable-at-a-time visual calibration.
+4. Keep the restored particle baseline protected.
+5. Run production build verification before final Hero acceptance.
+
+Last Updated: 2026-10-01
