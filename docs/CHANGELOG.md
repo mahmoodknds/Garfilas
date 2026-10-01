@@ -236,3 +236,11 @@ Last Updated: 2026-10-01
 #### Commit
 
 - `2f7b60c12979fa994cabe79f43ecf850264c1c35` — `fix(hero): use mobile geometry directly on desktop`
+
+
+### 2026-10-02 Mobile Geometry Restored as the Direct Desktop Baseline
+
+- Removed the active `@media(min-width:700px)` Hero composition override from `app/globals.css`.
+- Desktop now uses the same mobile-first Hero geometry directly for mascot/orbit, copy, CTA and scroll cue.
+- Preserved artwork, particles, CTA effects, logo treatment and Bottom Navigation.
+- Commit: `2f7b60c12979fa994cabe79f43ecf850264c1c35` (`fix(hero): use mobile geometry directly on desktop`).
