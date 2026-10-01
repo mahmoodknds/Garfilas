@@ -89,6 +89,25 @@ Landing Page MVP completion after Hero acceptance:
 
 Last Updated: 2026-10-01
 
+
+### 2026-10-02 Responsive Audit — Short Desktop Pass
+
+#### Changed
+
+- Added a height-aware desktop refinement for `1100px+` viewports with `max-height:749px`.
+- On short desktop viewports only, moved the Hero copy from `54%` to `50.5%`, CTA from `77%` to `69%`, and scroll cue from `86%` to `77%`.
+- Preserved all mobile values and the normal `1100px+` desktop values for taller viewports.
+- Bottom Navigation geometry was not changed.
+
+#### Reason
+
+- Supplied desktop evidence showed the CTA and scroll area becoming too close to the fixed Bottom Navigation on a short-height desktop render.
+- The adjustment targets vertical composition only and avoids changing artwork scale, ring geometry, or protected mobile calibration.
+
+#### Commit
+
+- `78be07d4eacbb9d3ced24efdafb8b191c8d7626a` — fix: rebalance short desktop hero spacing
+
 ### 2026-10-01 Responsive Audit — Structural Pass
 
 #### Verified
