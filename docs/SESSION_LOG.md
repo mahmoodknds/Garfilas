@@ -193,3 +193,44 @@ The MVP does not need separate tablet and desktop Hero compositions yet. One sta
 3. Keep the temporary artwork and single-ring direction unchanged.
 4. Do not rebuild background architecture before foreground acceptance.
 5. Run production build verification.
+
+
+### Latest Session: Desktop Hero Stack Correction
+
+**Date:** 2026-10-02
+
+## Scope
+
+Corrected the desktop/tablet Hero after direct review of the supplied `1916×1023px` screenshot.
+
+## Finding
+
+The previous shared percentage-position model was not sufficient on large screens. The enlarged temporary artwork consumed too much vertical space while the copy, CTA and scroll cue retained independent percentage anchors, causing the lower foreground elements to collapse into the Bottom Navigation area.
+
+## Changes
+
+- Added `.hero-lower-stack` for tablet/desktop.
+- Stack order is `HeroLogo → CTA → scroll cue`; `HeroLogo` internally contains GARFILAS, LASAGNA, Italian flag and slogan.
+- The lower stack begins from the existing `52.8%` copy anchor and lays its elements out in normal flow.
+- Mobile remains on the existing absolute-position model so the protected mobile calibration is not disturbed.
+- Reduced wide-desktop mascot sizing to `clamp(26rem,30vw,29rem)`.
+- Did not change particles, ring behavior, CTA visual treatment, Bottom Navigation geometry, or background direction.
+
+## Commits
+
+- `27cdad4ce587eb8b944d89ea0e3cb301222eb8a1` — fix(hero): stack desktop lower composition
+- `1708a6aa9e7a4d91c72e385f2fc29336020bf6d7` — fix(hero): stack desktop lower composition
+
+## Verification State
+
+- Direct screenshot evidence reviewed: completed.
+- Source-level correction: completed.
+- Fresh production render verification: pending.
+- Production build verification: pending.
+
+## Next Actions
+
+1. Review fresh desktop and tablet renders.
+2. Confirm mobile remains visually unchanged.
+3. Adjust only confirmed geometry mismatches.
+4. Run production build verification.
