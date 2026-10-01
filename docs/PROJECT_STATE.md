@@ -7,7 +7,7 @@
 - Milestone: Landing Page MVP
 - Repository: GitHub / `main`
 - Status: Active Development
-- Last Updated: 2026-10-01
+- Last Updated: 2026-10-02
 
 ## Current Objective
 
@@ -65,12 +65,12 @@ The slogan remains HTML text:
 
 ## Exact Current Hero Positioning
 
-- Base CTA: `top:74.5%`
-- Mobile CTA: `top:76%`
-- Desktop CTA: `top:77%`
-- Base scroll cue: `top:83.9%`
-- Mobile scroll cue: `top:83.5%`
-- Desktop scroll cue: `top:86%`
+- Unified CTA: `top:76%`
+- Unified scroll cue: `top:83.5%`
+- Unified Hero mascot/orbit vertical anchor: `27.5%`
+- Unified Hero copy vertical anchor: `52.8%`
+- Mobile uses the same composition values directly.
+- Tablet and desktop now use the same vertical composition; artwork/logo/button sizing remains breakpoint-specific.
 - Existing scroll cue inline `marginTop:"10px"` is unchanged.
 - Mobile slogan `margin-top`: `.60rem`.
 
@@ -152,7 +152,7 @@ Latest change:
 
 ## Exact Next Step
 
-1. Verify the latest deployed layout against the latest reference.
+1. Verify the latest deployed layout against the latest reference, especially tablet and desktop using the unified mobile-first composition.
 2. Finalize proportional vertical placement of temporary Hero, logo stack, slogan, CTA and scroll cue.
 3. Keep only the single Hero neon ring while temporary artwork sizing is calibrated.
 4. Finalize LASAGNA, side lines, flag and slogan against direct reference comparison.
