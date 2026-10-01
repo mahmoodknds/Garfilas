@@ -142,6 +142,7 @@ Latest change:
 - Mobile slogan position: raised slightly to `.60rem` margin-top
 - Local `npm run build`: not verified in this documentation update
 - Production visual verification: pending
+- Responsive audit foundation: implemented for safe-area handling, tablet scaling and desktop scaling
 - Final Hero acceptance: pending
 
 ## Latest Calibration Commits
