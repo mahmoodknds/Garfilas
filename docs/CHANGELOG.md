@@ -181,3 +181,26 @@ Last Updated: 2026-10-01
 
 - The recording is dated 2026-08-31, so it is useful as mobile visual evidence but is not treated as proof of the current 2026-10-01 production render.
 - Desktop/tablet visual evidence is still required before changing the responsive ring breakpoint or any desktop proportions.
+
+
+### 2026-10-02 Desktop Hero Composition Correction
+
+#### Evidence
+
+- Reviewed the supplied desktop screenshot at `1916×1023px`.
+- The shared percentage anchors exposed a desktop collision: the enlarged temporary artwork compressed the lower foreground stack, causing the slogan, CTA and scroll cue to enter the Bottom Navigation region.
+
+#### Change
+
+- Added a desktop/tablet lower composition stack with the semantic order `GARFILAS → LASAGNA → Italian flag → slogan → CTA → scroll cue`.
+- The stack is positioned as one composition from the existing `52.8%` copy anchor rather than independently positioning copy, CTA and scroll cue with separate desktop percentages.
+- Mobile behavior remains unchanged, including protected CTA `76%`, scroll cue `83.5%`, and slogan margin-top `.60rem`.
+- Reduced the wide-desktop temporary mascot width from the previous `clamp(29rem,32vw,34rem)` to `clamp(26rem,30vw,29rem)` so the artwork does not consume the lower copy area.
+- Preserved the Bottom Navigation, particles, ring animation, logo animation, CTA animation styling, colors and typography.
+
+#### Verification State
+
+- Source-level implementation: completed.
+- Supplied desktop evidence: addressed at source level.
+- Fresh production screenshot verification: pending.
+- Production build verification: pending.
