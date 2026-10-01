@@ -223,3 +223,16 @@ Last Updated: 2026-10-01
 
 - ec21653f0fbae0cc0d42503f3c146125e7471647 — fix(hero): unify desktop with mobile composition
 - 32b62cb9a8c96c866147f01ff13f3a5aec9419f1 — fix(hero): remove desktop-only composition wrapper
+
+
+### 2026-10-02 Mobile Geometry Restored as the Direct Desktop Baseline
+
+#### Changed
+
+- Removed the active `@media(min-width:700px)` Hero composition override from `app/globals.css`.
+- Desktop now falls through to the same mobile-first Hero geometry directly: mascot/orbit, copy, CTA and scroll cue keep the shared base positioning and sizing rules.
+- Preserved artwork, particle engine, CTA effects, logo treatment and Bottom Navigation.
+
+#### Commit
+
+- `2f7b60c12979fa994cabe79f43ecf850264c1c35` — `fix(hero): use mobile geometry directly on desktop`
