@@ -7,7 +7,7 @@
 - Milestone: Landing Page MVP
 - Repository: GitHub / `main`
 - Status: Active Development
-- Last Updated: 2026-08-28
+- Last Updated: 2026-10-01
 
 ## Current Objective
 
@@ -60,7 +60,19 @@ The slogan remains HTML text:
 
 - Current font/spacing/color treatment remains under visual calibration.
 - Previous `line-height` experiments did not materially increase visible glyph height and are not considered a solution for future typography changes.
+- Latest mobile slogan calibration: `margin-top` changed from `.72rem` to `.60rem`, moving only the slogan slightly upward.
 - Do not distort the slogan vertically without a direct reference comparison.
+
+## Exact Current Hero Positioning
+
+- Base CTA: `top:74.5%`
+- Mobile CTA: `top:76%`
+- Desktop CTA: `top:77%`
+- Base scroll cue: `top:83.9%`
+- Mobile scroll cue: `top:83.5%`
+- Desktop scroll cue: `top:86%`
+- Existing scroll cue inline `marginTop:"10px"` is unchanged.
+- Mobile slogan `margin-top`: `.60rem`.
 
 ## Menu CTA State
 
@@ -126,9 +138,16 @@ Latest change:
 - CTA/slogan spacing: increased
 - Bottom Navigation: implemented; final calibration pending
 - Scroll cue direction: completed; upward arrows
+- Mobile scroll cue position: restored to `83.5%`
+- Mobile slogan position: raised slightly to `.60rem` margin-top
 - Local `npm run build`: not verified in this documentation update
 - Production visual verification: pending
 - Final Hero acceptance: pending
+
+## Latest Calibration Commits
+
+- `9184b226714e7b7d83e2f3517bd6d538a2b67b8d` — restore scroll arrows position
+- `e84ff9f777d4e999499f57a362785f6225a55f04` — raise mobile slogan slightly
 
 ## Exact Next Step
 
