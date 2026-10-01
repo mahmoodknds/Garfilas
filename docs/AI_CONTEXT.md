@@ -243,3 +243,18 @@ Current working priority: stabilize the foreground composition before rebuilding
 Direct review of the supplied `1916×1023px` desktop screenshot showed that independent percentage anchors for copy, CTA and scroll cue collapse when the temporary artwork grows on large screens. The implementation now uses a normal-flow `.hero-lower-stack` on tablet/desktop so the foreground reads as one semantic vertical composition: `HeroLogo → CTA → scroll cue`. The HeroLogo contains GARFILAS, LASAGNA, Italian flag and slogan.
 
 Mobile remains on the existing protected absolute-position model. Do not alter mobile CTA `76%`, scroll cue `83.5%`, or slogan margin-top `.60rem` without direct evidence and explicit approval. Do not change particles, ring behavior, Bottom Navigation, or CTA visual effects while validating this correction.
+
+
+# 2026-10-02 Full Mobile Geometry Rule
+
+The Hero must use the mobile-calibrated geometry as the shared base across mobile, tablet and desktop. Do not maintain a separate tablet/desktop Hero sizing or composition block unless the user explicitly requests a different large-screen composition.
+
+Current protected geometry:
+
+- Mascot/orbit anchor: 27.5%
+- Hero copy anchor: 52.8%
+- CTA anchor: 76%
+- Scroll cue anchor: 83.5%
+- Mobile-calibrated mascot/ring sizing is the shared sizing baseline.
+
+The active Hero markup no longer uses .hero-lower-stack; HeroLogo, CTA and scroll cue are direct siblings inside .hero-shell. Preserve particles, ring behavior, CTA effects, logo animation and Bottom Navigation while validating this rule.
