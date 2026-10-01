@@ -126,19 +126,19 @@ Landing Page MVP
 
 |--------|------------|
 
-| Framework | Next.js 15 App Router |
+| Framework | Next.js 16.2.10 App Router |
 
 | Language | TypeScript |
 
 | Styling | TailwindCSS |
 
-| Animation | Framer Motion |
+| Animation | Lightweight CSS animations |
 
 | Icons | Lucide React |
 
-| State | Zustand |
+| State | Not introduced yet |
 
-| ORM | Prisma |
+| ORM | Not introduced in Landing Page MVP |
 
 | Database | PostgreSQL |
 
@@ -158,29 +158,14 @@ Landing Page MVP
 
 ```
 
-src/
-
-
+app/
 
 ├── app/
-
-├── core/
-
-├── entities/
-
-├── features/
-
-├── hooks/
-
+├── components/
+├── config/
 ├── lib/
-
-├── shared/
-
 ├── styles/
-
-├── types/
-
-└── widgets/
+└── docs/
 
 ```
 
@@ -237,6 +222,8 @@ README.md
 
 
 Every AI and every developer should read these documents before starting development.
+
+The current Hero is in visual calibration. The latest mobile slogan adjustment moved only the slogan slightly upward; the latest arrow adjustment restored the mobile scroll cue to its prior position. Current protected values are documented in `PROJECT_STATE.md`.
 
 
 
