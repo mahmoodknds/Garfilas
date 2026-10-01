@@ -1374,7 +1374,39 @@ Represents the philosophy of the entire project.
 
 
 
-\# Future ADRs
+\# ADR-023
+
+## Hero Visual Calibration Discipline
+
+Status
+
+✅ Approved
+
+Decision
+
+Hero visual calibration must use one-variable-at-a-time changes. Existing approved element positions and the restored particle baseline are protected unless the user explicitly requests a change.
+
+Current protected mobile values
+
+- CTA top: `76%`
+- Scroll cue top: `83.5%`
+- Slogan margin-top: `.60rem`
+
+Baseline protection
+
+The restored particle engine and global CSS are based on the user-requested `4987502c308741d97aff7b5b1d3cbe7faabdad68` baseline. Later visual experiments must not be silently reintroduced.
+
+Reason
+
+Small Hero adjustments can shift the perceived balance of the entire vertical composition. Isolating changes makes regressions easier to identify and revert.
+
+Impact
+
+Future Hero calibration should inspect the current implementation first, modify only the requested variable, and record the exact value in project documentation.
+
+---
+
+# Future ADRs
 
 
 
@@ -1454,7 +1486,7 @@ Last Updated
 
 
 
-2026-07-21
+2026-10-01
 
 
 
