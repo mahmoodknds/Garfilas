@@ -204,3 +204,22 @@ Last Updated: 2026-10-01
 - Supplied desktop evidence: addressed at source level.
 - Fresh production screenshot verification: pending.
 - Production build verification: pending.
+
+
+### 2026-10-02 Responsive Composition Correction — Full Mobile Geometry Shared Across Viewports
+
+#### Changed
+
+- Removed the tablet/desktop-specific Hero media block from app/globals.css.
+- Promoted the mobile-calibrated Hero geometry to the shared base rules, including mascot/ring sizing and the existing 27.5% / 52.8% / 76% / 83.5% anchors.
+- Removed the unused .hero-lower-stack structural wrapper from Hero.tsx so the Hero foreground has the same direct element structure at every viewport width.
+- Preserved the existing Hero artwork, ring, particles, CTA effects, logo animation, Bottom Navigation and typography.
+
+#### Reason
+
+- The previous desktop correction still left a distinct large-screen sizing/composition path. The requested behavior is for desktop to open with the same mobile-calibrated Hero composition rather than a separate desktop layout.
+
+#### Commits
+
+- ec21653f0fbae0cc0d42503f3c146125e7471647 — fix(hero): unify desktop with mobile composition
+- 32b62cb9a8c96c866147f01ff13f3a5aec9419f1 — fix(hero): remove desktop-only composition wrapper
