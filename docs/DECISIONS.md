@@ -1406,9 +1406,10 @@ Future Hero calibration should inspect the current implementation first, modify 
 
 Responsive composition rule
 
-- The Hero uses one mobile-first vertical composition across mobile, tablet and desktop.
-- Shared vertical anchors are mascot/orbit `27.5%`, copy `52.8%`, CTA `76%`, and scroll cue `83.5%`.
-- Breakpoint-specific sizing is allowed for larger viewports; it must not become a separate vertical composition without direct visual evidence and explicit approval.
+- The Hero uses one mobile-first semantic vertical composition across mobile, tablet and desktop.
+- Mobile keeps the protected calibrated anchors: mascot/orbit `27.5%`, copy `52.8%`, CTA `76%`, scroll cue `83.5%`.
+- Tablet/desktop use the same semantic order through normal flow (`HeroLogo → CTA → scroll cue`) beginning from the existing `52.8%` copy anchor, rather than independent desktop percentages.
+- Breakpoint-specific sizing is allowed for larger viewports; it must not become a separate visual composition without direct visual evidence and explicit approval.
 
 ---
 
@@ -1502,3 +1503,8 @@ Documentation Version
 
 2.0.0
 
+
+
+### Responsive Composition Correction
+
+The direct desktop screenshot review on 2026-10-02 demonstrated that shared percentage values alone do not guarantee a stable large-screen composition when artwork size changes. The approved direction is therefore one semantic composition with normal-flow stacking on tablet/desktop, while preserving the existing mobile calibration.
