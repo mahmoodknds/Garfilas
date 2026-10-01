@@ -12,7 +12,7 @@ Only unfinished work belongs here. Completed work is recorded in the session/cha
 - Sprint: 0.4
 - Milestone: Landing Page MVP
 - Current priority: **First-page Hero visual completion**
-- Last Updated: 2026-10-01
+- Last Updated: 2026-10-02
 
 # HIGH PRIORITY
 
@@ -52,6 +52,7 @@ Status: 🟡 **Visual calibration in progress**
 - [x] Background architecture temporarily deferred
 - [x] GARFILAS electrical-fault animation cycle slowed to 15s
 - [x] Responsive foundation
+- [x] Unified Hero vertical composition across mobile, tablet and desktop
 - [x] Reduced-motion support
 
 ### Remaining
@@ -91,7 +92,7 @@ Status: 🟡 **Visual calibration in progress**
 #### Verification
 
 - [ ] Final mobile visual acceptance
-- [ ] Desktop responsive calibration
+- [ ] Final cross-viewport visual verification of the unified Hero composition
 - [ ] Local production build verification
 - [ ] Production deployment verification
 
@@ -239,7 +240,6 @@ Status: 🟢 **Synchronized**
 8. Precisely reproduce Bottom Navigation geometry and proportions without moving the locked center button unless explicitly requested.
 9. Rebuild the background and architectural composition only after foreground placement is stable.
 10. Replace the temporary Hero artwork and recalibrate its ring.
-11. Validate mobile.
-12. Validate desktop.
+11. Validate the unified composition across mobile, tablet and desktop.
 13. Run production build verification.
 14. Stop before adding new website scope.
