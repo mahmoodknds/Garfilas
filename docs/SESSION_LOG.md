@@ -269,3 +269,10 @@ The previous desktop/tablet composition path was removed. The Hero now uses the 
 The desktop-specific Hero flow override was removed. Desktop now uses the same mobile-first Hero geometry directly from the shared base CSS, with no separate desktop composition block.
 
 **Commit:** `2f7b60c12979fa994cabe79f43ecf850264c1c35`
+
+
+## 2026-10-02 Desktop Geometry Match
+
+The desktop-specific Hero flow override was removed. Desktop now uses the same mobile-first Hero geometry directly from the shared base CSS, with no separate desktop composition block.
+
+**Commit:** `2f7b60c12979fa994cabe79f43ecf850264c1c35`
