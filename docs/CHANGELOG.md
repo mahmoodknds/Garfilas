@@ -105,3 +105,18 @@ Last Updated: 2026-10-01
 - A responsive discontinuity remains in the Hero neon ring at the `699px → 700px` breakpoint: the effective ring width changes from a maximum of `416px` on mobile to a minimum of `480px` on tablet. This is a 64px jump and should be visually checked before changing it.
 - No source change was made for this ring breakpoint during the structural pass because production screenshots at controlled viewport sizes are not available through the current execution environment. This avoids changing an approved visual without direct visual evidence.
 - The next audit pass should use real rendered screenshots at the target viewport sizes, then address only confirmed visual issues one at a time.
+
+### 2026-10-01 Responsive Audit — Mobile Evidence Pass
+
+#### Evidence Reviewed
+
+- Reviewed the supplied Garfilas screen recording at `324×720px` viewport-class resolution (`SVID_20260831_101029_1.mp4`).
+- Across sampled frames, the Hero foreground stack remains stable: mascot/ring, GARFILAS, LASAGNA, slogan, CTA, scroll cue and Bottom Navigation do not visibly collide.
+- Bottom Navigation remains anchored to the lower edge while the center button stays visually centered.
+- The scroll cue remains separated from the CTA and Bottom Navigation at this mobile size.
+- Particle motion changes density over time, but the main foreground geometry remains stable in the supplied recording.
+
+#### Limitation
+
+- The recording is dated 2026-08-31, so it is useful as mobile visual evidence but is not treated as proof of the current 2026-10-01 production render.
+- Desktop/tablet visual evidence is still required before changing the responsive ring breakpoint or any desktop proportions.
