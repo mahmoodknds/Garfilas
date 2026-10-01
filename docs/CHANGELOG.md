@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### 2026-10-01 Responsive Audit Foundation
+
+#### Changed
+
+- Added safe-area-aware Hero shell bottom padding without changing protected CTA/scroll positions.
+- Added explicit tablet (`700–1099px`) Hero scaling rules.
+- Added explicit wide-desktop (`1100px+`) Hero scaling rules so large screens do not inherit mobile-sized artwork.
+- Changed Bottom Navigation frame width from `100vw` to `100%` to avoid viewport-width overflow caused by scrollbar geometry.
+
 ### 2026-10-01 Hero Calibration
 
 #### Changed
