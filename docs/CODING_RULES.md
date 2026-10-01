@@ -2,7 +2,7 @@
 
 \## Garfilas Coding Standards
 
-\### Version 1.0.0
+\### Version 1.1.0
 
 
 
@@ -1294,7 +1294,7 @@ Critical logic should always be testable.
 
 
 
-Whenever architecture changes
+Whenever architecture or significant visual calibration changes
 
 
 
@@ -1354,6 +1354,10 @@ Do not redesign approved systems.
 
 
 
+For visual calibration, change one relevant variable at a time and preserve all already-approved element positions.
+
+
+
 Do not add unnecessary dependencies.
 
 
@@ -1394,7 +1398,7 @@ Last Updated
 
 
 
-2026-07-21
+2026-10-01
 
 
 
@@ -1402,5 +1406,5 @@ Version
 
 
 
-1.0.0
+1.1.0
 
