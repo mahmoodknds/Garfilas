@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+### 2026-10-01 Hero Calibration
+
+#### Changed
+
+- Restored the mobile Hero scroll cue to `top:83.5%` after the temporary arrow-position adjustment.
+- Preserved the current CTA positions: base `74.5%`, mobile `76%`, desktop `77%`.
+- Moved only the mobile slogan slightly upward by changing its `margin-top` from `.72rem` to `.60rem`.
+- Kept the existing scroll cue inline `marginTop:"10px"` unchanged.
+- Preserved the restored Hero particle/global-CSS baseline requested from commit `4987502c308741d97aff7b5b1d3cbe7faabdad68`.
+
+#### Commits
+
+- `9184b226714e7b7d83e2f3517bd6d538a2b67b8d` — restore scroll arrows position
+- `e84ff9f777d4e999499f57a362785f6225a55f04` — raise mobile slogan slightly
+
+
 ### Added
 
 - Independent HTML LASAGNA lockup with two side lines
@@ -62,4 +78,4 @@ Landing Page MVP completion after Hero acceptance:
 - Performance optimization
 - Local production-build verification
 
-Last Updated: 2026-08-23
+Last Updated: 2026-10-01
