@@ -146,3 +146,50 @@ The Hero particle/background experiments from September were not reintroduced. T
 5. Run production build verification before final Hero acceptance.
 
 Last Updated: 2026-10-01
+
+
+### Latest Session: Unified Responsive Hero Composition
+
+**Date:** 2026-10-02
+
+## Scope
+
+The Hero responsive strategy was simplified for the Landing Page MVP. The mobile-first composition is now shared across mobile, tablet and desktop while breakpoint-specific sizing remains available for larger screens.
+
+## Changes
+
+- Unified Hero vertical anchors:
+  - Mascot/orbit: `27.5%`
+  - Hero copy: `52.8%`
+  - CTA: `76%`
+  - Scroll cue: `83.5%`
+- Removed tablet-specific and desktop-specific vertical offsets.
+- Removed the short-desktop height override because it is no longer needed by the shared composition.
+- Preserved breakpoint-specific artwork, ring, logo, LASAGNA and CTA sizing.
+- Preserved the Bottom Navigation, particle engine, ring animation, CTA animations and logo animation.
+- No background redesign was introduced.
+
+## Reason
+
+The MVP does not need separate tablet and desktop Hero compositions yet. One stable mobile-first vertical system reduces responsive drift and avoids spending calibration time on separate desktop positioning before the foreground is accepted.
+
+## Commits
+
+- `01d9dc3b5c45e71522b6b531636d35d70c638829` — refactor(hero): unify responsive vertical composition
+- `73ea495539e80d406e6d544335cdbf867e9dc771` — refactor(hero): remove remaining desktop copy offset
+
+## Verification State
+
+- Source-level responsive override inspection: completed.
+- Mobile protected values: preserved.
+- Tablet/desktop vertical overrides: removed.
+- Production visual verification: still pending.
+- Production build verification: still pending.
+
+## Exact Next Actions
+
+1. Review the latest deployed Hero at representative mobile, tablet and desktop sizes.
+2. If a mismatch is found, change only the confirmed variable and preserve the shared composition rule.
+3. Keep the temporary artwork and single-ring direction unchanged.
+4. Do not rebuild background architecture before foreground acceptance.
+5. Run production build verification.
