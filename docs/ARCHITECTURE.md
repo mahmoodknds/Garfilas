@@ -2,7 +2,7 @@
 
 ## Garfilas System Architecture
 
-### Version 1.1.0
+### Version 1.2.0
 
 ---
 
@@ -126,6 +126,8 @@ Current Landing Page MVP sections:
 - Story
 - Bottom Navigation
 
+Hero-specific components currently include `Hero.tsx`, `HeroLogo.tsx`, `HeroCTA.tsx`, and `HeroParticleEngine.tsx`.
+
 Future sections should follow the same feature-based structure.
 
 ## components/ui/
@@ -188,7 +190,7 @@ Home
  └── Bottom Navigation
 ```
 
-The homepage remains mobile-first, premium, dark, minimal and lightweight. The first screen intentionally remains without the mascot.
+The homepage remains mobile-first, premium, dark, minimal and lightweight. The active Hero includes the current temporary Garfield + lasagna artwork as a temporary foreground asset; final artwork replacement remains pending.
 
 ---
 
@@ -225,4 +227,4 @@ Next planned sections:
 - SEO foundation
 - Performance audit
 
-Last Updated: 2026-08-04
+Last Updated: 2026-10-01
