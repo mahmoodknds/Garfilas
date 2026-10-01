@@ -234,3 +234,31 @@ The previous shared percentage-position model was not sufficient on large screen
 2. Confirm mobile remains visually unchanged.
 3. Adjust only confirmed geometry mismatches.
 4. Run production build verification.
+
+
+### Latest Session: Full Mobile Geometry Shared Across Viewports
+
+**Date:** 2026-10-02
+
+## Scope
+
+The previous desktop/tablet composition path was removed. The Hero now uses the mobile-calibrated geometry as the shared base across desktop as well.
+
+## Changes
+
+- Removed the min-width:700px Hero sizing/positioning block from app/globals.css.
+- Shared Hero geometry now uses the mobile-calibrated values directly, including mascot/ring sizing and the protected anchors 27.5%, 52.8%, 76% and 83.5%.
+- Removed the .hero-lower-stack wrapper from the active Hero markup. The Hero copy, CTA and scroll cue are direct siblings of the mascot inside .hero-shell.
+- Preserved all existing particle, ring, CTA, logo and Bottom Navigation behavior.
+
+## Verification State
+
+- Source implementation: completed.
+- Vercel production deployment: queued/building for the latest commits at the time of this update.
+- Fresh rendered desktop screenshot: not available in the current execution environment.
+- Production build verification: pending.
+
+## Commits
+
+- ec21653f0fbae0cc0d42503f3c146125e7471647 — fix(hero): unify desktop with mobile composition
+- 32b62cb9a8c96c866147f01ff13f3a5aec9419f1 — fix(hero): remove desktop-only composition wrapper
