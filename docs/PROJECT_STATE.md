@@ -179,3 +179,13 @@ Latest change:
 - Mobile remains unchanged to protect the approved mobile geometry.
 - Wide-desktop temporary mascot sizing is now `clamp(26rem,30vw,29rem)`.
 - Fresh production visual verification and build verification remain pending.
+
+
+## 2026-10-02 Full Mobile Geometry Unification
+
+- The prior tablet/desktop Hero sizing path was removed.
+- Desktop now inherits the same mobile-calibrated Hero geometry instead of a separate large-screen composition.
+- Protected anchors remain mascot/orbit 27.5%, copy 52.8%, CTA 76%, scroll cue 83.5%.
+- The unused .hero-lower-stack wrapper was removed from Hero.tsx.
+- Existing ring, particle, CTA, logo animation and Bottom Navigation behavior were preserved.
+- Fresh production visual verification remains pending.
