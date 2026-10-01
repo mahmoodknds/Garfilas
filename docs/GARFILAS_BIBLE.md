@@ -2,7 +2,7 @@
 
 ## Official Source of Truth
 
-### Version: 2.2.0
+### Version: 2.3.0
 
 ---
 
@@ -289,10 +289,12 @@ Tag
 - GitHub: Connected
 - Vercel: Connected
 - Landing Hero: In Development / Visual Calibration
+- Latest slogan calibration: mobile slogan moved slightly upward only; no other Hero elements changed in that commit
+- Latest CTA/arrow calibration: CTA position preserved; mobile scroll arrows restored to prior position
 - Menu: Planned
 - Checkout: Planned
 - Admin: Future
-- Latest Hero arrow calibration: upward arrows positioned lower on mobile and desktop
+- Latest Hero arrow calibration: mobile arrows restored to the prior lower position
 - Latest Bottom Navigation calibration: center button position locked; center dots removed
 
 ---
@@ -322,5 +324,5 @@ Not Pages.
 
 ---
 
-Last Updated: 2026-08-23
-Documentation Version: 2.2.0
+Last Updated: 2026-10-01
+Documentation Version: 2.3.0
