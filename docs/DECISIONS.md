@@ -1404,6 +1404,12 @@ Impact
 
 Future Hero calibration should inspect the current implementation first, modify only the requested variable, and record the exact value in project documentation.
 
+Responsive composition rule
+
+- The Hero uses one mobile-first vertical composition across mobile, tablet and desktop.
+- Shared vertical anchors are mascot/orbit `27.5%`, copy `52.8%`, CTA `76%`, and scroll cue `83.5%`.
+- Breakpoint-specific sizing is allowed for larger viewports; it must not become a separate vertical composition without direct visual evidence and explicit approval.
+
 ---
 
 # Future ADRs
