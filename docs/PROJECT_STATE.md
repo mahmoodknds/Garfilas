@@ -171,3 +171,11 @@ Latest change:
 - Work backlog: `docs/TODO.md`
 - AI continuity: `docs/AI_CONTEXT.md`
 - Current visual source: user-supplied mobile reference screenshot
+
+## 2026-10-02 Desktop Composition Correction
+
+- The previous shared percentage-anchor approach was visually insufficient on large screens, based on the supplied `1916×1023px` screenshot.
+- Tablet/desktop now use a single lower foreground stack beginning at the existing `52.8%` copy anchor: HeroLogo, CTA, then scroll cue.
+- Mobile remains unchanged to protect the approved mobile geometry.
+- Wide-desktop temporary mascot sizing is now `clamp(26rem,30vw,29rem)`.
+- Fresh production visual verification and build verification remain pending.
