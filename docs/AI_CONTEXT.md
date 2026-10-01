@@ -61,6 +61,8 @@ Current approved direction:
 - Persian `منو` is on the right; English `Menu` is on the left.
 - Persian color/light treatment is aligned with the English `Menu` treatment.
 - The gap between the slogan and CTA was increased from the previously cramped state.
+- Current mobile slogan was moved slightly upward by reducing its `margin-top` from `.72rem` to `.60rem`.
+- No other Hero element was changed by the latest slogan adjustment.
 - Two small four-point star accents sit symmetrically near the left/right edges.
 - Star animation is a multi-layer twinkle/glow, not a simple scale animation. Stars must not jump from outside the button into position and must not resize during the animation.
 - CTA has a thin orange/gold neon outline and dark translucent interior.
