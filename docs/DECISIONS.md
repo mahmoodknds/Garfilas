@@ -1493,7 +1493,7 @@ Last Updated
 
 
 
-2026-10-01
+2026-10-02
 
 
 
@@ -1507,4 +1507,4 @@ Documentation Version
 
 ### Responsive Composition Correction
 
-The direct desktop screenshot review on 2026-10-02 demonstrated that shared percentage values alone do not guarantee a stable large-screen composition when artwork size changes. The approved direction is therefore one semantic composition with normal-flow stacking on tablet/desktop, while preserving the existing mobile calibration.
+The latest desktop review on 2026-10-02 confirms the requested direction: desktop must use the same mobile-calibrated Hero sizing and positioning directly. No tablet/desktop normal-flow composition or separate desktop geometry is approved.
