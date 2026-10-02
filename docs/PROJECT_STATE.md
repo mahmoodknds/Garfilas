@@ -1,3 +1,12 @@
+## 2026-10-02 Font Loading Cleanup
+
+- Removed the unused Noto Kufi Arabic next/font definition and layout variable.
+- Reduced Cormorant Garamond to its only active weight (300).
+- Great Vibes remains at 400; Vazirmatn remains at 700.
+- This cleanup only removes unused font payload/configuration and preserves the active visual treatment.
+
+Verification: source-level GitHub re-read completed. Browser/device verification remains unavailable.
+
 # Garfilas Current Project State
 
 ## Current State
