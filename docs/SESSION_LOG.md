@@ -472,3 +472,20 @@ Bottom Navigation follow-up: reduced fixed height from `6.1rem` to `5.8rem` beca
 - No font weight, size, typography geometry, Hero anchors, CTA, Bottom Navigation, particle engine, assets or dependencies were changed.
 
 Verification: GitHub source re-read after the change. Browser/device render verification remains unavailable in this execution environment.
+
+
+## 2026-10-02 CTA Persian Style / Deployment Follow-up
+
+- Production `Menu` is visually correct.
+- Persian `منو` is still not correct.
+- Restoring the Vazirmatn font family alone did not restore the desired appearance, so the remaining problem is tracked as text styling treatment rather than font loading.
+- Latest Persian source commit: `eb94204dd92074ee99636ab58cf4b6ec79eee69d`.
+
+### Deployment problem
+- GitHub → Vercel has not consistently promoted every rapid `main` commit to the latest Production deployment.
+- Future sessions must check the Production deployment commit SHA before judging whether a visual change reached the live site.
+
+### Next step
+- First restore/confirm deployment.
+- Then compare Persian `منو` styling against the known-good pre-regression treatment.
+- Keep `Menu` untouched because its current styling is correct.
