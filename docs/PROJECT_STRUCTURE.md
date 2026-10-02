@@ -46,3 +46,15 @@ public\vercel.svg
 public\window.svg
 styles\animations.css
 styles\tokens.css
+
+## 2026-10-02 Structure Update
+
+The active project structure now includes:
+
+`components/layout/SiteBackground.tsx`
+
+This component is mounted from `app/layout.tsx` and owns the persistent global ambient background. Hero.tsx no longer owns the large ambient Hero glow or the former local ambient scene. Hero remains responsible for foreground composition.
+
+The current background architecture is intentionally global so new sections can remain transparent and share the same Garfilas atmosphere.
+
+Last Updated: 2026-10-02
