@@ -200,3 +200,16 @@ Latest change:
 - The purpose was to eliminate the visible desktop Hero/background termination observed at 1440×900.
 - Fresh production visual verification and production build verification remain pending.
 - Latest source commit: 41c00960adfc9e5b4f940785f397e11bcde44b08.
+
+## 2026-10-02 Codebase Cleanup
+
+- Homepage is intentionally limited to the active Hero and Bottom Navigation.
+- Featured Products and Story were removed from the codebase until their implementation is explicitly resumed.
+- Unused Hero prototypes and generic starter UI components were removed.
+- Legacy particle test styles and unused starter assets were removed.
+- CTA font loading was moved from a runtime Google Fonts import to `next/font`.
+- Component-level CTA CSS was moved to `app/globals.css` to remove embedded style blocks.
+- Disabled legacy background layers were removed from `SiteBackground.tsx` and their obsolete CSS was removed.
+- No Hero visual behavior was intentionally changed by this cleanup.
+
+Cleanup verification requiring a local/CI build remains pending.
