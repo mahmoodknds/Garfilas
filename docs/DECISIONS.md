@@ -1554,6 +1554,31 @@ Status
 
 Decision
 
+Large ambient visual layers that must continue beyond the Hero viewport belong to the active global background system, currently:
+
+- document-level `body` atmosphere/gradients
+- fixed `HeroParticleEngine`
+
+The Hero owns foreground composition only. The previously used `SiteBackground.tsx` wrapper was removed after it was confirmed to be a no-op and is not part of the current architecture.
+
+Reason
+
+A viewport-height Hero uses `overflow:hidden`; keeping a large ambient effect inside it can create a visible termination at the first-section boundary. The current implementation avoids that boundary while keeping the architecture smaller.
+
+Impact
+
+New pages and sections should use the existing global atmosphere by default. Do not recreate a section-specific full-page background or reintroduce `SiteBackground` without an explicit architectural decision.
+
+Future background-only effects must use the existing global ownership model when they are expected to continue across page or section boundaries.
+
+### Global Background Ownership Rule
+
+Status
+
+✅ Approved
+
+Decision
+
 Large ambient visual layers that are intended to continue beyond the Hero viewport belong to SiteBackground, not to the Hero DOM.
 
 The Hero owns foreground composition. SiteBackground owns persistent atmosphere, including the ambient glow, heat, dust, sparks and vignette.
