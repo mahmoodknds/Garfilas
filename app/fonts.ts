@@ -1,8 +1,8 @@
-import { Cormorant_Garamond, Great_Vibes, Noto_Kufi_Arabic, Vazirmatn } from "next/font/google";
+import { Cormorant_Garamond, Great_Vibes, Vazirmatn } from "next/font/google";
 
 export const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "500", "600"],
+  weight: "300",
   style: "normal",
   display: "swap",
   variable: "--font-cormorant-garamond",
@@ -15,15 +15,6 @@ export const greatVibes = Great_Vibes({
   style: "normal",
   display: "swap",
   variable: "--font-great-vibes",
-  preload: true,
-});
-
-export const notoKufiArabic = Noto_Kufi_Arabic({
-  subsets: ["arabic"],
-  weight: ["500", "600"],
-  style: "normal",
-  display: "swap",
-  variable: "--font-noto-kufi-arabic",
   preload: true,
 });
 
