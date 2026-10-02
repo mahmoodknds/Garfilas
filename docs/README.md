@@ -130,7 +130,7 @@ Landing Page MVP
 
 | Language | TypeScript |
 
-| Styling | TailwindCSS |
+| Styling | Tailwind CSS v4 + scoped component CSS where reference-locked geometry requires it |
 
 | Animation | Lightweight CSS animations |
 
