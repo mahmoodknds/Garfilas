@@ -228,3 +228,14 @@ Next planned sections:
 - Performance audit
 
 Last Updated: 2026-10-01
+
+
+## 2026-10-02 Global Background Ownership
+
+`components/layout/SiteBackground.tsx` is the persistent ambient layer for the application and is mounted from `app/layout.tsx`. It owns the shared atmosphere, including heat, dust, sparks, vignette and the large ambient Hero glow.
+
+The Hero owns foreground composition only. Large ambient effects that need to continue beyond the Hero viewport must not remain inside the viewport-height Hero because its clipping boundary can create a visible section transition on desktop.
+
+No foreground Hero geometry was changed in the latest background-boundary correction.
+
+Last Updated: 2026-10-02
