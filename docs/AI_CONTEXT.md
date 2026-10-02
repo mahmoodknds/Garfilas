@@ -258,3 +258,12 @@ Current protected geometry:
 - Mobile-calibrated mascot/ring sizing is the shared sizing baseline.
 
 The active Hero markup no longer uses .hero-lower-stack; HeroLogo, CTA and scroll cue are direct siblings inside .hero-shell. Preserve particles, ring behavior, CTA effects, logo animation and Bottom Navigation while validating this rule.
+
+
+# 2026-10-02 Global Background Boundary Fix
+
+The global background system is now the sole owner of the large ambient Hero glow as well as the existing heat, dust, sparks and vignette layers. The Hero no longer renders hero-glow-main locally. This prevents the viewport-height Hero overflow boundary from visually cutting off the ambient glow on desktop, especially at 1440×900.
+
+Current architecture rule: foreground composition stays in Hero; persistent ambient background effects stay in SiteBackground. Preserve the existing glow geometry and animation when maintaining this system unless a separate visual calibration is explicitly requested.
+
+Latest relevant commit: 41c00960adfc9e5b4f940785f397e11bcde44b08.
