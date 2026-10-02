@@ -1,60 +1,83 @@
 .env.local
 .gitignore
 AGENTS.md
-CLAUDE.md
 eslint.config.mjs
-next-env.d.ts
 next.config.ts
 package-lock.json
 package.json
 postcss.config.mjs
 README.md
 tsconfig.json
-app\favicon.ico
-app\globals.css
-app\layout.tsx
-app\page.tsx
-components\layout\Logo.tsx
-components\sections\BottomNavigation\BottomNavigation.tsx
-components\sections\BottomNavigation\index.ts
-components\sections\Hero\Hero.tsx
-components\sections\Hero\HeroContent.tsx
-components\sections\Hero\HeroCTA.tsx
-components\sections\Hero\HeroLogo.tsx
-components\sections\Hero\index.ts
-components\ui\Button.tsx
-components\ui\Container.tsx
-components\ui\GlassCard.tsx
-components\ui\GlowButton.tsx
-components\ui\Section.tsx
-config\brand.ts
-docs\AI_CONTEXT.md
-docs\ARCHITECTURE.md
-docs\CHANGELOG.md
-docs\CODING_RULES.md
-docs\DECISIONS.md
-docs\GARFILAS_BIBLE.md
-docs\PROJECT_STATE.md
-docs\README.md
-docs\SESSION_LOG.md
-docs\TODO.md
-lib\constants.ts
-public\file.svg
-public\globe.svg
-public\next.svg
-public\vercel.svg
-public\window.svg
-styles\animations.css
-styles\tokens.css
+app/
+  favicon.ico
+  fonts.ts
+  globals.css
+  layout.tsx
+  page.tsx
+components/
+  layout/
+    Logo.tsx
+    SiteBackground.tsx
+  sections/
+    BottomNavigation/
+      BottomNavigation.tsx
+    Hero/
+      Hero.tsx
+      HeroCTA.tsx
+      HeroLogo.tsx
+      HeroParticleEngine.tsx
+      index.ts
+  ui/
+    GlowButton.tsx
+config/
+  brand.ts
+docs/
+  AI_CONTEXT.md
+  ARCHITECTURE.md
+  CHANGELOG.md
+  CODING_RULES.md
+  DECISIONS.md
+  GARFILAS_BIBLE.md
+  PROJECT_INFO.md
+  PROJECT_STATE.md
+  PROJECT_STRUCTURE.md
+  README.md
+  SESSION_LOG.md
+  TODO.md
+public/
+  assets/
+    brand/
+      garfilas-reference-logo.svg
+    hero/
+      garfilas-cat.svg
+      garfilas-hero-final.webp
+      garfilas-reference-hero-preview.jpg
+      garfilas-reference-hero.svg
+      italy-landmarks.svg
+    ui/
+      bottom-nav-frame.svg
+styles/
+  tokens.css
 
-## 2026-10-02 Structure Update
+## 2026-10-02 Cleanup Update
 
-The active project structure now includes:
+The repository is intentionally limited to the active first-page implementation.
 
-`components/layout/SiteBackground.tsx`
+Active page composition:
 
-This component is mounted from `app/layout.tsx` and owns the persistent global ambient background. Hero.tsx no longer owns the large ambient Hero glow or the former local ambient scene. Hero remains responsible for foreground composition.
+- Hero
+- Bottom Navigation
 
-The current background architecture is intentionally global so new sections can remain transparent and share the same Garfilas atmosphere.
+Removed from the active codebase:
+
+- Deferred Featured Products section
+- Deferred Story section
+- Unused HeroContent and RingParticleEmitter prototypes
+- Unused generic UI starter primitives
+- Empty constants module
+- Legacy particle test styles
+- Legacy starter assets
+
+The CTA remains the existing Hero CTA primitive because it is part of the active first-page visual system.
 
 Last Updated: 2026-10-02
