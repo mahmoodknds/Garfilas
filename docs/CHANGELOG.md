@@ -1,5 +1,16 @@
 ## 2026-10-02
 
+### Font Loading Cleanup
+
+- Removed the unused Noto Kufi Arabic font definition and document-level font variable.
+- Reduced Cormorant Garamond loading to the only active weight, 300.
+- Kept Great Vibes at its active 400 weight and Vazirmatn at its active 700 weight.
+- No CTA geometry, Hero anchors, animation, Bottom Navigation or particle behavior was changed.
+
+Verification: source-level GitHub re-read. Local build could not be rerun in this execution environment because external network access is unavailable.
+
+## 2026-10-02
+
 ### Documentation Hygiene
 
 - Synchronized current architecture documentation with the removal of the no-op `SiteBackground.tsx` wrapper.
