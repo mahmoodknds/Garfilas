@@ -189,3 +189,14 @@ Latest change:
 - The unused .hero-lower-stack wrapper was removed from Hero.tsx.
 - Existing ring, particle, CTA, logo animation and Bottom Navigation behavior were preserved.
 - Fresh production visual verification remains pending.
+
+
+## 2026-10-02 Global Background Boundary Correction
+
+- The global SiteBackground remains the shared ambient system for the full site.
+- The remaining large Hero ambient glow was moved from Hero.tsx into SiteBackground.tsx.
+- Existing glow size, position, color, blur and breathing animation were preserved.
+- Hero foreground geometry, particles, ring, CTA effects, logo animation and Bottom Navigation were not changed by this correction.
+- The purpose was to eliminate the visible desktop Hero/background termination observed at 1440×900.
+- Fresh production visual verification and production build verification remain pending.
+- Latest source commit: 41c00960adfc9e5b4f940785f397e11bcde44b08.
