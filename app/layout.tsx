@@ -22,3 +22,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+// Deployment sync marker: keep Git-integrated production in sync with main.
