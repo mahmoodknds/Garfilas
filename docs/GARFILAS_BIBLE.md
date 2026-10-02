@@ -331,7 +331,7 @@ Documentation Version: 2.3.0
 
 ## 2026-10-02 Global Atmosphere Rule
 
-Garfilas now uses one continuous global ambient background across the site. The persistent background system is implemented in `components/layout/SiteBackground.tsx` and mounted at layout level.
+Garfilas now uses one continuous global ambient background across the site. The current persistent atmosphere is owned by the global body background and fixed `HeroParticleEngine`. The previously introduced `components/layout/SiteBackground.tsx` wrapper was removed after it was confirmed to be a no-op.
 
 The large ambient Hero glow is part of the global atmosphere rather than the Hero component. This keeps the background continuous across the Hero-to-next-section boundary, particularly on desktop.
 
