@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 
-type Props = { children: ReactNode; id?: string };
+type Props = { children: ReactNode };
 
-export default function GlowButton({ children, id }: Props) {
+export default function GlowButton({ children }: Props) {
   const isBilingualMenu = children === "منو Menu";
 
   return (
-    <span id={id} className="group relative isolate inline-flex h-[2.62rem] w-[min(43vw,13.6rem)] min-w-[9.65rem] items-center justify-center overflow-hidden rounded-full border border-[rgba(255,145,35,.9)] bg-[linear-gradient(180deg,rgba(38,18,8,.74),rgba(7,5,4,.9)_55%,rgba(22,10,4,.82))] px-4 text-center shadow-[0_0_2px_rgba(255,235,201,.95),0_0_8px_rgba(255,133,22,.55),0_0_18px_rgba(255,77,0,.24),0_0_32px_rgba(255,63,0,.10),inset_0_1px_0_rgba(255,231,184,.2),inset_0_0_12px_rgba(255,123,15,.09)] transition-[box-shadow,border-color] duration-300 ease-out hover:border-[rgba(255,204,116,.98)]" role="presentation">
+    <span className="group relative isolate inline-flex h-[2.62rem] w-[min(43vw,13.6rem)] min-w-[9.65rem] items-center justify-center overflow-hidden rounded-full border border-[rgba(255,145,35,.9)] bg-[linear-gradient(180deg,rgba(38,18,8,.74),rgba(7,5,4,.9)_55%,rgba(22,10,4,.82))] px-4 text-center shadow-[0_0_2px_rgba(255,235,201,.95),0_0_8px_rgba(255,133,22,.55),0_0_18px_rgba(255,77,0,.24),0_0_32px_rgba(255,63,0,.10),inset_0_1px_0_rgba(255,231,184,.2),inset_0_0_12px_rgba(255,123,15,.09)] transition-[box-shadow,border-color] duration-300 ease-out hover:border-[rgba(255,204,116,.98)]" role="presentation">
       <span aria-hidden="true" className="pointer-events-none absolute inset-[2px] rounded-full border border-[rgba(255,232,190,.22)]" />
       <span aria-hidden="true" className="garfilas-cta-sweep" />
       <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,196,101,.12),transparent_48%),radial-gradient(circle_at_18%_100%,rgba(255,93,0,.12),transparent_34%)]" />
