@@ -74,7 +74,7 @@ The slogan remains HTML text:
 - Mobile, tablet and desktop use the same vertical composition; sizing may adapt through existing width/clamp rules.
 - Mobile slogan `margin-top`: `.60rem`.
 
-Older values `52.8%`, `76%` and `83.5%` remain only in historical calibration records and do not describe the active source.
+Older values such as `52.8%`, `76%` and `83.5%` are historical calibration records only and do not describe the active source.
 
 ## Menu CTA State
 
@@ -118,7 +118,7 @@ GARFILAS uses a fluorescent/neon electrical-fault effect: long stable light, gra
 Latest change:
 
 - GARFILAS neon fault animation is implemented in `app/globals.css`.
-- Current cycle: 7 seconds.
+- Current cycle: 15 seconds.
 - LASAGNA and slogan remain independent from the GARFILAS fault animation.
 
 ## Verification State
@@ -135,13 +135,7 @@ Latest change:
 - LASAGNA side lines: implemented
 - Italian flag: implemented
 - Neon fault animation: implemented and slowed to 15s
-- CTA: implemented and refined
-- Persian CTA color/light: matched to English treatment
-- CTA/slogan spacing: increased
-- Bottom Navigation: implemented; final calibration pending
-- Scroll cue direction: completed; upward arrows
-- Mobile scroll cue position: restored to `83.5%`
-- Mobile slogan position: raised slightly to `.60rem` margin-top
+- Mobile slogan position: raised slightly to `.60rem` margin-top.
 - Local `npm run build`: verified successfully on 2026-10-02
 - Production visual verification: pending
 - Responsive audit foundation: implemented for safe-area handling, tablet scaling and desktop scaling
