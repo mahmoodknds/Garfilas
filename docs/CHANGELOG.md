@@ -244,3 +244,25 @@ Last Updated: 2026-10-01
 - Desktop now uses the same mobile-first Hero geometry directly for mascot/orbit, copy, CTA and scroll cue.
 - Preserved artwork, particles, CTA effects, logo treatment and Bottom Navigation.
 - Commit: `2f7b60c12979fa994cabe79f43ecf850264c1c35` (`fix(hero): use mobile geometry directly on desktop`).
+
+
+### 2026-10-02 Global Site Background System
+
+#### Changed
+
+- Added a layout-level `SiteBackground` component for the shared ambient background.
+- Moved the Hero ambient scene into a fixed, site-wide layer so it continues across page/section boundaries.
+- Removed the Hero-owned ambient scene markup and local style ownership.
+- Preserved the existing body gradient and global particle engine.
+- Preserved Hero foreground geometry and navigation calibration.
+
+#### Reason
+
+- Future pages should share one continuous Garfilas atmosphere instead of creating separate background implementations and visible section boundaries.
+
+#### Commits
+
+- `4d674d2bbfd3704b992d481f727611c1a30fefd3`
+- `046924c975c209f8416e2038d6a4424811b8f0b7`
+- `db718112a4c136674865f8357a46f740e4dc077c`
+- `f63139b3948bfe371a807d480e73dee5336b476f`
