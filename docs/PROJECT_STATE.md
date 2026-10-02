@@ -294,3 +294,12 @@ Verification: GitHub source-level only; no browser/device render verification.
 - No font weight, size, typography geometry, Hero anchors, CTA, Bottom Navigation, particle engine, assets or dependencies were changed.
 
 Verification: GitHub source re-read after the change. Browser/device render verification remains unavailable in this execution environment.
+
+
+## 2026-10-02 CTA Deployment Sync
+
+- Restored reliable inline rendering for the bilingual CTA text after the shared global menu selector caused the Menu styling to disappear and the Persian منو rendering to remain incorrect.
+- Current CTA text styling is defined directly on the two bilingual spans in GlowButton.tsx, preserving the same gradient, stroke and glow while keeping proportional Persian/Latin sizing.
+- This commit is also a deployment trigger so the GitHub to Vercel integration can pick up the latest application source.
+
+Verification: GitHub source re-read after the change. Production deployment must be confirmed separately.
