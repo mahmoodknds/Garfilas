@@ -239,3 +239,12 @@ A focused responsive pass found one concrete stylesheet integrity issue and one 
 - Protected Hero anchor percentages and navigation geometry remain unchanged.
 
 This was a source-level responsive audit. No browser/device render was available in this execution environment.
+
+
+## 2026-10-02 Bottom Navigation Responsive Tuning
+
+- Reduced the fixed Bottom Navigation frame height slightly from `6.4rem` to `6.1rem`.
+- Kept width, horizontal positions, icon sizes, and the existing frame asset unchanged.
+- This is a small vertical compaction only, intended to recover a little viewport space on mobile without changing the established navigation proportions.
+
+Verification: source-level only. No browser/device render verification was available in this execution environment.
