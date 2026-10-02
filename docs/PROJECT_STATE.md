@@ -310,3 +310,23 @@ Verification: GitHub source re-read after the change. Production deployment must
 - The latest CTA Persian styling fix is committed on `main`.
 - A documentation-only commit is being used to retrigger the GitHub to Vercel production deployment because the latest source commit did not automatically advance Production.
 - No additional UI or animation changes are included in this deployment trigger.
+
+
+## 2026-10-02 CTA Persian Style and Deployment Issue
+
+- `Menu` is now rendering correctly in Production.
+- Persian `منو` remains visually incorrect despite restoring the intended Vazirmatn font family.
+- The latest Persian adjustment was made in `components/ui/GlowButton.tsx`; the font family remains `var(--font-vazir)`, resolving to generated `--font-vazirmatn`.
+- Therefore the remaining issue is tracked as a style/rendering treatment issue, not a missing-font issue.
+
+### Deployment issue
+- GitHub → Vercel deployment has repeatedly lagged behind rapid commits.
+- A documentation-only trigger previously advanced Production successfully, but subsequent source commits again required verification.
+- Latest Persian source commit: `eb94204dd92074ee99636ab58cf4b6ec79eee69d`.
+- Never assume the latest GitHub commit is on Production. Verify the Vercel Production deployment commit SHA before visual testing.
+
+### Next-session rule
+1. Verify Vercel Production commit first.
+2. If Production is behind `main`, trigger deployment through the existing GitHub → Vercel integration.
+3. Only after deployment is READY, inspect/fix Persian `منو` styling.
+4. Do not change `Menu`, particles, Hero geometry, Bottom Navigation, or CTA animation while solving the Persian text issue.
