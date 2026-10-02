@@ -65,7 +65,6 @@ Active page composition:
 
 Active shared layers:
 
-- `SiteBackground.tsx`
 - `HeroParticleEngine.tsx`
 
 Active configuration/style support:
