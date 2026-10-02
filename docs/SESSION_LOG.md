@@ -618,3 +618,12 @@ Verification remains source-level unless a browser/device render is explicitly a
 
 - Trigger-only documentation marker after confirming the previous Production trigger did not create a deployment.
 - No runtime or visual behavior is introduced by this marker.
+
+
+## 2026-10-03 Font Alias Cleanup
+
+- Removed the redundant `--font-vazir` indirection from `app/globals.css`.
+- The document now consumes the generated `--font-vazirmatn` variable directly with the same fallback stack.
+- No font family, weight, typography geometry, Hero anchors, CTA styling, particle behavior, or Bottom Navigation geometry was intentionally changed.
+
+Verification: source-level change only. Fresh production build and Vercel deployment verification are pending.
