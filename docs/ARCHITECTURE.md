@@ -219,11 +219,15 @@ Last Updated: 2026-10-02
 
 ## 2026-10-02 Cleanup Audit
 
-The former `SiteBackground.tsx` wrapper was confirmed to be a no-op because its class names had no active stylesheet definitions. It was removed from the root layout and deleted.
+The former `components/layout/SiteBackground.tsx` wrapper was confirmed to be a no-op because its class names had no active stylesheet definitions. It was removed from the root layout and deleted.
 
 Current background ownership:
+
 - `body` global gradients provide the base atmosphere.
-- `HeroParticleEngine.tsx` provides the fixed particle layer.
+- `HeroParticleEngine.tsx` provides the fixed live particle/spark layer.
 - Hero foreground remains inside the Hero feature.
 
-Keep layout components only when they own active behavior, styling or composition.
+The repository does not currently contain a layout-level component. Keep `components/layout/` absent until a real shared layout component is introduced.
+
+Keep layout-level behavior at `app/layout.tsx` when it is genuinely document-wide. Do not recreate the removed `SiteBackground` wrapper merely as a structural container.
+
