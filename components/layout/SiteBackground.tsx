@@ -21,6 +21,7 @@ export default function SiteBackground() {
 @media(prefers-reduced-motion:reduce){.hero-heat,.hero-ring-heat,.hero-dust-far,.hero-dust-mid,.hero-dust-near,.hero-dust-front,.hero-sparks{animation:none}}
       `}</style>
       <div className="hero-depth-scene" aria-hidden="true">
+        <div className="hero-global-glow" />
         <div className="hero-ember-space">
           <div className="hero-heat" />
           <div className="hero-ring-heat" />
