@@ -328,37 +328,21 @@ BREAKPOINTS.ts
 
 \# Component Rules
 
+Every component should
 
+Be reusable where reuse is meaningful
 
-Every component must
-
-
-
-Be reusable
-
-
-
-Receive typed props
-
-
+Receive typed props when props exist
 
 Have one responsibility
 
-
-
 Avoid hidden side effects
 
+Keep styling and behavior local when that improves maintainability
 
+---
 
-Return JSX only
-
-
-
-\---
-
-
-
-\# Component Structure
+# Component Structure
 
 
 
@@ -490,11 +474,11 @@ import Link from "next/link"
 
 
 
-import { motion } from "framer-motion"
+import { SomeLibrary } from "external-library"
 
 
 
-import Button from "@/shared/ui/Button"
+import Button from "@/components/ui/Button"
 
 
 
@@ -756,25 +740,15 @@ Good
 
 \# Styling
 
+Prefer Tailwind CSS v4 for general utility styling.
 
+Use scoped component CSS when exact reference-locked geometry, animation selectors or pseudo-elements require it.
 
-TailwindCSS only.
+Avoid inline style props for static styling. A colocated <style> block is acceptable when it keeps tightly scoped component geometry together.
 
+Use !important sparingly. It is permitted only when required to protect fixed reference geometry from competing global rules.
 
-
-Avoid inline styles.
-
-
-
-Avoid !important.
-
-
-
-Reuse utility classes.
-
-
-
-Create reusable UI components.
+Reuse utility classes and reusable UI components where practical.
 
 
 
@@ -1396,17 +1370,11 @@ Always.
 
 Last Updated
 
-
-
-2026-10-01
-
-
+2026-10-02
 
 Version
 
-
-
-1.1.0
+1.2.0
 
 
 
