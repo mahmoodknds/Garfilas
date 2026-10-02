@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 
-type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean;duration:number;spark:boolean};
+type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean};
 const rand=(a:number,b:number)=>Math.random()*(b-a)+a;
 function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.4,2.1);if(r<.17)return rand(2.3,3.4);if(r<.42)return rand(3.4,4.8);if(r<.67)return rand(4.8,6.2);if(r<.92)return rand(6.2,7.8);if(r<.985)return rand(8,10.5);return ring?rand(10.5,13):rand(9,11)}
 
@@ -53,7 +53,7 @@ export default function HeroParticleEngine(){
     {transform:`translate3d(${dx+driftX*1.05}px,${dy+driftY+rand(4,10)}px,0) scale(.08)`,opacity:0}
    ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":"linear",fill:"both",iterations:1});
    layer.appendChild(el);
-   const ember:Ember={el,animation,ring:isRing,duration,spark};
+   const ember:Ember={el,animation,ring:isRing};
    embers.push(ember);
    if(isRing)ringCount++;else transientCount++;
    if(initialPhase>0)animation.currentTime=Math.min(initialPhase,duration-1);
@@ -76,14 +76,13 @@ export default function HeroParticleEngine(){
   seedAmbient();
   sparkBurst();
 
-  let last=performance.now();
-  const tick=(now:number)=>{
+  const tick=()=>{
    if(stopped)return;
-   const dt=Math.min(64,Math.max(0,now-last));last=now;
-   ambientClock-=dt;sparkClock-=dt;
+   ambientClock-=16;
+   sparkClock-=16;
    if(sparkClock<=0){sparkBurst();sparkClock=rand(1900,2500);}
    if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<3;a++){const w=window.innerWidth,h=window.innerHeight,x=rand(w*.06,w*.94),y=rand(h*.05,h*.94);if(y>h*.82&&Math.random()<.22)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(150,260);}
-   raf=requestAnimationFrame(tick);
+   raf=window.setTimeout(()=>requestAnimationFrame(tick),80) as unknown as number;
   };
   raf=requestAnimationFrame(tick);
 
