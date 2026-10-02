@@ -19,7 +19,7 @@ export default function HeroParticleEngine(){
 
   const embers:Ember[]=[];
   const TARGET_RING_PARTICLES=132;
-  const MAX_PARTICLES=680;
+  const MAX_PARTICLES=920;
   const MAX_TRANSIENT_PARTICLES=MAX_PARTICLES-TARGET_RING_PARTICLES;
   let ringCount=0;
   let transientCount=0;
@@ -72,7 +72,7 @@ export default function HeroParticleEngine(){
   for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,rand(0,12000),maintainRingOne);
 
   const sparkBurst=()=>{const count=Math.floor(rand(20,31));for(let i=0;i<count;i++){const side=sparkSide;ringPoint(true,side);sparkSide=side==="right"?"left":"right";}};
-  const seedAmbient=()=>{const w=window.innerWidth,h=window.innerHeight;for(let i=0;i<120;i++){const x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,false,rand(0,12000));}};
+  const seedAmbient=()=>{const w=window.innerWidth,h=window.innerHeight;for(let i=0;i<220;i++){const x=rand(w*.06,w*.94),y=rand(h*.05,h*.94);if(y>h*.82&&Math.random()<.22)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,false,rand(0,12000));}};
   seedAmbient();
   sparkBurst();
 
@@ -82,7 +82,7 @@ export default function HeroParticleEngine(){
    const dt=Math.min(64,Math.max(0,now-last));last=now;
    ambientClock-=dt;sparkClock-=dt;
    if(sparkClock<=0){sparkBurst();sparkClock=rand(1900,2500);}
-   if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<2;a++){const w=window.innerWidth,h=window.innerHeight,x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(150,260);}
+   if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<3;a++){const w=window.innerWidth,h=window.innerHeight,x=rand(w*.06,w*.94),y=rand(h*.05,h*.94);if(y>h*.82&&Math.random()<.22)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(150,260);}
    raf=requestAnimationFrame(tick);
   };
   raf=requestAnimationFrame(tick);
