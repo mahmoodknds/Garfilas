@@ -330,3 +330,28 @@ Verification: GitHub source re-read after the change. Production deployment must
 2. If Production is behind `main`, trigger deployment through the existing GitHub → Vercel integration.
 3. Only after deployment is READY, inspect/fix Persian `منو` styling.
 4. Do not change `Menu`, particles, Hero geometry, Bottom Navigation, or CTA animation while solving the Persian text issue.
+
+
+## 2026-10-02 CTA Persian/English Style and Deployment Status
+
+- Current approved behavior: the English `Menu` styling is visually correct in Production.
+- Persian `منو` is still under correction. The intended target is to use the same visual treatment as `Menu` while preserving the natural proportional differences of the Persian Vazirmatn glyphs.
+- The Persian font pipeline itself is not missing: `GlowButton.tsx` uses `var(--font-vazir)`, which resolves through the generated Vazirmatn variable.
+- Several attempts that changed the Persian text treatment caused the perceived font/style to change. Therefore the next correction must preserve the existing font family, weight and proportional sizing and adjust only the visual treatment required to match `Menu`.
+- Do not modify `Menu`, CTA sweep, stars, Hero geometry, particles, Bottom Navigation, or unrelated typography while solving this issue.
+
+### Deployment status
+
+- GitHub → Vercel has repeatedly lagged behind rapid source commits.
+- A documentation-only trigger has previously been sufficient to advance Production.
+- For the current session, **do not trigger a deployment automatically**. The user explicitly requested that deployment not be performed while this style issue is being documented.
+- Before any future visual acceptance check, verify the Vercel Production commit SHA against the intended GitHub commit. Never assume `main` is live.
+
+### Next-session rule
+
+1. Read the current `GlowButton.tsx` before editing.
+2. Treat the current English `Menu` styling as protected.
+3. Restore the Persian `منو` to the same visual style system as `Menu`, without changing the Vazirmatn font family or its proportional sizing.
+4. Do not deploy until the user explicitly asks for deployment.
+5. After deployment is explicitly requested, verify Production reaches READY before visual testing.
+
