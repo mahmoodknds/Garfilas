@@ -1,3 +1,25 @@
+## 2026-10-02 Documentation Hygiene Continuation
+
+### Scope
+
+Continue cleanup after the source-level responsive/dependency audit without changing runtime UI behavior.
+
+### Changes
+
+- Removed stale architectural wording that treated the deleted `SiteBackground.tsx` wrapper as an active ownership target.
+- Synchronized architecture and coding rules with the current global background implementation: `body` atmosphere plus fixed `HeroParticleEngine`.
+- Synchronized `PROJECT_STATE.md`, `AI_CONTEXT.md` and `TODO.md` with the active Hero anchors and 15-second GARFILAS neon-fault animation.
+- Updated the documentation README to reflect the actual active homepage scope: Hero + Bottom Navigation.
+- Recorded the successful local production build verification dated 2026-10-02.
+- Preserved historical references in the changelog/session history rather than rewriting past events.
+
+### Verification
+
+- GitHub source re-read after documentation changes.
+- No application source, assets, dependencies, Hero geometry, CTA animation or Bottom Navigation behavior changed in this pass.
+- No deployment was triggered.
+
+
 # SESSION_LOG.md
 
 ## 2026-10-02 Repository Cleanup Continuation
