@@ -276,3 +276,38 @@ The desktop-specific Hero flow override was removed. Desktop now uses the same m
 The desktop-specific Hero flow override was removed. Desktop now uses the same mobile-first Hero geometry directly from the shared base CSS, with no separate desktop composition block.
 
 **Commit:** `2f7b60c12979fa994cabe79f43ecf850264c1c35`
+
+
+### Latest Session: Global Site Background System
+
+**Date:** 2026-10-02
+
+## Scope
+
+The background architecture was changed so the site uses one continuous ambient environment across the full application rather than a Hero-only background.
+
+## Changes
+
+- Added `components/layout/SiteBackground.tsx` and mounted it from `app/layout.tsx`.
+- Moved the existing Hero ambient scene into the global fixed background layer.
+- Kept the existing global body gradient and fixed particle engine in place.
+- Removed the Hero-owned ambient scene markup and its local style block from `Hero.tsx`.
+- Kept Hero foreground elements and their calibrated geometry unchanged.
+- Removed the opaque Hero-only background base from the global layer so the shared body atmosphere remains visible underneath it.
+
+## Architecture Rule
+
+Future pages and sections should remain transparent by default and render over the same global background. A new full-page background should not be introduced per page without an explicit architectural decision.
+
+## Verification State
+
+- Source refactor: completed.
+- Fresh production visual verification: pending.
+- Production build verification: pending.
+
+## Latest Commits
+
+- `4d674d2bbfd3704b992d481f727611c1a30fefd3` — add global ambient background component
+- `046924c975c209f8416e2038d6a4424811b8f0b7` — detach Hero from local ambient scene
+- `db718112a4c136674865f8357a46f740e4dc077c` — mount background globally
+- `f63139b3948bfe371a807d480e73dee5336b476f` — preserve shared body atmosphere
