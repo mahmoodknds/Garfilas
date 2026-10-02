@@ -448,3 +448,16 @@ Bottom Navigation follow-up: reduced fixed height from `6.1rem` to `5.8rem` beca
 - Re-read the changed GitHub sources after each commit.
 - Confirmed the latest Vercel Production deployment for commit `b2f2c8bff585d4f78e8018f67165d8861dc3fde8` is READY.
 - No browser/device render verification was available.
+
+## 2026-10-02 Repository Hygiene Cleanup
+
+### Changes
+
+- Corrected the root README structure map to match the active repository tree.
+- Normalized Hero component indentation only; rendered structure and class hooks remain unchanged.
+
+### Verification
+
+- Re-read the updated Hero source from GitHub after the change.
+- No particle, responsive geometry, CTA, Bottom Navigation, dependency, or asset changes were made.
+- Browser/device render verification remains unavailable in this execution environment.
