@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { cormorantGaramond, greatVibes, vazirmatn } from "./fonts";
+import { cormorantGaramond, greatVibes, notoKufiArabic, vazirmatn } from "./fonts";
 import HeroParticleEngine from "@/components/sections/Hero/HeroParticleEngine";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fa">
-      <body className={[cormorantGaramond.variable, greatVibes.variable, vazirmatn.variable].join(" ")}>
+      <body className={[cormorantGaramond.variable, greatVibes.variable, notoKufiArabic.variable, vazirmatn.variable].join(" ")}>
         <HeroParticleEngine />
         {children}
       </body>
