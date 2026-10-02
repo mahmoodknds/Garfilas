@@ -1,3 +1,14 @@
+## 2026-10-02 Font Loading Cleanup
+
+- Audited app/fonts.ts against the current Hero and CTA consumers.
+- Confirmed Noto Kufi Arabic had no active consumer after the CTA typography was unified, so its next/font definition and document-level variable were removed.
+- Confirmed Cormorant Garamond is currently used only at weight 300 by the LASAGNA lockup, so unused 500 and 600 weights were removed.
+- Kept Great Vibes 400 and Vazirmatn 700, which remain active.
+- No rendered geometry, CTA animation, Hero anchors, Bottom Navigation or particle behavior was intentionally changed.
+- Deployment remains untouched.
+
+Verification: GitHub source re-read completed. Local build could not be rerun because this execution environment has no external network access.
+
 ## 2026-10-02 Documentation Hygiene Continuation
 
 ### Scope
