@@ -412,3 +412,13 @@ Source-level audit only. No browser render or local build verification is claime
 
 ### Verification
 Source-level only. No browser/device render verification is claimed.
+
+
+## 2026-10-02 Bottom Navigation Responsive Tuning
+
+### Change
+- Reduced `.bottom-nav` height from `6.4rem` to `6.1rem`.
+- Preserved the existing width, button geometry, icon sizes, frame asset, and horizontal placement.
+
+### Verification
+Source-level only. No browser/device render verification is claimed.
