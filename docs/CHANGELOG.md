@@ -415,3 +415,11 @@ Verification: GitHub source re-read after the change. Browser/device render veri
 
 Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Navigation, or unrelated typography while correcting Persian `منو`.
 
+
+
+## 2026-10-03 Global Background Test Page + Cleanup
+
+- Added `/blank` as a foreground-free visual test route for the shared Garfilas background.
+- Refactored the fixed particle engine to operate from a dedicated background anchor instead of requiring Hero mascot/ring/foreground nodes.
+- Preserved the existing particle behavior and global body atmosphere.
+- No Hero foreground geometry was changed.
