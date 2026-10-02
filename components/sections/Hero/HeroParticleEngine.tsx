@@ -32,7 +32,8 @@ export default function HeroParticleEngine(){
   let ringIndex=0;
 
   const make=(x:number,y:number,angle:number,isRing=false,spark=false,initialPhase=0,onFinish?:()=>void)=>{
-   if(isRing){if(ringCount>=TARGET_RING_PARTICLES)return;}else if(transientCount>=MAX_TRANSIENT_PARTICLES)return;
+   const countsAsRing=isRing&&!spark;
+   if(countsAsRing){if(ringCount>=TARGET_RING_PARTICLES)return;}else if(transientCount>=MAX_TRANSIENT_PARTICLES)return;
    const size=spark?rand(3.2,7.2):sizeProfile(isRing);
    const el=document.createElement("span");
    el.className=spark?"hero-live-ember hero-live-spark":"hero-live-ember";
@@ -56,9 +57,9 @@ export default function HeroParticleEngine(){
    layer.appendChild(el);
    const ember:Ember={el,animation,ring:isRing};
    embers.push(ember);
-   if(isRing)ringCount++;else transientCount++;
+   if(countsAsRing)ringCount++;else transientCount++;
    if(initialPhase>0)animation.currentTime=Math.min(initialPhase,duration-1);
-   animation.onfinish=()=>{if(stopped)return;el.remove();const i=embers.indexOf(ember);if(i>=0){embers.splice(i,1);if(isRing)ringCount=Math.max(0,ringCount-1);else transientCount=Math.max(0,transientCount-1);}onFinish?.();};
+   animation.onfinish=()=>{if(stopped)return;el.remove();const i=embers.indexOf(ember);if(i>=0){embers.splice(i,1);if(countsAsRing)ringCount=Math.max(0,ringCount-1);else transientCount=Math.max(0,transientCount-1);}onFinish?.();};
   };
 
   const ringPoint=(spark=false,forcedSide?:"left"|"right",initialPhase=0,onFinish?:()=>void)=>{
