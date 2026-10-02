@@ -237,25 +237,25 @@ Read these first:
 
 Current working priority: stabilize the foreground composition before rebuilding the background.
 
-# 2026-10-02 Full Mobile Geometry Rule
+# 2026-10-02 Current Responsive Geometry
 
-The Hero must use the mobile-calibrated geometry as the shared base across mobile, tablet and desktop. Do not maintain a separate tablet/desktop Hero sizing or composition block unless the user explicitly requests a different large-screen composition.
+The active source uses one shared Hero composition across mobile, tablet and desktop. Current source anchors are:
 
-Current protected geometry:
+- Mascot/orbit: `27.5%`
+- Hero copy: `51.3%`
+- CTA: `73.6%`
+- Scroll cue: `80.5%`
+- On very short viewports (`max-height:600px`), the decorative scroll cue is hidden to avoid collision with the fixed Bottom Navigation.
+- Bottom Navigation fixed frame height: `5.8rem`.
 
-- Mascot/orbit anchor: 27.5%
-- Hero copy anchor: 52.8%
-- CTA anchor: 76%
-- Scroll cue anchor: 83.5%
-- Mobile-calibrated mascot/ring sizing is the shared sizing baseline.
+Older geometry values such as `52.8%`, `76%` and `83.5%` are historical calibration records only and must not be treated as current source values.
 
-The active Hero markup no longer uses .hero-lower-stack; HeroLogo, CTA and scroll cue are direct siblings inside .hero-shell. Preserve particles, ring behavior, CTA effects, logo animation and Bottom Navigation while validating this rule.
+# 2026-10-02 Current Background Ownership
 
+The former `SiteBackground.tsx` wrapper was removed because it was confirmed to be a no-op. The active background system is now:
 
-# 2026-10-02 Global Background Boundary Fix
+- global `body` gradients for the base atmosphere
+- the fixed `HeroParticleEngine` for live particles/sparks
+- Hero-local foreground geometry for mascot, ring, logo, CTA and navigation
 
-The global background system is now the sole owner of the large ambient Hero glow as well as the existing heat, dust, sparks and vignette layers. The Hero no longer renders hero-glow-main locally. This prevents the viewport-height Hero overflow boundary from visually cutting off the ambient glow on desktop, especially at 1440×900.
-
-Current architecture rule: foreground composition stays in Hero; persistent ambient background effects stay in SiteBackground. Preserve the existing glow geometry and animation when maintaining this system unless a separate visual calibration is explicitly requested.
-
-Latest relevant commit: 41c00960adfc9e5b4f940785f397e11bcde44b08.
+Do not refer to `SiteBackground.tsx` as an active component. Historical references to it describe an earlier implementation and are not current architecture.
