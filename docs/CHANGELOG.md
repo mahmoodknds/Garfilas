@@ -362,3 +362,23 @@ Verification: GitHub source re-read after the change. Browser/device render veri
 
 ### Next-session constraint
 - Do not alter `Menu`, CTA animation, particles, Hero geometry, Bottom Navigation, or unrelated typography while fixing Persian `منو`.
+
+
+### 2026-10-02 CTA Persian Style Regression / Deployment Hold
+
+- English `Menu` styling is currently correct.
+- Persian `منو` remains visually incorrect and must be brought back into the same visual styling system as `Menu`, while preserving the natural proportional difference of the Persian font.
+- Confirmed that the active Persian font path remains Vazirmatn through `var(--font-vazir)` → `--font-vazirmatn`.
+- Previous Persian styling changes affected the perceived appearance of the font, so the next change must avoid replacing the font family or altering unrelated typography.
+
+#### Deployment
+
+- GitHub → Vercel has shown intermittent lag when multiple commits are pushed rapidly.
+- Deployment is **on hold** for the current CTA styling work.
+- No deployment trigger should be created unless the user explicitly requests deployment.
+- Future visual checks must first verify the Production deployment commit SHA.
+
+#### Constraint
+
+Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Navigation, or unrelated typography while correcting Persian `منو`.
+
