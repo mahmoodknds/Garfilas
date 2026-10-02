@@ -311,3 +311,37 @@ Future pages and sections should remain transparent by default and render over t
 - `046924c975c209f8416e2038d6a4424811b8f0b7` — detach Hero from local ambient scene
 - `db718112a4c136674865f8357a46f740e4dc077c` — mount background globally
 - `f63139b3948bfe371a807d480e73dee5336b476f` — preserve shared body atmosphere
+
+
+### Latest Session: Remove Desktop Hero Background Boundary
+
+**Date:** 2026-10-02
+
+## Finding
+
+Direct review of the supplied 1440×900 render showed that the ambient glow was still owned by the Hero itself. Because .hero is a viewport-height, overflow-clipped section, that local glow could terminate at the Hero boundary even though the rest of the ambient scene had already been moved to the global background.
+
+## Change
+
+- Removed the Hero-local hero-glow-main element from Hero.tsx.
+- Added the same ambient glow to SiteBackground.tsx as a fixed global layer.
+- Preserved the existing glow size, position, color, blur and breathing animation so this is an ownership/compositing fix rather than a visual redesign.
+- Kept Hero foreground geometry unchanged.
+
+## Architecture Result
+
+The ambient Hero glow now follows the same global background lifecycle as the heat, dust, sparks and vignette. The Hero no longer owns a large background glow that can be clipped at the end of the first viewport.
+
+## Verification State
+
+- Source change: completed.
+- Supplied 1440×900 screenshot: reviewed before change.
+- Fresh production render: pending.
+- Production build: pending.
+
+## Commits
+
+- 946d2593d8d4b8f3a89d036c804b0a2a29f2dd4a — remove Hero-local ambient glow
+- b459891c91c04dc7c44587b0658ba3d910f12c5b — keep Hero glow continuous across sections
+- 9eb5982bc88b713e9db4a643bf8771cf00efdb69 — mount ambient glow globally
+- c9026194c303c0a1ab5408207022146800ea0355 — remove Hero-local glow styles
