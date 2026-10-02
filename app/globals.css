@@ -15,7 +15,7 @@
   z-index:50;
   left:50%;
   bottom:max(0rem,env(safe-area-inset-bottom));
-  width:min(calc(100vw - .1rem),64rem);
+  width:min(25rem,calc(100vw - 1.25rem));
   height:clamp(5.8rem,20.4vw,13rem);
   min-height:5.8rem;
   margin:0;
@@ -91,7 +91,7 @@
 }
 @media(max-width:699px){
   .bottom-nav{
-    width:calc(100vw - .15rem);
+    width:calc(100vw - 1rem);
     height:clamp(5.8rem,20.4vw,13rem);
     min-height:5.8rem;
     border-radius:1.45rem 1.45rem 1.8rem 1.8rem;
