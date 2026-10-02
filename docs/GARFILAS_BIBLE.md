@@ -340,4 +340,4 @@ Protected rule: Hero foreground calibration must not be altered during backgroun
 Latest background correction commit: `41c00960adfc9e5b4f940785f397e11bcde44b08`.
 
 Last Updated: 2026-10-02
-Documentation Version: 2.4.0
+Documentation Version: 2.5.0
