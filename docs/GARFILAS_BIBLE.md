@@ -194,7 +194,7 @@ Current intended order:
 3. GARFILAS / LASAGNA brand lockup
 4. Italian flag accent
 5. `Layers of Love, Taste of Italy` slogan
-6. Neon outlined `مشاهده منو` CTA
+6. Neon outlined `منو Menu` CTA
 7. Scroll cue with upward-pointing arrows
 8. Pill-shaped Bottom Navigation
 
