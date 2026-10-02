@@ -327,3 +327,11 @@ Last Updated: 2026-10-01
 Commits:
 - `de28375a8f4598b7a3d3059a5247c74541a4001e` — refactor(ui): remove unused GlowButton id prop
 - `b2f2c8bff585d4f78e8018f67165d8861dc3fde8` — refactor(css): consolidate reduced motion rules
+
+### 2026-10-02 Repository Hygiene Cleanup
+
+- Corrected the root README structure map so it no longer documents a nonexistent `components/layout/` implementation.
+- Normalized indentation in `components/sections/Hero/Hero.tsx` without changing markup, classes, assets, anchors, or behavior.
+- No particle engine, Hero geometry, CTA styling, Bottom Navigation geometry, dependencies, or assets were changed.
+
+Verification: source-level only.
