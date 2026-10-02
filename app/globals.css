@@ -31,3 +31,5 @@
 .hero-slogan{position:relative;top:-1.00rem;margin-top:.60rem;font-family:var(--font-great-vibes),cursive;font-size:clamp(1.08rem,4.7vw,1.34rem);font-weight:400;font-style:normal;line-height:3;letter-spacing:.13em;text-align:center;white-space:nowrap;display:block;background:linear-gradient(180deg,#f2ad2d 0%,#df8b14 38%,#cc7410 70%,#b8640b 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:brightness(1.03) saturate(1.22);text-rendering:geometricPrecision;-webkit-font-smoothing:antialiased;text-shadow:0 0 .10px rgba(255,207,115,.82),0 0 .38px rgba(255,164,35,.62),0 0 1.05px rgba(255,105,0,.38),0 0 2.35px rgba(255,73,0,.14),0 0 3.8px rgba(255,56,0,.035)}
       
 .hero-logo-artwork{display:block;width:min(76vw,24rem);height:auto;max-width:100%;max-height:100%;object-fit:contain}
+
+.background-test-page{width:100%;max-width:none;min-height:100svh;margin:0;position:relative;background:transparent;overflow:hidden}.background-particle-anchor{position:fixed;z-index:0;left:50%;top:27.5%;width:min(67vw,20.8rem);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;opacity:0}
