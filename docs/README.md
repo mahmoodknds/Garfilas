@@ -140,7 +140,7 @@ Landing Page MVP
 
 | ORM | Not introduced in Landing Page MVP |
 
-| Database | PostgreSQL |
+| Database | Not introduced in the Landing Page MVP |
 
 | Deployment | Vercel |
 
@@ -720,9 +720,3 @@ Last Updated
 2026-07-21
 
 
-
-## 2026-10-02 Current Architecture Note
-
-The site now uses a continuous global ambient background through `components/layout/SiteBackground.tsx`, mounted at the App Router layout level. Persistent atmosphere, including the large Hero glow, belongs to this global layer. Hero owns foreground composition only. The latest desktop boundary correction preserves the existing visual values while removing Hero-local clipping risk.
-
-Last Updated: 2026-10-02
