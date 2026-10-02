@@ -606,3 +606,9 @@ Verification remains source-level unless a browser/device render is explicitly a
 
 - Trigger-only documentation marker to force a fresh production deployment after the global background test page and cleanup changes.
 - No runtime or visual behavior is introduced by this marker.
+
+
+## 2026-10-03 Production Retrigger
+
+- Trigger-only documentation marker after the particle-engine syntax fix.
+- No runtime or visual behavior is introduced by this marker.
