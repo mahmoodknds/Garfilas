@@ -14,8 +14,8 @@ export default function HeroParticleEngine(){
 
   const layer=document.createElement("div");
   layer.className="hero-live-embers";
-  Object.assign(layer.style,{position:"absolute",inset:"0",overflow:"visible",pointerEvents:"none",zIndex:"3"});
-  hero.appendChild(layer);
+  Object.assign(layer.style,{position:"fixed",inset:"0",overflow:"visible",pointerEvents:"none",zIndex:"3"});
+  document.body.appendChild(layer);
 
   const embers:Ember[]=[];
   const TARGET_RING_PARTICLES=132;
@@ -61,18 +61,18 @@ export default function HeroParticleEngine(){
   };
 
   const ringPoint=(spark=false,forcedSide?:"left"|"right",initialPhase=0,onFinish?:()=>void)=>{
-   const rr=ring.getBoundingClientRect(),hr=hero.getBoundingClientRect();
+   const rr=ring.getBoundingClientRect();
    let angle=(ringIndex++%TARGET_RING_PARTICLES)*(Math.PI*2/TARGET_RING_PARTICLES)+rand(-.018,.018);
    if(forcedSide){const left=angle>Math.PI/2&&angle<Math.PI*1.5;if((forcedSide==="left")!==left)angle+=Math.PI;}
    const radius=Math.min(rr.width,rr.height)*.515;
-   make(rr.left+rr.width/2+Math.cos(angle)*radius-hr.left,rr.top+rr.height/2+Math.sin(angle)*radius-hr.top,angle+rand(-.12,.12),true,spark,initialPhase,onFinish);
+   make(rr.left+rr.width/2+Math.cos(angle)*radius,rr.top+rr.height/2+Math.sin(angle)*radius,angle+rand(-.12,.12),true,spark,initialPhase,onFinish);
   };
 
   const maintainRingOne=()=>{if(stopped)return;ringPoint(false,undefined,0,maintainRingOne);};
   for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,rand(0,12000),maintainRingOne);
 
   const sparkBurst=()=>{const count=Math.floor(rand(20,31));for(let i=0;i<count;i++){const side=sparkSide;ringPoint(true,side);sparkSide=side==="right"?"left":"right";}};
-  const seedAmbient=()=>{const w=hero.clientWidth,h=hero.clientHeight;for(let i=0;i<120;i++){const x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,false,rand(0,12000));}};
+  const seedAmbient=()=>{const w=window.innerWidth,h=window.innerHeight;for(let i=0;i<120;i++){const x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,false,rand(0,12000));}};
   seedAmbient();
   sparkBurst();
 
@@ -82,7 +82,7 @@ export default function HeroParticleEngine(){
    const dt=Math.min(64,Math.max(0,now-last));last=now;
    ambientClock-=dt;sparkClock-=dt;
    if(sparkClock<=0){sparkBurst();sparkClock=rand(1900,2500);}
-   if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<2;a++){const w=hero.clientWidth,h=hero.clientHeight,x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(150,260);}
+   if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<2;a++){const w=window.innerWidth,h=window.innerHeight,x=rand(w*.08,w*.92),y=rand(h*.08,h*.78);if(y>h*.60&&Math.random()<.64)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(150,260);}
    raf=requestAnimationFrame(tick);
   };
   raf=requestAnimationFrame(tick);
