@@ -102,3 +102,13 @@ Last Updated: 2026-10-02
 - Moved the mascot blend-mode rule into `app/globals.css` so the token file remains token-only.
 
 Last Updated: 2026-10-02
+
+
+## 2026-10-02 Responsive CSS Audit
+
+- Repaired the Hero animation section after the previous dead-CSS cleanup left partial legacy keyframe fragments in the stylesheet.
+- Removed remaining global CTA rules that had no active `garfilas-glow-button` element consumer; the CTA visual is owned by `GlowButton.tsx` utility classes plus the active sweep/star rules.
+- Added a short-viewport guard that hides the decorative scroll cue at `max-height: 600px` to prevent collision with the fixed bottom navigation on compact mobile screens.
+- No primary Hero anchor positions or Bottom Navigation geometry were changed.
+
+Last Updated: 2026-10-02

@@ -227,3 +227,15 @@ Structural cleanup:
 - Kept active visual geometry and package versions unchanged.
 
 This pass was source-level; no browser or local-build verification is claimed here.
+
+
+## 2026-10-02 Responsive CSS Audit
+
+A focused responsive pass found one concrete stylesheet integrity issue and one compact-height collision risk.
+
+- The animation/keyframe block contained partial legacy fragments after dead CSS removal. It has been normalized to only the active keyframes.
+- The global `garfilas-glow-button` block was dead because the active button root is implemented by `GlowButton.tsx` with utility classes. It was removed without changing the rendered component classes.
+- On very short mobile viewports, the scroll cue could enter the fixed bottom-navigation area. A `max-height: 600px` rule now hides that decorative cue only in that constrained case.
+- Protected Hero anchor percentages and navigation geometry remain unchanged.
+
+This was a source-level responsive audit. No browser/device render was available in this execution environment.

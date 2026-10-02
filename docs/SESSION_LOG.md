@@ -395,3 +395,20 @@ The ambient Hero glow now follows the same global background lifecycle as the he
 ### Verification
 
 Source-level audit only. No browser render or local build verification is claimed from this execution environment.
+
+
+## 2026-10-02 Responsive CSS Audit
+
+### Findings
+- The Hero keyframe area had malformed leftover fragments from the earlier dead-CSS cleanup.
+- Global `garfilas-glow-button` rules were not consumed by the current `GlowButton.tsx` root element.
+- Compact mobile heights can leave insufficient vertical space between the CTA, scroll cue and fixed bottom navigation.
+
+### Changes
+- Normalized the active Hero keyframes.
+- Removed the dead global CTA block while retaining active sweep/star rules.
+- Added a short-height guard at `max-height: 600px` for the scroll cue.
+- Kept the protected Hero anchors and bottom-nav geometry unchanged.
+
+### Verification
+Source-level only. No browser/device render verification is claimed.
