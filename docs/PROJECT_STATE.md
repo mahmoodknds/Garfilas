@@ -115,8 +115,8 @@ GARFILAS uses a fluorescent/neon electrical-fault effect: long stable light, gra
 
 Latest change:
 
-- Animation cycle was slowed to **15 seconds** in `styles/animations.css`.
-- Commit: `790c209e5c8f94e49ed214eb7e92b40267fdefe7`.
+- GARFILAS neon fault animation is implemented in `app/globals.css`.
+- Current cycle: 7 seconds.
 - LASAGNA and slogan remain independent from the GARFILAS fault animation.
 
 ## Verification State
@@ -140,7 +140,7 @@ Latest change:
 - Scroll cue direction: completed; upward arrows
 - Mobile scroll cue position: restored to `83.5%`
 - Mobile slogan position: raised slightly to `.60rem` margin-top
-- Local `npm run build`: not verified in this documentation update
+- Local `npm run build`: verified successfully on 2026-10-02
 - Production visual verification: pending
 - Responsive audit foundation: implemented for safe-area handling, tablet scaling and desktop scaling
 - Final Hero acceptance: pending
@@ -171,15 +171,6 @@ Latest change:
 - Work backlog: `docs/TODO.md`
 - AI continuity: `docs/AI_CONTEXT.md`
 - Current visual source: user-supplied mobile reference screenshot
-
-## 2026-10-02 Desktop Composition Correction
-
-- The previous shared percentage-anchor approach was visually insufficient on large screens, based on the supplied `1916×1023px` screenshot.
-- Tablet/desktop now use a single lower foreground stack beginning at the existing `52.8%` copy anchor: HeroLogo, CTA, then scroll cue.
-- Mobile remains unchanged to protect the approved mobile geometry.
-- Wide-desktop temporary mascot sizing is now `clamp(26rem,30vw,29rem)`.
-- Fresh production visual verification and build verification remain pending.
-
 
 ## 2026-10-02 Full Mobile Geometry Unification
 
@@ -212,4 +203,4 @@ Latest change:
 - Disabled legacy background layers were removed from `SiteBackground.tsx` and their obsolete CSS was removed.
 - No Hero visual behavior was intentionally changed by this cleanup.
 
-Cleanup verification requiring a local/CI build remains pending.
+Cleanup verification: local `npm run build` passed on 2026-10-02.
