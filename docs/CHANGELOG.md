@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+### 2026-10-02 Repository Cleanup Continuation
+
+#### Removed
+
+- Removed unused `components/sections/Hero/index.ts` barrel export.
+- Removed unused `components/sections/BottomNavigation/index.ts` barrel export.
+- Removed redundant root-level `PROJECT_INFO.md` and `PROJECT_STRUCTURE.md`.
+- Removed duplicate `docs/PROJECT_INFO.md`.
+- Updated `docs/PROJECT_STRUCTURE.md` to reflect the current repository tree.
+
+#### Reason
+
+- Keep the repository limited to files with a clear active purpose.
+- Avoid duplicate project metadata and unused import surfaces.
+- Keep the documented structure aligned with the actual repository.
+
+
 ### 2026-10-02 Responsive Audit — Unified Hero Composition
 
 #### Changed

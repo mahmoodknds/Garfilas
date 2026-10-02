@@ -194,6 +194,9 @@ Latest change:
 
 ## 2026-10-02 Codebase Cleanup
 
+- Removed unused Hero and Bottom Navigation barrel files because no active import resolves through them.
+- Removed redundant root-level project metadata/structure files and the duplicate `docs/PROJECT_INFO.md`; `docs/PROJECT_STRUCTURE.md` remains the canonical structure document.
+
 - Homepage is intentionally limited to the active Hero and Bottom Navigation.
 - Featured Products and Story were removed from the codebase until their implementation is explicitly resumed.
 - Unused Hero prototypes and generic starter UI components were removed.

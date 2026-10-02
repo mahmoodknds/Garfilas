@@ -1,5 +1,32 @@
 # SESSION_LOG.md
 
+## 2026-10-02 Repository Cleanup Continuation
+
+### Scope
+
+Continue the codebase cleanup without changing Hero or Bottom Navigation visual behavior.
+
+### Implemented
+
+- Removed unused Hero barrel export: `components/sections/Hero/index.ts`.
+- Removed unused Bottom Navigation barrel export: `components/sections/BottomNavigation/index.ts`.
+- Removed redundant root-level `PROJECT_INFO.md`.
+- Removed redundant root-level `PROJECT_STRUCTURE.md`.
+- Removed duplicate `docs/PROJECT_INFO.md`.
+- Updated `docs/PROJECT_STRUCTURE.md` to match the active repository tree.
+
+### Verification Basis
+
+- Direct repository search confirmed no active imports of either removed barrel export.
+- The removed root project documents duplicated or contradicted the canonical documentation under `docs/`.
+- No runtime component, asset, styling, or visual calibration file was changed.
+
+### Next Cleanup Target
+
+Continue auditing for stale documentation references and genuinely unused source/assets, while preserving the current Hero and Bottom Navigation behavior.
+
+---
+
 ## Garfilas Development Log
 
 ### Latest Session: 3D Oven Background Scene — Visual Calibration Pass

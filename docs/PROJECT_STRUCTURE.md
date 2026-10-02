@@ -1,6 +1,6 @@
-.env.local
-.gitignore
+ .gitignore
 AGENTS.md
+CLAUDE.md
 eslint.config.mjs
 next.config.ts
 package-lock.json
@@ -8,6 +8,8 @@ package.json
 postcss.config.mjs
 README.md
 tsconfig.json
+.vscode/
+  settings.json
 app/
   favicon.ico
   fonts.ts
@@ -25,7 +27,6 @@ components/
       HeroCTA.tsx
       HeroLogo.tsx
       HeroParticleEngine.tsx
-      index.ts
   ui/
     GlowButton.tsx
 config/
@@ -37,13 +38,13 @@ docs/
   CODING_RULES.md
   DECISIONS.md
   GARFILAS_BIBLE.md
-  PROJECT_INFO.md
   PROJECT_STATE.md
   PROJECT_STRUCTURE.md
   README.md
   SESSION_LOG.md
   TODO.md
 public/
+  Screenshot 2026-10-02 111606.png
   assets/
     brand/
       garfilas-reference-logo.svg
@@ -82,5 +83,10 @@ Removed from the active codebase:
 - Legacy particle test styles
 - Legacy starter assets
 - Unused component-level style blocks
+- Unused Hero barrel export
+- Unused Bottom Navigation barrel export
+- Redundant root-level `PROJECT_INFO.md`
+- Redundant root-level `PROJECT_STRUCTURE.md`
+- Redundant `docs/PROJECT_INFO.md`
 
 Last Updated: 2026-10-02
