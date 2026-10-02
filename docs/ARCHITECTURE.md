@@ -134,7 +134,7 @@ Small reusable presentation primitives used by the active page. Keep this folder
 
 ## components/layout/
 
-Shared layout-level components such as the brand Logo.
+Shared layout-level components such as `SiteBackground.tsx`.
 
 ## config/
 
@@ -146,7 +146,7 @@ No shared utilities are currently required. Add files here only when a real shar
 
 ## styles/
 
-Shared design tokens. Component-specific animation styles live with the active global stylesheet until a separate shared animation module is justified.
+Shared design tokens used by the global stylesheet.
 
 ## docs/
 
@@ -214,7 +214,7 @@ Implemented so far:
 
 Deferred work remains documented in TODO.md and is intentionally not present in the active homepage code. Current next work is responsive refinement, Hero acceptance, SEO foundation and performance audit.
 
-Last Updated: 2026-10-01
+Last Updated: 2026-10-02
 
 
 ## 2026-10-02 Global Background Ownership
