@@ -572,3 +572,10 @@ Verification remains source-level unless a browser/device render is explicitly a
 
 - Added this documentation-only marker commit to test whether a fresh `main` push now creates a Vercel Production deployment after the Git repository reconnection.
 - No application runtime, asset, dependency, Hero geometry, CTA styling, particle behavior, or Bottom Navigation behavior was changed.
+
+
+## 2026-10-02 Vercel Reconnection Trigger
+
+- GitHub repository connection was reconnected in Vercel.
+- Added a fresh documentation-only commit on `main` to verify that the repaired Git integration now creates a new Production deployment.
+- No application source, assets, dependencies, Hero geometry, CTA styling, particle behavior, or Bottom Navigation behavior changed.
