@@ -3,8 +3,8 @@ export default function SiteBackground() {
     <>
       <style>{`
         .hero{position:relative;isolation:isolate;overflow:hidden}
-        .hero-depth-scene{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;isolation:isolate;background:#030201}
-        .hero-ember-space{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,rgba(73,31,9,.28) 0%,rgba(30,12,4,.16) 30%,rgba(4,3,2,0) 66%),radial-gradient(ellipse at 18% 70%,rgba(93,38,8,.13),transparent 38%),radial-gradient(ellipse at 84% 30%,rgba(104,43,8,.11),transparent 35%),#030201}
+        .hero-depth-scene{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;isolation:isolate;background:transparent}
+        .hero-ember-space{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,rgba(73,31,9,.28) 0%,rgba(30,12,4,.16) 30%,rgba(4,3,2,0) 66%),radial-gradient(ellipse at 18% 70%,rgba(93,38,8,.13),transparent 38%),radial-gradient(ellipse at 84% 30%,rgba(104,43,8,.11),transparent 35%),transparent}
         .hero-heat{position:absolute;inset:-20%;background:radial-gradient(ellipse at 42% 44%,rgba(255,102,20,.10),transparent 24%),radial-gradient(ellipse at 67% 62%,rgba(255,72,10,.07),transparent 22%),radial-gradient(ellipse at 25% 28%,rgba(255,150,45,.045),transparent 20%);filter:blur(34px);animation:heat-breathe 9s ease-in-out infinite;transform:translateZ(0)}
         .hero-ring-heat{position:absolute;left:50%;top:44%;width:min(78vw,31rem);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,transparent 51%,rgba(255,112,13,.07) 61%,rgba(255,76,7,.025) 72%,transparent 79%);filter:blur(8px);opacity:.8;animation:ring-heat 7s ease-in-out infinite}
         .hero-dust-far,.hero-dust-mid,.hero-dust-near,.hero-dust-front{position:absolute;inset:-8%;border-radius:50%;will-change:transform,opacity}
