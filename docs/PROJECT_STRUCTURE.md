@@ -16,7 +16,6 @@ app/
   page.tsx
 components/
   layout/
-    Logo.tsx
     SiteBackground.tsx
   sections/
     BottomNavigation/
@@ -49,11 +48,7 @@ public/
     brand/
       garfilas-reference-logo.svg
     hero/
-      garfilas-cat.svg
       garfilas-hero-final.webp
-      garfilas-reference-hero-preview.jpg
-      garfilas-reference-hero.svg
-      italy-landmarks.svg
     ui/
       bottom-nav-frame.svg
 styles/
@@ -68,16 +63,24 @@ Active page composition:
 - Hero
 - Bottom Navigation
 
+Active shared layers:
+
+- `SiteBackground.tsx`
+- `HeroParticleEngine.tsx`
+
+Active configuration/style support:
+
+- `config/brand.ts` is consumed by the Hero CTA.
+- `styles/tokens.css` is imported by `app/globals.css`.
+
 Removed from the active codebase:
 
-- Deferred Featured Products section
-- Deferred Story section
-- Unused HeroContent and RingParticleEmitter prototypes
+- Deferred Featured Products and Story sections
+- Unused Hero prototypes
 - Unused generic UI starter primitives
 - Empty constants module
 - Legacy particle test styles
 - Legacy starter assets
-
-The CTA remains the existing Hero CTA primitive because it is part of the active first-page visual system.
+- Unused component-level style blocks
 
 Last Updated: 2026-10-02
