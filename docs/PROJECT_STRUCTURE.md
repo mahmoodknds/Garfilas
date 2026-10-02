@@ -18,7 +18,6 @@ app/
   page.tsx
 components/
   layout/
-    SiteBackground.tsx
   sections/
     BottomNavigation/
       BottomNavigation.tsx
@@ -88,5 +87,18 @@ Removed from the active codebase:
 - Redundant root-level `PROJECT_INFO.md`
 - Redundant root-level `PROJECT_STRUCTURE.md`
 - Redundant `docs/PROJECT_INFO.md`
+
+Last Updated: 2026-10-02
+
+
+## 2026-10-02 Dependency, Asset and CSS Audit
+
+- All declared runtime dependencies have active consumers; no package was removed.
+- Active application assets were traced to current markup and intentionally retained reference material.
+- Removed the confirmed no-op `components/layout/SiteBackground.tsx`.
+- The active ambient background is currently the global body atmosphere plus the fixed `HeroParticleEngine`.
+- Removed confirmed dead Hero selectors and legacy animation keyframes.
+- Reduced `styles/tokens.css` to currently consumed design tokens.
+- Moved the mascot blend-mode rule into `app/globals.css` so the token file remains token-only.
 
 Last Updated: 2026-10-02

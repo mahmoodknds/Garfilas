@@ -372,3 +372,26 @@ The ambient Hero glow now follows the same global background lifecycle as the he
 - b459891c91c04dc7c44587b0658ba3d910f12c5b — keep Hero glow continuous across sections
 - 9eb5982bc88b713e9db4a643bf8771cf00efdb69 — mount ambient glow globally
 - c9026194c303c0a1ab5408207022146800ea0355 — remove Hero-local glow styles
+
+
+## 2026-10-02 Dependency, Asset and CSS Audit
+
+### Findings
+
+- `lucide-react` has an active Bottom Navigation consumer.
+- The three `next/font/google` fonts have active Hero consumers.
+- Current Hero and Bottom Navigation assets are actively referenced.
+- The public screenshot is intentionally retained as reference material.
+- No unused npm dependency was confirmed.
+
+### Cleanup
+
+- Deleted the confirmed no-op `components/layout/SiteBackground.tsx`.
+- Removed its root-layout import and mount.
+- Removed confirmed dead Hero selectors and legacy keyframes.
+- Reduced `styles/tokens.css` to active tokens only.
+- Moved the mascot blend-mode rule into `app/globals.css`.
+
+### Verification
+
+Source-level audit only. No browser render or local build verification is claimed from this execution environment.

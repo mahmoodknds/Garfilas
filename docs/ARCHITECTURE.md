@@ -226,3 +226,14 @@ The Hero owns foreground composition only. Large ambient effects that need to co
 No foreground Hero geometry was changed in the latest background-boundary correction.
 
 Last Updated: 2026-10-02
+
+## 2026-10-02 Cleanup Audit
+
+The former `SiteBackground.tsx` wrapper was confirmed to be a no-op because its class names had no active stylesheet definitions. It was removed from the root layout and deleted.
+
+Current background ownership:
+- `body` global gradients provide the base atmosphere.
+- `HeroParticleEngine.tsx` provides the fixed particle layer.
+- Hero foreground remains inside the Hero feature.
+
+Keep layout components only when they own active behavior, styling or composition.

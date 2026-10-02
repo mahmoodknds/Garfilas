@@ -207,3 +207,23 @@ Latest change:
 - No Hero visual behavior was intentionally changed by this cleanup.
 
 Cleanup verification: local `npm run build` passed on 2026-10-02.
+
+
+## 2026-10-02 Dependency, Asset and CSS Audit
+
+The second cleanup pass audited dependencies, active public assets and CSS.
+
+Confirmed:
+- `lucide-react` is actively used by Bottom Navigation.
+- The `next/font/google` fonts are actively consumed by Hero typography.
+- Current Hero and Bottom Navigation assets remain referenced.
+- The retained public screenshot is reference material.
+- No unused npm dependency was confirmed, so package versions were left unchanged.
+
+Structural cleanup:
+- Removed the no-op `SiteBackground.tsx` and its root-layout mount.
+- Current ambient background ownership is the global body gradient plus the fixed particle engine.
+- Removed confirmed dead Hero CSS and legacy animation declarations.
+- Kept active visual geometry and package versions unchanged.
+
+This pass was source-level; no browser or local-build verification is claimed here.
