@@ -146,8 +146,8 @@ GARFILAS uses an electrical neon-fault animation inspired by a malfunctioning fl
 
 Latest state:
 
-- Cycle slowed to **15 seconds** in `styles/animations.css`.
-- Commit: `790c209e5c8f94e49ed214eb7e92b40267fdefe7`.
+- Cycle: **15 seconds** in `app/globals.css`.
+- Keep the animation independent from LASAGNA and slogan styling.
 - Keep `prefers-reduced-motion` support.
 
 # Bottom Navigation Calibration Locks
@@ -209,7 +209,7 @@ Latest state:
 - CTA neon breathe: 2s
 - Bottom Navigation: implemented; final calibration pending
 - Center navigation button position: locked at `50.671875%`
-- Production build: not verified in this documentation update
+- Production build: verified locally on 2026-10-02
 - Final visual acceptance: pending
 
 # Exact Next Work
@@ -219,7 +219,7 @@ Latest state:
 3. Finalize the vertical stack from logo through scroll cue.
 4. Calibrate LASAGNA, Italian flag and slogan only through direct reference comparison.
 5. Finish Bottom Navigation geometry without moving the locked center button unless explicitly requested.
-6. Rebuild background and architectural composition only after foreground placement is accepted.
+6. Keep the existing global background architecture stable; only add missing background details after foreground placement is accepted.
 7. Replace temporary Hero artwork later and recalibrate its ring.
 8. Run production build verification.
 9. Validate mobile, then desktop.
