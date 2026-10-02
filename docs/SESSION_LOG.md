@@ -422,3 +422,4 @@ Source-level only. No browser/device render verification is claimed.
 
 ### Verification
 Source-level only. No browser/device render verification is claimed.
+Bottom Navigation follow-up: reduced fixed height from `6.1rem` to `5.8rem` because the first 0.3rem reduction was only ~4.8px and was visually imperceptible. Source-level verification only.
