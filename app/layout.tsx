@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cormorantGaramond, greatVibes } from "./fonts";
 import HeroParticleEngine from "@/components/sections/Hero/HeroParticleEngine";
+import SiteBackground from "@/components/layout/SiteBackground";
 
 export const metadata: Metadata = {
   title: "Garfilas | Premium Lasagna",
@@ -25,6 +26,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${cormorantGaramond.variable} ${greatVibes.variable}`}>
+        <SiteBackground />
         <HeroParticleEngine />
         {children}
       </body>
