@@ -273,6 +273,12 @@ Status: 🟢 **Synchronized**
 - [ ] Run production build verification.
 
 
+## 2026-10-03 Global Background Test
+
+- [x] Add a blank `/blank` route using the same global background.
+- [x] Keep the particle engine independent from Hero foreground content.
+- [ ] Browser-verify the blank background route across mobile and desktop.
+
 ## 2026-10-02 CTA / Deployment Hold
 
 - [ ] Match Persian `منو` visual treatment to English `Menu` while preserving Vazirmatn font family, weight and proportional sizing.
