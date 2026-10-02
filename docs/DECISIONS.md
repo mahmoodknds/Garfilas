@@ -1413,6 +1413,40 @@ Responsive composition rule
 
 ---
 
+
+---
+
+# ADR-031
+
+## Global Site Background System
+
+Status
+
+✅ Approved
+
+Decision
+
+Garfilas uses one global background system mounted at the App Router layout level instead of separate page/section background scenes.
+
+The system owns the persistent ambient layers:
+
+- dark base atmosphere
+- orange/gold heat gradients
+- ambient dust and spark layers
+- shared vignette/atmosphere
+- the existing fixed particle engine remains global
+
+Hero foreground geometry remains local to the Hero. Hero-specific mascot, logo, CTA and navigation calibration must not be changed as part of background maintenance.
+
+Reason
+
+Future pages must feel like continuous parts of the same Garfilas environment. A fixed global background removes visible section boundaries and prevents duplicated background implementations as the site grows.
+
+Impact
+
+New pages and sections should use transparent backgrounds by default and must not introduce an independent full-page background unless explicitly approved.
+
+
 # Future ADRs
 
 
