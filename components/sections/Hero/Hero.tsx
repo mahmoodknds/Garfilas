@@ -7,7 +7,6 @@ export default function Hero() {
       <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
 
       <div className="hero-shell">
-        <div className="hero-main-composition">
           <div className="hero-mascot" aria-label="Garfilas hero artwork">
             <div className="hero-mascot-frame">
               <img
@@ -26,11 +25,10 @@ export default function Hero() {
 
           <HeroCTA />
 
-          <div className="hero-scroll-cue" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
+        <div className="hero-scroll-cue" aria-hidden="true">
+          <span />
+          <span />
+          <span />
         </div>
       </div>
     </section>
