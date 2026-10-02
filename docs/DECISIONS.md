@@ -1571,22 +1571,39 @@ New pages and sections should use the existing global atmosphere by default. Do 
 
 Future background-only effects must use the existing global ownership model when they are expected to continue across page or section boundaries.
 
-### Global Background Ownership Rule
+---
 
-Status
+# Future ADRs
 
-✅ Approved
+Reserved
 
-Decision
+ADR-024  
+Authentication Provider
 
-Large ambient visual layers that are intended to continue beyond the Hero viewport belong to SiteBackground, not to the Hero DOM.
+ADR-025  
+Notification System
 
-The Hero owns foreground composition. SiteBackground owns persistent atmosphere, including the ambient glow, heat, dust, sparks and vignette.
+ADR-026  
+Order Management
 
-Reason
+ADR-027  
+Restaurant Dashboard
 
-A viewport-height Hero uses overflow:hidden; keeping a large ambient effect inside it can create a visible termination at the first-section boundary on desktop even when the rest of the background is global.
+ADR-028  
+Analytics
 
-Impact
+ADR-029  
+PWA
 
-Future background-only effects must be mounted in the global background system when they are expected to continue across page or section boundaries. Preserve the visual values when moving ownership unless a separate calibration change is explicitly requested.
+ADR-030  
+Version 1.0 Release
+
+---
+
+Last Updated
+
+2026-10-02
+
+Documentation Version
+
+2.1.0
