@@ -7,10 +7,8 @@ function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.
 
 export default function HeroParticleEngine(){
  useEffect(()=>{
-  const hero=document.querySelector<HTMLElement>(".hero");
-  const ring=document.querySelector<HTMLElement>(".hero-orbit-one");
-  const mascot=document.querySelector<HTMLElement>(".hero-mascot");
-  if(!hero||!ring||!mascot)return;
+  const ring=document.querySelector<HTMLElement>(".background-particle-anchor,.hero-orbit-one");
+  if(!ring)return;
 
   const layer=document.createElement("div");
   layer.className="hero-live-embers";
@@ -40,7 +38,7 @@ export default function HeroParticleEngine(){
    Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,252,220,1) 0%,rgba(255,191,70,.98) 34%,rgba(255,91,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,231,174,1) 0%,rgba(255,139,24,.9) 40%,rgba(255,61,4,0) 100%)",boxShadow:spark?`0 0 ${Math.max(12,size*5.5)}px rgba(255,210,90,.95),0 0 ${Math.max(24,size*8)}px rgba(255,95,8,.55)`:`0 0 ${Math.max(6,size*3.2)}px rgba(255,116,15,.52),0 0 ${Math.max(10,size*5.2)}px rgba(255,58,3,.24)`,contain:"layout style paint"});
    const distance=spark?rand(40,88):isRing?rand(48,155):rand(35,135);
    const dx=Math.cos(angle)*distance;
-   const dy=Math.sin(angle)*distance+(spark?rand(8,24):isRing?rand(10,36):rand(14,46));
+   const dy=Math.sin(angle)*distance+(spark?rand(8,24):isRing?rand(10,36):rand(14,46);
    const driftX=rand(-3,3),driftY=rand(-4,16);
    const duration=spark?rand(9000,13000):isRing?rand(10000,16000):rand(11000,17000);
    const alpha=spark?rand(.84,1):rand(.46,.92);
