@@ -266,3 +266,12 @@ Status: 🟢 **Synchronized**
 - [x] Keep the body atmosphere and particle engine global.
 - [x] Remove the Hero-owned ambient scene markup.
 - [ ] Verify the deployed result while scrolling through Hero and the next sections.
+
+
+## 2026-10-02 Global Background Boundary Fix
+
+- [x] Move the remaining large Hero ambient glow into the global SiteBackground layer.
+- [x] Remove the Hero-local glow element and styles.
+- [x] Preserve the approved glow geometry and animation while changing only ownership/compositing.
+- [ ] Verify a fresh 1440×900 production render and confirm the first-section boundary is visually continuous.
+- [ ] Run production build verification.
