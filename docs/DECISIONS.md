@@ -1542,3 +1542,26 @@ Documentation Version
 ### Responsive Composition Correction
 
 The latest desktop review on 2026-10-02 confirms the requested direction: desktop must use the same mobile-calibrated Hero sizing and positioning directly. No tablet/desktop normal-flow composition or separate desktop geometry is approved.
+
+
+## ADR-032
+
+### Global Background Ownership Rule
+
+Status
+
+✅ Approved
+
+Decision
+
+Large ambient visual layers that are intended to continue beyond the Hero viewport belong to SiteBackground, not to the Hero DOM.
+
+The Hero owns foreground composition. SiteBackground owns persistent atmosphere, including the ambient glow, heat, dust, sparks and vignette.
+
+Reason
+
+A viewport-height Hero uses overflow:hidden; keeping a large ambient effect inside it can create a visible termination at the first-section boundary on desktop even when the rest of the background is global.
+
+Impact
+
+Future background-only effects must be mounted in the global background system when they are expected to continue across page or section boundaries. Preserve the visual values when moving ownership unless a separate calibration change is explicitly requested.
