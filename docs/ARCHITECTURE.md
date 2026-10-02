@@ -122,8 +122,6 @@ Page-level feature sections. Each section owns its markup and presentation-speci
 Current Landing Page MVP sections:
 
 - Hero
-- Featured Products
-- Story
 - Bottom Navigation
 
 Hero-specific components currently include `Hero.tsx`, `HeroLogo.tsx`, `HeroCTA.tsx`, and `HeroParticleEngine.tsx`.
@@ -132,7 +130,7 @@ Future sections should follow the same feature-based structure.
 
 ## components/ui/
 
-Small reusable presentation primitives such as buttons, containers, cards and section wrappers.
+Small reusable presentation primitives used by the active page. Keep this folder limited to components with a current consumer.
 
 ## components/layout/
 
@@ -144,11 +142,11 @@ Brand and application configuration that should not be mixed with page compositi
 
 ## lib/
 
-Shared constants and utilities that are not specific to one page section.
+No shared utilities are currently required. Add files here only when a real shared dependency exists.
 
 ## styles/
 
-Global design tokens and lightweight reusable animation definitions.
+Shared design tokens. Component-specific animation styles live with the active global stylesheet until a separate shared animation module is justified.
 
 ## docs/
 
@@ -185,8 +183,6 @@ Keep reusable components independent from business-specific page composition whe
 Home
  │
  ├── Hero
- ├── Featured Products
- ├── Story
  └── Bottom Navigation
 ```
 
@@ -214,18 +210,9 @@ Implemented so far:
 - Foundation
 - Design tokens
 - Hero
-- Featured Products
-- Story
 - Bottom Navigation
 
-Next planned sections:
-
-- Why Garfilas
-- Final CTA
-- Footer
-- Responsive refinement
-- SEO foundation
-- Performance audit
+Deferred work remains documented in TODO.md and is intentionally not present in the active homepage code. Current next work is responsive refinement, Hero acceptance, SEO foundation and performance audit.
 
 Last Updated: 2026-10-01
 
