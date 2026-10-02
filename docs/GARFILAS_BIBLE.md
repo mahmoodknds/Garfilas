@@ -331,13 +331,15 @@ Documentation Version: 2.5.0
 
 ## 2026-10-02 Global Atmosphere Rule
 
-Garfilas now uses one continuous global ambient background across the site. The current persistent atmosphere is owned by the global body background and fixed `HeroParticleEngine`. The previously introduced `components/layout/SiteBackground.tsx` wrapper was removed after it was confirmed to be a no-op.
+Garfilas uses one continuous global ambient background across the site. The current active implementation is intentionally lightweight:
 
-The large ambient Hero glow is part of the global atmosphere rather than the Hero component. This keeps the background continuous across the Hero-to-next-section boundary, particularly on desktop.
+- global `body` gradients provide the base atmosphere
+- fixed `HeroParticleEngine` provides live particles and sparks
+- Hero foreground geometry remains inside the Hero feature
+
+The former `components/layout/SiteBackground.tsx` wrapper was removed after it was confirmed to be a no-op. Historical references to that component describe an earlier implementation only.
 
 Protected rule: Hero foreground calibration must not be altered during background maintenance unless a separate visual mismatch is explicitly identified.
-
-Latest background correction commit: `41c00960adfc9e5b4f940785f397e11bcde44b08`.
 
 Last Updated: 2026-10-02
 Documentation Version: 2.5.0
