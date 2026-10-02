@@ -266,3 +266,24 @@ Last Updated: 2026-10-01
 - `046924c975c209f8416e2038d6a4424811b8f0b7`
 - `db718112a4c136674865f8357a46f740e4dc077c`
 - `f63139b3948bfe371a807d480e73dee5336b476f`
+
+
+### 2026-10-02 Global Background Boundary Correction
+
+#### Changed
+
+- Removed the large ambient hero-glow-main layer from the Hero-owned DOM.
+- Re-mounted the same glow inside the fixed global SiteBackground layer.
+- Preserved its existing geometry, color, blur and animation values.
+- Kept all Hero foreground positions and visual treatments unchanged.
+
+#### Reason
+
+- The remaining desktop 1440×900 boundary risk came from a background effect that was still clipped by the viewport-height Hero section. Ambient background layers must share one global lifecycle.
+
+#### Commits
+
+- 946d2593d8d4b8f3a89d036c804b0a2a29f2dd4a
+- b459891c91c04dc7c44587b0658ba3d910f12c5b
+- 9eb5982bc88b713e9db4a643bf8771cf00efdb69
+- c9026194c303c0a1ab5408207022146800ea0355
