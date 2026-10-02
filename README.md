@@ -18,9 +18,8 @@ The active homepage contains the Hero and Bottom Navigation. The foreground comp
 ## Structure
 
 - `app/` contains the App Router and global styles.
-- `components/sections/` contains page features.
-- `components/ui/` contains active reusable UI primitives.
 - `components/sections/` contains page features such as Hero and Bottom Navigation.
+- `components/ui/` contains active reusable UI primitives.
 - `config/` contains active brand configuration.
 - `styles/` contains shared design tokens.
 - `docs/` contains project source-of-truth documentation.
