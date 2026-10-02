@@ -544,3 +544,9 @@ Compare the current Persian span against the known-good English span and change 
 
 Verification remains source-level unless a browser/device render is explicitly available.
 
+
+
+## 2026-10-02 Vercel Git Trigger Test
+
+- Added this documentation-only marker commit to test whether a fresh `main` push now creates a Vercel Production deployment after the Git repository reconnection.
+- No application runtime, asset, dependency, Hero geometry, CTA styling, particle behavior, or Bottom Navigation behavior was changed.
