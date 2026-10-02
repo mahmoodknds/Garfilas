@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 
-type Ember={el:HTMLSpanElement;animation:Animation;ring:boolean};
+type Ember={el:HTMLSpanElement;animation:Animation};
 const rand=(a:number,b:number)=>Math.random()*(b-a)+a;
 function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.4,2.1);if(r<.17)return rand(2.3,3.4);if(r<.42)return rand(3.4,4.8);if(r<.67)return rand(4.8,6.2);if(r<.92)return rand(6.2,7.8);if(r<.985)return rand(8,10.5);return ring?rand(10.5,13):rand(9,11)}
 
@@ -55,7 +55,7 @@ export default function HeroParticleEngine(){
     {transform:`translate3d(${dx+driftX*1.05}px,${dy+driftY+rand(4,10)}px,0) scale(.08)`,opacity:0}
    ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":"linear",fill:"both",iterations:1});
    layer.appendChild(el);
-   const ember:Ember={el,animation,ring:isRing};
+   const ember:Ember={el,animation};
    embers.push(ember);
    if(countsAsRing)ringCount++;else transientCount++;
    if(initialPhase>0)animation.currentTime=Math.min(initialPhase,duration-1);
