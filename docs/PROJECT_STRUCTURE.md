@@ -1,23 +1,27 @@
- .gitignore
+.gitignore
 AGENTS.md
 CLAUDE.md
+README.md
 eslint.config.mjs
 next.config.ts
 package-lock.json
 package.json
 postcss.config.mjs
-README.md
 tsconfig.json
+vercel.json
 .vscode/
   settings.json
+
 app/
+  blank/
+    page.tsx
   favicon.ico
   fonts.ts
   globals.css
   layout.tsx
   page.tsx
+
 components/
-  layout/
   sections/
     BottomNavigation/
       BottomNavigation.tsx
@@ -28,8 +32,10 @@ components/
       HeroParticleEngine.tsx
   ui/
     GlowButton.tsx
+
 config/
   brand.ts
+
 docs/
   AI_CONTEXT.md
   ARCHITECTURE.md
@@ -42,6 +48,7 @@ docs/
   README.md
   SESSION_LOG.md
   TODO.md
+
 public/
   Screenshot 2026-10-02 111606.png
   assets/
@@ -51,63 +58,53 @@ public/
       garfilas-hero-final.webp
     ui/
       bottom-nav-frame.svg
+
 styles/
   tokens.css
 
-## 2026-10-02 Cleanup Update
+## 2026-10-03 Structure Cleanup
 
-The repository is intentionally limited to the active first-page implementation.
+The repository tree above is the current source-of-truth structure on `main`.
 
-Active page composition:
+### Active application code
 
-- Hero
-- Bottom Navigation
+- `app/page.tsx` composes Hero and Bottom Navigation.
+- `app/layout.tsx` owns document-wide metadata, fonts and the fixed `HeroParticleEngine`.
+- `components/sections/Hero/` contains the active Hero implementation.
+- `components/sections/BottomNavigation/` contains the active Bottom Navigation.
+- `components/ui/GlowButton.tsx` is the active reusable CTA primitive.
+- `config/brand.ts` supplies the Hero CTA label.
+- `styles/tokens.css` supplies active global design tokens imported by `app/globals.css`.
 
-Active shared layers:
+### Test/support code
 
-- `HeroParticleEngine.tsx`
+- `app/blank/page.tsx` is a deliberate isolated background test route. It contains no Hero foreground.
+- `public/Screenshot 2026-10-02 111606.png` is retained as project reference material and is not a runtime dependency.
 
-Active configuration/style support:
+### Confirmed removed legacy structure
 
-- `config/brand.ts` is consumed by the Hero CTA.
-- `styles/tokens.css` is imported by `app/globals.css`.
+The following are intentionally absent from the current tree:
 
-Removed from the active codebase:
+- `components/layout/`
+- `components/ui/Button.tsx`
+- `components/ui/Container.tsx`
+- `components/ui/GlassCard.tsx`
+- `lib/constants.ts`
+- `styles/animations.css`
+- Hero and Bottom Navigation barrel `index.ts` files
+- Legacy starter SVG assets under `public/`
+- Redundant project-structure/info files at repository root
+- `docs/PROJECT_INFO.md`
 
-- Deferred Featured Products and Story sections
-- Unused Hero prototypes
-- Unused generic UI starter primitives
-- Empty constants module
-- Legacy particle test styles
-- Legacy starter assets
-- Unused component-level style blocks
-- Unused Hero barrel export
-- Unused Bottom Navigation barrel export
-- Redundant root-level `PROJECT_INFO.md`
-- Redundant root-level `PROJECT_STRUCTURE.md`
-- Redundant `docs/PROJECT_INFO.md`
+Do not recreate these files unless a new, source-backed requirement appears.
 
-Last Updated: 2026-10-02
+### Cleanup rule
 
+Before deleting a file, verify both:
 
-## 2026-10-02 Dependency, Asset and CSS Audit
+1. It is present in the current Git tree.
+2. No active source file references or imports it.
 
-- All declared runtime dependencies have active consumers; no package was removed.
-- Active application assets were traced to current markup and intentionally retained reference material.
-- Removed the confirmed no-op `components/layout/SiteBackground.tsx`.
-- The active ambient background is currently the global body atmosphere plus the fixed `HeroParticleEngine`.
-- Removed confirmed dead Hero selectors and legacy animation keyframes.
-- Reduced `styles/tokens.css` to currently consumed design tokens.
-- Moved the mascot blend-mode rule into `app/globals.css` so the token file remains token-only.
+Reference material and test routes are not dead code merely because they are not imported by the homepage.
 
-Last Updated: 2026-10-02
-
-
-## 2026-10-02 Responsive CSS Audit
-
-- Repaired the Hero animation section after the previous dead-CSS cleanup left partial legacy keyframe fragments in the stylesheet.
-- Removed remaining global CTA rules that had no active `garfilas-glow-button` element consumer; the CTA visual is owned by `GlowButton.tsx` utility classes plus the active sweep/star rules.
-- Added a short-viewport guard that hides the decorative scroll cue at `max-height: 600px` to prevent collision with the fixed bottom navigation on compact mobile screens.
-- No primary Hero anchor positions or Bottom Navigation geometry were changed.
-
-Last Updated: 2026-10-02
+Last Updated: 2026-10-03
