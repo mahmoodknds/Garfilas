@@ -264,3 +264,23 @@ The Bottom Navigation was compacted further after the first 6.1rem adjustment wa
 - Synchronized architecture documentation with the removal of the no-op `SiteBackground` component and current Hero responsive anchors.
 
 Verification: source-level only. No browser/device render verification was available in this execution environment.
+
+
+## 2026-10-02 Current Source Synchronization
+
+The following values describe the active source and supersede older historical calibration notes when reading the repository's present state:
+
+- Hero mascot/orbit anchor: `27.5%`.
+- Hero copy anchor: `51.3%`.
+- Hero CTA anchor: `73.6%`.
+- Hero scroll cue anchor: `80.5%`.
+- Short-height guard: hide the decorative scroll cue at `max-height: 600px`.
+- Bottom Navigation fixed height: `5.8rem`.
+- The no-op `SiteBackground.tsx` component is removed; current ambient ownership is the global body gradient plus the fixed particle engine.
+- `GlowButton` no longer exposes the unused `id` prop.
+- Reduced-motion rules are consolidated into one active CSS block.
+
+Verification state:
+- GitHub source verification: completed.
+- Latest Production deployment for the CSS consolidation: READY.
+- Browser/device render verification: pending because no browser automation/render environment is available in this execution context.
