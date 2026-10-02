@@ -25,6 +25,7 @@ export default function HeroParticleEngine(){
   let transientCount=0;
   let stopped=false;
   let raf=0;
+  let timer=0;
   let ambientClock=rand(90,150);
   let sparkClock=rand(1200,1600);
   let sparkSide:"left"|"right"="right";
@@ -82,11 +83,11 @@ export default function HeroParticleEngine(){
    sparkClock-=16;
    if(sparkClock<=0){sparkBurst();sparkClock=rand(1900,2500);}
    if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<3;a++){const w=window.innerWidth,h=window.innerHeight,x=rand(w*.06,w*.94),y=rand(h*.05,h*.94);if(y>h*.82&&Math.random()<.22)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(150,260);}
-   raf=window.setTimeout(()=>requestAnimationFrame(tick),80) as unknown as number;
+   timer=window.setTimeout(()=>{raf=requestAnimationFrame(tick);},80);
   };
   raf=requestAnimationFrame(tick);
 
-  return()=>{stopped=true;cancelAnimationFrame(raf);for(const e of embers)e.animation.cancel();layer.remove();};
+  return()=>{stopped=true;cancelAnimationFrame(raf);clearTimeout(timer);for(const e of embers)e.animation.cancel();layer.remove();};
  },[]);
  return null;
 }
