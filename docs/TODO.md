@@ -244,34 +244,30 @@ Status: 🟢 **Synchronized**
 13. Run production build verification.
 14. Stop before adding new website scope.
 
-## 2026-10-02 Hero Correction Note
+## 2026-10-02 Responsive Geometry Correction Note
 
-- [x] Correct desktop/tablet lower foreground collision by using a normal-flow composition stack.
-- [x] Preserve mobile Hero calibration values while fixing large-screen composition.
+- [x] Unify the Hero vertical composition across mobile, tablet and desktop.
+- [x] Preserve the current source anchors: mascot/orbit `27.5%`, copy `51.3%`, CTA `73.6%`, scroll cue `80.5%`.
+- [x] Add a short-height guard for the decorative scroll cue at `max-height:600px`.
 - [ ] Verify fresh desktop/tablet production renders after the correction.
-
 
 ## 2026-10-02 Full Mobile Geometry Unification
 
 - [x] Remove the separate tablet/desktop Hero sizing path.
-- [x] Share the mobile-calibrated Hero geometry across desktop.
+- [x] Share the current Hero geometry across desktop.
 - [x] Remove the unused desktop composition wrapper from Hero markup.
 - [ ] Verify a fresh desktop production render at 1916×1023 or equivalent.
 - [ ] Run production build verification.
 
-
 ## 2026-10-02 Global Background Architecture
 
-- [x] Move the ambient background scene to the App Router layout.
 - [x] Keep the body atmosphere and particle engine global.
-- [x] Remove the Hero-owned ambient scene markup.
+- [x] Remove the no-op `SiteBackground.tsx` wrapper.
 - [ ] Verify the deployed result while scrolling through Hero and the next sections.
-
 
 ## 2026-10-02 Global Background Boundary Fix
 
-- [x] Move the remaining large Hero ambient glow into the global SiteBackground layer.
-- [x] Remove the Hero-local glow element and styles.
-- [x] Preserve the approved glow geometry and animation while changing only ownership/compositing.
+- [x] Remove the obsolete Hero-owned ambient scene markup.
+- [x] Keep the active global atmosphere in the body background and fixed particle engine.
 - [ ] Verify a fresh 1440×900 production render and confirm the first-section boundary is visually continuous.
 - [ ] Run production build verification.
