@@ -21,7 +21,7 @@
 @keyframes garfilas-core-glow{0%,100%{opacity:.3;box-shadow:0 0 4px rgba(255,245,205,.7),0 0 9px rgba(255,161,35,.5)}25%,68%{opacity:1;box-shadow:0 0 7px #fff8df,0 0 16px rgba(255,214,120,1),0 0 25px rgba(255,126,20,.95)}52%{opacity:.38}}
 @keyframes garfilas-ray-glow{0%,100%{opacity:.18;filter:brightness(.8)}24%,68%{opacity:1;filter:brightness(1.7)}48%{opacity:.3}}
 @keyframes garfilas-luxury-sweep{0%,60%{opacity:0;transform:translateX(0) rotate(18deg)}62%{opacity:.5}66%{opacity:1}72%{opacity:.9}76%{opacity:.55}82%,100%{opacity:0;transform:translateX(930%) rotate(18deg)}}
-@media(prefers-reduced-motion:reduce){.garfilas-glow-button,.garfilas-glow-button::after,.garfilas-star-twinkle,.garfilas-star-core,.garfilas-star-ray,.garfilas-cta-sweep{animation:none!important}}
+@media(prefers-reduced-motion:reduce){.garfilas-star-twinkle,.garfilas-star-core,.garfilas-star-ray,.garfilas-cta-sweep{animation:none!important}}
 
         .hero-product-lockup{display:flex;align-items:center;justify-content:center;width:min(74vw,24rem);margin-top:-.70rem;gap:clamp(.12rem,.8vw,.30rem)}
         .hero-product-line{display:block;flex:1 1 0;height:.65px;min-width:1.45rem;max-width:3.0rem;background:linear-gradient(90deg,rgba(255,93,0,0),rgba(255,103,0,.66) 16%,#d98210 39%,#f1a523 50%,#d98210 61%,rgba(255,103,0,.66) 84%,rgba(255,93,0,0));box-shadow:0 0 .2px rgba(255,177,57,.72),0 0 .9px rgba(255,132,10,.48),0 0 2.2px rgba(255,88,0,.20),0 0 4px rgba(255,58,0,.04);opacity:.9}
