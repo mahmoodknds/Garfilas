@@ -238,7 +238,7 @@ Status: 🟢 **Synchronized**
 6. Calibrate slogan typography, size, color and spacing.
 7. Refine CTA geometry only if reference comparison shows a mismatch; preserve approved CTA behavior. Do not change the current CTA position while calibrating the slogan/arrows.
 8. Precisely reproduce Bottom Navigation geometry and proportions without moving the locked center button unless explicitly requested.
-9. Rebuild the background and architectural composition only after foreground placement is stable.
+9. [x] Establish one global site background system shared across all pages and sections.
 10. Replace the temporary Hero artwork and recalibrate its ring.
 11. Validate the unified composition across mobile, tablet and desktop.
 13. Run production build verification.
@@ -258,3 +258,11 @@ Status: 🟢 **Synchronized**
 - [x] Remove the unused desktop composition wrapper from Hero markup.
 - [ ] Verify a fresh desktop production render at 1916×1023 or equivalent.
 - [ ] Run production build verification.
+
+
+## 2026-10-02 Global Background Architecture
+
+- [x] Move the ambient background scene to the App Router layout.
+- [x] Keep the body atmosphere and particle engine global.
+- [x] Remove the Hero-owned ambient scene markup.
+- [ ] Verify the deployed result while scrolling through Hero and the next sections.
