@@ -423,3 +423,15 @@ Source-level only. No browser/device render verification is claimed.
 ### Verification
 Source-level only. No browser/device render verification is claimed.
 Bottom Navigation follow-up: reduced fixed height from `6.1rem` to `5.8rem` because the first 0.3rem reduction was only ~4.8px and was visually imperceptible. Source-level verification only.
+
+
+## 2026-10-02 Cleanup Pass
+
+### Changes
+- Removed confirmed dead `.garfilas-glow-button` global CSS.
+- Merged the duplicate `hero-product-name` definition into one active rule.
+- Corrected stale documentation references to the removed `SiteBackground` component and outdated Hero anchors.
+
+### Verification
+- Source-level checks confirm one `hero-product-name` definition and no legacy `.garfilas-glow-button` block.
+- No browser/device render verification was available in this execution environment.
