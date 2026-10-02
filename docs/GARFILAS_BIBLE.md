@@ -145,7 +145,8 @@ Revenue Before Complexity
 # Typography
 
 Persian: Vazirmatn
-English: Poppins
+English display: Cormorant Garamond
+Script accent: Great Vibes
 Fallback: System UI
 
 ---
