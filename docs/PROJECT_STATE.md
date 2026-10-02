@@ -65,14 +65,16 @@ The slogan remains HTML text:
 
 ## Exact Current Hero Positioning
 
-- Unified CTA: `top:76%`
-- Unified scroll cue: `top:83.5%`
-- Unified Hero mascot/orbit vertical anchor: `27.5%`
-- Unified Hero copy vertical anchor: `52.8%`
-- Mobile uses the same composition values directly.
-- Tablet and desktop now use the same vertical composition; artwork/logo/button sizing remains breakpoint-specific.
-- Existing scroll cue inline `marginTop:"10px"` is unchanged.
+- Unified mascot/orbit vertical anchor: `27.5%`
+- Unified Hero copy vertical anchor: `51.3%`
+- Unified CTA: `top:73.6%`
+- Unified scroll cue: `top:80.5%`
+- On very short viewports (`max-height:600px`), the decorative scroll cue is hidden.
+- Bottom Navigation fixed frame height: `5.8rem`.
+- Mobile, tablet and desktop use the same vertical composition; sizing may adapt through existing width/clamp rules.
 - Mobile slogan `margin-top`: `.60rem`.
+
+Older values `52.8%`, `76%` and `83.5%` remain only in historical calibration records and do not describe the active source.
 
 ## Menu CTA State
 
@@ -174,23 +176,12 @@ Latest change:
 
 ## 2026-10-02 Full Mobile Geometry Unification
 
-- The prior tablet/desktop Hero sizing path was removed.
-- Desktop now inherits the same mobile-calibrated Hero geometry instead of a separate large-screen composition.
-- Protected anchors remain mascot/orbit 27.5%, copy 52.8%, CTA 76%, scroll cue 83.5%.
-- The unused .hero-lower-stack wrapper was removed from Hero.tsx.
+- The separate tablet/desktop Hero sizing path was removed.
+- Desktop now uses the same current Hero vertical geometry as mobile.
+- Current anchors are mascot/orbit `27.5%`, copy `51.3%`, CTA `73.6%`, scroll cue `80.5%`.
+- The unused `.hero-lower-stack` wrapper was removed from Hero.tsx.
 - Existing ring, particle, CTA, logo animation and Bottom Navigation behavior were preserved.
 - Fresh production visual verification remains pending.
-
-
-## 2026-10-02 Global Background Boundary Correction
-
-- The global SiteBackground remains the shared ambient system for the full site.
-- The remaining large Hero ambient glow was moved from Hero.tsx into SiteBackground.tsx.
-- Existing glow size, position, color, blur and breathing animation were preserved.
-- Hero foreground geometry, particles, ring, CTA effects, logo animation and Bottom Navigation were not changed by this correction.
-- The purpose was to eliminate the visible desktop Hero/background termination observed at 1440×900.
-- Fresh production visual verification and production build verification remain pending.
-- Latest source commit: 41c00960adfc9e5b4f940785f397e11bcde44b08.
 
 ## 2026-10-02 Codebase Cleanup
 
