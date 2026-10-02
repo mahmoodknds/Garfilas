@@ -612,3 +612,9 @@ Verification remains source-level unless a browser/device render is explicitly a
 
 - Trigger-only documentation marker after the particle-engine syntax fix.
 - No runtime or visual behavior is introduced by this marker.
+
+
+## 2026-10-03 Production Deployment Retrigger 2
+
+- Trigger-only documentation marker after confirming the previous Production trigger did not create a deployment.
+- No runtime or visual behavior is introduced by this marker.
