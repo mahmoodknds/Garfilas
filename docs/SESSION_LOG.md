@@ -1,3 +1,14 @@
+## 2026-10-02 CSS Cleanup
+
+- Audited `app/globals.css` against the active Hero components.
+- Removed redundant `filter:none`, `opacity:1`, and `visibility:visible` declarations from `hero-logo-artwork`.
+- Removed redundant `display:block` declarations where CSS layout already blockifies the elements.
+- Removed stale indentation in the active Hero lockup rules.
+- Confirmed `lucide-react` is still actively consumed by Bottom Navigation, so the dependency remains.
+- No Hero geometry or animation behavior was intentionally changed.
+
+Verification: GitHub source re-read completed. Local build was not rerun in this execution environment.
+
 ## 2026-10-02 Font Loading Cleanup
 
 - Audited app/fonts.ts against the current Hero and CTA consumers.
