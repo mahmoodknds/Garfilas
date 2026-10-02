@@ -600,3 +600,9 @@ Verification remains source-level unless a browser/device render is explicitly a
 - Source changes committed and re-read from GitHub.
 - Local production build was not run in this execution environment.
 - Browser render verification of `/blank` remains pending.
+
+
+## 2026-10-03 Vercel Production Trigger
+
+- Trigger-only documentation marker to force a fresh production deployment after the global background test page and cleanup changes.
+- No runtime or visual behavior is introduced by this marker.
