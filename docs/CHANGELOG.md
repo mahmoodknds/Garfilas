@@ -346,3 +346,19 @@ Verification: source-level only.
 - No font weight, size, typography geometry, Hero anchors, CTA, Bottom Navigation, particle engine, assets or dependencies were changed.
 
 Verification: GitHub source re-read after the change. Browser/device render verification remains unavailable in this execution environment.
+
+
+## 2026-10-02 CTA Persian Style and Deployment Follow-up
+
+- Restored the Persian CTA font family to the existing Vazirmatn pipeline.
+- The current visual issue remains: `منو` does not yet match the intended previous appearance, while `Menu` is correct.
+- The issue is tracked as a Persian text styling/rendering regression, not a font-loading problem.
+
+### Deployment
+- GitHub → Vercel has shown inconsistent automatic promotion after rapid commits.
+- A deployment-only documentation trigger was previously required to advance Production.
+- Latest relevant source commit: `eb94204dd92074ee99636ab58cf4b6ec79eee69d`.
+- Production status must be verified from Vercel before considering the latest source live.
+
+### Next-session constraint
+- Do not alter `Menu`, CTA animation, particles, Hero geometry, Bottom Navigation, or unrelated typography while fixing Persian `منو`.
