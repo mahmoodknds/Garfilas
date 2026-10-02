@@ -1,3 +1,14 @@
+## 2026-10-02
+
+### Documentation Hygiene
+
+- Synchronized current architecture documentation with the removal of the no-op `SiteBackground.tsx` wrapper.
+- Corrected current Hero anchor and animation references in project-state documentation.
+- Updated the documentation guide and TODO verification state.
+- No runtime application behavior changed.
+- No deployment was triggered.
+
+
 # CHANGELOG.md
 
 ## [Unreleased]
