@@ -275,3 +275,11 @@ Verification state:
 - GitHub source verification: completed.
 - Latest Production deployment for the CSS consolidation: READY.
 - Browser/device render verification: pending because no browser automation/render environment is available in this execution context.
+
+## 2026-10-02 Repository Hygiene Cleanup
+
+- Root README structure documentation is now aligned with the actual repository and no longer claims an active `components/layout/` directory.
+- `Hero.tsx` indentation was normalized as a source-hygiene change only.
+- No runtime visual behavior was intentionally changed in this pass.
+
+Verification: GitHub source-level only; no browser/device render verification.
