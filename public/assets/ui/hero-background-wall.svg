@@ -1,9 +1,0 @@
-<svg width="208" height="84" viewBox="0 0 208 84" xmlns="http://www.w3.org/2000/svg">
-  <rect width="208" height="84" fill="#050403"/>
-  <g fill="none" stroke="#6B3115" stroke-width="1.2" opacity="0.30">
-    <path d="M0 42H208M0 84H208"/>
-    <path d="M52 0V42M104 0V42M156 0V42M208 0V42"/>
-    <path d="M26 42V84M78 42V84M130 42V84M182 42V84"/>
-  </g>
-  <path d="M0 41.5H208M0 83.5H208" stroke="#A34B18" stroke-width="0.6" opacity="0.12"/>
-</svg>
