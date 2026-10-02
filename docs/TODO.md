@@ -271,3 +271,13 @@ Status: 🟢 **Synchronized**
 - [x] Keep the active global atmosphere in the body background and fixed particle engine.
 - [ ] Verify a fresh 1440×900 production render and confirm the first-section boundary is visually continuous.
 - [ ] Run production build verification.
+
+
+## 2026-10-02 CTA / Deployment Hold
+
+- [ ] Match Persian `منو` visual treatment to English `Menu` while preserving Vazirmatn font family, weight and proportional sizing.
+- [x] Confirm English `Menu` is currently visually correct.
+- [x] Document the GitHub → Vercel deployment lag.
+- [x] Put deployment on hold until explicitly requested by the user.
+- [ ] After explicit deployment request, verify Production commit SHA and READY state before visual acceptance.
+
