@@ -248,3 +248,4 @@ This was a source-level responsive audit. No browser/device render was available
 - This is a small vertical compaction only, intended to recover a little viewport space on mobile without changing the established navigation proportions.
 
 Verification: source-level only. No browser/device render verification was available in this execution environment.
+The Bottom Navigation was compacted further after the first 6.1rem adjustment was visually imperceptible: fixed height is now `5.8rem`. Width and horizontal geometry remain unchanged.
