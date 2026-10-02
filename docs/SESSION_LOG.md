@@ -489,3 +489,36 @@ Verification: GitHub source re-read after the change. Browser/device render veri
 - First restore/confirm deployment.
 - Then compare Persian `منو` styling against the known-good pre-regression treatment.
 - Keep `Menu` untouched because its current styling is correct.
+
+
+## 2026-10-02 CTA Persian Style Regression / Deployment Hold
+
+### Current finding
+
+- English `Menu` is currently correct.
+- Persian `منو` is still visually different from the intended target.
+- Restoring the Vazirmatn font family alone did not restore the desired appearance.
+- The target is **same visual styling as Menu, with proportional sizing preserved for Persian glyphs**.
+- The current problem is therefore tracked as a CTA text styling regression, not a missing-font problem.
+
+### Deployment issue
+
+- GitHub → Vercel has not consistently promoted every rapid `main` commit.
+- Documentation-only deployment triggers have previously been used to advance Production.
+- **Deployment is intentionally on hold for this issue.** No deployment should be triggered unless the user explicitly requests it.
+
+### Protected elements
+
+While fixing Persian `منو`:
+- Keep English `Menu` unchanged.
+- Keep CTA sweep and star animations unchanged.
+- Keep Hero geometry unchanged.
+- Keep particle engine unchanged.
+- Keep Bottom Navigation unchanged.
+
+### Next action
+
+Compare the current Persian span against the known-good English span and change only the Persian visual treatment needed to make them share the same styling system. Preserve `var(--font-vazir)`, the existing Vazirmatn weight and proportional sizing.
+
+Verification remains source-level unless a browser/device render is explicitly available.
+
