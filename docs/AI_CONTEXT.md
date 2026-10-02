@@ -54,7 +54,7 @@ Treat this as one proportional vertical composition anchored above the Bottom Na
 ## Responsive Composition Rule
 
 - Mobile, tablet and desktop share the same Hero vertical composition.
-- Shared vertical anchors are mascot/orbit `27.5%`, copy `52.8%`, CTA `76%`, and scroll cue `83.5%`.
+- Shared vertical anchors are mascot/orbit `27.5%`, copy `51.3%`, CTA `73.6%`, and scroll cue `80.5%`.
 - Tablet and desktop may keep breakpoint-specific sizing through `clamp()` and width rules; this is sizing adaptation, not a separate composition.
 - Do not reintroduce separate tablet/desktop vertical offsets without direct user-requested visual evidence.
 
