@@ -315,3 +315,15 @@ Last Updated: 2026-10-01
 
 - Documentation-only commit to retrigger the GitHub → Vercel Production integration after the latest cleanup commits.
 - No application source or visual behavior is changed by this trigger commit.
+
+### 2026-10-02 Cleanup Continuation — Current Source Sync
+
+- Removed the unused `id` prop from `components/ui/GlowButton.tsx`; no active caller supplied or required it.
+- Consolidated the duplicate `prefers-reduced-motion` CSS blocks in `app/globals.css` without changing the effective rules.
+- Production deployment for the consolidated CSS commit reached READY.
+- No particle geometry, timing, CTA visual values, Hero anchors, or Bottom Navigation geometry were changed in this pass.
+- Browser/device render verification remains unavailable in the current execution environment.
+
+Commits:
+- `de28375a8f4598b7a3d3059a5247c74541a4001e` — refactor(ui): remove unused GlowButton id prop
+- `b2f2c8bff585d4f78e8018f67165d8861dc3fde8` — refactor(css): consolidate reduced motion rules
