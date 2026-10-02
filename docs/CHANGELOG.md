@@ -423,3 +423,13 @@ Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Na
 - Refactored the fixed particle engine to operate from a dedicated background anchor instead of requiring Hero mascot/ring/foreground nodes.
 - Preserved the existing particle behavior and global body atmosphere.
 - No Hero foreground geometry was changed.
+
+
+## 2026-10-03 Repository Cleanup Continuation
+
+### Changed
+
+- Removed the obsolete deployment-sync comment from `app/layout.tsx`.
+- Rebuilt `docs/PROJECT_STRUCTURE.md` from the current `main` tree so the documented structure matches the repository.
+- Explicitly documented the intentional `/blank` background test route and retained reference screenshot.
+- Confirmed previously removed starter/UI/legacy files remain absent.
