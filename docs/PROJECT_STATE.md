@@ -255,3 +255,12 @@ The Bottom Navigation was compacted further after the first 6.1rem adjustment wa
 
 - Added a documentation-only commit to retrigger the GitHub → Vercel Production deployment pipeline.
 - No application source, styling, assets, or runtime behavior changed in this trigger commit.
+
+
+## 2026-10-02 Cleanup Pass
+
+- Removed the remaining dead global `.garfilas-glow-button` CSS block. The active CTA is owned by `GlowButton.tsx` and its dedicated sweep/star selectors.
+- Consolidated the duplicate `hero-product-name` CSS definition into one active rule while preserving its current animation and visual properties.
+- Synchronized architecture documentation with the removal of the no-op `SiteBackground` component and current Hero responsive anchors.
+
+Verification: source-level only. No browser/device render verification was available in this execution environment.
