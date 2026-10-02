@@ -461,3 +461,14 @@ Bottom Navigation follow-up: reduced fixed height from `6.1rem` to `5.8rem` beca
 - Re-read the updated Hero source from GitHub after the change.
 - No particle, responsive geometry, CTA, Bottom Navigation, dependency, or asset changes were made.
 - Browser/device render verification remains unavailable in this execution environment.
+
+
+## 2026-10-02 Font Variable Cleanup
+
+- Audited the three `next/font/google` definitions against their active CSS consumers.
+- Confirmed Cormorant Garamond and Great Vibes variables are consumed by the LASAGNA and slogan styles.
+- Confirmed the Vazirmatn generated variable was attached to the document but the active CSS instead hard-coded the same font family through a separate `--font-vazir` variable.
+- Updated `--font-vazir` to resolve through the generated `--font-vazirmatn` variable, removing the duplicated font-family declaration while preserving the existing `font-family:var(--font-vazir)` consumer and fallback stack.
+- No font weight, size, typography geometry, Hero anchors, CTA, Bottom Navigation, particle engine, assets or dependencies were changed.
+
+Verification: GitHub source re-read after the change. Browser/device render verification remains unavailable in this execution environment.
