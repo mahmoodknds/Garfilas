@@ -325,8 +325,8 @@ Not Pages.
 
 ---
 
-Last Updated: 2026-10-01
-Documentation Version: 2.3.0
+Last Updated: 2026-10-02
+Documentation Version: 2.5.0
 
 
 ## 2026-10-02 Global Atmosphere Rule
