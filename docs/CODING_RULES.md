@@ -1380,9 +1380,11 @@ Version
 
 ## 2026-10-02 Background Ownership Rule
 
-- Persistent ambient effects that must continue across sections belong in `SiteBackground`, not inside a viewport-height Hero.
+- Persistent ambient effects that must continue across sections belong to the global background system: the document-level `body` atmosphere and the fixed `HeroParticleEngine`.
 - Do not place large background layers inside `.hero` when `overflow:hidden` can terminate them at the section boundary.
-- When moving an existing ambient layer from Hero to SiteBackground, preserve its visual geometry and animation unless a separate calibration change is requested.
+- Keep Hero foreground geometry local to the Hero feature.
+- Do not introduce a new `SiteBackground` component unless a real shared layout-level behavior requires one and the architecture is explicitly updated first.
+- Preserve existing visual geometry and animation when changing background ownership unless a separate calibration change is requested.
 - Hero foreground geometry remains protected during background maintenance.
 
 Last Updated: 2026-10-02
