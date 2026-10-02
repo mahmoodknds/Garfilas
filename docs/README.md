@@ -154,26 +154,21 @@ Landing Page MVP
 
 \# Project Structure
 
-
-
 ```
-
 app/
-
-├── app/
-├── components/
-├── config/
-├── lib/
-├── styles/
-└── docs/
-
+components/
+config/
+docs/
+public/
+styles/
 ```
 
+The active homepage currently contains:
 
+- Hero
+- Bottom Navigation
 
-\---
-
-
+The repository intentionally does not contain a `components/layout/` implementation. Global ambient background behavior is owned by `app/layout.tsx` plus the fixed `HeroParticleEngine`.
 
 \# Documentation
 
@@ -715,8 +710,6 @@ Version
 
 Last Updated
 
-
-
-2026-07-21
+2026-10-02
 
 
