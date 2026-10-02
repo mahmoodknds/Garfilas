@@ -1,5 +1,16 @@
 ## 2026-10-02
 
+### CSS Cleanup
+
+- Removed redundant default declarations from the active Hero CSS.
+- Removed redundant indentation around the Hero product/flag/slogan rules.
+- Preserved all active Hero geometry, typography, animation and particle behavior.
+- Confirmed `lucide-react` remains an active Bottom Navigation dependency.
+
+Verification: source-level GitHub re-read. Local build was not rerun in this execution environment.
+
+## 2026-10-02
+
 ### Font Loading Cleanup
 
 - Removed the unused Noto Kufi Arabic font definition and document-level font variable.
