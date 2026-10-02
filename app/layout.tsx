@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { cormorantGaramond, greatVibes } from "./fonts";
+import { cormorantGaramond, greatVibes, vazirmatn } from "./fonts";
 import HeroParticleEngine from "@/components/sections/Hero/HeroParticleEngine";
 import SiteBackground from "@/components/layout/SiteBackground";
 
 export const metadata: Metadata = {
   title: "Garfilas | Premium Lasagna",
-  description:
-    "Garfilas premium Italian inspired lasagna experience",
+  description: "Garfilas premium Italian inspired lasagna experience",
 };
 
 export default function RootLayout({
@@ -17,15 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fa">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className={`${cormorantGaramond.variable} ${greatVibes.variable}`}>
+      <body className={[cormorantGaramond.variable, greatVibes.variable, vazirmatn.variable].join(" ")}>
         <SiteBackground />
         <HeroParticleEngine />
         {children}
