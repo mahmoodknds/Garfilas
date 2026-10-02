@@ -1,3 +1,11 @@
+## 2026-10-02 CSS Cleanup
+
+- Removed redundant Hero CSS declarations from `app/globals.css`.
+- Active Hero geometry and visual behavior remain unchanged.
+- `lucide-react` remains an active Bottom Navigation dependency.
+
+Verification: source-level GitHub re-read completed.
+
 ## 2026-10-02 Font Loading Cleanup
 
 - Removed the unused Noto Kufi Arabic next/font definition and layout variable.
