@@ -241,7 +241,7 @@ The current Hero is in visual calibration. The latest mobile slogan adjustment m
 
 \- Documentation First
 
-\- Feature-Based Architecture
+\- Section-based component architecture with reusable UI primitives
 
 \- Reusable Components
 
