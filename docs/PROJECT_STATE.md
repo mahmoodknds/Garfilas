@@ -303,3 +303,10 @@ Verification: GitHub source re-read after the change. Browser/device render veri
 - This commit is also a deployment trigger so the GitHub to Vercel integration can pick up the latest application source.
 
 Verification: GitHub source re-read after the change. Production deployment must be confirmed separately.
+
+
+## 2026-10-02 CTA Deployment Trigger
+
+- The latest CTA Persian styling fix is committed on `main`.
+- A documentation-only commit is being used to retrigger the GitHub to Vercel production deployment because the latest source commit did not automatically advance Production.
+- No additional UI or animation changes are included in this deployment trigger.
