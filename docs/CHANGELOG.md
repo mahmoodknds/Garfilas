@@ -304,3 +304,9 @@ Last Updated: 2026-10-01
 - b459891c91c04dc7c44587b0658ba3d910f12c5b
 - 9eb5982bc88b713e9db4a643bf8771cf00efdb69
 - c9026194c303c0a1ab5408207022146800ea0355
+
+
+## 2026-10-02
+- `fix(responsive): slightly reduce bottom navigation height` (`f8262778`)
+  - Reduced fixed Bottom Navigation height from `6.4rem` to `6.1rem`.
+  - No width, icon, horizontal-position, or frame-asset changes.
