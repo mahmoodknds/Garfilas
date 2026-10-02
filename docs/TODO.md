@@ -43,7 +43,7 @@ Status: 🟡 **Visual calibration in progress**
 - [x] CTA neon breathe timing set to 2s
 - [x] Scroll cue implemented
 - [x] Scroll arrows changed to point upward
-- [x] Mobile scroll cue restored to prior position (`top:83.5%`)
+- [x] Short-viewport scroll cue guard added at `max-height:600px`; current anchor is `top:80.5%`
 - [x] Native Bottom Navigation
 - [x] Bottom Navigation center decorative dots removed
 - [x] Bottom Navigation center button calibration locked at `50.671875%`
