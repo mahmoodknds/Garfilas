@@ -93,7 +93,7 @@ Status: 🟡 **Visual calibration in progress**
 
 - [ ] Final mobile visual acceptance
 - [ ] Final cross-viewport visual verification of the unified Hero composition
-- [ ] Local production build verification
+- [x] Local production build verification
 - [ ] Production deployment verification
 
 ## Landing Page Supporting Sections
@@ -241,7 +241,7 @@ Status: 🟢 **Synchronized**
 9. [x] Establish one global site background system shared across all pages and sections.
 10. Replace the temporary Hero artwork and recalibrate its ring.
 11. Validate the unified composition across mobile, tablet and desktop.
-13. Run production build verification.
+13. [x] Run local production build verification.
 14. Stop before adding new website scope.
 
 ## 2026-10-02 Responsive Geometry Correction Note
