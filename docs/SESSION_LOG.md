@@ -579,3 +579,24 @@ Verification remains source-level unless a browser/device render is explicitly a
 - GitHub repository connection was reconnected in Vercel.
 - Added a fresh documentation-only commit on `main` to verify that the repaired Git integration now creates a new Production deployment.
 - No application source, assets, dependencies, Hero geometry, CTA styling, particle behavior, or Bottom Navigation behavior changed.
+
+
+## 2026-10-03 Global Background Test Page + Cleanup Continuation
+
+### Background test
+
+- Added a blank route at `/blank` containing no Hero foreground or Bottom Navigation.
+- The blank page keeps the same document-level atmosphere and fixed particle layer, allowing the global background to be inspected independently from Hero content.
+- Refactored `HeroParticleEngine.tsx` so it can use a dedicated background anchor on the blank page while continuing to use the Hero ring on the main page.
+- No particle counts, timings, colors or motion behavior were intentionally changed.
+
+### Cleanup continuation
+
+- Continued source cleanup by removing the particle engine's hard dependency on Hero foreground nodes.
+- Preserved the one-piece global background architecture.
+
+### Verification
+
+- Source changes committed and re-read from GitHub.
+- Local production build was not run in this execution environment.
+- Browser render verification of `/blank` remains pending.
