@@ -435,3 +435,16 @@ Bottom Navigation follow-up: reduced fixed height from `6.1rem` to `5.8rem` beca
 ### Verification
 - Source-level checks confirm one `hero-product-name` definition and no legacy `.garfilas-glow-button` block.
 - No browser/device render verification was available in this execution environment.
+
+
+## 2026-10-02 Cleanup Continuation
+
+### Changes
+- Removed the unused `id` prop from `GlowButton` after confirming there were no active callers.
+- Consolidated duplicate reduced-motion CSS blocks into one equivalent block.
+- Preserved all active CTA, Hero, particle, ring and Bottom Navigation behavior.
+
+### Verification
+- Re-read the changed GitHub sources after each commit.
+- Confirmed the latest Vercel Production deployment for commit `b2f2c8bff585d4f78e8018f67165d8861dc3fde8` is READY.
+- No browser/device render verification was available.
