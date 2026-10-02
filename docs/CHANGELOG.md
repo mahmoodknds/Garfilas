@@ -310,3 +310,9 @@ Last Updated: 2026-10-01
 - `fix(responsive): slightly reduce bottom navigation height` (`f8262778`)
   - Reduced fixed Bottom Navigation height from `6.4rem` to `6.1rem`.
   - No width, icon, horizontal-position, or frame-asset changes.
+
+## 2026-10-02 Cleanup Pass
+
+- Removed the remaining dead global CTA CSS block.
+- Consolidated the duplicate `hero-product-name` CSS rule while preserving its active animation.
+- Synchronized current architecture and responsive-state documentation with the active codebase.
