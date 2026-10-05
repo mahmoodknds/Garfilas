@@ -8,6 +8,7 @@ export default function MenuCardFrame() {
   const bottomGlow = "menu-frame-bottom-glow-" + uid;
   const screw = "menu-frame-screw-" + uid;
   const softGlow = "menu-frame-soft-glow-" + uid;
+  const surface = "menu-frame-surface-" + uid;
 
   return (
     <svg className="menu-product__frame-svg" viewBox="0 0 590 644" preserveAspectRatio="none" aria-hidden="true" focusable="false">
@@ -44,10 +45,16 @@ export default function MenuCardFrame() {
         <filter id={softGlow} x="-100%" y="-30%" width="300%" height="160%">
           <feGaussianBlur stdDeviation="5.5" />
         </filter>
+        <radialGradient id={surface} cx=".5" cy=".42" r=".78">
+          <stop offset="0" stopColor="#11100d" />
+          <stop offset=".5" stopColor="#090806" />
+          <stop offset="1" stopColor="#050504" />
+        </radialGradient>
       </defs>
 
       <rect x="1" y="1" width="588" height="642" rx="12" fill="#070706" />
       <rect x="6" y="6" width="578" height="632" rx="10" fill={"url(#" + edge + ")"} opacity=".72" />
+      <rect x="72" y="53" width="460" height="534" rx="1.5" fill={"url(#" + surface + ")"} opacity=".9" />
 
       <rect x="68" y="49" width="468" height="542" rx="2.5" fill="none" stroke="#2d1c11" strokeWidth="2.4" />
       <rect x="70" y="51" width="464" height="538" rx="1.5" fill="none" stroke={"url(#" + gold + ")"} strokeWidth="1.1" opacity=".82" />
