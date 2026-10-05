@@ -443,3 +443,9 @@ Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Na
 - Kept frame geometry vector-based and product content HTML-based.
 - Preserved reduced-motion behavior and accessible quantity controls.
 - Avoided introducing a new external image dependency.
+
+
+### Menu card portrait calibration
+- Locked the website card to the Canva source ratio of 590:644, matching the selected 189:206 portrait card.
+- Aligned the product name, central image zone, description, and lower controls to the measured Canva card geometry.
+- Corrected the Persian brand spelling in the sample description to "گارفیلاس".
