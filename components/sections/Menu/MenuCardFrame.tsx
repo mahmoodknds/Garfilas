@@ -15,7 +15,7 @@ export default function MenuCardFrame() {
   return (
     <svg
       className="menu-product__frame-svg"
-      viewBox="0 0 700 520"
+      viewBox="0 0 700 400"
       preserveAspectRatio="none"
       aria-hidden="true"
       focusable="false"
@@ -82,7 +82,7 @@ export default function MenuCardFrame() {
           <stop offset="1" stopColor="#100804" />
         </radialGradient>
 
-        <filter id={leftGlow + "-blur"} x="-900%" y="-180%" width="1900%" height="460%">
+        <filter id={leftGlow + "-blur"} x="-900%" y="-180%" width="1900%" height="400%">
           <feGaussianBlur stdDeviation="13" />
         </filter>
 
@@ -95,15 +95,15 @@ export default function MenuCardFrame() {
         </filter>
       </defs>
 
-      <rect x="34" y="34" width="632" height="452" rx="1.5" fill={"url(#" + glass + ")"} />
-      <rect x="34" y="34" width="632" height="452" rx="1.5" fill={"url(#" + glassShade + ")"} />
+      <rect x="34" y="30" width="632" height="340" rx="1.5" fill={"url(#" + glass + ")"} />
+      <rect x="34" y="30" width="632" height="340" rx="1.5" fill={"url(#" + glassShade + ")"} />
       <rect x="34" y="34" width="632" height="452" rx="1.5" filter={"url(#" + texture + ")"} opacity=".28" />
 
-      <rect x="32" y="32" width="636" height="456" rx="2" fill="none" stroke="#0d0804" strokeWidth="4" opacity=".9" />
+      <rect x="32" y="28" width="636" height="344" rx="2" fill="none" stroke="#0d0804" strokeWidth="4" opacity=".9" />
       <rect x="34" y="34" width="632" height="452" rx="1.5" fill="none" stroke={"url(#" + edge + ")"} strokeWidth="1.35" opacity=".9" />
 
-      <path d="M34 34V486" fill="none" stroke="#ff4a00" strokeWidth="28" strokeLinecap="square" opacity=".25" filter={"url(#" + leftGlow + "-blur)"} />
-      <path d="M34 486H666" fill="none" stroke="#ff4a00" strokeWidth="28" strokeLinecap="square" opacity=".25" filter={"url(#" + bottomGlow + "-blur)"} />
+      <path d="M34 30V370" fill="none" stroke="#ff4a00" strokeWidth="28" strokeLinecap="square" opacity=".25" filter={"url(#" + leftGlow + "-blur)"} />
+      <path d="M34 370H666" fill="none" stroke="#ff4a00" strokeWidth="28" strokeLinecap="square" opacity=".25" filter={"url(#" + bottomGlow + "-blur)"} />
 
       <path d="M34 34V486" fill="none" stroke={"url(#" + leftGlow + ")"} strokeWidth="9" strokeLinecap="square" opacity=".68" />
       <path d="M34 486H666" fill="none" stroke={"url(#" + bottomGlow + ")"} strokeWidth="9" strokeLinecap="square" opacity=".68" />
@@ -111,14 +111,14 @@ export default function MenuCardFrame() {
       <path d="M34 34V486" fill="none" stroke="#f75b08" strokeWidth="2.15" strokeLinecap="square" opacity=".82" />
       <path d="M34 486H666" fill="none" stroke="#f75b08" strokeWidth="2.2" strokeLinecap="square" opacity=".82" />
 
-      <circle cx="34" cy="486" r="18" fill="#ff4d00" opacity=".14" />
+      <circle cx="34" cy="370" r="18" fill="#ff4d00" opacity=".14" />
 
       <g filter={"url(#" + screwShadow + ")"}>
-        <circle cx="68" cy="68" r="13.5" fill="#180d06" opacity=".96" />
+        <circle cx="68" cy="62" r="13.5" fill="#180d06" opacity=".96" />
         <circle cx="68" cy="68" r="11.4" fill={"url(#" + screwRim + ")"} />
         <circle cx="68" cy="68" r="9.8" fill={"url(#" + screw + ")"} />
-        <ellipse cx="64.7" cy="64.2" rx="3.5" ry="2" fill="#e7b16a" opacity=".3" />
-        <ellipse cx="70.2" cy="72" rx="4.8" ry="2.8" fill="#130903" opacity=".24" />
+        <ellipse cx="64.7" cy="58.2" rx="3.5" ry="2" fill="#e7b16a" opacity=".3" />
+        <ellipse cx="70.2" cy="66" rx="4.8" ry="2.8" fill="#130903" opacity=".24" />
       </g>
 
       <g filter={"url(#" + screwShadow + ")"}>
@@ -130,11 +130,11 @@ export default function MenuCardFrame() {
       </g>
 
       <g filter={"url(#" + screwShadow + ")"}>
-        <circle cx="68" cy="452" r="13.5" fill="#180d06" opacity=".96" />
+        <circle cx="68" cy="338" r="13.5" fill="#180d06" opacity=".96" />
         <circle cx="68" cy="452" r="11.4" fill={"url(#" + screwRim + ")"} />
         <circle cx="68" cy="452" r="9.8" fill={"url(#" + screw + ")"} />
-        <ellipse cx="64.7" cy="448.2" rx="3.5" ry="2" fill="#e7b16a" opacity=".3" />
-        <ellipse cx="70.2" cy="456" rx="4.8" ry="2.8" fill="#130903" opacity=".24" />
+        <ellipse cx="64.7" cy="334.2" rx="3.5" ry="2" fill="#e7b16a" opacity=".3" />
+        <ellipse cx="70.2" cy="344" rx="4.8" ry="2.8" fill="#130903" opacity=".24" />
       </g>
 
       <g filter={"url(#" + screwShadow + ")"}>
