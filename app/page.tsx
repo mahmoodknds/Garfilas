@@ -1,7 +1,7 @@
 import BottomNavigation from "@/components/sections/BottomNavigation/BottomNavigation";
 import Hero from "@/components/sections/Hero/Hero";
 import MenuProductCard from "@/components/sections/Menu/MenuProductCard";
-import "./menu.css";
+import "@/components/sections/Menu/menu.css";
 
 export default function Home() {
   return (
