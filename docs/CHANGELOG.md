@@ -433,3 +433,13 @@ Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Na
 - Rebuilt `docs/PROJECT_STRUCTURE.md` from the current `main` tree so the documented structure matches the repository.
 - Explicitly documented the intentional `/blank` background test route and retained reference screenshot.
 - Confirmed previously removed starter/UI/legacy files remain absent.
+
+
+## 2026-10-05
+
+### Menu card visual calibration
+- Refined the native SVG card surface with subtle radial depth.
+- Repositioned product content to better match the supplied Canva/reference composition.
+- Kept frame geometry vector-based and product content HTML-based.
+- Preserved reduced-motion behavior and accessible quantity controls.
+- Avoided introducing a new external image dependency.

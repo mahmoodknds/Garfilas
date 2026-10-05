@@ -372,3 +372,21 @@ This is a native reconstruction calibrated from the Canva design geometry, not a
 
 Last Updated: 2026-10-05
 Documentation Version: 2.6.0
+
+
+## 2026-10-05 Menu Card Content Calibration
+
+The menu card content layer has been recalibrated against the supplied dark frame reference.
+
+Locked composition:
+- product name is positioned in the upper content zone
+- product image occupies the central visual window
+- description begins directly below the image
+- price and quantity controls remain in the lower content zone
+- frame remains native SVG/React
+- product photography remains an external raster asset and is not embedded in the SVG
+
+The repository currently uses the existing Hero WebP as the card image fallback because the separately supplied local lasagna-card PNG is not yet committed to the repository.
+
+Last Updated: 2026-10-05
+Documentation Version: 2.7.0
