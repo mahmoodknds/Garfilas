@@ -2,12 +2,12 @@ import { useId } from "react";
 
 export default function MenuCardFrame() {
   const uid = useId().replace(/:/g, "");
-  const gold = "menu-frame-gold-" + uid;
+  const edge = "menu-frame-edge-" + uid;
+  const bronze = "menu-frame-bronze-" + uid;
   const screw = "menu-frame-screw-" + uid;
   const screwShadow = "menu-frame-screw-shadow-" + uid;
-  const glow = "menu-frame-glow-" + uid;
-  const bloom = "menu-frame-bloom-" + uid;
-  const sheen = "menu-frame-sheen-" + uid;
+  const orangeBloom = "menu-frame-orange-bloom-" + uid;
+  const orangeSoft = "menu-frame-orange-soft-" + uid;
 
   return (
     <svg
@@ -18,78 +18,133 @@ export default function MenuCardFrame() {
       focusable="false"
     >
       <defs>
-        <linearGradient id={gold} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#8c5428" stopOpacity=".82" />
-          <stop offset=".18" stopColor="#b87835" stopOpacity=".7" />
-          <stop offset=".48" stopColor="#74461f" stopOpacity=".54" />
-          <stop offset=".78" stopColor="#4a2c17" stopOpacity=".58" />
-          <stop offset="1" stopColor="#332011" stopOpacity=".82" />
+        <linearGradient id={edge} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#2b1a0d" stopOpacity=".92" />
+          <stop offset=".16" stopColor="#7b4822" stopOpacity=".78" />
+          <stop offset=".43" stopColor="#a8662f" stopOpacity=".64" />
+          <stop offset=".72" stopColor="#5b351b" stopOpacity=".7" />
+          <stop offset="1" stopColor="#2b190d" stopOpacity=".92" />
         </linearGradient>
 
-        <linearGradient id={glow} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#ff5600" stopOpacity="1" />
-          <stop offset=".2" stopColor="#ff6500" stopOpacity=".94" />
-          <stop offset=".46" stopColor="#ff7000" stopOpacity=".34" />
-          <stop offset="1" stopColor="#ff7000" stopOpacity="0" />
+        <linearGradient id={bronze} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#ff7a18" stopOpacity=".82" />
+          <stop offset=".08" stopColor="#d68138" stopOpacity=".72" />
+          <stop offset=".5" stopColor="#87502a" stopOpacity=".55" />
+          <stop offset="1" stopColor="#432817" stopOpacity=".72" />
         </linearGradient>
 
-        <linearGradient id={sheen} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#fff1d2" stopOpacity=".16" />
-          <stop offset=".18" stopColor="#fff1d2" stopOpacity="0" />
-          <stop offset=".78" stopColor="#ffb45a" stopOpacity="0" />
-          <stop offset="1" stopColor="#ffb45a" stopOpacity=".1" />
-        </linearGradient>
-
-        <radialGradient id={screw} cx=".3" cy=".22" r=".92">
-          <stop offset="0" stopColor="#edb66d" />
-          <stop offset=".18" stopColor="#c88740" />
-          <stop offset=".48" stopColor="#875027" />
-          <stop offset=".76" stopColor="#4b2b17" />
-          <stop offset="1" stopColor="#170e08" />
+        <radialGradient id={screw} cx=".28" cy=".2" r=".9">
+          <stop offset="0" stopColor="#e9b56d" />
+          <stop offset=".16" stopColor="#c88a45" />
+          <stop offset=".4" stopColor="#8a542b" />
+          <stop offset=".72" stopColor="#4d2d18" />
+          <stop offset="1" stopColor="#1b1008" />
         </radialGradient>
 
-        <filter id={bloom} x="-180%" y="-140%" width="460%" height="380%">
-          <feGaussianBlur stdDeviation="7" />
+        <filter id={orangeBloom} x="-900%" y="-100%" width="1900%" height="300%">
+          <feGaussianBlur stdDeviation="9" />
         </filter>
 
-        <filter id={screwShadow} x="-100%" y="-100%" width="300%" height="300%">
-          <feDropShadow dx="1.5" dy="2" stdDeviation="2.2" floodColor="#000000" floodOpacity=".72" />
+        <filter id={orangeSoft} x="-500%" y="-100%" width="1100%" height="300%">
+          <feGaussianBlur stdDeviation="3.5" />
+        </filter>
+
+        <filter id={screwShadow} x="-150%" y="-150%" width="400%" height="400%">
+          <feDropShadow
+            dx="1.5"
+            dy="2"
+            stdDeviation="2.4"
+            floodColor="#000000"
+            floodOpacity=".78"
+          />
         </filter>
       </defs>
 
-      {/* Transparent glass. Only the thin mounted frame remains. */}
-      <rect x="35" y="35" width="630" height="360" rx="2"
-        fill="none" stroke="#21130b" strokeWidth="3" opacity=".92" />
-      <rect x="37" y="37" width="626" height="356" rx="1.5"
-        fill="none" stroke={"url(#" + gold + ")"} strokeWidth="1.25" opacity=".94" />
+      {/* Transparent glass: no plaque, no fill, only the mounted perimeter. */}
+      <rect
+        x="34"
+        y="34"
+        width="632"
+        height="362"
+        rx="1.5"
+        fill="none"
+        stroke="#120b06"
+        strokeWidth="4"
+        opacity=".72"
+      />
+      <rect
+        x="36"
+        y="36"
+        width="628"
+        height="358"
+        rx="1"
+        fill="none"
+        stroke={"url(#" + edge + ")"}
+        strokeWidth="1.45"
+        opacity=".92"
+      />
 
-      {/* Barely visible glass sheen for depth, without adding a card background. */}
-      <path d="M41 41H659L520 389H41Z" fill={"url(#" + sheen + ")"} opacity=".22" />
+      {/* The reference light is an L only: a hot vertical left edge and a hot
+          horizontal bottom edge. It blooms outward but never fills the glass. */}
+      <path
+        d="M36 36V394H664"
+        fill="none"
+        stroke="#ff4b00"
+        strokeWidth="20"
+        strokeLinecap="square"
+        opacity=".13"
+        filter={"url(#" + orangeBloom + ")"}
+      />
+      <path
+        d="M36 36V394H664"
+        fill="none"
+        stroke="#ff5a00"
+        strokeWidth="8"
+        strokeLinecap="square"
+        opacity=".25"
+        filter={"url(#" + orangeSoft + ")"}
+      />
+      <path
+        d="M36 36V394"
+        fill="none"
+        stroke="#ff6100"
+        strokeWidth="2.7"
+        strokeLinecap="square"
+        opacity=".98"
+      />
+      <path
+        d="M36 394H664"
+        fill="none"
+        stroke="#ff6100"
+        strokeWidth="2.8"
+        strokeLinecap="square"
+        opacity=".96"
+      />
 
-      {/* Canva signature L-shaped orange illumination. */}
-      <path d="M37 37V393H663" fill="none"
-        stroke="#ff5a00" strokeWidth="18" opacity=".16" filter={"url(#" + bloom + ")"} />
-      <path d="M37 37V393H663" fill="none"
-        stroke="#ff6500" strokeWidth="8" opacity=".2" filter={"url(#" + bloom + ")"} />
-      <path d="M37 37V393" stroke={"url(#" + glow + ")"} strokeWidth="2.8" />
-      <path d="M37 393H663" stroke="#ff6200" strokeWidth="3" />
+      {/* Four recessed bronze fasteners. Their scale and inset follow the
+          reference rather than behaving like decorative UI buttons. */}
+      <g filter={"url(#" + screwShadow + ")"}>
+        <circle cx="68" cy="68" r="13" fill={"url(#" + screw + ")"} stroke="#9a602f" strokeWidth="1" />
+        <ellipse cx="64.2" cy="63.3" rx="4" ry="2.35" fill="#ffd28f" opacity=".38" />
+        <circle cx="68" cy="68" r="9.8" fill="none" stroke="#2b170b" strokeWidth=".7" opacity=".34" />
+      </g>
 
-      {/* Four premium bronze fasteners. */}
       <g filter={"url(#" + screwShadow + ")"}>
-        <circle cx="58" cy="58" r="12" fill={"url(#" + screw + ")"} stroke="#965c29" strokeWidth="1" />
-        <ellipse cx="54" cy="53.8" rx="3.7" ry="2.2" fill="#f6c77f" opacity=".45" />
+        <circle cx="632" cy="68" r="13" fill={"url(#" + screw + ")"} stroke="#9a602f" strokeWidth="1" />
+        <ellipse cx="628.2" cy="63.3" rx="4" ry="2.35" fill="#ffd28f" opacity=".38" />
+        <circle cx="632" cy="68" r="9.8" fill="none" stroke="#2b170b" strokeWidth=".7" opacity=".34" />
       </g>
+
       <g filter={"url(#" + screwShadow + ")"}>
-        <circle cx="642" cy="58" r="12" fill={"url(#" + screw + ")"} stroke="#965c29" strokeWidth="1" />
-        <ellipse cx="638" cy="53.8" rx="3.7" ry="2.2" fill="#f6c77f" opacity=".45" />
+        <circle cx="68" cy="362" r="13" fill={"url(#" + screw + ")"} stroke="#9a602f" strokeWidth="1" />
+        <ellipse cx="64.2" cy="357.3" rx="4" ry="2.35" fill="#ffd28f" opacity=".38" />
+        <circle cx="68" cy="362" r="9.8" fill="none" stroke="#2b170b" strokeWidth=".7" opacity=".34" />
       </g>
+
       <g filter={"url(#" + screwShadow + ")"}>
-        <circle cx="58" cy="370" r="12" fill={"url(#" + screw + ")"} stroke="#965c29" strokeWidth="1" />
-        <ellipse cx="54" cy="365.8" rx="3.7" ry="2.2" fill="#f6c77f" opacity=".45" />
-      </g>
-      <g filter={"url(#" + screwShadow + ")"}>
-        <circle cx="642" cy="370" r="12" fill={"url(#" + screw + ")"} stroke="#965c29" strokeWidth="1" />
-        <ellipse cx="638" cy="365.8" rx="3.7" ry="2.2" fill="#f6c77f" opacity=".45" />
+        <circle cx="632" cy="362" r="13" fill={"url(#" + screw + ")"} stroke="#9a602f" strokeWidth="1" />
+        <ellipse cx="628.2" cy="357.3" rx="4" ry="2.35" fill="#ffd28f" opacity=".38" />
+        <circle cx="632" cy="362" r="9.8" fill="none" stroke="#2b170b" strokeWidth=".7" opacity=".34" />
       </g>
     </svg>
   );
