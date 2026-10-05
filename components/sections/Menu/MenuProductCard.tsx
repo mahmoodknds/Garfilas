@@ -14,7 +14,7 @@ export default function MenuProductCard({
   name = "لازانیا گوشت",
   description = "لایه‌های لازانیا با گوشت، سس مخصوص گارفیلاس و پنیر کش‌دار، با طعمی عمیق و پایان ایتالیایی.",
   price = 0,
-  imageSrc = "/assets/hero/garfilas-hero-final.webp",
+  imageSrc = "/assets/menu/Lasagna.webp",
 }: ProductCardProps) {
   const [quantity, setQuantity] = useState(1);
 
@@ -27,7 +27,7 @@ export default function MenuProductCard({
       <div className="menu-product__art">
         <div className="menu-product__art-glow" aria-hidden="true" />
         <div className="menu-product__image-window">
-          <img className="menu-product__image" src={imageSrc} alt={name} width={1536} height={1024} loading="lazy" />
+          <img className="menu-product__image" src={imageSrc} alt={name} width={1200} height={700} loading="lazy" />
         </div>
       </div>
       <div className="menu-product__copy">
