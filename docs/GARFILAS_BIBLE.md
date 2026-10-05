@@ -343,3 +343,32 @@ Protected rule: Hero foreground calibration must not be altered during backgroun
 
 Last Updated: 2026-10-02
 Documentation Version: 2.5.0
+
+
+## 2026-10-05 Menu Card Frame Architecture
+
+The menu card frame is now implemented as native SVG/React geometry instead of loading the raster frame asset.
+
+Source calibration was taken from the Canva menu design DAHXFAzPEeM:
+- selected card frame source asset: MAHXFHrtvfQ
+- source frame asset metadata: 590 x 644
+- selected card canvas region: left 370, top 0, width 189, height 206
+- text and media geometry were inspected from the editable Canva transaction
+- text remains HTML so content stays responsive, accessible, SEO-readable and dynamic
+
+Implementation:
+- components/sections/Menu/MenuCardFrame.tsx contains the vector frame.
+- MenuProductCard.tsx renders the frame as inline SVG.
+- The raster public/assets/menu/garfilas-card-frame.webp is no longer used by the card.
+- Product photography remains raster/WebP because photographic content should not be vectorized.
+
+Performance intent:
+- remove a decorative raster request from the menu card
+- keep the frame resolution-independent
+- avoid embedding product content inside the decorative SVG
+- preserve lightweight React/CSS architecture
+
+This is a native reconstruction calibrated from the Canva design geometry, not a screenshot/background image.
+
+Last Updated: 2026-10-05
+Documentation Version: 2.6.0
