@@ -390,3 +390,19 @@ The repository currently uses the existing Hero WebP as the card image fallback 
 
 Last Updated: 2026-10-05
 Documentation Version: 2.7.0
+
+
+## 2026-10-05 Menu Card Portrait Calibration
+
+The Canva source was inspected directly. The selected product card is a portrait card with a source frame asset of 590 × 644 and a page placement of 189 × 206.
+
+Measured composition used for the website card:
+- product name: approximately 12.45% from the card top
+- central product-image zone: approximately 29.34% from the card top, 54.7% card width
+- description: approximately 59.43% from the card top
+- lower controls are intentionally retained as the Garfilas ordering UI addition
+
+The website keeps the same portrait ratio and uses native SVG/React for the decorative frame. Product photography remains an external raster asset.
+
+Last Updated: 2026-10-05
+Documentation Version: 2.8.0
