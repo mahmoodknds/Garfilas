@@ -12,7 +12,7 @@ type ProductCardProps = {
 
 export default function MenuProductCard({
   name = "لازانیا گوشت",
-  description = "لایه‌های لازانیا با گوشت، سس مخصوص گارفیلـاز و پنیر کش‌دار، با طعمی عمیق و پایان ایتالیایی.",
+  description = "لایه‌های لازانیا با گوشت، سس مخصوص گارفیلاس و پنیر کش‌دار، با طعمی عمیق و پایان ایتالیایی.",
   price = 0,
   imageSrc = "/assets/hero/garfilas-hero-final.webp",
 }: ProductCardProps) {
@@ -30,7 +30,9 @@ export default function MenuProductCard({
           <img className="menu-product__image" src={imageSrc} alt={name} width={1536} height={1024} loading="lazy" />
         </div>
       </div>
-      <div className="menu-product__copy"><p>{description}</p></div>
+      <div className="menu-product__copy">
+        <p>{description}</p>
+      </div>
       <div className="menu-product__meta">
         <div className="menu-product__price">
           <span>PRICE</span>
