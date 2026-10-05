@@ -19,7 +19,7 @@ export default function MenuProductCard({
 
   return (
     <article className="menu-product" aria-label={name}>
-      <div className="menu-product__texture" aria-hidden="true" />
+      <div className="menu-product__frame" aria-hidden="true" />
 
       <header className="menu-product__header">
         <span className="menu-product__name">{name}</span>
@@ -51,27 +51,11 @@ export default function MenuProductCard({
         </div>
 
         <div className="menu-product__quantity" aria-label="تعداد">
-          <button
-            type="button"
-            aria-label="کاهش تعداد"
-            onClick={() => setQuantity((value) => Math.max(1, value - 1))}
-          >
-            −
-          </button>
+          <button type="button" aria-label="کاهش تعداد" onClick={() => setQuantity((value) => Math.max(1, value - 1))}>−</button>
           <strong>{quantity.toLocaleString("fa-IR")}</strong>
-          <button
-            type="button"
-            aria-label="افزایش تعداد"
-            onClick={() => setQuantity((value) => value + 1)}
-          >
-            +
-          </button>
+          <button type="button" aria-label="افزایش تعداد" onClick={() => setQuantity((value) => value + 1)}>+</button>
         </div>
       </div>
-
-      <span className="menu-product__mark" aria-hidden="true">
-        GARFILAS
-      </span>
     </article>
   );
 }
