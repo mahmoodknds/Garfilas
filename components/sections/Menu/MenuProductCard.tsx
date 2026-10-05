@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import MenuCardFrame from "./MenuCardFrame";
 
 type ProductCardProps = {
   name?: string;
@@ -19,7 +20,7 @@ export default function MenuProductCard({
 
   return (
     <article className="menu-product" aria-label={name}>
-      <div className="menu-product__frame" aria-hidden="true" />
+      <MenuCardFrame />
 
       <header className="menu-product__header">
         <span className="menu-product__name">{name}</span>
