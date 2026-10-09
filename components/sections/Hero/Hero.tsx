@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
 
       <div className="hero-shell">
-        <div className="hero-mascot" aria-label="Garfilas hero artwork">
+        <div className="hero-mascot">
           <div className="hero-mascot-frame">
             <Image
               src="/assets/hero/garfilas-hero-final.webp"
