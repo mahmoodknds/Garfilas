@@ -673,6 +673,7 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - Moved fixed Bottom Navigation outside the `main` landmark while preserving its fixed positioning and CSS geometry.
 - Removed a redundant `aria-label` from the generic mascot wrapper; the image's descriptive alt text remains the accessible name.
 - Reconciled current project documentation with the removed `/blank` route, the extracted PNG wordmark, and the new SEO metadata/robots/sitemap routes.
+- Centralized the public production URL in `config/site.ts` so metadata, robots directives, and sitemap cannot drift independently.
 - Marked the image-response review complete based on the project owner's confirmation.
 - Kept historical changelog/session references intact where they describe work that really happened.
 
