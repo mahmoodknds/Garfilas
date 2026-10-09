@@ -691,3 +691,20 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - Explicitly retained the rule to preserve approved motion and layout unless a reproducible issue is found.
 - No application source code or production behavior was changed in this documentation checkpoint.
 
+## 2026-10-10 Documentation and Final Quality Pass Handoff
+
+### Confirmed state
+- PR #8, “Deep cleanup: reduced motion, responsive images, and homepage semantics,” was merged into `main` as `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`.
+- Vercel Production was checked and reported READY for that merge commit; `garfilas.vercel.app` remains the confirmed production alias.
+- `config/site.ts` is set to `https://garfilas.ir`, used by canonical metadata, Open Graph URL, robots directives, and sitemap generation.
+- Domain connection, DNS records, SSL for `garfilas.ir`, and deployment to the user's own hosting are not yet verified or completed by this configuration change.
+
+### Remaining verification
+- Browser/device visual acceptance of the deployed Hero remains pending.
+- Perform a focused responsive and scroll-continuity review, reduced-motion check, font/image loading review, Lighthouse/performance review, and current production build/lint check.
+- Confirm the host's Node.js support and version before deciding the deployment procedure. Do not request passwords or private keys in chat.
+
+### Scope guard
+- Treat this as a quality-assurance pass, not permission for a redesign or broad refactor.
+- Preserve approved CTA animation, particle density/timing, Hero anchor positions, and Bottom Navigation geometry unless a reproducible defect is found.
+- Keep the dormant Menu prototype and future commerce/account features out of the active homepage scope.
