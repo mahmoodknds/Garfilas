@@ -2,7 +2,7 @@
 
 - GitHub → Vercel Git integration was reconnected by the project owner.
 - The previously failing production deployment was caused by a missing closing parenthesis in `HeroParticleEngine.tsx`; the source fix is now on `main`.
-- The temporary `/blank` route remains available for isolating the document-level background from Hero foreground content.
+- The temporary `/blank` background-test route was removed on 2026-10-09 after the background test was accepted; do not recreate it unless a new isolated test is explicitly needed.
 - The background particle engine now accepts either the dedicated blank-page anchor or the Hero ring without changing the particle target/count or motion model.
 - The reduced-motion accessibility guard skips the decorative particle engine when `prefers-reduced-motion: reduce` is active; this change is on the review branch and is not yet in Production.
 - Do not create additional trigger-only commits unless a real source change also needs deployment.
