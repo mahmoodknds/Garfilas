@@ -651,3 +651,15 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - This is staged on pull request #8 and is not merged into `main` or Production.
 - Vercel created a READY preview deployment for the branch. Browser/device visual checks and GitHub Actions lint status remain pending.
 - No particle counts, animation durations, visual styling, Hero geometry, CTA behavior, or navigation layout were changed.
+
+## 2026-10-09 Final Cleanup Continuation
+
+### Implemented
+- Removed the temporary `app/blank/page.tsx` background-isolation route after the user confirmed the image optimization verification.
+- Expanded homepage metadata with a canonical URL, title template, clearer description, Open Graph website metadata, and a Twitter summary card.
+- Updated the project state and SEO backlog to reflect the removed test route and completed metadata pass.
+- Left the profile/cart placeholder destinations unchanged, as requested.
+
+### Verification
+- Source-level checks only at this point. GitHub Actions and the latest Vercel Preview must finish for the new head before this pass can be considered build-verified.
+- No intentional changes to Hero positioning, particle density/timing, CTA animation, or Bottom Navigation geometry.
