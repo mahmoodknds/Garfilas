@@ -4,7 +4,7 @@ export default function HeroLogo() {
   return (
     <div className="hero-logo-lockup">
       <div className="hero-logo" aria-hidden="true">
-        <Image className="hero-logo-artwork" src="/assets/brand/garfilas-reference-logo.png" alt="" width={2172} height={724} sizes="(max-width: 768px) 76vw, 24rem" priority draggable={false} />
+        <Image className="hero-logo-artwork" src="/assets/brand/garfilas-reference-logo.png" alt="" width={2172} height={724} sizes="(max-width: 505px) 76vw, 24rem" priority draggable={false} />
       </div>
       <div className="hero-product-lockup" aria-hidden="true">
         <span className="hero-product-line" /><span className="hero-product-name">LASAGNA</span><span className="hero-product-line" />
