@@ -10,7 +10,7 @@
 Verification state:
 - GitHub source: synchronized.
 - Local production build: previously verified successfully before the latest particle-engine syntax correction; a fresh build after that correction is still required.
-- Vercel Production: READY for commit `1b578f0f1c09cab01b43eeb5d25df8cb5e3876df` (`docs(cleanup): refresh cleanup and performance backlog`). The deployment rate-limit rejection is no longer present for this commit.
+- Vercel deployment recovery confirmed: commit `4d8a3af2d66589b45fb12e3519c2b7466977b35d` (`ci: run lint before production build`) reached `READY`; the earlier deployment-rate-limit rejection has cleared. Subsequent documentation-only commits were pushed afterward, so confirm the latest Production deployment SHA before visual acceptance.
 - Browser/device render verification: pending.
 
 # Garfilas Current Project State
