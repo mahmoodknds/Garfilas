@@ -29,8 +29,10 @@ export default function MenuCardFrame() {
     vignette: `menu-frame-vignette-${uid}`,
     texture: `menu-frame-texture-${uid}`,
     bronze: `menu-frame-bronze-${uid}`,
-    leftGlow: `menu-frame-left-glow-${uid}`,
-    bottomGlow: `menu-frame-bottom-glow-${uid}`,
+    leftGlowGradient: `menu-frame-left-glow-gradient-${uid}`,
+    leftGlowFilter: `menu-frame-left-glow-filter-${uid}`,
+    bottomGlowGradient: `menu-frame-bottom-glow-gradient-${uid}`,
+    bottomGlowFilter: `menu-frame-bottom-glow-filter-${uid}`,
     cornerGlow: `menu-frame-corner-glow-${uid}`,
     metal: `menu-frame-metal-${uid}`,
     metalDark: `menu-frame-metal-dark-${uid}`,
@@ -84,7 +86,7 @@ export default function MenuCardFrame() {
           <stop offset="1" stopColor="#3b2111" stopOpacity=".7" />
         </linearGradient>
 
-        <linearGradient id={ids.leftGlow} x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id={ids.leftGlowGradient} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stopColor="#ff4200" stopOpacity="0" />
           <stop offset=".18" stopColor="#ff4b00" stopOpacity=".2" />
           <stop offset=".46" stopColor="#ff5b00" stopOpacity=".72" />
@@ -92,7 +94,7 @@ export default function MenuCardFrame() {
           <stop offset="1" stopColor="#ff7417" stopOpacity="0" />
         </linearGradient>
 
-        <linearGradient id={ids.bottomGlow} x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={ids.bottomGlowGradient} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#ff5a00" stopOpacity="0" />
           <stop offset=".18" stopColor="#ff6200" stopOpacity=".22" />
           <stop offset=".48" stopColor="#ff5b00" stopOpacity=".78" />
@@ -129,11 +131,11 @@ export default function MenuCardFrame() {
           </feComponentTransfer>
         </filter>
 
-        <filter id={ids.leftGlow} x="-700%" y="-40%" width="1500%" height="180%">
+        <filter id={ids.leftGlowFilter} x="-700%" y="-40%" width="1500%" height="180%">
           <feGaussianBlur stdDeviation="10" />
         </filter>
 
-        <filter id={ids.bottomGlow} x="-40%" y="-700%" width="180%" height="1500%">
+        <filter id={ids.bottomGlowFilter} x="-40%" y="-700%" width="180%" height="1500%">
           <feGaussianBlur stdDeviation="10" />
         </filter>
 
@@ -158,11 +160,11 @@ export default function MenuCardFrame() {
       <rect x="70" y="28" width="560" height="344" rx="3" fill="none" stroke="#090604" strokeWidth="4" opacity=".94" />
       <rect x="72" y="30" width="556" height="340" rx="2.5" fill="none" stroke={`url(#${ids.bronze})`} strokeWidth="1.5" opacity=".9" />
 
-      <path d="M72 30V370" fill="none" stroke="#ff4a00" strokeWidth="25" opacity=".27" filter={`url(#${ids.leftGlow})`} />
-      <path d="M72 370H628" fill="none" stroke="#ff4a00" strokeWidth="25" opacity=".27" filter={`url(#${ids.bottomGlow})`} />
+      <path d="M72 30V370" fill="none" stroke="#ff4a00" strokeWidth="25" opacity=".27" filter={`url(#${ids.leftGlowFilter})`} />
+      <path d="M72 370H628" fill="none" stroke="#ff4a00" strokeWidth="25" opacity=".27" filter={`url(#${ids.bottomGlowFilter})`} />
 
-      <path d="M72 30V370" fill="none" stroke={`url(#${ids.leftGlow})`} strokeWidth="7" opacity=".76" />
-      <path d="M72 370H628" fill="none" stroke={`url(#${ids.bottomGlow})`} strokeWidth="7" opacity=".76" />
+      <path d="M72 30V370" fill="none" stroke={`url(#${ids.leftGlowGradient})`} strokeWidth="7" opacity=".76" />
+      <path d="M72 370H628" fill="none" stroke={`url(#${ids.bottomGlowGradient})`} strokeWidth="7" opacity=".76" />
 
       <path d="M72 30V370" fill="none" stroke="#d87928" strokeWidth="1.15" opacity=".82" />
       <path d="M72 370H628" fill="none" stroke="#e0782d" strokeWidth="1.2" opacity=".86" />
