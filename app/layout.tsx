@@ -3,9 +3,35 @@ import "./globals.css";
 import { cormorantGaramond, greatVibes, vazirmatn } from "./fonts";
 import HeroParticleEngine from "@/components/sections/Hero/HeroParticleEngine";
 
+const siteUrl = new URL("https://garfilas.vercel.app");
+
 export const metadata: Metadata = {
-  title: "Garfilas | Premium Lasagna",
-  description: "Garfilas premium Italian inspired lasagna experience",
+  metadataBase: siteUrl,
+  title: {
+    default: "Garfilas | Premium Lasagna",
+    template: "%s | Garfilas",
+  },
+  description:
+    "Discover Garfilas, an Italian-inspired lasagna experience made for memorable meals.",
+  applicationName: "Garfilas",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Garfilas",
+    title: "Garfilas | Premium Lasagna",
+    description:
+      "Discover Garfilas, an Italian-inspired lasagna experience made for memorable meals.",
+    locale: "fa_IR",
+  },
+  twitter: {
+    card: "summary",
+    title: "Garfilas | Premium Lasagna",
+    description:
+      "Discover Garfilas, an Italian-inspired lasagna experience made for memorable meals.",
+  },
 };
 
 export default function RootLayout({
