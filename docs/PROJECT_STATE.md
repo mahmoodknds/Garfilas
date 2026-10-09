@@ -14,6 +14,7 @@ Verification state:
 - Vercel Production: source commit `7eec60c99358b7fdf625e8cf9b80c20c9c8beb3f` (`perf(brand): serve responsive optimized wordmark`) reached `READY`; the earlier deployment-rate-limit rejection has cleared.
 - Browser/device render verification: pending.
 - Current cleanup branch adds homepage metadata, Open Graph/Twitter summaries, `robots.txt`, and a homepage-only `sitemap.xml`; JSON-LD remains deferred until structured business/menu facts are confirmed.
+- The project owner confirmed optimized image response sizing/format and visual quality for the wordmark and Hero mascot.
 
 # Garfilas Current Project State
 
@@ -44,7 +45,7 @@ Current composition:
 
 1. Temporary Garfield + lasagna artwork
 2. One controlled orange/gold neon ring around the Hero
-3. GARFILAS SVG wordmark
+3. GARFILAS wordmark (transparent PNG extracted from the former SVG wrapper and served through `next/image`)
 4. LASAGNA HTML lockup with side lines
 5. Italian flag accent
 6. HTML slogan
@@ -145,7 +146,7 @@ Latest change:
 - Extra Hero rings/halos: removed for current calibration
 - Extra Hero background grid/construction lines: removed for current calibration
 - Background architecture: global body atmosphere plus fixed particle engine
-- Supplied SVG wordmark: completed
+- Wordmark extraction to transparent PNG and responsive `next/image` delivery: completed
 - Old slogan SVG dependency: removed
 - HTML slogan: completed; visual acceptance pending
 - LASAGNA lockup: implemented and refined against reference; acceptance pending
