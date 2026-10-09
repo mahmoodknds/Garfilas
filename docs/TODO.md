@@ -25,6 +25,8 @@ Status: 🟡 **Visual calibration in progress**
 - [x] Native Hero composition
 - [x] Temporary Hero WebP integrated
 - [x] Garfilas wordmark raster extracted from SVG and delivered with `next/image`
+- [x] Homepage mascot image moved to `next/image` with responsive sizing and priority loading
+- [x] Add a semantic, screen-reader-visible homepage `h1` without changing the visual lockup
 - [x] Old slogan SVG dependency removed
 - [x] Slogan rendered as HTML text
 - [x] LASAGNA HTML lockup
@@ -139,6 +141,7 @@ Status: 🟡 In Progress
 Status: 🟡 In Progress
 
 - [ ] Verify that Next.js image optimization serves the 2172×724 wordmark as an appropriately sized modern format on mobile and desktop; compare transparency and edge quality against the original.
+- [ ] Verify that Next.js image optimization serves the Hero mascot at a width matching its actual CSS size; compare rendered appearance and transfer size.
 - [ ] Verify WebP optimization and dimensions
 - [ ] Verify image loading priority
 - [ ] Lazy-load non-critical assets
