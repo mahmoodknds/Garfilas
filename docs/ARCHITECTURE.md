@@ -225,3 +225,12 @@ The repository does not currently contain a layout-level component. Keep `compon
 
 Keep layout-level behavior at `app/layout.tsx` when it is genuinely document-wide. Do not recreate the removed `SiteBackground` wrapper merely as a structural container.
 
+## Release and hosting boundary (2026-10-10)
+
+- `config/site.ts` is the centralized source for the public canonical URL. The current value is `https://garfilas.ir`.
+- Metadata, canonical URL, Open Graph URL, robots sitemap reference, and sitemap generation should consume this shared setting rather than duplicate the domain.
+- Domain configuration in source is separate from DNS records, custom-domain attachment, SSL, and the production server. Each requires independent verification.
+- The app currently uses the Next.js application runtime with `next build` and `next start` scripts. Do not assume static hosting is compatible without checking routes and runtime requirements.
+- For cPanel/DirectAdmin, confirm the provider's supported Node.js version and managed startup method before choosing a release procedure.
+- Release acceptance requires both technical checks (build/lint and deployment status) and browser/device visual verification. Deployment READY alone is insufficient.
+
