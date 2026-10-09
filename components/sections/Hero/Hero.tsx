@@ -5,6 +5,7 @@ import HeroLogo from "./HeroLogo";
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title" className="sr-only">Garfilas Italian Lasagna</h1>
       <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
 
       <div className="hero-shell">
