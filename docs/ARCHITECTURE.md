@@ -62,7 +62,7 @@ Lucide React
 
 State
 
-Not introduced yet. Add only when a real shared client-state requirement exists.
+No shared/global state library is introduced. Small local component state is permitted where required; the dormant Menu prototype currently uses local quantity state.
 
 Database
 
@@ -96,9 +96,9 @@ Next.js App Router
      │
      ├── config/              Brand and application configuration
      │
-     ├── lib/                 Shared constants and utilities
+     ├── styles/              Shared design tokens
      │
-     ├── styles/              Design tokens and lightweight animations
+     ├── .github/             Build verification workflow
      │
      └── docs/                Project source-of-truth documentation
 ```
@@ -119,34 +119,26 @@ Next.js App Router entry points.
 
 Page-level feature sections. Each section owns its markup and presentation-specific logic.
 
-Current Landing Page MVP sections:
+Active Landing Page MVP sections:
 
 - Hero
 - Bottom Navigation
 
 Hero-specific components currently include `Hero.tsx`, `HeroLogo.tsx`, `HeroCTA.tsx`, and `HeroParticleEngine.tsx`.
 
-Future sections should follow the same feature-based structure.
+`Menu/` currently contains a dormant product-card prototype and its CSS. It is not mounted by the homepage. Review and finish its accessibility, pricing, responsive behavior, and interaction model before activation.
 
 ## components/ui/
 
 Small reusable presentation primitives used by the active page. Keep this folder limited to components with a current consumer.
 
-## components/layout/
-
-No active layout-level components currently exist. Keep this directory empty until a real shared layout component is introduced.
-
 ## config/
 
 Brand and application configuration that should not be mixed with page composition.
 
-## lib/
-
-No shared utilities are currently required. Add files here only when a real shared dependency exists.
-
 ## styles/
 
-Shared design tokens used by the global stylesheet.
+`tokens.css` contains shared design tokens imported by `app/globals.css`. Animation and section styling currently live in the global stylesheet or the feature stylesheet that owns them.
 
 ## docs/
 
@@ -212,9 +204,11 @@ Implemented so far:
 - Hero
 - Bottom Navigation
 
-Deferred work remains documented in TODO.md and is intentionally not present in the active homepage code. Current next work is responsive refinement, Hero acceptance, SEO foundation and performance audit.
+The Menu product-card prototype exists in the repository but is intentionally not mounted on the homepage. Deferred work remains documented in `TODO.md`. Current next work is visual acceptance, responsive verification, SEO foundation and performance audit.
 
-Last Updated: 2026-10-02
+GitHub Actions runs a production build verification on pushes to `main` and pull requests targeting `main`. This workflow does not deploy to Vercel.
+
+Last Updated: 2026-10-09
 
 
 ## 2026-10-02 Cleanup Audit
