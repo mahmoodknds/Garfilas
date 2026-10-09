@@ -728,3 +728,12 @@ Version
 - Hero foreground geometry remains protected during background maintenance.
 
 Last Updated: 2026-10-02
+
+## Documentation and release verification rule (2026-10-10)
+
+- When source behavior, deployment state, domain configuration, or next-step priorities change, update the relevant state, context, session, changelog, and backlog documents in the same documentation pass.
+- Keep historical notes identifiable as historical. A dated authoritative checkpoint must clearly supersede older contradictory status notes.
+- Never mark browser/device verification complete based only on a successful TypeScript check, production build, CI run, or hosting deployment state.
+- Do not claim a domain is live merely because it is configured as the canonical URL in application code.
+- Preserve approved UI behavior unless a reproducible defect is confirmed and documented.
+
