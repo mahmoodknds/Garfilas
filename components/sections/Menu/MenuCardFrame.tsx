@@ -1,5 +1,25 @@
 import { useId } from "react";
 
+type ScrewProps = {
+  cx: number;
+  cy: number;
+  shadowId: string;
+  metalDarkId: string;
+  metalId: string;
+};
+
+function Screw({ cx, cy, shadowId, metalDarkId, metalId }: ScrewProps) {
+  return (
+    <g filter={`url(#${shadowId})`}>
+      <circle cx={cx} cy={cy} r="12.5" fill="#080604" opacity=".96" />
+      <circle cx={cx} cy={cy} r="10.4" fill={`url(#${metalDarkId})`} />
+      <circle cx={cx} cy={cy} r="8.9" fill={`url(#${metalId})`} />
+      <ellipse cx={cx - 2.8} cy={cy - 3.1} rx="3.2" ry="1.8" fill="#f0bd72" opacity=".28" />
+      <ellipse cx={cx + 2.4} cy={cy + 3.7} rx="4.5" ry="2.4" fill="#120803" opacity=".34" />
+    </g>
+  );
+}
+
 export default function MenuCardFrame() {
   const uid = useId().replace(/:/g, "");
   const ids = {
@@ -17,16 +37,6 @@ export default function MenuCardFrame() {
     shadow: `menu-frame-shadow-${uid}`,
     plaqueShadow: `menu-frame-plaque-shadow-${uid}`,
   };
-
-  const Screw = ({ cx, cy }: { cx: number; cy: number }) => (
-    <g filter={`url(#${ids.shadow})`}>
-      <circle cx={cx} cy={cy} r="12.5" fill="#080604" opacity=".96" />
-      <circle cx={cx} cy={cy} r="10.4" fill={`url(#${ids.metalDark})`} />
-      <circle cx={cx} cy={cy} r="8.9" fill={`url(#${ids.metal})`} />
-      <ellipse cx={cx - 2.8} cy={cy - 3.1} rx="3.2" ry="1.8" fill="#f0bd72" opacity=".28" />
-      <ellipse cx={cx + 2.4} cy={cy + 3.7} rx="4.5" ry="2.4" fill="#120803" opacity=".34" />
-    </g>
-  );
 
   return (
     <svg
@@ -163,10 +173,10 @@ export default function MenuCardFrame() {
       <circle cx="72" cy="370" r="19" fill={`url(#${ids.cornerGlow})`} opacity=".26" />
       <circle cx="72" cy="370" r="3.4" fill="#ff6a0a" opacity=".58" />
 
-      <Screw cx={91} cy={50} />
-      <Screw cx={609} cy={50} />
-      <Screw cx={91} cy={350} />
-      <Screw cx={609} cy={350} />
+      <Screw cx={91} cy={50} shadowId={ids.shadow} metalDarkId={ids.metalDark} metalId={ids.metal} />
+      <Screw cx={609} cy={50} shadowId={ids.shadow} metalDarkId={ids.metalDark} metalId={ids.metal} />
+      <Screw cx={91} cy={350} shadowId={ids.shadow} metalDarkId={ids.metalDark} metalId={ids.metal} />
+      <Screw cx={609} cy={350} shadowId={ids.shadow} metalDarkId={ids.metalDark} metalId={ids.metal} />
     </svg>
   );
 }
