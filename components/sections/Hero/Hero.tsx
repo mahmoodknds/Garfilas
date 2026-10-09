@@ -1,3 +1,4 @@
+import Image from "next/image";
 import HeroCTA from "./HeroCTA";
 import HeroLogo from "./HeroLogo";
 
@@ -9,12 +10,13 @@ export default function Hero() {
       <div className="hero-shell">
         <div className="hero-mascot" aria-label="Garfilas hero artwork">
           <div className="hero-mascot-frame">
-            <img
+            <Image
               src="/assets/hero/garfilas-hero-final.webp"
               alt="Garfilas mascot enjoying handmade lasagna"
               width={1536}
               height={1024}
-              fetchPriority="high"
+              sizes="(max-width: 768px) 63vw, 18.8rem"
+              priority
             />
           </div>
         </div>
