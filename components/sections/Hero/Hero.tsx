@@ -16,7 +16,7 @@ export default function Hero() {
               alt="Garfilas mascot enjoying handmade lasagna"
               width={1536}
               height={1024}
-              sizes="(max-width: 768px) 63vw, 18.8rem"
+              sizes="(max-width: 477px) 63vw, 18.8rem"
               priority
             />
           </div>
