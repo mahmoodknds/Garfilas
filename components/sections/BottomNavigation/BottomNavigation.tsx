@@ -3,7 +3,7 @@ import { Phone, UserRound, ShoppingCart } from "lucide-react";
 const items = [
   { href: "#profile", label: "پروفایل", icon: UserRound },
   { href: "#cart", label: "سبد خرید", icon: ShoppingCart },
-  { href: "#contact", label: "تماس", icon: Phone },
+  { href: "tel:09130312060", label: "تماس با گارفیلـاز", icon: Phone },
 ] as const;
 
 export default function BottomNavigation() {
