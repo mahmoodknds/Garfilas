@@ -51,7 +51,7 @@ npm run lint
 npm run build
 ```
 
-GitHub Actions runs a production build on pushes to `main` and pull requests targeting `main`. This verifies the build but does not deploy the app. Vercel deployment status must be checked separately.
+GitHub Actions runs ESLint and a production build on pushes to `main` and pull requests targeting `main`. This verifies code quality and build output but does not deploy the app. Vercel deployment status must be checked separately.
 
 ## Visual and performance guardrails
 
