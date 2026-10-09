@@ -211,3 +211,20 @@ Latest change:
 
 Perform a final quality pass before further refactoring: responsive visual comparison, reduced-motion check, build/lint, performance/font/image review, and SEO endpoint validation. Record only observed defects and fix only confirmed issues. Preserve already-approved CTA animation and layout anchors unless testing demonstrates a regression.
 
+## 2026-10-10 Authoritative Current State
+
+This section supersedes older deployment/status statements above where they describe an earlier point in time.
+
+- Cleanup PR #8 is merged into `main`; merge commit: `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`.
+- Latest known Vercel Production deployment was checked READY for that commit; confirmed alias: `garfilas.vercel.app`.
+- Canonical site configuration is `https://garfilas.ir` in `config/site.ts`. This does not prove DNS, host routing, or SSL is configured.
+- Final browser/device visual acceptance is pending. Deployment READY and successful build are not substitutes for visual QA.
+- Migration to cPanel/DirectAdmin is pending confirmation of panel type, Node.js support/version, and available deployment access. Do not change DNS until the hosting target is confirmed.
+
+### Next execution sequence
+1. Inspect the latest Production source and commit SHA.
+2. Confirm lint and production build for the exact release source.
+3. Verify deployed renders on mobile, tablet, and desktop, including scroll continuity and reduced motion.
+4. Review font/image loading and Lighthouse/performance findings; fix only evidence-backed issues.
+5. Verify `robots.txt`, `sitemap.xml`, canonical URL, DNS, and SSL once the intended host is connected.
+6. Confirm host capabilities, then prepare the correct deployment method.
