@@ -407,3 +407,8 @@ The website keeps the same portrait ratio and uses native SVG/React for the deco
 
 Last Updated: 2026-10-05
 Documentation Version: 2.8.0
+
+## Documentation checkpoint (2026-10-10)
+
+This checkpoint does not change the approved brand identity, visual direction, or product scope. This file remains the authority for product and brand decisions. Current implementation status, deployment readiness, and remaining technical checks belong in `PROJECT_STATE.md`, `AI_CONTEXT.md`, and `TODO.md`. Do not interpret the canonical-domain configuration as confirmation that `garfilas.ir` is connected or live.
+
