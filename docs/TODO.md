@@ -128,9 +128,9 @@ Status: 🟡 In Progress
 
 Status: 🟡 In Progress
 
-- [ ] Metadata review
-- [ ] OpenGraph
-- [ ] Twitter Cards
+- [x] Metadata review: title template, canonical URL, and homepage description
+- [x] OpenGraph metadata (without a fabricated share image)
+- [x] Twitter Card metadata (summary card; no unverified image asset)
 - [ ] JSON-LD
 - [ ] Sitemap
 - [ ] Robots
