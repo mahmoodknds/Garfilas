@@ -681,3 +681,13 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - GitHub Actions and Vercel Preview passed for the preceding source head; checks for this final source head are being re-run.
 - Browser/device visual verification remains pending because the preview URL could not be inspected by the available browser reader.
 - Production has not been changed.
+
+## 2026-10-10 Documentation and final-quality handoff
+
+- Re-read the repository documentation after merging cleanup PR #8.
+- Recorded merge commit `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a` as the current cleanup checkpoint.
+- Clarified that `https://garfilas.ir` is configured as the canonical URL in code, but DNS, SSL, and personal hosting are not confirmed.
+- Set the next phase to final quality verification: deployed visual comparison, responsive checks, reduced-motion validation, build/lint, performance review, and SEO endpoint checks.
+- Explicitly retained the rule to preserve approved motion and layout unless a reproducible issue is found.
+- No application source code or production behavior was changed in this documentation checkpoint.
+
