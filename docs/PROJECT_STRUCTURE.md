@@ -77,7 +77,6 @@ Root configuration:
 
 ## Deliberately retained support code
 
-- The temporary `app/blank/page.tsx` background test route was removed after verification and must not be listed as active support code.
 - `components/sections/Menu/` is a dormant menu-card prototype. It is not mounted by the homepage and must not be treated as shipped menu functionality. Preserve it while the menu design is still being developed; before activating it, review its client-state, accessibility, pricing, and responsive behavior.
 - `public/assets/menu/Lasagna.webp` is used by the menu-card prototype.
 - `public/Screenshot 2026-10-02 111606.png` is visual reference material, not a runtime dependency.
