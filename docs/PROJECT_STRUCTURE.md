@@ -1,6 +1,6 @@
 # Garfilas Repository Structure
 
-Canonical tree for the current `main` branch. Update this file whenever files are added, moved, or removed.
+Canonical tree for the current cleanup branch. Reconcile it with `main` after the pull request is merged.
 
 ```text
 .github/
@@ -8,12 +8,13 @@ Canonical tree for the current `main` branch. Update this file whenever files ar
 .vscode/
   settings.json
 app/
-  blank/page.tsx
   favicon.ico
   fonts.ts
   globals.css
   layout.tsx
   page.tsx
+  robots.ts
+  sitemap.ts
 components/
   sections/
     BottomNavigation/BottomNavigation.tsx
@@ -76,7 +77,7 @@ Root configuration:
 
 ## Deliberately retained support code
 
-- `app/blank/page.tsx` is an isolated background test route. It has no Hero foreground.
+- The temporary `app/blank/page.tsx` background test route was removed after verification and must not be listed as active support code.
 - `components/sections/Menu/` is a dormant menu-card prototype. It is not mounted by the homepage and must not be treated as shipped menu functionality. Preserve it while the menu design is still being developed; before activating it, review its client-state, accessibility, pricing, and responsive behavior.
 - `public/assets/menu/Lasagna.webp` is used by the menu-card prototype.
 - `public/Screenshot 2026-10-02 111606.png` is visual reference material, not a runtime dependency.
