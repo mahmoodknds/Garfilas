@@ -12,7 +12,7 @@ Only unfinished work belongs here. Completed work is recorded in the session/cha
 - Sprint: 0.4
 - Milestone: Landing Page MVP
 - Current priority: **First-page Hero visual completion**
-- Last Updated: 2026-10-02
+- Last Updated: 2026-10-09
 
 # HIGH PRIORITY
 
@@ -138,6 +138,7 @@ Status: 🟡 In Progress
 
 Status: 🟡 In Progress
 
+- [ ] Audit the 1.86 MB `public/assets/brand/garfilas-reference-logo.svg`: it embeds a 2172×724 PNG in base64; reduce transfer size without changing the visible logo.
 - [ ] Verify WebP optimization and dimensions
 - [ ] Verify image loading priority
 - [ ] Lazy-load non-critical assets
@@ -160,8 +161,8 @@ Status: ⚪ Planned
 
 Status: 🟡 In Progress
 
-- [ ] Local production build
-- [ ] Vercel production verification
+- [x] Local production build (previously verified; rerun after the next runtime-source change)
+- [ ] Vercel production verification (blocked by Vercel deployment rate limit; do not create trigger-only commits)
 - [ ] Environment variables review
 - [ ] Domain setup
 - [ ] SSL
@@ -171,7 +172,7 @@ Status: 🟡 In Progress
 
 Status: ⚪ Planned
 
-These remain out of the current Hero-calibration scope.
+These remain out of the current Hero-calibration scope. A menu-card prototype exists under `components/sections/Menu/`, but it is not mounted by the homepage and is not production-ready.
 
 ## Menu
 - [ ] Categories
@@ -228,6 +229,14 @@ Status: 🟢 **Synchronized**
 - [x] Garfilas Bible
 - [x] Session Log
 
+# Repository Cleanup (2026-10-09)
+
+- [x] Reconcile `docs/PROJECT_STRUCTURE.md` with the current `main` tree, including the dormant Menu prototype and `/blank` background test route.
+- [x] Remove `public/assets/menu/garfilas-card-frame.webp`, confirmed unused because `MenuCardFrame.tsx` renders the frame as SVG.
+- [x] Update architecture notes to remove references to the deleted `lib/` and `components/layout/` directories and deleted standalone animation stylesheet.
+- [ ] Audit embedded raster data in the SVG wordmark and optimize it without visual redesign.
+- [ ] Verify the isolated `/blank` background route in a real browser at mobile and desktop sizes.
+
 # Exact Next Work
 
 1. Verify the current deployed Hero against the latest reference.
@@ -241,8 +250,8 @@ Status: 🟢 **Synchronized**
 9. [x] Establish one global site background system shared across all pages and sections.
 10. Replace the temporary Hero artwork and recalibrate its ring.
 11. Validate the unified composition across mobile, tablet and desktop.
-13. [x] Run local production build verification.
-14. Stop before adding new website scope.
+12. [x] Run local production build verification.
+13. Stop before adding new website scope.
 
 ## 2026-10-02 Responsive Geometry Correction Note
 
@@ -257,7 +266,7 @@ Status: 🟢 **Synchronized**
 - [x] Share the current Hero geometry across desktop.
 - [x] Remove the unused desktop composition wrapper from Hero markup.
 - [ ] Verify a fresh desktop production render at 1916×1023 or equivalent.
-- [ ] Run production build verification.
+- [x] Run production build verification (prior verification; repeat after source changes).
 
 ## 2026-10-02 Global Background Architecture
 
@@ -270,7 +279,7 @@ Status: 🟢 **Synchronized**
 - [x] Remove the obsolete Hero-owned ambient scene markup.
 - [x] Keep the active global atmosphere in the body background and fixed particle engine.
 - [ ] Verify a fresh 1440×900 production render and confirm the first-section boundary is visually continuous.
-- [ ] Run production build verification.
+- [x] Run production build verification (prior verification; repeat after source changes).
 
 
 ## 2026-10-03 Global Background Test
