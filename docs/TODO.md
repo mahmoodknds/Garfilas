@@ -327,3 +327,32 @@ This section supersedes older deployment notes in this backlog wherever they con
 - Do not add new product sections or cart/auth/checkout scope during this pass.
 - Do not change DNS before the target host and deployment plan are confirmed.
 
+# Current Handoff Update: 2026-10-10
+
+This section supersedes older deployment-status entries above where they refer to earlier commits or verification.
+
+## Current verified baseline
+
+- [x] Cleanup PR #8 merged into `main`: `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`.
+- [x] Latest known Vercel Production deployment checked READY for that merge commit.
+- [x] Canonical URL centralized at `https://garfilas.ir` in `config/site.ts`.
+- [ ] Browser/device visual acceptance of the deployed Hero and responsive composition.
+- [ ] Confirm reduced-motion behavior in a real browser.
+- [ ] Run current lint/build verification against the exact release commit.
+- [ ] Review font loading, non-critical asset loading, and Lighthouse/performance findings.
+- [ ] Verify live `robots.txt`, `sitemap.xml`, canonical metadata, DNS, and SSL once the intended host is connected.
+- [ ] Confirm cPanel/DirectAdmin type, Node.js support/version, and available Terminal/SSH/File Manager access.
+- [ ] Prepare and test the hosting deployment path after the host capability check.
+
+## Final QA guardrails
+
+- Fix only issues reproduced during inspection; do not refactor for tidiness alone.
+- Preserve approved Hero geometry, CTA animation, particle density/timing, and Bottom Navigation geometry.
+- Do not recreate the temporary `/blank` route.
+- Do not treat the dormant Menu prototype as shipped functionality.
+- Do not change DNS or assume `garfilas.ir` is live merely because it is configured as the canonical URL.
+- Do not convert to static export before checking Next.js runtime needs and host Node.js support.
+
+## Exact next task
+
+Perform the final browser/device and performance QA pass on the current deployed source, document reproducible defects, and only then decide whether source changes are needed. Hosting migration follows after the panel/runtime check.
