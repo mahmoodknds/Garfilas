@@ -56,10 +56,10 @@ GitHub Actions runs ESLint and a production build on pushes to `main` and pull r
 ## Visual and performance guardrails
 
 - Preserve the approved Hero anchors unless a direct reference comparison justifies a change: mascot/orbit `27.5%`, copy `51.3%`, CTA `73.6%`, scroll cue `80.5%`.
-- Preserve the Bottom Navigation center control's vertical anchor at `50.671875%).
+- Preserve the Bottom Navigation center control's vertical anchor at `50.671875%`.
 - Keep the Hero and fixed navigation as one proportional mobile-first composition.
 - Respect reduced-motion preferences and avoid adding dependencies for effects that CSS can handle.
-- The current wordmark SVG embeds a large PNG as base64. Optimize only if its rendered appearance can be preserved and verified.
+- The wordmark is extracted to `public/assets/brand/garfilas-reference-logo.png` and served through `next/image`; the owner confirmed optimized response sizing/format and visual quality.
 - Never treat a successful Git commit as proof of deployment. Confirm the Vercel Production deployment SHA and READY state.
 
 ## Workflow
