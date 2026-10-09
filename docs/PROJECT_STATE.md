@@ -9,8 +9,8 @@
 
 Verification state:
 - GitHub source: synchronized.
-- Local production build: previously verified successfully before the latest particle-engine syntax correction; a fresh build after that correction is still required.
-- Vercel deployment recovery confirmed: commit `4d8a3af2d66589b45fb12e3519c2b7466977b35d` (`ci: run lint before production build`) reached `READY`; the earlier deployment-rate-limit rejection has cleared. Subsequent documentation-only commits were pushed afterward, so confirm the latest Production deployment SHA before visual acceptance.
+- GitHub Actions: ESLint and production build passed for the latest source commit `0cc9006`.
+- Vercel Production: latest source commit `0cc9006cd804431dbdf49c680cad5153e6f6a7bd` (`fix(menu): give SVG gradients and filters unique IDs`) reached `READY`; the earlier deployment-rate-limit rejection has cleared.
 - Browser/device render verification: pending.
 
 # Garfilas Current Project State
@@ -151,7 +151,7 @@ Latest change:
 - Italian flag: implemented
 - Neon fault animation: implemented and slowed to 15s
 - Mobile slogan position: raised slightly to `.60rem` margin-top.
-- Local `npm run build`: previously verified successfully on 2026-10-02
+- Local `npm run build`: previously verified on 2026-10-02; the latest source commit also passed GitHub Actions lint and build
 - Production visual verification: pending
 - Responsive audit foundation: implemented for safe-area handling, tablet scaling and desktop scaling
 - `/blank` global-background test route: implemented
