@@ -84,10 +84,10 @@ Current approved direction:
 # Current Hero Assets
 
 - `public/assets/hero/garfilas-hero-final.webp` (temporary foreground artwork pending replacement)
-- `public/assets/brand/garfilas-reference-logo.svg`
+- `public/assets/brand/garfilas-reference-logo.png` (transparent raster extracted from the supplied SVG wrapper; served through `next/image`)
 - `public/assets/ui/bottom-nav-frame.svg`
 
-GARFILAS geometry must come from the supplied SVG. Do not recreate GARFILAS as HTML text.
+GARFILAS geometry must remain faithful to the supplied reference artwork. The current transparent PNG is extracted from the former SVG wrapper and served through `next/image`; do not recreate GARFILAS as HTML text.
 
 The old `public/assets/brand/garfilas-slogan-exact.svg` dependency was removed because it caused a duplicate/broken-image render. The slogan is now real HTML text.
 
@@ -95,7 +95,7 @@ The old `public/assets/brand/garfilas-slogan-exact.svg` dependency was removed b
 
 ## GARFILAS
 
-- Supplied SVG only.
+- Use the extracted transparent PNG from the supplied reference artwork; do not redraw or replace it with generated branding.
 - Warm orange/gold neon.
 - Crisp, readable letterforms.
 - Glow must support the SVG, not wash it out.
