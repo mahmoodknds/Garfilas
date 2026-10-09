@@ -643,3 +643,11 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - Set the original intrinsic dimensions (2172×724), responsive `sizes`, and priority loading so Next.js can optimize the raster for the actual display width.
 - Removed the SVG wrapper file because it contained no vector artwork and was no longer referenced.
 - This change preserves the source raster rather than redrawing the logo. Actual browser-delivered format/size and visual comparison remain to be verified.
+
+## 2026-10-09 Reduced-Motion Accessibility Pass
+
+- Added a guard in `HeroParticleEngine.tsx` so the decorative particle system does not start when the operating system requests reduced motion.
+- Updated `docs/TODO.md` and `docs/PROJECT_STATE.md` to reflect the current Production commit and the responsive wordmark delivery path.
+- This is staged on pull request #8 and is not merged into `main` or Production.
+- Vercel created a READY preview deployment for the branch. Browser/device visual checks and GitHub Actions lint status remain pending.
+- No particle counts, animation durations, visual styling, Hero geometry, CTA behavior, or navigation layout were changed.
