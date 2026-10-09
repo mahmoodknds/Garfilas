@@ -1,6 +1,6 @@
 # Garfilas Repository Structure
 
-Canonical tree for the current cleanup branch. Reconcile it with `main` after the pull request is merged.
+Canonical tree for the current `main` branch. Reconcile it after any repository structure change.
 
 ```text
 .github/
