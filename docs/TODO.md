@@ -24,7 +24,9 @@ Status: 🟡 **Visual calibration in progress**
 
 - [x] Native Hero composition
 - [x] Temporary Hero WebP integrated
-- [x] Supplied Garfilas wordmark SVG integrated
+- [x] Garfilas wordmark raster extracted from SVG and delivered with `next/image`
+- [x] Homepage mascot image moved to `next/image` with responsive sizing and priority loading
+- [x] Add a semantic, screen-reader-visible homepage `h1` without changing the visual lockup
 - [x] Old slogan SVG dependency removed
 - [x] Slogan rendered as HTML text
 - [x] LASAGNA HTML lockup
@@ -53,7 +55,7 @@ Status: 🟡 **Visual calibration in progress**
 - [x] GARFILAS electrical-fault animation cycle slowed to 15s
 - [x] Responsive foundation
 - [x] Unified Hero vertical composition across mobile, tablet and desktop
-- [x] Reduced-motion support
+- [x] Reduced-motion support for CSS motion; particle engine now skips its animation when `prefers-reduced-motion` is enabled
 
 ### Remaining
 
@@ -124,23 +126,24 @@ Status: 🟡 In Progress
 
 # SEO
 
-Status: 🟡 In Progress
+Status: 🟢 Core metadata complete; structured data is deferred until verified business/menu facts are finalized.
 
-- [ ] Metadata review
-- [ ] OpenGraph
-- [ ] Twitter Cards
-- [ ] JSON-LD
-- [ ] Sitemap
-- [ ] Robots
-- [ ] Canonical URLs
+- [x] Metadata review: title template, canonical URL, and homepage description
+- [x] OpenGraph metadata (without a fabricated share image)
+- [x] Twitter Card metadata (summary card; no unverified image asset)
+- [ ] JSON-LD (defer until structured business/menu facts are finalized)
+- [x] Sitemap: homepage only
+- [x] Robots directives
+- [x] Canonical homepage URL
 
 # PERFORMANCE
 
 Status: 🟡 In Progress
 
-- [ ] Verify that Next.js image optimization serves the 2172×724 wordmark as an appropriately sized modern format on mobile and desktop; compare transparency and edge quality against the original.
-- [ ] Verify WebP optimization and dimensions
-- [ ] Verify image loading priority
+- [x] Verify Next.js optimized wordmark response sizing/format and compare transparency/edge quality against the original (user-confirmed).
+- [x] Verify Next.js optimized Hero mascot response sizing and rendered quality (user-confirmed).
+- [x] Verify optimized image formats and dimensions (covered by user-confirmed image-response review).
+- [x] Verify priority loading for above-the-fold Hero images.
 - [ ] Lazy-load non-critical assets
 - [ ] Review font loading
 - [ ] Bundle analysis
@@ -162,7 +165,7 @@ Status: ⚪ Planned
 Status: 🟡 In Progress
 
 - [x] Local production build (previously verified; rerun after the next runtime-source change)
-- [x] Vercel deployment verification: latest source commit `0cc9006` reached READY and its GitHub Actions lint/build workflow passed. Browser/device visual verification remains pending.
+- [x] Vercel deployment verification: source commit `7eec60c99358b7fdf625e8cf9b80c20c9c8beb3f` reached READY and its GitHub Actions lint/build workflow passed. Browser/device visual verification remains pending.
 - [ ] Environment variables review
 - [ ] Domain setup
 - [ ] SSL
@@ -231,11 +234,12 @@ Status: 🟢 **Synchronized**
 
 # Repository Cleanup (2026-10-09)
 
-- [x] Reconcile `docs/PROJECT_STRUCTURE.md` with the current `main` tree, including the dormant Menu prototype and `/blank` background test route.
+- [x] Reconcile `docs/PROJECT_STRUCTURE.md` with the active route tree and dormant Menu prototype; the temporary `/blank` route has been removed.
 - [x] Remove `public/assets/menu/garfilas-card-frame.webp`, confirmed unused because `MenuCardFrame.tsx` renders the frame as SVG.
 - [x] Update architecture notes to remove references to the deleted `lib/` and `components/layout/` directories and deleted standalone animation stylesheet.
-- [ ] Audit embedded raster data in the SVG wordmark and optimize it without visual redesign.
-- [ ] Verify the isolated `/blank` background route in a real browser at mobile and desktop sizes.
+- [x] Extract the embedded wordmark raster to PNG and switch to responsive `next/image` delivery without visual redesign.
+- [x] Removed the temporary `/blank` route after the background review; no separate route verification remains.
+- [ ] Verify that reduced-motion preference suppresses all decorative particle movement.
 
 # Exact Next Work
 
@@ -282,11 +286,11 @@ Status: 🟢 **Synchronized**
 - [x] Run production build verification (prior verification; repeat after source changes).
 
 
-## 2026-10-03 Global Background Test
+## 2026-10-03 Global Background Test (historical)
 
-- [x] Add a blank `/blank` route using the same global background.
-- [x] Keep the particle engine independent from Hero foreground content.
-- [ ] Browser-verify the blank background route across mobile and desktop.
+- [x] Added a blank `/blank` route using the same global background.
+- [x] Kept the particle engine independent from Hero foreground content.
+- [x] Removed the temporary route on 2026-10-09 after the background test was accepted; no active `/blank` route remains.
 
 ## 2026-10-02 CTA / Deployment Hold
 

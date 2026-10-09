@@ -2,8 +2,8 @@
 
 ## Garfilas AI Working Memory
 
-**Version:** 2.6.0  
-**Last Updated:** 2026-10-02
+**Version:** 2.7.0  
+**Last Updated:** 2026-10-09
 
 ---
 
@@ -84,10 +84,10 @@ Current approved direction:
 # Current Hero Assets
 
 - `public/assets/hero/garfilas-hero-final.webp` (temporary foreground artwork pending replacement)
-- `public/assets/brand/garfilas-reference-logo.svg`
+- `public/assets/brand/garfilas-reference-logo.png` (transparent raster extracted from the supplied SVG wrapper; served through `next/image`)
 - `public/assets/ui/bottom-nav-frame.svg`
 
-GARFILAS geometry must come from the supplied SVG. Do not recreate GARFILAS as HTML text.
+GARFILAS geometry must remain faithful to the supplied reference artwork. The current transparent PNG is extracted from the former SVG wrapper and served through `next/image`; do not recreate GARFILAS as HTML text.
 
 The old `public/assets/brand/garfilas-slogan-exact.svg` dependency was removed because it caused a duplicate/broken-image render. The slogan is now real HTML text.
 
@@ -95,7 +95,7 @@ The old `public/assets/brand/garfilas-slogan-exact.svg` dependency was removed b
 
 ## GARFILAS
 
-- Supplied SVG only.
+- Use the extracted transparent PNG from the supplied reference artwork; do not redraw or replace it with generated branding.
 - Warm orange/gold neon.
 - Crisp, readable letterforms.
 - Glow must support the SVG, not wash it out.
@@ -259,3 +259,13 @@ The former `SiteBackground.tsx` wrapper was removed because it was confirmed to 
 - Hero-local foreground geometry for mascot, ring, logo, CTA and navigation
 
 Do not refer to `SiteBackground.tsx` as an active component. Historical references to it describe an earlier implementation and are not current architecture.
+
+# 2026-10-09 Cleanup Branch Notes
+
+- The temporary `app/blank/page.tsx` route has been removed. Do not reference it as active functionality.
+- The particle engine's active anchor is `.hero-orbit-one`; the obsolete blank-page anchor fallback is removed.
+- Reduced-motion preference disables the decorative particle engine at mount and disables CSS-based Hero/CTA motion.
+- Homepage metadata includes a title template, description, canonical URL, Open Graph metadata, and a Twitter summary card. Next.js generates `/robots.txt` and a homepage-only `/sitemap.xml`.
+- JSON-LD remains deferred until the business/menu facts to encode are confirmed.
+- Optimized image response sizing/format and visual quality were confirmed by the project owner.
+- The cleanup branch is reviewed separately from Production. Build success and Vercel Preview READY do not substitute for final browser/device visual acceptance.

@@ -204,7 +204,7 @@ Implemented so far:
 - Hero
 - Bottom Navigation
 
-The Menu product-card prototype exists in the repository but is intentionally not mounted on the homepage. Deferred work remains documented in `TODO.md`. Current next work is visual acceptance, responsive verification, SEO foundation and performance audit.
+The Menu product-card prototype exists in the repository but is intentionally not mounted on the homepage. Deferred work remains documented in `TODO.md`. The homepage SEO foundation now includes canonical metadata, Open Graph/Twitter summary metadata, `robots.txt`, and a homepage-only sitemap. Remaining verification focuses on browser/device visual acceptance, responsive behavior, and deeper performance auditing.
 
 GitHub Actions runs a production build verification on pushes to `main` and pull requests targeting `main`. This workflow does not deploy to Vercel.
 

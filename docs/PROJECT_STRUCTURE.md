@@ -1,6 +1,6 @@
 # Garfilas Repository Structure
 
-Canonical tree for the current `main` branch. Update this file whenever files are added, moved, or removed.
+Canonical tree for the current cleanup branch. Reconcile it with `main` after the pull request is merged.
 
 ```text
 .github/
@@ -8,12 +8,13 @@ Canonical tree for the current `main` branch. Update this file whenever files ar
 .vscode/
   settings.json
 app/
-  blank/page.tsx
   favicon.ico
   fonts.ts
   globals.css
   layout.tsx
   page.tsx
+  robots.ts
+  sitemap.ts
 components/
   sections/
     BottomNavigation/BottomNavigation.tsx
@@ -27,7 +28,9 @@ components/
       MenuProductCard.tsx
       menu.css
   ui/GlowButton.tsx
-config/brand.ts
+config/
+  brand.ts
+  site.ts
 docs/
   AI_CONTEXT.md
   ARCHITECTURE.md
@@ -72,11 +75,11 @@ Root configuration:
 - `components/sections/BottomNavigation/BottomNavigation.tsx` contains the active fixed navigation.
 - `components/ui/GlowButton.tsx` is the CTA presentation primitive.
 - `config/brand.ts` supplies the brand CTA label.
+- `config/site.ts` is the single source for the canonical public site URL used by metadata, robots directives, and the sitemap.
 - `styles/tokens.css` defines the shared color tokens imported by global CSS.
 
 ## Deliberately retained support code
 
-- `app/blank/page.tsx` is an isolated background test route. It has no Hero foreground.
 - `components/sections/Menu/` is a dormant menu-card prototype. It is not mounted by the homepage and must not be treated as shipped menu functionality. Preserve it while the menu design is still being developed; before activating it, review its client-state, accessibility, pricing, and responsive behavior.
 - `public/assets/menu/Lasagna.webp` is used by the menu-card prototype.
 - `public/Screenshot 2026-10-02 111606.png` is visual reference material, not a runtime dependency.

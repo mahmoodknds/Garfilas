@@ -20,15 +20,17 @@ The active homepage contains the Hero and Bottom Navigation. The foreground comp
 - `app/` contains the App Router and global styles.
 - `components/sections/` contains page features such as Hero and Bottom Navigation.
 - `components/ui/` contains active reusable UI primitives.
-- `config/` contains active brand configuration.
+- `config/` contains the brand label and the single canonical public site URL.
 - `styles/` contains shared design tokens.
 - `docs/` contains project source-of-truth documentation.
 
 ## Development
 
-`npm install`
+`npm ci`
 
 `npm run dev`
+
+`npm run lint`
 
 `npm run build`
 
@@ -46,3 +48,7 @@ Read these before changing the project:
 ## Principle
 
 Revenue Before Complexity. Launch First. Improve Continuously.
+
+## SEO foundation
+
+The homepage has canonical and social-sharing metadata. Next.js generates `robots.txt` and a homepage-only `sitemap.xml`; the canonical public URL is maintained in `config/site.ts`.

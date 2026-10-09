@@ -643,3 +643,41 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - Set the original intrinsic dimensions (2172×724), responsive `sizes`, and priority loading so Next.js can optimize the raster for the actual display width.
 - Removed the SVG wrapper file because it contained no vector artwork and was no longer referenced.
 - This change preserves the source raster rather than redrawing the logo. Actual browser-delivered format/size and visual comparison remain to be verified.
+
+## 2026-10-09 Reduced-Motion Accessibility Pass
+
+- Added a guard in `HeroParticleEngine.tsx` so the decorative particle system does not start when the operating system requests reduced motion.
+- Updated `docs/TODO.md` and `docs/PROJECT_STATE.md` to reflect the current Production commit and the responsive wordmark delivery path.
+- This is staged on pull request #8 and is not merged into `main` or Production.
+- Vercel created a READY preview deployment for the branch. Browser/device visual checks and GitHub Actions lint status remain pending.
+- No particle counts, animation durations, visual styling, Hero geometry, CTA behavior, or navigation layout were changed.
+
+## 2026-10-09 Final Cleanup Continuation
+
+### Implemented
+- Removed the temporary `app/blank/page.tsx` background-isolation route after the user confirmed the image optimization verification.
+- Expanded homepage metadata with a canonical URL, title template, clearer description, Open Graph website metadata, and a Twitter summary card.
+- Added Next.js-generated `/robots.txt` and `/sitemap.xml` routes for the current public homepage.
+
+- Updated the project state and SEO backlog to reflect the removed test route and completed metadata pass.
+- Left the profile/cart placeholder destinations unchanged, as requested.
+
+### Verification
+- Source-level checks only at this point. GitHub Actions and the latest Vercel Preview must finish for the new head before this pass can be considered build-verified.
+- No intentional changes to Hero positioning, particle density/timing, CTA animation, or Bottom Navigation geometry.
+
+## 2026-10-09 Cleanup Completion Pass
+
+### Implemented
+- Removed the obsolete background-test anchor fallback from the particle engine; it now anchors to the active Hero orbit.
+- Moved fixed Bottom Navigation outside the `main` landmark while preserving its fixed positioning and CSS geometry.
+- Removed a redundant `aria-label` from the generic mascot wrapper; the image's descriptive alt text remains the accessible name.
+- Reconciled current project documentation with the removed `/blank` route, the extracted PNG wordmark, and the new SEO metadata/robots/sitemap routes.
+- Centralized the public production URL in `config/site.ts` so metadata, robots directives, and sitemap cannot drift independently.
+- Marked the image-response review complete based on the project owner's confirmation.
+- Kept historical changelog/session references intact where they describe work that really happened.
+
+### Verification
+- GitHub Actions and Vercel Preview passed for the preceding source head; checks for this final source head are being re-run.
+- Browser/device visual verification remains pending because the preview URL could not be inspected by the available browser reader.
+- Production has not been changed.

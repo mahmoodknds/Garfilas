@@ -2,16 +2,19 @@
 
 - GitHub → Vercel Git integration was reconnected by the project owner.
 - The previously failing production deployment was caused by a missing closing parenthesis in `HeroParticleEngine.tsx`; the source fix is now on `main`.
-- The temporary `/blank` route remains available for isolating the document-level background from Hero foreground content.
-- The background particle engine now accepts either the dedicated blank-page anchor or the Hero ring without changing the particle target/count or motion model.
+- The temporary `/blank` background-test route was removed on 2026-10-09 after the background test was accepted; do not recreate it unless a new isolated test is explicitly needed.
+- The background particle engine now uses the active `.hero-orbit-one` element as its ring anchor; the obsolete blank-page anchor fallback was removed.
+- The reduced-motion accessibility guard skips the decorative particle engine when `prefers-reduced-motion: reduce` is active; this change is on the review branch and is not yet in Production.
 - Do not create additional trigger-only commits unless a real source change also needs deployment.
 - Production must be checked by deployment commit SHA before visual acceptance.
 
 Verification state:
 - GitHub source: synchronized.
-- GitHub Actions: ESLint and production build passed for the latest source commit `0cc9006`.
-- Vercel Production: latest source commit `0cc9006cd804431dbdf49c680cad5153e6f6a7bd` (`fix(menu): give SVG gradients and filters unique IDs`) reached `READY`; the earlier deployment-rate-limit rejection has cleared.
+- GitHub Actions: ESLint and production build passed for the current Production source commit `7eec60c99358b7fdf625e8cf9b80c20c9c8beb3f`.
+- Vercel Production: source commit `7eec60c99358b7fdf625e8cf9b80c20c9c8beb3f` (`perf(brand): serve responsive optimized wordmark`) reached `READY`; the earlier deployment-rate-limit rejection has cleared.
 - Browser/device render verification: pending.
+- Current cleanup branch adds homepage metadata, Open Graph/Twitter summaries, `robots.txt`, and a homepage-only `sitemap.xml`; JSON-LD remains deferred until structured business/menu facts are confirmed.
+- The project owner confirmed optimized image response sizing/format and visual quality for the wordmark and Hero mascot.
 
 # Garfilas Current Project State
 
@@ -35,14 +38,14 @@ Native React/CSS/SVG composition using independent assets.
 Primary assets:
 
 - `public/assets/hero/garfilas-hero-final.webp` (temporary Hero artwork pending final replacement)
-- `public/assets/brand/garfilas-reference-logo.png`
+- `public/assets/brand/garfilas-reference-logo.png` (extracted from the former SVG wrapper and served through `next/image`)
 - `public/assets/ui/bottom-nav-frame.svg`
 
 Current composition:
 
 1. Temporary Garfield + lasagna artwork
 2. One controlled orange/gold neon ring around the Hero
-3. GARFILAS SVG wordmark
+3. GARFILAS wordmark (transparent PNG extracted from the former SVG wrapper and served through `next/image`)
 4. LASAGNA HTML lockup with side lines
 5. Italian flag accent
 6. HTML slogan
@@ -143,7 +146,7 @@ Latest change:
 - Extra Hero rings/halos: removed for current calibration
 - Extra Hero background grid/construction lines: removed for current calibration
 - Background architecture: global body atmosphere plus fixed particle engine
-- Supplied SVG wordmark: completed
+- Wordmark extraction to transparent PNG and responsive `next/image` delivery: completed
 - Old slogan SVG dependency: removed
 - HTML slogan: completed; visual acceptance pending
 - LASAGNA lockup: implemented and refined against reference; acceptance pending
@@ -154,15 +157,15 @@ Latest change:
 - Local `npm run build`: previously verified on 2026-10-02; the latest source commit also passed GitHub Actions lint and build
 - Production visual verification: pending
 - Responsive audit foundation: implemented for safe-area handling, tablet scaling and desktop scaling
-- `/blank` global-background test route: implemented
+- `/blank` global-background test route: removed after verification
 - Final Hero acceptance: pending
 
 ## Current Background Architecture
 
 - Global document atmosphere is owned by the `body` background in `app/globals.css`.
 - Fixed live particles are owned by `HeroParticleEngine.tsx`.
-- The engine resolves its ring anchor from either `.background-particle-anchor` or `.hero-orbit-one`.
-- The blank route deliberately contains no Hero foreground or Bottom Navigation so the global background can be inspected independently.
+- The engine resolves its ring anchor from `.hero-orbit-one`.
+- The temporary blank route was removed after the background review; do not assume it exists.
 - Ring particle volume remains approximately constant through immediate replacement when ring particles finish.
 - The previous ring-pulse/emission experiment is not part of the current behavior.
 
@@ -173,7 +176,7 @@ Latest change:
 
 ## Exact Next Step
 
-1. Verify `/blank` in a real browser on mobile and desktop.
+1. Verify the current homepage in a real browser on mobile and desktop.
 2. Verify Next.js optimized delivery for the 1.4 MB wordmark source without changing its appearance.
 3. Continue source-backed asset and CSS audits; preserve the dormant Menu prototype until its activation is in scope.
 4. Finalize foreground Hero acceptance before expanding scope.
