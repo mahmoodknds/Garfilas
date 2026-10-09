@@ -24,7 +24,7 @@ Status: 🟡 **Visual calibration in progress**
 
 - [x] Native Hero composition
 - [x] Temporary Hero WebP integrated
-- [x] Supplied Garfilas wordmark SVG integrated
+- [x] Garfilas wordmark raster extracted from SVG and delivered with `next/image`
 - [x] Old slogan SVG dependency removed
 - [x] Slogan rendered as HTML text
 - [x] LASAGNA HTML lockup
@@ -53,7 +53,7 @@ Status: 🟡 **Visual calibration in progress**
 - [x] GARFILAS electrical-fault animation cycle slowed to 15s
 - [x] Responsive foundation
 - [x] Unified Hero vertical composition across mobile, tablet and desktop
-- [x] Reduced-motion support
+- [x] Reduced-motion support for CSS motion; particle engine now skips its animation when `prefers-reduced-motion` is enabled
 
 ### Remaining
 
@@ -162,7 +162,7 @@ Status: ⚪ Planned
 Status: 🟡 In Progress
 
 - [x] Local production build (previously verified; rerun after the next runtime-source change)
-- [x] Vercel deployment verification: latest source commit `0cc9006` reached READY and its GitHub Actions lint/build workflow passed. Browser/device visual verification remains pending.
+- [x] Vercel deployment verification: source commit `7eec60c99358b7fdf625e8cf9b80c20c9c8beb3f` reached READY and its GitHub Actions lint/build workflow passed. Browser/device visual verification remains pending.
 - [ ] Environment variables review
 - [ ] Domain setup
 - [ ] SSL
@@ -234,8 +234,9 @@ Status: 🟢 **Synchronized**
 - [x] Reconcile `docs/PROJECT_STRUCTURE.md` with the current `main` tree, including the dormant Menu prototype and `/blank` background test route.
 - [x] Remove `public/assets/menu/garfilas-card-frame.webp`, confirmed unused because `MenuCardFrame.tsx` renders the frame as SVG.
 - [x] Update architecture notes to remove references to the deleted `lib/` and `components/layout/` directories and deleted standalone animation stylesheet.
-- [ ] Audit embedded raster data in the SVG wordmark and optimize it without visual redesign.
+- [x] Extract the embedded wordmark raster to PNG and switch to responsive `next/image` delivery without visual redesign.
 - [ ] Verify the isolated `/blank` background route in a real browser at mobile and desktop sizes.
+- [ ] Verify that reduced-motion preference suppresses all decorative particle movement.
 
 # Exact Next Work
 
