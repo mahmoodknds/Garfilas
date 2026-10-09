@@ -4,13 +4,14 @@
 - The previously failing production deployment was caused by a missing closing parenthesis in `HeroParticleEngine.tsx`; the source fix is now on `main`.
 - The temporary `/blank` route remains available for isolating the document-level background from Hero foreground content.
 - The background particle engine now accepts either the dedicated blank-page anchor or the Hero ring without changing the particle target/count or motion model.
+- The reduced-motion accessibility guard skips the decorative particle engine when `prefers-reduced-motion: reduce` is active; this change is on the review branch and is not yet in Production.
 - Do not create additional trigger-only commits unless a real source change also needs deployment.
 - Production must be checked by deployment commit SHA before visual acceptance.
 
 Verification state:
 - GitHub source: synchronized.
-- GitHub Actions: ESLint and production build passed for the latest source commit `0cc9006`.
-- Vercel Production: latest source commit `0cc9006cd804431dbdf49c680cad5153e6f6a7bd` (`fix(menu): give SVG gradients and filters unique IDs`) reached `READY`; the earlier deployment-rate-limit rejection has cleared.
+- GitHub Actions: ESLint and production build passed for the current Production source commit `7eec60c99358b7fdf625e8cf9b80c20c9c8beb3f`.
+- Vercel Production: source commit `7eec60c99358b7fdf625e8cf9b80c20c9c8beb3f` (`perf(brand): serve responsive optimized wordmark`) reached `READY`; the earlier deployment-rate-limit rejection has cleared.
 - Browser/device render verification: pending.
 
 # Garfilas Current Project State
@@ -35,7 +36,7 @@ Native React/CSS/SVG composition using independent assets.
 Primary assets:
 
 - `public/assets/hero/garfilas-hero-final.webp` (temporary Hero artwork pending final replacement)
-- `public/assets/brand/garfilas-reference-logo.png`
+- `public/assets/brand/garfilas-reference-logo.png` (extracted from the former SVG wrapper and served through `next/image`)
 - `public/assets/ui/bottom-nav-frame.svg`
 
 Current composition:
