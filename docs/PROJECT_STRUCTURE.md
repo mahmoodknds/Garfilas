@@ -28,7 +28,9 @@ components/
       MenuProductCard.tsx
       menu.css
   ui/GlowButton.tsx
-config/brand.ts
+config/
+  brand.ts
+  site.ts
 docs/
   AI_CONTEXT.md
   ARCHITECTURE.md
