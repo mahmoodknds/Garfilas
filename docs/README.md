@@ -74,3 +74,8 @@ Read the relevant source-of-truth docs, inspect the current implementation, make
 - Before hosting migration, verify responsive visuals, reduced-motion behavior, production build/lint, performance, and SEO endpoints.
 - Read `PROJECT_STATE.md` and `TODO.md` for the authoritative current status and next actions.
 
+## Current handoff (2026-10-10)
+
+Cleanup PR #8 is merged into `main` (merge commit `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`) and the latest known Vercel Production deployment for that commit is READY. The canonical URL is configured as `https://garfilas.ir`, but DNS, domain routing, SSL, and personal-host deployment are not yet verified.
+
+For the next session, read `GARFILAS_BIBLE.md`, `PROJECT_STATE.md`, `SESSION_LOG.md`, `TODO.md`, and `AI_CONTEXT.md`. Continue with a bounded final QA pass, preserving approved visuals and fixing only demonstrated defects. Confirm cPanel/DirectAdmin Node.js capabilities before planning deployment.
