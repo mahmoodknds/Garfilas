@@ -94,7 +94,7 @@ Status: 🟡 **Visual calibration in progress**
 - [ ] Final mobile visual acceptance
 - [ ] Final cross-viewport visual verification of the unified Hero composition
 - [x] Local production build verification
-- [ ] Production deployment verification
+- [x] Production deployment created successfully for latest source commit; visual/browser verification remains pending.
 
 ## Landing Page Supporting Sections
 
@@ -162,7 +162,7 @@ Status: ⚪ Planned
 Status: 🟡 In Progress
 
 - [x] Local production build (previously verified; rerun after the next runtime-source change)
-- [ ] Vercel production verification (blocked by Vercel deployment rate limit; do not create trigger-only commits)
+- [x] Vercel deployment verification: latest source commit `0cc9006` reached READY and its GitHub Actions lint/build workflow passed. Browser/device visual verification remains pending.
 - [ ] Environment variables review
 - [ ] Domain setup
 - [ ] SSL
