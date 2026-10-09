@@ -300,3 +300,30 @@ Status: 🟢 **Synchronized**
 - [x] Put deployment on hold until explicitly requested by the user.
 - [ ] After explicit deployment request, verify Production commit SHA and READY state before visual acceptance.
 
+## Authoritative next-step checkpoint (2026-10-10)
+
+This section supersedes older deployment notes in this backlog wherever they conflict with the current state below.
+
+### Current state
+- [x] Cleanup PR #8 merged into `main` (merge commit `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`).
+- [x] Canonical URL configured as `https://garfilas.ir` in `config/site.ts`.
+- [x] Core metadata, Open Graph/Twitter summary metadata, robots, and sitemap are in the merged source.
+- [ ] Do not mark the visual pass complete until browser/device checks are performed on the actual deployed build.
+- [ ] Do not mark `garfilas.ir` live until DNS, hosting attachment, and SSL are verified.
+
+### Final quality pass: next work
+1. [ ] Verify production deployment commit SHA and READY state before visual comparison.
+2. [ ] Compare the live Hero to the latest reference on mobile, tablet, and desktop.
+3. [ ] Check short-height layouts, scroll cue, scrolling continuity, and particle density/performance.
+4. [ ] Verify `prefers-reduced-motion: reduce` suppresses decorative particle movement and other nonessential motion.
+5. [ ] Run fresh production build and lint on the current source.
+6. [ ] Review font loading, non-critical assets, image priority, and Lighthouse findings; optimize only demonstrated bottlenecks.
+7. [ ] Validate generated canonical, `robots.txt`, and `sitemap.xml` output.
+8. [ ] Confirm cPanel/DirectAdmin Node.js support and startup requirements before deciding the deployment method.
+9. [ ] Update this checklist with evidence after each verification; do not mark a check complete from assumption.
+
+### Guardrails
+- Preserve the approved CTA sweep/twinkle behavior, Hero layout anchors, Bottom Navigation geometry, and current particle behavior unless a reproducible defect is confirmed.
+- Do not add new product sections or cart/auth/checkout scope during this pass.
+- Do not change DNS before the target host and deployment plan are confirmed.
+
