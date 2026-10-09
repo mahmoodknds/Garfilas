@@ -636,3 +636,10 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - The remaining performance opportunity is lossless/visually equivalent conversion of the PNG to WebP or AVIF, followed by comparison against the supplied reference.
 - Also removed unreferenced `.menu-showcase*` selectors and redundant menu CSS rules.
 - The latest runtime commit `0cc9006` passed GitHub Actions and reached Vercel READY before this asset extraction. Verification for this new asset change is pending.
+
+## 2026-10-09 Responsive Wordmark Delivery
+
+- Replaced the wordmark's plain SVG-wrapper image with `next/image` loading the exact extracted PNG.
+- Set the original intrinsic dimensions (2172×724), responsive `sizes`, and priority loading so Next.js can optimize the raster for the actual display width.
+- Removed the SVG wrapper file because it contained no vector artwork and was no longer referenced.
+- This change preserves the source raster rather than redrawing the logo. Actual browser-delivered format/size and visual comparison remain to be verified.

@@ -43,7 +43,6 @@ docs/
 public/
   Screenshot 2026-10-02 111606.png
   assets/
-    brand/garfilas-reference-logo.svg
     brand/garfilas-reference-logo.png
     hero/garfilas-hero-final.webp
     menu/Lasagna.webp
@@ -80,7 +79,6 @@ Root configuration:
 - `app/blank/page.tsx` is an isolated background test route. It has no Hero foreground.
 - `components/sections/Menu/` is a dormant menu-card prototype. It is not mounted by the homepage and must not be treated as shipped menu functionality. Preserve it while the menu design is still being developed; before activating it, review its client-state, accessibility, pricing, and responsive behavior.
 - `public/assets/menu/Lasagna.webp` is used by the menu-card prototype.
-- `public/assets/brand/garfilas-reference-logo.svg` is a small SVG wrapper around `garfilas-reference-logo.png`; the raster is external rather than embedded as base64.
 - `public/Screenshot 2026-10-02 111606.png` is visual reference material, not a runtime dependency.
 - `CLAUDE.md` points Claude-based tooling to `AGENTS.md`.
 

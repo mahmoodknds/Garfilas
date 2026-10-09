@@ -455,3 +455,8 @@ Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Na
 - Reduced the SVG wrapper from approximately 1.86 MB to 392 bytes; combined transfer is approximately 25% smaller.
 - Recorded modern-format conversion as the next performance task rather than claiming the raster is fully optimized.
 - Removed unreferenced menu showcase selectors and redundant CSS rules from the dormant menu prototype.
+
+### Responsive wordmark loading
+- Switched the Hero wordmark to `next/image` with intrinsic dimensions, responsive `sizes`, and priority loading.
+- Removed the SVG wrapper that contained only an embedded PNG; the exact extracted PNG remains the source of truth.
+- Browser verification of the optimized response and visual fidelity remains pending.

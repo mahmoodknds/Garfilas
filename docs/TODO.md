@@ -138,7 +138,7 @@ Status: 🟡 In Progress
 
 Status: 🟡 In Progress
 
-- [ ] Convert `public/assets/brand/garfilas-reference-logo.png` (2172×724, about 1.4 MB) to a visually equivalent WebP/AVIF asset; compare transparency and edge quality before switching the SVG wrapper.
+- [ ] Verify that Next.js image optimization serves the 2172×724 wordmark as an appropriately sized modern format on mobile and desktop; compare transparency and edge quality against the original.
 - [ ] Verify WebP optimization and dimensions
 - [ ] Verify image loading priority
 - [ ] Lazy-load non-critical assets

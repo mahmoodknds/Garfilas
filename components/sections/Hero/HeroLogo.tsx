@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 export default function HeroLogo() {
   return (
     <div id="hero-title" className="hero-logo-lockup" aria-label="Garfilas Italian Lasagna">
       <div className="hero-logo" aria-hidden="true">
-        <img className="hero-logo-artwork" src="/assets/brand/garfilas-reference-logo.svg" alt="" draggable={false} />
+        <Image className="hero-logo-artwork" src="/assets/brand/garfilas-reference-logo.png" alt="" width={2172} height={724} sizes="(max-width: 768px) 76vw, 24rem" priority draggable={false} />
       </div>
       <div className="hero-product-lockup" aria-hidden="true">
         <span className="hero-product-line" /><span className="hero-product-name">LASAGNA</span><span className="hero-product-line" />

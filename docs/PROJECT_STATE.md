@@ -35,7 +35,7 @@ Native React/CSS/SVG composition using independent assets.
 Primary assets:
 
 - `public/assets/hero/garfilas-hero-final.webp` (temporary Hero artwork pending final replacement)
-- `public/assets/brand/garfilas-reference-logo.svg`
+- `public/assets/brand/garfilas-reference-logo.png`
 - `public/assets/ui/bottom-nav-frame.svg`
 
 Current composition:
@@ -174,7 +174,7 @@ Latest change:
 ## Exact Next Step
 
 1. Verify `/blank` in a real browser on mobile and desktop.
-2. Optimize the 1.4 MB external PNG used by the SVG wordmark into a modern image format without changing its appearance.
+2. Verify Next.js optimized delivery for the 1.4 MB wordmark source without changing its appearance.
 3. Continue source-backed asset and CSS audits; preserve the dormant Menu prototype until its activation is in scope.
 4. Finalize foreground Hero acceptance before expanding scope.
 5. Verify the deployed commit SHA before accepting visual changes; do not create trigger-only commits.
