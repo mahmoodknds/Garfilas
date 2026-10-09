@@ -1,4 +1,4 @@
-## 2026-10-03 Deployment and Background Test State
+## 2026-10-09 Deployment and Background Test State
 
 - GitHub → Vercel Git integration was reconnected by the project owner.
 - The previously failing production deployment was caused by a missing closing parenthesis in `HeroParticleEngine.tsx`; the source fix is now on `main`.
@@ -10,7 +10,7 @@
 Verification state:
 - GitHub source: synchronized.
 - Local production build: previously verified successfully before the latest particle-engine syntax correction; a fresh build after that correction is still required.
-- Vercel Production: awaiting a new deployment from the reconnected Git integration.
+- Vercel Production: READY for commit `1b578f0f1c09cab01b43eeb5d25df8cb5e3876df` (`docs(cleanup): refresh cleanup and performance backlog`). The deployment rate-limit rejection is no longer present for this commit.
 - Browser/device render verification: pending.
 
 # Garfilas Current Project State
@@ -22,7 +22,7 @@ Verification state:
 - Milestone: Landing Page MVP
 - Repository: GitHub / `main`
 - Status: Active Development
-- Last Updated: 2026-10-03
+- Last Updated: 2026-10-09
 
 ## Current Objective
 
@@ -173,12 +173,11 @@ Latest change:
 
 ## Exact Next Step
 
-1. Confirm that the reconnected GitHub → Vercel integration creates a deployment for the latest `main` commit.
-2. Confirm the deployment build passes the corrected particle engine source.
-3. Verify `/blank` visually before resuming broader cleanup.
-4. Audit Hero, Bottom Navigation, UI and public assets for only source-confirmed dead files.
-5. Keep cleanup atomic and avoid trigger-only commits.
-6. Finalize foreground Hero acceptance before expanding scope.
+1. Verify `/blank` in a real browser on mobile and desktop.
+2. Optimize the 1.86 MB embedded-raster SVG wordmark without changing its appearance.
+3. Continue source-backed asset and CSS audits; preserve the dormant Menu prototype until its activation is in scope.
+4. Finalize foreground Hero acceptance before expanding scope.
+5. Verify the deployed commit SHA before accepting visual changes; do not create trigger-only commits.
 
 ## Source of Truth
 
