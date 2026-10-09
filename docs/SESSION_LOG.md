@@ -657,6 +657,8 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 ### Implemented
 - Removed the temporary `app/blank/page.tsx` background-isolation route after the user confirmed the image optimization verification.
 - Expanded homepage metadata with a canonical URL, title template, clearer description, Open Graph website metadata, and a Twitter summary card.
+- Added Next.js-generated `/robots.txt` and `/sitemap.xml` routes for the current public homepage.
+
 - Updated the project state and SEO backlog to reflect the removed test route and completed metadata pass.
 - Left the profile/cart placeholder destinations unchanged, as requested.
 
