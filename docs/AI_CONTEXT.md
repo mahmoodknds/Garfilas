@@ -269,3 +269,24 @@ Do not refer to `SiteBackground.tsx` as an active component. Historical referenc
 - JSON-LD remains deferred until the business/menu facts to encode are confirmed.
 - Optimized image response sizing/format and visual quality were confirmed by the project owner.
 - The cleanup branch is reviewed separately from Production. Build success and Vercel Preview READY do not substitute for final browser/device visual acceptance.
+
+## Session handoff update (2026-10-10)
+
+### Current source of truth
+
+- Current base branch: `main`.
+- Cleanup PR #8 is merged; merge commit `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`.
+- Canonical URL config is `https://garfilas.ir` in `config/site.ts`. This config does not connect DNS or establish that the domain is live.
+- Latest known Vercel production deployment for the merge commit was READY under `garfilas.vercel.app`; browser/device visual acceptance is still pending.
+
+### Work strategy for the next session
+
+1. Review the deployed production version against the supplied reference before changing visual code.
+2. Verify mobile, tablet, desktop, short viewport, scrolling continuity, and particle density.
+3. Verify reduced-motion behavior, optimized image/font loading, lint/build, and Lighthouse findings.
+4. Check `robots.txt`, `sitemap.xml`, canonical metadata, and actual custom-domain/SSL status only after domain routing is configured.
+5. Fix confirmed defects only. Avoid speculative cleanup or architecture changes.
+6. Before a cPanel/DirectAdmin migration, confirm Node.js support and the host's Next.js startup model. Never request passwords or private keys in chat.
+
+Preserve the approved CTA motion, existing Hero geometry anchors, Bottom Navigation geometry, and particle behavior unless a reproducible regression is found.
+
