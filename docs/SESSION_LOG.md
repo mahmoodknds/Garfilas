@@ -665,3 +665,18 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 ### Verification
 - Source-level checks only at this point. GitHub Actions and the latest Vercel Preview must finish for the new head before this pass can be considered build-verified.
 - No intentional changes to Hero positioning, particle density/timing, CTA animation, or Bottom Navigation geometry.
+
+## 2026-10-09 Cleanup Completion Pass
+
+### Implemented
+- Removed the obsolete background-test anchor fallback from the particle engine; it now anchors to the active Hero orbit.
+- Moved fixed Bottom Navigation outside the `main` landmark while preserving its fixed positioning and CSS geometry.
+- Removed a redundant `aria-label` from the generic mascot wrapper; the image's descriptive alt text remains the accessible name.
+- Reconciled current project documentation with the removed `/blank` route, the extracted PNG wordmark, and the new SEO metadata/robots/sitemap routes.
+- Marked the image-response review complete based on the project owner's confirmation.
+- Kept historical changelog/session references intact where they describe work that really happened.
+
+### Verification
+- GitHub Actions and Vercel Preview passed for the preceding source head; checks for this final source head are being re-run.
+- Browser/device visual verification remains pending because the preview URL could not be inspected by the available browser reader.
+- Production has not been changed.
