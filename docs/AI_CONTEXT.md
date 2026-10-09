@@ -290,3 +290,12 @@ Do not refer to `SiteBackground.tsx` as an active component. Historical referenc
 
 Preserve the approved CTA motion, existing Hero geometry anchors, Bottom Navigation geometry, and particle behavior unless a reproducible regression is found.
 
+# 2026-10-10 Current Continuity Update
+
+- Cleanup PR #8 is merged into `main`; merge commit: `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`.
+- The latest known Vercel Production deployment was confirmed READY for that commit; its confirmed alias remains `garfilas.vercel.app`.
+- `config/site.ts` sets `https://garfilas.ir` as the canonical URL. This changes application/SEO URLs only; it does not connect the domain to Vercel or personal hosting, and DNS/SSL are unconfirmed.
+- Current priority is a bounded final quality pass: real browser/device renders, responsive composition, scroll/background continuity, reduced-motion behavior, performance, SEO routes, and current build/lint. Fix only confirmed defects.
+- Browser/device visual acceptance remains pending. Build/CI success and a READY deployment do not prove visual correctness.
+- Hosting panel, Node.js availability/version, and deployment access are not confirmed. Do not change DNS or choose static export until host capabilities are known.
+- The dormant Menu prototype is not live homepage functionality. Keep commerce/cart/auth/checkout scope deferred.
