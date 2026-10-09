@@ -200,12 +200,13 @@ Current intended order:
 
 ## Brand Lockup Rules
 
-- Wordmark source: `public/assets/brand/garfilas-reference-logo.svg`
+- Wordmark source: `public/assets/brand/garfilas-reference-logo.png`
+- The transparent PNG is extracted from the supplied reference artwork's former SVG wrapper and is served through `next/image`.
 - Do not recreate the supplied wordmark as ordinary HTML text.
-- Do not replace the supplied wordmark with generated branding while the supplied asset exists.
+- Do not replace the supplied wordmark with generated branding while the approved asset exists.
 - The logo's visual treatment is a warm gold/orange neon effect, but the glow must remain controlled and must not wash out the letterforms.
 - The logo must remain crisp, premium and readable at the reference scale.
-- Fire/bloom effects are secondary to the actual SVG geometry.
+- Fire/bloom effects are secondary to the supplied reference geometry.
 
 ## Mascot Strategy
 
