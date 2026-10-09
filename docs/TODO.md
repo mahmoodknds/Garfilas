@@ -138,7 +138,7 @@ Status: 🟡 In Progress
 
 Status: 🟡 In Progress
 
-- [ ] Audit the 1.86 MB `public/assets/brand/garfilas-reference-logo.svg`: it embeds a 2172×724 PNG in base64; reduce transfer size without changing the visible logo.
+- [ ] Convert `public/assets/brand/garfilas-reference-logo.png` (2172×724, about 1.4 MB) to a visually equivalent WebP/AVIF asset; compare transparency and edge quality before switching the SVG wrapper.
 - [ ] Verify WebP optimization and dimensions
 - [ ] Verify image loading priority
 - [ ] Lazy-load non-critical assets

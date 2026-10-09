@@ -449,3 +449,9 @@ Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Na
 - Locked the website card to the Canva source ratio of 590:644, matching the selected 189:206 portrait card.
 - Aligned the product name, central image zone, description, and lower controls to the measured Canva card geometry.
 - Corrected the Persian brand spelling in the sample description to "گارفیلاس".
+
+### Wordmark delivery optimization
+- Moved the existing embedded 2172×724 PNG payload into a separate PNG file without altering the image pixels.
+- Reduced the SVG wrapper from approximately 1.86 MB to 392 bytes; combined transfer is approximately 25% smaller.
+- Recorded modern-format conversion as the next performance task rather than claiming the raster is fully optimized.
+- Removed unreferenced menu showcase selectors and redundant CSS rules from the dormant menu prototype.

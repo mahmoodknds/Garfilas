@@ -627,3 +627,12 @@ Verification remains source-level unless a browser/device render is explicitly a
 - No font family, weight, typography geometry, Hero anchors, CTA styling, particle behavior, or Bottom Navigation geometry was intentionally changed.
 
 Verification: source-level change only. Fresh production build and Vercel deployment verification are pending.
+
+## 2026-10-09 Wordmark Asset Transfer Cleanup
+
+- Extracted the exact 2172×724 PNG embedded in `public/assets/brand/garfilas-reference-logo.svg` into `public/assets/brand/garfilas-reference-logo.png`.
+- Updated the SVG image reference to the same-origin PNG path. The raster bytes were extracted directly from the source, not regenerated or redesigned.
+- Reduced the SVG wrapper from 1,861,437 bytes to 392 bytes. The PNG itself is approximately 1.396 MB, so total transfer for the wrapper plus raster is approximately 25% smaller than the original base64-embedded SVG.
+- The remaining performance opportunity is lossless/visually equivalent conversion of the PNG to WebP or AVIF, followed by comparison against the supplied reference.
+- Also removed unreferenced `.menu-showcase*` selectors and redundant menu CSS rules.
+- The latest runtime commit `0cc9006` passed GitHub Actions and reached Vercel READY before this asset extraction. Verification for this new asset change is pending.
