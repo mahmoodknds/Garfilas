@@ -131,10 +131,10 @@ Status: 🟡 In Progress
 - [x] Metadata review: title template, canonical URL, and homepage description
 - [x] OpenGraph metadata (without a fabricated share image)
 - [x] Twitter Card metadata (summary card; no unverified image asset)
-- [ ] JSON-LD
-- [ ] Sitemap
-- [ ] Robots
-- [ ] Canonical URLs
+- [ ] JSON-LD (defer until structured business/menu facts are finalized)
+- [x] Sitemap: homepage only
+- [x] Robots directives
+- [x] Canonical homepage URL
 
 # PERFORMANCE
 
