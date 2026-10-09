@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cormorantGaramond, greatVibes, vazirmatn } from "./fonts";
 import HeroParticleEngine from "@/components/sections/Hero/HeroParticleEngine";
-
-const siteUrl = new URL("https://garfilas.vercel.app");
+import { siteUrl } from "@/config/site";
 
 export const metadata: Metadata = {
-  metadataBase: siteUrl,
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Garfilas | Premium Lasagna",
     template: "%s | Garfilas",
