@@ -93,3 +93,13 @@ Root configuration:
 - Do not delete a file solely because it is not imported by the homepage. Confirm whether it is deliberate prototype/reference material first.
 
 Last updated: 2026-10-09
+
+## 2026-10-10 Canonical Tree and Deployment Notes
+
+This tree describes the repository after cleanup PR #8 was merged into `main`; it is no longer a pre-merge cleanup-branch snapshot. The temporary `app/blank/page.tsx` test route is removed.
+
+- `config/site.ts` is the shared canonical URL source and currently contains `https://garfilas.ir`.
+- `app/robots.ts` and `app/sitemap.ts` are active generated metadata routes.
+- `components/sections/Menu/` remains a dormant prototype and is not mounted on the homepage.
+- `HeroParticleEngine.tsx` anchors to the active `.hero-orbit-one` element; there is no active blank-route fallback.
+- Latest known Production deployment is READY on merge commit `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`; browser/device verification remains outstanding.
