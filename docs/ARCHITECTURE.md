@@ -234,3 +234,11 @@ Keep layout-level behavior at `app/layout.tsx` when it is genuinely document-wid
 - For cPanel/DirectAdmin, confirm the provider's supported Node.js version and managed startup method before choosing a release procedure.
 - Release acceptance requires both technical checks (build/lint and deployment status) and browser/device visual verification. Deployment READY alone is insufficient.
 
+## 2026-10-10 Deployment and QA State
+
+- `config/site.ts` is the single source for the canonical public URL and currently points to `https://garfilas.ir`.
+- `app/layout.tsx` consumes this URL for metadata/canonical/Open Graph metadata; `app/robots.ts` and `app/sitemap.ts` generate absolute URLs from the same configuration.
+- This configuration does not set DNS, Vercel domain aliases, a cPanel/DirectAdmin virtual host, or SSL.
+- Cleanup PR #8 is merged into `main` at `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`; the associated Vercel Production deployment was checked READY.
+- Visual/browser acceptance remains pending. Keep successful compilation/deployment distinct from validated runtime appearance.
+- Before personal-host deployment, confirm Node.js support/version and whether the panel's application manager supports the Next.js runtime. Do not switch to static export without a feature audit.
