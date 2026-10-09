@@ -65,3 +65,12 @@ GitHub Actions runs ESLint and a production build on pushes to `main` and pull r
 ## Workflow
 
 Read the relevant source-of-truth docs, inspect the current implementation, make a focused change, run lint/build checks where possible, update docs, and verify the deployed commit before visual acceptance.
+
+## Current checkpoint: 2026-10-10
+
+- Cleanup PR #8 is merged into `main`; merge commit: `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`.
+- The current work phase is final quality verification, not broad refactoring.
+- The intended canonical domain is `https://garfilas.ir`; this is application metadata configuration only and does not prove DNS, hosting, or SSL is live.
+- Before hosting migration, verify responsive visuals, reduced-motion behavior, production build/lint, performance, and SEO endpoints.
+- Read `PROJECT_STATE.md` and `TODO.md` for the authoritative current status and next actions.
+
