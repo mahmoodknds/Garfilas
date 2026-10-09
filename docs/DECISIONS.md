@@ -881,3 +881,19 @@ Documentation Version
 - Release rule: a successful build or READY deployment does not equal visual acceptance. Verify the deployed commit SHA and perform browser/device checks before declaring the UI accepted.
 - Hosting rule: do not select static export or change runtime architecture until the target cPanel/DirectAdmin plan's Node.js support and Next.js requirements are confirmed.
 
+## ADR-031: Final Quality Pass Before Hosting Migration (2026-10-10)
+
+**Status:** Accepted
+
+**Context**
+The cleanup pass is merged, but final browser/device visual acceptance and the user's personal-hosting capabilities have not been confirmed. Broad refactoring could disturb calibrated visual behavior without proving a benefit.
+
+**Decision**
+Run a bounded, evidence-based quality pass before further design or architecture changes. Verify responsive renders, scroll/background continuity, reduced-motion behavior, image/font loading, performance, metadata routes, and build/lint on the exact release commit. Fix only confirmed issues. Confirm Node.js support and hosting panel capabilities before preparing migration.
+
+**Consequences**
+- Preserve accepted visual geometry and animation unless testing identifies a real defect.
+- Do not infer domain connectivity or SSL from `config/site.ts`.
+- Keep Menu/cart/checkout/authentication scope deferred until the landing page and deployment baseline are accepted.
+
+Last Updated: 2026-10-10
