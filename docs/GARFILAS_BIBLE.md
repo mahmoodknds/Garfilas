@@ -407,3 +407,17 @@ The website keeps the same portrait ratio and uses native SVG/React for the deco
 
 Last Updated: 2026-10-05
 Documentation Version: 2.8.0
+
+## Documentation checkpoint (2026-10-10)
+
+This checkpoint does not change the approved brand identity, visual direction, or product scope. This file remains the authority for product and brand decisions. Current implementation status, deployment readiness, and remaining technical checks belong in `PROJECT_STATE.md`, `AI_CONTEXT.md`, and `TODO.md`. Do not interpret the canonical-domain configuration as confirmation that `garfilas.ir` is connected or live.
+
+## 2026-10-10 Current Implementation and Release Boundary
+
+- The current milestone remains the Landing Page MVP; the active homepage composition is the first-screen Hero and Bottom Navigation.
+- Brand direction remains premium, dark, minimal, orange/gold neon, mobile-first, and fast-loading. Preserve approved visual calibration during technical cleanup.
+- The active global atmosphere is the body background plus the fixed particle engine. The engine is anchored to `.hero-orbit-one`; the temporary blank test route is not part of the product.
+- The homepage uses responsive optimized delivery for the Hero mascot and extracted wordmark; image fidelity was reviewed by the project owner.
+- Cleanup PR #8 is merged into `main`; latest known Vercel Production deployment is READY for `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`. Browser/device acceptance remains pending.
+- `https://garfilas.ir` is configured as the canonical URL in code, but domain routing, DNS, SSL, and personal-host deployment remain unverified.
+- Next milestone: bounded final QA, then choose the hosting path after Node.js/panel capabilities are confirmed. Do not expand product features during this pass.

@@ -728,3 +728,22 @@ Version
 - Hero foreground geometry remains protected during background maintenance.
 
 Last Updated: 2026-10-02
+
+## Documentation and release verification rule (2026-10-10)
+
+- When source behavior, deployment state, domain configuration, or next-step priorities change, update the relevant state, context, session, changelog, and backlog documents in the same documentation pass.
+- Keep historical notes identifiable as historical. A dated authoritative checkpoint must clearly supersede older contradictory status notes.
+- Never mark browser/device verification complete based only on a successful TypeScript check, production build, CI run, or hosting deployment state.
+- Do not claim a domain is live merely because it is configured as the canonical URL in application code.
+- Preserve approved UI behavior unless a reproducible defect is confirmed and documented.
+
+## 2026-10-10 Final QA and Deployment Rules
+
+- Verify the exact commit intended for release; do not infer production state from branch names or a successful build alone.
+- Treat browser/device visual acceptance as separate from TypeScript, ESLint, build, and deployment status.
+- During final QA, change only reproducible defects. Preserve accepted Hero anchors, CTA animation, particle density/timing, and Bottom Navigation geometry unless a defect is demonstrated.
+- Check reduced-motion behavior in both CSS animations and the decorative particle engine.
+- Never claim canonical URL configuration has connected a domain. DNS, host routing, and SSL require independent verification.
+- Confirm hosting support and runtime version before selecting a Next.js deployment method; do not convert to static export without auditing runtime requirements.
+
+Last Updated: 2026-10-10

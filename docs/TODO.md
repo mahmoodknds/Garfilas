@@ -300,3 +300,59 @@ Status: 🟢 **Synchronized**
 - [x] Put deployment on hold until explicitly requested by the user.
 - [ ] After explicit deployment request, verify Production commit SHA and READY state before visual acceptance.
 
+## Authoritative next-step checkpoint (2026-10-10)
+
+This section supersedes older deployment notes in this backlog wherever they conflict with the current state below.
+
+### Current state
+- [x] Cleanup PR #8 merged into `main` (merge commit `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`).
+- [x] Canonical URL configured as `https://garfilas.ir` in `config/site.ts`.
+- [x] Core metadata, Open Graph/Twitter summary metadata, robots, and sitemap are in the merged source.
+- [ ] Do not mark the visual pass complete until browser/device checks are performed on the actual deployed build.
+- [ ] Do not mark `garfilas.ir` live until DNS, hosting attachment, and SSL are verified.
+
+### Final quality pass: next work
+1. [ ] Verify production deployment commit SHA and READY state before visual comparison.
+2. [ ] Compare the live Hero to the latest reference on mobile, tablet, and desktop.
+3. [ ] Check short-height layouts, scroll cue, scrolling continuity, and particle density/performance.
+4. [ ] Verify `prefers-reduced-motion: reduce` suppresses decorative particle movement and other nonessential motion.
+5. [ ] Run fresh production build and lint on the current source.
+6. [ ] Review font loading, non-critical assets, image priority, and Lighthouse findings; optimize only demonstrated bottlenecks.
+7. [ ] Validate generated canonical, `robots.txt`, and `sitemap.xml` output.
+8. [ ] Confirm cPanel/DirectAdmin Node.js support and startup requirements before deciding the deployment method.
+9. [ ] Update this checklist with evidence after each verification; do not mark a check complete from assumption.
+
+### Guardrails
+- Preserve the approved CTA sweep/twinkle behavior, Hero layout anchors, Bottom Navigation geometry, and current particle behavior unless a reproducible defect is confirmed.
+- Do not add new product sections or cart/auth/checkout scope during this pass.
+- Do not change DNS before the target host and deployment plan are confirmed.
+
+# Current Handoff Update: 2026-10-10
+
+This section supersedes older deployment-status entries above where they refer to earlier commits or verification.
+
+## Current verified baseline
+
+- [x] Cleanup PR #8 merged into `main`: `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`.
+- [x] Latest known Vercel Production deployment checked READY for that merge commit.
+- [x] Canonical URL centralized at `https://garfilas.ir` in `config/site.ts`.
+- [ ] Browser/device visual acceptance of the deployed Hero and responsive composition.
+- [ ] Confirm reduced-motion behavior in a real browser.
+- [ ] Run current lint/build verification against the exact release commit.
+- [ ] Review font loading, non-critical asset loading, and Lighthouse/performance findings.
+- [ ] Verify live `robots.txt`, `sitemap.xml`, canonical metadata, DNS, and SSL once the intended host is connected.
+- [ ] Confirm cPanel/DirectAdmin type, Node.js support/version, and available Terminal/SSH/File Manager access.
+- [ ] Prepare and test the hosting deployment path after the host capability check.
+
+## Final QA guardrails
+
+- Fix only issues reproduced during inspection; do not refactor for tidiness alone.
+- Preserve approved Hero geometry, CTA animation, particle density/timing, and Bottom Navigation geometry.
+- Do not recreate the temporary `/blank` route.
+- Do not treat the dormant Menu prototype as shipped functionality.
+- Do not change DNS or assume `garfilas.ir` is live merely because it is configured as the canonical URL.
+- Do not convert to static export before checking Next.js runtime needs and host Node.js support.
+
+## Exact next task
+
+Perform the final browser/device and performance QA pass on the current deployed source, document reproducible defects, and only then decide whether source changes are needed. Hosting migration follows after the panel/runtime check.

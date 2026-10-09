@@ -190,3 +190,41 @@ Latest change:
 - Work backlog: `docs/TODO.md`
 - AI continuity: `docs/AI_CONTEXT.md`
 - Current visual source: user-supplied mobile reference screenshot
+
+## Current authoritative checkpoint (2026-10-10)
+
+### Repository and release state
+
+- Cleanup PR #8 is merged into `main`.
+- Merge commit: `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`.
+- The merge includes responsive optimized Hero imagery, reduced-motion handling for decorative motion, semantic homepage heading structure, bottom navigation outside the main landmark, core metadata, Open Graph/Twitter summary metadata, `robots.txt`, and `sitemap.xml`.
+- GitHub Actions passed for the reviewed PR head. The Vercel production deployment for the merge commit was reported READY. A READY deployment is not a substitute for browser/device visual acceptance.
+- Latest known production alias is `garfilas.vercel.app`. Do not claim `garfilas.ir` is live based on code configuration alone.
+
+### Canonical domain and hosting
+
+- `config/site.ts` sets `https://garfilas.ir` as the canonical site URL used by metadata and sitemap/robots generation.
+- DNS, custom-domain attachment, SSL, and cPanel/DirectAdmin deployment are not verified as complete.
+- Before changing DNS, confirm the hosting panel supports a compatible Node.js runtime and determine the provider's Next.js process/startup requirements.
+
+### Current work mode
+
+Perform a final quality pass before further refactoring: responsive visual comparison, reduced-motion check, build/lint, performance/font/image review, and SEO endpoint validation. Record only observed defects and fix only confirmed issues. Preserve already-approved CTA animation and layout anchors unless testing demonstrates a regression.
+
+## 2026-10-10 Authoritative Current State
+
+This section supersedes older deployment/status statements above where they describe an earlier point in time.
+
+- Cleanup PR #8 is merged into `main`; merge commit: `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`.
+- Latest known Vercel Production deployment was checked READY for that commit; confirmed alias: `garfilas.vercel.app`.
+- Canonical site configuration is `https://garfilas.ir` in `config/site.ts`. This does not prove DNS, host routing, or SSL is configured.
+- Final browser/device visual acceptance is pending. Deployment READY and successful build are not substitutes for visual QA.
+- Migration to cPanel/DirectAdmin is pending confirmation of panel type, Node.js support/version, and available deployment access. Do not change DNS until the hosting target is confirmed.
+
+### Next execution sequence
+1. Inspect the latest Production source and commit SHA.
+2. Confirm lint and production build for the exact release source.
+3. Verify deployed renders on mobile, tablet, and desktop, including scroll continuity and reduced motion.
+4. Review font/image loading and Lighthouse/performance findings; fix only evidence-backed issues.
+5. Verify `robots.txt`, `sitemap.xml`, canonical URL, DNS, and SSL once the intended host is connected.
+6. Confirm host capabilities, then prepare the correct deployment method.

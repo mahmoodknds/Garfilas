@@ -460,3 +460,20 @@ Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Na
 - Switched the Hero wordmark to `next/image` with intrinsic dimensions, responsive `sizes`, and priority loading.
 - Removed the SVG wrapper that contained only an embedded PNG; the exact extracted PNG remains the source of truth.
 - Browser verification of the optimized response and visual fidelity remains pending.
+
+## 2026-10-10 Documentation and Release-State Reconciliation
+
+- Recorded cleanup PR #8 merged into `main` (merge commit `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`).
+- Recorded the READY Vercel Production deployment for that merge commit; `garfilas.vercel.app` remains the confirmed alias.
+- Recorded `https://garfilas.ir` as the canonical URL configured in `config/site.ts`; DNS, domain connection, SSL, and personal-host deployment are not implied by this code change.
+- Defined the next phase as evidence-based final QA: visual/device verification, responsive and scroll continuity, reduced motion, performance, SEO route checks, and build/lint verification.
+- No design or runtime behavior change is implied by this documentation update.
+
+## 2026-10-10: Documentation and release-state reconciliation
+
+- Recorded cleanup PR #8 merge commit: `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`.
+- Reconciled the release handoff around canonical URL `https://garfilas.ir`.
+- Clarified that canonical URL configuration does not confirm DNS, SSL, or personal-host deployment.
+- Added a final quality pass covering deployed visual checks, responsive viewports, reduced motion, performance, build/lint, and SEO output.
+- Documentation-only checkpoint; no application runtime or visual code changed.
+
