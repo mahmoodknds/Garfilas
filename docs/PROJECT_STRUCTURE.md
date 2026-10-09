@@ -75,6 +75,7 @@ Root configuration:
 - `components/sections/BottomNavigation/BottomNavigation.tsx` contains the active fixed navigation.
 - `components/ui/GlowButton.tsx` is the CTA presentation primitive.
 - `config/brand.ts` supplies the brand CTA label.
+- `config/site.ts` is the single source for the canonical public site URL used by metadata, robots directives, and the sitemap.
 - `styles/tokens.css` defines the shared color tokens imported by global CSS.
 
 ## Deliberately retained support code
