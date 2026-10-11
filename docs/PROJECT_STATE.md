@@ -228,3 +228,16 @@ This section supersedes older deployment/status statements above where they desc
 4. Review font/image loading and Lighthouse/performance findings; fix only evidence-backed issues.
 5. Verify `robots.txt`, `sitemap.xml`, canonical URL, DNS, and SSL once the intended host is connected.
 6. Confirm host capabilities, then prepare the correct deployment method.
+
+---
+
+## 2026-10-11 Update: Desktop Complete, Cleanup Pending
+
+- User reports the desktop homepage version is complete.
+- User-reported local production build passed on Next.js 16.4.0. The terminal showed successful compilation, TypeScript, page-data collection, generation of 6/6 static pages, and optimization. Static routes: `/`, `/_not-found`, `/robots.txt`, `/sitemap.xml`.
+- Immediate priority: inspect local Git branch/status/diff and compare with GitHub before removing temporary debugging artifacts. The exact local working tree and any unpushed desktop changes remain unverified.
+- Inspect `next.config.ts` before changes. GitHub `main` currently has `allowedDevOrigins` for `192.168.1.104` and `localhost`; the LAN IP seen during troubleshooting was `192.168.1.101`. A local change may already exist. Keep the setting needed for LAN development and retain `devIndicators: false` if it is part of the working local setup.
+- Clean only confirmed debug-only logging/code; do not change working particle behavior or accepted desktop visuals.
+- Re-run the production build after cleanup, then push the reviewed changes on a safe branch.
+- No source changes, merge to `main`, or Production deployment were made as part of this documentation update.
+
