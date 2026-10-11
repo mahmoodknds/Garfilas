@@ -477,3 +477,16 @@ Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Na
 - Added a final quality pass covering deployed visual checks, responsive viewports, reduced motion, performance, build/lint, and SEO output.
 - Documentation-only checkpoint; no application runtime or visual code changed.
 
+## 2026-10-11 Desktop Completion and Final Cleanup Handoff
+
+### Verified (user-reported)
+- Desktop homepage is considered complete by the user.
+- Local `npm run build` passed on Next.js 16.4.0, including compilation, TypeScript, page-data collection, generation of all 6 static pages, and final optimization.
+- Static routes reported: `/`, `/_not-found`, `/robots.txt`, and `/sitemap.xml`.
+
+### Next
+- Inspect the local working tree and compare it with GitHub before removing temporary particle/LAN troubleshooting code.
+- Review `next.config.ts` without overwriting newer local settings with the older GitHub snapshot.
+- Preserve accepted desktop visuals and animations; rerun the production build after cleanup.
+- This is a documentation-only handoff. No runtime behavior, merge, or deployment changed here.
+
