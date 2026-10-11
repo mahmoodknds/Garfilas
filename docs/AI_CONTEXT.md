@@ -299,3 +299,27 @@ Preserve the approved CTA motion, existing Hero geometry anchors, Bottom Navigat
 - Browser/device visual acceptance remains pending. Build/CI success and a READY deployment do not prove visual correctness.
 - Hosting panel, Node.js availability/version, and deployment access are not confirmed. Do not change DNS or choose static export until host capabilities are known.
 - The dormant Menu prototype is not live homepage functionality. Keep commerce/cart/auth/checkout scope deferred.
+
+---
+
+# 2026-10-11 Handoff: Desktop Complete, Final Cleanup Next
+
+## Confirmed local state
+- The user considers the desktop homepage version complete and ready for a final cleanup pass.
+- The user ran `npm run build` locally with Next.js **16.4.0**. The production build passed: compilation, TypeScript, page-data collection, static generation, and optimization all completed successfully.
+- Routes reported as statically prerendered: `/`, `/_not-found`, `/robots.txt`, and `/sitemap.xml`.
+- This is a user-reported local verification. Do not claim the exact current local working tree has been inspected from this handoff alone.
+
+## Immediate next task
+1. Inspect the user's actual local Git branch, `git status --short`, and diff before touching application files.
+2. Compare local changes with GitHub; identify the actual desktop-complete source and avoid replacing it with an older branch snapshot.
+3. Perform a narrowly scoped final cleanup, especially temporary diagnostics/logging added during Hero particle and LAN-IP debugging. Remove only confirmed debug-only code; preserve the particle engine's working behavior and density.
+4. Review `next.config.ts`: the GitHub `main` version currently contains `allowedDevOrigins: ["192.168.1.104", "localhost"]`. The local LAN address reported during debugging was `192.168.1.101`, and `devIndicators: false` was recommended to hide the Next.js development badge. Confirm the actual local file and retain the settings needed for development, while understanding that `allowedDevOrigins` and `devIndicators` are development-server settings, not production features.
+5. Re-run `npm run build` after cleanup. Run lint/tests only if the project's scripts support them.
+6. Update the release/handoff docs, then push the reviewed final source to GitHub on a safe working branch. Do not merge to `main`, trigger production deployment, or change hosting without explicit authorization.
+
+## Safety and visual locks
+- Do not alter approved desktop layout, Hero anchors, CTA light sweep/stars/breathe animation, particle density/timing, ring appearance, or Bottom Navigation geometry during cleanup.
+- Do not delete recovery stash/patches or reset/clean the working tree.
+- Distinguish confirmed local state from GitHub state. At this checkpoint, the local production build passed, but the exact local diff and whether all desktop-completion changes have been pushed are unverified.
+
