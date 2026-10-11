@@ -708,3 +708,25 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - Treat this as a quality-assurance pass, not permission for a redesign or broad refactor.
 - Preserve approved CTA animation, particle density/timing, Hero anchor positions, and Bottom Navigation geometry unless a reproducible defect is found.
 - Keep the dormant Menu prototype and future commerce/account features out of the active homepage scope.
+
+---
+
+## 2026-10-11 Desktop Completion and Final Cleanup Handoff
+
+### User-reported verification
+- User considers the desktop version complete and requested a final cleanup, with special attention to temporary code added while solving earlier issues.
+- User ran `npm run build` locally using Next.js 16.4.0.
+- Build passed all stages: optimized compilation, TypeScript, page-data collection, static page generation (6/6), and final optimization.
+- Static routes reported: `/`, `/_not-found`, `/robots.txt`, and `/sitemap.xml`.
+
+### Next actions
+- Inspect local Git branch/status/diff before any source edits; compare it against the current GitHub branch so unpushed desktop work is not lost.
+- Audit temporary particle-debug logging and LAN development configuration. Remove only confirmed diagnostic-only code; preserve the now-working particle behavior.
+- The GitHub `main` snapshot inspected for this handoff has `next.config.ts` allowing `192.168.1.104` and `localhost`, while the LAN IP reported during debugging was `192.168.1.101`. The local config may differ; inspect it before editing. `devIndicators: false` was also recommended to hide the Next.js dev badge.
+- Re-run the production build after cleanup, update the release docs, and push the reviewed changes on a safe branch.
+
+### Guardrails
+- This is cleanup, not redesign. Preserve accepted desktop visuals, Hero/CTA animation, particle density/timing, and Bottom Navigation.
+- No application source was changed by this documentation checkpoint.
+- No merge to `main` or production deployment was performed.
+
