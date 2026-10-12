@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import MenuCardFrame from "./MenuCardFrame";
 
@@ -27,7 +28,15 @@ export default function MenuProductCard({
       <div className="menu-product__art">
         <div className="menu-product__art-glow" aria-hidden="true" />
         <div className="menu-product__image-window">
-          <img className="menu-product__image" src={imageSrc} alt={name} width={1200} height={700} loading="lazy" />
+          <Image
+            className="menu-product__image"
+            src={imageSrc}
+            alt={name}
+            width={1200}
+            height={700}
+            sizes="(max-width: 767px) 82vw, 800px"
+            loading="lazy"
+          />
         </div>
       </div>
       <div className="menu-product__copy">

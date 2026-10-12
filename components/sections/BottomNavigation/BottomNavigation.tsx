@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Phone, UserRound, ShoppingCart } from "lucide-react";
 
 const items = [
@@ -21,7 +22,15 @@ export default function BottomNavigation() {
         .bottom-nav-link-1 svg { width:2.24rem;height:2.24rem; }
         .bottom-nav-link:hover,.bottom-nav-link:focus-visible { transform:translate(-50%,-52%)!important;color:#ffb04a;box-shadow:0 0 10px rgba(255,91,0,.9),0 0 24px rgba(255,91,0,.3),inset 0 0 10px rgba(255,91,0,.16); }
       `}</style>
-      <img className="bottom-nav-frame" src="/assets/ui/bottom-nav-frame.svg" alt="" aria-hidden="true" />
+      <Image
+        className="bottom-nav-frame"
+        src="/assets/ui/bottom-nav-frame.svg"
+        alt=""
+        aria-hidden="true"
+        width={860}
+        height={93}
+        loading="eager"
+      />
       {items.map(({ href, label, icon: Icon }, index) => (
         <a key={href} href={href} className={`bottom-nav-link bottom-nav-link-${index}`} aria-label={label} title={label}>
           <Icon aria-hidden="true" size={index === 1 ? 30 : 22} strokeWidth={1.7} />
