@@ -730,3 +730,28 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - No application source was changed by this documentation checkpoint.
 - No merge to `main` or production deployment was performed.
 
+
+
+---
+
+## 2026-10-12 Repository Handoff
+
+### Current intent
+The desktop homepage is considered complete by the user. The remaining work is narrow cleanup and verification, not visual redesign.
+
+### GitHub snapshot
+- Open PR #11: documentation handoff on `docs/final-desktop-cleanup-handoff-2026-10-11`.
+- Open PR #12: `chore: finalize desktop cleanup before release` on `debug/hero-particles-ip`.
+- PR #12 head reported by GitHub: `888213a7df6aea560a757e4bcbd148b9567b80b2`.
+- PR #12 description says the remaining diff is `next.config.ts`, retaining `devIndicators: false` and the LAN dev origin `192.168.1.101`, and removing the obsolete `192.168.1.104` origin.
+- Main/base SHA reported by PR metadata: `f49fc29228b37f6c927dd5f808576ce6ce26ff2f`.
+
+### Local state caveat
+A prior user terminal report recorded `debug/hero-particles-ip` at `0e2831a`, clean and matching origin, with stash `recovery-before-hero-particles-debug`. GitHub now reports PR #12 head `888213a...`; compare current local and remote SHAs at the start of the next session rather than assuming the older local report remains current.
+
+### Verification and next actions
+- User-reported build passed on Next.js 16.4.0 before the final config cleanup.
+- Fresh `npm run build` on the exact PR #12 head remains to be confirmed.
+- Inspect local Git state, confirm the stash is intact, review PR #12's exact diff, and run the build.
+- Do not merge PR #12, merge docs into `main`, deploy Production, or change DNS/hosting without explicit approval.
+- Keep accepted desktop visuals and particle behavior unchanged; do not restore ring pulse/emission.
