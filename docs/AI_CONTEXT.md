@@ -323,3 +323,40 @@ Preserve the approved CTA motion, existing Hero geometry anchors, Bottom Navigat
 - Do not delete recovery stash/patches or reset/clean the working tree.
 - Distinguish confirmed local state from GitHub state. At this checkpoint, the local production build passed, but the exact local diff and whether all desktop-completion changes have been pushed are unverified.
 
+
+
+---
+
+# Authoritative Handoff: 2026-10-12
+
+This section overrides the 2026-10-11 immediate-task assumptions below where they conflict.
+
+## Current user intent
+The user says the desktop homepage is complete and wants a careful final cleanup, then a clean handoff to continue in a new chat. This is not permission to redesign, merge to `main`, deploy Production, or change hosting/DNS.
+
+## Current GitHub references
+- Repo: `mahmoodknds/Garfilas`
+- Main/base SHA observed in open PR metadata: `f49fc29228b37f6c927dd5f808576ce6ce26ff2f`
+- Documentation PR #11: open, branch `docs/final-desktop-cleanup-handoff-2026-10-11`
+- Cleanup PR #12: open, branch `debug/hero-particles-ip`, reported head `888213a7df6aea560a757e4bcbd148b9567b80b2`
+- PR #12 is documented as a narrow `next.config.ts` cleanup: keep `devIndicators: false` and `allowedDevOrigins: ["192.168.1.101", "localhost"]`; remove the obsolete `192.168.1.104` origin.
+- A prior local terminal report said branch `debug/hero-particles-ip` was clean at `0e2831a`, matching origin, and stash `recovery-before-hero-particles-debug` existed. That differs from the currently reported PR head, so the new chat must inspect current local Git state and compare SHAs before changing files.
+
+## Verification status
+- User reported a successful `npm run build` on Next.js 16.4.0 before the last config-only cleanup.
+- The exact PR #12 head still needs a fresh production build before merge consideration.
+- Do not claim current Vercel Production is running PR #12's code without checking the deployed commit SHA.
+- Keep PR #11 documentation-only and PR #12 source cleanup distinct.
+
+## Non-negotiable visual locks
+- Desktop homepage is user-accepted. Do not redesign it.
+- Preserve particle density and the existing replacement behavior; do not restore ring pulse/emission.
+- Preserve CTA sweep, star twinkle, breathe timing, Hero anchors, logo animation, and Bottom Navigation geometry.
+- No destructive Git commands; do not delete stashes or recovery patches.
+- No merge to `main`, Production deploy, DNS change, or hosting migration without explicit approval.
+
+## Start the next chat here
+1. Inspect local branch/status and compare `HEAD` to `origin/debug/hero-particles-ip`.
+2. Confirm the recovery stash remains present.
+3. Inspect PR #12 diff and run `npm run build` against its exact head.
+4. Summarize verification before asking for/acting on any merge or deployment approval.
