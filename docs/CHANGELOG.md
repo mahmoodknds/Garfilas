@@ -490,3 +490,13 @@ Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Na
 - Preserve accepted desktop visuals and animations; rerun the production build after cleanup.
 - This is a documentation-only handoff. No runtime behavior, merge, or deployment changed here.
 
+
+
+---
+
+## 2026-10-12 Documentation Handoff
+
+- Refreshed project continuity notes for the desktop-complete checkpoint and final cleanup.
+- Recorded the open documentation PR #11 and source-cleanup PR #12 without merging either.
+- Recorded the PR #12 head/build-verification caveat and the need to compare local and remote branch SHAs before further source edits.
+- Explicitly preserved the user's no-merge/no-Production-deploy guardrail and the approved desktop/particle/CTA visuals.
