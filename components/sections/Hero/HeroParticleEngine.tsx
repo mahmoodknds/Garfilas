@@ -7,22 +7,17 @@ function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.
 
 export default function HeroParticleEngine(){
  useEffect(()=>{
-  console.info("[HeroParticleEngine] effect started");
 
   const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  console.info("[HeroParticleEngine] reduced motion:",reducedMotion);
   if(reducedMotion)return;
 
   const ring=document.querySelector<HTMLElement>(".hero-orbit-one");
-  console.info("[HeroParticleEngine] ring found:",Boolean(ring));
   if(!ring)return;
 
   const layer=document.createElement("div");
   layer.className="hero-live-embers";
-  console.info("[HeroParticleEngine] layer created");
   Object.assign(layer.style,{position:"fixed",inset:"0",overflow:"visible",pointerEvents:"none",zIndex:"3"});
   document.body.appendChild(layer);
-  console.info("[HeroParticleEngine] layer appended:",Boolean(document.querySelector(".hero-live-embers")));
 
   const embers:Ember[]=[];
   const TARGET_RING_PARTICLES=132;
