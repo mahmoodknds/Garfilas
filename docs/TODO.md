@@ -356,3 +356,54 @@ This section supersedes older deployment-status entries above where they refer t
 ## Exact next task
 
 Perform the final browser/device and performance QA pass on the current deployed source, document reproducible defects, and only then decide whether source changes are needed. Hosting migration follows after the panel/runtime check.
+
+---
+
+## 2026-10-11 Final Cleanup Handoff
+
+### Confirmed
+- [x] User reports desktop homepage is complete.
+- [x] User ran `npm run build` with Next.js 16.4.0; compilation and TypeScript passed, all 6 static pages generated, and optimization completed.
+- [x] Build output includes `/`, `/_not-found`, `/robots.txt`, and `/sitemap.xml`.
+
+### Next
+- [ ] Inspect local `git status --short`, current branch, and diff before edits.
+- [ ] Compare the actual local desktop-complete source with GitHub and identify unpushed changes.
+- [ ] Remove only confirmed temporary debug logs/diagnostics left from particle/LAN troubleshooting.
+- [ ] Inspect `next.config.ts`; verify whether local `allowedDevOrigins` includes the active LAN IP and whether `devIndicators: false` is needed for local development. Do not blindly copy the older GitHub config over the local file.
+- [ ] Preserve all accepted desktop visuals, particle density/timing, CTA animation, and Bottom Navigation geometry.
+- [ ] Re-run `npm run build` after cleanup.
+- [ ] Update final QA/release documentation and push the reviewed source to a safe GitHub branch.
+
+### Release guardrails
+- A successful local build is confirmed by the user's terminal output, but local Git status and the full current diff have not yet been inspected.
+- Do not delete recovery stash/patches or use destructive Git cleanup.
+- Do not merge to `main`, deploy Production, or alter hosting/DNS without explicit authorization.
+
+> This handoff supersedes the earlier “Exact next task” above for the immediate next chat: begin with local Git/source-state inspection and final cleanup, not another broad desktop redesign.
+
+
+
+---
+
+## Authoritative Handoff Checklist: 2026-10-12
+
+This checklist supersedes earlier immediate-next-task entries where they conflict.
+
+### Current state
+- [x] User reports desktop homepage visual work is complete.
+- [x] User reported a successful Next.js 16.4.0 production build before the final config-only cleanup.
+- [x] Documentation handoff PR #11 exists and remains open.
+- [x] Final cleanup PR #12 exists and remains open.
+- [ ] Verify local Git branch/status and compare local `HEAD` against `origin/debug/hero-particles-ip`.
+- [ ] Confirm stash `recovery-before-hero-particles-debug` remains intact.
+- [ ] Review the exact PR #12 diff and run `npm run build` on its current head.
+- [ ] Report build results before any merge decision.
+- [ ] Verify Production deployment commit SHA only if/when deployment is explicitly requested.
+
+### Guardrails
+- Preserve approved desktop visuals, Hero anchors, ring/particle density and behavior, CTA animations, logo animation, and Bottom Navigation geometry.
+- Do not restore the rejected ring-pulse/emission experiment.
+- Do not use destructive Git commands or delete recovery stashes.
+- Do not merge to `main`, deploy Production, or alter DNS/hosting without explicit authorization.
+- Do not mark the exact PR-head build as passed until it has actually been run.

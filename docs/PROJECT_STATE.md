@@ -228,3 +228,51 @@ This section supersedes older deployment/status statements above where they desc
 4. Review font/image loading and Lighthouse/performance findings; fix only evidence-backed issues.
 5. Verify `robots.txt`, `sitemap.xml`, canonical URL, DNS, and SSL once the intended host is connected.
 6. Confirm host capabilities, then prepare the correct deployment method.
+
+---
+
+## 2026-10-11 Update: Desktop Complete, Cleanup Pending
+
+- User reports the desktop homepage version is complete.
+- User-reported local production build passed on Next.js 16.4.0. The terminal showed successful compilation, TypeScript, page-data collection, generation of 6/6 static pages, and optimization. Static routes: `/`, `/_not-found`, `/robots.txt`, `/sitemap.xml`.
+- Immediate priority: inspect local Git branch/status/diff and compare with GitHub before removing temporary debugging artifacts. The exact local working tree and any unpushed desktop changes remain unverified.
+- Inspect `next.config.ts` before changes. GitHub `main` currently has `allowedDevOrigins` for `192.168.1.104` and `localhost`; the LAN IP seen during troubleshooting was `192.168.1.101`. A local change may already exist. Keep the setting needed for LAN development and retain `devIndicators: false` if it is part of the working local setup.
+- Clean only confirmed debug-only logging/code; do not change working particle behavior or accepted desktop visuals.
+- Re-run the production build after cleanup, then push the reviewed changes on a safe branch.
+- No source changes, merge to `main`, or Production deployment were made as part of this documentation update.
+
+
+
+---
+
+## 2026-10-12 Authoritative New-Chat Handoff
+
+This checkpoint supersedes the earlier 2026-10-11 cleanup status where they differ.
+
+### User-approved state and guardrails
+- The user considers the desktop homepage complete. Treat this as a cleanup/release-verification task, not a redesign.
+- Preserve approved Hero layout, ring/particle density and behavior, CTA sweep/stars/breathe, logo animation, and Bottom Navigation geometry.
+- Keep ring particle density approximately constant by replacing particles as they finish. Do not reintroduce the rejected ring-pulse/emission experiment.
+- Do not merge to `main`, deploy Production, or change hosting/DNS without explicit user authorization.
+- Do not delete the recovery stash or use destructive Git cleanup.
+
+### GitHub state observed on 2026-10-12
+- Repository: `mahmoodknds/Garfilas`.
+- `main` PR base SHA observed: `f49fc29228b37f6c927dd5f808576ce6ce26ff2f`.
+- PR #11, documentation handoff, remains open on `docs/final-desktop-cleanup-handoff-2026-10-11`.
+- PR #12, `chore: finalize desktop cleanup before release`, remains open on `debug/hero-particles-ip`; GitHub reports head `888213a7df6aea560a757e4bcbd148b9567b80b2`. Its documented diff is limited to `next.config.ts`, retaining `devIndicators: false` and `allowedDevOrigins: ["192.168.1.101", "localhost"]`.
+- Earlier local terminal state reported `debug/hero-particles-ip` at `0e2831a` with a clean tree and matching origin, plus stash `recovery-before-hero-particles-debug`. Since that local SHA differs from the currently reported PR head, verify local branch/status and compare `HEAD` with `origin/debug/hero-particles-ip` before making further source edits. Do not assume they are synchronized.
+- No merge to `main` or Production deployment is authorized by this handoff.
+
+### Verification
+- User previously reported a successful local production build on Next.js 16.4.0 before the final `next.config.ts` cleanup.
+- PR #12 description says to rerun `npm run build` on the exact PR head before any merge. That exact-head build is not yet confirmed here.
+- Desktop visual acceptance is user-reported; final cleanup/build verification is a separate check.
+- Do not claim the current Production deployment matches the latest PR head without checking the deployment commit SHA.
+
+### Exact next actions
+1. Inspect `git status -sb`, `git branch --show-current`, `git rev-parse HEAD`, and `git rev-parse origin/debug/hero-particles-ip`; compare before edits.
+2. Preserve stash `recovery-before-hero-particles-debug`; inspect it only if needed.
+3. Review PR #12's exact diff and rerun the production build on its exact head.
+4. If verification passes, report results and wait for explicit approval before merging or deploying.
+5. Keep this documentation PR separate from application-source changes.

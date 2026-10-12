@@ -708,3 +708,50 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - Treat this as a quality-assurance pass, not permission for a redesign or broad refactor.
 - Preserve approved CTA animation, particle density/timing, Hero anchor positions, and Bottom Navigation geometry unless a reproducible defect is found.
 - Keep the dormant Menu prototype and future commerce/account features out of the active homepage scope.
+
+---
+
+## 2026-10-11 Desktop Completion and Final Cleanup Handoff
+
+### User-reported verification
+- User considers the desktop version complete and requested a final cleanup, with special attention to temporary code added while solving earlier issues.
+- User ran `npm run build` locally using Next.js 16.4.0.
+- Build passed all stages: optimized compilation, TypeScript, page-data collection, static page generation (6/6), and final optimization.
+- Static routes reported: `/`, `/_not-found`, `/robots.txt`, and `/sitemap.xml`.
+
+### Next actions
+- Inspect local Git branch/status/diff before any source edits; compare it against the current GitHub branch so unpushed desktop work is not lost.
+- Audit temporary particle-debug logging and LAN development configuration. Remove only confirmed diagnostic-only code; preserve the now-working particle behavior.
+- The GitHub `main` snapshot inspected for this handoff has `next.config.ts` allowing `192.168.1.104` and `localhost`, while the LAN IP reported during debugging was `192.168.1.101`. The local config may differ; inspect it before editing. `devIndicators: false` was also recommended to hide the Next.js dev badge.
+- Re-run the production build after cleanup, update the release docs, and push the reviewed changes on a safe branch.
+
+### Guardrails
+- This is cleanup, not redesign. Preserve accepted desktop visuals, Hero/CTA animation, particle density/timing, and Bottom Navigation.
+- No application source was changed by this documentation checkpoint.
+- No merge to `main` or production deployment was performed.
+
+
+
+---
+
+## 2026-10-12 Repository Handoff
+
+### Current intent
+The desktop homepage is considered complete by the user. The remaining work is narrow cleanup and verification, not visual redesign.
+
+### GitHub snapshot
+- Open PR #11: documentation handoff on `docs/final-desktop-cleanup-handoff-2026-10-11`.
+- Open PR #12: `chore: finalize desktop cleanup before release` on `debug/hero-particles-ip`.
+- PR #12 head reported by GitHub: `888213a7df6aea560a757e4bcbd148b9567b80b2`.
+- PR #12 description says the remaining diff is `next.config.ts`, retaining `devIndicators: false` and the LAN dev origin `192.168.1.101`, and removing the obsolete `192.168.1.104` origin.
+- Main/base SHA reported by PR metadata: `f49fc29228b37f6c927dd5f808576ce6ce26ff2f`.
+
+### Local state caveat
+A prior user terminal report recorded `debug/hero-particles-ip` at `0e2831a`, clean and matching origin, with stash `recovery-before-hero-particles-debug`. GitHub now reports PR #12 head `888213a...`; compare current local and remote SHAs at the start of the next session rather than assuming the older local report remains current.
+
+### Verification and next actions
+- User-reported build passed on Next.js 16.4.0 before the final config cleanup.
+- Fresh `npm run build` on the exact PR #12 head remains to be confirmed.
+- Inspect local Git state, confirm the stash is intact, review PR #12's exact diff, and run the build.
+- Do not merge PR #12, merge docs into `main`, deploy Production, or change DNS/hosting without explicit approval.
+- Keep accepted desktop visuals and particle behavior unchanged; do not restore ring pulse/emission.
