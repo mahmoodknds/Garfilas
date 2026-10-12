@@ -7,10 +7,7 @@ function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.
 
 export default function HeroParticleEngine(){
  useEffect(()=>{
-
-  const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(reducedMotion)return;
-
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   const ring=document.querySelector<HTMLElement>(".hero-orbit-one");
   if(!ring)return;
 
