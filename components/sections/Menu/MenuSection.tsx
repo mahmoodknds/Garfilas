@@ -28,7 +28,7 @@ export default function MenuSection() {
   const visibleItems = useMemo(() => items.filter((item) => active === "all" || item.category === active), [active]);
 
   return (
-    <section id="menu" className={styles.section} aria-labelledby="menu-title">
+    <section id="menu" dir="rtl" className={styles.section} aria-labelledby="menu-title">
       <div className={styles.banner} aria-hidden="true">
         <Image src="/assets/menu/garfilas-food-banner.webp" alt="" fill sizes="100vw" quality={85} className={styles.bannerImage} />
         <div className={styles.bannerShade} />
