@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import MenuProductCard from "@/components/sections/Menu/MenuProductCard";
 import styles from "./MenuSection.module.css";
