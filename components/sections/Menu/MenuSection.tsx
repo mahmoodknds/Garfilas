@@ -1,32 +1,18 @@
-"use client";
-
 import Image from "next/image";
-import { useMemo, useState } from "react";
 import styles from "./MenuSection.module.css";
 
-type Category = "all" | "meat" | "chicken" | "vegetarian" | "ham";
-type MenuItem = { number: string; name: string; italian: string; description: string; category: Exclude<Category, "all">; tag: string };
+type MenuItem = { number: string; name: string; italian: string; description: string; tag: string };
 
 const items: MenuItem[] = [
-  { number: "01", name: "لازانیا گوشت", italian: "Lasagna alla Bolognese", description: "لایه‌های لازانیا با گوشت، سس مخصوص گارفیلاس و پنیر کش‌دار.", category: "meat", tag: "کلاسیک" },
-  { number: "02", name: "لازانیا اسفناج", italian: "Lasagna agli Spinaci", description: "ترکیب لطیف اسفناج با سس خامه‌ای و لایه‌های لازانیای تازه.", category: "vegetarian", tag: "گیاهی" },
-  { number: "03", name: "لازانیا مرغ و اسفناج", italian: "Pollo e Spinaci", description: "مرغ لطیف و اسفناج در کنار سس مخصوص و پنیر ذوب‌شده.", category: "chicken", tag: "ویژه" },
-  { number: "04", name: "لازانیا ژامبون", italian: "Lasagna al Prosciutto", description: "لایه‌های لازانیا با ژامبون و ترکیب پنیرهای خوش‌طعم.", category: "ham", tag: "متفاوت" },
-  { number: "05", name: "لازانیا سبزیجات", italian: "Lasagna alle Verdure", description: "کدو، بادمجان و قارچ در ترکیبی خوش‌عطر و لایه‌لایه.", category: "vegetarian", tag: "گیاهی" },
+  { number: "01", name: "لازانیا گوشت", italian: "Lasagna alla Bolognese", description: "لایه‌های لازانیا با گوشت، سس مخصوص گارفیلاس و پنیر کش‌دار.", tag: "کلاسیک" },
+  { number: "02", name: "لازانیا اسفناج", italian: "Lasagna agli Spinaci", description: "ترکیب لطیف اسفناج با سس خامه‌ای و لایه‌های لازانیای تازه.", tag: "گیاهی" },
+  { number: "03", name: "لازانیا مرغ و اسفناج", italian: "Pollo e Spinaci", description: "مرغ لطیف و اسفناج در کنار سس مخصوص و پنیر ذوب‌شده.", tag: "VIP" },
+  { number: "04", name: "لازانیا ژامبون", italian: "Lasagna al Prosciutto", description: "لایه‌های لازانیا با ژامبون و ترکیب پنیرهای خوش‌طعم.", tag: "متفاوت" },
+  { number: "05", name: "لازانیا سبزیجات", italian: "Lasagna alle Verdure", description: "کدو، بادمجان و قارچ در ترکیبی خوش‌عطر و لایه‌لایه.", tag: "گیاهی" },
 ];
 
-const filters: { id: Category; label: string }[] = [
-  { id: "all", label: "همه" },
-  { id: "meat", label: "گوشتی" },
-  { id: "chicken", label: "مرغ" },
-  { id: "vegetarian", label: "گیاهی" },
-  { id: "ham", label: "ژامبون" },
-];
 
 export default function MenuSection() {
-  const [active, setActive] = useState<Category>("all");
-  const visibleItems = useMemo(() => items.filter((item) => active === "all" || item.category === active), [active]);
-
   return (
     <section id="menu" dir="rtl" className={styles.section} aria-labelledby="menu-title">
       <div className={styles.banner} aria-hidden="true">
@@ -39,17 +25,10 @@ export default function MenuSection() {
           <span className={styles.eyebrow}>IL NOSTRO MENÙ</span>
           <h2 id="menu-title" className={styles.title}>منوی گارفیلاس</h2>
           <p className={styles.subtitle}>هر لایه، یک تجربه‌ی تازه</p>
-          <div className={styles.filters} role="group" aria-label="دسته‌بندی منو">
-            {filters.map((filter) => (
-              <button key={filter.id} type="button" className={styles.filter} aria-pressed={active === filter.id} onClick={() => setActive(filter.id)}>
-                {filter.label}
-              </button>
-            ))}
-          </div>
         </header>
 
         <ul className={styles.menuList}>
-          {visibleItems.map((item, index) => (
+          {items.map((item, index) => (
             <li className={styles.item} key={item.number} style={{ "--item-index": index } as React.CSSProperties}>
               <span className={styles.number}>{item.number}</span>
               <div className={styles.details}>
