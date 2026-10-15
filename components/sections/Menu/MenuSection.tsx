@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./MenuSection.module.css";
+import MenuScrollReveal from "./MenuScrollReveal";
 
 type MenuItem = {
   number: string;
@@ -83,7 +84,13 @@ export default function MenuSection() {
 
         <ul className={styles.menuList}>
           {items.map((item, index) => (
-            <li className={styles.item} key={item.number} style={{ "--item-index": index } as React.CSSProperties}>
+            <MenuScrollReveal
+              key={item.number}
+              className={styles.item}
+              readyClassName={styles.revealReady}
+              visibleClassName={styles.revealVisible}
+              index={index}
+            >
               <span className={styles.number}>{item.number}</span>
               <div className={styles.details}>
                 <div className={styles.nameLine}>
@@ -100,7 +107,7 @@ export default function MenuSection() {
                 <p className={styles.description}>{item.description}</p>
               </div>
               <span className={styles.mark} aria-hidden="true">✦</span>
-            </li>
+            </MenuScrollReveal>
           ))}
         </ul>
       </div>
