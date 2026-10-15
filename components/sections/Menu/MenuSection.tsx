@@ -39,7 +39,7 @@ export default function MenuSection() {
                 </div>
                 <div className={styles.meta}>
                   <span className={styles.italian} dir="ltr">{item.italian}</span>
-                  <span className={styles.tag}>{item.tag}</span>
+                  <span className={item.tag === "VIP" ? `${styles.tag} ${styles.vipTag}` : styles.tag}>{item.tag}</span>
                 </div>
                 <p className={styles.description}>{item.description}</p>
               </div>
