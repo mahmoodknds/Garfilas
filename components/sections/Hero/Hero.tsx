@@ -19,6 +19,8 @@ export default function Hero() {
               sizes="(max-width: 477px) 63vw, 18.8rem"
               priority
             />
+            <span className="hero-eye-lid hero-eye-lid--left" aria-hidden="true" />
+            <span className="hero-eye-lid hero-eye-lid--right" aria-hidden="true" />
           </div>
         </div>
 
