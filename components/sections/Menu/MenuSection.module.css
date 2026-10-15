@@ -72,7 +72,6 @@
   .banner { aspect-ratio: 2.7 / 1; }
   .content { margin-top: -4rem; padding-inline: 1.25rem; }
   .header { padding-bottom: 1.4rem; }
-  .filters { justify-content: center; }
   .item { padding: 1.15rem 1.1rem; grid-template-columns: 2.8rem minmax(0,1fr) 1.2rem; gap: .85rem; border-radius: 1.6rem; }
   .number { font-size: 2.4rem; }
   .nameLine h3 { font-size: .98rem; }
