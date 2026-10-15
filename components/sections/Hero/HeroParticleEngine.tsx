@@ -1,93 +1,247 @@
 "use client";
+
 import { useEffect } from "react";
 
-type Ember={el:HTMLSpanElement;animation:Animation};
-const rand=(a:number,b:number)=>Math.random()*(b-a)+a;
-function sizeProfile(ring:boolean){const r=Math.random();if(r<.03)return rand(1.4,2.1);if(r<.17)return rand(2.3,3.4);if(r<.42)return rand(3.4,4.8);if(r<.67)return rand(4.8,6.2);if(r<.92)return rand(6.2,7.8);if(r<.985)return rand(8,10.5);return ring?rand(10.5,13):rand(9,11)}
+type Particle = {
+  x: number;
+  y: number;
+  angle: number;
+  dx: number;
+  dy: number;
+  driftX: number;
+  driftY: number;
+  size: number;
+  duration: number;
+  born: number;
+  alpha: number;
+  scaleEnd: number;
+  ring: boolean;
+  spark: boolean;
+};
 
-export default function HeroParticleEngine(){
- useEffect(()=>{
-  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-  const ring=document.querySelector<HTMLElement>(".hero-orbit-one");
-  if(!ring)return;
+const rand = (a: number, b: number) => Math.random() * (b - a) + a;
 
-  const layer=document.createElement("div");
-  layer.className="hero-live-embers";
-  Object.assign(layer.style,{position:"fixed",inset:"0",overflow:"visible",pointerEvents:"none",zIndex:"3"});
-  document.body.appendChild(layer);
+function sizeProfile(ring: boolean) {
+  const r = Math.random();
+  if (r < .03) return rand(1.4, 2.1);
+  if (r < .17) return rand(2.3, 3.4);
+  if (r < .42) return rand(3.4, 4.8);
+  if (r < .67) return rand(4.8, 6.2);
+  if (r < .92) return rand(6.2, 7.8);
+  if (r < .985) return rand(8, 10.5);
+  return ring ? rand(10.5, 13) : rand(9, 11);
+}
 
-  const embers:Ember[]=[];
-  const TARGET_RING_PARTICLES=96;
-  const MAX_PARTICLES=360;
-  const MAX_TRANSIENT_PARTICLES=MAX_PARTICLES-TARGET_RING_PARTICLES;
-  let ringCount=0;
-  let transientCount=0;
-  let stopped=false;
-  let raf=0;
-  let timer=0;
-  let ambientClock=rand(300,450);
-  let sparkClock=rand(2200,3000);
-  let sparkSide:"left"|"right"="right";
-  let ringIndex=0;
+export default function HeroParticleEngine() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  const make=(x:number,y:number,angle:number,isRing=false,spark=false,initialPhase=0,onFinish?:()=>void)=>{
-   const countsAsRing=isRing&&!spark;
-   if(countsAsRing){if(ringCount>=TARGET_RING_PARTICLES)return;}else if(transientCount>=MAX_TRANSIENT_PARTICLES)return;
-   const size=spark?rand(3.2,7.2):sizeProfile(isRing);
-   const el=document.createElement("span");
-   el.className=spark?"hero-live-ember hero-live-spark":"hero-live-ember";
-   Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,252,220,1) 0%,rgba(255,191,70,.98) 34%,rgba(255,91,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,231,174,1) 0%,rgba(255,139,24,.9) 40%,rgba(255,61,4,0) 100%)",boxShadow:spark?`0 0 ${Math.max(8,size*3.2)}px rgba(255,210,90,.78),0 0 ${Math.max(14,size*4.5)}px rgba(255,95,8,.38)`:`0 0 ${Math.max(4,size*2.2)}px rgba(255,116,15,.42),0 0 ${Math.max(7,size*3.4)}px rgba(255,58,3,.18)`,contain:"layout style paint"});
-   const distance=spark?rand(40,88):isRing?rand(48,155):rand(35,135);
-   const dx=Math.cos(angle)*distance;
-   const dy=Math.sin(angle)*distance+(spark?rand(8,24):isRing?rand(10,36):rand(14,46));
-   const driftX=rand(-3,3),driftY=rand(-4,16);
-   const duration=spark?rand(9000,13000):isRing?rand(10000,16000):rand(11000,17000);
-   const alpha=spark?rand(.84,1):rand(.46,.92);
-   const scaleEnd=spark?rand(.22,.38):rand(.30,.55);
-   const animation=el.animate([
-    {transform:"translate3d(0,0,0) scale(.45)",opacity:0},
-    {transform:`translate3d(${dx*.08}px,${dy*.08}px,0) scale(${spark?1.04:1})`,opacity:0},
-    {transform:`translate3d(${dx*.10}px,${dy*.10}px,0) scale(${spark?1.12:1})`,opacity:alpha,offset:spark?.12:.12},
-    {transform:`translate3d(${dx*.38+driftX*.18}px,${dy*.38+driftY*.16}px,0) scale(${spark?.92:.80})`,opacity:spark?alpha*.92:alpha*.74,offset:spark?.38:.52},
-    {transform:`translate3d(${dx*.70+driftX*.45}px,${dy*.70+driftY*.60}px,0) scale(${Math.max(scaleEnd,spark?.54:.38)})`,opacity:spark?alpha*.58:alpha*.34,offset:spark?.68:.82},
-    {transform:`translate3d(${dx+driftX}px,${dy+driftY}px,0) scale(${scaleEnd})`,opacity:0,offset:.975},
-    {transform:`translate3d(${dx+driftX*1.05}px,${dy+driftY+rand(4,10)}px,0) scale(.08)`,opacity:0}
-   ],{duration,easing:spark?"cubic-bezier(.28,.58,.38,1)":"linear",fill:"both",iterations:1});
-   layer.appendChild(el);
-   const ember:Ember={el,animation};
-   embers.push(ember);
-   if(countsAsRing)ringCount++;else transientCount++;
-   if(initialPhase>0)animation.currentTime=Math.min(initialPhase,duration-1);
-   animation.onfinish=()=>{if(stopped)return;el.remove();const i=embers.indexOf(ember);if(i>=0){embers.splice(i,1);if(countsAsRing)ringCount=Math.max(0,ringCount-1);else transientCount=Math.max(0,transientCount-1);}onFinish?.();};
-  };
+    const ring = document.querySelector<HTMLElement>(".hero-orbit-one");
+    if (!ring) return;
 
-  const ringPoint=(spark=false,forcedSide?:"left"|"right",initialPhase=0,onFinish?:()=>void)=>{
-   const rr=ring.getBoundingClientRect();
-   let angle=(ringIndex++%TARGET_RING_PARTICLES)*(Math.PI*2/TARGET_RING_PARTICLES)+rand(-.018,.018);
-   if(forcedSide){const left=angle>Math.PI/2&&angle<Math.PI*1.5;if((forcedSide==="left")!==left)angle+=Math.PI;}
-   const radius=Math.min(rr.width,rr.height)*.515;
-   make(rr.left+rr.width/2+Math.cos(angle)*radius,rr.top+rr.height/2+Math.sin(angle)*radius,angle+rand(-.12,.12),true,spark,initialPhase,onFinish);
-  };
+    // One canvas replaces hundreds of animated DOM nodes. Particle counts and
+    // their long-lived orbit/ambient behavior remain at the original levels.
+    const canvas = document.createElement("canvas");
+    canvas.setAttribute("aria-hidden", "true");
+    Object.assign(canvas.style, {
+      position: "fixed",
+      inset: "0",
+      width: "100%",
+      height: "100%",
+      overflow: "visible",
+      pointerEvents: "none",
+      zIndex: "3",
+    });
+    document.body.appendChild(canvas);
 
-  const maintainRingOne=()=>{if(stopped)return;ringPoint(false,undefined,0,maintainRingOne);};
-  for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,rand(0,12000),maintainRingOne);
+    const ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) {
+      canvas.remove();
+      return;
+    }
 
-  const sparkBurst=()=>{const count=Math.floor(rand(8,14));for(let i=0;i<count;i++){const side=sparkSide;ringPoint(true,side);sparkSide=side==="right"?"left":"right";}};
-  const seedAmbient=()=>{const w=window.innerWidth,h=window.innerHeight;for(let i=0;i<110;i++){const x=rand(w*.06,w*.94),y=rand(h*.05,h*.94);if(y>h*.82&&Math.random()<.22)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,false,rand(0,12000));}};
-  seedAmbient();
-  sparkBurst();
+    const TARGET_RING_PARTICLES = 132;
+    const MAX_PARTICLES = 920;
+    const MAX_TRANSIENT_PARTICLES = MAX_PARTICLES - TARGET_RING_PARTICLES;
+    const particles: Particle[] = [];
+    const spriteCache = new Map<string, HTMLCanvasElement>();
+    let ringIndex = 0;
+    let sparkSide: "left" | "right" = "right";
+    let ambientClock = rand(90, 150);
+    let sparkClock = rand(1200, 1600);
+    let stopped = false;
+    let raf = 0;
+    let lastFrame = 0;
+    let lastTick = 0;
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
 
-  const tick=()=>{
-   if(stopped)return;
-   ambientClock-=16;
-   sparkClock-=16;
-   if(sparkClock<=0){sparkBurst();sparkClock=rand(2600,3300);}
-   if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<3;a++){const w=window.innerWidth,h=window.innerHeight,x=rand(w*.06,w*.94),y=rand(h*.05,h*.94);if(y>h*.82&&Math.random()<.22)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(320,480);}
-   timer=window.setTimeout(()=>{raf=requestAnimationFrame(tick);},80);
-  };
-  raf=requestAnimationFrame(tick);
+    const resize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      // A capped backing scale keeps high-DPI mobile devices from multiplying
+      // the fill cost while retaining a crisp glow.
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
 
-  return()=>{stopped=true;cancelAnimationFrame(raf);clearTimeout(timer);for(const e of embers)e.animation.cancel();layer.remove();};
- },[]);
- return null;
+    const sprite = (spark: boolean, size: number) => {
+      const bucket = Math.max(1, Math.round(size * 2) / 2);
+      const key = `${spark ? "s" : "e"}-${bucket}`;
+      const cached = spriteCache.get(key);
+      if (cached) return cached;
+
+      const side = 128;
+      const image = document.createElement("canvas");
+      image.width = side;
+      image.height = side;
+      const g = image.getContext("2d");
+      if (!g) return image;
+      const gradient = g.createRadialGradient(side / 2, side / 2, 0, side / 2, side / 2, side / 2);
+      if (spark) {
+        gradient.addColorStop(0, "rgba(255,252,220,1)");
+        gradient.addColorStop(.12, "rgba(255,191,70,.98)");
+        gradient.addColorStop(.28, "rgba(255,91,8,.62)");
+        gradient.addColorStop(.5, "rgba(255,50,0,.16)");
+        gradient.addColorStop(1, "rgba(255,50,0,0)");
+      } else {
+        gradient.addColorStop(0, "rgba(255,231,174,1)");
+        gradient.addColorStop(.16, "rgba(255,139,24,.78)");
+        gradient.addColorStop(.36, "rgba(255,61,4,.28)");
+        gradient.addColorStop(1, "rgba(255,61,4,0)");
+      }
+      g.fillStyle = gradient;
+      g.fillRect(0, 0, side, side);
+      spriteCache.set(key, image);
+      return image;
+    };
+
+    const ringPoint = (spark = false, forcedSide?: "left" | "right", initialPhase = 0) => {
+      if (particles.length >= MAX_PARTICLES) return;
+      const rr = ring.getBoundingClientRect();
+      let angle = (ringIndex++ % TARGET_RING_PARTICLES) * (Math.PI * 2 / TARGET_RING_PARTICLES) + rand(-.018, .018);
+      if (forcedSide) {
+        const left = angle > Math.PI / 2 && angle < Math.PI * 1.5;
+        if ((forcedSide === "left") !== left) angle += Math.PI;
+      }
+      const radius = Math.min(rr.width, rr.height) * .515;
+      const x = rr.left + rr.width / 2 + Math.cos(angle) * radius;
+      const y = rr.top + rr.height / 2 + Math.sin(angle) * radius;
+      const size = spark ? rand(3.2, 7.2) : sizeProfile(true);
+      const distance = spark ? rand(40, 88) : rand(48, 155);
+      const duration = spark ? rand(9000, 13000) : rand(10000, 16000);
+      particles.push({
+        x, y, angle: angle + rand(-.12, .12),
+        dx: Math.cos(angle + rand(-.12, .12)) * distance,
+        dy: Math.sin(angle + rand(-.12, .12)) * distance + (spark ? rand(8, 24) : rand(10, 36)),
+        driftX: rand(-3, 3), driftY: rand(-4, 16), size, duration,
+        born: performance.now() - initialPhase,
+        alpha: spark ? rand(.84, 1) : rand(.46, .92),
+        scaleEnd: spark ? rand(.22, .38) : rand(.30, .55),
+        ring: !spark, spark,
+      });
+    };
+
+    const ambientPoint = (initialPhase = 0) => {
+      if (particles.length >= MAX_PARTICLES) return;
+      const x = rand(width * .06, width * .94);
+      const y = rand(height * .05, height * .94);
+      if (y > height * .82 && Math.random() < .22) return;
+      const angle = rand(-Math.PI * .10, Math.PI * .10);
+      const distance = rand(35, 135);
+      particles.push({
+        x, y, angle, dx: Math.cos(angle) * distance, dy: Math.sin(angle) * distance + rand(14, 46),
+        driftX: rand(-3, 3), driftY: rand(-4, 16), size: sizeProfile(false),
+        duration: rand(11000, 17000), born: performance.now() - initialPhase,
+        alpha: rand(.46, .92), scaleEnd: rand(.30, .55), ring: false, spark: false,
+      });
+    };
+
+    const maintainRing = () => {
+      if (stopped) return;
+      const ringCount = particles.reduce((n, p) => n + (p.ring ? 1 : 0), 0);
+      if (ringCount < TARGET_RING_PARTICLES) ringPoint();
+    };
+
+    const sparkBurst = () => {
+      const count = Math.floor(rand(20, 31));
+      for (let i = 0; i < count; i++) {
+        ringPoint(true, sparkSide);
+        sparkSide = sparkSide === "right" ? "left" : "right";
+      }
+    };
+
+    const interpolate = (a: number, b: number, t: number) => a + (b - a) * t;
+    const drawParticle = (p: Particle, now: number) => {
+      const elapsed = (now - p.born) % p.duration;
+      const t = Math.max(0, Math.min(1, elapsed / p.duration));
+      const ease = t < .12 ? t / .12 : t < .52 ? interpolate(.08, .38, (t - .12) / .40) : t < .82 ? interpolate(.38, .70, (t - .52) / .30) : interpolate(.70, 1, (t - .82) / .18);
+      let alpha = t < .08 ? interpolate(0, p.alpha, t / .08) : t < .52 ? p.alpha : t < .82 ? p.alpha * interpolate(1, .34, (t - .52) / .30) : p.alpha * interpolate(.34, 0, (t - .82) / .18);
+      if (t > .975) alpha = 0;
+      const x = p.x + p.dx * ease + p.driftX * t;
+      const y = p.y + p.dy * ease + p.driftY * t;
+      const scale = t < .12 ? interpolate(.45, 1, t / .12) : interpolate(1, p.scaleEnd, Math.max(0, (t - .12) / .88));
+      const image = sprite(p.spark, p.size);
+      const glowSize = p.size * (p.spark ? 7.2 : 5.8) * scale;
+      ctx.globalAlpha = Math.max(0, alpha);
+      ctx.drawImage(image, x - glowSize / 2, y - glowSize / 2, glowSize, glowSize);
+    };
+
+    const tick = (now: number) => {
+      if (stopped) return;
+      raf = requestAnimationFrame(tick);
+      if (document.hidden || now - lastFrame < 32) return;
+      const delta = lastTick ? Math.min(now - lastTick, 80) : 16;
+      lastTick = now;
+      lastFrame = now;
+      ambientClock -= delta;
+      sparkClock -= delta;
+      if (sparkClock <= 0) {
+        sparkBurst();
+        sparkClock = rand(1900, 2500);
+      }
+      if (ambientClock <= 0) {
+        let made = 0;
+        for (let a = 0; a < 10 && made < 3; a++) {
+          const before = particles.length;
+          ambientPoint();
+          if (particles.length > before) made++;
+        }
+        ambientClock = rand(150, 260);
+      }
+
+      ctx.clearRect(0, 0, width, height);
+      ctx.globalAlpha = 1;
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        if (now - p.born >= p.duration) {
+          particles.splice(i, 1);
+          if (p.ring) maintainRing();
+          continue;
+        }
+        drawParticle(p, now);
+      }
+      ctx.globalAlpha = 1;
+    };
+
+    resize();
+    window.addEventListener("resize", resize, { passive: true });
+    for (let i = 0; i < TARGET_RING_PARTICLES; i++) ringPoint(false, undefined, rand(0, 12000));
+    for (let i = 0; i < 220; i++) ambientPoint(rand(0, 12000));
+    sparkBurst();
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      stopped = true;
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+      canvas.remove();
+      spriteCache.clear();
+    };
+  }, []);
+
+  return null;
 }
