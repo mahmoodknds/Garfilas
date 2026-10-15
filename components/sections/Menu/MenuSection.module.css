@@ -49,7 +49,7 @@
  .content { position: relative; width: min(100%, 760px); margin: -2.8rem auto 0; padding: 0 1rem; direction: rtl; }
  .header { position: relative; z-index: 2; padding: 0 0 1.15rem; text-align: center; }
  .eyebrow { display: block; margin: 0 0 .45rem; color: #ffd9a0; font: italic 500 1.6rem/1.2 "Cormorant Garamond", Georgia, serif; letter-spacing: .025em; text-shadow: 0 0 2px rgba(255,248,223,.65), 0 0 8px rgba(255,91,0,.78), 0 0 22px rgba(255,106,0,.38); }
-.title { margin: .25rem 0 0; color: #fff0dc; font: 600 clamp(1.45rem, 5vw, 1.9rem)/1.5 var(--font-vazirmatn), sans-serif; text-shadow: 0 0 18px rgba(255,138,31,.2); }
+.title { margin: .25rem 0 0; color: #fff0dc; font: 700 clamp(1.35rem, 4.2vw, 1.8rem)/1.65 var(--font-vazirmatn), sans-serif; text-wrap: balance; text-shadow: 0 0 18px rgba(255,138,31,.2); }
 .subtitle { margin: .2rem 0 1.1rem; color: #d6b998; font: 400 .82rem/1.8 var(--font-vazirmatn), sans-serif; }
 
 .menuList { display: grid; gap: .85rem; list-style: none; margin: .35rem 0 0; padding: 0; }
@@ -75,6 +75,7 @@
   .banner { aspect-ratio: 2.7 / 1; }
   .content { margin-top: -4rem; padding-inline: 1.25rem; }
   .header { padding-bottom: 1.4rem; }
+  .title { max-width: 100%; font-size: clamp(1.55rem, 2.8vw, 1.8rem); line-height: 1.6; }
   .item { padding: 1.15rem 1.1rem; grid-template-columns: 2.8rem minmax(0,1fr) 1.2rem; gap: .85rem; border-radius: 1.6rem; }
   .number { font-size: 1.3rem; }
   .price { font-size: 1.62rem; }
