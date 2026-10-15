@@ -29,6 +29,9 @@ export default function HeroParticleEngine(){
   let sparkClock=rand(1200,1600);
   let sparkSide:"left"|"right"="right";
   let ringIndex=0;
+  // Keep the ring evenly distributed, but randomize creation order so particles never appear in a visible clockwise sweep.
+  const ringAngles=Array.from({length:TARGET_RING_PARTICLES},(_,i)=>i*(Math.PI*2/TARGET_RING_PARTICLES));
+  for(let i=ringAngles.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ringAngles[i],ringAngles[j]]=[ringAngles[j],ringAngles[i]];}
 
   const make=(x:number,y:number,angle:number,isRing=false,spark=false,initialPhase=0,onFinish?:()=>void)=>{
    const countsAsRing=isRing&&!spark;
@@ -63,7 +66,7 @@ export default function HeroParticleEngine(){
 
   const ringPoint=(spark=false,forcedSide?:"left"|"right",initialPhase=0,onFinish?:()=>void)=>{
    const rr=ring.getBoundingClientRect();
-   let angle=(ringIndex++%TARGET_RING_PARTICLES)*(Math.PI*2/TARGET_RING_PARTICLES)+rand(-.018,.018);
+   let angle=ringAngles[ringIndex++%TARGET_RING_PARTICLES]+rand(-.018,.018);
    if(forcedSide){const left=angle>Math.PI/2&&angle<Math.PI*1.5;if((forcedSide==="left")!==left)angle+=Math.PI;}
    const radius=Math.min(rr.width,rr.height)*.515;
    make(rr.left+rr.width/2+Math.cos(angle)*radius,rr.top+rr.height/2+Math.sin(angle)*radius,angle+rand(-.12,.12),true,spark,initialPhase,onFinish);
