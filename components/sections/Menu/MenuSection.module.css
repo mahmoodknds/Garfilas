@@ -55,12 +55,12 @@
 .menuList { display: grid; gap: .85rem; list-style: none; margin: .35rem 0 0; padding: 0; }
 .item { --item-index: 0; position: relative; display: grid; grid-template-columns: 2.15rem minmax(0,1fr) 1rem; align-items: center; gap: .65rem; min-width: 0; padding: 1rem .8rem; overflow: hidden; border: 1px solid rgba(255,106,0,.9); border-radius: 1.35rem; outline: 1px solid rgba(255,91,0,.16); outline-offset: -6px; background: linear-gradient(135deg, rgba(255,255,255,.025), rgba(255,255,255,0) 45%), rgba(7,5,4,.72); box-shadow: 0 0 7px rgba(255,91,0,.42), 0 0 18px rgba(255,91,0,.12), inset 0 0 8px rgba(255,91,0,.08); animation: menu-enter .55s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--item-index) * 65ms); }
  .item::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(118deg, transparent 22%, rgba(255,255,255,.055) 39%, rgba(255,236,200,.018) 45%, transparent 58%); opacity: .75; }
-.number { align-self: start; padding-top: .2rem; color: #ffd9a0; font: 500 2rem/.95 "Cormorant Garamond", Georgia, serif; direction: ltr; text-shadow: 0 0 3px #fff, 0 0 9px #ffb35c, 0 0 18px rgba(255,106,0,.55); }
+.number { align-self: start; padding-top: .2rem; color: rgba(255,217,160,.42); font: 400 1.15rem/1.2 "Cormorant Garamond", Georgia, serif; direction: ltr; text-shadow: 0 0 5px rgba(255,106,0,.12); }
 .details { min-width: 0; position: relative; }
 .nameLine { display: flex; align-items: baseline; gap: .4rem; min-width: 0; }
 .nameLine h3 { margin: 0; color: #fff0dc; font: 600 .88rem/1.8 var(--font-vazirmatn), sans-serif; white-space: normal; }
 .leader { flex: 1 1 auto; min-width: .25rem; height: 1px; transform: translateY(-.25rem); background: linear-gradient(to left, rgba(246,189,106,.65), rgba(246,189,106,.06)); }
-.price { flex: 0 0 auto; color: #f6bd6a; font: 500 .62rem/1.6 var(--font-vazirmatn), sans-serif; white-space: nowrap; }
+.price { flex: 0 0 auto; color: #ffd9a0; font: 600 1.55rem/1.1 "Cormorant Garamond", Georgia, serif; letter-spacing: .015em; white-space: nowrap; text-shadow: 0 0 2px rgba(255,248,223,.8), 0 0 8px rgba(255,179,92,.9), 0 0 18px rgba(255,106,0,.52); }
 .meta { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin: .12rem 0 .2rem; }
 .italian { color: #f6bd6a; font: italic 500 .9rem/1.4 "Cormorant Garamond", Georgia, serif; }
  .tag { display:inline-flex;align-items:center;justify-content:center;padding:.03rem .5rem;border:1px solid rgba(255,106,0,.56);border-radius:999px;color:#ffb04a;background:rgba(7,5,4,.55);font:500 .61rem/1.7 var(--font-vazirmatn),sans-serif;box-shadow:0 0 5px rgba(255,91,0,.22),inset 0 0 6px rgba(255,91,0,.06); }
@@ -76,14 +76,16 @@
   .content { margin-top: -4rem; padding-inline: 1.25rem; }
   .header { padding-bottom: 1.4rem; }
   .item { padding: 1.15rem 1.1rem; grid-template-columns: 2.8rem minmax(0,1fr) 1.2rem; gap: .85rem; border-radius: 1.6rem; }
-  .number { font-size: 2.4rem; }
+  .number { font-size: 1.3rem; }
+  .price { font-size: 1.8rem; }
   .nameLine h3 { font-size: .98rem; }
   .description { font-size: .78rem; }
 }
 @media (max-width: 380px) {
   .content { padding-inline: .7rem; }
   .item { grid-template-columns: 1.8rem minmax(0,1fr) .65rem; gap: .45rem; padding: .85rem .6rem; }
-  .number { font-size: 1.65rem; }
+  .number { font-size: 1rem; }
+  .price { font-size: 1.35rem; }
   .nameLine { flex-wrap: wrap; gap: .1rem .4rem; }
   .leader { display: none; }
   .price { margin-inline-start: auto; }
