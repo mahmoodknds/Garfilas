@@ -60,7 +60,7 @@
 .nameLine { display: flex; align-items: baseline; gap: .4rem; min-width: 0; }
 .nameLine h3 { margin: 0; color: #fff0dc; font: 600 .88rem/1.8 var(--font-vazirmatn), sans-serif; white-space: normal; }
 .leader { flex: 1 1 auto; min-width: .25rem; height: 1px; transform: translateY(-.25rem); background: linear-gradient(to left, rgba(246,189,106,.65), rgba(246,189,106,.06)); }
-.price { flex: 0 0 auto; color: #ffd9a0; font: 600 1.55rem/1.1 "Cormorant Garamond", Georgia, serif; letter-spacing: .015em; white-space: nowrap; text-shadow: 0 0 2px rgba(255,248,223,.8), 0 0 8px rgba(255,179,92,.9), 0 0 18px rgba(255,106,0,.52); }
+.price { flex: 0 0 auto; color: #ffe2ad; font: 700 1.42rem/1.15 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif; font-variant-numeric: tabular-nums lining-nums; letter-spacing: .005em; white-space: nowrap; text-shadow: 0 0 1px rgba(255,248,223,.45), 0 1px 0 rgba(72,31,0,.8), 0 0 7px rgba(255,155,45,.38); }
 .meta { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin: .12rem 0 .2rem; }
 .italian { color: #f6bd6a; font: italic 500 .9rem/1.4 "Cormorant Garamond", Georgia, serif; }
  .tag { display:inline-flex;align-items:center;justify-content:center;padding:.03rem .5rem;border:1px solid rgba(255,106,0,.56);border-radius:999px;color:#ffb04a;background:rgba(7,5,4,.55);font:500 .61rem/1.7 var(--font-vazirmatn),sans-serif;box-shadow:0 0 5px rgba(255,91,0,.22),inset 0 0 6px rgba(255,91,0,.06); }
@@ -77,7 +77,7 @@
   .header { padding-bottom: 1.4rem; }
   .item { padding: 1.15rem 1.1rem; grid-template-columns: 2.8rem minmax(0,1fr) 1.2rem; gap: .85rem; border-radius: 1.6rem; }
   .number { font-size: 1.3rem; }
-  .price { font-size: 1.8rem; }
+  .price { font-size: 1.65rem; }
   .nameLine h3 { font-size: .98rem; }
   .description { font-size: .78rem; }
 }
@@ -85,7 +85,7 @@
   .content { padding-inline: .7rem; }
   .item { grid-template-columns: 1.8rem minmax(0,1fr) .65rem; gap: .45rem; padding: .85rem .6rem; }
   .number { font-size: 1rem; }
-  .price { font-size: 1.12rem; }
+  .price { font-size: 1.08rem; letter-spacing: 0; }
   .nameLine { flex-wrap: nowrap; gap: .3rem; }
   .nameLine h3 { flex: 0 1 auto; font-size: .76rem; white-space: nowrap; }
   .leader { display: block; flex: 1 1 auto; min-width: .3rem; }
