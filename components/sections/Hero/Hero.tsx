@@ -5,7 +5,7 @@ import HeroLogo from "./HeroLogo";
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title" className="sr-only">Garfilas Italian Lasagna</h1>
+      <h1 id="hero-title" className="sr-only">Garfilaz Italian Lasagna</h1>
       <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
 
       <div className="hero-shell">
@@ -13,7 +13,7 @@ export default function Hero() {
           <div className="hero-mascot-frame">
             <Image
               src="/assets/hero/garfilas-hero-final.webp"
-              alt="Garfilas mascot enjoying handmade lasagna"
+              alt="Garfilaz mascot enjoying handmade lasagna"
               width={1536}
               height={1024}
               sizes="(max-width: 477px) 63vw, 18.8rem"
