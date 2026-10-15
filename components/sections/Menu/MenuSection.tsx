@@ -15,54 +15,54 @@ const items: MenuItem[] = [
     number: "01",
     name: "گارفی",
     italian: "Garfi",
-    description: "راسته گوساله چرخ‌شده، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر موزارلا و سس مخصوص گارفیلاس.",
-    price: "۱٬۰۱۵٬۰۰۰",
+    description: "400گرم؛ راسته گوساله چرخ‌شده، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر موزارلا و سس مخصوص گارفیلاس.",
+    price: "1,015,000",
     tag: "VIP",
   },
   {
     number: "02",
-    name: "لازانیا بالویتا",
+    name: "بلاویتا",
     italian: "Bellavita",
-    description: "۴۰۰ گرم؛ لازانیا، اسفناج، گوشت ریزشده فیله مرغ، قارچ، فلفل دلمه‌ای، سس بالویتا، پنیر پستو، پنیر گودا و پنیر موزارلا.",
-    price: "۱٬۱۸۲٬۰۰۰",
+    description: "400گرم؛ اسفناج، گوشت ریزشده فیله مرغ، قارچ، فلفل دلمه‌ای، سس بالویتا، پنیر پستو، پنیر گودا و پنیر موزارلا.",
+    price: "1,182,000",
     tag: "VIP",
   },
   {
     number: "03",
     name: "مگنیفیکو",
     italian: "Magnifico",
-    description: "راسته گوساله چرخ‌شده، بادمجان کبابی، کدو، قارچ، فلفل دلمه‌ای، سس مخصوص، پنیر پستو، پنیر گودا و پنیر موزارلا.",
-    price: "۱٬۳۰۰٬۰۰۰",
+    description: "400گرم؛ راسته گوساله چرخ‌شده، بادمجان کبابی، کدو، قارچ، فلفل دلمه‌ای، سس مخصوص، پنیر پستو، پنیر گودا و پنیر موزارلا.",
+    price: "1,300,000",
     tag: "VIP",
   },
   {
     number: "04",
     name: "فیالدلفیا",
     italian: "Philadelphia",
-    description: "ژامبون گوشت ۹۸٪، سس پنیر ایتالیایی، پنیر پستو، پنیر گودا و پنیر موزارلا.",
-    price: "۹۱۴٬۰۰۰",
+    description: "400گرم؛ ژامبون گوشت ۹۸٪، سس پنیر ایتالیایی، پنیر پستو، پنیر گودا و پنیر موزارلا.",
+    price: "914,000",
   },
   {
     number: "05",
     name: "الگانزا",
     italian: "Eleganza",
-    description: "بادمجان کبابی دودی، کدو، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر گودا و پنیر موزارلا.",
-    price: "۸۳۸٬۰۰۰",
+    description: "400گرم؛ بادمجان کبابی دودی، کدو، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر گودا و پنیر موزارلا.",
+    price: "838,000",
     tag: "وجترین",
   },
   {
     number: "06",
     name: "بلونیا",
     italian: "Bologna",
-    description: "اسفناج، سس بلونیا با عصاره گوشت، فلفل دلمه‌ای، سیر، پنیر پستو، پنیر گودا و پنیر موزارلا.",
-    price: "۹۲۷٬۰۰۰",
+    description: "400گرم؛ اسفناج، سس بلونیا با عصاره گوشت، فلفل دلمه‌ای، سیر، پنیر پستو، پنیر گودا و پنیر موزارلا.",
+    price: "927,000",
   },
   {
     number: "07",
     name: "میکس",
     italian: "Misto",
-    description: "ترکیبی از گارفی، فیالدلفیا، بلونیا و الگانزا.",
-    price: "۱٬۲۰۳٬۰۰۰",
+    description: "400گرم؛ ترکیبی از گارفی، فیالدلفیا، بلونیا و الگانزا.",
+    price: "1,203,000",
     tag: "میکس",
   },
 ];
@@ -90,7 +90,7 @@ export default function MenuSection() {
                 <div className={styles.nameLine}>
                   <h3>{item.name}</h3>
                   <span className={styles.leader} aria-hidden="true" />
-                  <span className={styles.price}>{item.price}</span>
+                  <span className={styles.price} dir="ltr">T {item.price}</span>
                 </div>
                 <div className={styles.meta}>
                   <span className={styles.italian} dir="ltr">{item.italian}</span>
