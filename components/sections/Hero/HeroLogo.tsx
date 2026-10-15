@@ -11,7 +11,7 @@ export default function HeroLogo() {
       </div>
       <div className="hero-italy-flag" aria-label="Italian flag"><span className="hero-italy-green" /><span className="hero-italy-white" /><span className="hero-italy-red" /></div>
       <div className="hero-slogan" aria-hidden="true">Layers of Love, Taste of Italy</div>
-      <span className="sr-only">Garfilas Italian Lasagna. Layers of Love, Taste of Italy.</span>
+      <span className="sr-only">Garfilaz Italian Lasagna. Layers of Love, Taste of Italy.</span>
     </div>
   );
 }
