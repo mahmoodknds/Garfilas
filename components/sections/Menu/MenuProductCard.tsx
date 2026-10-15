@@ -13,7 +13,7 @@ type ProductCardProps = {
 
 export default function MenuProductCard({
   name = "لازانیا گوشت",
-  description = "لایه‌های لازانیا با گوشت، سس مخصوص گارفیلاس و پنیر کش‌دار، با طعمی عمیق و پایان ایتالیایی.",
+  description = "لایه‌های لازانیا با گوشت، سس مخصوص گارفیلاز و پنیر کش‌دار، با طعمی عمیق و پایان ایتالیایی.",
   price = 0,
   imageSrc = "/assets/menu/Lasagna.webp",
 }: ProductCardProps) {
