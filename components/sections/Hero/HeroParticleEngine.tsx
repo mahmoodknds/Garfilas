@@ -17,16 +17,16 @@ export default function HeroParticleEngine(){
   document.body.appendChild(layer);
 
   const embers:Ember[]=[];
-  const TARGET_RING_PARTICLES=132;
-  const MAX_PARTICLES=920;
+  const TARGET_RING_PARTICLES=96;
+  const MAX_PARTICLES=360;
   const MAX_TRANSIENT_PARTICLES=MAX_PARTICLES-TARGET_RING_PARTICLES;
   let ringCount=0;
   let transientCount=0;
   let stopped=false;
   let raf=0;
   let timer=0;
-  let ambientClock=rand(90,150);
-  let sparkClock=rand(1200,1600);
+  let ambientClock=rand(300,450);
+  let sparkClock=rand(2200,3000);
   let sparkSide:"left"|"right"="right";
   let ringIndex=0;
 
@@ -36,7 +36,7 @@ export default function HeroParticleEngine(){
    const size=spark?rand(3.2,7.2):sizeProfile(isRing);
    const el=document.createElement("span");
    el.className=spark?"hero-live-ember hero-live-spark":"hero-live-ember";
-   Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,252,220,1) 0%,rgba(255,191,70,.98) 34%,rgba(255,91,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,231,174,1) 0%,rgba(255,139,24,.9) 40%,rgba(255,61,4,0) 100%)",boxShadow:spark?`0 0 ${Math.max(12,size*5.5)}px rgba(255,210,90,.95),0 0 ${Math.max(24,size*8)}px rgba(255,95,8,.55)`:`0 0 ${Math.max(6,size*3.2)}px rgba(255,116,15,.52),0 0 ${Math.max(10,size*5.2)}px rgba(255,58,3,.24)`,contain:"layout style paint"});
+   Object.assign(el.style,{position:"absolute",left:`${x}px`,top:`${y}px`,width:`${size}px`,height:`${size}px`,borderRadius:"50%",opacity:"0",background:spark?"radial-gradient(circle,rgba(255,252,220,1) 0%,rgba(255,191,70,.98) 34%,rgba(255,91,8,.78) 62%,rgba(255,50,0,0) 100%)":"radial-gradient(circle,rgba(255,231,174,1) 0%,rgba(255,139,24,.9) 40%,rgba(255,61,4,0) 100%)",boxShadow:spark?`0 0 ${Math.max(8,size*3.2)}px rgba(255,210,90,.78),0 0 ${Math.max(14,size*4.5)}px rgba(255,95,8,.38)`:`0 0 ${Math.max(4,size*2.2)}px rgba(255,116,15,.42),0 0 ${Math.max(7,size*3.4)}px rgba(255,58,3,.18)`,contain:"layout style paint"});
    const distance=spark?rand(40,88):isRing?rand(48,155):rand(35,135);
    const dx=Math.cos(angle)*distance;
    const dy=Math.sin(angle)*distance+(spark?rand(8,24):isRing?rand(10,36):rand(14,46));
@@ -72,8 +72,8 @@ export default function HeroParticleEngine(){
   const maintainRingOne=()=>{if(stopped)return;ringPoint(false,undefined,0,maintainRingOne);};
   for(let i=0;i<TARGET_RING_PARTICLES;i++)ringPoint(false,undefined,rand(0,12000),maintainRingOne);
 
-  const sparkBurst=()=>{const count=Math.floor(rand(20,31));for(let i=0;i<count;i++){const side=sparkSide;ringPoint(true,side);sparkSide=side==="right"?"left":"right";}};
-  const seedAmbient=()=>{const w=window.innerWidth,h=window.innerHeight;for(let i=0;i<220;i++){const x=rand(w*.06,w*.94),y=rand(h*.05,h*.94);if(y>h*.82&&Math.random()<.22)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,false,rand(0,12000));}};
+  const sparkBurst=()=>{const count=Math.floor(rand(8,14));for(let i=0;i<count;i++){const side=sparkSide;ringPoint(true,side);sparkSide=side==="right"?"left":"right";}};
+  const seedAmbient=()=>{const w=window.innerWidth,h=window.innerHeight;for(let i=0;i<110;i++){const x=rand(w*.06,w*.94),y=rand(h*.05,h*.94);if(y>h*.82&&Math.random()<.22)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false,false,rand(0,12000));}};
   seedAmbient();
   sparkBurst();
 
@@ -81,8 +81,8 @@ export default function HeroParticleEngine(){
    if(stopped)return;
    ambientClock-=16;
    sparkClock-=16;
-   if(sparkClock<=0){sparkBurst();sparkClock=rand(1900,2500);}
-   if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<3;a++){const w=window.innerWidth,h=window.innerHeight,x=rand(w*.06,w*.94),y=rand(h*.05,h*.94);if(y>h*.82&&Math.random()<.22)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(150,260);}
+   if(sparkClock<=0){sparkBurst();sparkClock=rand(2600,3300);}
+   if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<3;a++){const w=window.innerWidth,h=window.innerHeight,x=rand(w*.06,w*.94),y=rand(h*.05,h*.94);if(y>h*.82&&Math.random()<.22)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(320,480);}
    timer=window.setTimeout(()=>{raf=requestAnimationFrame(tick);},80);
   };
   raf=requestAnimationFrame(tick);
