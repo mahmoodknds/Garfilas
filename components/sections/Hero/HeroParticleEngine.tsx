@@ -102,15 +102,20 @@ export default function HeroParticleEngine() {
       if (!g) return image;
       const gradient = g.createRadialGradient(side / 2, side / 2, 0, side / 2, side / 2, side / 2);
       if (spark) {
+        // Match the original ember core and the wide, warm two-layer glow.
         gradient.addColorStop(0, "rgba(255,252,220,1)");
-        gradient.addColorStop(.12, "rgba(255,191,70,.98)");
-        gradient.addColorStop(.28, "rgba(255,91,8,.62)");
-        gradient.addColorStop(.5, "rgba(255,50,0,.16)");
+        gradient.addColorStop(.045, "rgba(255,191,70,.98)");
+        gradient.addColorStop(.16, "rgba(255,91,8,.78)");
+        gradient.addColorStop(.34, "rgba(255,95,8,.55)");
+        gradient.addColorStop(.58, "rgba(255,50,0,.24)");
+        gradient.addColorStop(.82, "rgba(255,50,0,.08)");
         gradient.addColorStop(1, "rgba(255,50,0,0)");
       } else {
         gradient.addColorStop(0, "rgba(255,231,174,1)");
-        gradient.addColorStop(.16, "rgba(255,139,24,.78)");
-        gradient.addColorStop(.36, "rgba(255,61,4,.28)");
+        gradient.addColorStop(.075, "rgba(255,139,24,.9)");
+        gradient.addColorStop(.22, "rgba(255,116,15,.52)");
+        gradient.addColorStop(.48, "rgba(255,58,3,.24)");
+        gradient.addColorStop(.76, "rgba(255,58,3,.08)");
         gradient.addColorStop(1, "rgba(255,61,4,0)");
       }
       g.fillStyle = gradient;
