@@ -78,12 +78,12 @@ export default function HeroParticleEngine(){
   let ringSeeded=0;
   let ambientSeeded=0;
   const seedInitialParticles=()=>{
-   // Spread startup DOM and Web Animations work across frames to avoid a load-time main-thread spike.
-   for(let i=0;i<18&&ringSeeded<TARGET_RING_PARTICLES;i++,ringSeeded++)ringPoint(false,undefined,rand(0,12000),maintainRingOne);
-   for(let i=0;i<32&&ambientSeeded<ambientSeeds.length;i++,ambientSeeded++){const p=ambientSeeds[ambientSeeded];make(p.x,p.y,rand(-Math.PI*.10,Math.PI*.10),false,false,p.phase);}
+   // Keep each frame's startup work small while preserving the final particle population and styling.
+   for(let i=0;i<6&&ringSeeded<TARGET_RING_PARTICLES;i++,ringSeeded++)ringPoint(false,undefined,rand(0,12000),maintainRingOne);
+   for(let i=0;i<12&&ambientSeeded<ambientSeeds.length;i++,ambientSeeded++){const p=ambientSeeds[ambientSeeded];make(p.x,p.y,rand(-Math.PI*.10,Math.PI*.10),false,false,p.phase);}
    if(ringSeeded<TARGET_RING_PARTICLES||ambientSeeded<ambientSeeds.length){raf=requestAnimationFrame(seedInitialParticles);return;}
-   sparkBurst();
-   raf=requestAnimationFrame(tick);
+   // Start the first expensive spark burst only after the initial particle population is ready.
+   window.setTimeout(()=>{if(!stopped){sparkBurst();raf=requestAnimationFrame(tick);}},180);
   };
 
   const tick=()=>{
