@@ -1,16 +1,71 @@
 import Image from "next/image";
 import styles from "./MenuSection.module.css";
 
-type MenuItem = { number: string; name: string; italian: string; description: string; tag: string };
+type MenuItem = {
+  number: string;
+  name: string;
+  italian: string;
+  description: string;
+  price: string;
+  tag?: string;
+};
 
 const items: MenuItem[] = [
-  { number: "01", name: "لازانیا گوشت", italian: "Lasagna alla Bolognese", description: "لایه‌های لازانیا با گوشت، سس مخصوص گارفیلاس و پنیر کش‌دار.", tag: "کلاسیک" },
-  { number: "02", name: "لازانیا اسفناج", italian: "Lasagna agli Spinaci", description: "ترکیب لطیف اسفناج با سس خامه‌ای و لایه‌های لازانیای تازه.", tag: "گیاهی" },
-  { number: "03", name: "لازانیا مرغ و اسفناج", italian: "Pollo e Spinaci", description: "مرغ لطیف و اسفناج در کنار سس مخصوص و پنیر ذوب‌شده.", tag: "VIP" },
-  { number: "04", name: "لازانیا ژامبون", italian: "Lasagna al Prosciutto", description: "لایه‌های لازانیا با ژامبون و ترکیب پنیرهای خوش‌طعم.", tag: "متفاوت" },
-  { number: "05", name: "لازانیا سبزیجات", italian: "Lasagna alle Verdure", description: "کدو، بادمجان و قارچ در ترکیبی خوش‌عطر و لایه‌لایه.", tag: "گیاهی" },
+  {
+    number: "01",
+    name: "گارفی",
+    italian: "Garfi",
+    description: "راسته گوساله چرخ‌شده، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر موزارلا و سس مخصوص گارفیلاس.",
+    price: "۱٬۰۱۵٬۰۰۰",
+    tag: "VIP",
+  },
+  {
+    number: "02",
+    name: "لازانیا بالویتا",
+    italian: "Bellavita",
+    description: "۴۰۰ گرم؛ لازانیا، اسفناج، گوشت ریزشده فیله مرغ، قارچ، فلفل دلمه‌ای، سس بالویتا، پنیر پستو، پنیر گودا و پنیر موزارلا.",
+    price: "۱٬۱۸۲٬۰۰۰",
+    tag: "VIP",
+  },
+  {
+    number: "03",
+    name: "مگنیفیکو",
+    italian: "Magnifico",
+    description: "راسته گوساله چرخ‌شده، بادمجان کبابی، کدو، قارچ، فلفل دلمه‌ای، سس مخصوص، پنیر پستو، پنیر گودا و پنیر موزارلا.",
+    price: "۱٬۳۰۰٬۰۰۰",
+    tag: "VIP",
+  },
+  {
+    number: "04",
+    name: "فیالدلفیا",
+    italian: "Philadelphia",
+    description: "ژامبون گوشت ۹۸٪، سس پنیر ایتالیایی، پنیر پستو، پنیر گودا و پنیر موزارلا.",
+    price: "۹۱۴٬۰۰۰",
+  },
+  {
+    number: "05",
+    name: "الگانزا",
+    italian: "Eleganza",
+    description: "بادمجان کبابی دودی، کدو، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر گودا و پنیر موزارلا.",
+    price: "۸۳۸٬۰۰۰",
+    tag: "وجترین",
+  },
+  {
+    number: "06",
+    name: "بلونیا",
+    italian: "Bologna",
+    description: "اسفناج، سس بلونیا با عصاره گوشت، فلفل دلمه‌ای، سیر، پنیر پستو، پنیر گودا و پنیر موزارلا.",
+    price: "۹۲۷٬۰۰۰",
+  },
+  {
+    number: "07",
+    name: "میکس",
+    italian: "Misto",
+    description: "ترکیبی از گارفی، فیالدلفیا، بلونیا و الگانزا.",
+    price: "۱٬۲۰۳٬۰۰۰",
+    tag: "میکس",
+  },
 ];
-
 
 export default function MenuSection() {
   return (
@@ -35,11 +90,13 @@ export default function MenuSection() {
                 <div className={styles.nameLine}>
                   <h3>{item.name}</h3>
                   <span className={styles.leader} aria-hidden="true" />
-                  <span className={styles.price}>قیمت به‌زودی</span>
+                  <span className={styles.price}>{item.price}</span>
                 </div>
                 <div className={styles.meta}>
                   <span className={styles.italian} dir="ltr">{item.italian}</span>
-                  <span className={item.tag === "VIP" ? `${styles.tag} ${styles.vipTag}` : styles.tag}>{item.tag}</span>
+                  {item.tag && (
+                    <span className={item.tag === "VIP" ? `${styles.tag} ${styles.vipTag}` : styles.tag}>{item.tag}</span>
+                  )}
                 </div>
                 <p className={styles.description}>{item.description}</p>
               </div>
@@ -47,7 +104,6 @@ export default function MenuSection() {
             </li>
           ))}
         </ul>
-        <p className={styles.note}>جزئیات و قیمت نهایی محصولات پس از تکمیل منو نمایش داده می‌شود.</p>
       </div>
     </section>
   );
