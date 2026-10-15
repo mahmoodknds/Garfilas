@@ -94,7 +94,7 @@ export default function HeroParticleEngine(){
    if(ambientClock<=0){let made=0;for(let a=0;a<10&&made<3;a++){const w=window.innerWidth,h=window.innerHeight,x=rand(w*.06,w*.94),y=rand(h*.05,h*.94);if(y>h*.82&&Math.random()<.22)continue;make(x,y,rand(-Math.PI*.10,Math.PI*.10),false);made++;}ambientClock=rand(150,260);}
    timer=window.setTimeout(()=>{raf=requestAnimationFrame(tick);},80);
   };
-  raf=requestAnimationFrame(tick);
+  raf=requestAnimationFrame(seedInitialParticles);
 
   return()=>{stopped=true;cancelAnimationFrame(raf);clearTimeout(timer);for(const e of embers)e.animation.cancel();layer.remove();};
  },[]);
