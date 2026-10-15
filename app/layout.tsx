@@ -1,35 +1,35 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { cormorantGaramond, greatVibes, vazirmatn } from "./fonts";
+import { cormorantGaramond, greatVibes, notoNaskhArabic, vazirmatn } from "./fonts";
 import HeroParticleEngine from "@/components/sections/Hero/HeroParticleEngine";
 import { siteUrl } from "@/config/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Garfilas | Premium Lasagna",
-    template: "%s | Garfilas",
+    default: "Garfilaz | Premium Lasagna",
+    template: "%s | Garfilaz",
   },
   description:
-    "Discover Garfilas, an Italian-inspired lasagna experience made for memorable meals.",
-  applicationName: "Garfilas",
+    "Discover Garfilaz, an Italian-inspired lasagna experience made for memorable meals.",
+  applicationName: "Garfilaz",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     url: "/",
-    siteName: "Garfilas",
-    title: "Garfilas | Premium Lasagna",
+    siteName: "Garfilaz",
+    title: "Garfilaz | Premium Lasagna",
     description:
-      "Discover Garfilas, an Italian-inspired lasagna experience made for memorable meals.",
+      "Discover Garfilaz, an Italian-inspired lasagna experience made for memorable meals.",
     locale: "fa_IR",
   },
   twitter: {
     card: "summary",
-    title: "Garfilas | Premium Lasagna",
+    title: "Garfilaz | Premium Lasagna",
     description:
-      "Discover Garfilas, an Italian-inspired lasagna experience made for memorable meals.",
+      "Discover Garfilaz, an Italian-inspired lasagna experience made for memorable meals.",
   },
 };
 
@@ -40,7 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fa">
-      <body className={[cormorantGaramond.variable, greatVibes.variable, vazirmatn.variable].join(" ")}>
+      <body className={[cormorantGaramond.variable, greatVibes.variable, notoNaskhArabic.variable, vazirmatn.variable].join(" ")}>
         <HeroParticleEngine />
         {children}
       </body>
