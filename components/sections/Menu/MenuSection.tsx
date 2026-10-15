@@ -77,7 +77,7 @@ export default function MenuSection() {
       <div className={styles.content}>
         <header className={styles.header}>
           <span className={styles.eyebrow}>IL NOSTRO MENÙ</span>
-          <h2 id="menu-title" className={styles.title}>گارفیلاز ضمانت برگشت وجه دارد</h2>
+          <h2 id="menu-title" className={styles.title}>گارفیلاز ضمانت برگشت وجه دارد!</h2>
           <p className={styles.subtitle}>هر لایه، یک تجربه‌ی تازه</p>
         </header>
 
