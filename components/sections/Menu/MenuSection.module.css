@@ -53,8 +53,11 @@
 .subtitle { margin: .2rem 0 1.1rem; color: #d6b998; font: 400 .82rem/1.8 var(--font-vazirmatn), sans-serif; }
 
 .menuList { display: grid; gap: .85rem; list-style: none; margin: .35rem 0 0; padding: 0; }
-.item { --item-index: 0; position: relative; display: grid; grid-template-columns: 2.15rem minmax(0,1fr) 1rem; align-items: center; gap: .65rem; min-width: 0; padding: 1rem .8rem; overflow: hidden; border: 1px solid rgba(255,106,0,.9); border-radius: 1.35rem; outline: 1px solid rgba(255,91,0,.16); outline-offset: -6px; background: linear-gradient(135deg, rgba(255,255,255,.025), rgba(255,255,255,0) 45%), rgba(7,5,4,.72); box-shadow: 0 0 7px rgba(255,91,0,.42), 0 0 18px rgba(255,91,0,.12), inset 0 0 8px rgba(255,91,0,.08); animation: menu-enter .55s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--item-index) * 65ms); }
- .item::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(118deg, transparent 22%, rgba(255,255,255,.055) 39%, rgba(255,236,200,.018) 45%, transparent 58%); opacity: .75; }
+.item { --item-index: 0; position: relative; display: grid; grid-template-columns: 2.15rem minmax(0,1fr) 1rem; align-items: center; gap: .65rem; min-width: 0; padding: 1rem .8rem; overflow: hidden; border: 1px solid rgba(255,106,0,.9); border-radius: 1.35rem; outline: 1px solid rgba(255,91,0,.16); outline-offset: -6px; background: linear-gradient(135deg, rgba(255,255,255,.025), rgba(255,255,255,0) 45%), rgba(7,5,4,.72); box-shadow: 0 0 7px rgba(255,91,0,.42), 0 0 18px rgba(255,91,0,.12), inset 0 0 8px rgba(255,91,0,.08); transition: border-color .35s ease, box-shadow .35s ease; }
+ .revealReady:not(.revealVisible) { opacity: 0; transform: translateY(24px) scale(.985); }
+.revealVisible { animation: menu-scroll-reveal .72s cubic-bezier(.2,.75,.25,1) both; }
+@keyframes menu-scroll-reveal { from { opacity: 0; transform: translateY(24px) scale(.985); filter: brightness(.82); } to { opacity: 1; transform: translateY(0) scale(1); filter: brightness(1); } }
+.item::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(118deg, transparent 22%, rgba(255,255,255,.055) 39%, rgba(255,236,200,.018) 45%, transparent 58%); opacity: .75; }
 .number { align-self: start; padding-top: .2rem; color: rgba(255,217,160,.42); font: 400 1.15rem/1.2 "Cormorant Garamond", Georgia, serif; direction: ltr; text-shadow: 0 0 5px rgba(255,106,0,.12); }
 .details { min-width: 0; position: relative; }
 .nameLine { display: flex; align-items: baseline; gap: .4rem; min-width: 0; }
@@ -94,4 +97,4 @@
   .price { margin-inline-start: 0; }
   .description { font-size: .68rem; }
 }
-@media (prefers-reduced-motion: reduce) { .item { animation: none; } .vipTag { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .revealReady:not(.revealVisible) { opacity: 1; transform: none; } .revealVisible { animation: none; } .vipTag { animation: none; } }
