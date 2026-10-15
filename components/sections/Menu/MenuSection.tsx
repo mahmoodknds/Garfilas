@@ -15,7 +15,7 @@ const items: MenuItem[] = [
     number: "01",
     name: "گارفی",
     italian: "Garfi",
-    description: "400گرم؛ راسته گوساله چرخ‌شده، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر موزارلا و سس مخصوص گارفیلاس.",
+    description: "400گرم؛ راسته گوساله چرخ‌شده، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر موزارلا و سس مخصوص گارفیلاز.",
     price: "1,015,000",
     tag: "VIP",
   },
@@ -77,7 +77,7 @@ export default function MenuSection() {
       <div className={styles.content}>
         <header className={styles.header}>
           <span className={styles.eyebrow}>IL NOSTRO MENÙ</span>
-          <h2 id="menu-title" className={styles.title}>منوی گارفیلاس</h2>
+          <h2 id="menu-title" className={styles.title}>گارفیلاز ضمانت برگشت وجه دارد</h2>
           <p className={styles.subtitle}>هر لایه، یک تجربه‌ی تازه</p>
         </header>
 
