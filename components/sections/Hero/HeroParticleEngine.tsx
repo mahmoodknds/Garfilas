@@ -185,7 +185,7 @@ export default function HeroParticleEngine() {
       const y = p.y + p.dy * ease + p.driftY * t;
       const scale = t < .12 ? interpolate(.45, 1, t / .12) : interpolate(1, p.scaleEnd, Math.max(0, (t - .12) / .88));
       const image = sprite(p.spark, p.size);
-      const glowSize = p.size * (p.spark ? 7.2 : 5.8) * scale;
+      const glowSize = p.size * (p.spark ? 15.5 : 10.8) * scale;
       ctx.globalAlpha = Math.max(0, alpha);
       ctx.drawImage(image, x - glowSize / 2, y - glowSize / 2, glowSize, glowSize);
     };
