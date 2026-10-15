@@ -63,7 +63,6 @@ const items: MenuItem[] = [
     italian: "Misto",
     description: "400گرم؛ ترکیبی از گارفی، فیالدلفیا، بلونیا و الگانزا.",
     price: "1,203,000",
-    tag: "میکس",
   },
 ];
 
@@ -95,7 +94,7 @@ export default function MenuSection() {
                 <div className={styles.meta}>
                   <span className={styles.italian} dir="ltr">{item.italian}</span>
                   {item.tag && (
-                    <span className={item.tag === "VIP" ? `${styles.tag} ${styles.vipTag}` : styles.tag}>{item.tag}</span>
+                    <span className={item.tag === "VIP" || item.tag === "وجترین" ? `${styles.tag} ${styles.vipTag}` : styles.tag}>{item.tag}</span>
                   )}
                 </div>
                 <p className={styles.description}>{item.description}</p>
