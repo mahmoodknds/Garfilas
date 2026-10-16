@@ -734,3 +734,15 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - Preview HTML confirms the Hero → Menu → Cart document order, the `#cart` target, and all seven add-to-cart controls.
 - Real-browser mobile/desktop visual and interaction checks remain outstanding.
 - This is not merged into `main` and is not a Production deployment.
+
+
+## 2026-10-16 Menu Quantity Stepper and Contextual Bottom Navigation
+
+### Implemented on `feature/cart-section`
+
+- Replaced the separate add-to-cart button with a per-product plus/count/minus stepper directly beneath each menu price.
+- The stepper reflects shared cart state: plus increments, minus decrements, and reaching zero removes the product from Cart.
+- The fixed center navigation displays a count badge when Cart is not the visible section.
+- When Cart enters the viewport, the center control changes to Menu if the cart is empty, or Payment if it contains items.
+- The Payment control scrolls to the order summary anchor; payment/checkout itself remains unimplemented.
+- Preserved the center button's locked position, existing fixed navigation frame, Hero geometry and approved palette.
