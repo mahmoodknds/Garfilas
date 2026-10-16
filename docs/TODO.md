@@ -373,7 +373,7 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [x] Add responsive empty-cart, item list, quantity/removal controls, and subtotal summary.
 - [x] Confirm GitHub Actions lint/build for the feature branch (run #200 passed).
 - [ ] Inspect preview on mobile and desktop: menu-to-cart scroll, safe-area spacing, fixed navigation overlap, and reduced-motion behavior.
-- [ ] Do not describe this change as merged or deployed until checks and the merge are verified.
+- [x] Verify the Cart feature was merged and deployed after checks; merge commit `bb97a5f980e4c4f6cce4637fd20aad387f60c953` reached Production READY.
 
 
 ## Quantity/navigation refinement (2026-10-16)
@@ -410,4 +410,5 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [x] Add the order notes field and requested invoice rows.
 - [ ] Confirm packaging, delivery and tax rates before turning the provisional amount into a final amount payable.
 - [ ] Connect order notes to order submission when a backend order flow is implemented.
-- [ ] Run CI and Vercel Preview/Production verification and inspect responsive behavior before accepting the release.
+- [x] GitHub Actions lint/build and Vercel Preview/Production deployment verified for PR #17 (merge commit `8ab153d0d54140ed5ec8897d4233756a21d1cbcf`).
+- [ ] Complete real-browser responsive and interaction review on mobile and desktop.
