@@ -16,6 +16,8 @@ export type CartProduct = {
   italian: string;
   description: string;
   price: number;
+  originalPrice?: number;
+  discountPercent?: number;
   tag?: string;
 };
 
@@ -27,6 +29,7 @@ type CartContextValue = {
   items: CartItem[];
   itemCount: number;
   subtotal: number;
+  discountTotal: number;
   hydrated: boolean;
   addItem: (product: CartProduct) => void;
   setQuantity: (id: string, quantity: number) => void;
@@ -49,6 +52,15 @@ function isCartItem(value: unknown): value is CartItem {
     typeof item.price === "number" &&
     Number.isFinite(item.price) &&
     item.price >= 0 &&
+    (item.originalPrice === undefined ||
+      (typeof item.originalPrice === "number" &&
+        Number.isFinite(item.originalPrice) &&
+        item.originalPrice >= item.price)) &&
+    (item.discountPercent === undefined ||
+      (typeof item.discountPercent === "number" &&
+        Number.isInteger(item.discountPercent) &&
+        item.discountPercent > 0 &&
+        item.discountPercent <= 100)) &&
     typeof item.quantity === "number" &&
     Number.isInteger(item.quantity) &&
     item.quantity > 0
@@ -98,7 +110,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (existing) {
         return current.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, ...product, quantity: item.quantity + 1 }
             : item,
         );
       }
@@ -135,12 +147,22 @@ export function CartProvider({ children }: { children: ReactNode }) {
     () => items.reduce((total, item) => total + item.price * item.quantity, 0),
     [items],
   );
+  const discountTotal = useMemo(
+    () =>
+      items.reduce(
+        (total, item) =>
+          total + Math.max(0, (item.originalPrice ?? item.price) - item.price) * item.quantity,
+        0,
+      ),
+    [items],
+  );
 
   const value = useMemo(
     () => ({
       items,
       itemCount,
       subtotal,
+      discountTotal,
       hydrated,
       addItem,
       setQuantity,
@@ -151,6 +173,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       items,
       itemCount,
       subtotal,
+      discountTotal,
       hydrated,
       addItem,
       setQuantity,
