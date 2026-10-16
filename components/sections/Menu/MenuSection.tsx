@@ -1,13 +1,14 @@
 import Image from "next/image";
 import styles from "./MenuSection.module.css";
 import MenuScrollReveal from "./MenuScrollReveal";
+import MenuQuantityControl from "./MenuQuantityControl";
 
 type MenuItem = {
   number: string;
   name: string;
   italian: string;
   description: string;
-  price: string;
+  price: number;
   tag?: string;
 };
 
@@ -17,7 +18,7 @@ const items: MenuItem[] = [
     name: "گارفی",
     italian: "Garfi",
     description: "400گرم؛ راسته گوساله چرخ‌شده، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر موزارلا و سس مخصوص گارفیلاز.",
-    price: "1,015,000",
+    price: 1015000,
     tag: "VIP",
   },
   {
@@ -25,7 +26,7 @@ const items: MenuItem[] = [
     name: "بلاویتا",
     italian: "Bellavita",
     description: "400گرم؛ اسفناج، گوشت ریزشده فیله مرغ، قارچ، فلفل دلمه‌ای، سس بالویتا، پنیر پستو، پنیر گودا و پنیر موزارلا.",
-    price: "1,182,000",
+    price: 1182000,
     tag: "VIP",
   },
   {
@@ -33,7 +34,7 @@ const items: MenuItem[] = [
     name: "مگنیفیکو",
     italian: "Magnifico",
     description: "400گرم؛ راسته گوساله چرخ‌شده، بادمجان کبابی، کدو، قارچ، فلفل دلمه‌ای، سس مخصوص، پنیر پستو، پنیر گودا و پنیر موزارلا.",
-    price: "1,300,000",
+    price: 1300000,
     tag: "VIP",
   },
   {
@@ -41,14 +42,14 @@ const items: MenuItem[] = [
     name: "فیالدلفیا",
     italian: "Philadelphia",
     description: "400گرم؛ ژامبون گوشت ۹۸٪، سس پنیر ایتالیایی، پنیر پستو، پنیر گودا و پنیر موزارلا.",
-    price: "914,000",
+    price: 914000,
   },
   {
     number: "05",
     name: "الگانزا",
     italian: "Eleganza",
     description: "400گرم؛ بادمجان کبابی دودی، کدو، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر گودا و پنیر موزارلا.",
-    price: "838,000",
+    price: 838000,
     tag: "وجترین",
   },
   {
@@ -56,14 +57,14 @@ const items: MenuItem[] = [
     name: "بلونیا",
     italian: "Bologna",
     description: "400گرم؛ اسفناج، سس بلونیا با عصاره گوشت، فلفل دلمه‌ای، سیر، پنیر پستو، پنیر گودا و پنیر موزارلا.",
-    price: "927,000",
+    price: 927000,
   },
   {
     number: "07",
     name: "میکس",
     italian: "Misto",
     description: "400گرم؛ ترکیبی از گارفی، فیالدلفیا، بلونیا و الگانزا.",
-    price: "1,203,000",
+    price: 1203000,
   },
 ];
 
@@ -96,7 +97,20 @@ export default function MenuSection() {
                 <div className={styles.nameLine}>
                   <h3>{item.name}</h3>
                   <span className={styles.leader} aria-hidden="true" />
-                  <span className={styles.price} dir="ltr">T {item.price}</span>
+                  <div className={styles.priceBlock}>
+                    <span className={styles.price} dir="ltr">T {item.price.toLocaleString("en-US")}</span>
+                    <MenuQuantityControl
+                      className={styles.menuQuantityControl}
+                      product={{
+                        id: item.number,
+                        name: item.name,
+                        italian: item.italian,
+                        description: item.description,
+                        price: item.price,
+                        ...(item.tag ? { tag: item.tag } : {}),
+                      }}
+                    />
+                  </div>
                 </div>
                 <div className={styles.meta}>
                   <span className={styles.italian} dir="ltr">{item.italian}</span>
@@ -105,6 +119,7 @@ export default function MenuSection() {
                   )}
                 </div>
                 <p className={styles.description}>{item.description}</p>
+
               </div>
               <span className={styles.mark} aria-hidden="true">✦</span>
             </MenuScrollReveal>

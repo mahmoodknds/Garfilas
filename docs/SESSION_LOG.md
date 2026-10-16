@@ -708,3 +708,41 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - Treat this as a quality-assurance pass, not permission for a redesign or broad refactor.
 - Preserve approved CTA animation, particle density/timing, Hero anchor positions, and Bottom Navigation geometry unless a reproducible defect is found.
 - Keep the dormant Menu prototype and future commerce/account features out of the active homepage scope.
+
+
+## 2026-10-16 Inline Cart Section Implementation
+
+### Implemented on `feature/cart-section`
+
+- Added a shared `CartProvider` based on React Context with localStorage persistence and no additional dependency.
+- Added a client-side add-to-cart button to each active Menu item.
+- Added `CartSection` directly below `MenuSection` in `app/page.tsx`.
+- The existing fixed center Bottom Navigation link targets `#cart`; the section uses that anchor, with native smooth-scroll behavior inherited from the global stylesheet.
+- Added empty/loading states, item quantity adjustments, removal, item count, subtotal, and responsive dark orange/gold styling.
+- Preserved the fixed Bottom Navigation geometry and the existing Hero visual implementation.
+
+### Documentation reconciliation
+
+- Updated current architecture and project overview to distinguish the active `MenuSection.tsx` from the older, dormant `MenuProductCard.tsx`/`MenuCardFrame.tsx` prototype.
+- Synced documented Next.js version to `package.json` (16.4.0) and recorded the inline Cart decision in ADR-032.
+- Marked checkout, payment, server-side order submission, coupon, and customer notes as not implemented.
+
+### Verification and release boundary
+
+- Source was committed to the feature branch through GitHub.
+- GitHub Actions Build verification run #200 passed lint and production build; the Vercel Preview reached READY.
+- Preview HTML confirms the Hero → Menu → Cart document order, the `#cart` target, and all seven add-to-cart controls.
+- Real-browser mobile/desktop visual and interaction checks remain outstanding.
+- This is not merged into `main` and is not a Production deployment.
+
+
+## 2026-10-16 Menu Quantity Stepper and Contextual Bottom Navigation
+
+### Implemented on `feature/cart-section`
+
+- Replaced the separate add-to-cart button with a per-product plus/count/minus stepper directly beneath each menu price.
+- The stepper reflects shared cart state: plus increments, minus decrements, and reaching zero removes the product from Cart.
+- The fixed center navigation displays a count badge when Cart is not the visible section.
+- When Cart enters the viewport, the center control changes to Menu if the cart is empty, or Payment if it contains items.
+- The Payment control scrolls to the order summary anchor; payment/checkout itself remains unimplemented.
+- Preserved the center button's locked position, existing fixed navigation frame, Hero geometry and approved palette.

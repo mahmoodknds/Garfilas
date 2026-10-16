@@ -11,8 +11,8 @@ Only unfinished work belongs here. Completed work is recorded in the session/cha
 - Version: v0.1.0
 - Sprint: 0.4
 - Milestone: Landing Page MVP
-- Current priority: **First-page Hero visual completion**
-- Last Updated: 2026-10-09
+- Current priority: **Validate the inline Cart section and keep the approved Hero stable**
+- Last Updated: 2026-10-16
 
 # HIGH PRIORITY
 
@@ -175,7 +175,7 @@ Status: 🟡 In Progress
 
 Status: ⚪ Planned
 
-These remain out of the current Hero-calibration scope. A menu-card prototype exists under `components/sections/Menu/`, but it is not mounted by the homepage and is not production-ready.
+The active homepage now includes Menu and an inline Cart section. The remaining systems below are genuinely future work; the older `MenuProductCard.tsx`/`MenuCardFrame.tsx` visual prototype is still not mounted.
 
 ## Menu
 - [ ] Categories
@@ -185,12 +185,19 @@ These remain out of the current Hero-calibration scope. A menu-card prototype ex
 - [ ] Filters
 - [ ] Sorting
 
-## Shopping Cart
-- [ ] Cart Store
-- [ ] Cart Drawer
-- [ ] Quantity Controls
+## Shopping Cart (inline section)
+- [x] Shared cart state using React Context
+- [x] Persist cart items in localStorage
+- [x] Add and remove quantities directly beneath each active Menu product price using +/− and a shared quantity counter
+- [x] Quantity controls and item removal
+- [x] Item count and subtotal summary
+- [x] Inline Cart section beneath Menu; fixed navigation scrolls to `#cart`
+- [x] Show selected quantity badge on the center navigation while outside Cart
+- [x] Change the center navigation to Menu when Cart is empty and Payment when it contains items
+- [ ] Confirm the Payment action's anchor behavior on long carts; real checkout/payment integration remains future work
 - [ ] Coupon
-- [ ] Notes
+- [ ] Customer notes
+- [ ] Browser/device acceptance for cart interactions and the #cart scroll target
 
 ## Checkout
 - [ ] Address
@@ -234,7 +241,7 @@ Status: 🟢 **Synchronized**
 
 # Repository Cleanup (2026-10-09)
 
-- [x] Reconcile `docs/PROJECT_STRUCTURE.md` with the active route tree and dormant Menu prototype; the temporary `/blank` route has been removed.
+- [x] Reconcile `docs/PROJECT_STRUCTURE.md` with the active Hero → Menu → Cart page composition; the temporary `/blank` route has been removed.
 - [x] Remove `public/assets/menu/garfilas-card-frame.webp`, confirmed unused because `MenuCardFrame.tsx` renders the frame as SVG.
 - [x] Update architecture notes to remove references to the deleted `lib/` and `components/layout/` directories and deleted standalone animation stylesheet.
 - [x] Extract the embedded wordmark raster to PNG and switch to responsive `next/image` delivery without visual redesign.
@@ -349,10 +356,30 @@ This section supersedes older deployment-status entries above where they refer t
 - Fix only issues reproduced during inspection; do not refactor for tidiness alone.
 - Preserve approved Hero geometry, CTA animation, particle density/timing, and Bottom Navigation geometry.
 - Do not recreate the temporary `/blank` route.
-- Do not treat the dormant Menu prototype as shipped functionality.
+- Treat `MenuSection.tsx` as the active menu. Only the separate `MenuProductCard.tsx`/`MenuCardFrame.tsx` pair remains a dormant prototype.
 - Do not change DNS or assume `garfilas.ir` is live merely because it is configured as the canonical URL.
 - Do not convert to static export before checking Next.js runtime needs and host Node.js support.
 
 ## Exact next task
 
 Perform the final browser/device and performance QA pass on the current deployed source, document reproducible defects, and only then decide whether source changes are needed. Hosting migration follows after the panel/runtime check.
+
+
+## Current implementation checkpoint (2026-10-16)
+
+- [x] Place `CartSection` directly below `MenuSection` on the homepage.
+- [x] Use the existing fixed Bottom Navigation link to scroll to `#cart`; keep navigation geometry unchanged.
+- [x] Connect menu products to shared client cart state and localStorage.
+- [x] Add responsive empty-cart, item list, quantity/removal controls, and subtotal summary.
+- [x] Confirm GitHub Actions lint/build for the feature branch (run #200 passed).
+- [ ] Inspect preview on mobile and desktop: menu-to-cart scroll, safe-area spacing, fixed navigation overlap, and reduced-motion behavior.
+- [ ] Do not describe this change as merged or deployed until checks and the merge are verified.
+
+
+## Quantity/navigation refinement (2026-10-16)
+
+- [x] Place a plus button, count, and minus button directly below each Menu price.
+- [x] Keep each stepper synchronized with the shared cart, including persisted quantities.
+- [x] Add a dynamic count badge to the center cart button.
+- [x] Switch center navigation to Menu in an empty Cart and Payment in a non-empty Cart.
+- [ ] Test the contextual navigation transitions on mobile and desktop using the Preview deployment.

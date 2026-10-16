@@ -894,6 +894,44 @@ Run a bounded, evidence-based quality pass before further design or architecture
 **Consequences**
 - Preserve accepted visual geometry and animation unless testing identifies a real defect.
 - Do not infer domain connectivity or SSL from `config/site.ts`.
-- Keep Menu/cart/checkout/authentication scope deferred until the landing page and deployment baseline are accepted.
+- Historical deferral as of 2026-10-10. Superseded for Menu and inline Cart by ADR-032 (2026-10-16); checkout and authentication remain deferred.
 
-Last Updated: 2026-10-10
+Last Updated: 2026-10-16
+
+
+## ADR-032: Inline Cart Section and Lightweight Shared State (2026-10-16)
+
+**Status:** Accepted
+
+**Context**
+
+The product owner requested that Cart appear immediately below Menu on the same page, and that the fixed Bottom Navigation cart control scroll to that section instead of navigating to a separate route.
+
+**Decision**
+
+- Keep the homepage section order as Hero → Menu → Cart.
+- Render Cart as an in-page section with `id="cart"`; the fixed center navigation control targets `#cart` and uses the existing global smooth-scroll behavior.
+- Use a small React Context provider for shared client-side cart state and localStorage persistence. Do not add Zustand, another state package, a database, or an API for this phase.
+- Support adding Menu products, updating quantity, removing items, and calculating the current subtotal.
+- Preserve the dark luxury palette, mobile-first layout, accessible controls, reduced-motion support, and the calibrated Bottom Navigation geometry.
+- Keep checkout, payment, server-side order submission, coupon entry, and customer notes outside this scope.
+
+**Consequences**
+
+- The inline Cart is part of the active homepage, not a new `/cart` route.
+- Build/lint checks and a responsive browser preview must pass before merge and release.
+- The 2026-10-10 deferral of Menu/Cart was historical and is superseded only to the extent described above.
+
+
+## ADR-033: Menu Quantity Stepper and Contextual Center Navigation (2026-10-16)
+
+**Status:** Accepted
+
+**Decision**
+
+- Place each menu item's plus button, current quantity, and minus button directly beneath its displayed price.
+- Derive each count from the shared cart state: plus increments; minus decrements and removes the product at zero.
+- Outside the Cart section, the fixed center control remains the Cart action and shows the total selected quantity as a badge when non-zero.
+- While the Cart section is visible, the center control changes to Menu when empty and Payment when it contains at least one selected unit.
+- Menu targets `#menu`; Payment targets `#cart-summary` while an actual checkout/payment flow remains out of scope.
+- Preserve the center control's measured position and existing navigation frame.

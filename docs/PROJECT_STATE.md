@@ -25,11 +25,11 @@ Verification state:
 - Milestone: Landing Page MVP
 - Repository: GitHub / `main`
 - Status: Active Development
-- Last Updated: 2026-10-09
+- Last Updated: 2026-10-16
 
 ## Current Objective
 
-Finish the first-page Hero and make its visual output match the supplied mobile reference as closely as possible before expanding the website.
+Preserve the approved Hero composition while building the active Menu → Cart ordering flow on the same scrollable homepage. The Cart section belongs directly below Menu and is reached from the fixed center navigation control.
 
 ## Current Hero Implementation
 
@@ -178,8 +178,8 @@ Latest change:
 
 1. Verify the current homepage in a real browser on mobile and desktop.
 2. Verify Next.js optimized delivery for the 1.4 MB wordmark source without changing its appearance.
-3. Continue source-backed asset and CSS audits; preserve the dormant Menu prototype until its activation is in scope.
-4. Finalize foreground Hero acceptance before expanding scope.
+3. Preserve the active Menu section and shared cart behavior while checking responsive layout.
+4. Finalize foreground Hero acceptance as a parallel visual QA task; do not treat it as a blocker for the requested inline Cart scope.
 5. Verify the deployed commit SHA before accepting visual changes; do not create trigger-only commits.
 
 ## Source of Truth
@@ -228,3 +228,13 @@ This section supersedes older deployment/status statements above where they desc
 4. Review font/image loading and Lighthouse/performance findings; fix only evidence-backed issues.
 5. Verify `robots.txt`, `sitemap.xml`, canonical URL, DNS, and SSL once the intended host is connected.
 6. Confirm host capabilities, then prepare the correct deployment method.
+
+
+## 2026-10-16 Current Cart Implementation State
+
+- The homepage order is Hero → Menu → Cart. Cart is a section in `app/page.tsx`, not a standalone route.
+- The fixed center navigation item already targets `#cart`; adding the section's matching ID enables native smooth scrolling without changing its locked geometry.
+- Menu items now expose an add-to-cart control. Shared state is managed by `components/sections/Cart/CartProvider.tsx` and persisted in localStorage.
+- The cart section supports empty/loading states, quantity adjustments, item removal, item count, and subtotal.
+- Checkout, payment, customer notes, coupon entry, backend order storage, and order confirmation are not implemented.
+- This source update is on `feature/cart-section`. GitHub Actions Build verification run #200 passed lint and production build; Vercel Preview reached READY. Real-browser responsive/interaction acceptance, merge, and Production release remain pending.
