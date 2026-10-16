@@ -87,7 +87,7 @@ export default function CartSection() {
                         <div className={styles.itemPrice}>
                           {item.originalPrice && item.originalPrice > item.price && (
                             <span className={styles.itemOriginalPrice}>
-                              {formatAmount(item.originalPrice)} تومان
+                              {formatAmount(item.originalPrice * item.quantity)} تومان
                             </span>
                           )}
                           <strong>{formatAmount(item.price * item.quantity)} <small>تومان</small></strong>
@@ -114,7 +114,7 @@ export default function CartSection() {
               <h3>صورت‌حساب</h3>
               <div className={styles.summaryLine}>
                 <span>جمع سفارش‌ها ({formatAmount(itemCount)} عدد)</span>
-                <strong>{formatAmount(subtotal)} تومان</strong>
+                <strong>{formatAmount(subtotal + discountTotal)} تومان</strong>
               </div>
               <div className={styles.summaryLine}>
                 <span>جمع تخفیف‌ها</span>
