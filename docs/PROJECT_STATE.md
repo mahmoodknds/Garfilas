@@ -299,3 +299,16 @@ This is the authoritative state for the latest menu layout and empty-cart intera
 - The original price retains the same type treatment and uses a diagonal pseudo-element strike. The offer badge is percentage-only glass styling.
 - The empty-cart state is a small, text-only glass toast dismissed by any page click or Escape, without a full-screen dimming overlay.
 - Real-device/browser visual comparison remains unperformed; the UI release is build-verified but still benefits from responsive visual QA.
+
+
+## 2026-10-17 Menu and Cart Visual / Invoice Refinement
+
+- Enlarged the percentage-only glass discount ribbon and strengthened its gold glow and glossy sweep.
+- The original price is now subdued and smaller; its strike overlay crosses the number only, not the separate `T` prefix. The discounted price has no `T` prefix and has clear spacing from the original price.
+- Moved each item's star and quantity control immediately below its price row.
+- Displayed menu and cart row numbers without leading zeroes while preserving stable internal product IDs.
+- Integrated the cart count into the center cart button beneath the cart icon, using matching gold typography and glow. Enlarged the «پرداخت» label slightly.
+- Removed the excess vertical space between Menu and Cart.
+- Added packaging at 40,000 toman per dish. Tax is calculated as 10% of the discounted food subtotal plus packaging. The invoice total includes discounted food, packaging and tax.
+- Delivery remains undetermined and is excluded from the displayed amount until a delivery rate is set. Removed the message and secondary button beneath the payable total.
+- Build and production-preview verification for this refinement: pending at the time of this note. Real-device visual QA is not claimed.
