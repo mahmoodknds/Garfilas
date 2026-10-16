@@ -763,3 +763,22 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 
 - Source changes are on `feature/cart-controls-polish`; Preview build and interactive visual review are pending.
 - The Payment label still scrolls to the order summary; payment processing is not implemented.
+
+
+## 2026-10-17 Menu Pricing and Cart Invoice Refinement
+
+### Implemented on `feature/cart-bill-empty-modal`
+
+- Restored the Menu name–leader–price row alignment and added a diagonal original-price strike with a gold 50% discount ribbon for Garfi. Its discounted price is used by the shared cart and discount totals.
+- Added a three-chevron downward scroll cue at the end of the Menu.
+- Removed the full empty-cart screen. The Cart section collapses when empty; selecting the fixed cart button opens a glass-style dialog reading «سبد خرید هنوز خالی است».
+- Refined the cart count typography to better match the cart icon and display the exact English-numeral count.
+- Rebuilt cart line items as compact product-style cards without descriptions and increased plus/minus controls in both Menu and Cart.
+- Added the order notes field and the requested invoice lines: order total/count, total discounts, packaging, delivery, tax, and payable amount.
+- Packaging, delivery and tax have no confirmed rates, so the invoice explicitly marks those lines as undetermined and the displayed payable amount as provisional, without inventing charges.
+- Updated saved Garfi cart entries to reflect the demonstration 50% offer.
+
+### Verification boundary
+
+- GitHub source changes are complete on the review branch; GitHub Actions, Preview build, responsive/interaction review, merge and Production deployment remain pending.
+- The order notes field is UI-only for now; it is not submitted to an order backend.
