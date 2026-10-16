@@ -79,7 +79,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (saved) {
         const parsed: unknown = JSON.parse(saved);
         if (Array.isArray(parsed)) {
-          restoredItems = parsed.filter(isCartItem);
+          restoredItems = parsed.filter(isCartItem).map((item) =>
+            item.id === "01" && item.originalPrice === undefined
+              ? {
+                  ...item,
+                  originalPrice: item.price,
+                  discountPercent: 50,
+                  price: Math.round(item.price * 0.5),
+                }
+              : item,
+          );
         }
       }
     } catch {
