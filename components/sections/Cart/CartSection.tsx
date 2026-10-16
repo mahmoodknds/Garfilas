@@ -95,7 +95,7 @@ export default function CartSection() {
               ))}
             </ul>
 
-            <aside className={styles.summary} aria-label="خلاصه سفارش">
+            <aside id="cart-summary" className={styles.summary} aria-label="خلاصه سفارش">
               <h3>خلاصه سفارش</h3>
               <div className={styles.summaryLine}>
                 <span>تعداد اقلام</span>
