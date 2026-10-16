@@ -383,3 +383,16 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [x] Add a dynamic count badge to the center cart button.
 - [x] Switch center navigation to Menu in an empty Cart and Payment in a non-empty Cart.
 - [ ] Test the contextual navigation transitions on mobile and desktop using the Preview deployment.
+
+
+## Menu control and navigation visual refinement (2026-10-16)
+
+- [x] Show only «افزودن» while a product quantity is zero.
+- [x] Show plus/count/trash at quantity one; trash removes that product.
+- [x] Show plus/count/minus at quantities of two or more.
+- [x] Place the quantity control beside the product-card star and enlarge the controls.
+- [x] Use English numerals and match the quantity typography to the price display.
+- [x] Replace the cart pill badge with a count-only label centered above the cart icon.
+- [x] Use the landing CTA's gold-gradient text treatment for icon-free «منو» / «پرداخت» states.
+- [ ] Confirm responsive appearance and interaction behavior in the branch Preview.
+- [ ] Confirm CI, merge, and the exact Vercel Production deployment SHA before considering the change released.

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CreditCard, Menu as MenuIcon, Phone, ShoppingCart, UserRound } from "lucide-react";
+import { Phone, ShoppingCart, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useCart } from "@/components/sections/Cart/CartProvider";
 
@@ -42,22 +42,18 @@ export default function BottomNavigation() {
     cart: {
       href: "#cart",
       label: itemCount > 0
-        ? `سبد خرید، ${itemCount.toLocaleString("fa-IR")} مورد`
+        ? `سبد خرید، ${itemCount.toLocaleString("en-US")} مورد`
         : "سبد خرید",
-      icon: ShoppingCart,
     },
     menu: {
       href: "#menu",
       label: "منو",
-      icon: MenuIcon,
     },
     payment: {
       href: "#cart-summary",
       label: "پرداخت",
-      icon: CreditCard,
     },
   }[centerMode];
-  const CenterIcon = centerConfig.icon;
 
   return (
     <nav className="bottom-nav" aria-label="ناوبری اصلی">
@@ -68,14 +64,17 @@ export default function BottomNavigation() {
         .bottom-nav-link { position:absolute!important;z-index:2;display:grid!important;place-items:center!important;margin:0!important;padding:0!important;transform:translate(-50%,-50%)!important;flex:none!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;color:#ff8a18;border:2px solid rgba(255,106,0,.9);border-radius:50%;background:rgba(7,5,4,.72);box-shadow:0 0 7px rgba(255,91,0,.72),0 0 18px rgba(255,91,0,.22),inset 0 0 8px rgba(255,91,0,.12); }
         .bottom-nav-link-0 { left:20%!important;top:65.8125%!important;width:3.35rem!important;height:3.35rem!important; }
         .bottom-nav-link-1 { left:50%!important;top:50.671875%!important;width:4.5rem!important;height:4.5rem!important;border-width:1.5px;z-index:4;background:rgba(7,5,4,.9);box-shadow:0 0 8px rgba(255,91,0,.9),0 0 26px rgba(255,91,0,.28),inset 0 0 12px rgba(255,91,0,.14); }
-        .bottom-nav-center { position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.08rem;max-width:100%; }
-        .bottom-nav-center-label { color:#ffb347;font:600 .59rem/1.2 var(--font-vazirmatn),sans-serif;white-space:nowrap; }
-        .bottom-nav-badge { position:absolute;top:-.42rem;right:-.48rem;z-index:5;display:grid;place-items:center;min-width:1.28rem;height:1.28rem;padding:0 .22rem;border:1px solid rgba(255,229,181,.9);border-radius:999px;color:#1a0c03;background:linear-gradient(145deg,#ffe2a0,#ff9b27);box-shadow:0 0 8px rgba(255,122,0,.65),0 0 15px rgba(255,122,0,.22);font:700 .58rem/1 var(--font-vazirmatn),sans-serif;font-variant-numeric:tabular-nums; }
+        .bottom-nav-center { position:relative;display:flex;align-items:center;justify-content:center;max-width:100%; }
+        .bottom-nav-cart-icon { position:relative;display:inline-flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem; }
+        .bottom-nav-cart-icon svg { display:block;width:1.875rem;height:1.875rem; }
+        .bottom-nav-action-label { display:block;max-width:100%;color:transparent;background:linear-gradient(180deg,#fff7df 0%,#ffdc96 45%,#ffae3d 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:IRANSansX,Vazirmatn,system-ui,sans-serif;font-size:clamp(1.22rem,4.55vw,1.5rem);font-weight:700;line-height:1;letter-spacing:.025em;white-space:nowrap;-webkit-text-stroke:.12px rgba(255,241,204,.4);filter:drop-shadow(0 0 4px rgba(255,191,77,.72)); }
+        .bottom-nav-action-label--payment { font-size:clamp(.92rem,3.7vw,1.12rem);letter-spacing:0; }
+        .bottom-nav-badge { position:absolute;top:-.58rem;left:50%;z-index:5;display:block;min-width:0;height:auto;padding:0;border:0;border-radius:0;color:#fff0dc;background:transparent;box-shadow:none;transform:translateX(-50%);font:700 1.05rem/1 var(--font-cormorant-garamond),Georgia,serif;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap;text-shadow:0 0 1px rgba(255,248,223,.78),0 0 8px rgba(255,169,74,.42),0 1px 0 rgba(70,28,0,.9); }
         .bottom-nav-link-2 { left:80%!important;top:65.8125%!important;width:3.35rem!important;height:3.35rem!important; }
         .bottom-nav-link svg { filter:drop-shadow(0 0 4px rgba(255,91,0,.55)); }
         .bottom-nav-link-0 svg,.bottom-nav-link-2 svg { width:1.8rem;height:1.8rem; }
         .bottom-nav-link:hover,.bottom-nav-link:focus-visible { transform:translate(-50%,-52%)!important;color:#ffb04a;box-shadow:0 0 10px rgba(255,91,0,.9),0 0 24px rgba(255,91,0,.3),inset 0 0 10px rgba(255,91,0,.16); }
-        @media (max-width:380px) { .bottom-nav-link-1 { width:4.25rem!important;height:4.25rem!important; } .bottom-nav-center-label { font-size:.55rem; } .bottom-nav-badge { top:-.38rem;right:-.42rem; } }
+        @media (max-width:380px) { .bottom-nav-link-1 { width:4.25rem!important;height:4.25rem!important; } .bottom-nav-action-label { font-size:1.14rem; } .bottom-nav-action-label--payment { font-size:.92rem; } .bottom-nav-badge { top:-.52rem; } }
         @media (prefers-reduced-motion:reduce) { .bottom-nav-link { scroll-behavior:auto; } }
       `}</style>
 
@@ -104,16 +103,21 @@ export default function BottomNavigation() {
         aria-current={centerMode !== "cart" ? "location" : undefined}
       >
         <span className="bottom-nav-center">
-          <CenterIcon aria-hidden="true" size={centerMode === "cart" ? 30 : 21} strokeWidth={1.7} />
-          {centerMode !== "cart" && (
-            <span className="bottom-nav-center-label">{centerConfig.label}</span>
+          {centerMode === "cart" ? (
+            <span className="bottom-nav-cart-icon">
+              <ShoppingCart aria-hidden="true" size={30} strokeWidth={1.7} />
+              {itemCount > 0 && (
+                <span className="bottom-nav-badge" aria-hidden="true">
+                  {itemCount > 99 ? "99+" : itemCount.toLocaleString("en-US")}
+                </span>
+              )}
+            </span>
+          ) : (
+            <span className={`bottom-nav-action-label${centerMode === "payment" ? " bottom-nav-action-label--payment" : ""}`}>
+              {centerConfig.label}
+            </span>
           )}
         </span>
-        {centerMode === "cart" && itemCount > 0 && (
-          <span className="bottom-nav-badge" aria-hidden="true">
-            {itemCount > 99 ? "۹۹+" : itemCount.toLocaleString("fa-IR")}
-          </span>
-        )}
         <span className="sr-only">{centerConfig.label}</span>
       </a>
     </nav>
