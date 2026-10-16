@@ -449,3 +449,12 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [x] Remove the message and button beneath the payable total.
 - [ ] Confirm the delivery fee; current displayed payable total does not include it.
 - [ ] Verify the preview with responsive visual and interaction checks before marking visual QA complete.
+
+
+## Release status: Menu and Cart polish PR #20 (2026-10-17)
+
+- [x] GitHub Actions run #234 passed dependency audit, lint and production build.
+- [x] PR #20 merged to `main` as `81799c4376b8c5ac9a63564b9d8e5b7009067262`.
+- [x] Vercel Preview and Production reached READY for the reviewed/merged source.
+- [x] Packaging and tax calculations are included in the cart invoice; delivery remains excluded until its rate is set.
+- [ ] Inspect final responsive layout and interactions in a real browser/device.
