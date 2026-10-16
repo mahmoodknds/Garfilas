@@ -368,6 +368,6 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [x] Use the existing fixed Bottom Navigation link to scroll to `#cart`; keep navigation geometry unchanged.
 - [x] Connect menu products to shared client cart state and localStorage.
 - [x] Add responsive empty-cart, item list, quantity/removal controls, and subtotal summary.
-- [ ] Confirm GitHub Actions lint/build for the feature branch.
+- [x] Confirm GitHub Actions lint/build for the feature branch (run #200 passed).
 - [ ] Inspect preview on mobile and desktop: menu-to-cart scroll, safe-area spacing, fixed navigation overlap, and reduced-motion behavior.
 - [ ] Do not describe this change as merged or deployed until checks and the merge are verified.
