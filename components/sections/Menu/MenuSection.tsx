@@ -76,6 +76,13 @@ function getCurrentPrice(item: MenuItem) {
     : item.price;
 }
 
+function formatMenuPrice(amount: number) {
+  return (amount / 1000).toLocaleString("en-US", {
+    maximumFractionDigits: 1,
+    minimumFractionDigits: 0,
+  });
+}
+
 export default function MenuSection() {
   return (
     <section id="menu" dir="rtl" className={styles.section} aria-labelledby="menu-title">
@@ -116,17 +123,17 @@ export default function MenuSection() {
                         <span className={styles.originalPriceGroup}>
                           <span className={styles.currencyPrefix}>T</span>
                           <span className={`${styles.price} ${styles.originalPrice}`}>
-                            {item.price.toLocaleString("en-US")}
+                            {formatMenuPrice(item.price)}
                           </span>
                         </span>
                       )}
                       {item.discountPercent ? (
                         <span className={`${styles.price} ${styles.discountedPrice}`} dir="ltr">
-                          {getCurrentPrice(item).toLocaleString("en-US")}
+                          {formatMenuPrice(getCurrentPrice(item))}
                         </span>
                       ) : (
                         <span className={styles.price} dir="ltr">
-                          T {getCurrentPrice(item).toLocaleString("en-US")}
+                          T {formatMenuPrice(getCurrentPrice(item))}
                         </span>
                       )}
                     </div>
@@ -161,6 +168,8 @@ export default function MenuSection() {
             </MenuScrollReveal>
           ))}
         </ul>
+
+        <p className={styles.note}>قیمت‌ها به هزار تومان نمایش داده شده‌اند.</p>
 
         <div className={styles.scrollCue} aria-hidden="true">
           <span />
