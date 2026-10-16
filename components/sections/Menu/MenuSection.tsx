@@ -99,17 +99,6 @@ export default function MenuSection() {
                   <span className={styles.leader} aria-hidden="true" />
                   <div className={styles.priceBlock}>
                     <span className={styles.price} dir="ltr">T {item.price.toLocaleString("en-US")}</span>
-                    <MenuQuantityControl
-                      className={styles.menuQuantityControl}
-                      product={{
-                        id: item.number,
-                        name: item.name,
-                        italian: item.italian,
-                        description: item.description,
-                        price: item.price,
-                        ...(item.tag ? { tag: item.tag } : {}),
-                      }}
-                    />
                   </div>
                 </div>
                 <div className={styles.meta}>
@@ -121,7 +110,20 @@ export default function MenuSection() {
                 <p className={styles.description}>{item.description}</p>
 
               </div>
-              <span className={styles.mark} aria-hidden="true">✦</span>
+              <div className={styles.cardActions}>
+                <MenuQuantityControl
+                  className={styles.menuQuantityControl}
+                  product={{
+                    id: item.number,
+                    name: item.name,
+                    italian: item.italian,
+                    description: item.description,
+                    price: item.price,
+                    ...(item.tag ? { tag: item.tag } : {}),
+                  }}
+                />
+                <span className={styles.mark} aria-hidden="true">✦</span>
+              </div>
             </MenuScrollReveal>
           ))}
         </ul>
