@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./MenuSection.module.css";
 import MenuScrollReveal from "./MenuScrollReveal";
-import MenuAddButton from "./MenuAddButton";
+import MenuQuantityControl from "./MenuQuantityControl";
 
 type MenuItem = {
   number: string;
@@ -97,7 +97,20 @@ export default function MenuSection() {
                 <div className={styles.nameLine}>
                   <h3>{item.name}</h3>
                   <span className={styles.leader} aria-hidden="true" />
-                  <span className={styles.price} dir="ltr">T {item.price.toLocaleString("en-US")}</span>
+                  <div className={styles.priceBlock}>
+                    <span className={styles.price} dir="ltr">T {item.price.toLocaleString("en-US")}</span>
+                    <MenuQuantityControl
+                      className={styles.menuQuantityControl}
+                      product={{
+                        id: item.number,
+                        name: item.name,
+                        italian: item.italian,
+                        description: item.description,
+                        price: item.price,
+                        ...(item.tag ? { tag: item.tag } : {}),
+                      }}
+                    />
+                  </div>
                 </div>
                 <div className={styles.meta}>
                   <span className={styles.italian} dir="ltr">{item.italian}</span>
@@ -106,17 +119,7 @@ export default function MenuSection() {
                   )}
                 </div>
                 <p className={styles.description}>{item.description}</p>
-                <MenuAddButton
-                  className={styles.addButton}
-                  product={{
-                    id: item.number,
-                    name: item.name,
-                    italian: item.italian,
-                    description: item.description,
-                    price: item.price,
-                    ...(item.tag ? { tag: item.tag } : {}),
-                  }}
-                />
+
               </div>
               <span className={styles.mark} aria-hidden="true">✦</span>
             </MenuScrollReveal>
