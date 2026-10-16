@@ -921,3 +921,17 @@ The product owner requested that Cart appear immediately below Menu on the same 
 - The inline Cart is part of the active homepage, not a new `/cart` route.
 - Build/lint checks and a responsive browser preview must pass before merge and release.
 - The 2026-10-10 deferral of Menu/Cart was historical and is superseded only to the extent described above.
+
+
+## ADR-033: Menu Quantity Stepper and Contextual Center Navigation (2026-10-16)
+
+**Status:** Accepted
+
+**Decision**
+
+- Place each menu item's plus button, current quantity, and minus button directly beneath its displayed price.
+- Derive each count from the shared cart state: plus increments; minus decrements and removes the product at zero.
+- Outside the Cart section, the fixed center control remains the Cart action and shows the total selected quantity as a badge when non-zero.
+- While the Cart section is visible, the center control changes to Menu when empty and Payment when it contains at least one selected unit.
+- Menu targets `#menu`; Payment targets `#cart-summary` while an actual checkout/payment flow remains out of scope.
+- Preserve the center control's measured position and existing navigation frame.
