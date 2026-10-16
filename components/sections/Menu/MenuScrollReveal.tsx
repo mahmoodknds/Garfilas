@@ -26,8 +26,7 @@ export default function MenuScrollReveal({
     if (!element) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setReady(true);
-      setVisible(true);
+      // With no reveal classes, the element stays visible without animation.
       return;
     }
 
@@ -44,10 +43,13 @@ export default function MenuScrollReveal({
       },
     );
 
-    setReady(true);
+    const readyFrame = window.requestAnimationFrame(() => setReady(true));
     observer.observe(element);
 
-    return () => observer.disconnect();
+    return () => {
+      window.cancelAnimationFrame(readyFrame);
+      observer.disconnect();
+    };
   }, []);
 
   return (
