@@ -422,3 +422,15 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [x] Replace the large empty-cart modal with a small text-only glass toast dismissed by clicking anywhere.
 - [ ] Verify lint/build and responsive behavior before release.
 - [ ] Confirm the exact Production deployment commit after merge.
+
+
+## Release status: menu price stability and empty-cart toast (2026-10-17)
+
+- [x] Stabilize the name / leader / price row by moving quantity control and star below the description.
+- [x] Keep original price typography unchanged with a diagonal strike overlay.
+- [x] Use a percentage-only glass discount badge.
+- [x] Replace the empty-cart modal with a small click-to-dismiss glass toast.
+- [x] GitHub Actions lint and production build passed (run #227).
+- [x] PR #18 merged to `main` as `655db9b68342d4f528bca9c799672cf7855603fd`.
+- [x] Vercel Production reached READY for the merge commit.
+- [ ] Review mobile and desktop visuals in a real browser/device; no interactive device test was available during this change.
