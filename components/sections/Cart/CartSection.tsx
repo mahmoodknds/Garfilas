@@ -67,20 +67,20 @@ export default function CartSection() {
                         <div className={styles.quantityControl} aria-label={`تعداد ${item.name}`}>
                           <button
                             type="button"
-                            onClick={() => setQuantity(item.id, item.quantity - 1)}
-                            aria-label={`کاهش تعداد ${item.name}`}
+                            onClick={() => setQuantity(item.id, item.quantity + 1)}
+                            aria-label={`افزایش تعداد ${item.name}`}
                           >
-                            −
+                            +
                           </button>
                           <output aria-live="polite" aria-atomic="true">
                             {formatAmount(item.quantity)}
                           </output>
                           <button
                             type="button"
-                            onClick={() => setQuantity(item.id, item.quantity + 1)}
-                            aria-label={`افزایش تعداد ${item.name}`}
+                            onClick={() => setQuantity(item.id, item.quantity - 1)}
+                            aria-label={`کاهش تعداد ${item.name}`}
                           >
-                            +
+                            −
                           </button>
                         </div>
 
