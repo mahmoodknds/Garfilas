@@ -124,7 +124,7 @@ export default function BottomNavigation() {
               <ShoppingCart aria-hidden="true" size={30} strokeWidth={1.7} />
               {itemCount > 0 && (
                 <span className="bottom-nav-badge" aria-hidden="true">
-                  {itemCount > 99 ? "99+" : itemCount.toLocaleString("en-US")}
+                  itemCount.toLocaleString("en-US")
                 </span>
               )}
             </span>
