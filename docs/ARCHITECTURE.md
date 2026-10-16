@@ -42,7 +42,7 @@ Goals
 
 Framework
 
-Next.js 16.2.10 (App Router)
+Next.js 16.4.0 (App Router)
 
 Language
 
@@ -62,7 +62,7 @@ Lucide React
 
 State
 
-No shared/global state library is introduced. Small local component state is permitted where required; the dormant Menu prototype currently uses local quantity state.
+No external global-state library is used. The inline cart uses a focused React Context (`CartProvider`) plus localStorage persistence; other sections remain Server Components where practical. The cart is client-side only and does not submit orders to a backend.
 
 Database
 
@@ -119,14 +119,14 @@ Next.js App Router entry points.
 
 Page-level feature sections. Each section owns its markup and presentation-specific logic.
 
-Active Landing Page MVP sections:
+Active homepage sections:
 
 - Hero
-- Bottom Navigation
+- Menu (`MenuSection.tsx`, with responsive item reveal and add-to-cart controls)
+- Inline Cart (`CartSection.tsx`, directly below Menu)
+- Fixed Bottom Navigation
 
-Hero-specific components currently include `Hero.tsx`, `HeroLogo.tsx`, `HeroCTA.tsx`, and `HeroParticleEngine.tsx`.
-
-`Menu/` currently contains a dormant product-card prototype and its CSS. It is not mounted by the homepage. Review and finish its accessibility, pricing, responsive behavior, and interaction model before activation.
+Hero-specific components include `Hero.tsx`, `HeroLogo.tsx`, `HeroCTA.tsx`, and `HeroParticleEngine.tsx`. The older `MenuProductCard.tsx` and `MenuCardFrame.tsx` remain a dormant visual prototype; they are not the data source or renderer for the active menu.
 
 ## components/ui/
 
@@ -174,11 +174,14 @@ Keep reusable components independent from business-specific page composition whe
 ```
 Home
  │
- ├── Hero
+ ├── main
+ │   ├── Hero
+ │   ├── Menu
+ │   └── Cart
  └── Bottom Navigation
 ```
 
-The homepage remains mobile-first, premium, dark, minimal and lightweight. The active Hero includes the current temporary Garfield + lasagna artwork as a temporary foreground asset; final artwork replacement remains pending.
+The homepage remains mobile-first, premium, dark, minimal and lightweight. The active document order is Hero → Menu → Cart. The Cart is an inline section, not a separate `/cart` route; the existing Bottom Navigation cart link targets its `#cart` anchor and the global CSS provides smooth scrolling. The Hero still uses temporary Garfield + lasagna artwork pending final replacement.
 
 ---
 
@@ -197,18 +200,19 @@ The homepage remains mobile-first, premium, dark, minimal and lightweight. The a
 
 Landing Page MVP is the active milestone.
 
-Implemented so far:
+Implemented in the current source:
 
-- Foundation
-- Design tokens
-- Hero
-- Bottom Navigation
+- Foundation and shared design tokens
+- Hero and fixed Bottom Navigation
+- Active Menu section with seven menu items
+- Cart add controls, quantity changes, item removal, subtotal, and localStorage persistence
+- Inline Cart section directly below Menu, reached through the navigation anchor
 
-The Menu product-card prototype exists in the repository but is intentionally not mounted on the homepage. Deferred work remains documented in `TODO.md`. The homepage SEO foundation now includes canonical metadata, Open Graph/Twitter summary metadata, `robots.txt`, and a homepage-only sitemap. Remaining verification focuses on browser/device visual acceptance, responsive behavior, and deeper performance auditing.
+Not implemented: checkout, payment, server-side order submission, coupon entry, customer notes, and database persistence. The older Menu card prototype is separate from the active menu list. The homepage SEO foundation includes canonical metadata, Open Graph/Twitter summary metadata, `robots.txt`, and a homepage-only sitemap. Browser/device acceptance and branch CI remain required before release.
 
 GitHub Actions runs a production build verification on pushes to `main` and pull requests targeting `main`. This workflow does not deploy to Vercel.
 
-Last Updated: 2026-10-09
+Last Updated: 2026-10-16
 
 
 ## 2026-10-02 Cleanup Audit
