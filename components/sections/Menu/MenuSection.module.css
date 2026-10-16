@@ -82,6 +82,9 @@
 .vipTag::after { content:"";position:absolute;inset:-3px -5px;z-index:-1;border-radius:inherit;background:linear-gradient(100deg,transparent,rgba(255,220,139,.22),transparent);opacity:.65;pointer-events:none; }
 
 .description { margin: .2rem 0 0; color: rgba(255,240,220,.72); font: 400 .72rem/1.9 var(--font-vazirmatn), sans-serif; }
+.addButton { display: inline-flex; align-items: center; justify-content: center; gap: .38rem; min-height: 2.2rem; margin-top: .58rem; padding: .35rem .78rem; border: 1px solid rgba(255,179,71,.42); border-radius: 999px; color: #ffd9a0; background: linear-gradient(120deg,rgba(255,122,0,.1),rgba(255,179,71,.035)); font: 500 .68rem/1.5 var(--font-vazirmatn),sans-serif; cursor: pointer; box-shadow: inset 0 0 8px rgba(255,122,0,.035); transition: background-color .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease; }
+.addButton:hover,.addButton:focus-visible { border-color: rgba(255,179,71,.8); color: #fff4e4; background: rgba(255,122,0,.13); box-shadow: 0 0 12px rgba(255,122,0,.12); }
+
 .mark { color: rgba(255,190,110,.85); font-size: .8rem; text-shadow: 0 0 10px rgba(255,91,0,.78); }
 .note { margin: 1rem 0 0; text-align: center; color: rgba(214,185,152,.58); font: 400 .68rem/1.9 var(--font-vazirmatn), sans-serif; }
 @keyframes menu-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -98,6 +101,7 @@
   .description { font-size: .78rem; }
 }
 @media (max-width: 380px) {
+  .addButton { min-height: 2rem; margin-top: .45rem; padding: .28rem .62rem; font-size: .63rem; }
   .content { padding-inline: .7rem; }
   .item { grid-template-columns: 1.8rem minmax(0,1fr) .65rem; gap: .45rem; padding: .85rem .6rem; }
   .number { font-size: 1rem; }
@@ -108,4 +112,5 @@
   .price { margin-inline-start: 0; }
   .description { font-size: .68rem; }
 }
-@media (prefers-reduced-motion: reduce) { .revealReady:not(.revealVisible) { opacity: 1; transform: none; } .revealVisible, .revealVisible::after { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .addButton { transition: none; } .revealReady:not(.revealVisible) { opacity: 1; transform: none; } .revealVisible, .revealVisible::after { animation: none; } }
