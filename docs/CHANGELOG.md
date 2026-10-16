@@ -503,3 +503,23 @@ Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Na
 
 - Source updates are on `feature/cart-section`.
 - GitHub Actions Build verification run #200 passed lint and production build; the Vercel Preview is READY. Browser/device visual and click-interaction acceptance remain pending, and Production has not been updated.
+
+
+## 2026-10-16 — Menu Quantity Stepper and Contextual Cart Navigation
+
+### Changed
+
+- Replaced separate add-to-cart controls with plus/count/minus steppers directly beneath each menu price.
+- Bound each stepper to shared cart state; plus increments and minus decrements/removes the chosen product at zero.
+- Added a quantity badge to the center cart control while the Cart section is not visible.
+- When Cart becomes visible, the center action switches to Menu if empty or Payment when it contains items.
+- The Payment action targets `#cart-summary`; checkout and online payment remain unimplemented.
+
+### Preserved
+
+- Existing fixed Bottom Navigation frame and center-button positioning.
+- Hero geometry, dark orange/gold palette, mobile-first sizing, and no extra dependencies.
+
+### Verification
+
+- The newest feature-branch commit must pass GitHub Actions and its Vercel Preview before merge/release.
