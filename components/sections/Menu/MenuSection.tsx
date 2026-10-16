@@ -9,6 +9,7 @@ type MenuItem = {
   italian: string;
   description: string;
   price: number;
+  discountPercent?: number;
   tag?: string;
 };
 
@@ -19,6 +20,7 @@ const items: MenuItem[] = [
     italian: "Garfi",
     description: "400گرم؛ راسته گوساله چرخ‌شده، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر موزارلا و سس مخصوص گارفیلاز.",
     price: 1015000,
+    discountPercent: 50,
     tag: "VIP",
   },
   {
@@ -68,6 +70,12 @@ const items: MenuItem[] = [
   },
 ];
 
+function getCurrentPrice(item: MenuItem) {
+  return item.discountPercent
+    ? Math.round(item.price * (100 - item.discountPercent) / 100)
+    : item.price;
+}
+
 export default function MenuSection() {
   return (
     <section id="menu" dir="rtl" className={styles.section} aria-labelledby="menu-title">
@@ -98,7 +106,21 @@ export default function MenuSection() {
                   <h3>{item.name}</h3>
                   <span className={styles.leader} aria-hidden="true" />
                   <div className={styles.priceBlock}>
-                    <span className={styles.price} dir="ltr">T {item.price.toLocaleString("en-US")}</span>
+                    {item.discountPercent && (
+                      <span className={styles.discountRibbon}>
+                        {item.discountPercent}% تخفیف
+                      </span>
+                    )}
+                    <div className={styles.priceRow} dir="ltr">
+                      {item.discountPercent && (
+                        <span className={styles.originalPrice}>
+                          T {item.price.toLocaleString("en-US")}
+                        </span>
+                      )}
+                      <span className={styles.price} dir="ltr">
+                        T {getCurrentPrice(item).toLocaleString("en-US")}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className={styles.meta}>
@@ -118,7 +140,10 @@ export default function MenuSection() {
                     name: item.name,
                     italian: item.italian,
                     description: item.description,
-                    price: item.price,
+                    price: getCurrentPrice(item),
+                    ...(item.discountPercent
+                      ? { originalPrice: item.price, discountPercent: item.discountPercent }
+                      : {}),
                     ...(item.tag ? { tag: item.tag } : {}),
                   }}
                 />
@@ -127,6 +152,12 @@ export default function MenuSection() {
             </MenuScrollReveal>
           ))}
         </ul>
+
+        <a className={styles.scrollCue} href="#cart" aria-label="رفتن به سبد خرید">
+          <span />
+          <span />
+          <span />
+        </a>
       </div>
     </section>
   );
