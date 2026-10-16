@@ -2,8 +2,8 @@
 
 ## Garfilas AI Working Memory
 
-**Version:** 2.7.0  
-**Last Updated:** 2026-10-09
+**Version:** 2.8.0  
+**Last Updated:** 2026-10-16
 
 ---
 
@@ -19,7 +19,7 @@ Permanent working memory for AI collaborators. Read this before changing code or
 - Deployment: Vercel
 - Version: v0.1.0
 - Sprint: 0.4
-- Scope: first-page Hero visual completion
+- Scope: mobile-first homepage with Hero, active Menu, and inline Cart; preserve the approved Hero design
 
 # Visual Source of Truth
 
@@ -223,7 +223,7 @@ Latest state:
 7. Replace temporary Hero artwork later and recalibrate its ring.
 8. Run production build verification.
 9. Validate mobile, then desktop.
-10. Do not expand website scope until Hero acceptance.
+10. Hero visual acceptance remains a separate QA track; it no longer blocks the requested Menu and inline Cart work.
 
 # Next Chat Continuity
 
@@ -298,4 +298,16 @@ Preserve the approved CTA motion, existing Hero geometry anchors, Bottom Navigat
 - Current priority is a bounded final quality pass: real browser/device renders, responsive composition, scroll/background continuity, reduced-motion behavior, performance, SEO routes, and current build/lint. Fix only confirmed defects.
 - Browser/device visual acceptance remains pending. Build/CI success and a READY deployment do not prove visual correctness.
 - Hosting panel, Node.js availability/version, and deployment access are not confirmed. Do not change DNS or choose static export until host capabilities are known.
-- The dormant Menu prototype is not live homepage functionality. Keep commerce/cart/auth/checkout scope deferred.
+- The active homepage menu is rendered by `components/sections/Menu/MenuSection.tsx`; only the older `MenuProductCard.tsx` and `MenuCardFrame.tsx` remain a dormant prototype.
+- The inline cart is under Menu in `app/page.tsx`. Preserve the Bottom Navigation geometry; its center link must target `#cart`.
+- Shared cart state is implemented with `CartProvider` and localStorage, with no external state package. Checkout, payment, order submission, coupon, and customer notes remain deferred.
+
+
+# 2026-10-16 Inline Cart Continuity Update
+
+- Current page composition: Hero → Menu → Cart → fixed Bottom Navigation.
+- Cart is an in-page section, not `/cart`; the existing center navigation link scrolls to `#cart` using global smooth-scroll behavior.
+- Use the design tokens and typography in `GARFILAS_BIBLE.md`: dark background `#090909`, surface `#131313`, orange `#FF7A00`, gold accent `#FFB347`, Vazirmatn for Persian and Cormorant Garamond for English display.
+- `CartProvider.tsx` is the single client-side source of truth for cart items. It adds menu items, updates quantity, removes items, calculates the subtotal, and persists the cart in localStorage.
+- Keep Server Components where practical. Do not introduce a global-state dependency, database, checkout route, payment flow, or order API as part of visual cart refinement.
+- Current change is proposed on `feature/cart-section`; run GitHub Actions lint/build and inspect a preview before merge. Do not claim Production is updated.
