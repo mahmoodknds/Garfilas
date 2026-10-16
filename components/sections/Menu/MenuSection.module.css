@@ -76,9 +76,9 @@
 @keyframes menu-scroll-cue { 0%,100% { transform: translateY(0); opacity: .55; } 50% { transform: translateY(5px); opacity: 1; } }
 .number { align-self: start; padding-top: .2rem; color: rgba(255,217,160,.42); font: 400 1.15rem/1.2 "Cormorant Garamond", Georgia, serif; direction: ltr; text-shadow: 0 0 5px rgba(255,106,0,.12); }
 .details { min-width: 0; position: relative; }
-.nameLine { display: flex; align-items: flex-start; gap: .4rem; min-width: 0; }
+.nameLine { display: flex; align-items: center; gap: .4rem; min-width: 0; }
 .nameLine h3 { margin: 0; color: #ffd9a0; font: 700 1.48rem/1.15 var(--font-noto-naskh), "Noto Naskh Arabic", serif; letter-spacing: .025em; white-space: normal; -webkit-text-stroke: .15px rgba(255,217,160,.32); text-shadow: 0 0 2px rgba(255,248,223,.8), 0 0 8px rgba(255,179,92,.9), 0 0 18px rgba(255,106,0,.52); }
-.leader { flex: 1 1 auto; min-width: .25rem; height: 1px; transform: translateY(-.25rem); background: linear-gradient(to left, rgba(246,189,106,.65), rgba(246,189,106,.06)); }
+.leader { align-self: center; flex: 1 1 auto; min-width: .25rem; height: 1px; background: linear-gradient(to left, rgba(246,189,106,.65), rgba(246,189,106,.06)); }
 .price { flex: 0 0 auto; color: #fff0dc; font: 700 1.18rem/1.65 var(--font-cormorant-garamond), Georgia, serif; font-variant-numeric: lining-nums tabular-nums; letter-spacing: -.015em; white-space: nowrap; -webkit-text-stroke: .12px rgba(255,240,220,.28); text-shadow: 0 0 1px rgba(255,248,223,.78), 0 0 8px rgba(255,169,74,.38), 0 1px 0 rgba(70,28,0,.9); }
 .discountedPrice { color: #fff3cf; font-size: 1rem; letter-spacing: -.035em; text-shadow: 0 0 1px rgba(255,248,223,.9), 0 0 7px rgba(255,179,71,.62), 0 1px 0 rgba(70,28,0,.9); }
 .meta { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin: .12rem 0 .2rem; }
@@ -131,7 +131,7 @@
   .item { grid-template-columns: 1.8rem minmax(0,1fr); gap: .45rem; padding: .85rem .6rem; }
   .number { font-size: 1rem; }
   .price { font-size: .96rem; letter-spacing: -.025em; }
-  .nameLine { flex-wrap: nowrap; align-items: flex-start; gap: .3rem; }
+  .nameLine { flex-wrap: nowrap; align-items: center; gap: .3rem; }
   .nameLine h3 { flex: 0 1 auto; font-size: 1.04rem; white-space: nowrap; letter-spacing: 0; }
   .leader { display: block; flex: 1 1 auto; min-width: .3rem; }
   .price { margin-inline-start: 0; }
