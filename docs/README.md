@@ -87,5 +87,5 @@ For the next session, read `GARFILAS_BIBLE.md`, `PROJECT_STATE.md`, `SESSION_LOG
 - The center Bottom Navigation control keeps its existing geometry and targets `#cart`; native smooth scrolling is provided by the global stylesheet, with reduced-motion support.
 - Cart item state is shared through a small React Context and stored in localStorage. It supports adding a menu product, changing quantity, removing an item, and calculating the subtotal.
 - There is no checkout route, payment integration, server-side order submission, or coupon system in this phase.
-- The current cart change is being developed on `feature/cart-section`. Do not describe it as deployed or merged until the pull request and CI results are verified.
+- The cart change is proposed on `feature/cart-section`. GitHub Actions run #200 passed lint and production build, and the Vercel Preview is READY. Browser/device interaction acceptance, merge, and Production release remain pending.
 - Stack versions in this document follow `package.json`: Next.js 16.4.0 and React 19.2.4.
