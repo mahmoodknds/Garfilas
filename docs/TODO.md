@@ -458,3 +458,16 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [x] Vercel Preview and Production reached READY for the reviewed/merged source.
 - [x] Packaging and tax calculations are included in the cart invoice; delivery remains excluded until its rate is set.
 - [ ] Inspect final responsive layout and interactions in a real browser/device.
+
+
+## Menu/Cart consistency follow-up (2026-10-17)
+
+- [x] Remove the top fade gap between hero and banner.
+- [x] Enlarge discount badge and glow.
+- [x] Restore full-size readable original price; strike only the digits and keep `T` bright.
+- [x] Fix control placement so add/quantity state does not shift English name or description; center controls at the card's left side with star beside them.
+- [x] Enlarge and align row numbers with Persian names.
+- [x] Place count badge over the cart icon in a matching integrated style.
+- [x] Match cart product cards and other frames to the menu card style.
+- [x] Label packaging as «ظرف و بسته‌بندی هر غذا» at 40,000 toman per dish.
+- [ ] Verify responsive visual appearance and interactions in a browser/device.
