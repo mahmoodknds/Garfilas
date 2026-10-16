@@ -730,5 +730,7 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 ### Verification and release boundary
 
 - Source was committed to the feature branch through GitHub.
-- Local lint/build and real-browser interaction checks have not yet been run in this environment.
-- This is not merged into `main` and must not be described as a Production deployment.
+- GitHub Actions Build verification run #200 passed lint and production build; the Vercel Preview reached READY.
+- Preview HTML confirms the Hero → Menu → Cart document order, the `#cart` target, and all seven add-to-cart controls.
+- Real-browser mobile/desktop visual and interaction checks remain outstanding.
+- This is not merged into `main` and is not a Production deployment.
