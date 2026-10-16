@@ -71,7 +71,7 @@
 }
 .number { align-self: start; padding-top: .2rem; color: rgba(255,217,160,.42); font: 400 1.15rem/1.2 "Cormorant Garamond", Georgia, serif; direction: ltr; text-shadow: 0 0 5px rgba(255,106,0,.12); }
 .details { min-width: 0; position: relative; }
-.nameLine { display: flex; align-items: baseline; gap: .4rem; min-width: 0; }
+.nameLine { display: flex; align-items: flex-start; gap: .4rem; min-width: 0; }
 .nameLine h3 { margin: 0; color: #ffd9a0; font: 700 1.48rem/1.15 var(--font-noto-naskh), "Noto Naskh Arabic", serif; letter-spacing: .025em; white-space: normal; -webkit-text-stroke: .15px rgba(255,217,160,.32); text-shadow: 0 0 2px rgba(255,248,223,.8), 0 0 8px rgba(255,179,92,.9), 0 0 18px rgba(255,106,0,.52); }
 .leader { flex: 1 1 auto; min-width: .25rem; height: 1px; transform: translateY(-.25rem); background: linear-gradient(to left, rgba(246,189,106,.65), rgba(246,189,106,.06)); }
 .price { flex: 0 0 auto; color: #fff0dc; font: 700 1.18rem/1.65 var(--font-cormorant-garamond), Georgia, serif; font-variant-numeric: lining-nums tabular-nums; letter-spacing: -.015em; white-space: nowrap; -webkit-text-stroke: .12px rgba(255,240,220,.28); text-shadow: 0 0 1px rgba(255,248,223,.78), 0 0 8px rgba(255,169,74,.38), 0 1px 0 rgba(70,28,0,.9); }
@@ -82,8 +82,12 @@
 .vipTag::after { content:"";position:absolute;inset:-3px -5px;z-index:-1;border-radius:inherit;background:linear-gradient(100deg,transparent,rgba(255,220,139,.22),transparent);opacity:.65;pointer-events:none; }
 
 .description { margin: .2rem 0 0; color: rgba(255,240,220,.72); font: 400 .72rem/1.9 var(--font-vazirmatn), sans-serif; }
-.addButton { display: inline-flex; align-items: center; justify-content: center; gap: .38rem; min-height: 2.2rem; margin-top: .58rem; padding: .35rem .78rem; border: 1px solid rgba(255,179,71,.42); border-radius: 999px; color: #ffd9a0; background: linear-gradient(120deg,rgba(255,122,0,.1),rgba(255,179,71,.035)); font: 500 .68rem/1.5 var(--font-vazirmatn),sans-serif; cursor: pointer; box-shadow: inset 0 0 8px rgba(255,122,0,.035); transition: background-color .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease; }
-.addButton:hover,.addButton:focus-visible { border-color: rgba(255,179,71,.8); color: #fff4e4; background: rgba(255,122,0,.13); box-shadow: 0 0 12px rgba(255,122,0,.12); }
+.priceBlock { display: flex; flex: 0 0 auto; flex-direction: column; align-items: center; gap: .35rem; padding-top: .05rem; }
+.menuQuantityControl { display: inline-flex; align-items: center; justify-content: center; gap: .12rem; padding: .12rem; border: 1px solid rgba(255,179,71,.4); border-radius: 999px; background: rgba(5,4,3,.7); box-shadow: 0 0 9px rgba(255,104,0,.08), inset 0 0 7px rgba(255,122,0,.035); }
+.menuQuantityControl button { display: grid; place-items: center; flex: 0 0 auto; width: 1.8rem; height: 1.8rem; padding: 0; border: 0; border-radius: 50%; color: #ffb347; background: transparent; font: 400 1.2rem/1 sans-serif; cursor: pointer; transition: color .2s ease, background-color .2s ease; }
+.menuQuantityControl button:hover:not(:disabled),.menuQuantityControl button:focus-visible { color: #fff4e4; background: rgba(255,122,0,.15); outline: none; }
+.menuQuantityControl button:disabled { color: rgba(189,176,160,.36); cursor: not-allowed; }
+.menuQuantityControl output { display: grid; place-items: center; min-width: 1.5rem; color: #fff0dc; font: 600 .72rem/1.5 var(--font-vazirmatn),sans-serif; font-variant-numeric: tabular-nums; }
 
 .mark { color: rgba(255,190,110,.85); font-size: .8rem; text-shadow: 0 0 10px rgba(255,91,0,.78); }
 .note { margin: 1rem 0 0; text-align: center; color: rgba(214,185,152,.58); font: 400 .68rem/1.9 var(--font-vazirmatn), sans-serif; }
@@ -101,7 +105,8 @@
   .description { font-size: .78rem; }
 }
 @media (max-width: 380px) {
-  .addButton { min-height: 2rem; margin-top: .45rem; padding: .28rem .62rem; font-size: .63rem; }
+  .menuQuantityControl button { width: 1.65rem; height: 1.65rem; }
+  .menuQuantityControl output { min-width: 1.3rem; font-size: .66rem; }
   .content { padding-inline: .7rem; }
   .item { grid-template-columns: 1.8rem minmax(0,1fr) .65rem; gap: .45rem; padding: .85rem .6rem; }
   .number { font-size: 1rem; }
@@ -113,4 +118,4 @@
   .description { font-size: .68rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .addButton { transition: none; } .revealReady:not(.revealVisible) { opacity: 1; transform: none; } .revealVisible, .revealVisible::after { animation: none; } }
+.revealReady:not(.revealVisible) { opacity: 1; transform: none; } .revealVisible, .revealVisible::after { animation: none; } }
