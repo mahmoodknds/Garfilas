@@ -22,6 +22,9 @@ export default function CartSection() {
   const [orderNotes, setOrderNotes] = useState("");
 
   const hasItems = hydrated && items.length > 0;
+  const packagingFee = itemCount * 40000;
+  const taxAmount = Math.round((subtotal + packagingFee) * 0.10);
+  const totalPayable = subtotal + packagingFee + taxAmount;
 
   return (
     <section
@@ -45,7 +48,7 @@ export default function CartSection() {
               <ul className={styles.itemsList} aria-label="اقلام سبد خرید">
                 {items.map((item, index) => (
                   <li className={styles.item} key={item.id}>
-                    <span className={styles.itemNumber}>{String(index + 1).padStart(2, "0")}</span>
+                    <span className={styles.itemNumber}>{index + 1}</span>
                     <div className={styles.itemMain}>
                       <div className={styles.itemHeading}>
                         <div className={styles.productIdentity}>
@@ -125,28 +128,21 @@ export default function CartSection() {
               <div className={styles.summaryDivider} />
               <div className={styles.summaryLine}>
                 <span>ظرف و بسته‌بندی</span>
-                <strong className={styles.pendingValue}>تعیین نشده</strong>
+                <strong>{formatAmount(packagingFee)} تومان</strong>
               </div>
               <div className={styles.summaryLine}>
                 <span>ارسال</span>
                 <strong className={styles.pendingValue}>تعیین نشده</strong>
               </div>
               <div className={styles.summaryLine}>
-                <span>مالیات</span>
-                <strong className={styles.pendingValue}>تعیین نشده</strong>
+                <span>مالیات (۱۰٪)</span>
+                <strong>{formatAmount(taxAmount)} تومان</strong>
               </div>
               <div className={styles.summaryDivider} />
               <div className={styles.totalLine}>
                 <span>مبلغ قابل پرداخت</span>
-                <strong>{formatAmount(subtotal)} <small>تومان</small></strong>
+                <strong>{formatAmount(totalPayable)} <small>تومان</small></strong>
               </div>
-              <span className={styles.provisionalTag}>موقت، بدون هزینه‌های تعیین‌نشده</span>
-              <p className={styles.summaryNote}>
-                مبلغ نهایی پس از تعیین تعرفهٔ ظرف و بسته‌بندی، ارسال و مالیات محاسبه می‌شود.
-              </p>
-              <a className={styles.secondaryLink} href="#menu">
-                افزودن محصول دیگر
-              </a>
             </aside>
           </div>
         </div>
