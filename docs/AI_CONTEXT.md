@@ -311,3 +311,12 @@ Preserve the approved CTA motion, existing Hero geometry anchors, Bottom Navigat
 - `CartProvider.tsx` is the single client-side source of truth for cart items. It adds menu items, updates quantity, removes items, calculates the subtotal, and persists the cart in localStorage.
 - Keep Server Components where practical. Do not introduce a global-state dependency, database, checkout route, payment flow, or order API as part of visual cart refinement.
 - Current change is proposed on `feature/cart-section`. GitHub Actions run #200 passed lint and production build, and the Vercel Preview is READY. Responsive visual/interaction acceptance and merge remain pending; Production is unchanged.
+
+
+# 2026-10-16 Cart Control UX Update
+
+- In the active Menu, place the plus button, quantity counter, and minus button directly beneath each product price. The displayed count is derived from `CartProvider`, not separate local component state.
+- Outside the Cart section, the fixed center navigation remains the Cart action and shows a badge with the total selected quantity when the count is non-zero.
+- When the Cart section enters the viewport, switch the center action to Menu if the cart is empty, or Payment if it has items.
+- Empty-cart Menu targets `#menu`. Non-empty Payment targets `#cart-summary` so the order summary is brought into view; do not claim online payment/checkout is implemented.
+- Keep the center button's fixed position and the approved bottom navigation frame intact.
