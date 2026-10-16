@@ -412,3 +412,13 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [ ] Connect order notes to order submission when a backend order flow is implemented.
 - [x] GitHub Actions lint/build and Vercel Preview/Production deployment verified for PR #17 (merge commit `8ab153d0d54140ed5ec8897d4233756a21d1cbcf`).
 - [ ] Complete real-browser responsive and interaction review on mobile and desktop.
+
+
+## Menu alignment and empty-cart toast follow-up (2026-10-17)
+
+- [x] Separate quantity controls from the product name/leader/price row to prevent add-state layout shifts.
+- [x] Keep original-price typography unchanged and draw the diagonal strike as an overlay.
+- [x] Remove the visible word «تخفیف» from the badge and apply a glassy glossy percentage-only label.
+- [x] Replace the large empty-cart modal with a small text-only glass toast dismissed by clicking anywhere.
+- [ ] Verify lint/build and responsive behavior before release.
+- [ ] Confirm the exact Production deployment commit after merge.
