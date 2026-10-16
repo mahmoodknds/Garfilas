@@ -477,3 +477,29 @@ Do not modify English `Menu`, CTA animation, particles, Hero geometry, Bottom Na
 - Added a final quality pass covering deployed visual checks, responsive viewports, reduced motion, performance, build/lint, and SEO output.
 - Documentation-only checkpoint; no application runtime or visual code changed.
 
+
+
+## 2026-10-16 — Inline Cart Section
+
+### Added
+
+- Shared cart state through a lightweight React Context provider with localStorage persistence.
+- Add-to-cart controls for active Menu items.
+- An inline Cart section directly below Menu, including empty/loading states, quantity controls, item removal, item count, and subtotal.
+- Responsive styling aligned with Garfilas dark luxury orange/gold palette.
+- A current architecture decision documenting in-page scrolling to `#cart` rather than a separate cart route.
+
+### Preserved
+
+- Existing fixed Bottom Navigation geometry; its center control already targets `#cart`.
+- Current Hero layout, assets, and animations.
+- Performance-first implementation with no added state-management dependency.
+
+### Not included
+
+- Checkout, payment, server-side order submission, coupon, customer notes, or database integration.
+
+### Verification
+
+- Source updates are on `feature/cart-section`.
+- Lint/build, responsive preview, and production deployment status remain to be verified.
