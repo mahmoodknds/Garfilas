@@ -118,4 +118,7 @@
   .description { font-size: .68rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-.revealReady:not(.revealVisible) { opacity: 1; transform: none; } .revealVisible, .revealVisible::after { animation: none; } }
+  .menuQuantityControl button { transition: none; }
+  .revealReady:not(.revealVisible) { opacity: 1; transform: none; }
+  .revealVisible, .revealVisible::after { animation: none; }
+}
