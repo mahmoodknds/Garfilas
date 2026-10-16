@@ -310,4 +310,4 @@ Preserve the approved CTA motion, existing Hero geometry anchors, Bottom Navigat
 - Use the design tokens and typography in `GARFILAS_BIBLE.md`: dark background `#090909`, surface `#131313`, orange `#FF7A00`, gold accent `#FFB347`, Vazirmatn for Persian and Cormorant Garamond for English display.
 - `CartProvider.tsx` is the single client-side source of truth for cart items. It adds menu items, updates quantity, removes items, calculates the subtotal, and persists the cart in localStorage.
 - Keep Server Components where practical. Do not introduce a global-state dependency, database, checkout route, payment flow, or order API as part of visual cart refinement.
-- Current change is proposed on `feature/cart-section`; run GitHub Actions lint/build and inspect a preview before merge. Do not claim Production is updated.
+- Current change is proposed on `feature/cart-section`. GitHub Actions run #200 passed lint and production build, and the Vercel Preview is READY. Responsive visual/interaction acceptance and merge remain pending; Production is unchanged.
