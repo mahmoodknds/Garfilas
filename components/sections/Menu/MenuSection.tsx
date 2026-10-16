@@ -107,17 +107,17 @@ export default function MenuSection() {
                   <span className={styles.leader} aria-hidden="true" />
                   <div className={styles.priceBlock}>
                     {item.discountPercent && (
-                      <span className={styles.discountRibbon}>
-                        {item.discountPercent}% تخفیف
+                      <span className={styles.discountRibbon} aria-label={`${item.discountPercent} percent off`}>
+                        {item.discountPercent}%
                       </span>
                     )}
                     <div className={styles.priceRow} dir="ltr">
                       {item.discountPercent && (
-                        <span className={styles.originalPrice}>
+                        <span className={`${styles.price} ${styles.originalPrice}`}>
                           T {item.price.toLocaleString("en-US")}
                         </span>
                       )}
-                      <span className={`${styles.price} ${item.discountPercent ? styles.discountedPrice : ""}`} dir="ltr">
+                      <span className={styles.price} dir="ltr">
                         T {getCurrentPrice(item).toLocaleString("en-US")}
                       </span>
                     </div>
@@ -131,23 +131,23 @@ export default function MenuSection() {
                 </div>
                 <p className={styles.description}>{item.description}</p>
 
-              </div>
-              <div className={styles.cardActions}>
-                <MenuQuantityControl
-                  className={styles.menuQuantityControl}
-                  product={{
-                    id: item.number,
-                    name: item.name,
-                    italian: item.italian,
-                    description: item.description,
-                    price: getCurrentPrice(item),
-                    ...(item.discountPercent
-                      ? { originalPrice: item.price, discountPercent: item.discountPercent }
-                      : {}),
-                    ...(item.tag ? { tag: item.tag } : {}),
-                  }}
-                />
-                <span className={styles.mark} aria-hidden="true">✦</span>
+                <div className={styles.cardActions}>
+                  <MenuQuantityControl
+                    className={styles.menuQuantityControl}
+                    product={{
+                      id: item.number,
+                      name: item.name,
+                      italian: item.italian,
+                      description: item.description,
+                      price: getCurrentPrice(item),
+                      ...(item.discountPercent
+                        ? { originalPrice: item.price, discountPercent: item.discountPercent }
+                        : {}),
+                      ...(item.tag ? { tag: item.tag } : {}),
+                    }}
+                  />
+                  <span className={styles.mark} aria-hidden="true">✦</span>
+                </div>
               </div>
             </MenuScrollReveal>
           ))}

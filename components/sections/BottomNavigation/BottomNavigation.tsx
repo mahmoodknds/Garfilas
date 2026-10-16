@@ -114,8 +114,7 @@ export default function BottomNavigation() {
         className="bottom-nav-link bottom-nav-link-1"
         aria-label={centerConfig.label}
         title={centerConfig.label}
-        aria-haspopup={centerMode === "cart" && itemCount === 0 ? "dialog" : undefined}
-        aria-expanded={centerMode === "cart" && itemCount === 0 ? showEmptyCartDialog : undefined}
+        aria-describedby={showEmptyCartDialog ? "empty-cart-toast" : undefined}
         aria-current={centerMode !== "cart" ? "location" : undefined}
       >
         <span className="bottom-nav-center">

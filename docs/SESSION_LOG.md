@@ -790,3 +790,17 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - GitHub Actions Build verification run #220 passed Lint and the Next.js production build.
 - Vercel Preview reached READY for the reviewed change; Production deployment `dpl_4wEBzd3HUCxwcF6jTPV9xtBSchA3` reached READY with `garfilas.vercel.app` assigned.
 - No interactive real-browser/device visual acceptance is claimed. Packaging/delivery/tax remain undetermined and order notes are UI-only.
+
+
+## 2026-10-17 Menu Row Stability and Empty-Cart Toast Follow-up
+
+### Implemented on `fix/menu-price-stability-empty-toast`
+
+- Moved product quantity controls and the star into a separate row beneath the description, leaving the product-name / leader / price row completely independent from add-versus-stepper state. This prevents width changes when «افزودن» becomes plus/count/trash.
+- Kept the crossed-out original price on the same price typography; the diagonal line is only a pseudo-element overlay and does not change the type treatment.
+- Replaced the discount label with the percentage alone and a compact translucent gold glass badge with a gloss sweep.
+- Replaced the oversized empty-cart dialog with a small, text-only glass toast. A page click dismisses it; Escape also closes it. The toast does not place a dark overlay over the page or intercept clicks.
+
+### Verification boundary
+
+- Source updates are on `fix/menu-price-stability-empty-toast`. CI, Preview, merge and Production verification remain pending.

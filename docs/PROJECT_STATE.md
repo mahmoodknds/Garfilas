@@ -276,3 +276,13 @@ This section supersedes the older review-branch/pending-release statements above
 - Packaging, delivery and tax are intentionally marked as undetermined until actual rates are supplied. The displayed payable amount is provisional.
 - Order notes currently remain in client UI state and are not submitted to an order backend.
 - A real-device/browser visual interaction pass was not available here; responsive visual acceptance remains a separate QA item.
+
+
+## Menu Alignment and Empty-Cart Toast Follow-up (2026-10-17)
+
+- Review branch: `fix/menu-price-stability-empty-toast`.
+- Menu's product name, leader line, and price share a stable independent row. The add/quantity control and star are moved to a separate row beneath the description, so adding an item cannot resize or reposition the price row.
+- The old price keeps the same price font and typography; a diagonal line is drawn as a separate overlay.
+- The discount badge shows only the percentage, styled as compact translucent glass with a subtle glossy highlight.
+- The empty-cart interaction now shows only a small glass text toast. Clicking anywhere dismisses it without blocking the page; Escape also dismisses it.
+- CI, Vercel Preview, merge, and Production verification for this follow-up remain pending.

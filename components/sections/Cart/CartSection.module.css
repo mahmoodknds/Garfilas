@@ -393,106 +393,33 @@
   background: rgba(255, 122, 0, .12);
 }
 
-.emptyOverlay {
+.emptyToast {
   position: fixed;
-  inset: 0;
+  left: 50%;
+  bottom: calc(6.15rem + env(safe-area-inset-bottom));
   z-index: 10020;
-  display: grid;
-  place-items: center;
-  padding: 1.2rem;
-  background: rgba(3, 3, 3, .62);
-  -webkit-backdrop-filter: blur(10px) saturate(1.15);
-  backdrop-filter: blur(10px) saturate(1.15);
-  animation: empty-overlay-in .2s ease-out both;
-}
-
-.emptyDialog {
-  position: relative;
-  width: min(100%, 23rem);
-  overflow: hidden;
-  padding: 1.65rem 1.35rem 1.2rem;
-  border: 1px solid rgba(255, 179, 71, .58);
-  border-radius: 1.45rem;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(255,122,0,.17), transparent 62%),
-    linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.018) 46%, rgba(255,122,0,.035)),
-    rgba(13, 10, 7, .78);
-  box-shadow: 0 0 1px rgba(255,237,195,.75), 0 0 28px rgba(255,91,0,.16), inset 0 1px 0 rgba(255,240,200,.13);
-  -webkit-backdrop-filter: blur(22px) saturate(1.35);
-  backdrop-filter: blur(22px) saturate(1.35);
-  text-align: center;
-  animation: empty-dialog-in .26s cubic-bezier(.2,.75,.25,1) both;
-}
-
-.modalEyebrow {
-  display: block;
-  margin-bottom: .6rem;
-  color: #ffbd5c;
-  font: italic 500 1.15rem/1.2 var(--font-cormorant-garamond), Georgia, serif;
-  letter-spacing: .08em;
-  text-shadow: 0 0 9px rgba(255,122,0,.48);
-}
-
-.modalTitle {
-  margin: 0;
-  color: #fff0dc;
-  font: 750 1.12rem/1.8 var(--font-vazirmatn), sans-serif;
-  text-shadow: 0 0 12px rgba(255,138,31,.18);
-}
-
-.modalText {
-  margin: .3rem 0 1.15rem;
-  color: rgba(255,240,220,.67);
-  font: 400 .76rem/1.9 var(--font-vazirmatn), sans-serif;
-}
-
-.dialogActions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .65rem;
-}
-
-.dialogButton,
-.dialogLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.55rem;
-  padding: .5rem 1rem;
-  border: 1px solid rgba(255,179,71,.46);
+  max-width: calc(100vw - 2rem);
+  padding: .58rem 1rem .62rem;
+  border: 1px solid rgba(255, 210, 135, .38);
   border-radius: 999px;
-  color: #ffe1a4;
-  background: rgba(255,122,0,.055);
-  font: 600 .75rem/1.5 var(--font-vazirmatn), sans-serif;
-  cursor: pointer;
-  transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+  color: #fff0dc;
+  background:
+    linear-gradient(125deg,rgba(255,255,255,.12),rgba(255,255,255,.025) 40%,rgba(255,147,33,.09) 78%,rgba(255,255,255,.07)),
+    rgba(19, 12, 7, .77);
+  -webkit-backdrop-filter: blur(17px) saturate(1.3);
+  backdrop-filter: blur(17px) saturate(1.3);
+  box-shadow: 0 0 1px rgba(255,245,214,.68),0 4px 18px rgba(0,0,0,.26),0 0 14px rgba(255,122,0,.09),inset 0 1px 0 rgba(255,244,212,.17);
+  font: 500 .8rem/1.55 var(--font-vazirmatn), sans-serif;
+  text-align: center;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  animation: empty-toast-in .22s cubic-bezier(.2,.75,.25,1) both;
+  pointer-events: none;
 }
 
-.dialogLink {
-  border-color: rgba(255,179,71,.78);
-  background: linear-gradient(180deg,rgba(38,18,8,.74),rgba(7,5,4,.9) 55%,rgba(22,10,4,.82));
-  box-shadow: 0 0 8px rgba(255,133,22,.2);
-}
-
-.dialogButton:hover,
-.dialogButton:focus-visible,
-.dialogLink:hover,
-.dialogLink:focus-visible {
-  border-color: rgba(255,220,145,.9);
-  background-color: rgba(255,122,0,.15);
-  box-shadow: 0 0 12px rgba(255,122,0,.13);
-  outline: none;
-}
-
-@keyframes empty-overlay-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes empty-dialog-in {
-  from { opacity: 0; transform: translateY(8px) scale(.985); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+@keyframes empty-toast-in {
+  from { opacity: 0; transform: translate(-50%, 5px) scale(.98); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
 }
 
 @media (min-width: 740px) {
@@ -545,26 +472,15 @@
     font-size: 1.12rem;
   }
 
-  .dialogActions {
-    flex-direction: column;
-  }
-
-  .dialogButton,
-  .dialogLink {
-    width: 100%;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .removeButton,
-  .secondaryLink,
-  .dialogButton,
-  .dialogLink {
+  .secondaryLink {
     transition: none;
   }
 
-  .emptyOverlay,
-  .emptyDialog {
+  .emptyToast {
     animation: none;
   }
 }
