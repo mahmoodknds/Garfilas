@@ -19,7 +19,7 @@ export default function MenuQuantityControl({
   const quantity = items.find((item) => item.id === product.id)?.quantity ?? 0;
 
   return (
-    <div className={className} dir="ltr" aria-label={`تعداد ${product.name}`}>
+    <div className={className} dir="rtl" aria-label={`تعداد ${product.name}`}>
       <button
         type="button"
         onClick={() => addItem(product)}
