@@ -128,7 +128,7 @@
   .item { grid-template-columns: 1.8rem minmax(0,1fr) auto; gap: .45rem; padding: .85rem .6rem; }
   .number { font-size: 1rem; }
   .price { font-size: .96rem; letter-spacing: -.025em; }
-  .nameLine { flex-wrap: nowrap; align-items: center; gap: .3rem; }
+  .nameLine { flex-wrap: nowrap; align-items: flex-start; gap: .3rem; }
   .nameLine h3 { flex: 0 1 auto; font-size: 1.04rem; white-space: nowrap; letter-spacing: 0; }
   .leader { display: block; flex: 1 1 auto; min-width: .3rem; }
   .price { margin-inline-start: 0; }
