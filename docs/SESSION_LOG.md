@@ -842,3 +842,16 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - Vercel Preview reached READY for `7aff2fb19f8f811736f1909a90e46cde98c08f97`.
 - Vercel Production deployment `dpl_AFnJ8isQhATAZ9F6G8c4ZkkkKEGx` reached READY for the merge commit and assigned `garfilas.vercel.app`.
 - The final visual pass on a real browser/device remains pending. The delivery charge is still unknown and excluded from the computed payable total.
+
+
+## 2026-10-17 Hero/Menu Banner and Card Consistency Pass
+
+- Removed the menu banner's transparent fade at the top to close the visible gap after the hero.
+- Made the discount ribbon materially larger and increased its glow.
+- Returned the original price to normal size and readable opacity. The strike remains a pseudo-element over digits only; the `T` prefix remains bright and uses the original price typography.
+- Anchored the star and add/quantity control in a fixed lane at the left side of menu cards, vertically centered. Reserved that lane across card content so English names and descriptions do not shift as quantity changes.
+- Increased row-number size and aligned it with the Persian name line.
+- Restyled the cart count as a gold glass badge overlaying the cart icon.
+- Matched cart item cards, invoice panel and notes frame to the menu card border/radius/outline/background/glow system.
+- Changed packaging label to «ظرف و بسته‌بندی هر غذا»; charge remains 40,000 toman per dish.
+- Build/deployment checks and real-device visual QA are pending.

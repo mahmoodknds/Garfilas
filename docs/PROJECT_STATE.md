@@ -322,3 +322,16 @@ This is the authoritative state for the latest menu layout and empty-cart intera
 - Vercel Production deployment `dpl_AFnJ8isQhATAZ9F6G8c4ZkkkKEGx` reached READY for merge commit `81799c4376b8c5ac9a63564b9d8e5b7009067262` with alias `garfilas.vercel.app`.
 - Delivery pricing remains unresolved and excluded from the amount shown as payable.
 - No real-browser or device visual inspection is claimed; responsive visual QA remains pending.
+
+
+## 2026-10-17 Menu and Cart Visual Consistency Pass
+
+- Removed the top fade from the menu banner so it meets the hero section without a visible fade gap.
+- Increased the discount ribbon size and glow for stronger visibility.
+- Restored the original price to its regular size and readable brightness; only the digits receive the strike overlay. The `T` currency prefix retains the bright price styling.
+- Reserved a fixed left-side lane for the star and add/quantity control so toggling between «افزودن» and quantity controls does not move the English product name or description. The control sits centered vertically at the left side of the card, with the star adjacent on its left.
+- Enlarged row numbers and aligned them more closely with the Persian product name.
+- Positioned the cart count badge over the cart icon in a matching gold-glass style, as part of the button.
+- Matched cart product-card borders, corner radius, outline, background and glow to the menu card style. Applied the same frame language to the notes and invoice panels.
+- Renamed the packaging line to «ظرف و بسته‌بندی هر غذا»; fee remains 40,000 toman per dish.
+- Automated and preview checks pending; no real-device visual QA claimed.
