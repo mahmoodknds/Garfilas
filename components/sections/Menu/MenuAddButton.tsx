@@ -15,7 +15,7 @@ export default function MenuAddButton({
 }: MenuAddButtonProps) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timeoutRef = useRef<number | null>(null);
 
   useEffect(
     () => () => {
