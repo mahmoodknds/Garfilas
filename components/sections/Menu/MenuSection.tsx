@@ -153,11 +153,11 @@ export default function MenuSection() {
           ))}
         </ul>
 
-        <a className={styles.scrollCue} href="#cart" aria-label="رفتن به سبد خرید">
+        <div className={styles.scrollCue} aria-hidden="true">
           <span />
           <span />
           <span />
-        </a>
+        </div>
       </div>
     </section>
   );
