@@ -80,6 +80,7 @@
 .nameLine h3 { margin: 0; color: #ffd9a0; font: 700 1.48rem/1.15 var(--font-noto-naskh), "Noto Naskh Arabic", serif; letter-spacing: .025em; white-space: normal; -webkit-text-stroke: .15px rgba(255,217,160,.32); text-shadow: 0 0 2px rgba(255,248,223,.8), 0 0 8px rgba(255,179,92,.9), 0 0 18px rgba(255,106,0,.52); }
 .leader { flex: 1 1 auto; min-width: .25rem; height: 1px; transform: translateY(-.25rem); background: linear-gradient(to left, rgba(246,189,106,.65), rgba(246,189,106,.06)); }
 .price { flex: 0 0 auto; color: #fff0dc; font: 700 1.18rem/1.65 var(--font-cormorant-garamond), Georgia, serif; font-variant-numeric: lining-nums tabular-nums; letter-spacing: -.015em; white-space: nowrap; -webkit-text-stroke: .12px rgba(255,240,220,.28); text-shadow: 0 0 1px rgba(255,248,223,.78), 0 0 8px rgba(255,169,74,.38), 0 1px 0 rgba(70,28,0,.9); }
+.discountedPrice { color: #fff3cf; font-size: 1rem; letter-spacing: -.035em; text-shadow: 0 0 1px rgba(255,248,223,.9), 0 0 7px rgba(255,179,71,.62), 0 1px 0 rgba(70,28,0,.9); }
 .meta { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin: .12rem 0 .2rem; }
 .italian { color: #ffd080; font: italic 700 .98rem/1.4 "Cormorant Garamond", Georgia, serif; letter-spacing: .025em; text-shadow: 0 0 1px rgba(255,248,223,.55), 0 0 7px rgba(255,164,55,.42); }
  .tag { display:inline-flex;align-items:center;justify-content:center;padding:.03rem .5rem;border:1px solid rgba(255,106,0,.56);border-radius:999px;color:#ffb04a;background:rgba(7,5,4,.55);font:500 .61rem/1.7 var(--font-vazirmatn),sans-serif;box-shadow:0 0 5px rgba(255,91,0,.22),inset 0 0 6px rgba(255,91,0,.06); }
@@ -133,7 +134,8 @@
   .leader { display: block; flex: 1 1 auto; min-width: .3rem; }
   .price { margin-inline-start: 0; }
   .priceRow { gap: .18rem; }
-  .originalPrice { font-size: .57rem; }
+  .originalPrice { font-size: .5rem; }
+  .discountedPrice { font-size: .7rem; letter-spacing: -.045em; }
   .discountRibbon { top: -.82rem; padding: .04rem .32rem; font-size: .53rem; }
   .description { font-size: .68rem; }
 }
