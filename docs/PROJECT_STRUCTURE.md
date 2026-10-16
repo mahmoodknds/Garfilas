@@ -24,7 +24,7 @@ components/
       HeroLogo.tsx
       HeroParticleEngine.tsx
     Menu/
-      MenuAddButton.tsx
+      MenuQuantityControl.tsx
       MenuCardFrame.tsx
       MenuProductCard.tsx
       MenuScrollReveal.tsx
@@ -88,7 +88,7 @@ Root configuration:
 
 ## Menu and Cart ownership
 
-- `MenuSection.tsx` is the active menu list rendered on the homepage; `MenuAddButton.tsx` adds its selected product to the shared cart.
+- `MenuSection.tsx` is the active menu list rendered on the homepage; `MenuQuantityControl.tsx` renders each product's plus/count/minus controls immediately below its price, bound to shared cart state.
 - `CartProvider.tsx` owns cart state, quantity changes, removals, subtotal calculation, and localStorage persistence.
 - `CartSection.tsx` renders the inline cart below Menu. The Bottom Navigation's existing `#cart` link scrolls to this section.
 - `MenuProductCard.tsx` and `MenuCardFrame.tsx` remain a separate visual prototype; they are not mounted by the active homepage.
@@ -122,3 +122,9 @@ This tree describes the repository after cleanup PR #8 was merged into `main`; i
 - Cart is a section within the homepage, not a new App Router path.
 - The cart anchor is `id="cart"`; the fixed center navigation item targets `#cart`.
 - `CartProvider` is a lightweight client context with localStorage persistence; no state-management package or backend has been added.
+
+## 2026-10-16 Quantity and contextual navigation update
+
+- Menu quantity steppers now sit directly beneath each product price and reflect the shared cart quantity.
+- The center fixed navigation displays the total quantity badge outside Cart.
+- While Cart is visible, its center action changes to Menu for an empty cart or Payment for a non-empty cart. The Payment control targets `#cart-summary`; real payment/checkout integration is still not implemented.
