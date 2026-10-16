@@ -14,11 +14,11 @@ export default function CartEmptyDialog({ onClose }: CartEmptyDialogProps) {
       if (event.key === "Escape") onClose();
     };
 
-    window.addEventListener("pointerdown", dismissOnPointerDown);
+    document.addEventListener("click", dismissOnPointerDown);
     window.addEventListener("keydown", dismissOnEscape);
 
     return () => {
-      window.removeEventListener("pointerdown", dismissOnPointerDown);
+      document.removeEventListener("click", dismissOnPointerDown);
       window.removeEventListener("keydown", dismissOnEscape);
     };
   }, [onClose]);
