@@ -746,3 +746,20 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - When Cart enters the viewport, the center control changes to Menu if the cart is empty, or Payment if it contains items.
 - The Payment control scrolls to the order summary anchor; payment/checkout itself remains unimplemented.
 - Preserved the center button's locked position, existing fixed navigation frame, Hero geometry and approved palette.
+
+
+## 2026-10-16 Menu Control and Navigation Label Refinement
+
+### Implemented on `feature/cart-controls-polish`
+
+- Unselected menu items now show only the «افزودن» action.
+- Quantity one shows plus, an English-numeral count, and a trash action that removes the item; quantities of two or more show plus, count, and minus.
+- Moved the quantity control beside the star at the edge of each menu card, enlarged the controls, and matched the count typography to the price display.
+- Changed the fixed cart badge to an unboxed English-numeral count positioned directly above the cart icon.
+- When Cart is visible, the center navigation now shows only «منو» for an empty cart or «پرداخت» for a non-empty cart, without an icon. The text uses the landing-page CTA's gold-gradient treatment.
+- Preserved fixed navigation geometry and the approved Hero CTA/animation.
+
+### Verification boundary
+
+- Source changes are on `feature/cart-controls-polish`; Preview build and interactive visual review are pending.
+- The Payment label still scrolls to the order summary; payment processing is not implemented.
