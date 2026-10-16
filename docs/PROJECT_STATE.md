@@ -251,3 +251,15 @@ This section is the latest cart UI checkpoint and supersedes older cart-control 
 - In the Cart section, the center nav shows only «منو» when empty and only «پرداخت» when non-empty, using the landing CTA's gold-gradient text treatment and no icon.
 - Source-level editing is complete. GitHub Actions, Preview deployment, responsive interaction checks, merge and Production verification are pending for this review branch.
 - Payment is still only a link to the order summary; no payment gateway or order submission has been implemented.
+
+
+## 2026-10-17 Menu Pricing and Cart Invoice (Review Branch)
+
+- Review branch: `feature/cart-bill-empty-modal`.
+- Menu price alignment is preserved with the item name and center leader; the first product, Garfi, is a deliberate 50% demo offer. Original price is crossed diagonally and discounted price is shown beside it; the shared cart and discount total use the discounted price.
+- A downward triple-chevron cue appears at the end of the menu.
+- Empty cart state is not a separate visible page. The Cart section collapses when no products exist, and clicking the fixed cart icon opens a glass dialog saying «سبد خرید هنوز خالی است».
+- The cart shows compact product-style item cards without descriptions, larger quantity controls, a notes textarea, and an invoice with the requested rows.
+- Packaging, delivery and tax rates have not been supplied. They show «تعیین نشده»; the displayed payable amount is marked provisional and does not fabricate those charges.
+- Order notes are currently held in UI state only and are not sent to a backend.
+- Review branch source is under verification. CI/Preview, responsive visual review, merge and Production deployment must be confirmed separately.

@@ -396,3 +396,18 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [x] Use the landing CTA's gold-gradient text treatment for icon-free «منو» / «پرداخت» states.
 - [ ] Confirm responsive appearance and interaction behavior in the branch Preview.
 - [ ] Confirm CI, merge, and the exact Vercel Production deployment SHA before considering the change released.
+
+
+## Menu pricing and Cart invoice refinement (2026-10-17)
+
+- [x] Restore the menu item name, leader line and price alignment.
+- [x] Add a diagonal gold 50% discount ribbon and crossed original price to the Garfi demo item.
+- [x] Calculate cart totals and discount savings from the discounted price.
+- [x] Add the end-of-menu triple-chevron cue.
+- [x] Remove the empty-cart screen and use a glass dialog when the empty cart button is clicked.
+- [x] Restyle the exact cart count to match the cart icon.
+- [x] Use compact product-style cart item cards without descriptions and enlarge plus/minus controls.
+- [x] Add the order notes field and requested invoice rows.
+- [ ] Confirm packaging, delivery and tax rates before turning the provisional amount into a final amount payable.
+- [ ] Connect order notes to order submission when a backend order flow is implemented.
+- [ ] Run CI and Vercel Preview/Production verification and inspect responsive behavior before accepting the release.
