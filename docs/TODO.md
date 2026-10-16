@@ -408,7 +408,8 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [x] Restyle the exact cart count to match the cart icon.
 - [x] Use compact product-style cart item cards without descriptions and enlarge plus/minus controls.
 - [x] Add the order notes field and requested invoice rows.
-- [ ] Confirm packaging, delivery and tax rates before turning the provisional amount into a final amount payable.
+- [x] Set packaging to 40,000 toman per dish and calculate 10% tax on discounted food subtotal plus packaging.
+- [ ] Set the delivery rate before presenting the payable amount as including delivery.
 - [ ] Connect order notes to order submission when a backend order flow is implemented.
 - [x] GitHub Actions lint/build and Vercel Preview/Production deployment verified for PR #17 (merge commit `8ab153d0d54140ed5ec8897d4233756a21d1cbcf`).
 - [ ] Complete real-browser responsive and interaction review on mobile and desktop.
@@ -434,3 +435,17 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [x] PR #18 merged to `main` as `655db9b68342d4f528bca9c799672cf7855603fd`.
 - [x] Vercel Production reached READY for the merge commit.
 - [ ] Review mobile and desktop visuals in a real browser/device; no interactive device test was available during this change.
+
+
+## Menu and Cart polish follow-up (2026-10-17)
+
+- [x] Enlarge and brighten the glass discount ribbon.
+- [x] Fade and reduce the original price; keep the strike limited to its digits and remove the `T` prefix from the discounted price.
+- [x] Place star and quantity controls directly below the price row.
+- [x] Remove leading zeroes from visible menu/cart row numbering.
+- [x] Integrate a larger, gold-styled cart count inside the cart button; slightly enlarge «پرداخت».
+- [x] Remove excess space between Menu and Cart.
+- [x] Calculate packaging at 40,000 toman per dish and tax at 10% of discounted food subtotal plus packaging.
+- [x] Remove the message and button beneath the payable total.
+- [ ] Confirm the delivery fee; current displayed payable total does not include it.
+- [ ] Verify the preview with responsive visual and interaction checks before marking visual QA complete.
