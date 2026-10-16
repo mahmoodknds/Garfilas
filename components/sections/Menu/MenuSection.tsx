@@ -117,7 +117,7 @@ export default function MenuSection() {
                           T {item.price.toLocaleString("en-US")}
                         </span>
                       )}
-                      <span className={styles.price} dir="ltr">
+                      <span className={`${styles.price} ${item.discountPercent ? styles.discountedPrice : ""}`} dir="ltr">
                         T {getCurrentPrice(item).toLocaleString("en-US")}
                       </span>
                     </div>
