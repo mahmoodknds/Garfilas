@@ -8,7 +8,7 @@ type MenuItem = {
   name: string;
   italian: string;
   description: string;
-  price: string;
+  price: number;
   tag?: string;
 };
 
