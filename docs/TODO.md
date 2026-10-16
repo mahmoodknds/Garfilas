@@ -188,10 +188,13 @@ The active homepage now includes Menu and an inline Cart section. The remaining 
 ## Shopping Cart (inline section)
 - [x] Shared cart state using React Context
 - [x] Persist cart items in localStorage
-- [x] Add products from the active Menu list
+- [x] Add and remove quantities directly beneath each active Menu product price using +/− and a shared quantity counter
 - [x] Quantity controls and item removal
 - [x] Item count and subtotal summary
 - [x] Inline Cart section beneath Menu; fixed navigation scrolls to `#cart`
+- [x] Show selected quantity badge on the center navigation while outside Cart
+- [x] Change the center navigation to Menu when Cart is empty and Payment when it contains items
+- [ ] Confirm the Payment action's anchor behavior on long carts; real checkout/payment integration remains future work
 - [ ] Coupon
 - [ ] Customer notes
 - [ ] Browser/device acceptance for cart interactions and the #cart scroll target
@@ -371,3 +374,12 @@ Perform the final browser/device and performance QA pass on the current deployed
 - [x] Confirm GitHub Actions lint/build for the feature branch (run #200 passed).
 - [ ] Inspect preview on mobile and desktop: menu-to-cart scroll, safe-area spacing, fixed navigation overlap, and reduced-motion behavior.
 - [ ] Do not describe this change as merged or deployed until checks and the merge are verified.
+
+
+## Quantity/navigation refinement (2026-10-16)
+
+- [x] Place a plus button, count, and minus button directly below each Menu price.
+- [x] Keep each stepper synchronized with the shared cart, including persisted quantities.
+- [x] Add a dynamic count badge to the center cart button.
+- [x] Switch center navigation to Menu in an empty Cart and Payment in a non-empty Cart.
+- [ ] Test the contextual navigation transitions on mobile and desktop using the Preview deployment.
