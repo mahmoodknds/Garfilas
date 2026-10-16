@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { Phone, ShoppingCart, UserRound } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import CartEmptyDialog from "@/components/sections/Cart/CartEmptyDialog";
 import { useCart } from "@/components/sections/Cart/CartProvider";
 
 const sideItems = [
@@ -13,8 +14,10 @@ const sideItems = [
 type CenterMode = "cart" | "menu" | "payment";
 
 export default function BottomNavigation() {
-  const { itemCount } = useCart();
+  const { itemCount, hydrated } = useCart();
   const [isCartVisible, setIsCartVisible] = useState(false);
+  const [showEmptyCartDialog, setShowEmptyCartDialog] = useState(false);
+  const closeEmptyCartDialog = useCallback(() => setShowEmptyCartDialog(false), []);
 
   useEffect(() => {
     const cartSection = document.getElementById("cart");
@@ -56,6 +59,7 @@ export default function BottomNavigation() {
   }[centerMode];
 
   return (
+    <>
     <nav className="bottom-nav" aria-label="ناوبری اصلی">
       <style>{`
         .bottom-nav { position:fixed!important;left:50%!important;right:auto!important;bottom:0!important;width:min(100%,860px)!important;height:5.8rem!important;min-height:0!important;padding:0!important;margin:0!important;transform:translateX(-50%)!important;display:block!important;visibility:visible!important;opacity:1!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important;overflow:visible!important;isolation:isolate;z-index:9999!important;pointer-events:none!important; }
@@ -69,12 +73,12 @@ export default function BottomNavigation() {
         .bottom-nav-cart-icon svg { display:block;width:1.875rem;height:1.875rem; }
         .bottom-nav-action-label { display:block;max-width:100%;color:transparent;background:linear-gradient(180deg,#fff7df 0%,#ffdc96 45%,#ffae3d 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:IRANSansX,Vazirmatn,system-ui,sans-serif;font-size:clamp(1.22rem,4.55vw,1.5rem);font-weight:700;line-height:1;letter-spacing:.025em;white-space:nowrap;-webkit-text-stroke:.12px rgba(255,241,204,.4);filter:drop-shadow(0 0 4px rgba(255,191,77,.72)); }
         .bottom-nav-action-label--payment { font-size:clamp(.92rem,3.7vw,1.12rem);letter-spacing:0; }
-        .bottom-nav-badge { position:absolute;top:-.58rem;left:50%;z-index:5;display:block;min-width:0;height:auto;padding:0;border:0;border-radius:0;color:#fff0dc;background:transparent;box-shadow:none;transform:translateX(-50%);font:700 1.05rem/1 var(--font-cormorant-garamond),Georgia,serif;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap;text-shadow:0 0 1px rgba(255,248,223,.78),0 0 8px rgba(255,169,74,.42),0 1px 0 rgba(70,28,0,.9); }
+        .bottom-nav-badge { position:absolute;top:-.48rem;left:50%;z-index:5;display:block;min-width:0;height:auto;padding:0;border:0;border-radius:0;color:#ffd58b;background:transparent;box-shadow:none;transform:translateX(-50%);font:700 .98rem/.95 var(--font-cormorant-garamond),Georgia,serif;font-variant-numeric:lining-nums tabular-nums;letter-spacing:.015em;white-space:nowrap;pointer-events:none;text-shadow:0 0 2px rgba(255,248,223,.82),0 0 5px rgba(255,169,74,.85),0 0 11px rgba(255,122,0,.55); }
         .bottom-nav-link-2 { left:80%!important;top:65.8125%!important;width:3.35rem!important;height:3.35rem!important; }
         .bottom-nav-link svg { filter:drop-shadow(0 0 4px rgba(255,91,0,.55)); }
         .bottom-nav-link-0 svg,.bottom-nav-link-2 svg { width:1.8rem;height:1.8rem; }
         .bottom-nav-link:hover,.bottom-nav-link:focus-visible { transform:translate(-50%,-52%)!important;color:#ffb04a;box-shadow:0 0 10px rgba(255,91,0,.9),0 0 24px rgba(255,91,0,.3),inset 0 0 10px rgba(255,91,0,.16); }
-        @media (max-width:380px) { .bottom-nav-link-1 { width:4.25rem!important;height:4.25rem!important; } .bottom-nav-action-label { font-size:1.14rem; } .bottom-nav-action-label--payment { font-size:.92rem; } .bottom-nav-badge { top:-.52rem; } }
+        @media (max-width:380px) { .bottom-nav-link-1 { width:4.25rem!important;height:4.25rem!important; } .bottom-nav-action-label { font-size:1.14rem; } .bottom-nav-action-label--payment { font-size:.92rem; } .bottom-nav-badge { top:-.43rem;font-size:.9rem; } }
         @media (prefers-reduced-motion:reduce) { .bottom-nav-link { scroll-behavior:auto; } }
       `}</style>
 
@@ -97,9 +101,21 @@ export default function BottomNavigation() {
 
       <a
         href={centerConfig.href}
+        onClick={(event) => {
+          if (!hydrated) {
+            event.preventDefault();
+            return;
+          }
+          if (centerMode === "cart" && itemCount === 0) {
+            event.preventDefault();
+            setShowEmptyCartDialog(true);
+          }
+        }}
         className="bottom-nav-link bottom-nav-link-1"
         aria-label={centerConfig.label}
         title={centerConfig.label}
+        aria-haspopup={centerMode === "cart" && itemCount === 0 ? "dialog" : undefined}
+        aria-expanded={centerMode === "cart" && itemCount === 0 ? showEmptyCartDialog : undefined}
         aria-current={centerMode !== "cart" ? "location" : undefined}
       >
         <span className="bottom-nav-center">
@@ -121,5 +137,9 @@ export default function BottomNavigation() {
         <span className="sr-only">{centerConfig.label}</span>
       </a>
     </nav>
+    {showEmptyCartDialog && (
+      <CartEmptyDialog onClose={closeEmptyCartDialog} />
+    )}
+    </>
   );
 }
