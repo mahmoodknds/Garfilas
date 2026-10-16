@@ -122,7 +122,7 @@ Page-level feature sections. Each section owns its markup and presentation-speci
 Active homepage sections:
 
 - Hero
-- Menu (`MenuSection.tsx`, with responsive item reveal and add-to-cart controls)
+- Menu (`MenuSection.tsx`, with responsive item reveal and per-product quantity stepper)
 - Inline Cart (`CartSection.tsx`, directly below Menu)
 - Fixed Bottom Navigation
 
@@ -205,7 +205,8 @@ Implemented in the current source:
 - Foundation and shared design tokens
 - Hero and fixed Bottom Navigation
 - Active Menu section with seven menu items
-- Cart add controls, quantity changes, item removal, subtotal, and localStorage persistence
+- Per-product plus/count/minus controls beneath prices, cart quantity synchronization, item removal, subtotal, and localStorage persistence
+- Dynamic center navigation: count badge outside Cart, Menu when the visible Cart is empty, and Payment when it contains products (Payment scrolls to the summary; checkout integration is not implemented)
 - Inline Cart section directly below Menu, reached through the navigation anchor
 
 Not implemented: checkout, payment, server-side order submission, coupon entry, customer notes, and database persistence. The older Menu card prototype is separate from the active menu list. The homepage SEO foundation includes canonical metadata, Open Graph/Twitter summary metadata, `robots.txt`, and a homepage-only sitemap. Browser/device acceptance and branch CI remain required before release.
