@@ -782,3 +782,11 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 
 - GitHub source changes are complete on the review branch; GitHub Actions, Preview build, responsive/interaction review, merge and Production deployment remain pending.
 - The order notes field is UI-only for now; it is not submitted to an order backend.
+
+
+### Release verification (2026-10-17)
+
+- PR #17 was squash-merged into `main` as `8ab153d0d54140ed5ec8897d4233756a21d1cbcf`.
+- GitHub Actions Build verification run #220 passed Lint and the Next.js production build.
+- Vercel Preview reached READY for the reviewed change; Production deployment `dpl_4wEBzd3HUCxwcF6jTPV9xtBSchA3` reached READY with `garfilas.vercel.app` assigned.
+- No interactive real-browser/device visual acceptance is claimed. Packaging/delivery/tax remain undetermined and order notes are UI-only.
