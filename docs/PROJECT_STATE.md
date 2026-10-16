@@ -286,3 +286,16 @@ This section supersedes the older review-branch/pending-release statements above
 - The discount badge shows only the percentage, styled as compact translucent glass with a subtle glossy highlight.
 - The empty-cart interaction now shows only a small glass text toast. Clicking anywhere dismisses it without blocking the page; Escape also dismisses it.
 - CI, Vercel Preview, merge, and Production verification for this follow-up remain pending.
+
+
+## Current Menu Price/Empty-Cart Toast Release (2026-10-17)
+
+This is the authoritative state for the latest menu layout and empty-cart interaction changes; it supersedes the earlier pending-release note above.
+
+- PR #18, “Stabilize menu price row and simplify empty-cart message,” was merged into `main` as `655db9b68342d4f528bca9c799672cf7855603fd`.
+- GitHub Actions Build verification run #227 passed lint and production build for the reviewed branch head.
+- Vercel Preview reached READY for the reviewed head; Production reached READY for merge commit `655db9b68342d4f528bca9c799672cf7855603fd` with alias `garfilas.vercel.app`.
+- Menu action controls and star now occupy their own lower row; product name, leader and price occupy an independent row so add-state width changes do not reflow the price line.
+- The original price retains the same type treatment and uses a diagonal pseudo-element strike. The offer badge is percentage-only glass styling.
+- The empty-cart state is a small, text-only glass toast dismissed by any page click or Escape, without a full-screen dimming overlay.
+- Real-device/browser visual comparison remains unperformed; the UI release is build-verified but still benefits from responsive visual QA.
