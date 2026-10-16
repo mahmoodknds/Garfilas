@@ -312,3 +312,13 @@ This is the authoritative state for the latest menu layout and empty-cart intera
 - Added packaging at 40,000 toman per dish. Tax is calculated as 10% of the discounted food subtotal plus packaging. The invoice total includes discounted food, packaging and tax.
 - Delivery remains undetermined and is excluded from the displayed amount until a delivery rate is set. Removed the message and secondary button beneath the payable total.
 - Build and production-preview verification for this refinement: pending at the time of this note. Real-device visual QA is not claimed.
+
+
+## Release Verification: Menu and Cart Polish PR #20 (2026-10-17)
+
+- PR #20 was squash-merged to `main` as `81799c4376b8c5ac9a63564b9d8e5b7009067262`.
+- GitHub Actions Build verification run #234 passed dependency audit, lint and Next.js production build.
+- Vercel Preview reached READY for reviewed head `7aff2fb19f8f811736f1909a90e46cde98c08f97`.
+- Vercel Production deployment `dpl_AFnJ8isQhATAZ9F6G8c4ZkkkKEGx` reached READY for merge commit `81799c4376b8c5ac9a63564b9d8e5b7009067262` with alias `garfilas.vercel.app`.
+- Delivery pricing remains unresolved and excluded from the amount shown as payable.
+- No real-browser or device visual inspection is claimed; responsive visual QA remains pending.
