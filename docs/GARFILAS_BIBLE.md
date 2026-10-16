@@ -293,7 +293,8 @@ Tag
 - Landing Hero: In Development / Visual Calibration
 - Latest slogan calibration: mobile slogan moved slightly upward only; no other Hero elements changed in that commit
 - Latest CTA/arrow calibration: CTA position preserved; mobile scroll arrows restored to prior position
-- Menu: Planned
+- Menu: Active homepage section with seven lasagna options
+- Cart: Inline section directly below Menu; dark luxury styling and mobile-first controls
 - Checkout: Planned
 - Admin: Future
 - Latest Hero arrow calibration: mobile arrows restored to the prior lower position
@@ -421,3 +422,18 @@ This checkpoint does not change the approved brand identity, visual direction, o
 - Cleanup PR #8 is merged into `main`; latest known Vercel Production deployment is READY for `186fbbe43e7b5cf6832d5c0777cfff90c4762c4a`. Browser/device acceptance remains pending.
 - `https://garfilas.ir` is configured as the canonical URL in code, but domain routing, DNS, SSL, and personal-host deployment remain unverified.
 - Next milestone: bounded final QA, then choose the hosting path after Node.js/panel capabilities are confirmed. Do not expand product features during this pass.
+
+
+## 2026-10-16 Active Menu and Cart Scope
+
+The current homepage is a continuous mobile-first composition: Hero → Menu → Cart. The Cart remains directly below the Menu instead of opening as a separate route. The fixed center navigation control scrolls to the Cart section, preserving the existing navigation geometry.
+
+All Cart UI must preserve the approved visual system:
+- Background `#090909`, surface `#131313`, orange `#FF7A00`, and gold accent `#FFB347`.
+- Vazirmatn for Persian and Cormorant Garamond for English display text.
+- Restrained glow, high contrast, comfortable touch targets, and short purposeful transitions.
+- Keep implementation lightweight and support reduced-motion preferences.
+- Do not add checkout/payment/backend behavior unless explicitly scoped.
+
+Last Updated: 2026-10-16
+Documentation Version: 2.9.0
