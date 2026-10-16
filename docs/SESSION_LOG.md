@@ -804,3 +804,12 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 ### Verification boundary
 
 - Source updates are on `fix/menu-price-stability-empty-toast`. CI, Preview, merge and Production verification remain pending.
+
+
+### Release verification: PR #18 (2026-10-17)
+
+- PR #18 was squash-merged to `main` as `655db9b68342d4f528bca9c799672cf7855603fd`.
+- GitHub Actions Build verification run #227 passed lint and production build.
+- Vercel Preview deployment reached READY for the reviewed source head.
+- Vercel Production deployment `dpl_3PA1YXdpxbwRtK7pUHh6JSPxa8ef` reached READY with `garfilas.vercel.app` assigned and commit `655db9b68342d4f528bca9c799672cf7855603fd`.
+- Real-browser interactive/visual QA remains separate and is not claimed. Source changes are released.
