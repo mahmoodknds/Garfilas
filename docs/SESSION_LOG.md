@@ -833,3 +833,12 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 
 - Automated lint/build and Vercel Preview/Production status are to be checked for this branch.
 - No real-device visual QA is claimed.
+
+
+### Release verification: PR #20 (2026-10-17)
+
+- PR #20 was squash-merged to `main` as `81799c4376b8c5ac9a63564b9d8e5b7009067262`.
+- GitHub Actions Build verification run #234 passed dependency audit, lint and the Next.js production build.
+- Vercel Preview reached READY for `7aff2fb19f8f811736f1909a90e46cde98c08f97`.
+- Vercel Production deployment `dpl_AFnJ8isQhATAZ9F6G8c4ZkkkKEGx` reached READY for the merge commit and assigned `garfilas.vercel.app`.
+- The final visual pass on a real browser/device remains pending. The delivery charge is still unknown and excluded from the computed payable total.
