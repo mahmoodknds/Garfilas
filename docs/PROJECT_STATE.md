@@ -238,3 +238,16 @@ This section supersedes older deployment/status statements above where they desc
 - The cart section supports empty/loading states, quantity adjustments, item removal, item count, and subtotal.
 - Checkout, payment, customer notes, coupon entry, backend order storage, and order confirmation are not implemented.
 - This source update is on `feature/cart-section`. GitHub Actions Build verification run #200 passed lint and production build; Vercel Preview reached READY. Real-browser responsive/interaction acceptance, merge, and Production release remain pending.
+
+
+## 2026-10-16 Cart Controls Visual Refinement (Review Branch)
+
+This section is the latest cart UI checkpoint and supersedes older cart-control styling notes above.
+
+- Review branch: `feature/cart-controls-polish`.
+- With quantity zero, a product shows only «افزودن». At quantity one, the control is plus/count/trash; at higher quantities it is plus/count/minus. The trash action removes the last item.
+- Quantity controls sit beside the product-card star. Counts use English numerals and the price's display typography; plus/minus controls are larger.
+- The fixed cart badge is a single English-numeral count directly above the cart glyph, without a colored badge background.
+- In the Cart section, the center nav shows only «منو» when empty and only «پرداخت» when non-empty, using the landing CTA's gold-gradient text treatment and no icon.
+- Source-level editing is complete. GitHub Actions, Preview deployment, responsive interaction checks, merge and Production verification are pending for this review branch.
+- Payment is still only a link to the order summary; no payment gateway or order submission has been implemented.
