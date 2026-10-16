@@ -4,7 +4,7 @@ Premium online lasagna brand and mobile-first landing page MVP.
 
 ## Stack
 
-- Next.js 16.2.10 (App Router)
+- Next.js 16.4.0 (App Router)
 - React 19.2.4
 - TypeScript (strict)
 - Tailwind CSS v4
@@ -13,12 +13,12 @@ Premium online lasagna brand and mobile-first landing page MVP.
 
 ## Current scope
 
-The active homepage contains the Hero and Bottom Navigation. The foreground composition is intentionally being stabilized before additional sections are introduced.
+The active homepage is a single scrollable experience: Hero → Menu → Cart. The fixed Bottom Navigation's cart control scrolls to the inline cart section below the menu. The checkout flow and server-side order submission are not implemented yet.
 
 ## Structure
 
 - `app/` contains the App Router and global styles.
-- `components/sections/` contains page features such as Hero and Bottom Navigation.
+- `components/sections/` contains the active Hero, Menu, Cart, and Bottom Navigation features.
 - `components/ui/` contains active reusable UI primitives.
 - `config/` contains the brand label and the single canonical public site URL.
 - `styles/` contains shared design tokens.
