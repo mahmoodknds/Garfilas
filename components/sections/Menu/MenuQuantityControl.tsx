@@ -1,6 +1,7 @@
 "use client";
 
 import { Trash2 } from "lucide-react";
+import styles from "./MenuSection.module.css";
 import { useCart, type CartProduct } from "@/components/sections/Cart/CartProvider";
 
 type MenuQuantityControlProps = {
@@ -43,7 +44,7 @@ export default function MenuQuantityControl({
       >
         +
       </button>
-      <output className="quantityValue" aria-live="polite" aria-atomic="true">
+      <output className={`${styles.price} quantityValue`} aria-live="polite" aria-atomic="true">
         {formatQuantity(quantity)}
       </output>
       {quantity === 1 ? (
