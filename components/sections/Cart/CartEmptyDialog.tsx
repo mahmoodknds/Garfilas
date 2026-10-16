@@ -24,7 +24,7 @@ export default function CartEmptyDialog({ onClose }: CartEmptyDialogProps) {
   }, [onClose]);
 
   return (
-    <div className={styles.emptyToast} role="status" aria-live="polite" dir="rtl">
+    <div id="empty-cart-toast" className={styles.emptyToast} role="status" aria-live="polite" dir="rtl">
       سبد خرید هنوز خالی است
     </div>
   );
