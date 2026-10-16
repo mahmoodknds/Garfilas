@@ -263,3 +263,16 @@ This section is the latest cart UI checkpoint and supersedes older cart-control 
 - Packaging, delivery and tax rates have not been supplied. They show «تعیین نشده»; the displayed payable amount is marked provisional and does not fabricate those charges.
 - Order notes are currently held in UI state only and are not sent to a backend.
 - Review branch source is under verification. CI/Preview, responsive visual review, merge and Production deployment must be confirmed separately.
+
+
+## Current authoritative cart release state (2026-10-17)
+
+This section supersedes the older review-branch/pending-release statements above for the current Menu and Cart work.
+
+- PR #17, “Refine menu prices and redesign empty cart and invoice,” was merged to `main` as `8ab153d0d54140ed5ec8897d4233756a21d1cbcf`.
+- GitHub Actions Build verification run #220 passed Lint and the Next.js production build for the reviewed head.
+- Vercel Preview reached READY for the reviewed head. Vercel Production reached READY for merge commit `8ab153d0d54140ed5ec8897d4233756a21d1cbcf`; the verified production deployment was `dpl_4wEBzd3HUCxwcF6jTPV9xtBSchA3` with alias `garfilas.vercel.app`.
+- The 50% Garfi offer is a demonstration promotion. It affects the menu price, cart line total and discount sum.
+- Packaging, delivery and tax are intentionally marked as undetermined until actual rates are supplied. The displayed payable amount is provisional.
+- Order notes currently remain in client UI state and are not submitted to an order backend.
+- A real-device/browser visual interaction pass was not available here; responsive visual acceptance remains a separate QA item.
