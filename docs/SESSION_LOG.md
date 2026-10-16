@@ -813,3 +813,23 @@ Verification: source-level change only. Fresh production build and Vercel deploy
 - Vercel Preview deployment reached READY for the reviewed source head.
 - Vercel Production deployment `dpl_3PA1YXdpxbwRtK7pUHh6JSPxa8ef` reached READY with `garfilas.vercel.app` assigned and commit `655db9b68342d4f528bca9c799672cf7855603fd`.
 - Real-browser interactive/visual QA remains separate and is not claimed. Source changes are released.
+
+
+## 2026-10-17 Menu and Cart Polish / Fee Calculation
+
+### Implemented on `feat/menu-price-cart-polish`
+
+- Enlarged the percentage-only glass discount ribbon and strengthened the gold glow and sheen.
+- Made the original price smaller and subdued. The strike is limited to the number, with the `T` prefix separated from it; the discounted price does not show a `T` prefix and has a wider gap.
+- Moved the quantity control and star to the row immediately below the price row.
+- Removed leading zeroes from the visible menu and cart row numbers while keeping stable product IDs for persisted cart entries.
+- Restyled the cart count as an in-flow part of the center cart button below its icon, and slightly enlarged the «پرداخت» label.
+- Removed the excessive space between the Menu and Cart sections.
+- Packaging is 40,000 toman per dish. Tax is 10% of the discounted food subtotal plus packaging; both values are calculated dynamically from the cart.
+- The payable total now includes discounted food, packaging and tax. Delivery remains undetermined and is not included yet.
+- Removed the provisional message and the «افزودن محصول دیگر» button beneath the payable total.
+
+### Verification boundary
+
+- Automated lint/build and Vercel Preview/Production status are to be checked for this branch.
+- No real-device visual QA is claimed.

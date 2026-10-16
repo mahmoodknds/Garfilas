@@ -2,7 +2,7 @@
   position: relative;
   isolation: isolate;
   width: 100%;
-  padding: 2.7rem 0 calc(8.5rem + env(safe-area-inset-bottom));
+  padding: 0 0 calc(8.5rem + env(safe-area-inset-bottom));
   scroll-margin-top: 1.5rem;
   background: transparent;
 }

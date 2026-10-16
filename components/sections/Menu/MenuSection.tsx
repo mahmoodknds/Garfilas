@@ -100,7 +100,7 @@ export default function MenuSection() {
               visibleClassName={styles.revealVisible}
               index={index}
             >
-              <span className={styles.number}>{item.number}</span>
+              <span className={styles.number}>{Number(item.number)}</span>
               <div className={styles.details}>
                 <div className={styles.nameLine}>
                   <h3>{item.name}</h3>
@@ -113,25 +113,27 @@ export default function MenuSection() {
                     )}
                     <div className={styles.priceRow} dir="ltr">
                       {item.discountPercent && (
-                        <span className={`${styles.price} ${styles.originalPrice}`}>
-                          T {item.price.toLocaleString("en-US")}
+                        <span className={styles.originalPriceGroup}>
+                          <span className={styles.currencyPrefix}>T</span>
+                          <span className={`${styles.price} ${styles.originalPrice}`}>
+                            {item.price.toLocaleString("en-US")}
+                          </span>
                         </span>
                       )}
-                      <span className={styles.price} dir="ltr">
-                        T {getCurrentPrice(item).toLocaleString("en-US")}
-                      </span>
+                      {item.discountPercent ? (
+                        <span className={`${styles.price} ${styles.discountedPrice}`} dir="ltr">
+                          {getCurrentPrice(item).toLocaleString("en-US")}
+                        </span>
+                      ) : (
+                        <span className={styles.price} dir="ltr">
+                          T {getCurrentPrice(item).toLocaleString("en-US")}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
-                <div className={styles.meta}>
-                  <span className={styles.italian} dir="ltr">{item.italian}</span>
-                  {item.tag && (
-                    <span className={item.tag === "VIP" || item.tag === "وجترین" ? `${styles.tag} ${styles.vipTag}` : styles.tag}>{item.tag}</span>
-                  )}
-                </div>
-                <p className={styles.description}>{item.description}</p>
-
                 <div className={styles.cardActions}>
+                  <span className={styles.mark} aria-hidden="true">✦</span>
                   <MenuQuantityControl
                     className={styles.menuQuantityControl}
                     product={{
@@ -146,8 +148,15 @@ export default function MenuSection() {
                       ...(item.tag ? { tag: item.tag } : {}),
                     }}
                   />
-                  <span className={styles.mark} aria-hidden="true">✦</span>
                 </div>
+                <div className={styles.meta}>
+                  <span className={styles.italian} dir="ltr">{item.italian}</span>
+                  {item.tag && (
+                    <span className={item.tag === "VIP" || item.tag === "وجترین" ? `${styles.tag} ${styles.vipTag}` : styles.tag}>{item.tag}</span>
+                  )}
+                </div>
+                <p className={styles.description}>{item.description}</p>
+
               </div>
             </MenuScrollReveal>
           ))}
