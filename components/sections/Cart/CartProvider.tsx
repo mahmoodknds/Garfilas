@@ -60,19 +60,26 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    let restoredItems: CartItem[] = [];
+
     try {
       const saved = window.localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed: unknown = JSON.parse(saved);
         if (Array.isArray(parsed)) {
-          setItems(parsed.filter(isCartItem));
+          restoredItems = parsed.filter(isCartItem);
         }
       }
     } catch {
       // Keep the cart usable when storage is unavailable or contains invalid data.
-    } finally {
-      setHydrated(true);
     }
+
+    const hydrationFrame = window.requestAnimationFrame(() => {
+      setItems(restoredItems);
+      setHydrated(true);
+    });
+
+    return () => window.cancelAnimationFrame(hydrationFrame);
   }, []);
 
   useEffect(() => {
