@@ -55,7 +55,7 @@
 
 .menuList { display: grid; gap: .85rem; list-style: none; margin: .35rem 0 0; padding: 0; }
 .item:has(.discountRibbon) { z-index: 2; }
-.item { --item-index: 0; position: relative; display: block; direction: rtl; min-width: 0; padding: 1rem .6rem 1rem .5rem; overflow: visible; border: 1px solid rgba(255,106,0,.9); border-radius: 1.7rem .42rem 1.7rem .42rem; outline: 1px solid rgba(255,91,0,.16); outline-offset: -6px; background: linear-gradient(135deg, rgba(255,255,255,.025), rgba(255,255,255,0) 45%), rgba(7,5,4,.72); box-shadow: 0 0 7px rgba(255,91,0,.42), 0 0 18px rgba(255,91,0,.12), inset 0 0 8px rgba(255,91,0,.08); transition: border-color .35s ease, box-shadow .35s ease; }
+.item { --item-index: 0; position: relative; display: block; direction: rtl; min-width: 0; padding: 1rem .6rem 1rem .5rem; overflow: visible; border: 1px solid rgba(255,106,0,.9); border-radius: 2.2rem .42rem 2.2rem .42rem; outline: 1px solid rgba(255,91,0,.16); outline-offset: -6px; background: linear-gradient(135deg, rgba(255,255,255,.025), rgba(255,255,255,0) 45%), rgba(7,5,4,.72); box-shadow: 0 0 7px rgba(255,91,0,.42), 0 0 18px rgba(255,91,0,.12), inset 0 0 8px rgba(255,91,0,.08); transition: border-color .35s ease, box-shadow .35s ease; }
  .revealReady:not(.revealVisible) { opacity: 0; transform: translate3d(0, 24px, 0) scale(.985); }
 .revealVisible { animation: menu-scroll-reveal .58s cubic-bezier(.2,.75,.25,1) both; animation-delay: calc(var(--item-index) * 45ms); }
 @keyframes menu-scroll-reveal {
@@ -103,7 +103,7 @@
 .discountRibbon::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(108deg,transparent 0%,rgba(255,255,255,.04) 32%,rgba(255,246,220,.7) 46%,rgba(255,255,255,.07) 53%,transparent 68%); transform: translateX(-125%); animation: discount-glass-shine 3.8s ease-in-out infinite; }
 .discountRibbon::after { content: ""; position:absolute; inset:1px; border:1px solid rgba(255,245,214,.12); border-radius:inherit; pointer-events:none; }
 @keyframes discount-glass-shine { 0%,55%,100% { transform:translateX(-125%); opacity:.15; } 70% { opacity:.8; } 88% { transform:translateX(125%); opacity:.25; } }
-.cardActions { position: absolute; z-index: 3; right: 0; left: auto; bottom: .18rem; top: auto; display: flex; direction: rtl; flex-direction: row; align-items: center; justify-content: center; gap: .32rem; width: auto; min-width: 0; margin: 0; padding: 0; transform: none; }
+.cardActions { position: absolute; z-index: 3; right: 0; left: auto; bottom: 0; top: auto; display: flex; direction: rtl; flex-direction: row; align-items: center; justify-content: center; gap: .32rem; width: auto; min-width: 0; margin: 0; padding: 0; transform: none; }
 .menuQuantityControl { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: .08rem; padding: .1rem; border: 1px solid rgba(255,179,71,.4); border-radius: 999px; background: rgba(5,4,3,.7); box-shadow: 0 0 9px rgba(255,104,0,.08), inset 0 0 7px rgba(255,122,0,.035); }
 .menuQuantityControl:global(.addMode) { padding: 0; border: 0; background: transparent; box-shadow: none; }
 .menuQuantityControl button { display: grid; place-items: center; flex: 0 0 auto; width: 2.2rem; height: 2.2rem; padding: 0; border: 0; border-radius: 50%; color: #ffb347; background: transparent; font: 600 1.7rem/1 var(--font-cormorant-garamond), Georgia, serif; cursor: pointer; transition: color .2s ease, background-color .2s ease; }
@@ -123,7 +123,7 @@
   .content { margin-top: -4rem; padding-inline: 1.25rem; }
   .header { padding-bottom: 1.4rem; }
   .title { max-width: 100%; font-size: clamp(1.55rem, 2.8vw, 1.8rem); line-height: 1.6; }
-  .item { padding: 1.15rem .75rem 1.15rem .65rem; border-radius: 1.95rem .48rem 1.95rem .48rem; }
+  .item { padding: 1.15rem .75rem 1.15rem .65rem; border-radius: 2.45rem .48rem 2.45rem .48rem; }
   .number { font-size: 1.12rem; }
   .price { font-size: 1.32rem; }
   .nameLine h3 { font-size: 1.62rem; }
@@ -149,7 +149,7 @@
   .price { margin-inline-start: 0; }
   .priceRow { gap: .42rem; }
   .details { padding-left: 0; padding-bottom: 2.7rem; }
-  .cardActions { right: 0; left: auto; bottom: .08rem; top: auto; transform: none; }
+  .cardActions { right: 0; left: auto; bottom: 0; top: auto; transform: none; }
   .priceBlock { left: auto; top: auto; margin-inline-start: .1rem; }
   .discountRibbon { top: -.55rem; left: -.3rem; min-width: 3.8rem; min-height: 1.72rem; padding: .18rem .65rem; font-size: .98rem; }
   .description { font-size: .68rem; }
