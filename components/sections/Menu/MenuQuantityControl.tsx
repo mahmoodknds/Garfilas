@@ -25,7 +25,7 @@ export default function MenuQuantityControl({
       <div className={`${className} addMode`} dir="rtl" aria-label={`تعداد ${product.name}`}>
         <button
           type="button"
-          className="addButton"
+          className={styles.addButton}
           onClick={() => addItem(product)}
           aria-label={`افزودن ${product.name} به سبد خرید`}
         >
