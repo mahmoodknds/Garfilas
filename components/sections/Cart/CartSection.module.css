@@ -169,7 +169,7 @@
   display: flex;
   direction: rtl;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: .65rem;
 }
 
@@ -532,7 +532,7 @@
     gap: .35rem;
   }
 
-  .quantityGroup { gap: .22rem; transform: translateY(-.06rem); }
+  .quantityGroup { gap: .22rem; transform: none; }
   .cartMark { font-size: .86rem; }
   .quantityControl { gap: .03rem; padding: .1rem; }
 

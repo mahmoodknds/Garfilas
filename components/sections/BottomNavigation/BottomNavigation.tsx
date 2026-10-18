@@ -69,8 +69,8 @@ export default function BottomNavigation() {
         .bottom-nav-link-0 { left:20%!important;top:65.8125%!important;width:3.35rem!important;height:3.35rem!important; }
         .bottom-nav-link-1 { left:50%!important;top:50.671875%!important;width:4.5rem!important;height:4.5rem!important;border-width:1.5px;z-index:4;background:rgba(7,5,4,.9);box-shadow:0 0 8px rgba(255,91,0,.9),0 0 26px rgba(255,91,0,.28),inset 0 0 12px rgba(255,91,0,.14); }
         .bottom-nav-center { position:relative;display:flex;align-items:center;justify-content:center;max-width:100%; }
-        .bottom-nav-cart-icon { position:relative;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;min-width:2rem; }
-        .bottom-nav-cart-icon svg { display:block;width:1.55rem;height:1.55rem; }
+        .bottom-nav-cart-icon { position:relative;display:inline-flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;min-width:2.2rem; }
+        .bottom-nav-cart-icon svg { display:block;width:1.85rem;height:1.85rem; }
         .bottom-nav-cart-icon--has-badge > svg { transform:translateY(.24rem); }
         .bottom-nav-action-label { display:block;max-width:100%;color:transparent;background:linear-gradient(180deg,#fff7df 0%,#ffdc96 45%,#ffae3d 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:IRANSansX,Vazirmatn,system-ui,sans-serif;font-size:clamp(1.22rem,4.55vw,1.5rem);font-weight:700;line-height:1;letter-spacing:.025em;white-space:nowrap;-webkit-text-stroke:.12px rgba(255,241,204,.4);filter:drop-shadow(0 0 4px rgba(255,191,77,.72)); }
         .bottom-nav-action-label--payment { font-size:clamp(1.16rem,4.5vw,1.4rem);letter-spacing:0; }
