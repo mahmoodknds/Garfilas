@@ -54,7 +54,7 @@ export default function BottomNavigation() {
     },
     payment: {
       href: "#cart-summary",
-      label: "پرداخت",
+      label: "خرید",
     },
   }[centerMode];
 
