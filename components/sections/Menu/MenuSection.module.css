@@ -151,7 +151,7 @@
   .details { padding-left: 6.15rem; }
   .cardActions { left: .45rem; }
   .priceBlock { left: auto; top: auto; margin-inline-start: .1rem; }
-  .discountRibbon { top: -.55rem; left: -.3rem; min-width: 3.8rem; } min-height: 1.72rem; padding: .18rem .65rem; font-size: .98rem; }
+  .discountRibbon { top: -.55rem; left: -.3rem; min-width: 3.8rem; min-height: 1.72rem; padding: .18rem .65rem; font-size: .98rem; }
   .description { font-size: .68rem; }
 }
 @media (prefers-reduced-motion: reduce) {
