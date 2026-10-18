@@ -54,7 +54,7 @@ export default function BottomNavigation() {
     },
     payment: {
       href: "#cart-summary",
-      label: "پرداخت",
+      label: "خرید",
     },
   }[centerMode];
 
@@ -73,12 +73,12 @@ export default function BottomNavigation() {
         .bottom-nav-cart-icon svg { display:block;width:1.55rem;height:1.55rem; }
         .bottom-nav-action-label { display:block;max-width:100%;color:transparent;background:linear-gradient(180deg,#fff7df 0%,#ffdc96 45%,#ffae3d 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:IRANSansX,Vazirmatn,system-ui,sans-serif;font-size:clamp(1.22rem,4.55vw,1.5rem);font-weight:700;line-height:1;letter-spacing:.025em;white-space:nowrap;-webkit-text-stroke:.12px rgba(255,241,204,.4);filter:drop-shadow(0 0 4px rgba(255,191,77,.72)); }
         .bottom-nav-action-label--payment { font-size:clamp(1rem,4vw,1.22rem);letter-spacing:0; }
-        .bottom-nav-badge { position:absolute;top:-.86rem;left:50%;right:auto;transform:translateX(-50%);z-index:5;display:grid;place-items:center;min-width:1.48rem;height:1.48rem;padding:0 .3rem;border:1.5px solid rgba(255,106,0,.9);border-radius:999px;color:#fff0c4;background:linear-gradient(145deg,rgba(255,240,194,.34),rgba(255,150,32,.26) 45%,rgba(72,31,5,.92)),#251307;box-shadow:0 0 3px rgba(255,248,223,.8),0 0 9px rgba(255,153,36,.65),inset 0 1px 0 rgba(255,248,223,.45);font:800 .94rem/1 var(--font-cormorant-garamond),Georgia,serif;font-variant-numeric:lining-nums tabular-nums;letter-spacing:0;white-space:nowrap;pointer-events:none;text-shadow:0 0 3px rgba(255,248,223,.82),0 0 7px rgba(255,169,74,.88); }
+        .bottom-nav-badge { position:absolute;top:-.98rem;left:50%;right:auto;transform:translateX(-50%);z-index:5;display:grid;place-items:center;min-width:1.48rem;height:1.48rem;padding:0 .3rem;border:1.5px solid rgba(255,106,0,.9);border-radius:999px;color:#fff0c4;background:linear-gradient(145deg,rgba(255,240,194,.34),rgba(255,150,32,.26) 45%,rgba(72,31,5,.92)),#251307;box-shadow:0 0 3px rgba(255,248,223,.8),0 0 9px rgba(255,153,36,.65),inset 0 1px 0 rgba(255,248,223,.45);font:800 .94rem/1 var(--font-cormorant-garamond),Georgia,serif;font-variant-numeric:lining-nums tabular-nums;letter-spacing:0;white-space:nowrap;pointer-events:none;text-shadow:0 0 3px rgba(255,248,223,.82),0 0 7px rgba(255,169,74,.88); }
         .bottom-nav-link-2 { left:80%!important;top:65.8125%!important;width:3.35rem!important;height:3.35rem!important; }
         .bottom-nav-link svg { filter:drop-shadow(0 0 4px rgba(255,91,0,.55)); }
         .bottom-nav-link-0 svg,.bottom-nav-link-2 svg { width:1.8rem;height:1.8rem; }
         .bottom-nav-link:hover,.bottom-nav-link:focus-visible { transform:translate(-50%,-52%)!important;color:#ffb04a;box-shadow:0 0 10px rgba(255,91,0,.9),0 0 24px rgba(255,91,0,.3),inset 0 0 10px rgba(255,91,0,.16); }
-        @media (max-width:380px) { .bottom-nav-link-1 { width:4.25rem!important;height:4.25rem!important; } .bottom-nav-action-label { font-size:1.14rem; } .bottom-nav-action-label--payment { font-size:1rem; } .bottom-nav-badge { top:-.78rem;min-width:1.36rem;height:1.36rem;padding-inline:.28rem;border-width:1.5px;font-size:1rem; } }
+        @media (max-width:380px) { .bottom-nav-link-1 { width:4.25rem!important;height:4.25rem!important; } .bottom-nav-action-label { font-size:1.14rem; } .bottom-nav-action-label--payment { font-size:1rem; } .bottom-nav-badge { top:-.90rem;min-width:1.36rem;height:1.36rem;padding-inline:.28rem;border-width:1.5px;font-size:1rem; } }
         @media (prefers-reduced-motion:reduce) { .bottom-nav-link { scroll-behavior:auto; } }
       `}</style>
 
