@@ -71,7 +71,9 @@ export default function CartSection() {
                       </div>
 
                       <div className={styles.itemFooter}>
-                        <div className={styles.quantityControl} aria-label={`تعداد ${item.name}`}>
+                        <div className={styles.quantityGroup}>
+                          <span className={styles.cartMark} aria-hidden="true">✦</span>
+                          <div className={styles.quantityControl} aria-label={`تعداد ${item.name}`}>
                           <button
                             type="button"
                             onClick={() => setQuantity(item.id, item.quantity + 1)}
@@ -89,6 +91,7 @@ export default function CartSection() {
                           >
                             −
                           </button>
+                          </div>
                         </div>
                         <button
                           type="button"
