@@ -133,7 +133,7 @@ export default function CartSection() {
               <div className={styles.summaryDivider} />
               <div className={styles.summaryLine}>
                 <span>ظرف و بسته بندی</span>
-                <strong><Numeric value={40000} /> × <Numeric value={itemCount} /> = <Numeric value={packagingFee} /> تومان</strong>
+                <strong><Numeric value={40000} /> × <Numeric value={itemCount} /></strong>
               </div>
               <div className={styles.summaryLine}>
                 <span>ارسال</span>

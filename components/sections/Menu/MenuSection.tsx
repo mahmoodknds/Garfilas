@@ -115,17 +115,17 @@ export default function MenuSection() {
               visibleClassName={styles.revealVisible}
               index={index}
             >
-              <span className={styles.number}>{Number(item.number)}</span>
+              <span className={`${styles.number} ${styles.numeric}`}>{item.number}</span>
               <div className={styles.details}>
                 <div className={styles.nameLine}>
                   <h3>{item.name}</h3>
+                  {item.discountPercent && (
+                    <span className={styles.discountRibbon} aria-label={`${item.discountPercent} percent off`}>
+                      {item.discountPercent}%
+                    </span>
+                  )}
                   <span className={styles.leader} aria-hidden="true" />
                   <div className={styles.priceBlock}>
-                    {item.discountPercent && (
-                      <span className={styles.discountRibbon} aria-label={`${item.discountPercent} percent off`}>
-                        {item.discountPercent}%
-                      </span>
-                    )}
                     <div className={styles.priceRow} dir="ltr">
                       {item.discountPercent && (
                         <span className={styles.originalPriceGroup}>
