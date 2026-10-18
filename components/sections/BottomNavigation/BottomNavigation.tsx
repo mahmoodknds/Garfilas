@@ -71,6 +71,7 @@ export default function BottomNavigation() {
         .bottom-nav-center { position:relative;display:flex;align-items:center;justify-content:center;max-width:100%; }
         .bottom-nav-cart-icon { position:relative;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;min-width:2rem; }
         .bottom-nav-cart-icon svg { display:block;width:1.55rem;height:1.55rem; }
+        .bottom-nav-cart-icon--has-badge > svg { transform:translateY(.14rem); }
         .bottom-nav-action-label { display:block;max-width:100%;color:transparent;background:linear-gradient(180deg,#fff7df 0%,#ffdc96 45%,#ffae3d 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:IRANSansX,Vazirmatn,system-ui,sans-serif;font-size:clamp(1.22rem,4.55vw,1.5rem);font-weight:700;line-height:1;letter-spacing:.025em;white-space:nowrap;-webkit-text-stroke:.12px rgba(255,241,204,.4);filter:drop-shadow(0 0 4px rgba(255,191,77,.72)); }
         .bottom-nav-action-label--payment { font-size:clamp(1.16rem,4.5vw,1.4rem);letter-spacing:0; }
         .bottom-nav-badge { position:absolute;top:-.98rem;left:50%;right:auto;transform:translateX(-50%);z-index:5;display:grid;place-items:center;min-width:1.48rem;height:1.48rem;padding:0 .3rem;border:1.5px solid rgba(255,106,0,.9);border-radius:999px;color:#fff0c4;background:linear-gradient(145deg,rgba(255,240,194,.34),rgba(255,150,32,.26) 45%,rgba(72,31,5,.92)),#251307;box-shadow:0 0 3px rgba(255,248,223,.8),0 0 9px rgba(255,153,36,.65),inset 0 1px 0 rgba(255,248,223,.45);font:800 .94rem/1 var(--font-cormorant-garamond),Georgia,serif;font-variant-numeric:lining-nums tabular-nums;letter-spacing:0;white-space:nowrap;pointer-events:none;text-shadow:0 0 3px rgba(255,248,223,.82),0 0 7px rgba(255,169,74,.88); }
@@ -119,7 +120,7 @@ export default function BottomNavigation() {
       >
         <span className="bottom-nav-center">
           {centerMode === "cart" ? (
-            <span className="bottom-nav-cart-icon">
+            <span className={`bottom-nav-cart-icon${itemCount > 0 ? " bottom-nav-cart-icon--has-badge" : ""}`}>
               <ShoppingCart aria-hidden="true" size={30} strokeWidth={1.7} />
               {itemCount > 0 && (
                 <span className="bottom-nav-badge" aria-hidden="true">
