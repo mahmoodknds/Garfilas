@@ -83,6 +83,14 @@ function formatMenuPrice(amount: number) {
   });
 }
 
+function NumericText({ text }: { text: string }) {
+  return text.split(/(\\d+(?:[.,]\\d+)*)/g).map((part, index) =>
+    /^\\d/.test(part)
+      ? <span className={styles.numeric} key={`${part}-${index}`}>{part}</span>
+      : part,
+  );
+}
+
 export default function MenuSection() {
   return (
     <section id="menu" dir="rtl" className={styles.section} aria-labelledby="menu-title">
@@ -162,7 +170,7 @@ export default function MenuSection() {
                     <span className={item.tag === "VIP" || item.tag === "وجترین" ? `${styles.tag} ${styles.vipTag}` : styles.tag}>{item.tag}</span>
                   )}
                 </div>
-                <p className={styles.description}>{item.description}</p>
+                <p className={styles.description}><NumericText text={item.description} /></p>
 
               </div>
             </MenuScrollReveal>
