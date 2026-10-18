@@ -493,6 +493,7 @@
 }
 
 @media (min-width: 768px) {
+  .item { border-radius: 1.95rem .48rem 1.95rem .48rem; }
   .itemNumber { font-size: 1.12rem; }
 }
 
