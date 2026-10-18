@@ -84,8 +84,8 @@ function formatMenuPrice(amount: number) {
 }
 
 function NumericText({ text }: { text: string }) {
-  return text.split(/(\\d+(?:[.,]\\d+)*)/g).map((part, index) =>
-    /^\\d/.test(part)
+  return text.split(/(\d+(?:[.,]\d+)*)/g).map((part, index) =>
+    /^\d/.test(part)
       ? <span className={styles.numeric} key={`${part}-${index}`}>{part}</span>
       : part,
   );
