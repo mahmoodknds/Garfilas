@@ -109,7 +109,7 @@
 .itemHeading {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  align-items: baseline;
+  align-items: center;
   gap: .5rem;
 }
 
@@ -125,15 +125,18 @@
 .itemHeading h3 {
   margin: 0;
   color: #ffd9a0;
-  font: 700 .94rem/1.5 var(--font-vazirmatn), sans-serif;
-  text-shadow: 0 0 7px rgba(255, 122, 0, .2);
+  font: 700 1.48rem/1.15 var(--font-noto-naskh), "Noto Naskh Arabic", serif;
+  letter-spacing: .025em;
+  -webkit-text-stroke: .15px rgba(255,217,160,.32);
+  text-shadow: 0 0 2px rgba(255,248,223,.8), 0 0 8px rgba(255,179,92,.9), 0 0 18px rgba(255,106,0,.52);
 }
 
 .italian {
   display: inline-block;
-  color: #ffb347;
-  font: italic 600 .81rem/1.25 "Cormorant Garamond", Georgia, serif;
+  color: #ffd080;
+  font: italic 700 .98rem/1.4 "Cormorant Garamond", Georgia, serif;
   letter-spacing: .025em;
+  text-shadow: 0 0 1px rgba(255,248,223,.55), 0 0 7px rgba(255,164,55,.42);
 }
 
 .removeButton {
@@ -230,14 +233,15 @@
   color: #fff0dc;
   font: 700 1.18rem/1.65 var(--font-cormorant-garamond), Georgia, serif;
   font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -.015em;
   text-align: center;
-  text-shadow: 0 0 1px rgba(255,248,223,.78), 0 0 8px rgba(255,169,74,.38), 0 1px 0 rgba(70,28,0,.9);
+  text-shadow: 0 0 2px rgba(255,252,235,.98), 0 0 7px rgba(255,213,132,.92), 0 0 13px rgba(255,169,74,.88), 0 0 22px rgba(255,106,0,.68), 0 0 32px rgba(255,91,0,.32);
 }
 
 .itemPrice {
   display: flex;
   flex: 0 0 auto;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: baseline;
   justify-content: flex-start;
   gap: .1rem .32rem;
@@ -248,9 +252,11 @@
 
 .itemOriginalPrice {
   position: relative;
-  color: #fff7e8;
-  font: 700 .98rem/1.45 var(--font-cormorant-garamond), Georgia, serif;
-  text-shadow: 0 0 1px rgba(255,248,223,.85), 0 0 7px rgba(255,169,74,.3);
+  color: rgba(255,240,220,.82);
+  font: 700 1.18rem/1.65 var(--font-cormorant-garamond), Georgia, serif;
+  letter-spacing: -.015em;
+  text-shadow: 0 0 1px rgba(255,248,223,.8), 0 0 7px rgba(255,169,74,.48), 0 0 13px rgba(255,106,0,.26);
+  -webkit-text-stroke: .12px rgba(255,240,220,.22);
   font-variant-numeric: lining-nums tabular-nums;
   white-space: nowrap;
 }
@@ -268,17 +274,21 @@
 }
 
 .itemPrice strong {
-  color: #fff7e8;
-  font: 700 .98rem/1.45 var(--font-cormorant-garamond), Georgia, serif;
-  text-shadow: 0 0 1px rgba(255,248,223,.85), 0 0 7px rgba(255,169,74,.3);
+  color: #fff0dc;
+  font: 700 1.18rem/1.65 var(--font-cormorant-garamond), Georgia, serif;
+  letter-spacing: -.015em;
+  text-shadow: 0 0 2px rgba(255,252,235,.98), 0 0 7px rgba(255,213,132,.92), 0 0 13px rgba(255,169,74,.88), 0 0 22px rgba(255,106,0,.68), 0 0 32px rgba(255,91,0,.32);
+  -webkit-text-stroke: .12px rgba(255,240,220,.28);
   font-variant-numeric: lining-nums tabular-nums;
   white-space: nowrap;
 }
 
 .currencyPrefix {
   color: #fff0dc;
-  font: 700 .98rem/1.45 var(--font-cormorant-garamond), Georgia, serif;
-  text-shadow: 0 0 1px rgba(255,248,223,.85), 0 0 7px rgba(255,169,74,.3);
+  font: 700 1.18rem/1.65 var(--font-cormorant-garamond), Georgia, serif;
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-shadow: 0 0 2px rgba(255,252,235,.98), 0 0 7px rgba(255,213,132,.92), 0 0 13px rgba(255,169,74,.88), 0 0 22px rgba(255,106,0,.68), 0 0 32px rgba(255,91,0,.32), 0 1px 0 rgba(70,28,0,.9);
 }
 
 .numeric {
@@ -494,6 +504,10 @@
 @media (min-width: 768px) {
   .item { padding: 1.15rem .75rem 1.15rem .65rem; border-radius: 2.45rem .48rem 2.45rem .48rem; }
   .itemNumber { font-size: 1.12rem; }
+  .itemHeading h3 { font-size: 1.62rem; }
+  .italian { font-size: 1.05rem; }
+  .itemPrice strong, .itemOriginalPrice, .currencyPrefix { font-size: 1.32rem; }
+  .quantityControl output { font-size: 1.32rem; }
 }
 
 @media (max-width: 380px) {
@@ -507,6 +521,9 @@
 
   .itemNumber { font-size: .96rem; }
   .productIdentity { gap: .3rem; }
+  .itemHeading h3 { font-size: 1.04rem; line-height: 1.15; letter-spacing: 0; white-space: nowrap; }
+  .italian { font-size: .98rem; }
+  .itemPrice strong, .itemOriginalPrice, .currencyPrefix { font-size: 1.18rem; }
 
   .itemFooter {
     left: .45rem;
