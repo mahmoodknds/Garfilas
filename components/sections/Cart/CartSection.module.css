@@ -477,8 +477,6 @@
 }
 
 @media (min-width: 740px) {
-  .itemNumber { font-size: 1.12rem; }
-
   .content {
     padding-inline: 1.25rem;
   }
@@ -492,6 +490,10 @@
     position: sticky;
     top: 1.25rem;
   }
+}
+
+@media (min-width: 768px) {
+  .itemNumber { font-size: 1.12rem; }
 }
 
 @media (max-width: 380px) {
