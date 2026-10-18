@@ -79,7 +79,7 @@
   gap: .65rem;
   min-width: 0;
   padding: 1rem .55rem;
-  padding-inline-start: .08rem;
+  padding-inline-start: .02rem;
   padding-inline-end: .5rem;
   overflow: hidden;
   border: 1px solid rgba(255,106,0,.9);
@@ -93,15 +93,17 @@
 
 .itemNumber {
   align-self: start;
-  padding-top: .13rem;
-  color: rgba(255,217,160,.68);
+  padding-top: .08rem;
+  color: rgba(255,217,160,.78);
   font: 700 1.35rem/1.2 var(--font-cormorant-garamond), Georgia, serif;
   font-variant-numeric: lining-nums tabular-nums;
   direction: ltr;
+  text-shadow: 0 0 5px rgba(255,106,0,.2);
 }
 
 .itemMain {
   min-width: 0;
+  padding-bottom: 2.8rem;
 }
 
 .itemHeading {
@@ -156,38 +158,40 @@
 }
 
 .itemFooter {
-  display: grid;
-  direction: rtl;
-  grid-template-columns: auto minmax(0, 1fr);
+  position: absolute;
+  left: .55rem;
+  right: 3rem;
+  bottom: .6rem;
+  display: flex;
+  direction: ltr;
+  justify-content: space-between;
   align-items: center;
   gap: .65rem;
-  margin-top: .35rem;
 }
 
 .quantityControl {
-  grid-column: 1;
-  justify-self: end;
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
   gap: .08rem;
-  padding: .08rem;
-  border: 1px solid rgba(255, 179, 71, .36);
+  padding: .1rem;
+  border: 1px solid rgba(255,179,71,.4);
   border-radius: 999px;
-  background: rgba(5, 4, 3, .66);
-  box-shadow: inset 0 0 7px rgba(255,122,0,.035);
+  background: rgba(5,4,3,.7);
+  box-shadow: 0 0 9px rgba(255,104,0,.08), inset 0 0 7px rgba(255,122,0,.035);
 }
 
 .quantityControl button {
   display: grid;
   place-items: center;
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0;
   border: 0;
   border-radius: 50%;
-  color: #ffbd5c;
+  color: #ffb347;
   background: transparent;
-  font: 600 1.75rem/1 var(--font-cormorant-garamond), Georgia, serif;
+  font: 600 1.7rem/1 var(--font-cormorant-garamond), Georgia, serif;
   cursor: pointer;
   transition: color .2s ease, background-color .2s ease, text-shadow .2s ease;
 }
@@ -195,28 +199,30 @@
 .quantityControl button:hover,
 .quantityControl button:focus-visible {
   color: #fff4e4;
-  background: rgba(255, 122, 0, .16);
+  background: rgba(255,122,0,.15);
   text-shadow: 0 0 8px rgba(255,179,71,.7);
   outline: none;
 }
 
 .quantityControl output {
-  min-width: 1.55rem;
+  display: grid;
+  place-items: center;
+  min-width: 1.65rem;
   color: #fff0dc;
-  font: 700 1.05rem/1.3 var(--font-cormorant-garamond), Georgia, serif;
+  font: 700 1.18rem/1.65 var(--font-cormorant-garamond), Georgia, serif;
   font-variant-numeric: lining-nums tabular-nums;
   text-align: center;
+  text-shadow: 0 0 1px rgba(255,248,223,.78), 0 0 8px rgba(255,169,74,.38), 0 1px 0 rgba(70,28,0,.9);
 }
 
 .itemPrice {
-  grid-column: 2;
-  justify-self: stretch;
   display: flex;
+  flex: 0 1 auto;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: flex-start;
   gap: .1rem .42rem;
-  width: 100%;
+  width: auto;
   min-width: 0;
   text-align: left;
 }
@@ -475,24 +481,30 @@
     grid-template-columns: 2.15rem minmax(0, 1fr);
     gap: .45rem;
     padding: .8rem .4rem;
-    padding-inline-start: .05rem;
+    padding-inline-start: .02rem;
     padding-inline-end: .35rem;
   }
 
+  .itemNumber { font-size: 1.15rem; }
+
   .itemFooter {
-    grid-template-columns: auto minmax(0, 1fr);
+    left: .45rem;
+    right: 2.7rem;
+    bottom: .5rem;
     gap: .35rem;
   }
 
+  .quantityControl { gap: .03rem; padding: .1rem; }
+
   .quantityControl button {
-    width: 2.15rem;
-    height: 2.15rem;
-    font-size: 1.6rem;
+    width: 1.55rem;
+    height: 1.55rem;
+    font-size: 1.35rem;
   }
 
-  .itemPrice {
-    width: 100%;
-  }
+  .quantityControl output { min-width: 1rem; font-size: 1.18rem; }
+
+  .itemPrice { width: auto; }
 
   .summary {
     padding: .9rem;
