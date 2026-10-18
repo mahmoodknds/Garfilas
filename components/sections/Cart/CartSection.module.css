@@ -79,6 +79,8 @@
   gap: .65rem;
   min-width: 0;
   padding: 1rem .55rem;
+  padding-inline-start: .35rem;
+  padding-inline-end: .5rem;
   overflow: hidden;
   border: 1px solid rgba(255,106,0,.9);
   border-radius: 1.35rem;
@@ -93,7 +95,8 @@
   align-self: start;
   padding-top: .13rem;
   color: rgba(255,217,160,.68);
-  font: 500 1.35rem/1.2 var(--font-cormorant-garamond), Georgia, serif;
+  font: 700 1.35rem/1.2 var(--font-cormorant-garamond), Georgia, serif;
+  font-variant-numeric: lining-nums tabular-nums;
   direction: ltr;
 }
 
@@ -214,8 +217,10 @@
 
 .itemOriginalPrice {
   position: relative;
-  color: rgba(255,240,220,.92);
-  font: 700 .72rem/1.2 var(--font-cormorant-garamond), Georgia, serif;
+  color: #fff7e8;
+  font: 700 .98rem/1.45 var(--font-cormorant-garamond), Georgia, serif;
+  text-shadow: 0 0 1px rgba(255,248,223,.85), 0 0 7px rgba(255,169,74,.3);
+  font-variant-numeric: lining-nums tabular-nums;
   white-space: nowrap;
 }
 
@@ -464,6 +469,8 @@
     grid-template-columns: 2.15rem minmax(0, 1fr);
     gap: .45rem;
     padding: .8rem .4rem;
+    padding-inline-start: .25rem;
+    padding-inline-end: .35rem;
   }
 
   .itemFooter {
