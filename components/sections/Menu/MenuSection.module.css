@@ -55,7 +55,7 @@
 
 .menuList { display: grid; gap: .85rem; list-style: none; margin: .35rem 0 0; padding: 0; }
 .item:has(.discountRibbon) { z-index: 2; }
-.item { --item-index: 0; position: relative; display: grid; grid-template-columns: 2.15rem minmax(0,1fr); align-items: center; gap: .65rem; min-width: 0; padding: 1rem .55rem; padding-inline-start: .02rem; padding-inline-end: .5rem; overflow: visible; border: 1px solid rgba(255,106,0,.9); border-radius: 1.35rem; outline: 1px solid rgba(255,91,0,.16); outline-offset: -6px; background: linear-gradient(135deg, rgba(255,255,255,.025), rgba(255,255,255,0) 45%), rgba(7,5,4,.72); box-shadow: 0 0 7px rgba(255,91,0,.42), 0 0 18px rgba(255,91,0,.12), inset 0 0 8px rgba(255,91,0,.08); transition: border-color .35s ease, box-shadow .35s ease; }
+.item { --item-index: 0; position: relative; display: grid; grid-template-columns: 2.15rem minmax(0,1fr); align-items: center; gap: .65rem; min-width: 0; padding: 1rem .55rem; padding-inline-start: 0; padding-inline-end: .5rem; overflow: visible; border: 1px solid rgba(255,106,0,.9); border-radius: 1.35rem; outline: 1px solid rgba(255,91,0,.16); outline-offset: -6px; background: linear-gradient(135deg, rgba(255,255,255,.025), rgba(255,255,255,0) 45%), rgba(7,5,4,.72); box-shadow: 0 0 7px rgba(255,91,0,.42), 0 0 18px rgba(255,91,0,.12), inset 0 0 8px rgba(255,91,0,.08); transition: border-color .35s ease, box-shadow .35s ease; }
  .revealReady:not(.revealVisible) { opacity: 0; transform: translate3d(0, 24px, 0) scale(.985); }
 .revealVisible { animation: menu-scroll-reveal .58s cubic-bezier(.2,.75,.25,1) both; animation-delay: calc(var(--item-index) * 45ms); }
 @keyframes menu-scroll-reveal {
@@ -103,19 +103,19 @@
 .discountRibbon::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(108deg,transparent 0%,rgba(255,255,255,.04) 32%,rgba(255,246,220,.7) 46%,rgba(255,255,255,.07) 53%,transparent 68%); transform: translateX(-125%); animation: discount-glass-shine 3.8s ease-in-out infinite; }
 .discountRibbon::after { content: ""; position:absolute; inset:1px; border:1px solid rgba(255,245,214,.12); border-radius:inherit; pointer-events:none; }
 @keyframes discount-glass-shine { 0%,55%,100% { transform:translateX(-125%); opacity:.15; } 70% { opacity:.8; } 88% { transform:translateX(125%); opacity:.25; } }
-.cardActions { position: absolute; z-index: 3; left: .8rem; bottom: .65rem; top: auto; display: flex; flex-direction: row-reverse; align-items: center; justify-content: center; gap: .32rem; width: auto; min-width: 0; margin: 0; padding: 0; transform: none; }
+.cardActions { position: absolute; z-index: 3; right: .45rem; left: auto; bottom: .35rem; top: auto; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: .32rem; width: auto; min-width: 0; margin: 0; padding: 0; transform: none; }
 .menuQuantityControl { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: .08rem; padding: .1rem; border: 1px solid rgba(255,179,71,.4); border-radius: 999px; background: rgba(5,4,3,.7); box-shadow: 0 0 9px rgba(255,104,0,.08), inset 0 0 7px rgba(255,122,0,.035); }
 .menuQuantityControl:global(.addMode) { padding: 0; border: 0; background: transparent; box-shadow: none; }
 .menuQuantityControl button { display: grid; place-items: center; flex: 0 0 auto; width: 2.2rem; height: 2.2rem; padding: 0; border: 0; border-radius: 50%; color: #ffb347; background: transparent; font: 600 1.7rem/1 var(--font-cormorant-garamond), Georgia, serif; cursor: pointer; transition: color .2s ease, background-color .2s ease; }
 .menuQuantityControl button:hover:not(:disabled),.menuQuantityControl button:focus-visible { color: #fff4e4; background: rgba(255,122,0,.15); outline: none; }
 .menuQuantityControl button:disabled { color: rgba(189,176,160,.36); cursor: not-allowed; }
 .menuQuantityControl output:global(.quantityValue) { display: grid; place-items: center; min-width: 1.65rem; text-align: center; }
-.menuQuantityControl button:global(.addButton) { width: 6.55rem; min-width: 6.55rem; height: 2.525rem; box-sizing: border-box; padding: 0 .5rem; border: 1px solid rgba(255,179,71,.58); border-radius: 999px; color: #ffe1a4; background: linear-gradient(180deg,rgba(38,18,8,.74),rgba(7,5,4,.9) 55%,rgba(22,10,4,.82)); box-shadow: 0 0 2px rgba(255,235,201,.55),0 0 8px rgba(255,133,22,.28),inset 0 1px 0 rgba(255,231,184,.14); font: 600 .76rem/1.2 var(--font-vazirmatn),sans-serif; white-space: nowrap; }
+.menuQuantityControl button:global(.addButton) { width: 6.5rem; min-width: 6.5rem; height: 2.6rem; box-sizing: border-box; padding: 0 .5rem; border: 1px solid rgba(255,179,71,.58); border-radius: 999px; color: #ffe1a4; background: linear-gradient(180deg,rgba(38,18,8,.74),rgba(7,5,4,.9) 55%,rgba(22,10,4,.82)); box-shadow: 0 0 2px rgba(255,235,201,.55),0 0 8px rgba(255,133,22,.28),inset 0 1px 0 rgba(255,231,184,.14); font: 600 .76rem/1.2 var(--font-vazirmatn),sans-serif; white-space: nowrap; }
 .menuQuantityControl button:global(.addButton):hover,.menuQuantityControl button:global(.addButton):focus-visible { border-color: rgba(255,204,116,.98); color: #fff4e4; background: linear-gradient(180deg,rgba(53,24,8,.82),rgba(13,7,4,.96)); box-shadow: 0 0 5px rgba(255,235,201,.72),0 0 12px rgba(255,133,22,.4),inset 0 1px 0 rgba(255,231,184,.2); }
 .menuQuantityControl svg { display: block; width: 1.08rem; height: 1.08rem; }
 
 
-.mark { flex: 0 0 auto; color: rgba(255,190,110,.85); font-size: .88rem; text-shadow: 0 0 10px rgba(255,91,0,.78); }
+.mark { flex: 0 0 auto; color: rgba(255,190,110,.95); font-size: 1rem; line-height: 1; text-shadow: 0 0 5px rgba(255,230,165,.55), 0 0 12px rgba(255,91,0,.9); }
 .note { margin: .7rem 0 0; text-align: center; color: rgba(214,185,152,.82); font: 400 .72rem/1.9 var(--font-vazirmatn), sans-serif; }
 @keyframes menu-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @media (min-width: 768px) {
@@ -123,7 +123,7 @@
   .content { margin-top: -4rem; padding-inline: 1.25rem; }
   .header { padding-bottom: 1.4rem; }
   .title { max-width: 100%; font-size: clamp(1.55rem, 2.8vw, 1.8rem); line-height: 1.6; }
-  .item { padding: 1.15rem 1.1rem; padding-inline-start: .02rem; padding-inline-end: .65rem; grid-template-columns: 2.8rem minmax(0,1fr); gap: .85rem; border-radius: 1.6rem; }
+  .item { padding: 1.15rem 1.1rem; padding-inline-start: 0; padding-inline-end: .65rem; grid-template-columns: 2.8rem minmax(0,1fr); gap: .85rem; border-radius: 1.6rem; }
   .number { font-size: 1.35rem; }
   .price { font-size: 1.32rem; }
   .nameLine h3 { font-size: 1.62rem; }
@@ -133,11 +133,11 @@
 @media (max-width: 380px) {
   .menuQuantityControl { gap: .03rem; padding: .1rem; }
   .menuQuantityControl button { width: 1.55rem; height: 1.55rem; font-size: 1.35rem; }
-  .mark { font-size: .78rem; }
+  .mark { font-size: .86rem; }
   .menuQuantityControl output:global(.quantityValue) { min-width: 1rem; }
-  .menuQuantityControl button:global(.addButton) { width: 4.5rem; min-width: 4.5rem; height: 1.875rem; padding-inline: .42rem; font-size: .67rem; box-sizing: border-box; }
+  .menuQuantityControl button:global(.addButton) { width: 4.35rem; min-width: 4.35rem; height: 1.95rem; padding-inline: .42rem; font-size: .7rem; box-sizing: border-box; }
   .content { padding-inline: .7rem; }
-  .item { grid-template-columns: 1.8rem minmax(0,1fr); gap: .45rem; padding: .85rem .4rem; padding-inline-start: .02rem; padding-inline-end: .35rem; }
+  .item { grid-template-columns: 1.8rem minmax(0,1fr); gap: .45rem; padding: .85rem .4rem; padding-inline-start: 0; padding-inline-end: .35rem; }
   .number { font-size: 1.15rem; }
   .price { font-size: 1.18rem; letter-spacing: -.015em; }
   .price.discountedPrice { font-size: 1.06rem; }
@@ -149,7 +149,7 @@
   .price { margin-inline-start: 0; }
   .priceRow { gap: .42rem; }
   .details { padding-left: 0; padding-bottom: 2.7rem; }
-  .cardActions { left: .45rem; bottom: .45rem; top: auto; transform: none; }
+  .cardActions { right: .35rem; left: auto; bottom: .28rem; top: auto; transform: none; }
   .priceBlock { left: auto; top: auto; margin-inline-start: .1rem; }
   .discountRibbon { top: -.55rem; left: -.3rem; min-width: 3.8rem; min-height: 1.72rem; padding: .18rem .65rem; font-size: .98rem; }
   .description { font-size: .68rem; }
