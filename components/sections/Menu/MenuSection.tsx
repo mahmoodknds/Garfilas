@@ -115,7 +115,7 @@ export default function MenuSection() {
               visibleClassName={styles.revealVisible}
               index={index}
             >
-              <span className={styles.number}>{Number(item.number)}</span>
+              <span className={`${styles.number} ${styles.numeric}`}>{item.number}</span>
               <div className={styles.details}>
                 <div className={styles.nameLine}>
                   <h3>{item.name}</h3>
