@@ -98,6 +98,8 @@
   font: 700 1.35rem/1.2 var(--font-cormorant-garamond), Georgia, serif;
   font-variant-numeric: lining-nums tabular-nums;
   direction: ltr;
+  text-align: right;
+  padding-right: .12rem;
   text-shadow: 0 0 5px rgba(255,106,0,.2);
 }
 
@@ -167,6 +169,22 @@
   justify-content: space-between;
   align-items: center;
   gap: .65rem;
+}
+
+.quantityGroup {
+  display: inline-flex;
+  flex: 0 0 auto;
+  direction: rtl;
+  align-items: center;
+  gap: .32rem;
+}
+
+.cartMark {
+  flex: 0 0 auto;
+  color: rgba(255,190,110,.95);
+  font-size: 1rem;
+  line-height: 1;
+  text-shadow: 0 0 5px rgba(255,230,165,.55), 0 0 12px rgba(255,91,0,.9);
 }
 
 .quantityControl {
@@ -495,6 +513,8 @@
     gap: .35rem;
   }
 
+  .quantityGroup { gap: .22rem; }
+  .cartMark { font-size: .86rem; }
   .quantityControl { gap: .03rem; padding: .1rem; }
 
   .quantityControl button {
