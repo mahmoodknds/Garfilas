@@ -18,8 +18,8 @@
   max-height: 29rem;
   overflow: hidden;
   background: transparent;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 76%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 76%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.35) 4%, #000 12%, #000 76%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.35) 4%, #000 12%, #000 76%, transparent 100%);
 }
 .banner::before {
   content: "";
