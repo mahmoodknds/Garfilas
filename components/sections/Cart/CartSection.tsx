@@ -9,6 +9,10 @@ function formatAmount(amount: number) {
   return new Intl.NumberFormat("en-US").format(amount);
 }
 
+function Numeric({ value }: { value: number | string }) {
+  return <span className={styles.numeric}>{typeof value === "number" ? formatAmount(value) : value}</span>;
+}
+
 export default function CartSection() {
   const {
     items,
@@ -39,7 +43,7 @@ export default function CartSection() {
             <span className={styles.eyebrow}>IL TUO CARRELLO</span>
             <h2 id="cart-title" className={styles.title}>سبد خرید شما</h2>
             <p className={styles.subtitle}>
-              {formatAmount(itemCount)} عدد انتخاب‌شده
+              <Numeric value={itemCount} /> عدد انتخاب‌شده
             </p>
           </header>
 
@@ -48,7 +52,7 @@ export default function CartSection() {
               <ul className={styles.itemsList} aria-label="اقلام سبد خرید">
                 {items.map((item, index) => (
                   <li className={styles.item} key={item.id}>
-                    <span className={styles.itemNumber}>{index + 1}</span>
+                    <span className={`${styles.itemNumber} ${styles.numeric}`}>{index + 1}</span>
                     <div className={styles.itemMain}>
                       <div className={styles.itemHeading}>
                         <div className={styles.productIdentity}>
@@ -76,7 +80,7 @@ export default function CartSection() {
                             +
                           </button>
                           <output aria-live="polite" aria-atomic="true">
-                            {formatAmount(item.quantity)}
+                            <Numeric value={item.quantity} />
                           </output>
                           <button
                             type="button"
@@ -87,13 +91,14 @@ export default function CartSection() {
                           </button>
                         </div>
 
-                        <div className={styles.itemPrice}>
+                        <div className={styles.itemPrice} dir="ltr">
+                          <span className={styles.currencyPrefix}>T</span>
                           {item.originalPrice && item.originalPrice > item.price && (
                             <span className={styles.itemOriginalPrice}>
-                              {formatAmount(item.originalPrice * item.quantity)} تومان
+                              <Numeric value={item.originalPrice * item.quantity} />
                             </span>
                           )}
-                          <strong>{formatAmount(item.price * item.quantity)} <small>تومان</small></strong>
+                          <strong><Numeric value={item.price * item.quantity} /> <small>تومان</small></strong>
                         </div>
                       </div>
                     </div>
@@ -116,19 +121,19 @@ export default function CartSection() {
             <aside id="cart-summary" className={styles.summary} aria-label="صورت‌حساب سفارش">
               <h3>صورت‌حساب</h3>
               <div className={styles.summaryLine}>
-                <span>جمع سفارش‌ها ({formatAmount(itemCount)} عدد)</span>
-                <strong>{formatAmount(subtotal + discountTotal)} تومان</strong>
+                <span>جمع سفارش‌ها (<Numeric value={itemCount} /> عدد)</span>
+                <strong><Numeric value={subtotal + discountTotal} /> تومان</strong>
               </div>
               <div className={styles.summaryLine}>
                 <span>جمع تخفیف‌ها</span>
                 <strong className={discountTotal > 0 ? styles.discountValue : undefined}>
-                  {discountTotal > 0 ? `−${formatAmount(discountTotal)}` : formatAmount(0)} تومان
+                  <Numeric value={discountTotal > 0 ? `−${formatAmount(discountTotal)}` : formatAmount(0)} /> تومان
                 </strong>
               </div>
               <div className={styles.summaryDivider} />
               <div className={styles.summaryLine}>
-                <span>ظرف و بسته‌بندی هر غذا</span>
-                <strong>{formatAmount(packagingFee)} تومان</strong>
+                <span>ظرف و بسته بندی</span>
+                <strong><Numeric value={40000} /> × <Numeric value={itemCount} /> = <Numeric value={packagingFee} /> تومان</strong>
               </div>
               <div className={styles.summaryLine}>
                 <span>ارسال</span>
@@ -136,12 +141,12 @@ export default function CartSection() {
               </div>
               <div className={styles.summaryLine}>
                 <span>مالیات (۱۰٪)</span>
-                <strong>{formatAmount(taxAmount)} تومان</strong>
+                <strong><Numeric value={taxAmount} /> تومان</strong>
               </div>
               <div className={styles.summaryDivider} />
               <div className={styles.totalLine}>
                 <span>مبلغ قابل پرداخت</span>
-                <strong>{formatAmount(totalPayable)} <small>تومان</small></strong>
+                <strong><Numeric value={totalPayable} /> <small>تومان</small></strong>
               </div>
             </aside>
           </div>
