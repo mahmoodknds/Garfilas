@@ -78,7 +78,7 @@
   align-items: center;
   gap: .65rem;
   min-width: 0;
-  padding: 1rem .8rem;
+  padding: 1rem .55rem;
   overflow: hidden;
   border: 1px solid rgba(255,106,0,.9);
   border-radius: 1.35rem;
@@ -214,8 +214,8 @@
 
 .itemOriginalPrice {
   position: relative;
-  color: rgba(255,240,220,.43);
-  font: 500 .63rem/1.2 var(--font-cormorant-garamond), Georgia, serif;
+  color: rgba(255,240,220,.92);
+  font: 700 .72rem/1.2 var(--font-cormorant-garamond), Georgia, serif;
   white-space: nowrap;
 }
 
@@ -225,20 +225,34 @@
   top: 48%;
   left: -3%;
   width: 106%;
-  height: 1px;
-  background: #ffbd5c;
+  height: 2.5px;
+  background: linear-gradient(90deg,rgba(255,220,155,.9),#fff0b8,rgba(255,220,155,.95));
+  box-shadow: 0 0 4px rgba(255,179,71,.55), 0 0 7px rgba(255,179,71,.24);
   transform: rotate(-12deg);
 }
 
 .itemPrice strong {
-  color: #fff0dc;
-  font: 700 .94rem/1.45 var(--font-cormorant-garamond), Georgia, serif;
+  color: #fff7e8;
+  font: 700 .98rem/1.45 var(--font-cormorant-garamond), Georgia, serif;
+  text-shadow: 0 0 1px rgba(255,248,223,.85), 0 0 7px rgba(255,169,74,.3);
   font-variant-numeric: lining-nums tabular-nums;
   white-space: nowrap;
 }
 
+.currencyPrefix {
+  color: #fff0dc;
+  font: 700 .98rem/1.45 var(--font-cormorant-garamond), Georgia, serif;
+  text-shadow: 0 0 1px rgba(255,248,223,.85), 0 0 7px rgba(255,169,74,.3);
+}
+
+.numeric {
+  font-family: var(--font-cormorant-garamond), Georgia, serif !important;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -.015em;
+}
+
 .itemPrice small {
-  color: #c7a982;
+  color: #fff0dc;
   font: 400 .58rem/1.2 var(--font-vazirmatn), sans-serif;
 }
 
@@ -449,7 +463,7 @@
   .item {
     grid-template-columns: 2.15rem minmax(0, 1fr);
     gap: .45rem;
-    padding: .8rem .6rem;
+    padding: .8rem .4rem;
   }
 
   .itemFooter {
