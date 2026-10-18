@@ -52,10 +52,10 @@ export default function CartSection() {
               <ul className={styles.itemsList} aria-label="اقلام سبد خرید">
                 {items.map((item, index) => (
                   <li className={styles.item} key={item.id}>
-                    <span className={`${styles.itemNumber} ${styles.numeric}`}>{index + 1}</span>
                     <div className={styles.itemMain}>
                       <div className={styles.itemHeading}>
                         <div className={styles.productIdentity}>
+                          <span className={`${styles.itemNumber} ${styles.numeric}`}>{index + 1}</span>
                           <h3>{item.name}</h3>
                           <span className={styles.italian} dir="ltr">{item.italian}</span>
                         </div>

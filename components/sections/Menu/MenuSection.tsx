@@ -120,9 +120,9 @@ export default function MenuSection() {
                   {item.discountPercent}%
                 </span>
               )}
-              <span className={`${styles.number} ${styles.numeric}`}>{index + 1}</span>
               <div className={styles.details}>
                 <div className={styles.nameLine}>
+                  <span className={`${styles.number} ${styles.numeric}`}>{index + 1}</span>
                   <h3>{item.name}</h3>
                   <span className={styles.leader} aria-hidden="true" />
                   <div className={styles.priceBlock}>
