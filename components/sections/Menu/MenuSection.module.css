@@ -110,7 +110,7 @@
 .menuQuantityControl button:hover:not(:disabled),.menuQuantityControl button:focus-visible { color: #fff4e4; background: rgba(255,122,0,.15); outline: none; }
 .menuQuantityControl button:disabled { color: rgba(189,176,160,.36); cursor: not-allowed; }
 .menuQuantityControl output:global(.quantityValue) { display: grid; place-items: center; min-width: 1.65rem; text-align: center; }
-.menuQuantityControl button:global(.addButton) { width: 6.5rem; min-width: 6.5rem; height: 2.6rem; box-sizing: border-box; padding: 0 .5rem; border: 1px solid rgba(255,179,71,.58); border-radius: 999px; color: #ffe1a4; background: linear-gradient(180deg,rgba(38,18,8,.74),rgba(7,5,4,.9) 55%,rgba(22,10,4,.82)); box-shadow: 0 0 2px rgba(255,235,201,.55),0 0 8px rgba(255,133,22,.28),inset 0 1px 0 rgba(255,231,184,.14); font: 600 .76rem/1.2 var(--font-vazirmatn),sans-serif; white-space: nowrap; }
+.menuQuantityControl button:global(.addButton) { width: 6.55rem; min-width: 6.55rem; height: 2.525rem; box-sizing: border-box; padding: 0 .5rem; border: 1px solid rgba(255,179,71,.58); border-radius: 999px; color: #ffe1a4; background: linear-gradient(180deg,rgba(38,18,8,.74),rgba(7,5,4,.9) 55%,rgba(22,10,4,.82)); box-shadow: 0 0 2px rgba(255,235,201,.55),0 0 8px rgba(255,133,22,.28),inset 0 1px 0 rgba(255,231,184,.14); font: 600 .76rem/1.2 var(--font-vazirmatn),sans-serif; white-space: nowrap; }
 .menuQuantityControl button:global(.addButton):hover,.menuQuantityControl button:global(.addButton):focus-visible { border-color: rgba(255,204,116,.98); color: #fff4e4; background: linear-gradient(180deg,rgba(53,24,8,.82),rgba(13,7,4,.96)); box-shadow: 0 0 5px rgba(255,235,201,.72),0 0 12px rgba(255,133,22,.4),inset 0 1px 0 rgba(255,231,184,.2); }
 .menuQuantityControl svg { display: block; width: 1.08rem; height: 1.08rem; }
 
@@ -135,7 +135,7 @@
   .menuQuantityControl button { width: 1.55rem; height: 1.55rem; font-size: 1.35rem; }
   .mark { font-size: .86rem; }
   .menuQuantityControl output:global(.quantityValue) { min-width: 1rem; }
-  .menuQuantityControl button:global(.addButton) { width: 4.35rem; min-width: 4.35rem; height: 1.95rem; padding-inline: .42rem; font-size: .7rem; box-sizing: border-box; }
+  .menuQuantityControl button:global(.addButton) { width: 4.5rem; min-width: 4.5rem; height: 1.875rem; padding-inline: .42rem; font-size: .7rem; box-sizing: border-box; }
   .content { padding-inline: .7rem; }
   .item { grid-template-columns: 1.8rem minmax(0,1fr); gap: .45rem; padding: .85rem .4rem; padding-inline-start: 0; padding-inline-end: .35rem; }
   .number { font-size: 1.15rem; }
