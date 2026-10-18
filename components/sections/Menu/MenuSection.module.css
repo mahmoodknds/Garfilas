@@ -137,7 +137,7 @@
   .menuQuantityControl output:global(.quantityValue) { min-width: 1rem; }
   .menuQuantityControl button:global(.addButton) { width: 4.5rem; min-width: 4.5rem; height: 1.875rem; padding-inline: .42rem; font-size: .7rem; box-sizing: border-box; }
   .content { padding-inline: .7rem; }
-  .item { grid-template-columns: 1.8rem minmax(0,1fr); gap: .45rem; padding: .85rem .5rem .85rem .35rem; }
+  .item { padding: .85rem .5rem .85rem .35rem; }
   .number { font-size: .96rem; }
   .price { font-size: 1.18rem; letter-spacing: -.015em; }
   .price.discountedPrice { font-size: 1.06rem; }
