@@ -170,6 +170,7 @@
 }
 
 .quantityControl {
+  direction: rtl;
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
