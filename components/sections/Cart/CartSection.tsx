@@ -59,15 +59,15 @@ export default function CartSection() {
                           <h3>{item.name}</h3>
                           <span className={styles.italian} dir="ltr">{item.italian}</span>
                         </div>
-                        <button
-                          type="button"
-                          className={styles.removeButton}
-                          onClick={() => removeItem(item.id)}
-                          aria-label={`حذف ${item.name} از سبد خرید`}
-                          title="حذف محصول"
-                        >
-                          <Trash2 size={17} aria-hidden="true" />
-                        </button>
+                        <div className={styles.itemPrice} dir="ltr">
+                          <span className={styles.currencyPrefix}>T</span>
+                          {item.originalPrice && item.originalPrice > item.price && (
+                            <span className={styles.itemOriginalPrice}>
+                              <Numeric value={item.originalPrice * item.quantity} />
+                            </span>
+                          )}
+                          <strong><Numeric value={item.price * item.quantity} /> <small>تومان</small></strong>
+                        </div>
                       </div>
 
                       <div className={styles.itemFooter}>
@@ -90,16 +90,15 @@ export default function CartSection() {
                             −
                           </button>
                         </div>
-
-                        <div className={styles.itemPrice} dir="ltr">
-                          <span className={styles.currencyPrefix}>T</span>
-                          {item.originalPrice && item.originalPrice > item.price && (
-                            <span className={styles.itemOriginalPrice}>
-                              <Numeric value={item.originalPrice * item.quantity} />
-                            </span>
-                          )}
-                          <strong><Numeric value={item.price * item.quantity} /> <small>تومان</small></strong>
-                        </div>
+                        <button
+                          type="button"
+                          className={styles.removeButton}
+                          onClick={() => removeItem(item.id)}
+                          aria-label={`حذف ${item.name} از سبد خرید`}
+                          title="حذف محصول"
+                        >
+                          <Trash2 size={17} aria-hidden="true" />
+                        </button>
                       </div>
                     </div>
                   </li>

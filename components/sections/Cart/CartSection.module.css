@@ -79,7 +79,7 @@
   gap: .65rem;
   min-width: 0;
   padding: 1rem .55rem;
-  padding-inline-start: .02rem;
+  padding-inline-start: 0;
   padding-inline-end: .5rem;
   overflow: hidden;
   border: 1px solid rgba(255,106,0,.9);
@@ -107,10 +107,10 @@
 }
 
 .itemHeading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: .55rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: .5rem;
 }
 
 .productIdentity {
@@ -160,10 +160,10 @@
 .itemFooter {
   position: absolute;
   left: .55rem;
-  right: 3rem;
-  bottom: .6rem;
+  right: .55rem;
+  bottom: .55rem;
   display: flex;
-  direction: ltr;
+  direction: rtl;
   justify-content: space-between;
   align-items: center;
   gap: .65rem;
@@ -218,11 +218,11 @@
 
 .itemPrice {
   display: flex;
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: flex-start;
-  gap: .1rem .42rem;
+  gap: .1rem .32rem;
   width: auto;
   min-width: 0;
   text-align: left;
@@ -482,7 +482,7 @@
     grid-template-columns: 2.15rem minmax(0, 1fr);
     gap: .45rem;
     padding: .8rem .4rem;
-    padding-inline-start: .02rem;
+    padding-inline-start: 0;
     padding-inline-end: .35rem;
   }
 
@@ -490,8 +490,8 @@
 
   .itemFooter {
     left: .45rem;
-    right: 2.7rem;
-    bottom: .5rem;
+    right: .45rem;
+    bottom: .42rem;
     gap: .35rem;
   }
 
