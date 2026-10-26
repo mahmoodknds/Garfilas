@@ -20,7 +20,6 @@ const items: MenuItem[] = [
     italian: "Garfi",
     description: "400گرم؛ راسته گوساله چرخ‌شده، قارچ، فلفل دلمه‌ای، پنیر پستو، پنیر موزارلا و سس مخصوص گارفیلاز.",
     price: 1015000,
-    discountPercent: 50,
     tag: "VIP",
   },
   {
